@@ -122,7 +122,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = news.Title, UpdateTime = DateTime.Now.ToString(), Description=news.Description, Keyword=news.KeyWords };
+            PageAttribute pa = new PageAttribute() { Title = news.Title, UpdateTime = DateTime.Now.ToString(), Description = news.Description, Keyword = news.KeyWords };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -130,7 +130,7 @@ namespace Voodoo.Basement
 
             #region 替换新闻内容
 
-            string title = "<font color='#"+ news.TitleColor +"'>"+news.Title+"</font>";
+            string title = "<font color='#" + news.TitleColor + "'>" + news.Title + "</font>";
             if (news.TitleB)
             {
                 title = "<strong>" + title + "</strong>";
@@ -161,7 +161,7 @@ namespace Voodoo.Basement
             string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_pre != null)
             {
-                pre_link=string.Format("<a href=\"{0}\">{1}</a>",BasePage.GetNewsUrl(news_pre,cls),news_pre.Title);
+                pre_link = string.Format("<a href=\"{0}\">{1}</a>", BasePage.GetNewsUrl(news_pre, cls), news_pre.Title);
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
@@ -175,12 +175,192 @@ namespace Voodoo.Basement
 
             #endregion
 
-            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~"+FileName) , Content);
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
         }
         #endregion
 
+        #region 创建列表页面
+        /// <summary>
+        /// 创建列表页面
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="page"></param>
+        public static void CreateListPage(Class c, int page)
+        {
+            int pagecount = 1;
+            int recordCount = 0;
+            string Content = "";
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+            if (c.ModelID <= 0)
+            {
+                //没有选择模版
+                tmpid = TemplateListView.Find("id>0 order by id desc").ID;
+            }
+            temp = TemplateListView.GetModelByID(tmpid.ToS());
+
+            Content = GetTempateString(tmpid, TempType.列表);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = c.ClassName, UpdateTime = DateTime.Now.ToString(), Description = c.ClassDescription, Keyword = c.ClassKeywords };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+            #region 替换列表
+
+            StringBuilder sb_list = new StringBuilder();
+            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
+
+            pagecount = ns.Count / temp.ShowRecordCount + 1;
+            recordCount = ns.Count;
+
+            ns = ns.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+            foreach (News n in ns)
+            {
+                //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+                string str_lst = temp.ListVar;
+                str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
+                str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
+                str_lst = str_lst.Replace("[!--oldtitle--]", n.Title);
+                string title = n.Title;
+                if (temp.CutTitle > 0)
+                {
+                    title = title.CutString(temp.CutTitle);
+                }
+                str_lst = str_lst.Replace("[!--title--]", n.Title);
+                sb_list.AppendLine(str_lst);
+            }
+
+            Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+
+            #endregion
 
 
+            //替换标签变量
+            Content = ReplaceTagContent(Content);
+
+            #region 替换分页模板
+
+            string tmp_pager = GetTempateString(tmpid, TempType.列表分页);
+            tmp_pager = tmp_pager.Replace("[!--thispage--]", page.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagenum--]", pagecount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--lencord--]", temp.ShowRecordCount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagelink--]", BuildPagerLink(c, page));
+            tmp_pager = tmp_pager.Replace("[!--options--]", BuidPagerOption(c, page));
+
+            Content = Content.Replace("[!--show.listpage--]", tmp_pager);
+
+            #endregion
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(c));
+
+            string FileName = BasePage.GetClassUrl(c, page);
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath(FileName), Content);
+
+
+            //下一页链接
+            if (pagecount > page)
+            {
+                CreateListPage(c, page + 1);
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// 创建分页链接
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public static string BuildPagerLink(Class c, int page)
+        {
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+            if (c.ModelID <= 0)
+            {
+                //没有选择模版
+                tmpid = TemplateListView.Find("id>0 order by id desc").ID;
+            }
+            temp = TemplateListView.GetModelByID(tmpid.ToS());
+            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
+
+            int pagecount = ns.Count / temp.ShowRecordCount + 1;
+            int recordCount = ns.Count;
+
+            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "index_" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
+        }
+
+        /// <summary>
+        /// 创建跳转下拉菜单
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public static string BuidPagerOption(Class c, int page)
+        {
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+            if (c.ModelID <= 0)
+            {
+                //没有选择模版
+                tmpid = TemplateListView.Find("id>0 order by id desc").ID;
+            }
+            temp = TemplateListView.GetModelByID(tmpid.ToS());
+            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
+
+            int pagecount = ns.Count / temp.ShowRecordCount + 1;
+            int recordCount = ns.Count;
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<select onchange='location.href=this.value'>");
+            for (int i = 1; i <= pagecount; i++)
+            {
+                if (page == i)
+                {
+                    sb.AppendLine(string.Format("<option value='index{0}' selected>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                }
+                else
+                {
+                    sb.AppendLine(string.Format("<option value='index{0}'>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                }
+            }
+            sb.AppendLine("</select>");
+            return sb.ToS();
+        }
+
+        /// <summary>
+        /// 创建类导航
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static string BuildClassNavString(Class c)
+        {
+            string str = "";
+            str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
+            var cls = NewsAction.NewsClass.Where(p => p.ID == c.ParentID && c.ShowInNav).ToList();
+            if (cls.Count > 0)
+            {
+                foreach (Class cl in cls)
+                {
+                    str = BuildClassNavString(cl) + str;
+                }
+            }
+            str = "<a href=\"/\">首页</a>" + str;
+            return str;
+
+        }
 
 
         #region 替换公共模版变量

@@ -87,18 +87,21 @@
     <Content Include="e\admin\Test.aspx" />
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\data\images\pixviewer.swf" />
+    <Content Include="e\member\Login.aspx" />
+    <Content Include="e\member\Register.aspx" />
     <Content Include="images\btn_bg.png" />
     <Content Include="images\cms_bg.png" />
     <Content Include="images\cms_logo.png" />
     <Content Include="images\theader.png" />
     <Content Include="script\common.js" />
     <Content Include="script\jquery-1.7.min.js" />
+    <Content Include="tem.txt" />
+    <Content Include="table_Reply.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -112,63 +115,54 @@
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.designer.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.designer.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.designer.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.designer.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.cs">
       <DependentUpon>basic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.designer.cs">
       <DependentUpon>basic.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.cs">
       <DependentUpon>user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.designer.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.designer.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -180,10 +174,22 @@
     <Compile Include="e\admin\user\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\member\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\member\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\member\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\member\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
