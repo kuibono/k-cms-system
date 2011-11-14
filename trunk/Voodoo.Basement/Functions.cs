@@ -23,14 +23,14 @@ namespace Voodoo.Basement
         /// <param name="ExtSql">额外的Sql条件</param>
         /// <param name="Order">排序语句</param>
         /// <returns></returns>
-        public string cmsnewslist(string ClassID, string TitlePreChar, string count, string TitleLength,string showTime, string ExtSql, string Order)
+        public string cmsnewslist(string ClassID, string TitlePreChar, string count, string TitleLength, string showTime, string ExtSql, string Order)
         {
             Class cls = NewsAction.NewsClass.Where(p => p.ID.ToString() == ClassID).First();
 
-            string str_sql=ExtSql + " " + Order;
-            if(str_sql.Trim().IsNullOrEmpty())
+            string str_sql = ExtSql + " " + Order;
+            if (str_sql.Trim().IsNullOrEmpty())
             {
-                str_sql="1=1";
+                str_sql = "1=1";
             }
             List<News> nlist = NewsView.GetModelList(str_sql, count.ToInt32());
             StringBuilder sb = new StringBuilder();
@@ -44,15 +44,29 @@ namespace Voodoo.Basement
                 string timespan = "";
                 if (showTime.ToInt32() > 0)
                 {
-                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>",n.NewsTime.ToString());
+                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString());
                 }
 
-                sb.AppendLine(string.Format("<li>{0}<a href='{1}'>{2}</a>{3}</li>", TitlePreChar, BasePage.GetNewsUrl(n,cls), title,timespan));
+                sb.AppendLine(string.Format("<li>{0}<a href='{1}'>{2}</a>{3}</li>", TitlePreChar, BasePage.GetNewsUrl(n, cls), title, timespan));
             }
             return sb.ToS();
         }
         #endregion
 
+        #region 轮播Flash
+        /// <summary>
+        /// 轮播Flash
+        /// </summary>
+        /// <param name="ClassID"></param>
+        /// <param name="count"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="showTitle"></param>
+        /// <param name="titleLength"></param>
+        /// <param name="interval"></param>
+        /// <param name="ExtSql"></param>
+        /// <param name="Order"></param>
+        /// <returns></returns>
         public static string cmsflashpic(string ClassID, string count, string width, string height, string showTitle, string titleLength, string interval, string ExtSql, string Order)
         {
             StringBuilder sb = new StringBuilder();
@@ -125,10 +139,62 @@ namespace Voodoo.Basement
             sb.AppendLine("</div>");
             return sb.ToString();
         }
+        #endregion
 
-        public static string Test(string a)
+        #region 获取栏目列表
+        /// <summary>
+        /// 获取栏目列表
+        /// </summary>
+        /// <param name="TitlePreChar">前置字符串</param>
+        /// <param name="TitleLength">栏目名截取长度</param>
+        /// <returns></returns>
+        public static string cmsclasslist(string TitlePreChar, string TitleLength)
         {
-            return a;
+            int cutString = TitleLength.ToInt32(50);
+            StringBuilder sb = new StringBuilder();
+            List<Class> cls = NewsAction.NewsClass.Where(p => p.IsLeafClass && p.ShowInNav).ToList();
+            foreach (Class c in cls)
+            {
+                sb.AppendLine(string.Format("<li>{0}<a href=\"{1}\">{2}</a></li>",
+                    TitlePreChar,
+                    BasePage.GetClassUrl(c),
+                    c.ClassName.CutString(cutString)
+                    ));
+            }
+
+            return sb.ToString();
         }
+        #endregion
+
+        #region  创建菜单
+        /// <summary>
+        /// 创建菜单
+        /// </summary>
+        /// <param name="parentID"></param>
+        /// <returns></returns>
+        public static string buildmenustring(int parentID)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var cls = NewsAction.NewsClass.Where(p => p.ShowInNav&&p.ParentID==parentID).ToList();
+            if (cls.Count > 0)
+            {
+                foreach (Class cl in cls)
+                {
+                    sb.AppendLine("<li>");
+                    sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", BasePage.GetClassUrl(cl), cl.ClassName));
+                    sb.AppendLine("</li>");
+                    if(NewsAction.NewsClass.Where(p => p.ParentID==cl.ID).Count()>0)
+                    {
+                        sb.AppendLine("<ul>" + buildmenustring(cl.ID) + "</ul>");
+                    }
+                    
+                }
+            }
+
+            return sb.ToString();
+
+        }
+        #endregion 
     }
 }

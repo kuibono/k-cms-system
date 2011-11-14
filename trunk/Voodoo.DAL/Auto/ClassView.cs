@@ -491,7 +491,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             Class M = new Class();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,[ClassName],Alter,ParentID,IsLeafClass,ClassForder,ModelID,ClassKeywords,ClassDescription,ClassICON,ShowInNav,NavIndex,VisitRole,EnablePost,EnableVCode,PostRoles,PostcreateList,PostAddCent,NeedAudit,PostManagement,EditcreateList,EnableSameTitle,AutoAudt,EnableReply,ReplyNeedAudit,ListModel,ContentModel,ReplyModel,SearchModel,ClassPageMode,ContentPageMode,ManagementOrder,ListPageOrder,ClassPageExtName,ListPageSize,ContentPageForder,ContentPageExtName,ContentPageNameMode,ContentPageDirMode from Class where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,[ClassName],[Alter],ParentID,IsLeafClass,ClassForder,ModelID,ClassKeywords,ClassDescription,ClassICON,ShowInNav,NavIndex,VisitRole,EnablePost,EnableVCode,PostRoles,PostcreateList,PostAddCent,NeedAudit,PostManagement,EditcreateList,EnableSameTitle,AutoAudt,EnableReply,ReplyNeedAudit,ListModel,ContentModel,ReplyModel,SearchModel,ClassPageMode,ContentPageMode,ManagementOrder,ListPageOrder,ClassPageExtName,ListPageSize,ContentPageForder,ContentPageExtName,ContentPageNameMode,ContentPageDirMode from Class where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.ID=0;

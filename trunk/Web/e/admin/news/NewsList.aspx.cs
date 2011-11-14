@@ -24,6 +24,10 @@ namespace Web.e.admin.news
         {
             url = string.Format("?class={0}&zt={1}", cls, zt);
             LoadInfo();
+            if (WS.RequestString("action") == "del")
+            {
+                Button1_Click(sender, e);
+            }
         }
 
         #region 加载列表

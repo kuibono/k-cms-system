@@ -120,7 +120,7 @@ namespace Voodoo.Basement
                 return nv;
             }
         }
-        #endregion 
+        #endregion
 
 
         #region 获取信息地址
@@ -132,7 +132,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetNewsUrl(News news, Class cls)
         {
-            
+
             string result = "";
             if (news.NavUrl.Length > 0) //如果是外部链接
             {
@@ -173,13 +173,13 @@ namespace Voodoo.Basement
                     newsFolder,
                     fileName,
                     BasePage.SystemSetting.ExtName
-                    ); 
+                    );
             }
 
 
             return result;
         }
-        #endregion 
+        #endregion
 
         #region 获取栏目地址
         /// <summary>
@@ -189,16 +189,39 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetClassUrl(Class cls)
         {
-            string sitrurl = BasePage.SystemSetting.SiteUrl;
-            if (sitrurl.IsNullOrEmpty())
-            {
-                sitrurl = "/";
-            }
-
-            return string.Format("{0}{1}/{2}/{3}/{4}{5}",
+            //string sitrurl = BasePage.SystemSetting.SiteUrl;
+            //if (sitrurl.IsNullOrEmpty())
+            //{
+            //    sitrurl = "/";
+            //}
+            string sitrurl = "";
+            return string.Format("{0}{1}/{2}/index{3}",
                 sitrurl,
                 cls.ParentClassForder,
-                cls.ClassForder
+                cls.ClassForder,
+                SystemSetting.ExtName
+                );
+        }
+
+        /// <summary>
+        /// 获取栏目地址
+        /// </summary>
+        /// <param name="cls"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public static string GetClassUrl(Class cls, int page)
+        {
+            //string sitrurl = BasePage.SystemSetting.SiteUrl;
+            //if (sitrurl.IsNullOrEmpty())
+            //{
+            //    sitrurl = "/";
+            //}
+            string sitrurl = "";
+            return string.Format("{0}{1}/{2}/index{3}",
+                sitrurl,
+                cls.ParentClassForder,
+                cls.ClassForder,
+                page > 1 ? "_" + page.ToS() + SystemSetting.ExtName : SystemSetting.ExtName
                 );
         }
         #endregion
@@ -212,7 +235,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static News GetPreNews(News news, Class cls)
         {
-            List<News> lresult = NewsView.GetModelList(string .Format("classID={0} and ID<{1} order by ID Desc",cls.ID,news.ID), 1);
+            List<News> lresult = NewsView.GetModelList(string.Format("classID={0} and ID<{1} order by ID Desc", cls.ID, news.ID), 1);
             if (lresult.Count == 0)
             {
                 return null;
