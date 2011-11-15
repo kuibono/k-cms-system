@@ -38,7 +38,7 @@
 }
 .main ul li{
 	list-style-type:none;  
-	margin-left:-20px;
+	/*margin-left:-20px;*/
 	height:23px;
 	color:#4d4d4d;
 }
@@ -47,7 +47,6 @@
 	margin-top:10px;
 	text-align:left;
 	background-color:#fff;
-	padding-left:10px;
 	border:solid 1px #c1cad3;
 	
 }
@@ -58,11 +57,7 @@
 	vertical-align:middle;
 	color:#8c9bab;
  }
- #link_content
- {
-	 padding:5px 15px 15px 15px;
-	 float:left;
- }
+
  #lastnews_flash
 {
 	width:365px;

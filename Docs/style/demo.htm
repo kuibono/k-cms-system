@@ -8,47 +8,7 @@
     <link type="text/css" rel="stylesheet" href="css/global.css" />
     <link type="text/css" rel="stylesheet" href="css/index.css" />
     <style type="text/css">
-        #menu          {        	margin:0px;         	padding:0px;         	display:block;        	height:33px;        	float:left;        	width:960px;        	background-image:url(image/menu_bg.png);        }
-        #menu > li          {        	list-style-type:none;         	float:left;         	display:block;         	margin:0px 10px;         	position:relative;         	padding:0px;         	width:100px;        	height:33px;        	background-image:url(image/menu_spliter.png);        	background-repeat:no-repeat;        }        #menu li span { cursor:pointer; margin:0px 10px; font-weight:bold; }        #menu li a
-        {
-	        font-size:14px;
-	        color:#FFF;
-	        text-decoration:none;
-	        font-family:微软雅黑;
-	        line-height:33px;
-	        vertical-align:middle;
-        }        #menu li ul
-        {
-        	width:120px;
-        	background-color:#FFF;
-        	/*padding:10 auto 10px auto;*/
-        	filter:alpha(opacity=80);
-            -moz-opacity:0.8;
-            -khtml-opacity: 0.8;
-            opacity: 0.8;
-            -moz-border-radius:3px; 
-            -webkit-border-radius:3px;
-            display:none;
-            list-style:none;
-        }
-        #menu li:hover ul
-        {
-            display:block;
-        }
-        #menu li ul li
-        {
-        	color:#F00;
-        	display:block;
-	        margin:0 20px 0 -40px;
-	        list-style-type: none;
-        }
-        #menu li ul li a {
-            color: #88F;
-            display: block;
-            padding: -5px 10px 10px;
-            text-decoration: none;
-            line-height:23px;
-        }
+
         
     </style>
 </head>
@@ -98,7 +58,7 @@
                 </ul>
             </div>
             <div class="clearfix" id="banner">
-                <img src="image/banner.png" width="960" />
+                <img src="image/banner.png" border="0" width="960" />
             </div>
         </div>
         <div id="main_1" class="main clearfix mg">
@@ -107,7 +67,7 @@
                     最新消息 <span style="margin-left: 580px; color: #999; font-size: 12px;"><a href="">更多&gt;&gt;</a>
                     </span>
                 </h1>
-                <div id="lastnews_list">
+                <div id="lastnews_list" class="inner">
                     <ul>
                         <li><a href="#">[多图]微软:Windows 8的Windows Update将不再那么烦人</a></li>
                         <li><a href="#">传LG将为苹果供应4寸iPhone和7.35寸iPad显示屏</a></li>
@@ -129,7 +89,7 @@
                     教学工作 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
                         更多&gt;</a> </span>
                 </h1>
-                <ul>
+                <ul class="inner">
                     <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
                     <li><a href="#">[图表]苹果在移动市场利润独霸江湖</a></li>
                     <li><a href="#">美科学家借助光线在2D模式下创造3D...</a></li>
@@ -152,7 +112,7 @@
                 <div id="pro_img">
                     <img src="image/talk.png" alt="" />
                 </div>
-                <div id="pro_idea">
+                <div id="pro_idea" class="inner">
                     <ul>
                         <li><a href="#">揭露MacBook新电池/SSD配置的新专利</a></li>
                         <li><a href="#">市场洗牌 Kindle Fire将淘汰500美元平板电脑wweweweweweweew？</a></li>
@@ -172,7 +132,7 @@
                     教学工作 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
                         更多&gt;</a> </span>
                 </h1>
-                <ul>
+                <ul class="inner">
                     <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
                     <li><a href="#">[图表]苹果在移动市场利润独霸江湖</a></li>
                     <li><a href="#">美科学家借助光线在2D模式下创造3D...</a></li>
@@ -186,15 +146,15 @@
                 </ul>
             </div>
         </div>
-        <div id="link" class="clearfix">
+        <div id="link" class="clearfix wrap">
             <h1>
                 友情链接
             </h1>
-            <div id="link_content">
+            <div id="link_content" class="inner">
                 <a href="http://google.com">Google</a>
             </div>
         </div>
-        <div class="footer clearfix mg">
+        <div class="clearfix mg footer">
             <p>
                 <a href="/">网站首页</a> | 关于我们 | 服务项目 | 联系我们 | <a href="javascript:void(0);" onclick="setMyHome()">
                     设为首页</a> | <a href="javascript:void(0);" onclick="addFav()">加入收藏</a>
