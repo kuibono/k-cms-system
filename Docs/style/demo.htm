@@ -4,192 +4,33 @@
     <title>Untitled Page</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+    <script type="text/javascript" src="common.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/global.css" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
     <style type="text/css">
-        body
+        #menu          {        	margin:0px;         	padding:0px;         	position:absolute;         	display:block;        	height:33px;        	float:left;        	width:960px;        	background-image:url(image/menu_bg.png);        }
+        #menu > li          {        	list-style-type:none;         	float:left;         	display:block;         	margin:0px 10px;         	position:relative;         	padding:0px;         	width:100px;        	height:33px;        	background-image:url(image/menu_spliter.png);        	background-repeat:no-repeat;        }        #menu li span { cursor:pointer; margin:0px 10px; font-weight:bold; }        #menu li a
         {
-            text-align: center;
-            background-color:#FFF;
-            margin-top:0px;
-            font-size:12px;
-        }
-		a{
-			text-decoration:none;
-		}
-        h1
+	        font-size:14px;
+	        color:#FFF;
+	        text-decoration:none;
+	        font-family:微软雅黑;
+	        line-height:33px;
+	        vertical-align:middle;
+        }        #menu li ul
         {
-            font-size:14px;
-            font-weight:bold;
-            font-family:微软雅黑;
-            margin:0 0 0 0;
-            padding-left:5px;
-            
+        	width:80px;
+        	background-color:#000;
         }
-        .main
+        #menu li ul li
         {
-            height: auto;
-            margin: 0 auto;
-            min-height: 100%;
-            width: 960px;
-        }
-        .clearfix:after {
-            clear: both;
-            content: ".";
-            display: block;
-            height: 0;
-            visibility: hidden;
-        }
-        .clearfix div{
-            display: inline;
-            float: left;
-        }
-		.left
-		{
-			margin: 0 5px 0 0;	
-		}
-        .banner
-        {
-            height:60px;
-        }
-        #header
-        {
-            text-align:center;
-            background-image:url(image/header_bg.png);
-        }
-        #logo
-        {
-            width:400px;
-            height:60px;
-        }
-        .menu
-        {
-            height:33px;
-            background-image:url(image/menu_bg.png);
-            font-size:14px;
-            color:#FFF;
-            line-height:33px;
-            vertical-align:middle;
-            /*font-weight:bold;*/
-        }
-		.menu ul
-		{
-			list-style-type:none;
-			
-		}
-		.menu ul li
-		{
-			display:inline;
-			margin:auto 20px auto 20px;
-			background-image:url(image/menu_spliter.png);
-			padding-left:15px;
-			padding-right:5px;
-			background-repeat:no-repeat;
-		}
-        .menu ul li a
-        {
-            font-size:14px;
-            color:#FFF;
-            text-decoration:none;
-            font-family:微软雅黑;
+        	color:#F00;
+        	display:block;
+	        margin:0 20px auto -40px;
+	        padding-left:-15px;
+	        padding-right:5px;
         }
         
-        .mg
-        {
-            margin-top:10px;
-        }
-/*        .main .left
-        {
-            background-image:url(image/flower.png);
-            background-repeat:no-repeat;
-            background-position:right bottom;
-        }*/
-		#lastnews_list,#pro_idea
-		{
-			background-image:url(image/flower.png);
-            background-repeat:no-repeat;
-            background-position:right bottom;
-		}
-        .main .left,.main .right
-        {
-            text-align:left;
-            border:solid 1px #c1cad3;
-            /*background-color:#FFF;*/
-        }
-		#main_1 a,#main_2 a
-		{
-			color:#4d4d4d;
-			text-decoration:none;
-		}
-		#main_1 a:hover,#main_2 a:hover
-		{
-			color:#00F;
-			text-decoration:none;
-		}
-        .main .left h1
-        {
-            vertical-align:middle;
-            height:26px;
-            line-height:26px;
-            background-image:url(image/header_gray.png);
-            
-        }
-        .main .right h1
-        {
-            height:25px;
-            line-height:25px;
-            vertical-align:middle;
-            background-image:url(image/header_grayblue.png);
-            color:#FFF;
-        }
-        .main ul li{
-            list-style-type:none;  
-            margin-left:-20px;
-            height:23px;
-            color:#4d4d4d;
-        }
-        #link
-        {
-            margin-top:10px;
-            text-align:left;
-            background-color:#fff;
-            padding-left:10px;
-            border:solid 1px #c1cad3;
-            
-        }
-        #link h1
-        {
-            height:25px;
-            line-height:25px;
-            vertical-align:middle;
-            color:#8c9bab;
-         }
-         #link_content
-         {
-             padding:5px 15px 15px 15px;
-			 float:left;
-         }
-        .footer
-        {
-            width:960px;
-            margin-top:10px;
-            color:#5e5e5e;
-            height:90px;
-            background-image:url(image/footer_bg.png);
-			padding: 10px 10px 0px 10px;
-			float:left;
-        }
-		#lastnews_flash
-		{
-			width:365px;
-			/*border:solid 1px gray;*/
-			height:100px;
-			margin:0px 0px 0px 5px;
-		}
-		#pro_img
-		{
-			width:310px;
-			margin:0px 0px 0px 5px;
-		}
-		
     </style>
 </head>
 <body>
@@ -197,18 +38,44 @@
         <div id="header">
             <div class="clearfix banner">
                 <div id="logo">
-                    <a href="/"><img src="image/logo.png" border="0" alt="首页" /></a>
+                    <a href="/">
+                        <img src="image/logo.png" border="0" alt="首页" /></a>
                 </div>
-                <div id="headertext">
-                
+                <div id="headertext" style="width: 560px;">
+                    <div style="width: 100%; text-align: right; color: #3f505e; padding: 5px 5px auto auto;">
+                        <a href="javascript:void(0);" onclick="setMyHome()">设为首页</a> <a href="javascript:void(0);"
+                            onclick="addFav()">加入收藏</a>
+                    </div>
+                    <div id="div_search">
+                        <form action="" id="fm_log" name="fm_log" method="post">
+                        <p>
+                            账号：<input type="text" name="username" />
+                            密码：<input type="password" name="userpass" />
+                            <a href="javscript:void(0)" onclick="fm_log.submit()">登录</a> &nbsp; <a href="#">注册</a>
+                            <a href="#">忘记密码</a>
+                        </p>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="menu clearfix">
-                <ul>
-                	<li><a href="javascript:void(0)">网站首页</a></li>
-                    <li><a href="javascript:void(0)">最新消息</a></li>
-                    <li><a href="javascript:void(0)">专家观点</a></li>
-                    <li><a href="javascript:void(0)">关于我们</a></li>
+            <div class="menu clearfix" style="height:33px;">
+                <ul id="menu">
+                    <li>
+                        <span><a href="javascript:void(0)">网站首页</a></span>
+                    </li>
+                    <li>
+                        <span><a href="javascript:void(0)">最新消息</a></span>
+                        <ul>
+                            <li><a href="javascript:void(0)">昨天消息</a></li>
+                            <li><a href="javascript:void(0)">今天消息</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span><a href="javascript:void(0)">专家观点</a></span>
+                    </li>
+                    <li>
+                        <span><a href="javascript:void(0)">关于我们</a></span>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix" id="banner">
@@ -216,9 +83,10 @@
             </div>
         </div>
         <div id="main_1" class="main clearfix mg">
-            <div class="left" style="width:692px;">
-                <h1>最新消息
-                	<span style="margin-left:580px;color:#999; font-size:12px;">更多&gt;&gt;</span>
+            <div class="left" style="width: 692px;">
+                <h1>
+                    最新消息 <span style="margin-left: 580px; color: #999; font-size: 12px;"><a href="">更多&gt;&gt;</a>
+                    </span>
                 </h1>
                 <div id="lastnews_list">
                     <ul>
@@ -235,13 +103,12 @@
                     </ul>
                 </div>
                 <div id="lastnews_flash">
-                
                 </div>
             </div>
-            <div class="right" style="width:259px;">
+            <div class="right" style="width: 259px;">
                 <h1>
-                	教学工作
-                	<span style="margin-left:150px;color:#EEE; font-size:12px;">更多&gt;</span>        
+                    教学工作 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
+                        更多&gt;</a> </span>
                 </h1>
                 <ul>
                     <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
@@ -258,13 +125,13 @@
             </div>
         </div>
         <div id="main_2" class="main clearfix mg">
-            <div class="left" style="width:692px;">
+            <div class="left" style="width: 692px;">
                 <h1>
-                	专家观点
-                	<span style="margin-left:580px;color:#999; font-size:12px;">更多&gt;&gt;</span>    
+                    专家观点 <span style="margin-left: 580px; color: #999; font-size: 12px;"><a href="">更多&gt;&gt;</a>
+                    </span>
                 </h1>
                 <div id="pro_img">
-                	<img src="image/talk.png" alt=""/>
+                    <img src="image/talk.png" alt="" />
                 </div>
                 <div id="pro_idea">
                     <ul>
@@ -281,10 +148,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="right" style="width:259px;">
+            <div class="right" style="width: 259px;">
                 <h1>
-                	教学工作
-                	<span style="margin-left:150px;color:#EEE; font-size:12px;">更多&gt;</span>      
+                    教学工作 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
+                        更多&gt;</a> </span>
                 </h1>
                 <ul>
                     <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
@@ -307,14 +174,14 @@
             <div id="link_content">
                 <a href="http://google.com">Google</a>
             </div>
-            
         </div>
-        <div class="footer">
+        <div class="footer clearfix mg">
             <p>
-            	网站首页 | 关于我们 | 服务项目 | 联系我们 | 设为首页 | 加入收藏 
+                <a href="/">网站首页</a> | 关于我们 | 服务项目 | 联系我们 | <a href="javascript:void(0);" onclick="setMyHome()">
+                    设为首页</a> | <a href="javascript:void(0);" onclick="addFav()">加入收藏</a>
             </p>
             <p>
-            	&copy; &nbsp;2011 nuist
+                &copy; &nbsp;2011 nuist
             </p>
         </div>
     </div>
