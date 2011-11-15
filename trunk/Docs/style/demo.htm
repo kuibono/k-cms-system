@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" href="css/global.css" />
     <link type="text/css" rel="stylesheet" href="css/index.css" />
     <style type="text/css">
-        #menu          {        	margin:0px;         	padding:0px;         	position:absolute;         	display:block;        	height:33px;        	float:left;        	width:960px;        	background-image:url(image/menu_bg.png);        }
+        #menu          {        	margin:0px;         	padding:0px;         	display:block;        	height:33px;        	float:left;        	width:960px;        	background-image:url(image/menu_bg.png);        }
         #menu > li          {        	list-style-type:none;         	float:left;         	display:block;         	margin:0px 10px;         	position:relative;         	padding:0px;         	width:100px;        	height:33px;        	background-image:url(image/menu_spliter.png);        	background-repeat:no-repeat;        }        #menu li span { cursor:pointer; margin:0px 10px; font-weight:bold; }        #menu li a
         {
 	        font-size:14px;
@@ -19,16 +19,35 @@
 	        vertical-align:middle;
         }        #menu li ul
         {
-        	width:80px;
-        	background-color:#000;
+        	width:120px;
+        	background-color:#FFF;
+        	/*padding:10 auto 10px auto;*/
+        	filter:alpha(opacity=80);
+            -moz-opacity:0.8;
+            -khtml-opacity: 0.8;
+            opacity: 0.8;
+            -moz-border-radius:3px; 
+            -webkit-border-radius:3px;
+            display:none;
+            list-style:none;
+        }
+        #menu li:hover ul
+        {
+            display:block;
         }
         #menu li ul li
         {
         	color:#F00;
         	display:block;
-	        margin:0 20px auto -40px;
-	        padding-left:-15px;
-	        padding-right:5px;
+	        margin:0 20px 0 -40px;
+	        list-style-type: none;
+        }
+        #menu li ul li a {
+            color: #88F;
+            display: block;
+            padding: -5px 10px 10px;
+            text-decoration: none;
+            line-height:23px;
         }
         
     </style>
@@ -46,7 +65,7 @@
                         <a href="javascript:void(0);" onclick="setMyHome()">设为首页</a> <a href="javascript:void(0);"
                             onclick="addFav()">加入收藏</a>
                     </div>
-                    <div id="div_search">
+                    <div id="div_login">
                         <form action="" id="fm_log" name="fm_log" method="post">
                         <p>
                             账号：<input type="text" name="username" />
