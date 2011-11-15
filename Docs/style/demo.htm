@@ -12,6 +12,9 @@
             margin-top:0px;
             font-size:12px;
         }
+		a{
+			text-decoration:none;
+		}
         h1
         {
             font-size:14px;
@@ -38,8 +41,11 @@
         .clearfix div{
             display: inline;
             float: left;
-            margin: 0 5px 0 0;
         }
+		.left
+		{
+			margin: 0 5px 0 0;	
+		}
         .banner
         {
             height:60px;
@@ -62,9 +68,23 @@
             color:#FFF;
             line-height:33px;
             vertical-align:middle;
-            font-weight:bold;
+            /*font-weight:bold;*/
         }
-        .menu>a
+		.menu ul
+		{
+			list-style-type:none;
+			
+		}
+		.menu ul li
+		{
+			display:inline;
+			margin:auto 20px auto 20px;
+			background-image:url(image/menu_spliter.png);
+			padding-left:15px;
+			padding-right:5px;
+			background-repeat:no-repeat;
+		}
+        .menu ul li a
         {
             font-size:14px;
             color:#FFF;
@@ -76,18 +96,34 @@
         {
             margin-top:10px;
         }
-        .main .left
+/*        .main .left
         {
             background-image:url(image/flower.png);
             background-repeat:no-repeat;
             background-position:right bottom;
-        }
+        }*/
+		#lastnews_list,#pro_idea
+		{
+			background-image:url(image/flower.png);
+            background-repeat:no-repeat;
+            background-position:right bottom;
+		}
         .main .left,.main .right
         {
             text-align:left;
             border:solid 1px #c1cad3;
             /*background-color:#FFF;*/
         }
+		#main_1 a,#main_2 a
+		{
+			color:#4d4d4d;
+			text-decoration:none;
+		}
+		#main_1 a:hover,#main_2 a:hover
+		{
+			color:#00F;
+			text-decoration:none;
+		}
         .main .left h1
         {
             vertical-align:middle;
@@ -129,15 +165,31 @@
          #link_content
          {
              padding:5px 15px 15px 15px;
+			 float:left;
          }
         .footer
         {
-            width:100%;
+            width:960px;
             margin-top:10px;
             color:#5e5e5e;
-            height:108px;
+            height:90px;
             background-image:url(image/footer_bg.png);
+			padding: 10px 10px 0px 10px;
+			float:left;
         }
+		#lastnews_flash
+		{
+			width:365px;
+			/*border:solid 1px gray;*/
+			height:100px;
+			margin:0px 0px 0px 5px;
+		}
+		#pro_img
+		{
+			width:310px;
+			margin:0px 0px 0px 5px;
+		}
+		
     </style>
 </head>
 <body>
@@ -152,8 +204,12 @@
                 </div>
             </div>
             <div class="menu clearfix">
-                <a href="javascript:void(0)">首页</a> | <a href="javascript:void(0)">最新消息</a> | <a
-                    href="javascript:void(0)">专家观点</a> | <a href="javascript:void(0)">关于我们</a> |
+                <ul>
+                	<li><a href="javascript:void(0)">网站首页</a></li>
+                    <li><a href="javascript:void(0)">最新消息</a></li>
+                    <li><a href="javascript:void(0)">专家观点</a></li>
+                    <li><a href="javascript:void(0)">关于我们</a></li>
+                </ul>
             </div>
             <div class="clearfix" id="banner">
                 <img src="image/banner.png" width="960" />
@@ -161,65 +217,86 @@
         </div>
         <div id="main_1" class="main clearfix mg">
             <div class="left" style="width:692px;">
-                <h1>最新消息</h1>
-                <ul>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                </ul>
+                <h1>最新消息
+                	<span style="margin-left:580px;color:#999; font-size:12px;">更多&gt;&gt;</span>
+                </h1>
+                <div id="lastnews_list">
+                    <ul>
+                        <li><a href="#">[多图]微软:Windows 8的Windows Update将不再那么烦人</a></li>
+                        <li><a href="#">传LG将为苹果供应4寸iPhone和7.35寸iPad显示屏</a></li>
+                        <li><a href="#">IBM和ARM正进行小功率SOI芯片研究</a></li>
+                        <li><a href="#">戴尔:软件移植成本阻碍ARM 64位处理器应用</a></li>
+                        <li><a href="#">中东欧盗版影响iTunes 苹果不愿谈销售表现</a></li>
+                        <li><a href="#">Razer称两台Blade原型机在R&D实验室被窃</a></li>
+                        <li><a href="#">马来西亚官方机构电子证书被盗 用来为恶意软件签名</a></li>
+                        <li><a href="#">英特尔发布两款六核i7处理器 主频可达3.9GHz</a></li>
+                        <li><a href="#">iPad成早教工具 专家称面授辅导不可替代</a></li>
+                        <li><a href="#">外媒测试Nokia N9续航 重度使用可顶一天半</a></li>
+                    </ul>
+                </div>
+                <div id="lastnews_flash">
+                
+                </div>
             </div>
-            <div class="right" style="width:252px;">
-                <h1>教学工作</h1>
+            <div class="right" style="width:259px;">
+                <h1>
+                	教学工作
+                	<span style="margin-left:150px;color:#EEE; font-size:12px;">更多&gt;</span>        
+                </h1>
                 <ul>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
+                    <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
+                    <li><a href="#">[图表]苹果在移动市场利润独霸江湖</a></li>
+                    <li><a href="#">美科学家借助光线在2D模式下创造3D...</a></li>
+                    <li><a href="#">iPhone 4和3GS仍然是美国最畅销的...</a></li>
+                    <li><a href="#">开发者攻破Siri安全协议，Siri或...</a></li>
+                    <li><a href="#">微软将在官方零售店举办《Halo》...</a></li>
+                    <li><a href="#">硬盘缺货致主板业遭殃</a></li>
+                    <li><a href="#">性能控注意 治刚推出4通道USB3...</a></li>
+                    <li><a href="#">整合 Google+ 的 YouTube 新...</a></li>
+                    <li><a href="#">华为拟5.3亿美元收购赛门铁克合资...</a></li>
                 </ul>
             </div>
         </div>
         <div id="main_2" class="main clearfix mg">
             <div class="left" style="width:692px;">
-                <h1>最新消息</h1>
-                <ul>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户和密码</li>
-                </ul>
+                <h1>
+                	专家观点
+                	<span style="margin-left:580px;color:#999; font-size:12px;">更多&gt;&gt;</span>    
+                </h1>
+                <div id="pro_img">
+                	<img src="image/talk.png" alt=""/>
+                </div>
+                <div id="pro_idea">
+                    <ul>
+                        <li><a href="#">揭露MacBook新电池/SSD配置的新专利</a></li>
+                        <li><a href="#">市场洗牌 Kindle Fire将淘汰500美元平板电脑wweweweweweweew？</a></li>
+                        <li><a href="#">网购iPhone 4S被骗4万元</a></li>
+                        <li><a href="#">Google已经提供Android 3.0, 4.0源代码</a></li>
+                        <li><a href="#">智能手机和平板开始支持大容量microSDXC</a></li>
+                        <li><a href="#">谷歌11月17日召开发布会 或推出Google Music</a></li>
+                        <li><a href="#">谷歌迫于监管压力披露搜索算法细节</a></li>
+                        <li><a href="#">[图]诺基亚套件取代Ovi套件 推全新UI界面</a></li>
+                        <li><a href="#">RAZR三网融合 摩托罗拉MT917/XT982现身</a></li>
+                        <li><a href="#">环保组织举办CRT垃圾回收比赛</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="right" style="width:252px;">
-                <h1>教学工作</h1>
+            <div class="right" style="width:259px;">
+                <h1>
+                	教学工作
+                	<span style="margin-left:150px;color:#EEE; font-size:12px;">更多&gt;</span>      
+                </h1>
                 <ul>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
-                    <li>美一对离婚夫妇被判交换Facebook账户</li>
+                    <li><a href="#">上季度Mac电脑在欧洲西部的销量增...</a></li>
+                    <li><a href="#">[图表]苹果在移动市场利润独霸江湖</a></li>
+                    <li><a href="#">美科学家借助光线在2D模式下创造3D...</a></li>
+                    <li><a href="#">iPhone 4和3GS仍然是美国最畅销的...</a></li>
+                    <li><a href="#">开发者攻破Siri安全协议，Siri或...</a></li>
+                    <li><a href="#">微软将在官方零售店举办《Halo》...</a></li>
+                    <li><a href="#">硬盘缺货致主板业遭殃</a></li>
+                    <li><a href="#">性能控注意 治刚推出4通道USB3...</a></li>
+                    <li><a href="#">整合 Google+ 的 YouTube 新...</a></li>
+                    <li><a href="#">华为拟5.3亿美元收购赛门铁克合资...</a></li>
                 </ul>
             </div>
         </div>
@@ -233,7 +310,12 @@
             
         </div>
         <div class="footer">
-            尾部
+            <p>
+            	网站首页 | 关于我们 | 服务项目 | 联系我们 | 设为首页 | 加入收藏 
+            </p>
+            <p>
+            	&copy; &nbsp;2011 nuist
+            </p>
         </div>
     </div>
 </body>
