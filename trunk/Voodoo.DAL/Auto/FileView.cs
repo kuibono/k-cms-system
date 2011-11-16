@@ -265,7 +265,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select ID,UpTime,FileType,FileSize,FileDirectory,FileName,FileExtName from File where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select ID,UpTime,FileType,FileSize,FileDirectory,FileName,FileExtName from [File] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -286,7 +286,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  ID,UpTime,FileType,FileSize,FileDirectory,FileName,FileExtName from File where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  ID,UpTime,FileType,FileSize,FileDirectory,FileName,FileExtName from [File] where "+ m_where);
             return dt;
         }
 		#endregion

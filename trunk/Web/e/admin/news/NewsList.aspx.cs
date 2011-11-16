@@ -17,11 +17,13 @@ namespace Web.e.admin.news
 {
     public partial class NewsList :BasePage
     {
-        protected int cls = WS.RequestInt("class",0);
-        protected int zt = WS.RequestInt("zt",0);
-        protected string url = "";
+        protected static int cls = WS.RequestInt("class",0);
+        protected static int zt = WS.RequestInt("zt", 0);
+        protected static string url = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            cls = WS.RequestInt("class",0);
+            zt = WS.RequestInt("zt", 0);
             url = string.Format("?class={0}&zt={1}", cls, zt);
             LoadInfo();
             if (WS.RequestString("action") == "del")

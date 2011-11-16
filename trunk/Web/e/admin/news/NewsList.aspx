@@ -57,8 +57,8 @@
                 <asp:ListItem Text="按评论数" Value="ReplyCount"></asp:ListItem>
             </asp:DropDownList>
             <asp:DropDownList ID="ddl_Desc" runat="server">
-                <asp:ListItem Text="顺序排列" Value="ASC"></asp:ListItem>
                 <asp:ListItem Text="按信息倒序排列" Value="DESC"></asp:ListItem>
+                <asp:ListItem Text="顺序排列" Value="ASC"></asp:ListItem>
             </asp:DropDownList>
             <asp:Button ID="btn_Search" runat="server" Text="搜索" />
         </div>
@@ -117,7 +117,7 @@
                                 <%#Eval("ReplyCount")%>
                             </td>
                             <td>
-                                <a href="NewsEdit.aspx?id=<%#Eval("ID") %>">修改</a> <a href="?id=<%#Eval("ID") %>&action=del">
+                                <a href="NewsEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> <a href="?id=<%#Eval("ID") %>&action=del">
                                     删除</a>
                             </td>
                         </tr>
