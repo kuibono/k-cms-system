@@ -397,7 +397,7 @@ namespace Web.e.admin
             //south.Title = "South";
             south.Height = Unit.Pixel(30);
             south.BodyStyle = "padding:0px;";
-            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>增加信息 管理信息 审核信息 管理评论 数据更新 后台首页 网站首页</span><span style='position:absolute;top:2px;right:10px'>&copy; 2011 <a href='mailto:kuibono@163.com'>Kuibono</a></span></div>";
+            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>增加信息 管理信息 审核信息 管理评论 数据更新 后台首页 <a href='/' target='_blank;'>网站首页</a></span><span style='position:absolute;top:2px;right:10px'>&copy; 2011 <a href='mailto:kuibono@163.com'>Kuibono</a></span></div>";
 
 
             //////////////

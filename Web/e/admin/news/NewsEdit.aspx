@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewsEdit.aspx.cs" Inherits="Web.e.admin.news.NewsEdit" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewsEdit.aspx.cs" Inherits="Web.e.admin.news.NewsEdit"
+    EnableEventValidation="false" %>
 
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>
@@ -25,6 +26,12 @@
                 $("#div_color").hide();
             })
 
+            $("#btn_author").click(function() {
+                $("#txt_Author").val($(this).val());
+            })
+            $("#btn_source").click(function() {
+                $("#txt_Source").val($(this).val());
+            })
         })
     </script>
 
@@ -111,7 +118,7 @@
                     内容简介
                 </td>
                 <td>
-                    <vd:VTextBox ID="txt_Description" runat="server" TextMode="MultiLine"></vd:VTextBox>
+                    <vd:VTextBox ID="txt_Description" runat="server" TextMode="MultiLine" Height="100px"></vd:VTextBox>
                 </td>
             </tr>
             <tr>
@@ -120,6 +127,7 @@
                 </td>
                 <td>
                     <vd:VTextBox ID="txt_Author" runat="server" Width="100px"></vd:VTextBox>
+                    <input type="button" id="btn_author" value="未知" />
                 </td>
             </tr>
             <tr>
@@ -127,15 +135,18 @@
                     来源
                 </td>
                 <td>
-                    <vd:VTextBox ID="txt_Source" runat="server" Width="100px"></vd:VTextBox>
+                    <vd:VTextBox ID="txt_Source" runat="server" Width="100px"></vd:VTextBox><input type="button"
+                        id="btn_source" value="本站" />
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     正文
                 </td>
-                <td>
-                    <FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server">
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" Height="300px">
                     </FCKeditorV2:FCKeditor>
                 </td>
             </tr>
@@ -144,20 +155,22 @@
                     附加选项
                 </td>
                 <td>
-                    <asp:CheckBox ID="chk_SetTop" runat="server" Text="置顶" /> 
+                    <asp:CheckBox ID="chk_SetTop" runat="server" Text="置顶" />
                     <asp:CheckBox ID="chk_CloseReply" runat="server" Text="关闭评论" />
-                    &nbsp;
-                    内容模版
+                    &nbsp; 内容模版
                     <asp:DropDownList ID="ddl_contentTemp" runat="server">
                     </asp:DropDownList>
-                    <br /><br />
-                    点&nbsp;&nbsp;击 <vd:VTextBox ID="txt_ClickCount" runat="server" Width="50px" Text="0"></vd:VTextBox>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    下&nbsp;&nbsp;载 <vd:VTextBox ID="txt_DownCount" runat="server" Width="50px" Text="0"></vd:VTextBox>
-                    <br /><br />
+                    <br />
+                    <br />
+                    点&nbsp;&nbsp;击
+                    <vd:VTextBox ID="txt_ClickCount" runat="server" Width="50px" Text="0"></vd:VTextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 下&nbsp;&nbsp;载
+                    <vd:VTextBox ID="txt_DownCount" runat="server" Width="50px" Text="0"></vd:VTextBox>
+                    <br />
+                    <br />
                     文件名
-                    <vd:VTextBox ID="txt_FileForder" runat="server" Width="100px"/>/
-                    <vd:VTextBox ID="txt_FileName" runat="server" Width="100px"/>
+                    <vd:VTextBox ID="txt_FileForder" runat="server" Width="100px" />/
+                    <vd:VTextBox ID="txt_FileName" runat="server" Width="100px" />
                 </td>
             </tr>
         </tbody>

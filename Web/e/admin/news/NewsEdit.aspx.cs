@@ -38,7 +38,7 @@ namespace Web.e.admin.news
             sp_cor.Style["background-color"] = "#"+cp_TitleColor.Value;
 
             ddl_contentTemp.DataSource = TemplateContentView.GetModelList();
-            ddl_contentTemp.DataTextField = "";
+            ddl_contentTemp.DataTextField = "TempName";
             ddl_contentTemp.DataValueField = "ID";
             ddl_contentTemp.DataBind();
             ddl_contentTemp.Items.Add(new ListItem("--使用默认模板--", "0"));
@@ -92,7 +92,11 @@ namespace Web.e.admin.news
         /// <param name="e"></param>
         protected void btn_Save_Click(object sender, EventArgs e)
         {
-            int zt = WS.RequestInt("zt",0);
+            cls = WS.RequestInt("class", 0);
+            zt = WS.RequestInt("zt", 0);
+            url = string.Format("NewsList.aspx?class={0}&zt={1}", cls, zt);
+
+            //int zt = WS.RequestInt("zt",0);
 
             News n = new News();
 

@@ -92,6 +92,7 @@
     <Content Include="e\admin\Test.aspx" />
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\data\images\pixviewer.swf" />
+    <Content Include="e\file\addselect.aspx" />
     <Content Include="e\member\Login.aspx" />
     <Content Include="e\member\LoginForm.aspx" />
     <Content Include="e\member\Register.aspx" />
@@ -211,6 +212,13 @@
     <Compile Include="e\admin\user\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\file\addselect.aspx.cs">
+      <DependentUpon>addselect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\file\addselect.aspx.designer.cs">
+      <DependentUpon>addselect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,7 +243,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
