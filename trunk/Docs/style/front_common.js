@@ -25,3 +25,7 @@ function addFav() {
 		window.sidebar.addPanel(document.title, location.href, "");
 	}
 } 
+
+$(function(){
+    $("#div_login").load("/e/member/LoginForm.aspx");
+})

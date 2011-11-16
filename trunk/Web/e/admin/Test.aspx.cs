@@ -14,11 +14,11 @@ namespace Web.e.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Response.Write(Voodoo.Basement.CreatePage.GreateIndexPage());
+            Voodoo.Basement.CreatePage.GreateIndexPage();
 
             //Class c = ClassView.Find("ID>0");
             //Voodoo.Basement.CreatePage.CreateListPage(c, 1);
-            Response.Write(Voodoo.Basement.Functions.buildmenustring(0));
+            Response.Write(Voodoo.Basement.Functions.buildmenustring("0"));
         }
     }
 }

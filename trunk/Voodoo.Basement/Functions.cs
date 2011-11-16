@@ -172,11 +172,11 @@ namespace Voodoo.Basement
         /// </summary>
         /// <param name="parentID"></param>
         /// <returns></returns>
-        public static string buildmenustring(int parentID)
+        public static string buildmenustring(string parentID)
         {
             StringBuilder sb = new StringBuilder();
 
-            var cls = NewsAction.NewsClass.Where(p => p.ShowInNav&&p.ParentID==parentID).ToList();
+            var cls = NewsAction.NewsClass.Where(p => p.ShowInNav&&p.ParentID.ToString()==parentID).ToList();
             if (cls.Count > 0)
             {
                 foreach (Class cl in cls)
@@ -186,7 +186,7 @@ namespace Voodoo.Basement
                     sb.AppendLine("</li>");
                     if(NewsAction.NewsClass.Where(p => p.ParentID==cl.ID).Count()>0)
                     {
-                        sb.AppendLine("<ul>" + buildmenustring(cl.ID) + "</ul>");
+                        sb.AppendLine("<ul>" + buildmenustring(cl.ID.ToString()) + "</ul>");
                     }
                     
                 }
