@@ -126,7 +126,7 @@ namespace Voodoo.Basement
 
             Content = ReplacePageAttribute(Content, pa);
 
-            Content = ReplaceTagContent(Content);
+            
 
             #region 替换新闻内容
 
@@ -143,7 +143,10 @@ namespace Voodoo.Basement
             {
                 title = "<STRIKE>" + title + "</STRIKE>";
             }
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
 
+            Content = Content.Replace("[!--news.id--]", news.ID.ToString());
             Content = Content.Replace("[!--news.title--]", title);
             Content = Content.Replace("[!--news.newstime--]", news.NewsTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--news.source--]", news.Source);
@@ -152,6 +155,8 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--news.keywords--]", news.KeyWords);
             Content = Content.Replace("[!--news.description--]", news.Description);
             #endregion
+
+            Content = ReplaceTagContent(Content);
 
             #region 上一篇  下一篇 链接
             News news_pre = BasePage.GetPreNews(news, cls);
@@ -215,7 +220,7 @@ namespace Voodoo.Basement
             #region 替换列表
 
             StringBuilder sb_list = new StringBuilder();
-            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
+            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by id desc", c.ID)).ToList();
 
             pagecount = ns.Count / temp.ShowRecordCount + 1;
             recordCount = ns.Count;
@@ -228,6 +233,7 @@ namespace Voodoo.Basement
                 str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
                 str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
                 str_lst = str_lst.Replace("[!--oldtitle--]", n.Title);
+                str_lst = str_lst.Replace("[!--description--]", n.Description);
                 string title = n.Title;
                 if (temp.CutTitle > 0)
                 {
@@ -452,6 +458,8 @@ namespace Voodoo.Basement
         {
             Content = Content.Replace("[!--page.title--]", pa.Title);
             Content = Content.Replace("[!--page.updatetime--]", pa.UpdateTime);
+            Content = Content.Replace("[!--page.description--]", pa.Description);
+            Content = Content.Replace("[!--page.keyword--]", pa.Keyword);
             return Content;
         }
         #endregion

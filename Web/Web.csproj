@@ -73,6 +73,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\common.css" />
+    <Content Include="css\content.css" />
+    <Content Include="css\global.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\list.css" />
     <Content Include="css\management.css" />
     <Content Include="Default.aspx" />
     <Content Include="e\admin\Default.aspx" />
@@ -88,12 +93,34 @@
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\data\images\pixviewer.swf" />
     <Content Include="e\member\Login.aspx" />
+    <Content Include="e\member\LoginForm.aspx" />
     <Content Include="e\member\Register.aspx" />
+    <Content Include="images\banner.png" />
     <Content Include="images\btn_bg.png" />
     <Content Include="images\cms_bg.png" />
     <Content Include="images\cms_logo.png" />
+    <Content Include="images\flower.png" />
+    <Content Include="images\footer_bg.png" />
+    <Content Include="images\header_bg.png" />
+    <Content Include="images\header_gray.png" />
+    <Content Include="images\header_grayblue.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu_bg.png" />
+    <Content Include="images\menu_spliter.png" />
+    <Content Include="images\talk.png" />
     <Content Include="images\theader.png" />
+    <Content Include="image\banner.png" />
+    <Content Include="image\flower.png" />
+    <Content Include="image\footer_bg.png" />
+    <Content Include="image\header_bg.png" />
+    <Content Include="image\header_gray.png" />
+    <Content Include="image\header_grayblue.png" />
+    <Content Include="image\logo.png" />
+    <Content Include="image\menu_bg.png" />
+    <Content Include="image\menu_spliter.png" />
+    <Content Include="image\talk.png" />
     <Content Include="script\common.js" />
+    <Content Include="script\front_common.js" />
     <Content Include="script\jquery-1.7.min.js" />
     <Content Include="tem.txt" />
     <Content Include="table_Reply.txt" />
@@ -102,6 +129,7 @@
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -115,54 +143,63 @@
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.designer.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.designer.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.designer.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.designer.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.cs">
       <DependentUpon>basic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.designer.cs">
       <DependentUpon>basic.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.cs">
       <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.designer.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.designer.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -176,12 +213,21 @@
     </Compile>
     <Compile Include="e\member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\member\LoginForm.aspx.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\member\LoginForm.aspx.designer.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\member\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -211,7 +257,36 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="image\.svn\all-wcprops" />
+    <None Include="image\.svn\dir-prop-base" />
+    <None Include="image\.svn\entries" />
+    <None Include="image\.svn\prop-base\banner.png.svn-base" />
+    <None Include="image\.svn\prop-base\flower.png.svn-base" />
+    <None Include="image\.svn\prop-base\footer_bg.png.svn-base" />
+    <None Include="image\.svn\prop-base\header_bg.png.svn-base" />
+    <None Include="image\.svn\prop-base\header_gray.png.svn-base" />
+    <None Include="image\.svn\prop-base\header_grayblue.png.svn-base" />
+    <None Include="image\.svn\prop-base\logo.png.svn-base" />
+    <None Include="image\.svn\prop-base\menu_bg.png.svn-base" />
+    <None Include="image\.svn\prop-base\menu_spliter.png.svn-base" />
+    <None Include="image\.svn\prop-base\talk.png.svn-base" />
+    <None Include="image\.svn\text-base\banner.png.svn-base" />
+    <None Include="image\.svn\text-base\flower.png.svn-base" />
+    <None Include="image\.svn\text-base\footer_bg.png.svn-base" />
+    <None Include="image\.svn\text-base\header_bg.png.svn-base" />
+    <None Include="image\.svn\text-base\header_gray.png.svn-base" />
+    <None Include="image\.svn\text-base\header_grayblue.png.svn-base" />
+    <None Include="image\.svn\text-base\logo.png.svn-base" />
+    <None Include="image\.svn\text-base\menu_bg.png.svn-base" />
+    <None Include="image\.svn\text-base\menu_spliter.png.svn-base" />
+    <None Include="image\.svn\text-base\talk.png.svn-base" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="image\.svn\props\" />
+    <Folder Include="image\.svn\tmp\prop-base\" />
+    <Folder Include="image\.svn\tmp\props\" />
+    <Folder Include="image\.svn\tmp\text-base\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

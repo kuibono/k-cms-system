@@ -115,26 +115,26 @@ namespace Web.e.admin.news
                 return;
             }
 
-            n.Title = txt_Title.Text;
-            n.TitleColor = cp_TitleColor.Value;
+            n.Title = txt_Title.Text.TrimDbDangerousChar();
+            n.TitleColor = cp_TitleColor.Value.TrimDbDangerousChar();
             n.TitleB = chk_TitleB.Checked;
             n.TitleI = chk_TitleI.Checked;
             n.TitleS = chk_TitleS.Checked;
 
-            n.FTitle = txt_FTitle.Text;
+            n.FTitle = txt_FTitle.Text.TrimDbDangerousChar();
 
             n.Audit = chk_Audit.Checked;
             n.Tuijian = chk_Tuijian.Checked;
             n.Toutiao = chk_Toutiao.Checked;
 
-            n.KeyWords = txt_Key.Text;
-            n.NavUrl = txt_NavUrl.Text;
+            n.KeyWords = txt_Key.Text.TrimDbDangerousChar();
+            n.NavUrl = txt_NavUrl.Text.TrimDbDangerousChar();
             n.NewsTime=txt_NewsTime.Text.ToDateTime();
-            n.TitleImage = txt_TitleImage.Text;
-            n.Description = txt_Description.Text;
-            n.Author = txt_Author.Text;
-            n.Source = txt_Source.Text;
-            n.Content = FCKeditor1.Value;
+            n.TitleImage = txt_TitleImage.Text.TrimDbDangerousChar();
+            n.Description = txt_Description.Text.TrimDbDangerousChar();
+            n.Author = txt_Author.Text.TrimDbDangerousChar();
+            n.Source = txt_Source.Text.TrimDbDangerousChar();
+            n.Content = FCKeditor1.Value.TrimDbDangerousChar();
 
             n.SetTop = chk_SetTop.Checked;
             n.EnableReply = !chk_CloseReply.Checked;
@@ -158,7 +158,13 @@ namespace Web.e.admin.news
             CreatePage.CreateContentPage(n, c);
 
             News news_pre = GetPreNews(n,c);
-            CreatePage.CreateContentPage(news_pre, c);
+
+            if (news_pre != null)
+            {
+                CreatePage.CreateContentPage(news_pre, c);
+            }
+
+            CreatePage.CreateListPage(c, 1);
 
 
             Js.AlertAndChangUrl("保存成功！",url);
