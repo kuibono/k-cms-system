@@ -4,13 +4,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title></title>
+    <title>图片管理</title>
     <style type="text/css">
         .style1
         {
             width: 100%;
         }
     </style>
+    <script type="text/javascript" src="/script/jquery-1.7.min.js"></script>
+    <script type="text/javascript">
+        var parentCtrl = "<%=Request.QueryString["ctrl"] %>";
+        $(function () { 
+            $("#DataList1 img").click(function(){
+                $(parent.opener.document).find("#"+parentCtrl).val($(this).attr("path"));
+                window.close();
+            })
+        })
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -43,9 +53,11 @@
     </table>
     
     <asp:DataList ID="DataList1" runat="server" BorderStyle="Solid" 
-        BorderWidth="1px" RepeatColumns="3" RepeatDirection="Horizontal">
+        BorderWidth="1px" RepeatColumns="4" RepeatDirection="Horizontal">
         <ItemTemplate>
-             <img src="<%#Eval("FileDirectory") %>/<%#Eval("FileName") %>" width="105" height="118" style="border:solid 1px gray; margin:2px;" />
+             <a href="javascript:void(0)">
+             <img src="<%#Eval("SmallPath") %>" path="<%#Eval("FilePath") %>" width="105" height="118" style="border:solid 1px gray; margin:2px;" />
+             </a>
         </ItemTemplate>
         
     </asp:DataList>

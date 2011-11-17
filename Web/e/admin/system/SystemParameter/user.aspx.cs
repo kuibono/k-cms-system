@@ -71,6 +71,10 @@ namespace Web.e.admin.system.SystemParameter
             ss.BackLoginErrorTimeSpan = txt_BackLoginErrorTimeSpan.Text.ToInt32();
             ss.BackCookieTimeOut = txt_BackCookieTimeOut.Text.ToInt32();
 
+            ss.FileExtNameFilter = "gif,jpg,jpeg,png,bmp";
+            ss.MaxPostFileSize = 1024 * 1024;
+            ss.FileDir = "/u/file/";
+
             Voodoo.Basement.Setting.SysSettingDAL.SetSetting(ss);
             Js.AlertAndChangUrl("保存成功！", "?");
         }

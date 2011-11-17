@@ -37,11 +37,10 @@ namespace Web.e.admin.news
             ddl_PostcreateList.DataSource = CreatePageOptions;
             ddl_PostcreateList.DataBind();
 
-            ddl_EditcreateList.DataSource = CreatePageOptions;
-            ddl_EditcreateList.DataBind();
+            ddl_EditcreateList.Bind(CreatePageOptions);
 
-            ddl_PostManagement.DataSource = PostManagementOptions;
-            ddl_PostManagement.DataBind();
+            ddl_PostManagement.Bind(CreatePageOptions);
+
 
             int id = WS.RequestInt("id");
             if (id <= 0)
@@ -132,7 +131,7 @@ namespace Web.e.admin.news
             {
                 ClassView.Insert(cls);
             }
-            Voodoo.Cache.Cache.SetCache("_NewClassList", null);
+            Voodoo.Cache.Cache.Clear("_NewClassList");
             Js.AlertAndChangUrl("保存成功！", "ClassList.aspx");
         }
     }

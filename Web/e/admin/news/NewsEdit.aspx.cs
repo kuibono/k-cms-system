@@ -157,7 +157,19 @@ namespace Web.e.admin.news
                 NewsView.Insert(n);
             }
 
+
+
             //此处进行代码生成
+
+            //nv.Add("不生成", "0");
+            //nv.Add("生成当前栏目", "1");
+            //nv.Add("生成首页", "2");
+            //nv.Add("生成父栏目", "3");
+            //nv.Add("生成当前栏目与父栏目", "4");
+            //nv.Add("生成父栏目与首页", "5");
+            //nv.Add("生成当前栏目、父栏目与首页", "6");
+
+            
 
             CreatePage.CreateContentPage(n, c);
 
@@ -167,8 +179,29 @@ namespace Web.e.admin.news
             {
                 CreatePage.CreateContentPage(news_pre, c);
             }
-
-            CreatePage.CreateListPage(c, 1);
+            switch (c.EditcreateList)
+            {
+                case 0:
+                    break;
+                case 1:
+                    CreatePage.CreateListPage(c, 1);
+                    break;
+                case 2:
+                    CreatePage.GreateIndexPage();
+                    break;
+                case 3:
+                case 4:
+                    CreatePage.CreateListPage(c, 1);
+                    break;
+                case 5:
+                    CreatePage.GreateIndexPage();
+                    break;
+                case 6:
+                    CreatePage.CreateListPage(c, 1);
+                    CreatePage.GreateIndexPage();
+                    break;
+            }
+            
 
 
             Js.AlertAndChangUrl("保存成功！",url);

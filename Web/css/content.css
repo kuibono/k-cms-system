@@ -34,6 +34,15 @@
 {
 	margin:10px 10px 10px 10px;
 	border-bottom:1px solid #336699;
+	line-height:33px;
+	height:33px;
+	width:670px;
+}
+#ckepop
+{
+	float:right;
+	display:inline;
+	padding: 10px;
 }
 #news_content
 {

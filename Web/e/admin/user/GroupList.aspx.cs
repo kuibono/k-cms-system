@@ -5,16 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using Voodoo;
-using Voodoo.Data;
-using Voodoo.Model;
-using Voodoo.DAL;
-using Voodoo.Basement;
-using Voodoo.Setting;
-
 namespace Web.e.admin.user
 {
-    public partial class UserList : BasePage
+    public partial class GroupList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,9 +29,6 @@ namespace Web.e.admin.user
 
         }
 
-        protected void btn_Search_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

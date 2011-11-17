@@ -140,48 +140,63 @@ namespace Web.e.admin
 
 
             Ext.Net.TreeNode n_mp_index = new Ext.Net.TreeNode("首页模版", Icon.Page);
+            n_mp_index.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=IndexContent')";
             n_model_public.Nodes.Add(n_mp_index);
 
             Ext.Net.TreeNode n_mp_control = new Ext.Net.TreeNode("控制面板模板", Icon.MonitorEdit);
+            n_mp_control.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=Controlcontent')";
             n_model_public.Nodes.Add(n_mp_control);
 
             Ext.Net.TreeNode n_mp_sitesearch = new Ext.Net.TreeNode("全站搜索模板", Icon.Zoom);
+            n_mp_sitesearch.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=SiteSearchContent')";
             n_model_public.Nodes.Add(n_mp_sitesearch);
 
             Ext.Net.TreeNode n_mp_asearch = new Ext.Net.TreeNode("高级搜索模板", Icon.CameraMagnify);
+            n_mp_asearch.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=AdvancedSearch')";
             n_model_public.Nodes.Add(n_mp_asearch);
 
             Ext.Net.TreeNode n_mp_HorizontaSearch = new Ext.Net.TreeNode("横向JS搜索模板", Icon.CdMagnify);
+            n_mp_HorizontaSearch.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=HorizontaSearch')";
             n_model_public.Nodes.Add(n_mp_HorizontaSearch);
 
             Ext.Net.TreeNode n_mp_VerticalSearch = new Ext.Net.TreeNode("纵JS搜索模板", Icon.MapMagnify);
+            n_mp_VerticalSearch.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=VerticalSearch')";
             n_model_public.Nodes.Add(n_mp_VerticalSearch);
 
             Ext.Net.TreeNode n_mp_RelationInfo = new Ext.Net.TreeNode("相关信息模板", Icon.WorldLink);
+            n_mp_RelationInfo.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=RelationInfo')";
             n_model_public.Nodes.Add(n_mp_RelationInfo);
 
             Ext.Net.TreeNode n_mp_MessageBoard = new Ext.Net.TreeNode("留言板模板", Icon.Comment);
+            n_mp_MessageBoard.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=MessageBoard')";
             n_model_public.Nodes.Add(n_mp_MessageBoard);
 
             Ext.Net.TreeNode n_mp_Reply = new Ext.Net.TreeNode("评论JS模板", Icon.CommentDull);
+            n_mp_Reply.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=Reply')";
             n_model_public.Nodes.Add(n_mp_Reply);
 
             Ext.Net.TreeNode n_mp_FinalDown = new Ext.Net.TreeNode("最终下载页模板", Icon.PackageDown);
+            n_mp_FinalDown.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=FinalDown')";
             n_model_public.Nodes.Add(n_mp_FinalDown);
 
             Ext.Net.TreeNode n_mp_DownAddress = new Ext.Net.TreeNode("下载地址模板", Icon.Link);
+            n_mp_DownAddress.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=DownAddress')";
             n_model_public.Nodes.Add(n_mp_DownAddress);
 
             Ext.Net.TreeNode n_mp_OLPlayaddress = new Ext.Net.TreeNode("在线播放地址模板", Icon.PlayGreen);
+            n_mp_OLPlayaddress.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=OLPlayaddress')";
             n_model_public.Nodes.Add(n_mp_OLPlayaddress);
 
             Ext.Net.TreeNode n_mp_ListPager = new Ext.Net.TreeNode("列表分页模板", Icon.PageHeaderFooter);
+            n_mp_ListPager.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=ListPager')";
             n_model_public.Nodes.Add(n_mp_ListPager);
 
             Ext.Net.TreeNode n_mp_LoginStatus = new Ext.Net.TreeNode("登录状态模板", Icon.PageLandscape);
+            n_mp_ListPager.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=LoginStatus')";
             n_model_public.Nodes.Add(n_mp_LoginStatus);
 
             Ext.Net.TreeNode n_mp_JSLogin = new Ext.Net.TreeNode("JS调用登录模板", Icon.UserRed);
+            n_mp_JSLogin.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=JSLogin')";
             n_model_public.Nodes.Add(n_mp_JSLogin);
 
             root_model.Nodes.Add(n_model_public);

@@ -61,6 +61,8 @@ namespace Web.e.admin.system.SystemParameter
             st.FileDirString = txt_FileDirString.Text;
             st.ExtName = txt_ExtName.Text;
 
+            
+
             Voodoo.Basement.Setting.SysSettingDAL.SetSetting(st);
             Js.Alert("保存成功！");
         }
