@@ -6,6 +6,8 @@ using System.Text;
 using Voodoo.Data;
 using Voodoo.Model;
 using Voodoo.DAL;
+using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Voodoo.Basement
 {
@@ -84,18 +86,18 @@ namespace Voodoo.Basement
         /// <summary>
         /// 页面生成选项
         /// </summary>
-        public static NameValueCollection CreatePageOptions
+        public static ListItemCollection CreatePageOptions
         {
             get
             {
-                NameValueCollection nv = new NameValueCollection();
-                nv.Add("不生成", "0");
-                nv.Add("生成当前栏目", "1");
-                nv.Add("生成首页", "2");
-                nv.Add("生成父栏目", "3");
-                nv.Add("生成当前栏目与父栏目", "4");
-                nv.Add("生成父栏目与首页", "5");
-                nv.Add("生成当前栏目、父栏目与首页", "6");
+                ListItemCollection nv = new ListItemCollection();
+                nv.Add(new ListItem("不生成", "0"));
+                nv.Add(new ListItem("生成当前栏目", "1"));
+                nv.Add(new ListItem("生成首页", "2"));
+                nv.Add(new ListItem("生成父栏目", "3"));
+                nv.Add(new ListItem("生成当前栏目与父栏目", "4"));
+                nv.Add(new ListItem("生成父栏目与首页", "5"));
+                nv.Add(new ListItem("生成当前栏目、父栏目与首页", "6"));
                 return nv;
             }
         }

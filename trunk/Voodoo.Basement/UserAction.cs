@@ -106,9 +106,23 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public Result UserLogin(string UserName, string Password,int CookieDay)
         {
+            
+
             Result r = new Result();
             UserName = UserName.TrimDbDangerousChar();
             Password = Password.TrimDbDangerousChar();
+            if (UserName.IsNullOrEmpty())
+            {
+                r.Success = false;
+                r.Text = "账号不能为空!";
+                return r;
+            }
+            if (Password.IsNullOrEmpty())
+            {
+                r.Success = false;
+                r.Text = "密码不能为空!";
+                return r;
+            }
 
             User _user = UserView.Find(string.Format("UserName='{0}'", UserName));
             if (_user.ID > 0)

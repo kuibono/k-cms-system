@@ -4,13 +4,15 @@
 
 
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>最新消息-服务外包管理网站</title>
     <meta name="keywords" content="新闻,关键词 大学生,南京信息工程大学,服务,外包" />
     <meta name="description" content="新闻 简介 南京信息工程大学服务外包网" />
-    <meta name="update" content="2011/11/16 21:00:34" />
+    <meta name="update" content="2011-11-17 15:40:44" />
     <script type="text/javascript" src="/script/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="/script/front_common.js"></script>
     <link type="text/css" rel="stylesheet" href="/css/common.css" />
@@ -31,14 +33,14 @@
                             onclick="addFav()">加入收藏</a>
                     </div>
                     <div id="div_login">
-                        <form action="" id="fm_log" name="fm_log" method="post">
-                        <p>
-                            账号：<input type="text" name="username" />
-                            密码：<input type="password" name="userpass" />
-                            <a href="javscript:void(0)" onclick="document.getElementById('fm_log').submit()">登录</a> &nbsp; <a href="#">注册</a>
-                            <a href="#">忘记密码</a>
-                        </p>
-                        </form>
+						<form action="/e/member/Login.aspx" id="fm_log" name="fm_log" method="post">
+							<p>
+								账号：<input type="text" id="txt_username" name="username" />
+								密码：<input type="password" id="txt_password" name="userpass" />
+								<a id="btn_login" href="javascript:document.getElementById('fm_log').submit()" onclick="document.getElementById('fm_log').submit()">登录</a> &nbsp; <a href="#">注册</a>
+								<a href="#">忘记密码</a>
+							</p>
+						</form>
                     </div>
                 </div>
             </div>
@@ -59,6 +61,7 @@
         </div>
 
 
+
         <div id="main_1" class="clearfix mg">
         	<div class="nav">您的位置：<a href="/">首页</a>> <a href="/LastNews/index.htm">最新消息</a></div>
             <div id="newslist" class="left inner" style="width: 660px;">
@@ -70,6 +73,28 @@
                 </div>
                 <ul>
                     
+                        <div class="clearfix inner newsitem mg">
+                            <h2><a href="/LastNews/2011-11-17/14.htm">
+                                谷歌Android份额达52.5% 塞班苹果同列前三
+                            </a>
+                            </h2>
+                            <div class="newsprop">xxx发布于2011-11-17 </div>
+                            <div class="description">根据全球著名调查机构Gartner提供的数据，安卓系统在智能手机市场的占有率在2011年第三季度达到52.5%，去年同期为25.3%。</div>
+                        </div>
+
+
+
+                        <div class="clearfix inner newsitem mg">
+                            <h2><a href="/LastNews/2011-11-16/13.htm">
+                                1126糗事
+                            </a>
+                            </h2>
+                            <div class="newsprop">xxx发布于2011-11-16 </div>
+                            <div class="description">本人学生，男，最近得了肠炎，今天刚好，跟爹妈视频聊天，抱怨了一下这两天有多凄凉，晚上烧成那样了宿舍的小子们该咋闹咋闹，根本没人鸟我。爹默默点燃一棵烟，搂住妈，悠然说道“身边没个女人就是不行吧。”</div>
+                        </div>
+
+
+
                         <div class="clearfix inner newsitem mg">
                             <h2><a href="/LastNews/2011-11-16/12.htm">
                                 检测是否地沟油的最简单方法
@@ -103,30 +128,8 @@
 
 
 
-                        <div class="clearfix inner newsitem mg">
-                            <h2><a href="/LastNews/2011-11-16/9.htm">
-                                Xbox发布十周年 微软公布珍藏老照片
-                            </a>
-                            </h2>
-                            <div class="newsprop">xxx发布于2011-11-16 </div>
-                            <div class="description">微软今天公布了一些数据和照片，带领大家回顾这十年间发生在Xbox身上的珍贵瞬间。</div>
-                        </div>
-
-
-
-                        <div class="clearfix inner newsitem mg">
-                            <h2><a href="/LastNews/2011-11-16/8.htm">
-                                调查结果:95%的全球人口拥有手机
-                            </a>
-                            </h2>
-                            <div class="newsprop">xxx发布于2011-11-16 </div>
-                            <div class="description">SSI 最近对九个国家和地区进行的调查研究显示，占压倒性多数的95%的全球人口目前拥有手机。香港（99%）、中国（98%）和瑞典（98%）的手机拥有率最高，美国（89%）最低。结果显示，在手机拥有者中，42%目前拥有智能手机，58%计划购买智能手机来替代现有手机。</div>
-                        </div>
-
-
-
                 </ul>
-                <div class="pager inner">页次：1/3&nbsp;每页5&nbsp;总数12&nbsp;&nbsp;&nbsp;&nbsp;[<a href="javascript:void(0)">首页</a>] [<a href="javascript:void(0)">上页</a>] [<a href="index_2.htm">下页</a>] [<a href="index_3.htm">尾页</a>]&nbsp;&nbsp;&nbsp;&nbsp;转到:<select onchange='location.href=this.value'>
+                <div class="pager inner">页次：1/3&nbsp;每页5&nbsp;总数14&nbsp;&nbsp;&nbsp;&nbsp;[<a href="javascript:void(0)">首页</a>] [<a href="javascript:void(0)">上页</a>] [<a href="index_2.htm">下页</a>] [<a href="index_3.htm">尾页</a>]&nbsp;&nbsp;&nbsp;&nbsp;转到:<select onchange='location.href=this.value'>
 <option value='index.htm' selected>1</option>
 <option value='index_2.htm'>2</option>
 <option value='index_3.htm'>3</option>

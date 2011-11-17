@@ -16,21 +16,26 @@
     <script type="text/javascript" src="/script/common.js"></script>
 
     <script type="text/javascript">
-        $(function() {
-            $("#sp_cor").click(function() {
+        $(function () {
+            $("#sp_cor").click(function () {
                 $("#div_color").show();
             })
 
-            $("#div_color").click(function() {
+            $("#div_color").click(function () {
                 $("#sp_cor").css("background-color", $(".x-color-palette-sel span").css("background-color"));
                 $("#div_color").hide();
             })
 
-            $("#btn_author").click(function() {
+            $("#btn_author").click(function () {
                 $("#txt_Author").val($(this).val());
             })
-            $("#btn_source").click(function() {
+            $("#btn_source").click(function () {
                 $("#txt_Source").val($(this).val());
+            })
+
+            $("#FCKeditor1___Frame").document.find("#TB_Button_Image").click(function () {
+                window.open('../../file/addselect.aspx?type=1&classid=1&ctrl=FCKeditor1', '', 'width=460,height=500,scrollbars=yes');
+                return false;
             })
         })
     </script>
@@ -111,6 +116,9 @@
                 </td>
                 <td>
                     <vd:VTextBox ID="txt_TitleImage" runat="server"></vd:VTextBox>
+                    <a href="javascript:void(0)" onclick="window.open('../../file/addselect.aspx?type=1&classid=1&ctrl=txt_TitleImage','','width=460,height=500,scrollbars=yes');">
+                        <img src="/images/img.gif" alt="选择/上传图片" />
+                    </a>
                 </td>
             </tr>
             <tr>
@@ -126,7 +134,7 @@
                     作者
                 </td>
                 <td>
-                    <vd:VTextBox ID="txt_Author" runat="server" Width="100px"></vd:VTextBox>
+                    <vd:VTextBox ID="txt_Author" runat="server" Text="未知" Width="100px"></vd:VTextBox>
                     <input type="button" id="btn_author" value="未知" />
                 </td>
             </tr>
@@ -135,7 +143,7 @@
                     来源
                 </td>
                 <td>
-                    <vd:VTextBox ID="txt_Source" runat="server" Width="100px"></vd:VTextBox><input type="button"
+                    <vd:VTextBox ID="txt_Source" runat="server" Text="本站" Width="100px"></vd:VTextBox><input type="button"
                         id="btn_source" value="本站" />
                 </td>
             </tr>

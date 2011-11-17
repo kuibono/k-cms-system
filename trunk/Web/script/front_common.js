@@ -24,8 +24,15 @@ function addFav() {
 } else if (window.sidebar) {
 		window.sidebar.addPanel(document.title, location.href, "");
 	}
-} 
+}
 
-$(function(){
+$(function() {
+    //加载登陆框
     $("#div_login").load("/e/member/LoginForm.aspx");
+    $("#btn_login").live("click", function() {
+        if ($("#txt_username").val().size() == 0 || $("#txt_password").val().size() == 0) {
+            alert("账号和密码不能为空");
+            return false;
+        }
+    })
 })

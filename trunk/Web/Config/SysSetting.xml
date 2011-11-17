@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <SysSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SiteUrl></SiteUrl>
+  <SiteUrl />
   <SiteOpen>true</SiteOpen>
   <KeyWords>大学生,南京信息工程大学,服务,外包</KeyWords>
   <Description>南京信息工程大学服务外包网</Description>
@@ -10,23 +10,26 @@
   <ExtName>.htm</ExtName>
   <SiteCloseMsg>系统维护中，请稍后访问</SiteCloseMsg>
   <SiteName>服务外包管理网站</SiteName>
-  <EnableReg>false</EnableReg>
-  <RegisterDefaultGroup>0</RegisterDefaultGroup>
-  <RegCent>0</RegCent>
-  <MaxUserName>0</MaxUserName>
-  <MinUserName>0</MinUserName>
-  <MaxPassword>0</MaxPassword>
-  <MinPassword>0</MinPassword>
-  <EmailCheck>false</EmailCheck>
-  <RegTimeSpan>0</RegTimeSpan>
+  <EnableReg>true</EnableReg>
+  <RegisterDefaultGroup>1</RegisterDefaultGroup>
+  <RegCent>20</RegCent>
+  <MaxUserName>20</MaxUserName>
+  <MinUserName>6</MinUserName>
+  <MaxPassword>20</MaxPassword>
+  <MinPassword>6</MinPassword>
+  <EmailCheck>true</EmailCheck>
+  <RegTimeSpan>60</RegTimeSpan>
+  <UserNameFilter>管理员,admin</UserNameFilter>
   <BackLoginUseVCode>false</BackLoginUseVCode>
-  <BackLoginErrorSize>0</BackLoginErrorSize>
-  <BackLoginErrorTimeSpan>0</BackLoginErrorTimeSpan>
-  <BackCookieTimeOut>0</BackCookieTimeOut>
+  <BackLoginErrorSize>3</BackLoginErrorSize>
+  <BackLoginErrorTimeSpan>30</BackLoginErrorTimeSpan>
+  <BackCookieTimeOut>30</BackCookieTimeOut>
+  <FileDir>/u/file/</FileDir>
   <MaxFileSize>0</MaxFileSize>
-  <MaxPostFileSize>0</MaxPostFileSize>
+  <MaxPostFileSize>1048576</MaxPostFileSize>
   <EnablePost>false</EnablePost>
   <PostImageSize>0</PostImageSize>
   <EnablePostImage>false</EnablePostImage>
+  <FileExtNameFilter>gif,jpg,jpeg,png,bmp</FileExtNameFilter>
   <MagageListSize>15</MagageListSize>
 </SysSetting>

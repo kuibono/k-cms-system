@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011-11-8 15:29:09
+*生成时间：2011-11-17 9:28:07
 *生成者：kuibono
 */
 using System;
@@ -48,6 +48,16 @@ namespace Voodoo.Model
 		/// 
 		/// </summary>
 		public string FileExtName{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string FilePath{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string SmallPath{get ; set; }
 		
 		///实体复制
 		public File Clone()

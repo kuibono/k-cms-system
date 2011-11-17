@@ -80,7 +80,7 @@ namespace Voodoo.Basement
             sb.AppendLine(string.Format("var focus_height={0};", height));
             if (showTitle.ToInt32() > 0)
             {
-                sb.AppendLine("var text_height=30;");
+                sb.AppendLine("var text_height=20;");
             }
             else
             {
@@ -88,19 +88,19 @@ namespace Voodoo.Basement
             }
             sb.AppendLine("var text_align=\"center\";");
             sb.AppendLine("var swf_height = focus_height+text_height;");
-            sb.AppendLine("var swfpath=\"/cms/e/data/images/pixviewer.swf\";");
-            sb.AppendLine("var swfpatha=\"/cms/e/data/images/pixviewer.swf\";");
+            sb.AppendLine("var swfpath=\"/e/data/images/pixviewer.swf\";");
+            sb.AppendLine("var swfpatha=\"/e/data/images/pixviewer.swf\";");
 
             StringBuilder sb_pics = new StringBuilder();
             StringBuilder sb_links = new StringBuilder();
             StringBuilder sb_texts = new StringBuilder();
 
             #region 图片变量
-            sb_pics.AppendLine("var pics=\"");
-            sb_links.AppendLine("var links=\"");
-            sb_texts.AppendLine("var texts=\"");
+            sb_pics.Append("var pics=\"");
+            sb_links.Append("var links=\"");
+            sb_texts.Append("var texts=\"");
 
-            string str_sql = "ZtID='{0}' or ClassID='{1}'";
+            string str_sql = string.Format("(ZtID='{0}' or ClassID='{1}') and len(TitleImage)>0", ClassID, ClassID);
             if (ExtSql.Length > 0)
             {
                 str_sql += " and " + ExtSql;
@@ -111,15 +111,21 @@ namespace Voodoo.Basement
             }
 
             List<News> newses = NewsView.GetModelList(str_sql, count.ToInt32());
+            newses = newses.Where(p => p.TitleImage.IndexOf(".gif")<0).ToList();//不支持GIF文件
             foreach (News n in newses)
             {
                 sb_pics.Append(n.TitleImage + "|");
-                sb_links.Append(n.NavUrl.Length > 0 ? n.NavUrl : n.FileForder + n.FileName + "|");
+                sb_links.Append(BasePage.GetNewsUrl(n,ClassView.GetModelByID(ClassID)) + "|");
                 sb_texts.Append(n.Title.CutString(titleLength.ToInt32()) + "|");
             }
             sb_pics = sb_pics.TrimEnd('|');
             sb_links = sb_links.TrimEnd('|');
             sb_texts = sb_texts.TrimEnd('|');
+
+            sb_pics.Append("\";\n");
+            sb_links.Append("\";\n");
+            sb_texts.Append("\";\n");
+
             sb.Append(sb_pics.ToString());
             sb.Append(sb_links.ToString());
             sb.Append(sb_texts.ToString());

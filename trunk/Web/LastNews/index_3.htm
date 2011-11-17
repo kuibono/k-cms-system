@@ -4,13 +4,15 @@
 
 
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>最新消息-服务外包管理网站</title>
     <meta name="keywords" content="新闻,关键词 大学生,南京信息工程大学,服务,外包" />
     <meta name="description" content="新闻 简介 南京信息工程大学服务外包网" />
-    <meta name="update" content="2011/11/16 21:00:34" />
+    <meta name="update" content="2011-11-17 15:40:44" />
     <script type="text/javascript" src="/script/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="/script/front_common.js"></script>
     <link type="text/css" rel="stylesheet" href="/css/common.css" />
@@ -31,14 +33,14 @@
                             onclick="addFav()">加入收藏</a>
                     </div>
                     <div id="div_login">
-                        <form action="" id="fm_log" name="fm_log" method="post">
-                        <p>
-                            账号：<input type="text" name="username" />
-                            密码：<input type="password" name="userpass" />
-                            <a href="javscript:void(0)" onclick="document.getElementById('fm_log').submit()">登录</a> &nbsp; <a href="#">注册</a>
-                            <a href="#">忘记密码</a>
-                        </p>
-                        </form>
+						<form action="/e/member/Login.aspx" id="fm_log" name="fm_log" method="post">
+							<p>
+								账号：<input type="text" id="txt_username" name="username" />
+								密码：<input type="password" id="txt_password" name="userpass" />
+								<a id="btn_login" href="javascript:document.getElementById('fm_log').submit()" onclick="document.getElementById('fm_log').submit()">登录</a> &nbsp; <a href="#">注册</a>
+								<a href="#">忘记密码</a>
+							</p>
+						</form>
                     </div>
                 </div>
             </div>
@@ -59,6 +61,7 @@
         </div>
 
 
+
         <div id="main_1" class="clearfix mg">
         	<div class="nav">您的位置：<a href="/">首页</a>> <a href="/LastNews/index.htm">最新消息</a></div>
             <div id="newslist" class="left inner" style="width: 660px;">
@@ -70,6 +73,28 @@
                 </div>
                 <ul>
                     
+                        <div class="clearfix inner newsitem mg">
+                            <h2><a href="/LastNews/2011-11-11/4.htm">
+                                百度公布证据回应"医骗"风波 邱氏兄弟被指操盘
+                            </a>
+                            </h2>
+                            <div class="newsprop">xxx发布于2011-11-11 </div>
+                            <div class="description">百度因打击违规医药引发的一系列口水战，逐渐进入新的剧情。昨天上午，百度首次向媒体披露著名医疗推广机构“利民时代”多项违规推广及遭百度下线的证据，并称员工过去48小时内遭到多次恐吓</div>
+                        </div>
+
+
+
+                        <div class="clearfix inner newsitem mg">
+                            <h2><a href="/LastNews/2011-11-11/3.htm">
+                                数据显示男性更容易上社交网站骗子的当
+                            </a>
+                            </h2>
+                            <div class="newsprop">xxx发布于2011-11-11 </div>
+                            <div class="description">Facebook社交网站上的诈骗案中， 男性比女性更容易上当。这是由于男性理解事物的速度快，并且较为单纯。被访者中有64.2%的女性拒绝陌生人加Facebook好友，而男性仅有 55.4%这么做。</div>
+                        </div>
+
+
+
                         <div class="clearfix inner newsitem mg">
                             <h2><a href="/LastNews/2011-11-11/childrenIOS.htm">
                                 11岁小学生在TED大会上谈论自己如何为iOS开发软件
@@ -93,7 +118,7 @@
 
 
                 </ul>
-                <div class="pager inner">页次：3/3&nbsp;每页5&nbsp;总数12&nbsp;&nbsp;&nbsp;&nbsp;[<a href="index.htm">首页</a>] [<a href="index_2.htm">上页</a>] [<a href="javascript:void(0)">下页</a>] [<a href="javascript:void(0)">尾页</a>]&nbsp;&nbsp;&nbsp;&nbsp;转到:<select onchange='location.href=this.value'>
+                <div class="pager inner">页次：3/3&nbsp;每页5&nbsp;总数14&nbsp;&nbsp;&nbsp;&nbsp;[<a href="index.htm">首页</a>] [<a href="index_2.htm">上页</a>] [<a href="javascript:void(0)">下页</a>] [<a href="javascript:void(0)">尾页</a>]&nbsp;&nbsp;&nbsp;&nbsp;转到:<select onchange='location.href=this.value'>
 <option value='index.htm'>1</option>
 <option value='index_2.htm'>2</option>
 <option value='index_3.htm' selected>3</option>

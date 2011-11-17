@@ -89,7 +89,10 @@
     <Content Include="e\admin\system\SystemParameter\user.aspx" />
     <Content Include="e\admin\sysuser\SysUserEdit.aspx" />
     <Content Include="e\admin\sysuser\SysUserList.aspx" />
+    <Content Include="e\admin\template\PublicTemplate.aspx" />
     <Content Include="e\admin\Test.aspx" />
+    <Content Include="e\admin\user\GroupList.aspx" />
+    <Content Include="e\admin\user\UserEdit.aspx" />
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\data\images\pixviewer.swf" />
     <Content Include="e\file\addselect.aspx" />
@@ -105,6 +108,7 @@
     <Content Include="images\header_bg.png" />
     <Content Include="images\header_gray.png" />
     <Content Include="images\header_grayblue.png" />
+    <Content Include="images\img.gif" />
     <Content Include="images\logo.png" />
     <Content Include="images\menu_bg.png" />
     <Content Include="images\menu_spliter.png" />
@@ -117,12 +121,19 @@
     <Content Include="image\header_gray.png" />
     <Content Include="image\header_grayblue.png" />
     <Content Include="image\logo.png" />
+    <Content Include="image\logo\google.gif" />
+    <Content Include="image\logo\kaixin001.gif" />
+    <Content Include="image\logo\qqweibo.gif" />
+    <Content Include="image\logo\qzone.gif" />
+    <Content Include="image\logo\renren.gif" />
+    <Content Include="image\logo\weibo.gif" />
     <Content Include="image\menu_bg.png" />
     <Content Include="image\menu_spliter.png" />
     <Content Include="image\talk.png" />
     <Content Include="script\common.js" />
     <Content Include="script\front_common.js" />
     <Content Include="script\jquery-1.7.min.js" />
+    <Content Include="table_File.txt" />
     <Content Include="tem.txt" />
     <Content Include="table_Reply.txt" />
     <Content Include="Web.config" />
@@ -198,12 +209,33 @@
     <Compile Include="e\admin\sysuser\SysUserList.aspx.designer.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\template\PublicTemplate.aspx.cs">
+      <DependentUpon>PublicTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\template\PublicTemplate.aspx.designer.cs">
+      <DependentUpon>PublicTemplate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\user\GroupList.aspx.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\user\GroupList.aspx.designer.cs">
+      <DependentUpon>GroupList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\user\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\user\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>

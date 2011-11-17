@@ -24,7 +24,7 @@ namespace Web.e.member
 
             if (userName.IsNullOrEmpty() || userPass.IsNullOrEmpty())
             {
-                Js.GoBack();
+                Js.AlertAndGoback("账号和密码不能为空！");
                 return;
             }
 
