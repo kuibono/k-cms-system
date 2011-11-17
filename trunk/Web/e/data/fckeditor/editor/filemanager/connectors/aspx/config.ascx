@@ -38,7 +38,7 @@
 		// ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
 		// user logs in your system.
 
-		return false;
+		return true;
 	}
 
 	public override void SetConfig()
@@ -47,7 +47,7 @@
 		Enabled = CheckAuthentication();
 
 		// URL path to user files.
-		UserFilesPath = "/userfiles/";
+		UserFilesPath = "/u/file/";
 
 		// The connector tries to resolve the above UserFilesPath automatically.
 		// Use the following setting it you prefer to explicitely specify the
