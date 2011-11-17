@@ -59,7 +59,7 @@ FCKConfig.AutoGrowMax = 400 ;
 // FCKConfig.ProtectedSource.Add( /(<asp:[^\>]+>[\s|\S]*?<\/asp:[^\>]+>)|(<asp:[^\>]+\/>)/gi ) ;	// ASP.Net style tags <asp:control>
 
 FCKConfig.AutoDetectLanguage	= true ;
-FCKConfig.DefaultLanguage		= 'en' ;
+FCKConfig.DefaultLanguage		= 'zh-cn' ;
 FCKConfig.ContentLangDirection	= 'ltr' ;
 
 FCKConfig.ProcessHTMLEntities	= true ;
@@ -99,12 +99,12 @@ FCKConfig.TemplateReplaceCheckbox = true ;
 FCKConfig.ToolbarLocation = 'In' ;
 
 FCKConfig.ToolbarSets["Default"] = [
-	['Source','DocProps','-','Save','NewPage','Preview','-','Templates'],
-	['Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
-	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-	['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
-	'/',
-	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+	//['Source','DocProps','-','Save','NewPage','Preview','-','Templates'],
+	//['Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
+	//['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+	//['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
+	//'/',
+	['Source','Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
 	['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote','CreateDiv'],
 	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
 	['Link','Unlink','Anchor'],
@@ -112,7 +112,7 @@ FCKConfig.ToolbarSets["Default"] = [
 	'/',
 	['Style','FontFormat','FontName','FontSize'],
 	['TextColor','BGColor'],
-	['FitWindow','ShowBlocks','-','About']		// No comma for the last row.
+	['FitWindow','ShowBlocks']		// No comma for the last row.
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [
@@ -273,8 +273,8 @@ FCKConfig.JustifyClasses = [] ;
 // inline when creating the editor instance. In that cases you must set the
 // values of LinkBrowserURL, ImageBrowserURL and so on.
 // Custom implementations should just ignore it.
-var _FileBrowserLanguage	= 'php' ;	// asp | aspx | cfm | lasso | perl | php | py
-var _QuickUploadLanguage	= 'php' ;	// asp | aspx | cfm | lasso | perl | php | py
+var _FileBrowserLanguage	= 'aspx' ;	// asp | aspx | cfm | lasso | perl | php | py
+var _QuickUploadLanguage	= 'aspx' ;	// asp | aspx | cfm | lasso | perl | php | py
 
 // Don't care about the following two lines. It just calculates the correct connector
 // extension to use for the default File Browser (Perl uses "cgi").
