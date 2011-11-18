@@ -91,7 +91,7 @@ h1
 	color:#5e5e5e;
 }
 
-input
+input[type=text],input[type=password],textarea
 {
 	border:solid 1px #c0c0c0;
 	width:100px;

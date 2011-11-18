@@ -64,6 +64,7 @@
     <Compile Include="Auto\TemplTags.cs" />
     <Compile Include="Auto\User.cs" />
     <Compile Include="Auto\UserClassRelation.cs" />
+    <Compile Include="Auto\UserForm.cs" />
     <Compile Include="Auto\UserGroup.cs" />
     <Compile Include="Auto\UserRegorm.cs" />
     <Compile Include="Auto\Zt.cs" />

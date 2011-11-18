@@ -280,6 +280,51 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region  创建页头和页尾 CreateHeaderString CreateFooterString
+        public static string CreateHeaderString(string title)
+        {
+            string Content = "";
+            Content += GetPublicTemplate("header");
+
+
+            PageAttribute pa = new PageAttribute() { Title = title, UpdateTime = DateTime.Now.ToString() };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+            Content = ReplaceTagContent(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            return Content;
+        }
+
+        public static string CreateFooterString()
+        {
+            string Content = "";
+            Content += GetPublicTemplate("footer");
+
+
+   
+            Content = ReplaceTagContent(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            return Content;
+        }
+        #endregion 
+
+        #region  创建用户功能菜单
+        public static string BuildUserMenuString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<li><a href=\"#\">会员登陆</a></li>");
+            sb.AppendLine("<li><a href=\"/e/member/ChangeRegister.aspx\">注册帐号</a></li>");
+            sb.AppendLine("<li><a href=\"/e/post/PostNews.aspx\">发布投稿</a></li>");
+
+            return sb.ToString();
+        }
+        #endregion
+
         /// <summary>
         /// 创建分页链接
         /// </summary>

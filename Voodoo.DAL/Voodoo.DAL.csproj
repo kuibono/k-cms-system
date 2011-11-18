@@ -63,12 +63,14 @@
     <Compile Include="Auto\TemplateVarView.cs" />
     <Compile Include="Auto\TemplTagsView.cs" />
     <Compile Include="Auto\UserClassRelationView.cs" />
+    <Compile Include="Auto\UserFormView.cs" />
     <Compile Include="Auto\UserGroupView.cs" />
     <Compile Include="Auto\UserRegormView.cs" />
     <Compile Include="Auto\UserView.cs" />
     <Compile Include="Auto\ZtView.cs" />
     <Compile Include="NewsView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserGroupView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">

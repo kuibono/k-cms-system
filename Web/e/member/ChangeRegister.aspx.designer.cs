@@ -11,6 +11,6 @@
 namespace Web.e.member {
     
     
-    public partial class LoginForm {
+    public partial class ChangeRegister {
     }
 }

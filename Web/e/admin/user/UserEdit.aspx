@@ -214,7 +214,7 @@
                     <th colspan="2">
                         <asp:Button ID="btn_Save" Text="保存" runat="server" onclick="btn_Save_Click" />
                         &nbsp;
-                        <input type="button" value="取消" onclick="location.href='SysUserList.aspx'" />
+                        <input type="button" value="取消" onclick="location.href='UserList.aspx'" />
                     </th>
                 </tr>
             </tfoot>

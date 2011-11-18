@@ -41,6 +41,70 @@ namespace Voodoo.Basement
 
         }
 
+        #region  用户投稿
+        /// <summary>
+        /// 用户投稿
+        /// </summary>
+        /// <param name="news"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static Result UserPost(News news,User user)
+        {
+            Result r = new Result();
+
+            UserGroup g=UserGroupView.GetModelByID(user.ID.ToS());
+
+            int maxPost = 0;
+            try
+            {
+                maxPost = g.MaxPost;
+            }
+            catch { }
+
+
+            //验证用户是否允许投稿
+            if (maxPost<= 0)
+            {
+                r.Success = false;
+                r.Text = "对不起，您没有投稿的权限！";
+                return r;
+            }
+
+            //验证本日投稿数是否已经过多
+            int todayPost = NewsView.Count(string.Format("AutorID={0}",user.ID));
+            if (todayPost > maxPost)
+            {
+                r.Success = false;
+                r.Text = "对不起，您本日投稿数量已经达到最大限制，请明天继续！";
+                return r;
+            }
+
+            //验证标题是否为空
+            if (news.Title.IsNullOrEmpty())
+            {
+                r.Success = false;
+                r.Text = "文章标题不能为空";
+                return r;
+            }
+
+            //验证栏目
+            if (news.ClassID <= 0)
+            {
+                r.Success = false;
+                r.Text = "栏目不能为空！";
+                return r;
+            }
+
+            news.Audit = g.PostAotuAudit;
+
+            NewsView.Insert(news);
+
+            r.Success = true;
+            r.Text = "投递成功！";
+
+            return r;
+        }
+        #endregion
 
     }
 }

@@ -22,7 +22,11 @@
             
             <asp:DropDownList ID="ddl_Group" runat="server"></asp:DropDownList>
             
-            <asp:DropDownList ID="ddl_Enabled" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddl_Enabled" runat="server">
+                <asp:ListItem Text="--不限--" Value=""></asp:ListItem>
+                <asp:ListItem Text="启用" Value="1"></asp:ListItem>
+                <asp:ListItem Text="停用" Value="0"></asp:ListItem>
+            </asp:DropDownList>
             
             <asp:Button ID="btn_Search" runat="server" Text="搜索" 
                 onclick="btn_Search_Click" />
@@ -76,7 +80,7 @@
                                 <%#Eval("ChineseName") %>
                             </td>
                             <td>
-                                <%#GetGroupByID(Eval("Group").ToInt32()).GroupName%>
+                                <%#GetGroupNameByID(Eval("Group").ToInt32())%>
                             </td>
                             <td>
                                 <%#Eval("Email") %>
