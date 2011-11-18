@@ -286,6 +286,7 @@ namespace Web.e.admin
             root_user.Expanded = true;
             //------------用户管理-----------------------------------------------//
             Ext.Net.TreeNode n_user_sys = new Ext.Net.TreeNode("用户管理", Icon.UserGray);
+           
             n_user_sys.Expanded = true;
 
             //-----------------------------------修改个人资料-----------------------------------------------//
@@ -324,16 +325,19 @@ namespace Web.e.admin
 
             //-----------------------------------管理会员组-----------------------------------------------//
             Ext.Net.TreeNode n_uu_group = new Ext.Net.TreeNode("管理会员组", Icon.UserHome);
+            n_uu_group.Listeners.Click.Handler = "openpage('user/GroupList.aspx')";
             n_user_user.Nodes.Add(n_uu_group);
             //-----------------------------------管理会员组-----------------------------------------------//
 
             //-----------------------------------管理会员-----------------------------------------------//
             Ext.Net.TreeNode n_uu_user = new Ext.Net.TreeNode("管理会员", Icon.UserTick);
+            n_uu_user.Listeners.Click.Handler = "openpage('user/userlist.aspx')";
             n_user_user.Nodes.Add(n_uu_user);
             //-----------------------------------管理会员-----------------------------------------------//
 
             //-----------------------------------管理会员表单-----------------------------------------------//
             Ext.Net.TreeNode n_uu_form = new Ext.Net.TreeNode("管理会员表单", Icon.ApplicationForm);
+            n_uu_form.Listeners.Click.Handler = "openpage('user/UserFormList.aspx')";
             n_user_user.Nodes.Add(n_uu_form);
             //-----------------------------------管理会员表单-----------------------------------------------//
 

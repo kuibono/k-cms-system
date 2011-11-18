@@ -91,14 +91,20 @@
     <Content Include="e\admin\sysuser\SysUserList.aspx" />
     <Content Include="e\admin\template\PublicTemplate.aspx" />
     <Content Include="e\admin\Test.aspx" />
+    <Content Include="e\admin\user\GroupEdit.aspx" />
     <Content Include="e\admin\user\GroupList.aspx" />
     <Content Include="e\admin\user\UserEdit.aspx" />
+    <Content Include="e\admin\user\UserFormEdit.aspx" />
+    <Content Include="e\admin\user\UserFormList.aspx" />
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\data\images\pixviewer.swf" />
     <Content Include="e\file\addselect.aspx" />
+    <Content Include="e\member\ChangeRegister.aspx" />
     <Content Include="e\member\Login.aspx" />
     <Content Include="e\member\LoginForm.aspx" />
     <Content Include="e\member\Register.aspx" />
+    <Content Include="e\member\RegisterForm.aspx" />
+    <Content Include="e\post\PostNews.aspx" />
     <Content Include="images\banner.png" />
     <Content Include="images\btn_bg.png" />
     <Content Include="images\cms_bg.png" />
@@ -131,8 +137,25 @@
     <Content Include="image\menu_spliter.png" />
     <Content Include="image\talk.png" />
     <Content Include="script\common.js" />
+    <Content Include="script\editor\kindeditor-min.js" />
+    <Content Include="script\editor\lang\en.js" />
+    <Content Include="script\editor\lang\zh_CN.js" />
+    <Content Include="script\editor\lang\zh_TW.js" />
+    <Content Include="script\editor\themes\common\anchor.gif" />
+    <Content Include="script\editor\themes\common\blank.gif" />
+    <Content Include="script\editor\themes\common\flash.gif" />
+    <Content Include="script\editor\themes\common\loading.gif" />
+    <Content Include="script\editor\themes\common\media.gif" />
+    <Content Include="script\editor\themes\common\rm.gif" />
+    <Content Include="script\editor\themes\default\bg.gif" />
+    <Content Include="script\editor\themes\default\default.css" />
+    <Content Include="script\editor\themes\default\default.png" />
+    <Content Include="script\editor\themes\simple\simple.css" />
     <Content Include="script\front_common.js" />
     <Content Include="script\jquery-1.7.min.js" />
+    <Content Include="script\jquery.validationEngine-zh_cn.js" />
+    <Content Include="script\jquery.validationEngine.js" />
+    <Content Include="css\validationEngine.jquery.css" />
     <Content Include="table_File.txt" />
     <Content Include="tem.txt" />
     <Content Include="table_Reply.txt" />
@@ -223,6 +246,13 @@
     <Compile Include="e\admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\user\GroupEdit.aspx.cs">
+      <DependentUpon>GroupEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\user\GroupEdit.aspx.designer.cs">
+      <DependentUpon>GroupEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\user\GroupList.aspx.cs">
       <DependentUpon>GroupList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,6 +267,20 @@
     <Compile Include="e\admin\user\UserEdit.aspx.designer.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\user\UserFormEdit.aspx.cs">
+      <DependentUpon>UserFormEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\user\UserFormEdit.aspx.designer.cs">
+      <DependentUpon>UserFormEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\user\UserFormList.aspx.cs">
+      <DependentUpon>UserFormList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\user\UserFormList.aspx.designer.cs">
+      <DependentUpon>UserFormList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\user\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,6 +294,13 @@
     </Compile>
     <Compile Include="e\file\addselect.aspx.designer.cs">
       <DependentUpon>addselect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\member\ChangeRegister.aspx.cs">
+      <DependentUpon>ChangeRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\member\ChangeRegister.aspx.designer.cs">
+      <DependentUpon>ChangeRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -271,6 +322,20 @@
     </Compile>
     <Compile Include="e\member\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\member\RegisterForm.aspx.cs">
+      <DependentUpon>RegisterForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\member\RegisterForm.aspx.designer.cs">
+      <DependentUpon>RegisterForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\post\PostNews.aspx.cs">
+      <DependentUpon>PostNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\post\PostNews.aspx.designer.cs">
+      <DependentUpon>PostNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

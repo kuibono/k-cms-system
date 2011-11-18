@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using Voodoo;
+using Voodoo.Data;
+using Voodoo.Model;
+using Voodoo.DAL;
+using Voodoo.Basement;
+using Voodoo.Setting;
+using System.IO;
+using Voodoo.IO;
+
+namespace Web.e.post
+{
+    public partial class PostNews : BasePage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            User u=UserAction.opuser;
+
+            if (u.ID < 0)
+            {
+                Js.AlertAndChangUrl("对不起，您没有登录，请登陆后进行投稿！", "/");
+                return;
+
+            }
+
+            lb_UserName.Text = u.UserName;
+
+            var cls = NewsAction.NewsClass;
+            cls = cls.Where(p => p.EnablePost && p.IsLeafClass).ToList();
+            ddl_Class.DataSource = cls;
+            ddl_Class.DataTextField = "ClassName";
+            ddl_Class.DataValueField = "id";
+            ddl_Class.DataBind();
+        }
+
+        protected void btn_Save_Click(object sender, EventArgs e)
+        {
+
+            if (FileUpload1.FileName.IsNullOrEmpty())
+            {
+                return;
+            }
+
+
+            SysSetting ss = BasePage.SystemSetting;
+
+            HttpPostedFile file = Request.Files["FileUpload1"];
+            string FileName = file.FileName.GetFileNameFromPath();//文件名
+            string ExtName = file.FileName.GetFileExtNameFromPath();//扩展名
+            string NewName = @string.GetGuid() + ExtName;//新文件名
+
+            if (!ExtName.Replace(".", "").IsInArray(ss.FileExtNameFilter.Split(',')))
+            {
+                Js.AlertAndGoback("不允许上传此类文件");
+                return;
+            }
+            if (file.ContentLength > ss.MaxPostFileSize)
+            {
+                Js.AlertAndGoback("文件太大");
+                return;
+            }
+
+            string Folder = ss.FileDir + "/" + DateTime.Now.ToString("yyyy-MM-dd") + "/";//文件目录
+            string FolderShotCut = Folder + "ShortCut/";//缩略图目录
+
+            string FilePath = Folder + NewName;//文件路径
+            string FilePath_ShortCut = FolderShotCut + NewName;//缩略图路径
+
+            file.SaveAs(Server.MapPath(FilePath), true);
+            ImageHelper.MakeThumbnail(Server.MapPath(FilePath), Server.MapPath(FilePath_ShortCut), 105, 118, "Cut");
+
+
+
+            FileInfo savedFile = new FileInfo(Server.MapPath(FilePath));
+
+            Voodoo.Model.File f = new Voodoo.Model.File();
+
+            f.FileDirectory = ss.FileDir;
+            f.FileExtName = ExtName;
+            f.FilePath = FilePath;
+            f.FileSize = (savedFile.Length / 1024).ToInt32();
+            //f.FileType=
+            f.SmallPath = FilePath_ShortCut;
+            f.UpTime = DateTime.Now;
+
+            FileView.Insert(f);
+
+
+
+            News n = new News();
+            n.Author = txt_Author.Text.TrimDbDangerousChar();
+            n.AutorID = UserAction.opuser.ID;
+            n.ClassID = ddl_Class.SelectedValue.ToInt32();
+            n.ClickCount = 0;
+            n.Content = txt_Content.Text.TrimDbDangerousChar();
+            n.Description = txt_Description.Text.TrimDbDangerousChar();
+            n.DownCount = 0;
+            n.EnableReply = false;
+            n.FTitle = txtFtitle.Text.TrimDbDangerousChar();
+            n.KeyWords = txt_Keyword.Text.TrimDbDangerousChar();
+            n.ModelID = 0;
+            n.NavUrl = "";
+            n.NewsTime = DateTime.Now;
+            n.SetTop = false;
+            n.Source = txt_Source.Text.TrimDbDangerousChar();
+            n.Title = txt_Title.Text.TrimDbDangerousChar();
+            n.TitleColor = "000";
+            n.TitleImage = FilePath;//上传图片
+            n.ZtID = 0;
+
+            Result r=NewsAction.UserPost(n, UserAction.opuser);
+
+            if (r.Success)
+            {
+                Js.AlertAndChangUrl(r.Text, "PostList.aspx");
+            }
+            else
+            {
+                Js.AlertAndGoback(r.Text);
+            }
+
+        }
+    }
+}

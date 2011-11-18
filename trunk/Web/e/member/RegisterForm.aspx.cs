@@ -12,21 +12,16 @@ using Voodoo.DAL;
 using Voodoo.Basement;
 using Voodoo.Setting;
 
+
 namespace Web.e.member
 {
-    public partial class LoginForm :BasePage
+    public partial class RegisterForm : BasePage
     {
-        protected string PostLink = "";
+        protected string formString = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (UserGroupView.GetModelByID(UserAction.opuser.ID.ToS()).MaxPost > 0)
-                {
-                    PostLink = "<a href='/e/post/PostNews.aspx'>投递文章</a>";
-                }
-            }
-            catch { }
+            int formID = UserGroupView.GetModelByID(WS.RequestString("group")).RegForm;
+            formString = UserFormView.GetModelByID(formID.ToS()).Content;
         }
     }
 }
