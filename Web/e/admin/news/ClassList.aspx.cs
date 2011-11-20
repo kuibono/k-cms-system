@@ -14,10 +14,16 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.news
 {
-    public partial class ClassList : BasePage
+    public partial class ClassList : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (WS.RequestString("action") == "del")
+            {
+                string ids=WS.RequestString("id");
+                ClassView.Del(string.Format("id in ({0})",ids));
+            }
+
             if (!IsPostBack)
             {
                 LoadList();

@@ -72,10 +72,13 @@ namespace Voodoo.Basement
             }
 
             //用户默认分组
-            if (user.Group == null||user.Group<=0)
+            if (user.Group<=0)
             {
                 user.Group = setting.RegisterDefaultGroup;
             }
+
+            UserGroup g = UserGroupView.GetModelByID(user.Group.ToS());
+            user.Enable = g.RegAutoAudit;
 
             //注册时间间隔
             user.RegIP = WS.GetIP();
@@ -136,6 +139,14 @@ namespace Voodoo.Basement
             {
                 if (_user.UserPass == Voodoo.Security.Encrypt.Md5(Password))
                 {
+
+                    if (_user.Enable == false)
+                    {
+                        r.Success = false;
+                        r.Text = "您的帐号还没有经过审核，请耐心等待审核通过后登录";
+                        return r;
+                    }
+
                     //成功！
                     //写入Cookie
                     System.Web.HttpCookie cookie = new System.Web.HttpCookie("User");
@@ -151,6 +162,7 @@ namespace Voodoo.Basement
 
                     _user.LastLoginIP = WS.GetIP();
                     _user.LastLoginTime = DateTime.Now;
+                    _user.LoginCount += 1;
 
                     UserView.Update(_user);
 

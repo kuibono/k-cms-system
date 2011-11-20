@@ -56,6 +56,16 @@
         </thead>
         <tbody>
             <tr>
+                <td>
+                    栏目
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddl_Class" runat="server">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                
                 <td width="163">
                     标题
                 </td>
@@ -187,7 +197,7 @@
                 <th colspan="2">
                     <asp:Button ID="btn_Save" Text="保存" runat="server" OnClick="btn_Save_Click" />
                     &nbsp;
-                    <input type="button" value="取消" onclick="location.href='SysUserList.aspx'" />
+                    <input type="button" value="取消" onclick="history.go(-1)'" />
                 </th>
             </tr>
         </tfoot>

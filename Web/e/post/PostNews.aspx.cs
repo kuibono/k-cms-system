@@ -20,34 +20,83 @@ namespace Web.e.post
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            User u=UserAction.opuser;
+            User u = UserAction.opuser;
 
-            if (u.ID < 0)
+
+
+            if (u.ID <= 0)
             {
                 Js.AlertAndChangUrl("对不起，您没有登录，请登陆后进行投稿！", "/");
                 return;
 
             }
 
-            lb_UserName.Text = u.UserName;
+            UserGroup g = UserGroupView.GetModelByID(u.Group.ToS());
+            if (g.MaxPost <= 0)
+            {
+                Js.AlertAndGoback("对不起，您没有投稿的权限！如有疑问，请练习管理员");
+                return;
+            }
 
-            var cls = NewsAction.NewsClass;
-            cls = cls.Where(p => p.EnablePost && p.IsLeafClass).ToList();
-            ddl_Class.DataSource = cls;
-            ddl_Class.DataTextField = "ClassName";
-            ddl_Class.DataValueField = "id";
-            ddl_Class.DataBind();
+            lb_UserName.Text = u.UserName;
+            txt_Author.Text = u.UserName;
+            if (!IsPostBack)
+            {
+                var cls = NewsAction.NewsClass;
+                cls = cls.Where(p => p.EnablePost && p.IsLeafClass).ToList();
+                ddl_Class.DataSource = cls;
+                ddl_Class.DataTextField = "ClassName";
+                ddl_Class.DataValueField = "id";
+                ddl_Class.DataBind();
+            }
+            LoadInfo();
         }
 
-        protected void btn_Save_Click(object sender, EventArgs e)
+        protected void LoadInfo()
         {
-
-            if (FileUpload1.FileName.IsNullOrEmpty())
+            int id = WS.RequestInt("id");
+            if(id<0)
             {
                 return;
             }
 
+            News n = NewsView.GetModelByID(id.ToS());
+            if (n.ID < 0)
+            {
+                Js.Jump("?");
+                return;
+            }
 
+            if (n.AutorID != UserAction.opuser.ID)
+            {
+                Js.AlertAndChangUrl("这不是您投递的文章，无权修改","PostList.aspx");
+                return;
+            }
+
+            ddl_Class.SelectedValue = n.ClassID.ToS();
+            txt_Title.Text = n.Title;
+            txtFtitle.Text = n.FTitle;
+            txt_Keyword.Text = n.KeyWords;
+            txt_Description.Text = n.Description;
+            txt_Author.Text = n.Author;
+            txt_Source.Text = n.Source;
+            txt_Content.Text = n.Content;
+
+        }
+
+
+        protected void btn_Save_Click(object sender, EventArgs e)
+        {
+            User u=UserAction.opuser;
+            UserGroup g = UserGroupView.GetModelByID(u.Group.ToS());
+
+            if (FileUpload1.FileName.IsNullOrEmpty())
+            {
+                Js.AlertAndGoback("为提高您文章的排名，请选择一张标题图片");
+                return;
+            }
+
+            #region  上传图片
             SysSetting ss = BasePage.SystemSetting;
 
             HttpPostedFile file = Request.Files["FileUpload1"];
@@ -90,7 +139,7 @@ namespace Web.e.post
             f.UpTime = DateTime.Now;
 
             FileView.Insert(f);
-
+            #endregion 
 
 
             News n = new News();
@@ -113,6 +162,10 @@ namespace Web.e.post
             n.TitleColor = "000";
             n.TitleImage = FilePath;//上传图片
             n.ZtID = 0;
+            n.Audit = g.PostAotuAudit;
+            n.FileForder = DateTime.Now.ToString("yyyy-MM-dd");
+
+            n.ID = WS.RequestInt("id");
 
             Result r=NewsAction.UserPost(n, UserAction.opuser);
 

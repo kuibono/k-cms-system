@@ -14,7 +14,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.news
 {
-    public partial class NewsEdit :BasePage
+    public partial class NewsEdit : AdminBase
     {
         protected int cls = WS.RequestInt("class", 0);
         protected int zt = WS.RequestInt("zt", 0);
@@ -24,6 +24,7 @@ namespace Web.e.admin.news
             url = string.Format("NewsList.aspx?class={0}&zt={1}", cls, zt);
             if (!IsPostBack)
             {
+                
                 LoadInfo();
             }
         }
@@ -37,6 +38,13 @@ namespace Web.e.admin.news
             cp_TitleColor.Value = "000";
             sp_cor.Style["background-color"] = "#"+cp_TitleColor.Value;
 
+            ddl_Class.DataSource = NewsAction.NewsClass;
+            ddl_Class.DataTextField = "ClassName";
+            ddl_Class.DataValueField = "ID";
+            ddl_Class.DataBind();
+
+            ddl_Class.SelectedValue = cls.ToS();
+
             ddl_contentTemp.DataSource = TemplateContentView.GetModelList();
             ddl_contentTemp.DataTextField = "TempName";
             ddl_contentTemp.DataValueField = "ID";
@@ -46,6 +54,8 @@ namespace Web.e.admin.news
 
             txt_FileForder.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
+            txt_Author.Text = SysUserAction.LocalUser.UserName;
+
             if (WS.RequestInt("id") <= 0)
             {
                 txt_NewsTime.Text = DateTime.Now.ToString();
@@ -53,6 +63,9 @@ namespace Web.e.admin.news
             }
 
             News n = NewsView.GetModelByID(WS.RequestString("id"));
+
+            ddl_Class.SelectedValue = n.ClassID.ToS();
+
             txt_Title.Text = n.Title;
             cp_TitleColor.Value = n.TitleColor;
             chk_TitleB.Checked = n.TitleB;
@@ -111,14 +124,17 @@ namespace Web.e.admin.news
                 n.ZtID = zt;
             }
 
-            Class c = NewsAction.NewsClass.Where(p => p.ID == cls).First();
+            Class c = NewsAction.NewsClass.Where(p => p.ID.ToString() == ddl_Class.SelectedValue).First();
 
-            if (cls < 0 && zt < 0)
-            {
-                Js.AlertAndGoback("栏目或专题获取失败!");
-                return;
-            }
+            //ddl_Class.SelectedValue = c.ID.ToS();
 
+            //if (cls < 0 && zt < 0)
+            //{
+            //    Js.AlertAndGoback("栏目或专题获取失败!");
+            //    return;
+            //}
+
+            n.ClassID = ddl_Class.SelectedValue.ToInt32();
             n.Title = txt_Title.Text.TrimDbDangerousChar();
             n.TitleColor = cp_TitleColor.Value.TrimDbDangerousChar();
             n.TitleB = chk_TitleB.Checked;

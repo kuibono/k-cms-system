@@ -117,7 +117,7 @@
                                 <%#Eval("ReplyCount")%>
                             </td>
                             <td>
-                                <a href="NewsEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> <a href="?id=<%#Eval("ID") %>&action=del">
+                                <a href="NewsEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> <a href="?id=<%#Eval("ID") %>&action=del&class=<%=cls %>">
                                     删除</a>
                             </td>
                         </tr>
@@ -126,7 +126,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="10" class="ctrlPn">
+                    <td colspan="8" class="ctrlPn">
                         <asp:Button ID="btn_disable" Text="审核" runat="server" OnClick="btn_disable_Click" />
                         <asp:Button ID="btn_enable" Text="撤销审核" runat="server" OnClick="btn_enable_Click" />
                         <asp:Button ID="btn_Tj" Text="推荐" runat="server" OnClick="btn_Tj_Click" />
@@ -136,10 +136,13 @@
                         &nbsp;
                         <asp:DropDownList ID="ddl_Class_search" runat="server"></asp:DropDownList>
                         <asp:Button ID="btn_Add" Text="新增" runat="server" />
+                        &nbsp;&nbsp;
+                        <asp:Button ID="btn_createPage" Text="重新生成" runat="server" 
+                            onclick="btn_createPage_Click" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="10">
+                    <td colspan="8">
                         <vd:AspNetPager ID="pager" runat="server" FirstPageText="首页" LastPageText="尾页" NextPageText="后页"
                             PrevPageText="前页" AlwaysShow="true" OnPageChanged="pager_PageChanged">
                         </vd:AspNetPager>

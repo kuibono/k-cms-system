@@ -1,9 +1,37 @@
-#lastnews_list,#pro_idea
+#pro_idea,#task_list
 {
 	background-image:url(../image/flower.png);
 	background-repeat:no-repeat;
 	background-position:right bottom;
 }
+#task_list
+{
+    width:330px;
+}
+#pro_idea
+{
+    width:340px;
+}
+/*
+#lastnews_list
+{
+    width:670px;
+}
+
+#lastnews_list li:hover
+{
+    color:#00F;
+    background-color:#eef;
+    filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+#lastnews_list li:hover a
+{
+    color:#00F;
+}
+*/
 .main .left,.main .right
 {
 	text-align:left;
@@ -12,7 +40,8 @@
 }
 #main_1 a,#main_2 a
 {
-	color:#4d4d4d;
+	/*color:#4d4d4d;*/
+	color:#000;
 	text-decoration:none;
 }
 #main_1 a:hover,#main_2 a:hover
@@ -50,6 +79,10 @@
 	border:solid 1px #c1cad3;
 	
 }
+#link a
+{
+    color:#339;
+}
 #link h1
 {
 	height:25px;
@@ -70,8 +103,17 @@
 {
 	width:310px;
 	margin:0px 0px 0px 5px;
+	padding-top:2px;
 }
 .left div
 {
     float:left
+}
+
+.news_time_span
+{
+    /*margin-left:200px;*/
+    float:right;
+    padding-right:20px
+    
 }

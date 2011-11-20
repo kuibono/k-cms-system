@@ -10,7 +10,7 @@
     vertical-align: baseline;
 }
 body {
-    color: #999999;
+    color: #000;
     line-height: 20px;
     font-size:12px;
 }
@@ -173,6 +173,10 @@ input[type=text],input[type=password],textarea
 	text-decoration: none;
 	line-height:23px;
 	font-weight:bold;
+}
+#menu li ul li a:hover 
+{
+    color:#F00;
 }
 .nav { width:100%; color:#000; height:30px; line-height:30px; }
 #main_1 .nav a { color:#000; }

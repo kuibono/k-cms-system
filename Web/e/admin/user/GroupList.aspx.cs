@@ -13,7 +13,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.user
 {
-    public partial class GroupList : BasePage
+    public partial class GroupList : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

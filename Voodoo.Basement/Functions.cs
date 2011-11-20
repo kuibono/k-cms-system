@@ -27,11 +27,14 @@ namespace Voodoo.Basement
         {
             Class cls = NewsAction.NewsClass.Where(p => p.ID.ToString() == ClassID).First();
 
-            string str_sql = ExtSql + " " + Order;
-            if (str_sql.Trim().IsNullOrEmpty())
+            string str_sql = string.Format("classID in ({0})", GetAllSubClass(ClassID.ToInt32()));
+            if(ExtSql.Length>1)
             {
-                str_sql = "1=1";
+                str_sql += " and " + ExtSql;
             }
+            str_sql += Order;
+
+            
             List<News> nlist = NewsView.GetModelList(str_sql, count.ToInt32());
             StringBuilder sb = new StringBuilder();
             foreach (News n in nlist)
@@ -47,8 +50,25 @@ namespace Voodoo.Basement
                     timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString());
                 }
 
-                sb.AppendLine(string.Format("<li>{0}<a href='{1}'>{2}</a>{3}</li>", TitlePreChar, BasePage.GetNewsUrl(n, cls), title, timespan));
+                sb.AppendLine(string.Format("<li>{0}<a href='{1}' title='{2}'>{3}</a>{4}</li>", TitlePreChar, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title,title, timespan));
             }
+            return sb.ToS();
+        }
+
+        /// <summary>
+        /// 获取所有子栏目
+        /// </summary>
+        /// <param name="ClassID"></param>
+        /// <returns></returns>
+        protected string GetAllSubClass(int ClassID)
+        {
+            var cls = ClassView.GetModelList(string.Format("ParentID={0}",ClassID));
+            StringBuilder sb = new StringBuilder();
+            foreach (var c in cls)
+            {
+                sb.Append(c.ID + ",");
+            }
+            sb.Append(ClassID);
             return sb.ToS();
         }
         #endregion
@@ -172,6 +192,32 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取子栏目
+        /// <summary>
+        /// 获取子栏目
+        /// </summary>
+        /// <param name="TitlePreChar">前置字符串</param>
+        /// <param name="TitleLength"></param>
+        /// <param name="ClassID">栏目名截取长度</param>
+        /// <returns></returns>
+        public static string GetSubClass(string TitlePreChar, string TitleLength, string ClassID)
+        {
+            int cutString = TitleLength.ToInt32(50);
+            StringBuilder sb = new StringBuilder();
+            List<Class> cls = ClassView.GetSubClass(ClassView.GetModelByID(ClassID));
+            foreach (Class c in cls)
+            {
+                sb.AppendLine(string.Format("<li>{0}<a href=\"{1}\">{2}</a></li>",
+                    TitlePreChar,
+                    BasePage.GetClassUrl(c),
+                    c.ClassName.CutString(cutString)
+                    ));
+            }
+
+            return sb.ToString();
+        }
+        #endregion
+
         #region  创建菜单
         /// <summary>
         /// 创建菜单
@@ -188,12 +234,21 @@ namespace Voodoo.Basement
                 foreach (Class cl in cls)
                 {
                     sb.AppendLine("<li>");
-                    sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", BasePage.GetClassUrl(cl), cl.ClassName));
-                    sb.AppendLine("</li>");
+                    if (cl.IsLeafClass)
+                    {
+                        sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", BasePage.GetClassUrl(cl), cl.ClassName));
+                    }
+                    else
+                    {
+                        sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", "javascript:void(0)", cl.ClassName));
+                    }
+                    
+                    
                     if(NewsAction.NewsClass.Where(p => p.ParentID==cl.ID).Count()>0)
                     {
                         sb.AppendLine("<ul>" + buildmenustring(cl.ID.ToString()) + "</ul>");
                     }
+                    sb.AppendLine("</li>");
                     
                 }
             }
@@ -202,5 +257,22 @@ namespace Voodoo.Basement
 
         }
         #endregion 
+
+        #region 友情链接
+        /// <summary>
+        /// 友情链接
+        /// </summary>
+        /// <returns></returns>
+        public static string getlink(string n)
+        {
+            StringBuilder sb = new StringBuilder("");
+            var links = LinkView.GetModelList("id>0 order by [Index]");
+            foreach (var l in links)
+            {
+                sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a> ",l.Url,l.LinkTitle));
+            }
+            return sb.ToString();
+        }
+        #endregion
     }
 }

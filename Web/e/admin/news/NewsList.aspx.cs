@@ -15,7 +15,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.news
 {
-    public partial class NewsList :BasePage
+    public partial class NewsList : AdminBase
     {
         protected static int cls = WS.RequestInt("class",0);
         protected static int zt = WS.RequestInt("zt", 0);
@@ -75,7 +75,7 @@ namespace Web.e.admin.news
                 switch (ddl_Prop.SelectedValue)
                 {
                     case "SetTop":
-                        str_sql += "str_sql=1 ";
+                        str_sql += "SetTop=1 ";
                         break;
                     case "Tuijian":
                         str_sql += "Tuijian=1 ";
@@ -168,47 +168,112 @@ namespace Web.e.admin.news
             string ids = WS.RequestString("id");
 
             GetHelper().ExecuteNonQuery(CommandType.Text,string.Format("update news set Audit=0 where id in({0})", ids));
-            Response.Redirect(url);
+
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
 
         protected void btn_enable_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Audit=1 where id in({0})", ids));
-            Response.Redirect(url);
+            
+
+
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
 
         protected void btn_Tj_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Tuijian=1 where id in({0})", ids));
-            Response.Redirect(url);
+
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
 
         protected void btn_First_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Toutiao=1 where id in({0})", ids));
-            Response.Redirect(url);
+
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
 
         protected void btn_SetTop_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set SetTop=1 where id in({0})", ids));
-            Response.Redirect(url);
+
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("delete from  news where id in({0})", ids));
+            if (cls > 0)
+            {
+                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+            }
+            CreatePage.GreateIndexPage();
             Js.AlertAndChangUrl("删除成功！", url);
         }
 
         protected void pager_PageChanged(object sender, EventArgs e)
         {
             LoadInfo();
+        }
+
+        protected void btn_createPage_Click(object sender, EventArgs e)
+        {
+            string[] ids = WS.RequestString("id").Split(',');
+            foreach (string id in ids)
+            {
+                News n = NewsView.GetModelByID(id);
+                CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
+
+                News news_pre = GetPreNews(n, NewsView.GetNewsClass(n));
+
+                if (news_pre != null)
+                {
+                    CreatePage.CreateContentPage(news_pre, NewsView.GetNewsClass(n));
+                }
+            }
+
+            if (cls > 0)
+            {
+                try
+                {
+                    CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+                }
+                catch { }
+            }
+            CreatePage.GreateIndexPage();
+            Js.Jump(url);
         }
     }
 }

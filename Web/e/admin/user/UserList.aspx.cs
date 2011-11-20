@@ -15,7 +15,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.user
 {
-    public partial class UserList : BasePage
+    public partial class UserList : AdminBase
     {
         protected int enable = -1;
         protected int group = -1;
@@ -72,7 +72,7 @@ namespace Web.e.admin.user
 
             ph p = new ph();
             p.CurrentPage = pager.CurrentPageIndex;
-            p.Fields = "ID, UserName, UserPass, Email, ChineseName, QQ, MSN, Tel, Mobile, WebSite, Image, Address, ZipCode, Intro, RegTime, RegIP, LoginCount, LastLoginTime, LastLoginIP, Cent, PostCount, GTalk, Twitter, weibo, ICQ, [Group]";
+            p.Fields = "ID, UserName, UserPass, Email, ChineseName, QQ, MSN, Tel, Mobile, WebSite, Image, Address, ZipCode, Intro, RegTime, RegIP, LoginCount, LastLoginTime, LastLoginIP, Cent, PostCount, GTalk, Twitter, weibo, ICQ, [Group],enable";
             p.Filter = str_sql;
             p.group = "";
             p.PageSize = pager.PageSize;

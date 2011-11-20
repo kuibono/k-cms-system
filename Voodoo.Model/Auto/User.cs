@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011/11/18 9:01:54
+*生成时间：2011/11/19 19:00:56
 *生成者：Kuibono
 */
 using System;
@@ -145,6 +145,16 @@ namespace Voodoo.Model
         /// 
         /// </summary>
         public bool Enable { get; set; }
+
+        /// <summary>
+        /// 学号
+        /// </summary>
+        public string StudentNo { get; set; }
+
+        /// <summary>
+        /// 工号
+        /// </summary>
+        public string TeachNo { get; set; }
 
         ///实体复制
         public User Clone()

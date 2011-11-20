@@ -35,14 +35,37 @@
             line-height:30px;
             font-size:14px;
             color:#000;
+            padding-left:10px;
         }
     </style>
+    <script type="text/javascript">
+        $(function() {
+            $("#userreg").submit(function() {
+                var suc = true;
+                var txt = "";
+                $(".req").each(function() {
+                    if ($(this).val() == "") {
+                        suc = false;
+                        txt = "请确保所填信息完整（带*为必填项）";
+                    }
+                })
+                if ($("#userpass").val() != $("#userpasser").val()) {
+                    suc = false;
+                    txt = "密码两次输入不一致，请重新输入";
+                }
+                if (suc == false) {
+                    alert(txt);
+                    return false;
+                }
+            })
+        })
+    </script>
 
         <div id="main_1" class="clearfix mg">
         	<div class="nav">您的位置：<a href="/">首页</a>> <a href="javascript:void(0)">注册</a></div>
             <div id="newslist" class="left inner" style="width: 660px;">
             <h1>会员注册</h1>
-                <form method="post" action="Register.aspx">
+                <form id="userreg" method="post" action="Register.aspx">
                 <table border="0" width="100%" class="regform">
                     <tr>
                         <td class="tb_header">
@@ -57,28 +80,28 @@
                                         帐&nbsp;&nbsp;&nbsp; 号 </td>
                                     <td>
                                         <input name="username"  id="username" type="text"/>&nbsp;*
-                                        <input type="hidden" id="group" name="group" value="<%=Request.QueryString["group"] %>"/>
+                                        <input type="hidden" class="req" id="group" name="group" value="<%=Request.QueryString["group"] %>"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right">
                                         密&nbsp;&nbsp;&nbsp; 码 </td>
                                     <td>
-                                        <input name="userpass" id="userpass" type="password" />&nbsp;*
+                                        <input name="userpass" class="req" id="userpass" type="password" />&nbsp;*
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right">
                                         重复密码 </td>
                                     <td>
-                                        <input name="userpasser" id="userpassr" type="password" />&nbsp;*
+                                        <input name="userpasser" class="req" id="userpasser" type="password" />&nbsp;*
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right">
                                         电子信箱 </td>
                                     <td>
-                                        <input name="email" id="email" type="text" />&nbsp;*
+                                        <input name="email" id="email" class="req" type="text" />&nbsp;*
                                     </td>
                                 </tr>
                             </table>

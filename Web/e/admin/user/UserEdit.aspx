@@ -202,6 +202,22 @@
                 </tr>
                 <tr>
                     <td>
+                    学号
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_StudentNo" runat="server" ></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    工号
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_TeachNo" runat="server" ></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                     已经启用
                     </td>
                     <td>

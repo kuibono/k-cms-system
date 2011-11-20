@@ -32,6 +32,15 @@ namespace Web.e.admin.news {
         protected global::Ext.Net.ResourceManager ResourceManager1;
         
         /// <summary>
+        /// ddl_Class 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Class;
+        
+        /// <summary>
         /// txt_Title 控件。
         /// </summary>
         /// <remarks>

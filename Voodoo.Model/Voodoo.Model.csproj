@@ -48,6 +48,7 @@
     <Compile Include="Auto\Class.cs" />
     <Compile Include="Auto\File.cs" />
     <Compile Include="Auto\GroupRole.cs" />
+    <Compile Include="Auto\Link.cs" />
     <Compile Include="Auto\News.cs" />
     <Compile Include="Auto\SysDepartment.cs" />
     <Compile Include="Auto\SysGroup.cs" />

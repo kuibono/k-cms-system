@@ -79,7 +79,7 @@ namespace Voodoo.Basement
         /// <summary>
         /// 当前系统用户
         /// </summary>
-        public SysUser LocalUser
+        public static SysUser LocalUser
         {
             get
             {

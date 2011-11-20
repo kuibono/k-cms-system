@@ -17,7 +17,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace Web.e.admin
             //north.Title = "North";
             north.Height = Unit.Pixel(53);
             north.BodyStyle = "padding:0px;";
-            north.Html = "<div id='northPn'><img src='/images/cms_logo.png' style='height:53px' /><span id='loginInfoSp'>用户：Admin  [退出]</span></div>";
+            north.Html = "<div id='northPn'><img src='/images/cms_logo.png' style='height:53px' /><span id='loginInfoSp'>用户：" + SysUserAction.LocalUser.UserName + "  [<a href='logout.aspx'>退出]</a></span></div>";
             north.Collapsible = false;
 
 
@@ -93,6 +93,7 @@ namespace Web.e.admin
             //root_dataupdate.Expanded = true;
 
             Ext.Net.TreeNode n_du_uc = new Ext.Net.TreeNode("数据更新中心", Icon.DatabaseRefresh);
+            n_du_uc.Listeners.Click.Handler = "openpage('system/Update/Createpages.aspx')";
             root_dataupdate.Nodes.Add(n_du_uc);
 
             Ext.Net.TreeNode n_du_ftp = new Ext.Net.TreeNode("远程发布中心", Icon.ServerLightning);
@@ -100,6 +101,11 @@ namespace Web.e.admin
 
             _root_sys.Nodes.Add(root_dataupdate);
             //-----------------------------------数据更新-----------------------------------------------//
+
+
+            Ext.Net.TreeNode friend_link = new Ext.Net.TreeNode("友情链接", Icon.UserBrown);
+            friend_link.Listeners.Click.Handler = "openpage('system/friendlink/LinkList.aspx')";
+            _root_sys.Nodes.Add(friend_link);
 
             Tree_Sys.Root.Add(_root_sys);//树根加进去
             #endregion
@@ -121,16 +127,19 @@ namespace Web.e.admin
 
             //-----------------------------------列表模版-----------------------------------------------//
             Ext.Net.TreeNode n_model_list = new Ext.Net.TreeNode("列表模版", Icon.Outline);
+            n_model_list.Listeners.Click.Handler = "openpage('template/ListTemplateList.aspx')";
             root_model.Nodes.Add(n_model_list);
             //-----------------------------------列表模版-----------------------------------------------//
 
             //-----------------------------------内容模版-----------------------------------------------//
             Ext.Net.TreeNode n_model_content = new Ext.Net.TreeNode("内容模版", Icon.PageWhite);
+            n_model_content.Listeners.Click.Handler = "openpage('template/ContentTemplateList.aspx')";
             root_model.Nodes.Add(n_model_content);
             //-----------------------------------内容模版-----------------------------------------------//
 
             //-----------------------------------公共模版变量-----------------------------------------------//
             Ext.Net.TreeNode n_model_publicv = new Ext.Net.TreeNode("公共模版变量", Icon.ServerChart);
+            n_model_publicv.Listeners.Click.Handler = "openpage('template/VarTemplateList.aspx')";
             root_model.Nodes.Add(n_model_publicv);
             //-----------------------------------公共模版变量-----------------------------------------------//
 
@@ -192,7 +201,7 @@ namespace Web.e.admin
             n_model_public.Nodes.Add(n_mp_ListPager);
 
             Ext.Net.TreeNode n_mp_LoginStatus = new Ext.Net.TreeNode("登录状态模板", Icon.PageLandscape);
-            n_mp_ListPager.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=LoginStatus')";
+            n_mp_LoginStatus.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=LoginStatus')";
             n_model_public.Nodes.Add(n_mp_LoginStatus);
 
             Ext.Net.TreeNode n_mp_JSLogin = new Ext.Net.TreeNode("JS调用登录模板", Icon.UserRed);
@@ -247,12 +256,12 @@ namespace Web.e.admin
 
             //---------------审核信息-----------------------------------------------//
             Ext.Net.TreeNode n_sm_aud = new Ext.Net.TreeNode("审核信息", Icon.BookAddressesEdit);
-            n_c_msg.Nodes.Add(n_sm_aud);
+            ////n_c_msg.Nodes.Add(n_sm_aud);
             //---------------审核信息-----------------------------------------------//
 
             //---------------评论管理-----------------------------------------------//
             Ext.Net.TreeNode n_sm_reply = new Ext.Net.TreeNode("评论管理", Icon.CommentEdit);
-            n_c_msg.Nodes.Add(n_sm_reply);
+            ////n_c_msg.Nodes.Add(n_sm_reply);
             //---------------评论管理-----------------------------------------------//
 
             root_class.Nodes.Add(n_c_msg);
@@ -267,7 +276,7 @@ namespace Web.e.admin
 
             //-----------------------------------专题管理-----------------------------------------------//
             Ext.Net.TreeNode n_class_zt = new Ext.Net.TreeNode("专题管理", Icon.ApplicationOsxTerminal);
-            root_class.Nodes.Add(n_class_zt);
+            ////root_class.Nodes.Add(n_class_zt);
             //-----------------------------------专题管理-----------------------------------------------//
 
             Tree_Class.Root.Add(root_class);
@@ -291,17 +300,18 @@ namespace Web.e.admin
 
             //-----------------------------------修改个人资料-----------------------------------------------//
             Ext.Net.TreeNode n_us_modInfo = new Ext.Net.TreeNode("修改个人资料", Icon.PageWhitePaint);
+            n_us_modInfo.Listeners.Click.Handler = "openpage('sysuser/SysUserEdit.aspx?id="+UserAction.opuser.ID+"')";
             n_user_sys.Nodes.Add(n_us_modInfo);
             //-----------------------------------修改个人资料-----------------------------------------------//
 
             //-----------------------------------管理用户组-----------------------------------------------//
             Ext.Net.TreeNode n_us_group = new Ext.Net.TreeNode("管理用户组", Icon.UserHome);
-            n_user_sys.Nodes.Add(n_us_group);
+            ////n_user_sys.Nodes.Add(n_us_group);
             //-----------------------------------管理用户组-----------------------------------------------//
 
             //-----------------------------------管理用户部门-----------------------------------------------//
             Ext.Net.TreeNode n_us_dep = new Ext.Net.TreeNode("管理用户部门", Icon.Door);
-            n_user_sys.Nodes.Add(n_us_dep);
+            ////n_user_sys.Nodes.Add(n_us_dep);
             //-----------------------------------管理用户部门-----------------------------------------------//
 
             //-----------------------------------管理用户-----------------------------------------------//
@@ -356,15 +366,15 @@ namespace Web.e.admin
             tree_Message.Title = "信息管理";
             tree_Message.AutoScroll = true;
 
-            Ext.Net.TreeNode root_msg = new Ext.Net.TreeNode("信息管理");
+            //Ext.Net.TreeNode root_msg = new Ext.Net.TreeNode("信息管理");
 
-            root_msg.Listeners.Click.Handler = "openpage('Test.aspx')";
+           // root_msg.Listeners.Click.Handler = "openpage('Test.aspx')";
 
-            root_msg.Nodes.Add(GetSubTree(0));
+            //root_msg.Nodes.Add(GetSubTree(0));
 
 
-            tree_Message.Root.Add(root_msg);
-
+            //tree_Message.Root.Add(root_msg);
+            tree_Message.Root.Add(GetSubTree(0));
             
             #endregion
 
@@ -416,7 +426,13 @@ namespace Web.e.admin
             //south.Title = "South";
             south.Height = Unit.Pixel(30);
             south.BodyStyle = "padding:0px;";
-            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>增加信息 管理信息 审核信息 管理评论 数据更新 后台首页 <a href='/' target='_blank;'>网站首页</a></span><span style='position:absolute;top:2px;right:10px'>&copy; 2011 <a href='mailto:kuibono@163.com'>Kuibono</a></span></div>";
+            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>"+
+                " <a href='javascript:void(0)' onclick=\"openpage('news/NewsEdit.aspx')\" target='main'>增加信息</a>" +
+                " <a href='javascript:void(0)' onclick=\"openpage('news/newslist.aspx')\" target='main'>管理信息</a>" +
+                " <a href='javascript:void(0)' onclick=\"openpage('system/Update/Createpages.aspx')\"  target='main'>数据更新</a>" +
+                //" <a href='javascript:void(0)' onclick=\"openpage('system/Update/Main.aspx')\" target='main'>后台首页</a>" +
+                " <a href='/' target='_blank;'>网站首页</a>"+
+                " </span><span style='position:absolute;top:2px;right:10px'>&copy; 2011 <a href='mailto:kuibono@163.com'>Kuibono</a></span></div>";
 
 
             //////////////

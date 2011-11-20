@@ -215,25 +215,43 @@ namespace Voodoo.Basement
 
             PageAttribute pa = new PageAttribute() { Title = c.ClassName, UpdateTime = DateTime.Now.ToString(), Description = c.ClassDescription, Keyword = c.ClassKeywords };
 
+            Content = Content.Replace("[!--class.description--]", c.ClassDescription);
+            Content = Content.Replace("[!--class.classname--]", c.ClassName);
             Content = ReplacePageAttribute(Content, pa);
 
             #region 替换列表
 
             StringBuilder sb_list = new StringBuilder();
-            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by id desc", c.ID)).ToList();
+            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
 
-            pagecount = ns.Count / temp.ShowRecordCount + 1;
+            pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
             recordCount = ns.Count;
 
             ns = ns.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
             foreach (News n in ns)
             {
                 //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+
+                string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
+                if (n.TitleB)
+                {
+                    _title = "<strong>" + _title + "</strong>";
+                }
+                if (n.TitleI)
+                {
+                    _title = "<I>" + _title + "</I>";
+                }
+                if (n.TitleS)
+                {
+                    _title = "<STRIKE>" + _title + "</STRIKE>";
+                }
+
                 string str_lst = temp.ListVar;
                 str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
                 str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
-                str_lst = str_lst.Replace("[!--oldtitle--]", n.Title);
+                str_lst = str_lst.Replace("[!--oldtitle--]", _title);
                 str_lst = str_lst.Replace("[!--description--]", n.Description);
+                str_lst = str_lst.Replace("[!--author--]", n.Author);
                 string title = n.Title;
                 if (temp.CutTitle > 0)
                 {
@@ -317,8 +335,9 @@ namespace Voodoo.Basement
         public static string BuildUserMenuString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<li><a href=\"#\">会员登陆</a></li>");
+            //sb.AppendLine("<li><a href=\"#\">会员登陆</a></li>");
             sb.AppendLine("<li><a href=\"/e/member/ChangeRegister.aspx\">注册帐号</a></li>");
+            sb.AppendLine("<li><a href=\"/e/post/PostList.aspx\">我的文章</a></li>");
             sb.AppendLine("<li><a href=\"/e/post/PostNews.aspx\">发布投稿</a></li>");
 
             return sb.ToString();
@@ -343,7 +362,7 @@ namespace Voodoo.Basement
             temp = TemplateListView.GetModelByID(tmpid.ToS());
             List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
 
-            int pagecount = ns.Count / temp.ShowRecordCount + 1;
+            int pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
             int recordCount = ns.Count;
 
             string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
@@ -371,7 +390,7 @@ namespace Voodoo.Basement
             temp = TemplateListView.GetModelByID(tmpid.ToS());
             List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
 
-            int pagecount = ns.Count / temp.ShowRecordCount + 1;
+            int pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
             int recordCount = ns.Count;
 
             StringBuilder sb = new StringBuilder();

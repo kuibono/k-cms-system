@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <SysSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SiteUrl />
+  <SiteUrl>http://soso888.net/</SiteUrl>
   <SiteOpen>true</SiteOpen>
   <KeyWords>大学生,南京信息工程大学,服务,外包</KeyWords>
   <Description>南京信息工程大学服务外包网</Description>
   <Copyright>&amp;copy; 2011 南京信息工程大学计算机软件学院</Copyright>
-  <CountCode />
+  <CountCode>&lt;img src="http://img.users.51.la/4756120.asp" style="display:none" /&gt;</CountCode>
   <FileDirString>/u/file/</FileDirString>
   <ExtName>.htm</ExtName>
   <SiteCloseMsg>系统维护中，请稍后访问</SiteCloseMsg>
@@ -30,6 +30,6 @@
   <EnablePost>false</EnablePost>
   <PostImageSize>0</PostImageSize>
   <EnablePostImage>false</EnablePostImage>
-  <FileExtNameFilter>gif,jpg,jpeg,png,bmp</FileExtNameFilter>
+  <FileExtNameFilter>txt,doc,docx,xls,xlsx,ppt,pptx,rar,zip,7z,rtf,gif,jpg,jpeg,png,bmp</FileExtNameFilter>
   <MagageListSize>15</MagageListSize>
 </SysSetting>

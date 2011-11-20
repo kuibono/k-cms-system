@@ -38,6 +38,8 @@ namespace Web.e.member
             user.WebSite = WS.RequestString("website");
             user.Weibo = WS.RequestString("weibo");
             user.ZipCode = WS.RequestString("zipcode");
+            user.StudentNo = WS.RequestString("studentno");
+            user.TeachNo = WS.RequestString("teachno");
 
             UserAction ua = new UserAction();
             

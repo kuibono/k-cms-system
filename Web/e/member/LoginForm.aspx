@@ -18,7 +18,7 @@
     {
 %>
     <p>
-    欢迎您 <%=UserAction.opuser.UserName%> &nbsp;登陆次数：<%=UserAction.opuser.LoginCount%>&nbsp;<%=PostLink%>
+    欢迎您 <%=UserAction.opuser.UserName%> &nbsp;登陆次数：<%=UserAction.opuser.LoginCount%>&nbsp;<%=PostLink%>&nbsp;<a href="/e/member/Logout.aspx">退出</a>
     </p>
 <%
     }

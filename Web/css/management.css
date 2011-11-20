@@ -30,9 +30,9 @@ input[type='text'],input[type='password'],textarea
 }
 input[type='button'],input[type='submit'],input[type='reset']
 {
-	background-image:url("/images/btn_bg.png");
-	background:none repeat-x scroll 0 -1096px transparent;
-	border:solid 1px gray;
+	background-image:url("/images/theader.png");
+	background:none repeat-x scroll auto auto transparent;
+	border:solid 1px #ccf;
 	cursor:hand;
 	vertical-align:middle;
 	line-height:16px;

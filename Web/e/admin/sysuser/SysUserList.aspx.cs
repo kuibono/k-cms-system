@@ -15,7 +15,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.sysuser
 {
-    public partial class SysUserList : BasePage
+    public partial class SysUserList : AdminBase
     {
         #region  页面加载事件
         /// <summary>

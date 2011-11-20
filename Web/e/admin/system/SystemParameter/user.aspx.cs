@@ -15,7 +15,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.system.SystemParameter
 {
-    public partial class user : BasePage
+    public partial class user : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -74,7 +74,7 @@ namespace Web.e.admin.system.SystemParameter
             ss.FileExtNameFilter = "gif,jpg,jpeg,png,bmp";
             ss.MaxPostFileSize = 1024 * 1024;
             ss.FileDir = "/u/file/";
-
+            ss.FileExtNameFilter = "txt,doc,docx,xls,xlsx,ppt,pptx,rar,zip,7z,rtf,gif,jpg,jpeg,png,bmp";
             Voodoo.Basement.Setting.SysSettingDAL.SetSetting(ss);
             Js.AlertAndChangUrl("保存成功！", "?");
         }
