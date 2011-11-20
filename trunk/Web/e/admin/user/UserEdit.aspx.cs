@@ -14,7 +14,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.user
 {
-    public partial class UserEdit : BasePage
+    public partial class UserEdit : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,6 +52,10 @@ namespace Web.e.admin.user
             lb_LastLoginTime.Text = u.LastLoginTime.ToString();
             lb_LastLoginIP.Text = u.LastLoginIP;
             lb_LoginCount.Text = u.LoginCount.ToS();
+
+            txt_StudentNo.Text = u.StudentNo;
+            txt_TeachNo.Text = u.TeachNo;
+
             chk_Enable.Checked = u.Enable;
         }
 
@@ -77,6 +81,9 @@ namespace Web.e.admin.user
             u.GTalk = txt_Gtalk.Text;
             u.ICQ = txt_ICQ.Text;
             u.Weibo = txt_Weibo.Text;
+
+            u.StudentNo = txt_StudentNo.Text.TrimDbDangerousChar();
+            u.TeachNo = txt_TeachNo.Text.TrimDbDangerousChar();
 
             u.Enable = chk_Enable.Checked;
             if (u.ID > 0)

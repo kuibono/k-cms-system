@@ -14,7 +14,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.user
 {
-    public partial class UserFormEdit : BasePage
+    public partial class UserFormEdit : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

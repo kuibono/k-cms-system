@@ -21,7 +21,7 @@ namespace Web.e.member
         {
             try
             {
-                if (UserGroupView.GetModelByID(UserAction.opuser.ID.ToS()).MaxPost > 0)
+                if (UserGroupView.GetModelByID(UserAction.opuser.Group.ToS()).MaxPost > 0)
                 {
                     PostLink = "<a href='/e/post/PostNews.aspx'>投递文章</a>";
                 }

@@ -14,7 +14,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.news
 {
-    public partial class ClassEdit : BasePage
+    public partial class ClassEdit : AdminBase
     {
         
 
@@ -49,6 +49,7 @@ namespace Web.e.admin.news
             }
 
             Class cls = ClassView.GetModelByID(id.ToString());
+
             txt_ClassName.Text = cls.ClassName;
             txt_Alter.Text = cls.Alter;
             lbox_ParentID.SelectedValue = cls.ParentID.ToString();

@@ -9,6 +9,9 @@ using Voodoo.DAL;
 using System.Web;
 using System.Web.UI.WebControls;
 
+using Voodoo.IO;
+using System.IO;
+
 namespace Voodoo.Basement
 {
     public class BasePage : System.Web.UI.Page
@@ -170,7 +173,7 @@ namespace Voodoo.Basement
 
                 result = string.Format("{0}{1}{2}/{3}{4}{5}",
                     sitrurl,
-                    cls.ParentClassForder,
+                    cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                     cls.ClassForder,
                     newsFolder,
                     fileName,
@@ -197,9 +200,10 @@ namespace Voodoo.Basement
             //    sitrurl = "/";
             //}
             string sitrurl = "";
-            return string.Format("{0}{1}/{2}/index{3}",
+            return string.Format("{0}/{1}{2}/index{3}",
+                //return string.Format("{0}/{1}{2}/",
                 sitrurl,
-                cls.ParentClassForder,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 SystemSetting.ExtName
                 );
@@ -219,9 +223,9 @@ namespace Voodoo.Basement
             //    sitrurl = "/";
             //}
             string sitrurl = "";
-            return string.Format("{0}{1}/{2}/index{3}",
+            return string.Format("{0}/{1}{2}/index{3}",
                 sitrurl,
-                cls.ParentClassForder,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 page > 1 ? "_" + page.ToS() + SystemSetting.ExtName : SystemSetting.ExtName
                 );
@@ -269,5 +273,74 @@ namespace Voodoo.Basement
             }
         }
         #endregion
+
+        #region 上传文件
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="ClassID"></param>
+        /// <returns></returns>
+        public static Result UpLoadFile(HttpPostedFile file, int ClassID)
+        {
+            Result r = new Result();
+            SysSetting ss = BasePage.SystemSetting;
+
+            string FileName = file.FileName.GetFileNameFromPath();//文件名
+            string ExtName = file.FileName.GetFileExtNameFromPath();//扩展名
+            string NewName = @string.GetGuid() + ExtName;//新文件名
+
+            if (!ExtName.Replace(".", "").IsInArray(ss.FileExtNameFilter.Split(',')))
+            {
+                r.Success = false;
+                r.Text = "不允许上传此类文件";
+                return r;
+            }
+            if (file.ContentLength > ss.MaxPostFileSize)
+            {
+                r.Success = false;
+                r.Text = "文件太大";
+                return r;
+            }
+
+            string Folder = ss.FileDir + "/" + DateTime.Now.ToString("yyyy-MM-dd") + "/";//文件目录
+            string FolderShotCut = Folder + "ShortCut/";//缩略图目录
+
+            string FilePath = Folder + NewName;//文件路径
+            string FilePath_ShortCut = FolderShotCut + NewName;//缩略图路径
+
+            file.SaveAs(System.Web.HttpContext.Current.Server.MapPath(FilePath), true);
+
+            Voodoo.Model.File f = new Voodoo.Model.File();
+
+            if (ExtName.ToLower().Replace(".", "").IsInArray("jpg,jpeg,png,gif,bmp".Split(',')))
+            {
+                ImageHelper.MakeThumbnail(System.Web.HttpContext.Current.Server.MapPath(FilePath), System.Web.HttpContext.Current.Server.MapPath(FilePath_ShortCut), 105, 118, "Cut");
+            }
+            else
+            {
+                FilePath_ShortCut = "";
+                f.FileType = 1;
+            }
+            FileInfo savedFile = new FileInfo(System.Web.HttpContext.Current.Server.MapPath(FilePath));
+
+           
+
+            f.FileDirectory = ss.FileDir;
+            f.FileExtName = ExtName;
+            f.FilePath = FilePath;
+            f.FileSize = (savedFile.Length / 1024).ToInt32();
+            //f.FileType=
+            f.SmallPath = FilePath_ShortCut;
+            f.UpTime = DateTime.Now;
+
+
+            FileView.Insert(f);
+
+            r.Success = true;
+            r.Text = FilePath;
+            return r;
+        }
+        #endregion 
     }
 }

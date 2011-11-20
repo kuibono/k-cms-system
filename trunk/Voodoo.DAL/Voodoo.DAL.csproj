@@ -48,6 +48,7 @@
     <Compile Include="Auto\ClassView.cs" />
     <Compile Include="Auto\FileView.cs" />
     <Compile Include="Auto\GroupRoleView.cs" />
+    <Compile Include="Auto\LinkView.cs" />
     <Compile Include="Auto\NewsView.cs" />
     <Compile Include="Auto\SysDepartmentView.cs" />
     <Compile Include="Auto\SysGroupView.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Auto\UserRegormView.cs" />
     <Compile Include="Auto\UserView.cs" />
     <Compile Include="Auto\ZtView.cs" />
+    <Compile Include="ClassView.cs" />
     <Compile Include="NewsView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserGroupView.cs" />

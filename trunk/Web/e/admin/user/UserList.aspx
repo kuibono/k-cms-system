@@ -66,7 +66,7 @@
             <tbody>
                 <asp:Repeater ID="rp_list" runat="server">
                     <ItemTemplate>
-                        <tr class="<%#Eval("Enabled").ToBoolean()?"":"disabled" %>">
+                        <tr class="<%#Eval("Enable").ToBoolean()?"":"disabled" %>">
                             <td>
                                 <input name="id" type="checkbox" value="<%#Eval("ID") %>" />
                             </td>
@@ -89,7 +89,7 @@
                                 <%#Eval("Tel")%>
                             </td>
                             <td>
-                                <%#Eval("Enabled").ToBoolean().ToChinese()%>
+                                <%#Eval("Enable").ToBoolean().ToChinese()%>
                             </td>
                             <td>
                                 <a href="?id=<%#Eval("ID") %>&action=disable">停用</a> 

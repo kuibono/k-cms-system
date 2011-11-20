@@ -48,11 +48,11 @@ namespace Voodoo.Basement
         /// <param name="news"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public static Result UserPost(News news,User user)
+        public static Result UserPost(News news, User user)
         {
             Result r = new Result();
 
-            UserGroup g=UserGroupView.GetModelByID(user.ID.ToS());
+            UserGroup g = UserGroupView.GetModelByID(user.Group.ToS());
 
             int maxPost = 0;
             try
@@ -63,7 +63,7 @@ namespace Voodoo.Basement
 
 
             //验证用户是否允许投稿
-            if (maxPost<= 0)
+            if (maxPost <= 0)
             {
                 r.Success = false;
                 r.Text = "对不起，您没有投稿的权限！";
@@ -71,8 +71,8 @@ namespace Voodoo.Basement
             }
 
             //验证本日投稿数是否已经过多
-            int todayPost = NewsView.Count(string.Format("AutorID={0}",user.ID));
-            if (todayPost > maxPost)
+            int todayPost = NewsView.Count(string.Format("AutorID={0}", user.ID));
+            if (todayPost > maxPost && news.ID <= 0)
             {
                 r.Success = false;
                 r.Text = "对不起，您本日投稿数量已经达到最大限制，请明天继续！";
@@ -96,8 +96,25 @@ namespace Voodoo.Basement
             }
 
             news.Audit = g.PostAotuAudit;
+            news.AutorID = user.ID;
+            if (news.Author.IsNullOrEmpty())
+            {
+                news.Author = user.UserName;
+            }
 
-            NewsView.Insert(news);
+            if (news.ID > 0)
+            {
+                NewsView.Update(news);
+            }
+            else
+            {
+                NewsView.Insert(news);
+            }
+
+
+
+            user.Cent += NewsView.GetNewsClass(news).PostAddCent;
+            UserView.Update(user);
 
             r.Success = true;
             r.Text = "投递成功！";

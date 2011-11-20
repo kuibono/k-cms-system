@@ -15,7 +15,7 @@
     <script type="text/javascript">
         var parentCtrl = "<%=Request.QueryString["ctrl"] %>";
         $(function () { 
-            $("#DataList1 img").click(function(){
+            $("#DataList1 img").live("click",function(){
                 $(parent.opener.document).find("#"+parentCtrl).val($(this).attr("path"));
                 window.close();
             })

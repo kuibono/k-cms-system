@@ -14,7 +14,7 @@ using Voodoo.Setting;
 
 namespace Web.e.admin.system.SystemParameter
 {
-    public partial class basic : BasePage
+    public partial class basic : AdminBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
