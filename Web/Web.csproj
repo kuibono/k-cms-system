@@ -656,9 +656,6 @@
     <Content Include="script\editor\themes\simple\simple.css" />
     <Content Include="script\front_common.js" />
     <Content Include="script\jquery-1.7.min.js" />
-    <Content Include="script\jquery.validationEngine-zh_cn.js" />
-    <Content Include="script\jquery.validationEngine.js" />
-    <Content Include="css\validationEngine.jquery.css" />
     <Content Include="tem.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -935,7 +932,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
