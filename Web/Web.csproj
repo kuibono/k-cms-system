@@ -659,9 +659,7 @@
     <Content Include="script\jquery.validationEngine-zh_cn.js" />
     <Content Include="script\jquery.validationEngine.js" />
     <Content Include="css\validationEngine.jquery.css" />
-    <Content Include="table_File.txt" />
     <Content Include="tem.txt" />
-    <Content Include="table_Reply.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -937,7 +935,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -963,6 +961,8 @@
     <Content Include="e\admin\template\VarTemplateEdit.aspx" />
     <Content Include="e\admin\template\VarTemplateList.aspx" />
     <Content Include="e\admin\tool\safecode.ashx" />
+    <Content Include="favicon.ico" />
+    <Content Include="robots.txt" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

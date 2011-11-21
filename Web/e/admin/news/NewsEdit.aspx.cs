@@ -163,6 +163,7 @@ namespace Web.e.admin.news
             n.DownCount = txt_DownCount.Text.ToInt32();
             n.FileForder = txt_FileForder.Text;
             n.FileName = txt_FileName.Text;
+            n.ReplyCount = 0;
 
             if (WS.RequestInt("id") > 0)
             {

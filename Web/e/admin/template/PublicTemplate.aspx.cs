@@ -36,7 +36,7 @@ namespace Web.e.admin.template
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             string action = WS.RequestString("action", "IndexContent");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update TemplatePublic set {0}='{1}'",action,txt_Content.Text.TrimDbDangerousChar()));
+            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update TemplatePublic set {0}='{1}'",action,txt_Content.Text.Replace("'","''")));
             Js.AlertAndGoback("保存成功！");
         }
     }

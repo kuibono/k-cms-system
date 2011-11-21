@@ -18,11 +18,20 @@ namespace Web.e.admin.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                LoadInfo();
+            }
         }
 
         protected void LoadInfo()
         {
+
+            ddl_Group.DataSource = UserAction.GetUserGroups();
+            ddl_Group.DataTextField = "GroupName";
+            ddl_Group.DataValueField = "ID";
+            ddl_Group.DataBind();
+
             int id = WS.RequestInt("id");
             User u = UserView.GetModelByID(id.ToS());
             if (u.ID < 0)

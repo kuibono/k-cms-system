@@ -1,7 +1,7 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011/11/20 21:18:36
-*生成者：Kuibono
+*生成时间：2011-11-21 8:37:12
+*生成者：kuibono
 */
 using System;
 namespace Voodoo.Model
@@ -147,9 +147,14 @@ namespace Voodoo.Model
         public int ReplyCount { get; set; }
 
         /// <summary>
-        /// 来源
+        /// 
         /// </summary>
         public string Source { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool EnableReply { get; set; }
 
         ///实体复制
         public News Clone()
