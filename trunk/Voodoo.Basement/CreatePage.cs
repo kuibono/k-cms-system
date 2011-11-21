@@ -252,6 +252,7 @@ namespace Voodoo.Basement
                 str_lst = str_lst.Replace("[!--oldtitle--]", _title);
                 str_lst = str_lst.Replace("[!--description--]", n.Description);
                 str_lst = str_lst.Replace("[!--author--]", n.Author);
+                str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
                 string title = n.Title;
                 if (temp.CutTitle > 0)
                 {
@@ -344,6 +345,7 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region  创建 上页 下页 首页 尾页链接
         /// <summary>
         /// 创建分页链接
         /// </summary>
@@ -371,7 +373,9 @@ namespace Voodoo.Basement
             string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
+        #endregion 
 
+        #region 创建跳转下拉菜单
         /// <summary>
         /// 创建跳转下拉菜单
         /// </summary>
@@ -409,7 +413,9 @@ namespace Voodoo.Basement
             sb.AppendLine("</select>");
             return sb.ToS();
         }
+        #endregion 
 
+        #region  创建导航条
         /// <summary>
         /// 创建类导航
         /// </summary>
@@ -418,19 +424,29 @@ namespace Voodoo.Basement
         public static string BuildClassNavString(Class c)
         {
             string str = "";
-            str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
+            if (c.IsLeafClass)
+            {
+                str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
+            }
+            else
+            {
+                str = string.Format("> <a href=\"{0}\">{1}</a>", "javascript:void(0);", c.ClassName);
+            }
+            
             var cls = NewsAction.NewsClass.Where(p => p.ID == c.ParentID && c.ShowInNav).ToList();
             if (cls.Count > 0)
             {
                 foreach (Class cl in cls)
                 {
+                    
                     str = BuildClassNavString(cl) + str;
                 }
             }
-            str = "<a href=\"/\">首页</a>" + str;
+            //str = "<a href=\"/\">首页</a>" + str;
             return str;
 
         }
+        #endregion
 
 
         #region 替换公共模版变量

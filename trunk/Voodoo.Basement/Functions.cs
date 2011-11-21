@@ -274,5 +274,29 @@ namespace Voodoo.Basement
             return sb.ToString();
         }
         #endregion
+
+        #region 生成新闻缩略图
+        /// <summary>
+        /// 生成新闻缩略图
+        /// </summary>
+        /// <param name="NewsID"></param>
+        /// <returns></returns>
+        public static string getnewsshortimg(string NewsID)
+        {
+            News news=NewsView.GetModelByID(NewsID);
+            Voodoo.Model.File file = FileView.Find(string.Format("FilePath='{0}'",news.TitleImage));
+
+            string result = "<img src='{0}' alt='{1}' />";
+            if (!file.SmallPath.IsNullOrEmpty())//有缩略图
+            {
+                result = string.Format(result, file.SmallPath, news.Title);
+            }
+            else
+            {
+                result = "";
+            }
+            return result;
+        }
+        #endregion
     }
 }

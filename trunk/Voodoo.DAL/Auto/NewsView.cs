@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2011/11/20 21:18:01
+*生成时间：2011-11-21 8:44:55
 *生成者：kuibono
 */
 using System;
@@ -76,6 +76,7 @@ namespace Voodoo.DAL
                 M.ClassID = dt.Rows[i]["ClassID"].ToInt32();
                 M.ReplyCount = dt.Rows[i]["ReplyCount"].ToInt32();
                 M.Source = dt.Rows[i]["Source"].ToString();
+                M.EnableReply = dt.Rows[i]["EnableReply"].ToBoolean();
 
                 Ms.Add(M);
             }
@@ -94,7 +95,7 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("insert into [News]([NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source]) values(");
+            sb.Append("insert into [News]([NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply]) values(");
             sb.Append("'" + M.NewsTime + "'");
             sb.Append(",");
             sb.Append("'" + M.Title + "'");
@@ -148,6 +149,8 @@ namespace Voodoo.DAL
             sb.Append(M.ReplyCount.ToS());
             sb.Append(",");
             sb.Append("'" + M.Source + "'");
+            sb.Append(",");
+            sb.Append(M.EnableReply.ToS());
             sb.Append(")");
 
             if (DataBase.CmsDbType == DataBase.DbType.SqlServer)
@@ -242,6 +245,8 @@ namespace Voodoo.DAL
             sb.Append("[ReplyCount]=" + M.ReplyCount.ToS());
             sb.Append(",");
             sb.Append("[Source]='" + M.Source + "'");
+            sb.Append(",");
+            sb.Append("[EnableReply]=" + M.EnableReply.ToS());
 
             sb.Append(" where ID='" + M.ID + "'");
             sb.Append("");
@@ -294,7 +299,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             News M = new News();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source] from [News] where ID='" + id.ToString() + "'", true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where ID='" + id.ToString() + "'", true);
             if (!Rs.Read())
             {
                 M.ID = 0;
@@ -329,6 +334,7 @@ namespace Voodoo.DAL
                 M.ClassID = Rs["ClassID"].ToInt32();
                 M.ReplyCount = Rs["ReplyCount"].ToInt32();
                 M.Source = Rs["Source"].ToString();
+                M.EnableReply = Rs["EnableReply"].ToBoolean();
             }
             Rs.Close();
             Rs = null;
@@ -347,7 +353,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             News M = new News();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source] from [News] where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where " + m_where, true);
             if (!Rs.Read())
             {
                 M.ID = 0;
@@ -382,6 +388,7 @@ namespace Voodoo.DAL
                 M.ClassID = Rs["ClassID"].ToInt32();
                 M.ReplyCount = Rs["ReplyCount"].ToInt32();
                 M.Source = Rs["Source"].ToString();
+                M.EnableReply = Rs["EnableReply"].ToBoolean();
             }
             Rs.Close();
             Rs = null;
@@ -398,7 +405,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where)
         {
             IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source] from [News] where " + m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where " + m_where);
         }
 
         /// <summary>
@@ -419,7 +426,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where, int top)
         {
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source] from [News] where " + m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where " + m_where);
             return dt;
         }
         #endregion
