@@ -168,7 +168,7 @@ input[type=text],input[type=password],textarea
 }
 #menu li ul li a {
 	color: #33F;
-	display: block;
+	/*display: block;*/
 	padding: -5px 10px 10px;
 	text-decoration: none;
 	line-height:23px;
