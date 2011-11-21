@@ -1,37 +1,31 @@
 #pro_idea,#task_list
 {
-	background-image:url(../image/flower.png);
+	background-image:url(../image/flower3.png);
 	background-repeat:no-repeat;
 	background-position:right bottom;
 }
 #task_list
 {
-    width:320px;
+    width:300px;
+    background-image:url(/image/flower2.png);
+    background-position:bottom right;
+    background-repeat:no-repeat;
 }
 #pro_idea
 {
     width:340px;
 }
-/*
+
 #lastnews_list
 {
-    width:670px;
+    width:340px;
 }
 
 #lastnews_list li:hover
 {
     color:#00F;
-    background-color:#eef;
-    filter:alpha(opacity=80);
-	-moz-opacity:0.8;
-	-khtml-opacity: 0.8;
-	opacity: 0.8;
 }
-#lastnews_list li:hover a
-{
-    color:#00F;
-}
-*/
+
 .main .left,.main .right
 {
 	text-align:left;
@@ -114,6 +108,6 @@
 {
     /*margin-left:200px;*/
     float:right;
-    padding-right:20px
+    padding-right:0px
     
 }

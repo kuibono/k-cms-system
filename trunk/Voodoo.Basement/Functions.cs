@@ -47,10 +47,10 @@ namespace Voodoo.Basement
                 string timespan = "";
                 if (showTime.ToInt32() > 0)
                 {
-                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString());
+                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString("yyyy/MM/dd"));
                 }
 
-                sb.AppendLine(string.Format("<li>{0}<a href='{1}' title='{2}'>{3}</a>{4}</li>", TitlePreChar, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title,title, timespan));
+                sb.AppendLine(string.Format("<li>{0}{1}<a href='{2}' title='{3}'>{4}</a></li>", TitlePreChar, timespan, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title,title));
             }
             return sb.ToS();
         }
