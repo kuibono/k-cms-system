@@ -932,7 +932,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -963,6 +963,7 @@
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
+    <None Include="服务外包管理网-南京信息工程大学.url" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
