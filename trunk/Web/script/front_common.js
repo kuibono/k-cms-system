@@ -19,11 +19,36 @@ function setMyHome() {
 
 /* 添加收藏  */
 function addFav() {
-    if (document.all) {
-		window.external.addFavorite(location.href, document.title);
-} else if (window.sidebar) {
-		window.sidebar.addPanel(document.title, location.href, "");
-	}
+    var title = document.title;
+    var url = document.location.href;
+
+    if (window.sidebar) {
+        window.sidebar.addPanel(title, url, "");
+    }
+
+    else if (window.opera && window.print) {
+
+        alert(title);
+        var mbm = document.createElement('a');
+        mbm.setAttribute('rel', 'sidebar');
+        mbm.setAttribute('href', url);
+        mbm.setAttribute('title', title);
+        mbm.click();
+    }
+    else if (document.all) {
+        try
+        {
+            //window.external.AddFavorite(url, title);
+            window.external.addFavorite('http://www.baidu.com', '收藏夹');
+        }
+        catch (e) {
+            alert(e);
+            try { external.AddToFavoritesBar(url, title, ''); }
+            catch (ee) {
+                alert(ee);
+            }
+        }
+    }
 }
 
 $(function() {

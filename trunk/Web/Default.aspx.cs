@@ -20,6 +20,7 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Voodoo.Net.Url.GetHtml("http://img.users.51.la/4756120.asp");
             Server.Transfer("~/Index" + SystemSetting.ExtName);
         }
     }
