@@ -38,7 +38,7 @@
 		// ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
 		// user logs in your system.
 
-		return true;
+        return Voodoo.Basement.SysUserAction.LocalUser.ID > 0;
 	}
 
 	public override void SetConfig()
