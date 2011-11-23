@@ -32,6 +32,9 @@
                     模版名称
                 </th>
                 <th>
+                    系统模型
+                </th>
+                <th>
                     每页记录数
                 </th>
                 <th>
@@ -56,6 +59,9 @@
                             <%#Eval("TempName")%>
                         </td>
                         <td>
+                            <%#Voodoo.Basement.TemplateAction.GetNameByID(Eval("SysModel").ToInt32())%>
+                        </td>
+                        <td>
                             <%#Eval("ShowRecordCount")%>
                         </td>
                         <td>
@@ -71,7 +77,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="6" class="ctrlPn">
+                <td colspan="7" class="ctrlPn">
                     &nbsp;<asp:Button ID="btn_Add" Text="新增" runat="server" OnClientClick="location.href='ListTemplateEdit.aspx';return false;" />
                     &nbsp;<asp:Button ID="btn_Del" runat="server" Text="删除" 
                         onclick="btn_Del_Click" />

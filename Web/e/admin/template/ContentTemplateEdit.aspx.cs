@@ -26,11 +26,17 @@ namespace Web.e.admin.template
 
         protected void LoadInfo()
         {
+            ddl_SysModel.DataSource = TemplateAction.AllSysModel;
+            ddl_SysModel.DataTextField = "ModelName";
+            ddl_SysModel.DataValueField = "ID";
+            ddl_SysModel.DataBind();
+
             int id = WS.RequestInt("id");
             TemplateContent tl = TemplateContentView.GetModelByID(id.ToS());
             txt_TempName.Text = tl.TempName;
             txt_TimeFormat.Text = tl.TimeFormat;
             txt_Content.Text = tl.Content;
+            ddl_SysModel.SelectedValue = tl.SysModel.ToS();
         }
 
         protected void btn_Save_Click(object sender, EventArgs e)
@@ -41,7 +47,7 @@ namespace Web.e.admin.template
             tl.TempName = txt_TempName.Text;;
             tl.TimeFormat = txt_TimeFormat.Text;
             tl.Content = txt_Content.Text.Replace("'","''");
-
+            tl.SysModel = ddl_SysModel.SelectedValue.ToInt32();
             if (tl.ID > 0)
             {
                 TemplateContentView.Update(tl);

@@ -33,7 +33,14 @@
                     <vd:VTextBox ID="txt_TempName" runat="server" EnableValidate="true" EnableNull="false"></vd:VTextBox>
                 </td>
             </tr>
-
+            <tr>
+                <td width="163">
+                    系统模型
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddl_SysModel" runat="server"></asp:DropDownList>
+                </td>
+            </tr>
             <tr>
                 <td>
                     时间格式
