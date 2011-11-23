@@ -18,11 +18,18 @@ namespace Web.e.intaller
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Voodoo.IO.File.Exists(Server.MapPath("~/e/installer/intaller.off")))
+            {
+                Response.Clear();
+                Response.Write("系统已经安装，不得重复安装！");
+                Response.End();
+                return;
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
 
             //尝试连接数据库服务器
             string master_conn_str = string.Format("Data Source={0};Initial Catalog=master;Persist Security Info=True;User ID={1};Password={2}", txt_Server.Text, txt_Username.Text, txt_Password.Text);
@@ -61,25 +68,30 @@ namespace Web.e.intaller
             dr.Dispose();
 
 
-            
+            //写入连接字符串
+            Voodoo.Config.Info.SetAppSetting("ConnStr", ConnStr);
 
             //导入表
 
-            string str_sql = Voodoo.IO.File.Read(Server.MapPath("~/e/intaller/tablescript.txt"));
+            string str_sql = Voodoo.IO.File.Read(Server.MapPath("~/e/installer/tablescript.txt"));
             Helper = new SqlHelper(ConnStr);
             Helper.ExecuteNonQuery(CommandType.Text, str_sql);
 
             //导入数据
             if (chk_WithData.Checked)
             {
-                string str_news = Voodoo.IO.File.Read(Server.MapPath("~/e/intaller/news.txt"));
+                string str_data = Voodoo.IO.File.Read(Server.MapPath("~/e/installer/tabledata.txt"));
                 Helper = new SqlHelper(ConnStr);
-                Helper.ExecuteNonQuery(CommandType.Text, str_news);
+                Helper.ExecuteNonQuery(CommandType.Text, str_data);
             }
 
 
             //导入管理员
+            Helper = new SqlHelper(ConnStr);
+            Helper.ExecuteNonQuery(CommandType.Text, string.Format("insert into [SysUser]([UserName],[UserPass],[Logincount],[LastLoginTime],[LastLoginIP],[SafeQuestion],[SafeAnswer],[Department],[ChineseName],[UserGroup],[Email],[TelNumber],[Enabled]) values('{0}','{1}','0','2011-11-21 12:38:50','127.0.0.1','','','1','超管','1','admin@admin.com','13813894138','True')",txt_AdminName.Text,Voodoo.Security.Encrypt.Md5(txt_AdminPass.Text)));
 
+            Voodoo.IO.File.Write(Server.MapPath("~/e/installer/intaller.off"),"1");
+            Js.AlertAndChangUrl("安装完成！马上进入登陆界面！", "/e/admin/");
         }
     }
 }
