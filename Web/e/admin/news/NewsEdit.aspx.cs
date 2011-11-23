@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 using Voodoo;
 using Voodoo.Data;
@@ -148,6 +149,14 @@ namespace Web.e.admin.news
             n.Toutiao = chk_Toutiao.Checked;
 
             n.KeyWords = txt_Key.Text.TrimDbDangerousChar();
+            //关键词写入系统
+            txt_Key.Text = Regex.Replace(txt_Key.Text, "\\s", ",");
+            string[] keys = Regex.Replace(txt_Key.Text, "\\s", ",").Split(',');
+            foreach (string k in keys)
+            {
+                InsertKeyWords(1, k);
+            }
+
             n.NavUrl = txt_NavUrl.Text.TrimDbDangerousChar();
             n.NewsTime=txt_NewsTime.Text.ToDateTime();
             n.TitleImage = txt_TitleImage.Text.TrimDbDangerousChar();
