@@ -28,6 +28,12 @@ namespace Web.e.admin.news
 
         protected void LoadList()
         {
+            ddl_ModelID.DataSource = TemplateAction.AllSysModel;
+            ddl_ModelID.DataTextField = "ModelName";
+            ddl_ModelID.DataValueField = "ID";
+            ddl_ModelID.DataBind();
+
+
             lbox_ParentID.Bind(NewsAction.NewsClass.ToDataTable(), "ClassName", "ID");
             lbox_ParentID.Items.Add(new ListItem("--根栏目--", "0"));
             lbox_ParentID.SelectedValue = "0";
@@ -79,6 +85,8 @@ namespace Web.e.admin.news
             chk_EnableReply.Checked = cls.EnableReply;
             chk_ReplyNeedAudit.Checked = cls.ReplyNeedAudit;
 
+            ddl_ModelID.SelectedValue = cls.ModelID.ToS();
+
         }
 
         protected void btn_Save_Click(object sender, EventArgs e)
@@ -123,6 +131,8 @@ namespace Web.e.admin.news
 
             cls.EnableReply = chk_EnableReply.Checked;
             cls.ReplyNeedAudit = chk_ReplyNeedAudit.Checked;
+
+            cls.ModelID = ddl_ModelID.SelectedValue.ToInt32();
 
             if (cls.ID > 0)
             {
