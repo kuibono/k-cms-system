@@ -204,9 +204,10 @@ namespace Voodoo.Basement
             if (tmpid <= 0)
             {
                 //没有选择模版
-                tmpid = TemplateListView.Find("id>0 order by id desc").ID;
+                tmpid = TemplateListView.Find("id>0 order by id").ID;
             }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
+            temp = TemplateListView.Find(string.Format("SysModel={0}", c.ModelID));
 
             Content = GetTempateString(tmpid, TempType.列表);
 
@@ -278,19 +279,25 @@ namespace Voodoo.Basement
                 foreach (ImageAlbum n in ns)
                 {
                     string str_lst = temp.ListVar;
-                    str_lst = str_lst.Replace("[!--createtime--]", n.CreateTime.ToString(temp.TimeFormat));
-                    //str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c)); 获取图片地址
-                    str_lst = str_lst.Replace("[!--oldtitle--]", n.Title);
-                    //str_lst = str_lst.Replace("[!--description--]", n.);
-                    str_lst = str_lst.Replace("[!--author--]", n.Author);
-                    str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
-                    string title = n.Title;
-                    if (temp.CutTitle > 0)
-                    {
-                        title = title.CutString(temp.CutTitle);
-                    }
-                    str_lst = str_lst.Replace("[!--title--]", n.Title);
+                    str_lst = str_lst.Replace("[!--image.author--]", n.Author);
+                    str_lst = str_lst.Replace("[!--image.authorid--]", n.AuthorID.ToS());
+                    str_lst = str_lst.Replace("[!--image.classid--]", n.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--image.clickcount--]", n.ClickCount.ToS());
+                    str_lst = str_lst.Replace("[!--image.createtime--]", n.CreateTime.ToString());
+                    str_lst = str_lst.Replace("[!--image.folder--]", n.Folder);
+                    str_lst = str_lst.Replace("[!--image.id--]", n.ID.ToS());
+                    str_lst = str_lst.Replace("[!--image.intro--]", n.Intro);
+                    str_lst = str_lst.Replace("[!--image.replycount--]", n.ReplyCount.ToS());
+                    str_lst = str_lst.Replace("[!--image.size--]", n.Size.ToS());
+                    str_lst = str_lst.Replace("[!--image.title--]", n.Title);
+                    str_lst = str_lst.Replace("[!--image.updatetime--]", n.UpdateTime.ToS());
+                    str_lst = str_lst.Replace("[!--image.ztid--]", n.ZtID.ToS());
+                    str_lst = str_lst.Replace("[!--image.url--]", BasePage.GetImageUrl(n,c));
+
+                    sb_list.AppendLine(str_lst);
                 }
+
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }
             #endregion
 
@@ -382,6 +389,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string BuildPagerLink(Class c, int page)
         {
+            int recordCount = c.CountSubItem();
             int tmpid = 0;
             TemplateList temp = new TemplateList();
             if (c.ModelID <= 0)
@@ -390,10 +398,8 @@ namespace Voodoo.Basement
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
             }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
-            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
 
-            int pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
-            int recordCount = ns.Count;
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
 
             string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
@@ -412,6 +418,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string BuidPagerOption(Class c, int page)
         {
+            int recordCount = c.CountSubItem();
             int tmpid = 0;
             TemplateList temp = new TemplateList();
             if (tmpid <= 0)
@@ -420,10 +427,10 @@ namespace Voodoo.Basement
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
             }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
-            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1", c.ID)).ToList();
 
-            int pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
-            int recordCount = ns.Count;
+
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+            
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<select onchange='location.href=this.value'>");
