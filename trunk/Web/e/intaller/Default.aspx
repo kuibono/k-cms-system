@@ -21,7 +21,7 @@
     }
     #step_1,#step_2
     {
-        /*display:none;*/
+        display:none;
     }
     
     </style>
@@ -120,7 +120,7 @@
                         数据库名
                     </td>
                     <td>
-                        <vd:VTextBox ID="txt_DbName" runat="server" EnableValidate="True" TextMode="Password"></vd:VTextBox>
+                        <vd:VTextBox ID="txt_DbName" runat="server" EnableValidate="True"></vd:VTextBox>
                     </td>
                 </tr>
                 <tr>
