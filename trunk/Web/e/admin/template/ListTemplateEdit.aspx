@@ -35,6 +35,14 @@
                 </td>
             </tr>
             <tr>
+                <td width="163">
+                    系统模型
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddl_SysModel" runat="server"></asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     关键词截取长度
                 </td>
@@ -89,7 +97,7 @@
                 <th colspan="2">
                     <asp:Button ID="btn_Save" Text="保存" runat="server" OnClick="btn_Save_Click" />
                     &nbsp;
-                    <input type="button" value="取消" onclick="location.href='SysUserList.aspx'" />
+                    <input type="button" value="取消" onclick="location.href='ListTemplateList.aspx'" />
                 </th>
             </tr>
         </tfoot>
