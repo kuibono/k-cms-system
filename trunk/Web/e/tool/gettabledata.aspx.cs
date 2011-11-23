@@ -64,7 +64,9 @@ namespace Web.e.tool
 
             
 
-            Response.Write(str_sql);
+            //Response.Write(str_sql);
+            Voodoo.IO.File.Write(Server.MapPath("~/e/installer/tabledata.txt"), str_sql, System.IO.FileMode.Create);
+            Response.Write("已经生成到：" + Server.MapPath("~/e/installer/tabledata.txt"));
             Response.End();
 
         }
