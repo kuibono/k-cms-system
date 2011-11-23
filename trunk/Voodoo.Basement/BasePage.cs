@@ -186,6 +186,44 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取图片内容页面地址 GetImageUrl
+        /// <summary>
+        /// 获取图片内容页面地址
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetImageUrl(ImageAlbum img, Class cls)
+        {
+            string result = "";
+            string fileName = img.ID.ToString();
+
+
+            string sitrurl = "/";
+
+            string parentForder = cls.ClassForder;
+            if (!parentForder.IsNullOrEmpty())
+            {
+                parentForder += "/";
+            }
+            string newsFolder = img.Folder;
+            if (newsFolder.IsNullOrEmpty())
+            {
+                newsFolder = "/";
+            }
+
+            result = string.Format("{0}{1}{2}/{3}/{4}{5}",
+                sitrurl,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                cls.ClassForder,
+                newsFolder,
+                fileName,
+                BasePage.SystemSetting.ExtName
+                );
+            return result;
+        }
+        #endregion
+
         #region 获取栏目地址
         /// <summary>
         /// 获取栏目地址
