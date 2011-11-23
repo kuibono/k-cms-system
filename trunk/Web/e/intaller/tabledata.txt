@@ -2239,16 +2239,15 @@ SET IDENTITY_INSERT [News] ON ;
 
 
 SET IDENTITY_INSERT [News] ON ;
- insert into [News]([ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply]) values('45','2011-11-19 22:43:16','南京信息工程大学心理咨询师保密制度','False','False','False','000','','True','False','False','心理咨询师,保密制度','','','咨询师必须向来访者说明心理咨询工作的保密原则，以及应用这一原则时的限度。','未知','0','<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: black; font-size: 14pt; ">1.</span><span style="color: black; font-size: 14pt; ">咨询师必须向来访者说明心理咨询工作的保密原则，以及应用这一原则时的限度。</span></p>
-<div id="contents" style="padding-top: 10px; ">
-<div align="left" style="color: rgb(51, 51, 51); font-size: 14px; text-align: left; text-indent: 24pt; "><span style="color: black; font-size: 14pt; ">2.</span><span style="color: black; font-size: 14pt; ">一旦发现来访者有危害自身或他人的情况，必须采取必要的措施，防止意外发生。（必要时应通知有关部门或家属）</span></div>
-<div align="left" style="color: rgb(51, 51, 51); font-size: 14px; text-align: left; text-indent: 24pt; "><span style="color: black; font-size: 14pt; ">3.</span><span style="color: black; font-size: 14pt; ">心理咨询工作的有关信息，包括个案记录、测验资料、信件、录音、录像和其他资料，均属专业信息。应在严格保密的情况下进行保存，不得列入其他资料之中。</span></div>
-<div align="left" style="color: rgb(51, 51, 51); font-size: 14px; text-align: left; text-indent: 24pt; "><span style="color: black; font-size: 14pt; ">4.</span><span style="color: black; font-size: 14pt; ">心理咨询师只有在来访者同意的情况下才能对咨询过程进行录音、录像，在因专业需要进行案例讨论，或采用案例进行教学、科研、写作等工作时，应隐去那些可能泄露出来访者的有关信息。</span></div>
-<div align="left" style="color: rgb(51, 51, 51); font-size: 14px; ">&nbsp;</div>
-<p style="color: rgb(51, 51, 51); font-size: 14px; margin-top: 1em; margin-right: 0px; margin-bottom: 1em; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; list-style-type: none; list-style-position: initial; list-style-image: initial; "><span style="font-size: 14pt; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-size: 14pt; ">南京信息工程大学心理健康教育与研究中心</span></p>
-<div style="color: rgb(51, 51, 51); font-size: 14px; "><span style="font-size: 14pt; "><br />
-</span></div>
-</div>','False','0','0','0','2011-11-19','','0','4','0','','True')
+ insert into [News]([ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply]) values('45','2011-11-19 22:43:16','南京信息工程大学心理咨询师保密制度','False','False','False','000','','True','False','False','心理咨询师,保密制度','','','咨询师必须向来访者说明心理咨询工作的保密原则，以及应用这一原则时的限度。','未知','0','<p><span style="font-size: large; ">1.咨询师必须向来访者说明心理咨询工作的保密原则，以及应用这一原则时的限度。<br />
+</span></p>
+<p><span style="font-size: large; ">2.一旦发现来访者有危害自身或他人的情况，必须采取必要的措施，防止意外发生。（必要时应通知有关部门或家属）</span></p>
+<p><span style="font-size: large; ">3.心理咨询工作的有关信息，包括个案记录、测验资料、信件、录音、录像和其他资料，均属专业信息。应在严格保密的情况下进行保存，不得列入其他资料之中。</span></p>
+<p><span style="font-size: large; ">4.心理咨询师只有在来访者同意的情况下才能对咨询过程进行录音、录像，在因专业需要进行案例讨论，或采用案例进行教学、科研、写作等工作时，应隐去那些可能泄露出来访者的有关信息。</span></p>
+<p><span style="font-size: large; ">&nbsp;</span></p>
+<p><span style="font-size: large; ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;南京信息工程大学心理健康教育与研究中心</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>','False','0','0','0','2011-11-19','','0','4','0','','True')
  SET IDENTITY_INSERT [News] OFF ;
 
 
@@ -3023,6 +3022,48 @@ SET IDENTITY_INSERT [TemplateList] ON ;
  SET IDENTITY_INSERT [TemplateList] OFF ;
 
 
+SET IDENTITY_INSERT [TemplateList] ON ;
+ insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values('2','1','图片列表模板','2','0','0','5','yyyy-MM-dd','[!--temp.header--]
+        <div id="main_1" class="clearfix mg">
+        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]</div>
+            <div id="newslist" class="left inner" style="width: 660px;">
+                <div class="clearfix classtitle mg">
+                    <h1>
+                        [!--class.classname--]
+                    </h1>
+                    <div class="class_description">[!--class.description--]</div>
+                </div>
+                <ul>
+                    <!--list.var-->
+                </ul>
+                <div class="pager inner">[!--show.listpage--]</div>
+            </div>
+            <div class="right" style="width: 259px; margin-left:32px;">
+                <h1>
+                    分类查看
+                </h1>
+                <ul class="inner">
+                    [cmsclasslist],100[/cmsclasslist]
+                </ul>
+            </div>
+        </div>
+
+[!--temp.footer--]
+
+
+','                        <div class="clearfix inner newsitem mg">
+                            <h2><a href="[!--titleurl--]">
+                                [!--oldtitle--]
+                            </a>
+                            </h2>
+                            <div class="newsprop">[!--author--] 发布于[!--newstime--] </div>
+                            <div class="description">[!--description--]</div>
+                            <!--[getnewsshortimg][!--id--][/getnewsshortimg]-->
+                        </div>
+')
+ SET IDENTITY_INSERT [TemplateList] OFF ;
+
+
 SET IDENTITY_INSERT [TemplatePublic] ON ;
  insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin]) values('1','','[!--temp.header--]
 
@@ -3439,6 +3480,11 @@ SET IDENTITY_INSERT [UserForm] ON ;
 
 SET IDENTITY_INSERT [SysModel] ON ;
  insert into [SysModel]([ID],[ModelName],[TableName],[SonClass]) values('1','新闻系统模型','news','1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22')
+ SET IDENTITY_INSERT [SysModel] OFF ;
+
+
+SET IDENTITY_INSERT [SysModel] ON ;
+ insert into [SysModel]([ID],[ModelName],[TableName],[SonClass]) values('2','图片系统模型','images','')
  SET IDENTITY_INSERT [SysModel] OFF ;
 
 
