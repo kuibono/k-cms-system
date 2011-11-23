@@ -342,5 +342,24 @@ namespace Voodoo.Basement
             return r;
         }
         #endregion 
+
+        #region 创建系统关键词
+        /// <summary>
+        /// 创建系统关键词
+        /// </summary>
+        /// <param name="ModelID"></param>
+        /// <param name="key"></param>
+        protected void InsertKeyWords(int ModelID, string key)
+        {
+            SysKeyword k = SysKeywordView.Find(string.Format("ModelID={0} and Keyword='{1}'",ModelID,key));
+            if (k.ID <=0)
+            {
+                //不存在
+                k.ModelID = ModelID;
+                k.Keyword = key;
+                SysKeywordView.Insert(k);
+            }
+        }
+        #endregion
     }
 }

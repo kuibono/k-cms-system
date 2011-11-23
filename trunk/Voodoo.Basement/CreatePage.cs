@@ -90,7 +90,7 @@ namespace Voodoo.Basement
         }
         #endregion
 
-        #region 生成内容页
+        #region 生成内容页--新闻
         /// <summary>
         /// 生成内容页
         /// </summary>
@@ -153,6 +153,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--news.author--]", news.Author);
             Content = Content.Replace("[!--news.content--]", news.Content);
             Content = Content.Replace("[!--news.keywords--]", news.KeyWords);
+            Content = Content.Replace("[!--news.keywordswithspance--]", news.KeyWords.Replace(","," "));
             Content = Content.Replace("[!--news.description--]", news.Description);
             #endregion
 
@@ -200,7 +201,7 @@ namespace Voodoo.Basement
             string Content = "";
             int tmpid = 0;
             TemplateList temp = new TemplateList();
-            if (c.ModelID <= 0)
+            if (tmpid <= 0)
             {
                 //没有选择模版
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
@@ -219,51 +220,78 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.classname--]", c.ClassName);
             Content = ReplacePageAttribute(Content, pa);
 
+            //此处要区分系统模型
             #region 替换列表
-
-            StringBuilder sb_list = new StringBuilder();
-            List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
-
-            pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
-            recordCount = ns.Count;
-
-            ns = ns.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
-            foreach (News n in ns)
+            if (c.ModelID == 1)//新闻系统模板
             {
-                //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+                StringBuilder sb_list = new StringBuilder();
+                List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
 
-                string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
-                if (n.TitleB)
+                pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+                recordCount = ns.Count;
+
+                ns = ns.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+                foreach (News n in ns)
                 {
-                    _title = "<strong>" + _title + "</strong>";
-                }
-                if (n.TitleI)
-                {
-                    _title = "<I>" + _title + "</I>";
-                }
-                if (n.TitleS)
-                {
-                    _title = "<STRIKE>" + _title + "</STRIKE>";
+                    //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+
+                    string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
+                    if (n.TitleB)
+                    {
+                        _title = "<strong>" + _title + "</strong>";
+                    }
+                    if (n.TitleI)
+                    {
+                        _title = "<I>" + _title + "</I>";
+                    }
+                    if (n.TitleS)
+                    {
+                        _title = "<STRIKE>" + _title + "</STRIKE>";
+                    }
+
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
+                    str_lst = str_lst.Replace("[!--oldtitle--]", _title);
+                    str_lst = str_lst.Replace("[!--description--]", n.Description);
+                    str_lst = str_lst.Replace("[!--author--]", n.Author);
+                    str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
+                    string title = n.Title;
+                    if (temp.CutTitle > 0)
+                    {
+                        title = title.CutString(temp.CutTitle);
+                    }
+                    str_lst = str_lst.Replace("[!--title--]", n.Title);
+                    sb_list.AppendLine(str_lst);
                 }
 
-                string str_lst = temp.ListVar;
-                str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
-                str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
-                str_lst = str_lst.Replace("[!--oldtitle--]", _title);
-                str_lst = str_lst.Replace("[!--description--]", n.Description);
-                str_lst = str_lst.Replace("[!--author--]", n.Author);
-                str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
-                string title = n.Title;
-                if (temp.CutTitle > 0)
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }//end 新闻系统模板
+            else if (c.ModelID == 2)//图片系统模板
+            {
+                StringBuilder sb_list = new StringBuilder();
+                List<ImageAlbum> ns = ImageAlbumView.GetModelList(string.Format("ClassID={0} order by SetTop desc, id desc", c.ID)).ToList();
+                pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+                recordCount = ns.Count;
+
+                ns = ns.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+                foreach (ImageAlbum n in ns)
                 {
-                    title = title.CutString(temp.CutTitle);
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--createtime--]", n.CreateTime.ToString(temp.TimeFormat));
+                    //str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c)); 获取图片地址
+                    str_lst = str_lst.Replace("[!--oldtitle--]", n.Title);
+                    //str_lst = str_lst.Replace("[!--description--]", n.);
+                    str_lst = str_lst.Replace("[!--author--]", n.Author);
+                    str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
+                    string title = n.Title;
+                    if (temp.CutTitle > 0)
+                    {
+                        title = title.CutString(temp.CutTitle);
+                    }
+                    str_lst = str_lst.Replace("[!--title--]", n.Title);
                 }
-                str_lst = str_lst.Replace("[!--title--]", n.Title);
-                sb_list.AppendLine(str_lst);
             }
-
-            Content = Content.Replace("<!--list.var-->", sb_list.ToString());
-
             #endregion
 
 
@@ -386,7 +414,7 @@ namespace Voodoo.Basement
         {
             int tmpid = 0;
             TemplateList temp = new TemplateList();
-            if (c.ModelID <= 0)
+            if (tmpid <= 0)
             {
                 //没有选择模版
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
@@ -457,6 +485,10 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string ReplacePublicTemplate(string TmpString)
         {
+            if (TmpString.IsNullOrEmpty())
+            {
+                return "";
+            }
             Match mc_pubic = new Regex("\\[\\!--temp.(?<key>.*?)--\\]", RegexOptions.None).Match(TmpString);
             while (mc_pubic.Success)
             {
