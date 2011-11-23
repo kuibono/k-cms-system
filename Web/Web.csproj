@@ -866,11 +866,11 @@
     <Compile Include="e\file\addselect.aspx.designer.cs">
       <DependentUpon>addselect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="e\intaller\Default.aspx.cs">
+    <Compile Include="e\installer\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="e\intaller\Default.aspx.designer.cs">
+    <Compile Include="e\installer\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\ChangeRegister.aspx.cs">
@@ -936,10 +936,17 @@
     <Compile Include="e\post\upload_json.aspx.designer.cs">
       <DependentUpon>upload_json.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\tool\gettabledata.aspx.cs">
+      <DependentUpon>gettabledata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\gettabledata.aspx.designer.cs">
+      <DependentUpon>gettabledata.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -965,9 +972,10 @@
     <Content Include="e\admin\template\VarTemplateEdit.aspx" />
     <Content Include="e\admin\template\VarTemplateList.aspx" />
     <Content Include="e\admin\tool\safecode.ashx" />
-    <Content Include="e\intaller\Default.aspx" />
-    <Content Include="e\intaller\news.txt" />
-    <Content Include="e\intaller\tablescript.txt" />
+    <Content Include="e\installer\Default.aspx" />
+    <Content Include="e\installer\tabledata.txt" />
+    <Content Include="e\installer\tablescript.txt" />
+    <Content Include="e\tool\gettabledata.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="robots.txt" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
