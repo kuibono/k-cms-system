@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 using Voodoo;
 using Voodoo.Model;
@@ -72,6 +73,42 @@ namespace Voodoo.Basement
             return sb.ToS();
         }
         #endregion
+
+        public string getnewsbykeywords(string count, string TitleLength, string showTime, string key, string Order)
+        {
+
+
+            string str_sql = "";
+            str_sql += "(";
+            string[] keys = Regex.Replace(key, "\\s+", ",").Split(',');
+            foreach (string k in keys)
+            {
+                str_sql+=" keywords like '%"+ k +"%' or ";
+            }
+            str_sql+=" 1=2)";
+
+
+
+            List<News> nlist = NewsView.GetModelList(str_sql+" "+Order, count.ToInt32());
+            StringBuilder sb = new StringBuilder();
+            foreach (News n in nlist)
+            {
+                string title = n.Title;
+                if (TitleLength.ToInt32() > 0)
+                {
+                    title = title.CutString(TitleLength.ToInt32());
+                }
+                string timespan = "";
+                if (showTime.ToInt32() > 0)
+                {
+                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString("yyyy/MM/dd"));
+                }
+
+                sb.AppendLine(string.Format("<li>{0}{1}<a href='{2}' title='{3}'>{4}</a></li>", "", timespan, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title, title));
+            }
+            return sb.ToS();
+
+        }
 
         #region 轮播Flash
         /// <summary>
