@@ -270,9 +270,9 @@ namespace Voodoo.Basement
         }
         #endregion
 
-        #region 获取上一篇文章
+        #region 获取上一篇文章、图片
         /// <summary>
-        /// 获取上一篇文章
+        /// 获取上一篇文章 
         /// </summary>
         /// <param name="news"></param>
         /// <param name="cls"></param>
@@ -289,9 +289,28 @@ namespace Voodoo.Basement
                 return lresult.First();
             }
         }
+
+        /// <summary>
+        /// 获取上一个图片
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static ImageAlbum GetPreImage(ImageAlbum img, Class cls)
+        {
+            List<ImageAlbum> lresult = ImageAlbumView.GetModelList(string.Format("classID={0} and ID<{1} order by ID Desc", cls.ID, img.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
         #endregion
 
-        #region 获取下一篇文章
+        #region 获取下一篇文章、相册
         /// <summary>
         /// 获取下一篇文章
         /// </summary>
@@ -301,6 +320,25 @@ namespace Voodoo.Basement
         public static News GetNextNews(News news, Class cls)
         {
             List<News> lresult = NewsView.GetModelList(string.Format("classID={0} and ID>{1} order by ID Asc", cls.ID, news.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取下一个相册
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static ImageAlbum GetNextImages(ImageAlbum img, Class cls)
+        {
+            List<ImageAlbum> lresult = ImageAlbumView.GetModelList(string.Format("classID={0} and ID>{1} order by ID Asc", cls.ID, img.ID), 1);
             if (lresult.Count == 0)
             {
                 return null;

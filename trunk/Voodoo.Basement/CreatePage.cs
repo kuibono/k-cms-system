@@ -105,16 +105,18 @@ namespace Voodoo.Basement
 
             string FileName = BasePage.GetNewsUrl(news, cls);
             string Content = "";
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
 
-            int tmpid = news.ModelID;
+            //int tmpid = news.ModelID;
 
-            TemplateContent temp = new TemplateContent();
-            if (tmpid <= 0)
-            {
-                //没有选择模版
-                tmpid = TemplateContentView.Find("id>0 order by id desc").ID;
-            }
-            temp = TemplateContentView.GetModelByID(tmpid.ToS());
+            //TemplateContent temp = new TemplateContent();
+            //if (tmpid <= 0)
+            //{
+            //    //没有选择模版
+            //    tmpid = TemplateContentView.Find("id>0 order by id desc").ID;
+            //}
+            //temp = TemplateContentView.GetModelByID(tmpid.ToS());
 
             Content = GetTempateString(tmpid, TempType.内容);
 
@@ -187,6 +189,97 @@ namespace Voodoo.Basement
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
         }
         #endregion
+
+        #region  生成内容页--相册
+        /// <summary>
+        /// 生成内容页--图片
+        /// </summary>
+        /// <param name="album"></param>
+        /// <param name="cls"></param>
+        public static void CreateContentPage(ImageAlbum album, Class cls)
+        {
+
+
+            string FileName = BasePage.GetImageUrl(album, cls);
+            string Content = "";
+
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
+
+            
+
+            Content = GetTempateString(tmpid, TempType.内容);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = album.Title, UpdateTime = DateTime.Now.ToString(), Description = album.Intro};
+
+            Content = ReplacePageAttribute(Content, pa);
+
+
+
+            #region 替换内容
+
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+
+            Content = Content.Replace("[!--image.author--]", album.Author);
+            Content = Content.Replace("[!--image.authorid--]", album.AuthorID.ToS());
+            Content = Content.Replace("[!--image.clickcount--]", album.ClickCount.ToS());
+            Content = Content.Replace("[!--image.createtime--]", album.CreateTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--image.folder--]", album.Folder);
+            Content = Content.Replace("[!--image.id--]", album.ID.ToS());
+            Content = Content.Replace("[!--image.intro--]", album.Intro);
+            Content = Content.Replace("[!--image.replycount--]", album.ReplyCount.ToS());
+            Content = Content.Replace("[!--image.size--]", album.Size.ToS());
+            Content = Content.Replace("[!--image.title--]", album.Title);
+            Content = Content.Replace("[!--image.uploadtime--]", album.UpdateTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--image.ztid--]", album.ZtID.ToS());
+
+            List<Images> imgs = ImagesView.GetModelList(string.Format("AlbumID={0}",album.ID.ToS()));
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<ul>");
+            foreach (Images img in imgs)
+            {
+                sb.AppendLine(string.Format("<li><a rel=\"example_group\" href=\"{0}\" title=\"{1}\"><img src=\"{2}\" /><br/>{3}</a></li>", img.FilePath, img.Title, img.SmallPath, img.Title.CutString(7)));
+            }
+            sb.AppendLine("</ul>");
+
+            Content = Content.Replace("[!--image.content--]", sb.ToS());
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            #region 上一篇  下一篇 链接
+            ImageAlbum news_pre = BasePage.GetPreImage(album, cls);
+            ImageAlbum news_next = BasePage.GetNextImages(album, cls);
+
+            //上一篇
+            string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_pre != null)
+            {
+                pre_link = string.Format("<a href=\"{0}\">{1}</a>", BasePage.GetImageUrl(news_pre, cls), news_pre.Title);
+            }
+            Content = Content.Replace("[!--news.prelink--]", pre_link);
+
+            //下一篇
+            string next_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_next != null)
+            {
+                next_link = string.Format("<a href=\"{0}\">{1}</a>", BasePage.GetImageUrl(news_next, cls), news_next.Title);
+            }
+            Content = Content.Replace("[!--news.nextlink--]", next_link);
+
+            #endregion
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+        }
+        #endregion 
 
         #region 创建列表页面
         /// <summary>
