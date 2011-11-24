@@ -28,5 +28,10 @@ namespace Voodoo.DAL
                 return 0;
             }
         }
+
+        public static Class GetClass(this ImageAlbum album)
+        {
+            return ClassView.GetModelByID(album.ClassID.ToS());
+        }
     }
 }

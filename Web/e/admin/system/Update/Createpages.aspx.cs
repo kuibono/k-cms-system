@@ -47,6 +47,13 @@ namespace Web.e.admin.system.Update
             {
                 CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
             }
+
+            var imgs = ImageAlbumView.GetModelList();
+            foreach (var img in imgs)
+            {
+                CreatePage.CreateContentPage(img, img.GetClass());
+            }
+
             Js.AlertAndGoback("成功！");
         }
 
