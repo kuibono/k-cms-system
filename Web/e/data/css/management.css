@@ -10,7 +10,7 @@ table
 }
 thead
 {
-	background-image:url("/images/theader.png");
+	background-image:url("../images/theader.png");
 }
 thead th
 {
@@ -30,7 +30,7 @@ input[type='text'],input[type='password'],textarea
 }
 input[type='button'],input[type='submit'],input[type='reset']
 {
-	background-image:url("/images/theader.png");
+	background-image:url("../images/theader.png");
 	background:none repeat-x scroll auto auto transparent;
 	border:solid 1px #ccf;
 	cursor:hand;
@@ -62,7 +62,7 @@ input[type='button'],input[type='submit'],input[type='reset']
 
 #northPn
 {
-	background-image:url(/images/cms_bg.png);
+	background-image:url(../images/cms_bg.png);
 	height:53px;
 	position:relative;
 	color:#FFF
@@ -104,7 +104,7 @@ input[type='button'],input[type='submit'],input[type='reset']
 	border: 1px solid #99BBE8;
 	padding: 8px 12px 0px 12px;
 	padding-left: 36px;
-	background: #DFE8F6 url(/images/infomation.png) no-repeat 10px 12px;
+	background: #DFE8F6 url(../images/infomation.png) no-repeat 10px 12px;
 	margin: 12px 0px;
 	
 	line-height:25px;

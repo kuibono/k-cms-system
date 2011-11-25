@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>模版变量管理</title>
-    <link rel="stylesheet" type="text/css" href="/css/management.css" />
+    <link rel="stylesheet" type="text/css" href="../../data/css/management.css" />
 
-    <script type="text/javascript" src="/script/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="../../data/script/jquery-1.7.min.js"></script>
 
-    <script type="text/javascript" src="/script/common.js"></script>
+    <script type="text/javascript" src="../../data/script/common.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

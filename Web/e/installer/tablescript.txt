@@ -700,13 +700,15 @@ SET ANSI_PADDING OFF
 
 
 
-/****** 对象:  Table [dbo].[ImageAlbum]    脚本日期: 11/23/2011 14:58:22 ******/
+
+ 
+/****** 对象:  Table [dbo].[ImageAlbum]    脚本日期: 11/25/2011 16:09:05 ******/
 SET ANSI_NULLS ON
-
+ 
 SET QUOTED_IDENTIFIER ON
-
+ 
 SET ANSI_PADDING ON
-
+ 
 CREATE TABLE [dbo].[ImageAlbum](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[ClassID] [int] NULL,
@@ -722,52 +724,60 @@ CREATE TABLE [dbo].[ImageAlbum](
 	[ClickCount] [int] NULL,
 	[ReplyCount] [int] NULL,
 	[SetTop] [bit] NULL,
+	[ShotCut] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+	[KeyWords] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
  CONSTRAINT [PK_ImageAlbum] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
+ 
 SET ANSI_PADDING OFF
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'所属栏目' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ClassID'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'专题ID' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ZtID'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者ID' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'AuthorID'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Author'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相册标题' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Title'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'创建时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'CreateTime'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'更新时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'UpdateTime'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'简介' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Intro'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片数量' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Size'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'存放文件夹' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Folder'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'点击数' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ClickCount'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'评论数量' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ReplyCount'
 
-
+ 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'置顶' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'SetTop'
+
+ 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'封面' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ShotCut'
+
+ 
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'关键词' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'KeyWords'
 
 
 /****** 对象:  Table [dbo].[Images]    脚本日期: 11/23/2011 14:58:22 ******/

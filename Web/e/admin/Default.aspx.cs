@@ -40,7 +40,7 @@ namespace Web.e.admin
             //north.Title = "North";
             north.Height = Unit.Pixel(53);
             north.BodyStyle = "padding:0px;";
-            north.Html = "<div id='northPn'><img src='/images/cms_logo.png' style='height:53px' /><span id='loginInfoSp'>用户：" + SysUserAction.LocalUser.UserName + "  [<a href='logout.aspx'>退出]</a></span></div>";
+            north.Html = "<div id='northPn'><img src='../data/images/cms_logo.png' style='height:53px' /><span id='loginInfoSp'>用户：" + SysUserAction.LocalUser.UserName + "  [<a href='logout.aspx'>退出]</a></span></div>";
             north.Collapsible = false;
 
 

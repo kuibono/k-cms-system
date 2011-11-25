@@ -2844,9 +2844,9 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
 
 SET IDENTITY_INSERT [TemplateContent] ON ;
  insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values('3','1','2','相册内容','yyyy-MM-dd','[!--temp.header--]
-    <script type="text/javascript" src="/script/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="/script/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <link type="text/css" rel="stylesheet" href="/script/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
+    <script type="text/javascript" src="/skin/script/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="/skin/script/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <link type="text/css" rel="stylesheet" href="/skin/script/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
     <script type="text/javascript">
     $(function(){
 
@@ -3065,137 +3065,263 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 
 
 SET IDENTITY_INSERT [TemplatePublic] ON ;
- insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin]) values('1','0','[!--temp.header--]
-
-       <div id="main_1" class="main clearfix mg">
-            <div class="left" style="width: 360px;">
-                <h1>
-                    最新消息 <span style="margin-left:250px; color: #999; font-size: 12px;"><a href="/LastNews/">更多&gt;&gt;</a>
-                    </span>
-                </h1>
-                <div id="lastnews_list" class="inner">
-                    <ul>
-                        [cmsnewslist]1,,10,22,1,audit=1,order by id desc[/cmsnewslist]
-                    </ul>
-                </div>
-            </div>
-            <div class="left" style="width: 325px;">
-                <h1>
-                    教学工作 <span style="margin-left: 210px; color: #999; font-size: 12px;"><!--<a href="/Company/Task/">更多&gt;&gt;</a>-->
-                    </span>
-                </h1>
-                <div id="task_list" class="inner">
-                    <ul>
-                        [cmsnewslist]3,,10,23,0,audit=1,order by id desc[/cmsnewslist]
-                    </ul>
-                </div>
-            </div>
-            <div class="right" style="width: 259px;background-color:#F5F9FD">
-                <h1>
-                    外包任务 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="/Company/Task/" style="color: #FFF">更多&gt;&gt;
-                        </a> </span>
-                </h1>
-                <ul class="inner">
-                    [cmsnewslist]18,,10,17,0,audit=1,order by id desc[/cmsnewslist]
-                </ul>
-            </div>
-        </div>
-        <div id="main_2" class="main clearfix mg">
-            <div class="left" style="width: 692px;">
-                <h1>
-                    专家观点 <span style="margin-left: 580px; color: #999; font-size: 12px;"><a href="/Professor/">更多&gt;&gt;</a>
-                    </span>
-                </h1>
-                <div id="pro_img">
-                    <!--<img src="image/talk.png" alt="" />-->
-                    [cmsflashpic]22,10,307,230,1,100,5,,[/cmsflashpic]
-                </div>
-                <div id="pro_idea" class="inner">
-                    <ul>
-                        [cmsnewslist]22,,10,100,0,audit=1,order by id desc[/cmsnewslist]
-                    </ul>
-                </div>
-            </div>
-            <div class="right" style="width: 259px;background-color:#F5F9FD">
-                <h1>
-                    今日天气 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
-                        </a> </span>
-                </h1>
-                <div style="position:relative;width:250px;height:253px;">
-                    <iframe  width="250" scrolling="no" height="200" frameborder="0" allowtransparency="true" vspace="0" hspace="0" marginheight="0" marginwidth="0" src="http://m.weather.com.cn/m/pn12/weather.htm?id=101190101T" style="position:absolute; top:30px; left:1px; z-index:2;"></iframe>
-                    <div style="width:100%; height:250px; position:absolute; z-index:3;">
-                    <img src="/images/tranceparent.png" width="250" height="250" />
-                    </div>
-                    <embed src="/images/s100094am5.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="60" wmode="transparent"  style="position:absolute; z-index:2;top:150px;left:30px;">
-                </div>
-            </div>
-        </div>
-        <div id="link" class="clearfix wrap">
-            <h1>
-                友情链接
-            </h1>
-            <div id="link_content" class="inner">
-                [getlink][/getlink]
-            </div>
-        </div>
-
-
-[!--temp.footer--]
-
+ insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin]) values('1','0','[!--temp.header--]
+
+
+
+       <div id="main_1" class="main clearfix mg">
+
+            <div class="left" style="width: 360px;">
+
+                <h1>
+
+                    最新消息 <span style="margin-left:250px; color: #999; font-size: 12px;"><a href="/LastNews/">更多&gt;&gt;</a>
+
+                    </span>
+
+                </h1>
+
+                <div id="lastnews_list" class="inner">
+
+                    <ul>
+
+                        [cmsnewslist]1,,10,22,1,audit=1,order by id desc[/cmsnewslist]
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="left" style="width: 325px;">
+
+                <h1>
+
+                    教学工作 <span style="margin-left: 210px; color: #999; font-size: 12px;"><!--<a href="/Company/Task/">更多&gt;&gt;</a>-->
+
+                    </span>
+
+                </h1>
+
+                <div id="task_list" class="inner">
+
+                    <ul>
+
+                        [cmsnewslist]3,,10,23,0,audit=1,order by id desc[/cmsnewslist]
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="right" style="width: 259px;background-color:#F5F9FD">
+
+                <h1>
+
+                    外包任务 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="/Company/Task/" style="color: #FFF">更多&gt;&gt;
+
+                        </a> </span>
+
+                </h1>
+
+                <ul class="inner">
+
+                    [cmsnewslist]18,,10,17,0,audit=1,order by id desc[/cmsnewslist]
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div id="main_2" class="main clearfix mg">
+
+            <div class="left" style="width: 692px;">
+
+                <h1>
+
+                    专家观点 <span style="margin-left: 580px; color: #999; font-size: 12px;"><a href="/Professor/">更多&gt;&gt;</a>
+
+                    </span>
+
+                </h1>
+
+                <div id="pro_img">
+
+                    <!--<img src="image/talk.png" alt="" />-->
+
+                    [cmsflashpic]22,10,307,230,1,100,5,,[/cmsflashpic]
+
+                </div>
+
+                <div id="pro_idea" class="inner">
+
+                    <ul>
+
+                        [cmsnewslist]22,,10,100,0,audit=1,order by id desc[/cmsnewslist]
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="right" style="width: 259px;background-color:#F5F9FD">
+
+                <h1>
+
+                    今日天气 <span style="margin-left: 150px; color: #EEE; font-size: 12px;"><a href="" style="color: #FFF">
+
+                        </a> </span>
+
+                </h1>
+
+                <div style="position:relative;width:250px;height:253px;">
+
+                    <iframe  width="250" scrolling="no" height="200" frameborder="0" allowtransparency="true" vspace="0" hspace="0" marginheight="0" marginwidth="0" src="http://m.weather.com.cn/m/pn12/weather.htm?id=101190101T" style="position:absolute; top:30px; left:1px; z-index:2;"></iframe>
+
+                    <div style="width:100%; height:250px; position:absolute; z-index:3;">
+
+                    <img src="/images/tranceparent.png" width="250" height="250" />
+
+                    </div>
+
+                    <embed src="e/data/images/s100094am5.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="60" wmode="transparent"  style="position:absolute; z-index:2;top:150px;left:30px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="link" class="clearfix wrap">
+
+            <h1>
+
+                友情链接
+
+            </h1>
+
+            <div id="link_content" class="inner">
+
+                [getlink][/getlink]
+
+            </div>
+
+        </div>
+
+
+
+
+
+[!--temp.footer--]
+
+
+
 ','','','','','','','','','','','','页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]','','')
  SET IDENTITY_INSERT [TemplatePublic] OFF ;
 
 
 SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values('1','1','header','<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>[!--page.title--]-[!--sys.sitename--]</title>
-    <meta name="keywords" content="[!--page.keyword--] [!--sys.keywords--]" />
-    <meta name="description" content="[!--page.description--] [!--sys.description--]" />
-    <meta name="update" content="[!--page.updatetime--]" />
-    <script type="text/javascript" src="/script/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="/script/front_common.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/common.css" />
-</head>
-<body>
-    <div class="main">
-        <div id="header">
-            <div class="clearfix banner">
-                <div id="logo">
-                    <a href="/">
-                        <img src="/image/logo.png" border="0" alt="首页" /></a>
-                </div>
-                <div id="headertext" style="width: 560px;">
-                    <div style="width: 100%; text-align: right; color: #3f505e; padding: 5px 5px auto auto;">
-                        <a href="javascript:void(0);" onclick="setMyHome()">设为首页</a> <a href="服务外包管理网-南京信息工程大学.url" targer="_blank">保存快捷方式</a>
-                    </div>
-                    <div id="div_login">
-						<form action="/e/member/Login.aspx" id="fm_log" name="fm_log" method="post">
-							<p>
-								账号：<input type="text" id="txt_username" name="username" />
-								密码：<input type="password" id="txt_password" name="userpass" />
-								<a id="btn_login" href="javascript:document.getElementById(''fm_log'').submit()" onclick="document.getElementById(''fm_log'').submit()">登录</a> &nbsp; <a href="#">注册</a>
-								<a href="#">忘记密码</a>
-							</p>
-						</form>
-                    </div>
-                </div>
-            </div>
-            <div class="menu clearfix" style="height:33px;">
-                <ul id="menu">
-                    <li>
-                        <span><a href="/">网站首页</a></span>
-                    </li>
-                    [buildmenustring]0[/buildmenustring]
-                </ul>
-            </div>
-            <div class="clearfix" id="banner">
-                <img src="/image/banner.png" border="0" width="960" />
-            </div>
-        </div>
-
-
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values('1','1','header','<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <title>[!--page.title--]-[!--sys.sitename--]</title>
+
+    <meta name="keywords" content="[!--page.keyword--] [!--sys.keywords--]" />
+
+    <meta name="description" content="[!--page.description--] [!--sys.description--]" />
+
+    <meta name="update" content="[!--page.updatetime--]" />
+
+    <script type="text/javascript" src="/skin/script/jquery-1.7.min.js"></script>
+
+    <script type="text/javascript" src="/skin/script/front_common.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="/skin/css/common.css" />
+
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div id="header">
+
+            <div class="clearfix banner">
+
+                <div id="logo">
+
+                    <a href="/">
+
+                        <img src="/skin/image/logo.png" border="0" alt="首页" /></a>
+
+                </div>
+
+                <div id="headertext" style="width: 560px;">
+
+                    <div style="width: 100%; text-align: right; color: #3f505e; padding: 5px 5px auto auto;">
+
+                        <a href="javascript:void(0);" onclick="setMyHome()">设为首页</a> <a href="服务外包管理网-南京信息工程大学.url" targer="_blank">保存快捷方式</a>
+
+                    </div>
+
+                    <div id="div_login">
+
+						<form action="/e/member/Login.aspx" id="fm_log" name="fm_log" method="post">
+
+							<p>
+
+								账号：<input type="text" id="txt_username" name="username" />
+
+								密码：<input type="password" id="txt_password" name="userpass" />
+
+								<a id="btn_login" href="javascript:document.getElementById(''fm_log'').submit()" onclick="document.getElementById(''fm_log'').submit()">登录</a> &nbsp; <a href="#">注册</a>
+
+								<a href="#">忘记密码</a>
+
+							</p>
+
+						</form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="menu clearfix" style="height:33px;">
+
+                <ul id="menu">
+
+                    <li>
+
+                        <span><a href="/">网站首页</a></span>
+
+                    </li>
+
+                    [buildmenustring]0[/buildmenustring]
+
+                </ul>
+
+            </div>
+
+            <div class="clearfix" id="banner">
+
+                <img src="/skin/image/banner.png" border="0" width="960" />
+
+            </div>
+
+        </div>
+
+
+
+
+
 ')
  SET IDENTITY_INSERT [TemplateVar] OFF ;
 
@@ -3219,7 +3345,7 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
 
 
 SET IDENTITY_INSERT [User] ON ;
- insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values('1','lhg2005','e10adc3949ba59abbe56e057f20f883e','lhg2005@163.com,','','','','','','','','','','','2011-11-19 16:08:18','::1','6','2011-11-21 21:12:58','::1','40','0','','','','','2','True','','')
+ insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values('1','lhg2005','e10adc3949ba59abbe56e057f20f883e','lhg2005@163.com,','','','','','','','','','','','2011-11-19 16:08:18','::1','7','2011-11-25 15:46:43','127.0.0.1','40','0','','','','','2','True','','')
  SET IDENTITY_INSERT [User] OFF ;
 
 
@@ -4154,7 +4280,7 @@ SET IDENTITY_INSERT [SysKeyword] ON ;
 
 
 SET IDENTITY_INSERT [ImageAlbum] ON ;
- insert into [ImageAlbum]([ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop]) values('1','23','','0','城管','中国战斗力最强的组织','2011-11-24 11:18:53','2011-11-24 11:18:55','中国战斗力最强的组织','1','2011-11-24','0','0','False')
+ insert into [ImageAlbum]([ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords]) values('1','23','','0','城管','中国战斗力最强的组织','2011-11-24 11:18:53','2011-11-24 11:18:55','中国战斗力最强的组织','1','2011-11-24','0','0','False','/u/file/2011-11-19/ShortCut/a680a5cb-b51e-42a5-a263-4c6e71d6d36e.jpg','城管,巴西')
  SET IDENTITY_INSERT [ImageAlbum] OFF ;
 
 

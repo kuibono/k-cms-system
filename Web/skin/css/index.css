@@ -7,7 +7,7 @@
 #task_list
 {
     width:300px;
-    background-image:url(/image/flower2.png);
+    background-image:url(../image/flower2.png);
     background-position:bottom right;
     background-repeat:no-repeat;
 }
