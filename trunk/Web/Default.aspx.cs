@@ -14,6 +14,8 @@ using System.Xml.Linq;
 
 using Voodoo.Data;
 using Voodoo.Data.DbHelper;
+using System.IO;
+
 
 namespace Web
 {
@@ -22,10 +24,15 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            Server.Transfer("~/Index" + SystemSetting.ExtName);
-
-           
+            FileInfo file = new FileInfo(Server.MapPath("~/Index" + SystemSetting.ExtName));
+            if (file.Exists)
+            {
+                Server.Transfer("~/Index" + SystemSetting.ExtName);
+            }
+            else
+            {
+                Response.Write("当前系统还没有首页，请登录<a href='e/admin/'>后台</a>生成！");
+            }
         }
     }
 }

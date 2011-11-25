@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>CMS内容管理系统</title>
-    <link rel="stylesheet" type="text/css" href="/css/management.css" />
+    <link rel="stylesheet" type="text/css" href="../data/css/management.css" />
     <script type="text/javascript">
         var openpage = function (url) {
             document.getElementById("main").src = url;

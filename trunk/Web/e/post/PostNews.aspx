@@ -29,9 +29,9 @@
     }
 </style>
 
-<script type="text/javascript" src="../../script/editor/kindeditor-min.js"></script>
+<script type="text/javascript" src="../../skin/script/editor/kindeditor-min.js"></script>
 
-<script type="text/javascript" src="../../script/editor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="../../skin/script/editor/lang/zh_CN.js"></script>
 
 <script type="text/javascript">
     var editor;
