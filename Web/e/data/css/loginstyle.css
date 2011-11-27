@@ -92,14 +92,14 @@ h1 a, h2
 }
 body
 {
-    background: #d8ebf7 url(/images/bg.gif) repeat-x 0 0;
+    background: #d8ebf7 url(../images/bg.gif) repeat-x 0 0;
     font: 12px/22px \5fae\8f6f\96c5\9ed1,Arial,\5b8b\4f53,Sans-serif;
     color: #000;
 }
 #container
 {
     width: 1003px;
-    background: url(/images/headbg.jpg) no-repeat center 0;
+    background: url(../images/headbg.jpg) no-repeat center 0;
     overflow: hidden;
 }
 #header
@@ -155,7 +155,7 @@ a:hover
 }
 #content
 {
-    background: url(/images/contentbg.jpg) no-repeat center 0;
+    background: url(../images/contentbg.jpg) no-repeat center 0;
     height: 294px;
     overflow: hidden;
     padding: 0 88px 0 119px;
@@ -163,12 +163,12 @@ a:hover
 #footer
 {
     text-align: center;
-    background: url(/images/footerbg.jpg) no-repeat center 0;
+    background: url(../images/footerbg.jpg) no-repeat center 0;
     padding-top: 90px;
 }
 h2
 {
-    background: url(/images/newtitle.jpg) no-repeat 0 0;
+    background: url(../images/newtitle.jpg) no-repeat 0 0;
     width: 87px;
     height: 32px;
     margin-bottom: 15px;
@@ -201,12 +201,12 @@ h3 a
 }
 .help_center
 {
-    background: url(/images/help_ico.jpg) no-repeat 0 0;
+    background: url(../images/help_ico.jpg) no-repeat 0 0;
     margin-bottom: 22px;
 }
 .bbs
 {
-    background: url(/images/bbs_ico.jpg) no-repeat 0 0;
+    background: url(../images/bbs_ico.jpg) no-repeat 0 0;
 }
 .help_center, .bbs
 {
@@ -247,7 +247,7 @@ legend
 
 .text_input
 {
-    background: url(/images/inputbg.jpg) no-repeat 0 0;
+    background: url(../images/inputbg.jpg) no-repeat 0 0;
     width: 253px;
 }
 .text_input input
@@ -256,7 +256,7 @@ legend
 }
 .short_input
 {
-    background: url(/images/short_input.jpg) no-repeat 0 0;
+    background: url(../images/short_input.jpg) no-repeat 0 0;
     width: 119px;
 }
 .short_input input
@@ -296,7 +296,7 @@ legend
 .login_btn, .login_btn_hover
 {
     margin-top: 10px;
-    background: url(/images/button.gif) no-repeat 0 0;
+    background: url(../images/button.gif) no-repeat 0 0;
     width: 105px;
     border: 0;
     float: right;
@@ -305,5 +305,5 @@ legend
 }
 .login_btn_hover
 {
-    background-image: url(/images/btn_hover.gif);
+    background-image: url(../images/btn_hover.gif);
 }

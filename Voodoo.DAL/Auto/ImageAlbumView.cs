@@ -1,6 +1,6 @@
 ﻿/*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2011-11-25 16:11:46
+*生成时间：2011/11/27 13:42:58
 *生成者：kuibono
 */
 using System;
@@ -62,6 +62,8 @@ namespace Voodoo.DAL
                 M.ClickCount = dt.Rows[i]["ClickCount"].ToInt32();
                 M.ReplyCount = dt.Rows[i]["ReplyCount"].ToInt32();
                 M.SetTop = dt.Rows[i]["SetTop"].ToBoolean();
+                M.ShotCut = dt.Rows[i]["ShotCut"].ToString();
+                M.KeyWords = dt.Rows[i]["KeyWords"].ToString();
 
                 Ms.Add(M);
             }
@@ -80,7 +82,7 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("insert into [ImageAlbum]([ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop]) values(");
+            sb.Append("insert into [ImageAlbum]([ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords]) values(");
             sb.Append(M.ClassID.ToS());
             sb.Append(",");
             sb.Append(M.ZtID.ToS());
@@ -106,6 +108,10 @@ namespace Voodoo.DAL
             sb.Append(M.ReplyCount.ToS());
             sb.Append(",");
             sb.Append(M.SetTop.ToS());
+            sb.Append(",");
+            sb.Append("'" + M.ShotCut + "'");
+            sb.Append(",");
+            sb.Append("'" + M.KeyWords + "'");
             sb.Append(")");
 
             if (DataBase.CmsDbType == DataBase.DbType.SqlServer)
@@ -172,6 +178,10 @@ namespace Voodoo.DAL
             sb.Append("[ReplyCount]=" + M.ReplyCount.ToS());
             sb.Append(",");
             sb.Append("[SetTop]=" + M.SetTop.ToS());
+            sb.Append(",");
+            sb.Append("[ShotCut]='" + M.ShotCut + "'");
+            sb.Append(",");
+            sb.Append("[KeyWords]='" + M.KeyWords + "'");
 
             sb.Append(" where ID='" + M.ID + "'");
             sb.Append("");
@@ -224,7 +234,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             ImageAlbum M = new ImageAlbum();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop] from [ImageAlbum] where ID='" + id.ToString() + "'", true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where ID='" + id.ToString() + "'", true);
             if (!Rs.Read())
             {
                 M.ID = 0;
@@ -245,6 +255,8 @@ namespace Voodoo.DAL
                 M.ClickCount = Rs["ClickCount"].ToInt32();
                 M.ReplyCount = Rs["ReplyCount"].ToInt32();
                 M.SetTop = Rs["SetTop"].ToBoolean();
+                M.ShotCut = Rs["ShotCut"].ToString();
+                M.KeyWords = Rs["KeyWords"].ToString();
             }
             Rs.Close();
             Rs = null;
@@ -263,7 +275,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             ImageAlbum M = new ImageAlbum();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop] from [ImageAlbum] where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where " + m_where, true);
             if (!Rs.Read())
             {
                 M.ID = 0;
@@ -284,6 +296,8 @@ namespace Voodoo.DAL
                 M.ClickCount = Rs["ClickCount"].ToInt32();
                 M.ReplyCount = Rs["ReplyCount"].ToInt32();
                 M.SetTop = Rs["SetTop"].ToBoolean();
+                M.ShotCut = Rs["ShotCut"].ToString();
+                M.KeyWords = Rs["KeyWords"].ToString();
             }
             Rs.Close();
             Rs = null;
@@ -300,7 +314,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where)
         {
             IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop] from [ImageAlbum] where " + m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where " + m_where);
         }
 
         /// <summary>
@@ -321,7 +335,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where, int top)
         {
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop] from [ImageAlbum] where " + m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where " + m_where);
             return dt;
         }
         #endregion

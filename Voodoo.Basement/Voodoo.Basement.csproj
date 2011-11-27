@@ -52,9 +52,11 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ClassAction.cs" />
     <Compile Include="CreatePage.cs" />
     <Compile Include="ExtendClass.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="ImageAction.cs" />
     <Compile Include="Model\PageAttribute.cs" />
     <Compile Include="NewsAction.cs" />
     <Compile Include="ph.cs" />
@@ -66,7 +68,7 @@
     <Compile Include="UserAction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>

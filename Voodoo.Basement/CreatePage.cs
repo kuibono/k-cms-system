@@ -128,7 +128,7 @@ namespace Voodoo.Basement
 
             Content = ReplacePageAttribute(Content, pa);
 
-            
+
 
             #region 替换新闻内容
 
@@ -155,7 +155,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--news.author--]", news.Author);
             Content = Content.Replace("[!--news.content--]", news.Content);
             Content = Content.Replace("[!--news.keywords--]", news.KeyWords);
-            Content = Content.Replace("[!--news.keywordswithspance--]", news.KeyWords.Replace(","," "));
+            Content = Content.Replace("[!--news.keywordswithspance--]", news.KeyWords.Replace(",", " "));
             Content = Content.Replace("[!--news.description--]", news.Description);
             #endregion
 
@@ -206,7 +206,7 @@ namespace Voodoo.Basement
             TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
             int tmpid = temp.ID;
 
-            
+
 
             Content = GetTempateString(tmpid, TempType.内容);
 
@@ -214,7 +214,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = album.Title, UpdateTime = DateTime.Now.ToString(), Description = album.Intro};
+            PageAttribute pa = new PageAttribute() { Title = album.Title, UpdateTime = DateTime.Now.ToString(), Description = album.Intro };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -238,12 +238,30 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--image.uploadtime--]", album.UpdateTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--image.ztid--]", album.ZtID.ToS());
 
-            List<Images> imgs = ImagesView.GetModelList(string.Format("AlbumID={0}",album.ID.ToS()));
+            List<Images> imgs = ImagesView.GetModelList(string.Format("AlbumID={0}", album.ID.ToS()));
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<ul>");
             foreach (Images img in imgs)
             {
-                sb.AppendLine(string.Format("<li><a rel=\"example_group\" href=\"{0}\" title=\"{1}\"><img src=\"{2}\" /><br/>{3}</a></li>", img.FilePath, img.Title, img.SmallPath, img.Title.CutString(7)));
+                string Description = img.Intro;
+                if (Description.IsNullOrEmpty())
+                {
+                    Description = album.Intro;
+                }
+                if (Description.IsNullOrEmpty())
+                {
+                    Description = img.Title;
+                }
+                if (Description.IsNullOrEmpty())
+                {
+                    Description = album.Title;
+                }
+                sb.AppendLine(string.Format("<li><a rel=\"example_group\" href=\"{0}\" title=\"{1}\"><img src=\"{2}\" /><br/>{3}</a></li>",
+                    img.FilePath,
+                    Description,
+                    img.SmallPath,
+                    img.Title.IsNullOrEmpty() ? album.Title.CutString(6) : img.Title.CutString(6)
+                    ));
             }
             sb.AppendLine("</ul>");
 
@@ -279,7 +297,7 @@ namespace Voodoo.Basement
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
         }
-        #endregion 
+        #endregion
 
         #region 创建列表页面
         /// <summary>
@@ -385,7 +403,7 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--image.title--]", n.Title);
                     str_lst = str_lst.Replace("[!--image.updatetime--]", n.UpdateTime.ToS());
                     str_lst = str_lst.Replace("[!--image.ztid--]", n.ZtID.ToS());
-                    str_lst = str_lst.Replace("[!--image.url--]", BasePage.GetImageUrl(n,c));
+                    str_lst = str_lst.Replace("[!--image.url--]", BasePage.GetImageUrl(n, c));
 
                     sb_list.AppendLine(str_lst);
                 }
@@ -451,14 +469,14 @@ namespace Voodoo.Basement
             Content += GetPublicTemplate("footer");
 
 
-   
+
             Content = ReplaceTagContent(Content);
 
             Content = ReplaceSystemSetting(Content);
 
             return Content;
         }
-        #endregion 
+        #endregion
 
         #region  创建用户功能菜单
         public static string BuildUserMenuString()
@@ -500,7 +518,7 @@ namespace Voodoo.Basement
             string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
-        #endregion 
+        #endregion
 
         #region 创建跳转下拉菜单
         /// <summary>
@@ -523,7 +541,7 @@ namespace Voodoo.Basement
 
 
             int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
-            
+
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<select onchange='location.href=this.value'>");
@@ -541,7 +559,7 @@ namespace Voodoo.Basement
             sb.AppendLine("</select>");
             return sb.ToS();
         }
-        #endregion 
+        #endregion
 
         #region  创建导航条
         /// <summary>
@@ -560,13 +578,13 @@ namespace Voodoo.Basement
             {
                 str = string.Format("> <a href=\"{0}\">{1}</a>", "javascript:void(0);", c.ClassName);
             }
-            
+
             var cls = NewsAction.NewsClass.Where(p => p.ID == c.ParentID && c.ShowInNav).ToList();
             if (cls.Count > 0)
             {
                 foreach (Class cl in cls)
                 {
-                    
+
                     str = BuildClassNavString(cl) + str;
                 }
             }

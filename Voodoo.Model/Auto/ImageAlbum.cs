@@ -1,7 +1,7 @@
 ﻿/*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011-11-25 16:10:58
-*生成者：kuibono
+*生成时间：2011/11/27 13:42:24
+*生成者：Kuibono
 */
 using System;
 namespace Voodoo.Model
@@ -80,6 +80,16 @@ namespace Voodoo.Model
         /// 置顶
         /// </summary>
         public bool SetTop { get; set; }
+
+        /// <summary>
+        /// 封面
+        /// </summary>
+        public string ShotCut { get; set; }
+
+        /// <summary>
+        /// 关键词
+        /// </summary>
+        public string KeyWords { get; set; }
 
         ///实体复制
         public ImageAlbum Clone()

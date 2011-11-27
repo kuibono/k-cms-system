@@ -111,7 +111,7 @@ namespace Web.e.admin.tool
 
                 Random rd = new Random(i * ((int)DateTime.Now.Ticks));
 
-                str3 = str3 + strArray[(int)Math.Round((double)((float)(56f * rd.NextDouble())).ToInt32())];
+                str3 = str3 + strArray[(int)Math.Round((double)((float)(10 * rd.NextDouble())).ToInt32())];
             }
             return str3;
         }

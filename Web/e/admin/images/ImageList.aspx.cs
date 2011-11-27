@@ -13,16 +13,17 @@ using Voodoo.DAL;
 using Voodoo.Basement;
 using Voodoo.Setting;
 
-namespace Web.e.admin.news
+
+namespace Web.e.admin.images
 {
-    public partial class NewsList : AdminBase
+    public partial class ImageList : AdminBase
     {
-        protected static int cls = WS.RequestInt("class",0);
+        protected static int cls = WS.RequestInt("class", 0);
         protected static int zt = WS.RequestInt("zt", 0);
         protected static string url = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            cls = WS.RequestInt("class",0);
+            cls = WS.RequestInt("class", 0);
             zt = WS.RequestInt("zt", 0);
             url = string.Format("?class={0}&zt={1}", cls, zt);
             LoadInfo();
@@ -40,14 +41,14 @@ namespace Web.e.admin.news
         {
             pager.PageSize = SystemSetting.MagageListSize;
 
-            ddl_Class.DataSource = NewsAction.NewsClass.Where(pa => pa.IsLeafClass && pa.ModelID == 1).ToList();
+            ddl_Class.DataSource = NewsAction.NewsClass.Where(pa => pa.IsLeafClass&&pa.ModelID==2).ToList();
             ddl_Class.DataTextField = "ClassName";
             ddl_Class.DataValueField = "ID";
             ddl_Class.DataBind();
             ddl_Class.Items.Add(new ListItem("--所有栏目--", ""));
             ddl_Class.SelectedValue = "";
 
-            
+
 
             ddl_Zt.DataSource = NewsAction.NewsZt;
             ddl_Zt.DataTextField = "ZtName";
@@ -57,7 +58,7 @@ namespace Web.e.admin.news
             ddl_Zt.SelectedValue = "";
 
 
-            ddl_Class_search.DataSource = NewsAction.NewsClass.Where(pa => pa.IsLeafClass && pa.ModelID == 1).ToList();
+            ddl_Class_search.DataSource = NewsAction.NewsClass.Where(pa => pa.IsLeafClass && pa.ModelID == 2).ToList();
             ddl_Class_search.DataTextField = "ClassName";
             ddl_Class_search.DataValueField = "ID";
             ddl_Class_search.DataBind();
@@ -77,18 +78,6 @@ namespace Web.e.admin.news
                     case "SetTop":
                         str_sql += "SetTop=1 ";
                         break;
-                    case "Tuijian":
-                        str_sql += "Tuijian=1 ";
-                        break;
-                    case "Toutiao":
-                        str_sql += "Toutiao=1 ";
-                        break;
-                    case "Audit":
-                        str_sql+="Audit=1";
-                        break;
-                    case "UnAudit":
-                        str_sql += "Audit=0";
-                        break;
                 }
             }
 
@@ -98,7 +87,7 @@ namespace Web.e.admin.news
                 {
                     str_sql += " and ";
                 }
-                str_sql += txt_Column.SelectedValue+" like '%"+ txt_Key.Text +"%'";
+                str_sql += txt_Column.SelectedValue + " like '%" + txt_Key.Text + "%'";
             }
 
             if (ddl_Class.SelectedValue != "")
@@ -148,7 +137,7 @@ namespace Web.e.admin.news
             p.PageSize = pager.PageSize;
             p.PrimaryKey = "ID";
             p.Sort = ddl_Order.SelectedValue + " " + ddl_Desc.SelectedValue;
-            p.Tables = "News";
+            p.Tables = "ImageAlbum";
 
             rp_list.DataSource = p.GetTable();
             pager.RecordCount = p.Count();
@@ -158,70 +147,15 @@ namespace Web.e.admin.news
         }
         #endregion
 
-        /// <summary>
-        /// 停用
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btn_disable_Click(object sender, EventArgs e)
+        protected void pager_PageChanged(object sender, EventArgs e)
         {
-            string ids = WS.RequestString("id");
 
-            GetHelper().ExecuteNonQuery(CommandType.Text,string.Format("update news set Audit=0 where id in({0})", ids));
-
-            if (cls > 0)
-            {
-                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
-            }
-            CreatePage.GreateIndexPage();
-            Js.Jump(url);
-        }
-
-        protected void btn_enable_Click(object sender, EventArgs e)
-        {
-            string ids = WS.RequestString("id");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Audit=1 where id in({0})", ids));
-            
-
-
-            if (cls > 0)
-            {
-                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
-            }
-            CreatePage.GreateIndexPage();
-            Js.Jump(url);
-        }
-
-        protected void btn_Tj_Click(object sender, EventArgs e)
-        {
-            string ids = WS.RequestString("id");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Tuijian=1 where id in({0})", ids));
-
-            if (cls > 0)
-            {
-                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
-            }
-            CreatePage.GreateIndexPage();
-            Js.Jump(url);
-        }
-
-        protected void btn_First_Click(object sender, EventArgs e)
-        {
-            string ids = WS.RequestString("id");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set Toutiao=1 where id in({0})", ids));
-
-            if (cls > 0)
-            {
-                CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
-            }
-            CreatePage.GreateIndexPage();
-            Js.Jump(url);
         }
 
         protected void btn_SetTop_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update news set SetTop=1 where id in({0})", ids));
+            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update ImageAlbum set SetTop=1 where id in({0})", ids));
 
             if (cls > 0)
             {
@@ -234,7 +168,9 @@ namespace Web.e.admin.news
         protected void Button1_Click(object sender, EventArgs e)
         {
             string ids = WS.RequestString("id");
-            GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("delete from  news where id in({0})", ids));
+
+            ImageAction.DeleteImageAlbum(string.Format("id in ({0})",ids));
+
             if (cls > 0)
             {
                 CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
@@ -243,37 +179,9 @@ namespace Web.e.admin.news
             Js.AlertAndChangUrl("删除成功！", url);
         }
 
-        protected void pager_PageChanged(object sender, EventArgs e)
+        protected void btn_Add_Click(object sender, EventArgs e)
         {
-            LoadInfo();
-        }
 
-        protected void btn_createPage_Click(object sender, EventArgs e)
-        {
-            string[] ids = WS.RequestString("id").Split(',');
-            foreach (string id in ids)
-            {
-                News n = NewsView.GetModelByID(id);
-                CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
-
-                News news_pre = GetPreNews(n, NewsView.GetNewsClass(n));
-
-                if (news_pre != null)
-                {
-                    CreatePage.CreateContentPage(news_pre, NewsView.GetNewsClass(n));
-                }
-            }
-
-            if (cls > 0)
-            {
-                try
-                {
-                    CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
-                }
-                catch { }
-            }
-            CreatePage.GreateIndexPage();
-            Js.Jump(url);
         }
     }
 }
