@@ -493,7 +493,14 @@ namespace Web.e.admin
                 node.Text = pcls.ClassName;
                 if (pcls.IsLeafClass)
                 {
-                    node.Listeners.Click.Handler = "openpage('news/NewsList.aspx?class=" + pcls.ID + "')";
+                    if (pcls.ModelID == 1)
+                    {
+                        node.Listeners.Click.Handler = "openpage('news/NewsList.aspx?class=" + pcls.ID + "')";
+                    }
+                    else if (pcls.ModelID == 2)
+                    {
+                        node.Listeners.Click.Handler = "openpage('images/ImageList.aspx?class=" + pcls.ID + "')";
+                    }
 
                 }
             }

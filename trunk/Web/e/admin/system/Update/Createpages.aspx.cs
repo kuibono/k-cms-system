@@ -63,7 +63,11 @@ namespace Web.e.admin.system.Update
             cls = cls.Where(p => p.ParentID == 0).ToList();
             foreach (var c in cls)
             {
-                Voodoo.IO.myDirectory.DeleteDir(new FileInfo(Server.MapPath(BasePage.GetClassUrl(c))).DirectoryName);
+                FileInfo file = new FileInfo(Server.MapPath(GetClassUrl(c)));
+                if (file.Directory.Exists)
+                {
+                    file.Directory.Delete(true);
+                }
             }
             Js.AlertAndGoback("成功！");
         }

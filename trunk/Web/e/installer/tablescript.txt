@@ -1,6 +1,725 @@
 ﻿
 
-/****** 对象:  Table [dbo].[Class]    脚本日期: 11/23/2011 09:57:50 ******/
+/****** Object:  Table [dbo].[Zt]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[Zt](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ClassID] [int] NULL,
+	[ZtName] [varchar](50) NULL,
+	[Forder] [varchar](255) NULL,
+	[ExtName] [varchar](50) NULL,
+	[ICON] [varchar](255) NULL,
+	[KeyWords] [varchar](255) NULL,
+	[Description] [varchar](255) NULL,
+	[LtIndex] [int] NULL,
+	[ShowInNav] [bit] NULL,
+	[FaceModel] [int] NULL,
+	[ListModel] [int] NULL,
+	[ListOrder] [int] NULL,
+	[ListPageSize] [int] NULL,
+ CONSTRAINT [PK_Zt] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[UserRerm]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[UserRerm](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[FormName] [varchar](50) NULL,
+	[FormContent] [text] NULL,
+	[Remark] [text] NULL,
+ CONSTRAINT [PK_UserRerm] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[UserGroup]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[UserGroup](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupName] [varchar](50) NULL,
+	[Grade] [int] NULL,
+	[MaxPost] [int] NULL,
+	[PostAotuAudit] [bit] NULL,
+	[RegForm] [int] NULL,
+	[EnableReg] [bit] NULL,
+	[RegAutoAudit] [bit] NULL,
+ CONSTRAINT [PK_UserGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[UserForm]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[UserForm](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[FormName] [varchar](100) NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_UserForm] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[UserClassRelation]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[UserClassRelation](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int] NULL,
+	[ClassID] [int] NULL,
+ CONSTRAINT [PK_UserClassRelation] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[User]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[User](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](50) NULL,
+	[UserPass] [varchar](50) NULL,
+	[Email] [varchar](255) NULL,
+	[ChineseName] [varchar](50) NULL,
+	[QQ] [varchar](50) NULL,
+	[MSN] [varchar](50) NULL,
+	[Tel] [varchar](50) NULL,
+	[Mobile] [varchar](50) NULL,
+	[WebSite] [varchar](255) NULL,
+	[Image] [varchar](255) NULL,
+	[Address] [varchar](255) NULL,
+	[ZipCode] [varchar](50) NULL,
+	[Intro] [varchar](512) NULL,
+	[RegTime] [datetime] NULL,
+	[RegIP] [varchar](50) NULL,
+	[LoginCount] [int] NULL,
+	[LastLoginTime] [datetime] NULL,
+	[LastLoginIP] [varchar](50) NULL,
+	[Cent] [int] NULL,
+	[PostCount] [int] NULL,
+	[GTalk] [varchar](255) NULL,
+	[Twitter] [varchar](255) NULL,
+	[weibo] [varchar](255) NULL,
+	[ICQ] [varchar](255) NULL,
+	[Group] [int] NULL,
+	[Enable] [bit] NULL,
+	[StudentNo] [varchar](50) NULL,
+	[TeachNo] [varchar](50) NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplTags]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplTags](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[TagName] [varchar](50) NULL,
+	[TagCode] [varchar](50) NULL,
+	[FunctionName] [varchar](255) NULL,
+	[TagFormat] [varchar](255) NULL,
+	[Remark] [text] NULL,
+	[Enable] [bit] NULL,
+	[TagIndex] [int] NULL,
+ CONSTRAINT [PK_TemplTags] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplateVar]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplateVar](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[VarName] [varchar](50) NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_TemplateVar] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplateSearch]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplateSearch](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[TempName] [varchar](50) NULL,
+	[SysModel] [int] NULL,
+	[CutKeywords] [int] NULL,
+	[CutTitle] [int] NULL,
+	[ShowRecordCount] [int] NULL,
+	[TimeFormat] [varchar](50) NULL,
+	[Content] [text] NULL,
+	[ListVar] [text] NULL,
+ CONSTRAINT [PK_TemplateSearch] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplateReply]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[TemplateReply](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_TemplateReply] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[TemplatePublic]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[TemplatePublic](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[IndexContent] [text] NULL,
+	[Controlcontent] [text] NULL,
+	[SiteSearchContent] [text] NULL,
+	[AdvancedSearch] [text] NULL,
+	[HorizontaSearch] [text] NULL,
+	[VerticalSearch] [text] NULL,
+	[RelationInfo] [text] NULL,
+	[MessageBoard] [text] NULL,
+	[Reply] [text] NULL,
+	[FinalDown] [text] NULL,
+	[DownAddress] [text] NULL,
+	[OLPlayaddress] [text] NULL,
+	[ListPager] [text] NULL,
+	[LoginStatus] [text] NULL,
+	[JSLogin] [text] NULL,
+ CONSTRAINT [PK_TemplatePublic] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[TemplateList]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplateList](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[TempName] [varchar](50) NULL,
+	[SysModel] [int] NULL,
+	[CutKeywords] [int] NULL,
+	[CutTitle] [int] NULL,
+	[ShowRecordCount] [int] NULL,
+	[TimeFormat] [varchar](50) NULL,
+	[Content] [text] NULL,
+	[ListVar] [text] NULL,
+ CONSTRAINT [PK_TemplateList] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplateGroup]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplateGroup](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupName] [varchar](50) NULL,
+	[IsDefault] [bit] NULL,
+ CONSTRAINT [PK_TemplateGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[TemplateFace]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[TemplateFace](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_TemplateFace] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[TemplateContent]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[TemplateContent](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupID] [int] NULL,
+	[SysModel] [int] NULL,
+	[TempName] [varchar](50) NULL,
+	[TimeFormat] [varchar](50) NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_TemplateContent] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[SysUser]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysUser](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](50) NULL,
+	[UserPass] [varchar](50) NULL,
+	[Logincount] [bigint] NULL,
+	[LastLoginTime] [datetime] NULL,
+	[LastLoginIP] [varchar](50) NULL,
+	[SafeQuestion] [varchar](50) NULL,
+	[SafeAnswer] [varchar](50) NULL,
+	[Department] [int] NULL,
+	[ChineseName] [varchar](50) NULL,
+	[UserGroup] [int] NULL,
+	[Email] [varchar](50) NULL,
+	[TelNumber] [varchar](50) NULL,
+	[Enabled] [bit] NULL,
+ CONSTRAINT [PK_SysUser] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[SysRole]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysRole](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[RoleName] [varchar](50) NULL,
+	[RoleGroup] [int] NULL,
+	[URL] [varchar](255) NULL,
+	[AddRole] [bit] NULL,
+	[EditRole] [bit] NULL,
+	[DelRole] [bit] NULL,
+ CONSTRAINT [PK_SysRole] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[SysModel]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysModel](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ModelName] [varchar](50) NULL,
+	[TableName] [varchar](50) NULL,
+	[SonClass] [varchar](255) NULL,
+ CONSTRAINT [PK_SysModel] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'模型名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysModel', @level2type=N'COLUMN',@level2name=N'ModelName'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'表' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysModel', @level2type=N'COLUMN',@level2name=N'TableName'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'子类' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysModel', @level2type=N'COLUMN',@level2name=N'SonClass'
+
+/****** Object:  Table [dbo].[SysKeyword]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysKeyword](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Keyword] [varchar](50) NULL,
+	[ModelID] [int] NULL,
+ CONSTRAINT [PK_SysKeyword] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[SysGroup]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysGroup](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GroupName] [varchar](50) NULL,
+ CONSTRAINT [PK_SysGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[SysDepartment]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[SysDepartment](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[DepartName] [varchar](50) NULL,
+ CONSTRAINT [PK_SysDepartment] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[Relpy]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[Relpy](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[NewsID] [int] NULL,
+	[UserID] [int] NULL,
+	[UserName] [varchar](50) NULL,
+	[IP] [varchar](50) NULL,
+	[ReplyTime] [datetime] NULL,
+	[Content] [text] NULL,
+ CONSTRAINT [PK_Relpy] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[News]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[News](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[NewsTime] [datetime] NULL,
+	[Title] [nvarchar](100) NULL,
+	[TitleB] [bit] NULL,
+	[TitleI] [bit] NULL,
+	[TitleS] [bit] NULL,
+	[TitleColor] [varchar](50) NULL,
+	[FTitle] [nvarchar](100) NULL,
+	[Audit] [bit] NULL,
+	[Tuijian] [bit] NULL,
+	[Toutiao] [bit] NULL,
+	[KeyWords] [varchar](200) NULL,
+	[NavUrl] [varchar](255) NULL,
+	[TitleImage] [varchar](255) NULL,
+	[Description] [varchar](512) NULL,
+	[Author] [varchar](50) NULL,
+	[AutorID] [int] NULL,
+	[Content] [ntext] NULL,
+	[SetTop] [bit] NULL,
+	[ModelID] [int] NULL,
+	[ClickCount] [int] NULL,
+	[DownCount] [int] NULL,
+	[FileForder] [varchar](50) NULL,
+	[FileName] [varchar](50) NULL,
+	[ZtID] [int] NULL,
+	[ClassID] [int] NULL,
+	[ReplyCount] [int] NULL,
+	[Source] [varchar](50) NULL,
+	[EnableReply] [bit] NULL,
+ CONSTRAINT [PK_News] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[Link]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[Link](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[LinkTitle] [varchar](100) NULL,
+	[Url] [varchar](255) NULL,
+	[Index] [int] NULL,
+ CONSTRAINT [PK_Link] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[Images]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[Images](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[AlbumID] [int] NULL,
+	[Title] [varchar](255) NULL,
+	[Intro] [varchar](500) NULL,
+	[UploadTime] [datetime] NULL,
+	[ClickCount] [int] NULL,
+	[ReplyCount] [int] NULL,
+	[FilePath] [varchar](255) NULL,
+	[SmallPath] [varchar](255) NULL,
+	[FileSize] [int] NULL,
+	[ExtName] [varchar](50) NULL,
+ CONSTRAINT [PK_Images] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相册ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'AlbumID'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'标题' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'Title'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'简介' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'Intro'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上传时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'UploadTime'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'点击数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'ClickCount'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'评论数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'ReplyCount'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'FilePath'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'缩略图地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'SmallPath'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'文件大小' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'FileSize'
+
+/****** Object:  Table [dbo].[ImageAlbum]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[ImageAlbum](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ClassID] [int] NULL,
+	[ZtID] [int] NULL,
+	[AuthorID] [int] NULL,
+	[Author] [varchar](50) NULL,
+	[Title] [varchar](255) NULL,
+	[CreateTime] [datetime] NULL,
+	[UpdateTime] [datetime] NULL,
+	[Intro] [varchar](500) NULL,
+	[Size] [int] NULL,
+	[Folder] [varchar](255) NULL,
+	[ClickCount] [int] NULL,
+	[ReplyCount] [int] NULL,
+	[SetTop] [bit] NULL,
+	[ShotCut] [varchar](255) NULL,
+	[KeyWords] [varchar](255) NULL,
+ CONSTRAINT [PK_ImageAlbum] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'所属栏目' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'ClassID'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'专题ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'ZtID'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者ID' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'AuthorID'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'Author'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相册标题' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'Title'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'CreateTime'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'更新时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'UpdateTime'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'简介' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'Intro'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片数量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'Size'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'存放文件夹' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'Folder'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'点击数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'ClickCount'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'评论数量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'ReplyCount'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'置顶' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'SetTop'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'封面' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'ShotCut'
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'关键词' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'KeyWords'
+
+/****** Object:  Table [dbo].[GroupRole]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[GroupRole](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int] NULL,
+	[RoleID] [int] NULL,
+ CONSTRAINT [PK_GroupRole] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[File]    Script Date: 11/27/2011 21:11:36 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[File](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ClassID] [int] NULL,
+	[UpTime] [datetime] NULL,
+	[FileType] [int] NULL,
+	[FileSize] [bigint] NULL,
+	[FileDirectory] [varchar](255) NULL,
+	[FileName] [varchar](255) NULL,
+	[FileExtName] [varchar](255) NULL,
+	[FilePath] [varchar](500) NULL,
+	[SmallPath] [varchar](500) NULL,
+ CONSTRAINT [PK_File] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+
+/****** Object:  Table [dbo].[Class]    Script Date: 11/27/2011 21:11:36 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -9,22 +728,22 @@ SET ANSI_PADDING ON
 
 CREATE TABLE [dbo].[Class](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ClassName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Alter] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ClassName] [varchar](50) NULL,
+	[Alter] [varchar](50) NULL,
 	[ParentID] [int] NULL,
 	[IsLeafClass] [bit] NULL,
-	[ParentClassForder] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[ClassForder] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ParentClassForder] [varchar](50) NULL,
+	[ClassForder] [varchar](50) NULL,
 	[ModelID] [int] NULL,
-	[ClassKeywords] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ClassDescription] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[ClassICON] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+	[ClassKeywords] [varchar](255) NULL,
+	[ClassDescription] [varchar](512) NULL,
+	[ClassICON] [varchar](255) NULL,
 	[ShowInNav] [bit] NULL,
 	[NavIndex] [int] NULL,
-	[VisitRole] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
+	[VisitRole] [varchar](512) NULL,
 	[EnablePost] [bit] NULL,
 	[EnableVCode] [bit] NULL,
-	[PostRoles] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
+	[PostRoles] [varchar](512) NULL,
 	[PostcreateList] [int] NULL,
 	[PostAddCent] [int] NULL,
 	[NeedAudit] [bit] NULL,
@@ -40,796 +759,22 @@ CREATE TABLE [dbo].[Class](
 	[SearchModel] [int] NULL,
 	[ClassPageMode] [int] NULL,
 	[ContentPageMode] [int] NULL,
-	[ManagementOrder] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[ListPageOrder] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[ClassPageExtName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ManagementOrder] [varchar](512) NULL,
+	[ListPageOrder] [varchar](512) NULL,
+	[ClassPageExtName] [varchar](50) NULL,
 	[ListPageSize] [int] NULL,
-	[ContentPageForder] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[ContentPageExtName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ContentPageForder] [varchar](512) NULL,
+	[ContentPageExtName] [varchar](50) NULL,
 	[ContentPageNameMode] [int] NULL,
-	[ContentPageDirMode] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ContentPageDirMode] [varchar](50) NULL,
  CONSTRAINT [PK_Class] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
 SET ANSI_PADDING OFF
 
-/****** 对象:  Table [dbo].[File]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
+/****** Object:  Default [DF_SysKeyword_ModelID]    Script Date: 11/27/2011 21:11:36 ******/
+ALTER TABLE [dbo].[SysKeyword] ADD  CONSTRAINT [DF_SysKeyword_ModelID]  DEFAULT ((0)) FOR [ModelID]
 
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[File](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ClassID] [int] NULL,
-	[UpTime] [datetime] NULL,
-	[FileType] [int] NULL,
-	[FileSize] [bigint] NULL,
-	[FileDirectory] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[FileName] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[FileExtName] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[FilePath] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
-	[SmallPath] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_File] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[GroupRole]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-CREATE TABLE [dbo].[GroupRole](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[UserID] [int] NULL,
-	[RoleID] [int] NULL,
- CONSTRAINT [PK_GroupRole] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-/****** 对象:  Table [dbo].[Link]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[Link](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[LinkTitle] [varchar](100) COLLATE Chinese_PRC_CI_AS NULL,
-	[Url] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Index] [int] NULL,
- CONSTRAINT [PK_Link] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[News]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[News](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[NewsTime] [datetime] NULL,
-	[Title] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
-	[TitleB] [bit] NULL,
-	[TitleI] [bit] NULL,
-	[TitleS] [bit] NULL,
-	[TitleColor] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[FTitle] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
-	[Audit] [bit] NULL,
-	[Tuijian] [bit] NULL,
-	[Toutiao] [bit] NULL,
-	[KeyWords] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
-	[NavUrl] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[TitleImage] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Description] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[Author] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[AutorID] [int] NULL,
-	[Content] [ntext] COLLATE Chinese_PRC_CI_AS NULL,
-	[SetTop] [bit] NULL,
-	[ModelID] [int] NULL,
-	[ClickCount] [int] NULL,
-	[DownCount] [int] NULL,
-	[FileForder] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[FileName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[ZtID] [int] NULL,
-	[ClassID] [int] NULL,
-	[ReplyCount] [int] NULL,
-	[Source] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[EnableReply] [bit] NULL,
- CONSTRAINT [PK_News] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[Relpy]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[Relpy](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[NewsID] [int] NULL,
-	[UserID] [int] NULL,
-	[UserName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[IP] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[ReplyTime] [datetime] NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_Relpy] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[SysDepartment]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysDepartment](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[DepartName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_SysDepartment] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[SysGroup]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysGroup](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_SysGroup] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[SysRole]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysRole](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[RoleName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[RoleGroup] [int] NULL,
-	[URL] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[AddRole] [bit] NULL,
-	[EditRole] [bit] NULL,
-	[DelRole] [bit] NULL,
- CONSTRAINT [PK_SysRole] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[SysUser]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysUser](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[UserName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[UserPass] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Logincount] [bigint] NULL,
-	[LastLoginTime] [datetime] NULL,
-	[LastLoginIP] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[SafeQuestion] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[SafeAnswer] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Department] [int] NULL,
-	[ChineseName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[UserGroup] [int] NULL,
-	[Email] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[TelNumber] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Enabled] [bit] NULL,
- CONSTRAINT [PK_SysUser] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplateContent]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplateContent](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[SysModel] [int] NULL,
-	[TempName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[TimeFormat] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateContent] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplateFace]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-CREATE TABLE [dbo].[TemplateFace](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateFace] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-/****** 对象:  Table [dbo].[TemplateGroup]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplateGroup](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[IsDefault] [bit] NULL,
- CONSTRAINT [PK_TemplateGroup] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplateList]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplateList](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[TempName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[SysModel] [int] NULL,
-	[CutKeywords] [int] NULL,
-	[CutTitle] [int] NULL,
-	[ShowRecordCount] [int] NULL,
-	[TimeFormat] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[ListVar] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateList] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplatePublic]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-CREATE TABLE [dbo].[TemplatePublic](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[IndexContent] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[Controlcontent] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[SiteSearchContent] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[AdvancedSearch] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[HorizontaSearch] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[VerticalSearch] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[RelationInfo] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[MessageBoard] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[Reply] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[FinalDown] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[DownAddress] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[OLPlayaddress] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[ListPager] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[LoginStatus] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[JSLogin] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplatePublic] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-/****** 对象:  Table [dbo].[TemplateReply]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-CREATE TABLE [dbo].[TemplateReply](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateReply] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-/****** 对象:  Table [dbo].[TemplateSearch]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplateSearch](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[TempName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[SysModel] [int] NULL,
-	[CutKeywords] [int] NULL,
-	[CutTitle] [int] NULL,
-	[ShowRecordCount] [int] NULL,
-	[TimeFormat] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[ListVar] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateSearch] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplateVar]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplateVar](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupID] [int] NULL,
-	[VarName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_TemplateVar] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[TemplTags]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[TemplTags](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[TagName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[TagCode] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[FunctionName] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[TagFormat] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Remark] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[Enable] [bit] NULL,
-	[TagIndex] [int] NULL,
- CONSTRAINT [PK_TemplTags] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[User]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[User](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[UserName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[UserPass] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Email] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ChineseName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[QQ] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[MSN] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Tel] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Mobile] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[WebSite] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Image] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Address] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ZipCode] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Intro] [varchar](512) COLLATE Chinese_PRC_CI_AS NULL,
-	[RegTime] [datetime] NULL,
-	[RegIP] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[LoginCount] [int] NULL,
-	[LastLoginTime] [datetime] NULL,
-	[LastLoginIP] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Cent] [int] NULL,
-	[PostCount] [int] NULL,
-	[GTalk] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Twitter] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[weibo] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ICQ] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Group] [int] NULL,
-	[Enable] [bit] NULL,
-	[StudentNo] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[TeachNo] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[UserClassRelation]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-CREATE TABLE [dbo].[UserClassRelation](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[UserID] [int] NULL,
-	[ClassID] [int] NULL,
- CONSTRAINT [PK_UserClassRelation] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-/****** 对象:  Table [dbo].[UserForm]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[UserForm](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[FormName] [varchar](100) COLLATE Chinese_PRC_CI_AS NULL,
-	[Content] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_UserForm] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[UserGroup]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[UserGroup](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[GroupName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Grade] [int] NULL,
-	[MaxPost] [int] NULL,
-	[PostAotuAudit] [bit] NULL,
-	[RegForm] [int] NULL,
-	[EnableReg] [bit] NULL,
-	[RegAutoAudit] [bit] NULL,
- CONSTRAINT [PK_UserGroup] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[UserRerm]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[UserRerm](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[FormName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[FormContent] [text] COLLATE Chinese_PRC_CI_AS NULL,
-	[Remark] [text] COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_UserRerm] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[Zt]    脚本日期: 11/23/2011 09:57:50 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[Zt](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ClassID] [int] NULL,
-	[ZtName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Forder] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ExtName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[ICON] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[KeyWords] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Description] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[LtIndex] [int] NULL,
-	[ShowInNav] [bit] NULL,
-	[FaceModel] [int] NULL,
-	[ListModel] [int] NULL,
-	[ListOrder] [int] NULL,
-	[ListPageSize] [int] NULL,
- CONSTRAINT [PK_Zt] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-/****** 对象:  Table [dbo].[SysModel]    脚本日期: 11/23/2011 10:32:49 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysModel](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ModelName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[TableName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[SonClass] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_SysModel] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'模型名称' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'SysModel', @level2type=N'COLUMN', @level2name=N'ModelName'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'表' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'SysModel', @level2type=N'COLUMN', @level2name=N'TableName'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'子类' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'SysModel', @level2type=N'COLUMN', @level2name=N'SonClass'
-
-
-/****** 对象:  Table [dbo].[SysKeyword]    脚本日期: 11/23/2011 10:35:20 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[SysKeyword](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Keyword] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[ModelID] [int] NULL CONSTRAINT [DF_SysKeyword_ModelID]  DEFAULT ((0)),
- CONSTRAINT [PK_SysKeyword] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-
-
-
- 
-/****** 对象:  Table [dbo].[ImageAlbum]    脚本日期: 11/25/2011 16:09:05 ******/
-SET ANSI_NULLS ON
- 
-SET QUOTED_IDENTIFIER ON
- 
-SET ANSI_PADDING ON
- 
-CREATE TABLE [dbo].[ImageAlbum](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[ClassID] [int] NULL,
-	[ZtID] [int] NULL,
-	[AuthorID] [int] NULL,
-	[Author] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[Title] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[CreateTime] [datetime] NULL,
-	[UpdateTime] [datetime] NULL,
-	[Intro] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
-	[Size] [int] NULL,
-	[Folder] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[ClickCount] [int] NULL,
-	[ReplyCount] [int] NULL,
-	[SetTop] [bit] NULL,
-	[ShotCut] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[KeyWords] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_ImageAlbum] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
- 
-SET ANSI_PADDING OFF
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'所属栏目' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ClassID'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'专题ID' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ZtID'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者ID' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'AuthorID'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'作者' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Author'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相册标题' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Title'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'创建时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'CreateTime'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'更新时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'UpdateTime'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'简介' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Intro'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片数量' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Size'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'存放文件夹' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'Folder'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'点击数' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ClickCount'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'评论数量' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ReplyCount'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'置顶' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'SetTop'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'封面' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'ShotCut'
-
- 
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'关键词' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'ImageAlbum', @level2type=N'COLUMN', @level2name=N'KeyWords'
-
-
-/****** 对象:  Table [dbo].[Images]    脚本日期: 11/23/2011 14:58:22 ******/
-SET ANSI_NULLS ON
-
-SET QUOTED_IDENTIFIER ON
-
-SET ANSI_PADDING ON
-
-CREATE TABLE [dbo].[Images](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[AlbumID] [int] NULL,
-	[Title] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[Intro] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
-	[UploadTime] [datetime] NULL,
-	[ClickCount] [int] NULL,
-	[ReplyCount] [int] NULL,
-	[FilePath] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[SmallPath] [varchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-	[FileSize] [int] NULL,
-	[ExtName] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
- CONSTRAINT [PK_Images] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-SET ANSI_PADDING OFF
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相册ID' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'AlbumID'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'标题' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'Title'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'简介' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'Intro'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上传时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'UploadTime'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'点击数' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'ClickCount'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'评论数' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'ReplyCount'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片地址' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'FilePath'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'缩略图地址' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'SmallPath'
-
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'文件大小' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'Images', @level2type=N'COLUMN', @level2name=N'FileSize'

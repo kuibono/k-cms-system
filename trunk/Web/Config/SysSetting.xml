@@ -26,7 +26,7 @@
   <BackCookieTimeOut>30</BackCookieTimeOut>
   <FileDir>/u/file/</FileDir>
   <MaxFileSize>0</MaxFileSize>
-  <MaxPostFileSize>1048576</MaxPostFileSize>
+  <MaxPostFileSize>10485760</MaxPostFileSize>
   <EnablePost>false</EnablePost>
   <PostImageSize>0</PostImageSize>
   <EnablePostImage>false</EnablePostImage>
