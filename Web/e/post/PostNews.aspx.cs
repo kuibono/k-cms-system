@@ -43,7 +43,7 @@ namespace Web.e.post
             if (!IsPostBack)
             {
                 var cls = NewsAction.NewsClass;
-                cls = cls.Where(p => p.EnablePost && p.IsLeafClass).ToList();
+                cls = cls.Where(p => p.EnablePost && p.IsLeafClass&&p.ModelID==1).ToList();
                 ddl_Class.DataSource = cls;
                 ddl_Class.DataTextField = "ClassName";
                 ddl_Class.DataValueField = "id";

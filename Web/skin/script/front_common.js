@@ -53,9 +53,9 @@ function addFav() {
 
 $(function() {
     //加载登陆框
-    $("#div_login").load("/e/member/LoginForm.aspx");
+$("#div_login").load("/e/member/LoginForm.aspx?jsoncallback=" + new Date().toLocaleTimeString());
     $("#btn_login").live("click", function() {
-        if ($("#txt_username").val().size() == 0 || $("#txt_password").val().size() == 0) {
+        if ($("#txt_username").val().length == 0 || $("#txt_password").val().length == 0) {
             alert("账号和密码不能为空");
             return false;
         }

@@ -3181,11 +3181,11 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
 
                     <iframe  width="250" scrolling="no" height="200" frameborder="0" allowtransparency="true" vspace="0" hspace="0" marginheight="0" marginwidth="0" src="http://m.weather.com.cn/m/pn12/weather.htm?id=101190101T" style="position:absolute; top:30px; left:1px; z-index:2;"></iframe>
 
-                    <div style="width:100%; height:250px; position:absolute; z-index:3;">
+                    <!--<div style="width:100%; height:250px; position:absolute; z-index:3;">
 
                     <img src="image/tranceparent.png" width="250" height="250" />
 
-                    </div>
+                    </div>-->
 
                     <embed src="e/data/images/s100094am5.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="60" wmode="transparent"  style="position:absolute; z-index:2;top:150px;left:30px;">
 
@@ -3345,7 +3345,7 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
 
 
 SET IDENTITY_INSERT [User] ON ;
- insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values('1','lhg2005','e10adc3949ba59abbe56e057f20f883e','lhg2005@163.com,','','','','','','','','','','','2011/11/19 16:08:18','::1','7','2011/11/25 15:46:43','127.0.0.1','40','0','','','','','2','True','','')
+ insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values('1','lhg2005','e10adc3949ba59abbe56e057f20f883e','lhg2005@163.com,','','','','','','','','','','','2011/11/19 16:08:18','::1','14','2011/11/28 20:33:49','::1','40','0','','','','','2','True','','')
  SET IDENTITY_INSERT [User] OFF ;
 
 
