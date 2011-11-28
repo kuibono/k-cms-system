@@ -426,50 +426,35 @@
     <Content Include="e\post\PostList.aspx" />
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
-    <Content Include="image\banner.png" />
-    <Content Include="image\flower.png" />
-    <Content Include="image\footer_bg.png" />
-    <Content Include="image\header_bg.png" />
-    <Content Include="image\header_gray.png" />
-    <Content Include="image\header_grayblue.png" />
-    <Content Include="image\logo.png" />
-    <Content Include="image\menu_bg.png" />
-    <Content Include="image\menu_spliter.png" />
-    <Content Include="tem.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\ImageEdit.aspx.cs">
       <DependentUpon>ImageEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\ImageEdit.aspx.designer.cs">
       <DependentUpon>ImageEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\ImageList.aspx.cs">
       <DependentUpon>ImageList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\ImageList.aspx.designer.cs">
       <DependentUpon>ImageList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\upload.aspx.cs">
       <DependentUpon>upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\upload.aspx.designer.cs">
       <DependentUpon>upload.aspx</DependentUpon>
@@ -490,126 +475,108 @@
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.designer.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.designer.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.designer.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.designer.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.designer.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkList.aspx.cs">
       <DependentUpon>LinkList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkList.aspx.designer.cs">
       <DependentUpon>LinkList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.cs">
       <DependentUpon>basic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.designer.cs">
       <DependentUpon>basic.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.cs">
       <DependentUpon>user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\Update\Createpages.aspx.cs">
       <DependentUpon>Createpages.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\Update\Createpages.aspx.designer.cs">
       <DependentUpon>Createpages.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.designer.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.designer.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateEdit.aspx.cs">
       <DependentUpon>ContentTemplateEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateEdit.aspx.designer.cs">
       <DependentUpon>ContentTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateList.aspx.cs">
       <DependentUpon>ContentTemplateList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateList.aspx.designer.cs">
       <DependentUpon>ContentTemplateList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateEdit.aspx.cs">
       <DependentUpon>ListTemplateEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateEdit.aspx.designer.cs">
       <DependentUpon>ListTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateList.aspx.cs">
       <DependentUpon>ListTemplateList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateList.aspx.designer.cs">
       <DependentUpon>ListTemplateList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\PublicTemplate.aspx.cs">
       <DependentUpon>PublicTemplate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\PublicTemplate.aspx.designer.cs">
       <DependentUpon>PublicTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateEdit.aspx.cs">
       <DependentUpon>VarTemplateEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateEdit.aspx.designer.cs">
       <DependentUpon>VarTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateList.aspx.cs">
       <DependentUpon>VarTemplateList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateList.aspx.designer.cs">
       <DependentUpon>VarTemplateList.aspx</DependentUpon>
@@ -619,42 +586,36 @@
     </Compile>
     <Compile Include="e\admin\user\GroupEdit.aspx.cs">
       <DependentUpon>GroupEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\GroupEdit.aspx.designer.cs">
       <DependentUpon>GroupEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\GroupList.aspx.cs">
       <DependentUpon>GroupList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\GroupList.aspx.designer.cs">
       <DependentUpon>GroupList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserEdit.aspx.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserEdit.aspx.designer.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserFormEdit.aspx.cs">
       <DependentUpon>UserFormEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserFormEdit.aspx.designer.cs">
       <DependentUpon>UserFormEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserFormList.aspx.cs">
       <DependentUpon>UserFormList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserFormList.aspx.designer.cs">
       <DependentUpon>UserFormList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
@@ -675,21 +636,18 @@
     </Compile>
     <Compile Include="e\member\ChangeRegister.aspx.cs">
       <DependentUpon>ChangeRegister.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\ChangeRegister.aspx.designer.cs">
       <DependentUpon>ChangeRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
@@ -703,14 +661,12 @@
     </Compile>
     <Compile Include="e\member\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\RegisterForm.aspx.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\RegisterForm.aspx.designer.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
@@ -724,7 +680,6 @@
     </Compile>
     <Compile Include="e\post\PostNews.aspx.cs">
       <DependentUpon>PostNews.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\post\PostNews.aspx.designer.cs">
       <DependentUpon>PostNews.aspx</DependentUpon>
@@ -738,7 +693,6 @@
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
@@ -813,17 +767,6 @@
     <Content Include="e\installer\tablescript.txt" />
     <Content Include="e\tool\gettabledata.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="image\flower2.png" />
-    <Content Include="image\flower3.png" />
-    <Content Include="image\logo\access2007.gif" />
-    <Content Include="image\logo\dotnet.gif" />
-    <Content Include="image\logo\mysql.gif" />
-    <Content Include="image\logo\oracle.gif" />
-    <Content Include="image\logo\sqlite.gif" />
-    <Content Include="image\logo\sqlserver.gif" />
-    <Content Include="image\logo\sqlserver2005.gif" />
-    <Content Include="image\logo\sqlserver2008.gif" />
-    <Content Include="image\tranceparent.png" />
     <Content Include="robots.txt" />
     <Content Include="skin\css\common.css" />
     <Content Include="skin\css\content.css" />
@@ -1061,6 +1004,22 @@
     <Content Include="skin\script\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="skin\script\front_common.js" />
     <Content Include="skin\script\jquery-1.7.min.js" />
+    <Content Include="u\file\2011-11-19\095ee674-c178-4c96-a0f6-38a2c76695be.jpg" />
+    <Content Include="u\file\2011-11-19\185a1271-2cdf-48cc-aecf-2ed1f4a4b7e0.jpg" />
+    <Content Include="u\file\2011-11-19\7b41569a-8987-4b91-9428-882d6db6a657.jpg" />
+    <Content Include="u\file\2011-11-19\a680a5cb-b51e-42a5-a263-4c6e71d6d36e.jpg" />
+    <Content Include="u\file\2011-11-19\b9e8a34f-1685-46f9-a810-4ed13ba851a7.jpg" />
+    <Content Include="u\file\2011-11-19\f23ea3d0-ee9e-4825-8b7f-e1e72142c79a.jpg" />
+    <Content Include="u\file\2011-11-19\fc30cc41-f936-4ca2-a711-34ae7122bd85.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\095ee674-c178-4c96-a0f6-38a2c76695be.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\185a1271-2cdf-48cc-aecf-2ed1f4a4b7e0.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\7b41569a-8987-4b91-9428-882d6db6a657.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\a680a5cb-b51e-42a5-a263-4c6e71d6d36e.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\b9e8a34f-1685-46f9-a810-4ed13ba851a7.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\f23ea3d0-ee9e-4825-8b7f-e1e72142c79a.jpg" />
+    <Content Include="u\file\2011-11-19\ShortCut\fc30cc41-f936-4ca2-a711-34ae7122bd85.jpg" />
+    <Content Include="u\file\2011-11-21\9cff414f-c049-4c45-99bd-8cb87fead883.jpg" />
+    <Content Include="u\file\2011-11-21\ShortCut\9cff414f-c049-4c45-99bd-8cb87fead883.jpg" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
@@ -1068,6 +1027,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="u\fckup\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
