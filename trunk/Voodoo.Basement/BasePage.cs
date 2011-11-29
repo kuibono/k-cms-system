@@ -224,6 +224,31 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        public static string GetQuestionUrl(Question qs, Class cls)
+        {
+            string result = "";
+            string fileName = qs.ID.ToString();
+
+
+            string sitrurl = "/";
+
+            string parentForder = cls.ClassForder;
+            if (!parentForder.IsNullOrEmpty())
+            {
+                parentForder += "/";
+            }
+            
+
+            result = string.Format("{0}{1}{2}/{3}{4}",
+                sitrurl,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                cls.ClassForder,
+                fileName,
+                BasePage.SystemSetting.ExtName
+                );
+            return result;
+        }
+
         #region 获取栏目地址
         /// <summary>
         /// 获取栏目地址
@@ -270,7 +295,7 @@ namespace Voodoo.Basement
         }
         #endregion
 
-        #region 获取上一篇文章、图片
+        #region 获取上一篇文章、图片、提问
         /// <summary>
         /// 获取上一篇文章 
         /// </summary>
@@ -308,9 +333,28 @@ namespace Voodoo.Basement
                 return lresult.First();
             }
         }
+
+        /// <summary>
+        /// 获取上一篇提问
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static Question GetPreQuestion(Question qs, Class cls)
+        {
+            List<Question> lresult = QuestionView.GetModelList(string.Format("classID={0} and ID<{1} order by ID Desc", cls.ID, qs.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
         #endregion
 
-        #region 获取下一篇文章、相册
+        #region 获取下一篇文章、相册、提问
         /// <summary>
         /// 获取下一篇文章
         /// </summary>
@@ -339,6 +383,25 @@ namespace Voodoo.Basement
         public static ImageAlbum GetNextImages(ImageAlbum img, Class cls)
         {
             List<ImageAlbum> lresult = ImageAlbumView.GetModelList(string.Format("classID={0} and ID>{1} order by ID Asc", cls.ID, img.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取下一个提问
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static Question GetNextQuestion(Question qs, Class cls)
+        {
+            List<Question> lresult = QuestionView.GetModelList(string.Format("classID={0} and ID>{1} order by ID Asc", cls.ID, qs.ID), 1);
             if (lresult.Count == 0)
             {
                 return null;

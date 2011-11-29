@@ -34,7 +34,7 @@ namespace Web.e.post
             UserGroup g = UserGroupView.GetModelByID(u.Group.ToS());
             if (g.MaxPost <= 0)
             {
-                Js.AlertAndGoback("对不起，您没有投稿的权限！如有疑问，请练习管理员");
+                Js.AlertAndGoback("对不起，您没有投稿的权限！如有疑问，请联系管理员");
                 return;
             }
 

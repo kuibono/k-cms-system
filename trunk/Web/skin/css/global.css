@@ -178,3 +178,22 @@ input[type=text],input[type=password],textarea
 }
 .nav { width:100%; color:#000; height:30px; line-height:30px; }
 #main_1 .nav a { color:#000; }
+
+a.btn, a.btn span, button.btn span, button.btn b {
+    background: url("../image/button_bg.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font: 15px/30px "微软雅黑";
+    height: 31px;
+    padding-left: 15px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+a.btn span, button.btn b {
+    background-position: right 0;
+    display: block;
+    min-width: 50px;
+    padding: 0 15px 0 0;
+}

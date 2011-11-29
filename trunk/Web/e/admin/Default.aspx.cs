@@ -208,6 +208,14 @@ namespace Web.e.admin
             n_mp_JSLogin.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=JSLogin')";
             n_model_public.Nodes.Add(n_mp_JSLogin);
 
+            Ext.Net.TreeNode n_mp_ImageList = new Ext.Net.TreeNode("相册图片列表", Icon.UserRed);
+            n_mp_ImageList.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=ImageList')";
+            n_model_public.Nodes.Add(n_mp_ImageList);
+
+            Ext.Net.TreeNode n_mp_AnswerList = new Ext.Net.TreeNode("问答回答列表", Icon.UserRed);
+            n_mp_AnswerList.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=AnswerList')";
+            n_model_public.Nodes.Add(n_mp_AnswerList);
+
             root_model.Nodes.Add(n_model_public);
             //-----------------------------------公共模版-----------------------------------------------//
 

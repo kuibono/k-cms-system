@@ -53,7 +53,9 @@ namespace Voodoo.Basement
             封面,
             内容,
             列表,
-            搜索
+            搜索,
+            相册图片列表,
+            问答回答列表
         }
         #endregion
 
@@ -299,6 +301,105 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region  生成内容页--问答
+        /// <summary>
+        /// 生成内容页--图片
+        /// </summary>
+        /// <param name="album"></param>
+        /// <param name="cls"></param>
+        public static void CreateContentPage(Question qs, Class cls)
+        {
+
+
+            string FileName = BasePage.GetQuestionUrl(qs, cls);
+            string Content = "";
+
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
+
+
+
+            Content = GetTempateString(tmpid, TempType.内容);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = qs.Title, UpdateTime = DateTime.Now.ToString(), Description = qs.Title };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+
+
+            #region 替换内容
+
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+
+            Content = Content.Replace("[!--question.url--]", BasePage.GetQuestionUrl(qs, cls));//问题地址
+            Content = Content.Replace("[!--question.asktime--]", qs.AskTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--question.classid--]", qs.ClassID.ToS());
+            Content = Content.Replace("[!--question.clickcount--]", qs.ClickCount.ToS());
+            Content = Content.Replace("[!--question.content--]", qs.Content);
+            Content = Content.Replace("[!--question.id--]", qs.ID.ToS());
+            Content = Content.Replace("[!--question.title--]", qs.Title);
+            Content = Content.Replace("[!--question.userid--]", qs.UserID.ToS());
+            Content = Content.Replace("[!--question.username--]", qs.UserName);
+            Content = Content.Replace("[!--question.ztid--]", qs.ZtID.ToS());
+
+            List<Answer> ans = AnswerView.GetModelList(string.Format("QuestionID={0}", qs.ID.ToS()));
+            StringBuilder sb = new StringBuilder();
+            string list_tmp = GetTempateString(1, TempType.问答回答列表);
+            //sb.AppendLine("<ul>");
+            foreach (Answer an in ans)
+            {
+                string row = list_tmp.Replace("[!--answer.agree--]", an.Agree.ToS());
+                row = row.Replace("[!--answer.answertime--]", an.AnswerTime.ToString());
+                row = row.Replace("[!--answer.content--]", an.Content);
+                row = row.Replace("[!--answer.id--]", an.ID.ToS());
+                row = row.Replace("[!--answer.questionid--]", an.QuestionID.ToS());
+                row = row.Replace("[!--answer.userid--]", an.UserID.ToS());
+                row = row.Replace("[!--answer.username--]", an.UserName);
+
+                sb.AppendLine(row);
+            }
+            //sb.AppendLine("</ul>");
+
+            Content = Content.Replace("[!--answer.list--]", sb.ToS());
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            #region 上一篇  下一篇 链接
+            Question news_pre = BasePage.GetPreQuestion(qs, cls);
+            Question news_next = BasePage.GetNextQuestion(qs, cls);
+
+            //上一篇
+            string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_pre != null)
+            {
+                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetQuestionUrl(news_pre, cls), news_pre.Title,news_pre.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.prelink--]", pre_link);
+
+            //下一篇
+            string next_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_next != null)
+            {
+                next_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetQuestionUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.nextlink--]", next_link);
+
+            #endregion
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+        }
+        #endregion
+
+
         #region 创建列表页面
         /// <summary>
         /// 创建列表页面
@@ -320,7 +421,7 @@ namespace Voodoo.Basement
             temp = TemplateListView.GetModelByID(tmpid.ToS());
             temp = TemplateListView.Find(string.Format("SysModel={0}", c.ModelID));
 
-            Content = GetTempateString(tmpid, TempType.列表);
+            Content = GetTempateString(temp.ID, TempType.列表);
 
             Content = ReplacePublicTemplate(Content);
 
@@ -330,10 +431,13 @@ namespace Voodoo.Basement
 
             Content = Content.Replace("[!--class.description--]", c.ClassDescription);
             Content = Content.Replace("[!--class.classname--]", c.ClassName);
+            Content = Content.Replace("[!--class.id--]", c.ID.ToS());
             Content = ReplacePageAttribute(Content, pa);
 
             //此处要区分系统模型
             #region 替换列表
+
+            #region 新闻系统模板
             if (c.ModelID == 1)//新闻系统模板
             {
                 StringBuilder sb_list = new StringBuilder();
@@ -379,6 +483,9 @@ namespace Voodoo.Basement
 
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }//end 新闻系统模板
+            #endregion  新闻系统模板
+
+            #region 图片系统模板
             else if (c.ModelID == 2)//图片系统模板
             {
                 StringBuilder sb_list = new StringBuilder();
@@ -410,6 +517,36 @@ namespace Voodoo.Basement
 
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }
+            #endregion  图片系统模板
+
+            else if(c.ModelID==3)
+            {
+                StringBuilder sb_list=new StringBuilder();
+                List<Question> qs=QuestionView.GetModelList(string.Format("ClassID={0} order by id desc",c.ID));
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+                recordCount = qs.Count;
+
+                qs = qs.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+                foreach(Question q in qs)
+                {
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--question.url--]", BasePage.GetQuestionUrl(q,c));//问题地址
+                    str_lst=str_lst.Replace("[!--question.asktime--]",q.AskTime.ToString(temp.TimeFormat));
+                    str_lst=str_lst.Replace("[!--question.classid--]",q.ClassID.ToS());
+                    str_lst=str_lst.Replace("[!--question.clickcount--]",q.ClickCount.ToS());
+                    str_lst=str_lst.Replace("[!--question.content--]",q.Content);
+                    str_lst=str_lst.Replace("[!--question.id--]",q.ID.ToS());
+                    str_lst=str_lst.Replace("[!--question.title--]",temp.CutTitle>0?q.Title.CutString(temp.CutTitle):q.Title);
+                    str_lst = str_lst.Replace("[!--question.oldtitle--]", q.Title);
+                    str_lst=str_lst.Replace("[!--question.userid--]",q.UserID.ToS());
+                    str_lst=str_lst.Replace("[!--question.username--]",q.UserName);
+                    str_lst=str_lst.Replace("[!--question.ztid--]",q.ZtID.ToS());
+                    str_lst = str_lst.Replace("[!--question.answercount--]", AnswerView.Count(string.Format("QuestionID={0}",q.ID)).ToS());
+                    sb_list.AppendLine(str_lst);
+                }
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }
+
             #endregion
 
 
@@ -792,6 +929,12 @@ namespace Voodoo.Basement
                     break;
                 case TempType.最终下载页:
                     return tp.FinalDown;
+                    break;
+                case TempType.相册图片列表:
+                    return tp.ImageList;
+                    break;
+                case TempType.问答回答列表:
+                    return tp.AnswerList;
                     break;
                 default:
                     return "";
