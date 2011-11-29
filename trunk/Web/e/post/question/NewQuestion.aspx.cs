@@ -36,6 +36,8 @@ namespace Web.e.post.question
                 return;
             }
 
+            
+
             if (!IsPostBack)
             {
                 var cls = NewsAction.NewsClass;
@@ -56,6 +58,12 @@ namespace Web.e.post.question
 
         protected void btn_Submit_Click(object sender, EventArgs e)
         {
+            if (UserAction.HasPostRight(ddl_Class.SelectedValue.ToInt32()) == false)
+            {
+                Js.AlertAndGoback("对不起，对于本栏目您没有提问的权限！如有疑问，请联系管理员");
+                return;
+            }
+
             User u=UserAction.opuser;
             int rclass = WS.RequestInt("ddl_Class", WS.RequestInt("class"));
             string content = WS.RequestString("txt_Content").TrimDbDangerousChar().Trim().HtmlDeCode();

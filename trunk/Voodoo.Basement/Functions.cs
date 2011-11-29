@@ -28,32 +28,71 @@ namespace Voodoo.Basement
         {
             Class cls = NewsAction.NewsClass.Where(p => p.ID.ToString() == ClassID).First();
 
-            string str_sql = string.Format("classID in ({0})", GetAllSubClass(ClassID.ToInt32()));
-            if(ExtSql.Length>1)
+            if (cls.ModelID == 1)
             {
-                str_sql += " and " + ExtSql;
-            }
-            str_sql += Order;
 
-            
-            List<News> nlist = NewsView.GetModelList(str_sql, count.ToInt32());
-            StringBuilder sb = new StringBuilder();
-            foreach (News n in nlist)
+                string str_sql = string.Format("classID in ({0})", GetAllSubClass(ClassID.ToInt32()));
+                if (ExtSql.Length > 1)
+                {
+                    str_sql += " and " + ExtSql;
+                }
+                str_sql += Order;
+
+
+                List<News> nlist = NewsView.GetModelList(str_sql, count.ToInt32());
+                StringBuilder sb = new StringBuilder();
+                foreach (News n in nlist)
+                {
+                    string title = n.Title;
+                    if (TitleLength.ToInt32() > 0)
+                    {
+                        title = title.CutString(TitleLength.ToInt32());
+                    }
+                    string timespan = "";
+                    if (showTime.ToInt32() > 0)
+                    {
+                        timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString("yyyy/MM/dd"));
+                    }
+
+                    sb.AppendLine(string.Format("<li>{0}{1}<a href='{2}' title='{3}'>{4}</a></li>", TitlePreChar, timespan, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title, title));
+                }
+                return sb.ToS();
+            }//Model=1 新闻
+            else if (cls.ModelID == 2)
             {
-                string title = n.Title;
-                if (TitleLength.ToInt32() > 0)
-                {
-                    title = title.CutString(TitleLength.ToInt32());
-                }
-                string timespan = "";
-                if (showTime.ToInt32() > 0)
-                {
-                    timespan = string.Format("<span class=\"news_time_span\">{0}</span>", n.NewsTime.ToString("yyyy/MM/dd"));
-                }
-
-                sb.AppendLine(string.Format("<li>{0}{1}<a href='{2}' title='{3}'>{4}</a></li>", TitlePreChar, timespan, BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)), n.Title,title));
+                return "图";
             }
-            return sb.ToS();
+            else if (cls.ModelID == 3)//问答
+            {
+                string str_sql = string.Format("classID in ({0})", GetAllSubClass(ClassID.ToInt32()));
+                if (ExtSql.Length > 1)
+                {
+                    str_sql += " and " + ExtSql;
+                }
+                str_sql += Order;
+                List<Question> qlist = QuestionView.GetModelList(str_sql, count.ToInt32());
+                StringBuilder sb = new StringBuilder();
+                foreach (Question q in qlist)
+                {
+                    string title = q.Title;
+                    if (TitleLength.ToInt32() > 0)
+                    {
+                        title = title.CutString(TitleLength.ToInt32());
+                    }
+                    string timespan = "";
+                    if (showTime.ToInt32() > 0)
+                    {
+                        timespan = string.Format("<span class=\"news_time_span\">{0}</span>", q.AskTime.ToString("yyyy/MM/dd"));
+                    }
+
+                    sb.AppendLine(string.Format("<li>{0}{1}<a href='{2}' title='{3}'>{4}</a></li>", TitlePreChar, timespan, BasePage.GetQuestionUrl(q, q.GetClass()), q.Title, title));
+                }
+                return sb.ToS();
+            }
+            else
+            {
+                return "未知模型";
+            }
         }
 
         /// <summary>
@@ -74,6 +113,16 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 通过关键词读取新闻
+        /// <summary>
+        /// 通过关键词读取新闻
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="TitleLength"></param>
+        /// <param name="showTime"></param>
+        /// <param name="key"></param>
+        /// <param name="Order"></param>
+        /// <returns></returns>
         public string getnewsbykeywords(string count, string TitleLength, string showTime, string key, string Order)
         {
 
@@ -109,6 +158,7 @@ namespace Voodoo.Basement
             return sb.ToS();
 
         }
+        #endregion
 
         #region 轮播Flash
         /// <summary>

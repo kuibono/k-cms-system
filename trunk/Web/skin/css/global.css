@@ -179,6 +179,11 @@ input[type=text],input[type=password],textarea
 .nav { width:100%; color:#000; height:30px; line-height:30px; }
 #main_1 .nav a { color:#000; }
 
+a.btn
+{
+    margin-left:60px;
+    margin-bottom:10px;
+}
 a.btn, a.btn span, button.btn span, button.btn b {
     background: url("../image/button_bg.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
@@ -196,4 +201,8 @@ a.btn span, button.btn b {
     display: block;
     min-width: 50px;
     padding: 0 15px 0 0;
+}
+.quesitem
+{
+    color:#666666;
 }

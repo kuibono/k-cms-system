@@ -106,6 +106,11 @@ namespace Web.e.admin.user
             url = string.Format("UserList.aspx?ebable={0}&group={1}", enable.ToString(), group.ToString());
 
             string ids = WS.RequestString("id");
+            if (ids.IsNullOrEmpty())
+            {
+                Js.AlertAndGoback("您没有选择任何项");
+                return;
+            }
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update [User] set Enable=0 where id in({0})", ids));
             Js.AlertAndChangUrl("设置成功！", url);
         }
@@ -117,6 +122,11 @@ namespace Web.e.admin.user
             url = string.Format("UserList.aspx?ebable={0}&group={1}", enable.ToString(), group.ToString());
 
             string ids = WS.RequestString("id");
+            if (ids.IsNullOrEmpty())
+            {
+                Js.AlertAndGoback("您没有选择任何项");
+                return;
+            }
             GetHelper().ExecuteNonQuery(CommandType.Text, string.Format("update [User] set Enable=1 where id in({0})", ids));
             Js.AlertAndChangUrl("设置成功！", url);
         }
@@ -129,6 +139,11 @@ namespace Web.e.admin.user
 
             //删除
             string ids = WS.RequestString("id");
+            if (ids.IsNullOrEmpty())
+            {
+                Js.AlertAndGoback("您没有选择任何项");
+                return;
+            }
             UserView.Del(string.Format("id in {0}",ids));
             Js.AlertAndChangUrl("删除成功！", url);
         }

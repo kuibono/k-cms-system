@@ -506,6 +506,20 @@
     <Compile Include="e\admin\news\NewsList.aspx.designer.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\question\QuestionEdit.aspx.cs">
+      <DependentUpon>QuestionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\question\QuestionEdit.aspx.designer.cs">
+      <DependentUpon>QuestionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\question\QuestionList.aspx.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\question\QuestionList.aspx.designer.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -740,6 +754,13 @@
     <Compile Include="e\post\upload_json.aspx.designer.cs">
       <DependentUpon>upload_json.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\tool\click.aspx.cs">
+      <DependentUpon>click.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\click.aspx.designer.cs">
+      <DependentUpon>click.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\tool\gettabledata.aspx.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -750,7 +771,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -777,6 +798,8 @@
     <Content Include="e\admin\images\ImageList.aspx" />
     <Content Include="e\admin\images\upload.aspx" />
     <Content Include="e\admin\Logout.aspx" />
+    <Content Include="e\admin\question\QuestionEdit.aspx" />
+    <Content Include="e\admin\question\QuestionList.aspx" />
     <Content Include="e\admin\template\VarTemplateEdit.aspx" />
     <Content Include="e\admin\template\VarTemplateList.aspx" />
     <Content Include="e\admin\tool\safecode.ashx" />
@@ -817,6 +840,7 @@
     <Content Include="e\installer\tablescript.txt" />
     <Content Include="e\post\question\NewQuestion.aspx" />
     <Content Include="e\post\question\PostAnswer.aspx" />
+    <Content Include="e\tool\click.aspx" />
     <Content Include="e\tool\gettabledata.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="robots.txt" />

@@ -34,6 +34,14 @@ namespace Web.e.post.question
                 Js.AlertAndGoback("对不起，参数错误，如有疑问，请联系管理员！");
                 return;
             }
+
+            Class cls = QuestionView.GetModelByID(qid.ToS()).GetClass();
+            if (UserAction.HasPostRight(cls.ID) == false)
+            {
+                Js.AlertAndGoback("对不起，对于本栏目您没有回答权限，如有疑问，请联系管理员！");
+                return;
+            }
+
             Answer a = new Answer();
             a.Agree = 0;
             a.AnswerTime = DateTime.Now;

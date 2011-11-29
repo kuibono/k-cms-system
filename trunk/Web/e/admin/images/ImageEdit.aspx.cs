@@ -57,7 +57,7 @@ namespace Web.e.admin.images
         {
 
 
-            ddl_Class.DataSource = NewsAction.NewsClass;
+            ddl_Class.DataSource = NewsAction.NewsClass.Where(p => p.IsLeafClass && p.ModelID == 2);
             ddl_Class.DataTextField = "ClassName";
             ddl_Class.DataValueField = "ID";
             ddl_Class.DataBind();
@@ -86,6 +86,7 @@ namespace Web.e.admin.images
                 txt_Keyword.Text = imga.KeyWords;
                 txt_ClickCount.Text = imga.ClickCount.ToS();
                 txt_ReplyCount.Text = imga.ClickCount.ToS();
+                txt_Intro.Text = imga.Intro;
 
                 rp_list.DataSource = ImagesView.GetModelList(string.Format("AlbumID={0} order by id", imga.ID));
                 rp_list.DataBind();
