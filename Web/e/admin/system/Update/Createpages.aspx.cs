@@ -54,6 +54,12 @@ namespace Web.e.admin.system.Update
                 CreatePage.CreateContentPage(img, img.GetClass());
             }
 
+            var ques = QuestionView.GetModelList();
+            foreach (var q in ques)
+            {
+                CreatePage.CreateContentPage(q, q.GetClass());
+            }
+
             Js.AlertAndGoback("成功！");
         }
 

@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
+using Voodoo;
 using Voodoo.Data;
 using Voodoo.Data.DbHelper;
 using System.IO;
@@ -33,6 +34,8 @@ namespace Web
             {
                 Response.Write("当前系统还没有首页，请登录<a href='e/admin/'>后台</a>生成！");
             }
+            //Response.Write("引子".GetNumberFromTitle());
+
         }
     }
 }

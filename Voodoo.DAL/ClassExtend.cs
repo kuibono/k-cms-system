@@ -23,6 +23,10 @@ namespace Voodoo.DAL
             {
                 return ImageAlbumView.Count(string.Format("ClassID={0}", cls.ID));
             }
+            else if (cls.ModelID == 3)
+            {
+                return QuestionView.Count(string.Format("ClassID={0}", cls.ID));
+            }
             else
             {
                 return 0;
@@ -32,6 +36,11 @@ namespace Voodoo.DAL
         public static Class GetClass(this ImageAlbum album)
         {
             return ClassView.GetModelByID(album.ClassID.ToS());
+        }
+
+        public static Class GetClass(this Question qs)
+        {
+            return ClassView.GetModelByID(qs.ClassID.ToS());
         }
     }
 }

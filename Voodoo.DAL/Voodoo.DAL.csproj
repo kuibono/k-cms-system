@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auto\AnswerView.cs" />
     <Compile Include="Auto\ClassView.cs" />
     <Compile Include="Auto\FileView.cs" />
     <Compile Include="Auto\GroupRoleView.cs" />
     <Compile Include="Auto\ImagesView.cs" />
     <Compile Include="Auto\LinkView.cs" />
     <Compile Include="Auto\NewsView.cs" />
+    <Compile Include="Auto\QuestionView.cs" />
     <Compile Include="Auto\SysDepartmentView.cs" />
     <Compile Include="Auto\SysGroupView.cs" />
     <Compile Include="Auto\SysKeywordView.cs" />
@@ -81,7 +83,7 @@
     <Compile Include="UserGroupView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
