@@ -402,15 +402,7 @@ namespace Web.e.admin
             west.Items.Add(acc);
 
 
-            ///////////////////
-            // CENTER REGION //
-            ///////////////////   
 
-            // Make TabPanel for Center Region
-            //TabPanel center = new TabPanel();
-            ////TabPanel center = new TabPanel();
-            //center.ID = "CenterPanel";
-            //center.ActiveTabIndex = 0;
 
             // Make Tab
             Panel tab1 = new Panel();
@@ -508,6 +500,10 @@ namespace Web.e.admin
                     else if (pcls.ModelID == 2)
                     {
                         node.Listeners.Click.Handler = "openpage('images/ImageList.aspx?class=" + pcls.ID + "')";
+                    }
+                    else if (pcls.ModelID == 3)
+                    {
+                        node.Listeners.Click.Handler = "openpage('question/QuestionList.aspx?class=" + pcls.ID + "')";
                     }
 
                 }

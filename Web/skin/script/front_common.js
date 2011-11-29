@@ -61,3 +61,8 @@ $("#div_login").load("/e/member/LoginForm.aspx?jsoncallback=" + new Date().toLoc
         }
     })
 })
+
+function clickcount(model, id) {
+    var url = "/e/Tool/click.aspx?m="+model+"&id="+id+"&rnd="+ new Date().toLocaleTimeString());
+    $.get(url);
+}

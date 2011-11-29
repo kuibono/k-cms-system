@@ -237,5 +237,27 @@ namespace Voodoo.Basement
             return (List<UserGroup>)Cache.Cache.GetCache("_UserGroupList");
         }
         #endregion 
+
+        #region 判断当前用户的投稿权限
+        /// <summary>
+        /// 判断当前用户的投稿权限
+        /// </summary>
+        /// <param name="ClassID"></param>
+        /// <returns></returns>
+        public static bool HasPostRight(int ClassID)
+        {
+
+            User u = opuser;
+            Class cls = ClassView.GetModelByID(ClassID.ToS());
+            if(u.ID.ToS().IsInArray(cls.PostRoles.Split(',')))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
