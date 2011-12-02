@@ -54,7 +54,7 @@ namespace Web.e.admin.news
             ddl_Zt.DataValueField = "ID";
             ddl_Zt.DataBind();
             ddl_Zt.Items.Add(new ListItem("--所有专题--", ""));
-            ddl_Zt.SelectedValue = "";
+            //ddl_Zt.SelectedValue = "";
 
 
             ddl_Class_search.DataSource = NewsAction.NewsClass.Where(pa => pa.IsLeafClass && pa.ModelID == 1).ToList();
@@ -67,6 +67,7 @@ namespace Web.e.admin.news
             if (WS.RequestInt("class") > 0)
             {
                 ddl_Class_search.SelectedValue = WS.RequestString("class");
+                ddl_Class.SelectedValue = WS.RequestString("class");
             }
 
             string str_sql = "";
@@ -119,6 +120,7 @@ namespace Web.e.admin.news
                 str_sql += "ClassID=" + cls;
                 //ddl_Class_search.Visible = false;
                 ddl_Class_search.Enabled = false;
+                ddl_Class.Enabled = false;
             }
             if (ddl_Class_search.SelectedValue != "")
             {
