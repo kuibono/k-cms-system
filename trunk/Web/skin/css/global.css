@@ -117,9 +117,9 @@ input[type=text],input[type=password],textarea
 	background-image:url(../image/menu_bg.png);
 }
 
-#menu > li  
+#menu li  
 {
-	list-style-type:none; 
+ 	list-style-type:none; 
 	float:left; 
 	display:block; 
 	margin:0px 10px; 

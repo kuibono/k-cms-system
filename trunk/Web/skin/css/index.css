@@ -4,6 +4,7 @@
 	background-repeat:no-repeat;
 	background-position:right bottom;
 }
+* html #pro_idea,#task_list{ background-image:url(../image/tranceparent.png)}/*ie6*/
 #task_list
 {
     width:300px;
@@ -11,6 +12,7 @@
     background-position:bottom right;
     background-repeat:no-repeat;
 }
+* html #task_list{ background-image:url(../image/tranceparent.png)}/*ie6*/
 #pro_idea
 {
     width:340px;

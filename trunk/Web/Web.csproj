@@ -754,13 +754,6 @@
     <Compile Include="e\post\upload_json.aspx.designer.cs">
       <DependentUpon>upload_json.aspx</DependentUpon>
     </Compile>
-    <Compile Include="e\tool\click.aspx.cs">
-      <DependentUpon>click.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="e\tool\click.aspx.designer.cs">
-      <DependentUpon>click.aspx</DependentUpon>
-    </Compile>
     <Compile Include="e\tool\gettabledata.aspx.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -768,10 +761,13 @@
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -840,9 +836,9 @@
     <Content Include="e\installer\tablescript.txt" />
     <Content Include="e\post\question\NewQuestion.aspx" />
     <Content Include="e\post\question\PostAnswer.aspx" />
-    <Content Include="e\tool\click.aspx" />
     <Content Include="e\tool\gettabledata.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="robots.txt" />
     <Content Include="skin\css\common.css" />
     <Content Include="skin\css\content.css" />
@@ -1099,6 +1095,7 @@
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
+    <None Include="e\installer\2000.sql" />
     <None Include="服务外包管理网-南京信息工程大学.url" />
   </ItemGroup>
   <ItemGroup>
