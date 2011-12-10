@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3339D124-C24D-420C-9AB1-DBC638912672}</ProjectGuid>
+    <ProjectGuid>{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Voodoo.DAL</RootNamespace>
-    <AssemblyName>Voodoo.DAL</AssemblyName>
+    <RootNamespace>Voodoo.Html</RootNamespace>
+    <AssemblyName>Voodoo.Html</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,7 +35,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -46,46 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auto\AnswerView.cs" />
-    <Compile Include="Auto\ClassView.cs" />
-    <Compile Include="Auto\FileView.cs" />
-    <Compile Include="Auto\GroupRoleView.cs" />
-    <Compile Include="Auto\ImagesView.cs" />
-    <Compile Include="Auto\LinkView.cs" />
-    <Compile Include="Auto\NewsView.cs" />
-    <Compile Include="Auto\QuestionView.cs" />
-    <Compile Include="Auto\SysDepartmentView.cs" />
-    <Compile Include="Auto\SysGroupView.cs" />
-    <Compile Include="Auto\SysKeywordView.cs" />
-    <Compile Include="Auto\SysModelView.cs" />
-    <Compile Include="Auto\SysRoleView.cs" />
-    <Compile Include="Auto\SysUserView.cs" />
-    <Compile Include="Auto\TemplateContentView.cs" />
-    <Compile Include="Auto\TemplateFaceView.cs" />
-    <Compile Include="Auto\TemplateGroupView.cs" />
-    <Compile Include="Auto\TemplateListView.cs" />
-    <Compile Include="Auto\TemplatePublicView.cs" />
-    <Compile Include="Auto\TemplateReplyView.cs" />
-    <Compile Include="Auto\TemplateSearchView.cs" />
-    <Compile Include="Auto\TemplateVarView.cs" />
-    <Compile Include="Auto\TemplTagsView.cs" />
-    <Compile Include="Auto\UserClassRelationView.cs" />
-    <Compile Include="Auto\UserFormView.cs" />
-    <Compile Include="Auto\UserGroupView.cs" />
-    <Compile Include="Auto\UserRegormView.cs" />
-    <Compile Include="Auto\UserView.cs" />
-    <Compile Include="Auto\ZtView.cs" />
-    <Compile Include="ClassExtend.cs" />
-    <Compile Include="ClassView.cs" />
-    <Compile Include="Auto\ImageAlbumView.cs" />
-    <Compile Include="NewsView.cs" />
+    <Compile Include="IPageCreater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserGroupView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Voodoo.DAL\Voodoo.DAL.csproj">
+      <Project>{3339D124-C24D-420C-9AB1-DBC638912672}</Project>
+      <Name>Voodoo.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Voodoo.Model\Voodoo.Model.csproj">
       <Project>{5C8CB1AB-C4DC-4B43-8BAC-8D1AD1FFF3CA}</Project>

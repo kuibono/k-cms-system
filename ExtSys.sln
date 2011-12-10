@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.DAL", "Voodoo.DAL\Vo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Setting", "Voodoo.Setting\Voodoo.Setting.csproj", "{EB265D9F-9F2C-4408-9EC1-A6C4EB2AA44F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\..\..\..\Voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\Voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Html", "Voodoo.Html\Voodoo.Html.csproj", "{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}"
 EndProject
 Global
 	GlobalSection(PowerDesigner) = preSolution
@@ -46,6 +48,10 @@ Global
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
