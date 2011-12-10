@@ -33,8 +33,10 @@ namespace Web.e.tool
                 return;
             }
             string tableName = sm.TableName;
-            string str_sql = string.Format("update {0} set ClickCount=ClickCount+1 where ID={1}", tableName, id);
-            GetHelper().ExecuteNonQuery(CommandType.Text, str_sql);
+            string str_sql = string.Format("update {0} set ClickCount=ClickCount+1 where ID={1}; select ClickCount from {0}  where ID={1}", tableName, id);
+            Response.Clear();
+            Response.Write(string.Format("document.write('{0}')",GetHelper().ExecuteScalar(CommandType.Text, str_sql)));
+            Response.End();
 
 
         }
