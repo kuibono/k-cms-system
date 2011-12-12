@@ -8,6 +8,7 @@ using Voodoo.Model;
 using Voodoo.DAL;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 using Voodoo.IO;
 using System.IO;
@@ -179,6 +180,7 @@ namespace Voodoo.Basement
                     fileName,
                     BasePage.SystemSetting.ExtName
                     );
+                result = Regex.Replace(result, "[/]{2,}", "/");
             }
 
 
@@ -220,10 +222,18 @@ namespace Voodoo.Basement
                 fileName,
                 BasePage.SystemSetting.ExtName
                 );
+            result = Regex.Replace(result, "[/]{2,}", "/");
             return result;
         }
         #endregion
 
+        #region 获取问答url地址
+        /// <summary>
+        /// 获取问答url地址
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
         public static string GetQuestionUrl(Question qs, Class cls)
         {
             string result = "";
@@ -246,8 +256,10 @@ namespace Voodoo.Basement
                 fileName,
                 BasePage.SystemSetting.ExtName
                 );
+            result = Regex.Replace(result, "[/]{2,}", "/");
             return result;
         }
+        #endregion
 
         #region 获取栏目地址
         /// <summary>
@@ -263,13 +275,16 @@ namespace Voodoo.Basement
             //    sitrurl = "/";
             //}
             string sitrurl = "";
-            return string.Format("{0}/{1}{2}/index{3}",
+            string result = string.Format("{0}/{1}{2}/index{3}",
                 //return string.Format("{0}/{1}{2}/",
                 sitrurl,
                 cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 SystemSetting.ExtName
                 );
+
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
         }
 
         /// <summary>
