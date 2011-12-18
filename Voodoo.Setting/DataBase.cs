@@ -14,7 +14,9 @@ namespace Voodoo.Setting
         {
             get
             {
-                return Voodoo.Config.Info.GetAppSetting("ConnStr");
+                return Voodoo.Config.Info.GetAppSetting("ConnStr") == null ? "Data Source=localhost;Initial Catalog=kcms20111210;Persist Security Info=True;User ID=sa;Password=kuibono4264269" : Voodoo.Config.Info.GetAppSetting("ConnStr");
+
+                //Data Source=localhost;Initial Catalog=kcms20111210;
             }
         }
 

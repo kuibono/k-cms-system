@@ -35,6 +35,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -45,13 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClassPage.cs" />
     <Compile Include="IPageCreater.cs" />
+    <Compile Include="PageCreaterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Public\Index.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Voodoo.Basement\Voodoo.Basement.csproj">
+      <Project>{DBF00E90-7517-477A-AD42-6539622A3AF8}</Project>
+      <Name>Voodoo.Basement</Name>
     </ProjectReference>
     <ProjectReference Include="..\Voodoo.DAL\Voodoo.DAL.csproj">
       <Project>{3339D124-C24D-420C-9AB1-DBC638912672}</Project>
