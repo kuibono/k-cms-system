@@ -22,10 +22,19 @@ namespace Web.e.api
             string Author = WS.RequestString("author");
             int ClassID = WS.RequestInt("classid");
             string ClassName = ClassView.GetModelByID(ClassID.ToString()).ClassName;
-            string Intro = WS.RequestString("intro");
+            string Intro = WS.RequestString("intro").HtmlDeCode();
             int Length = WS.RequestInt("length", 0);
 
             Book b = new Book();
+
+            if (Title.IsNullOrEmpty())
+            {
+                b.ID = int.MinValue;
+                Response.Clear();
+                Response.Write(Voodoo.IO.XML.Serialize(b));
+                return;
+            }
+
             b.Addtime = DateTime.Now;
             b.Author = Author;
             b.ClassID = ClassID;

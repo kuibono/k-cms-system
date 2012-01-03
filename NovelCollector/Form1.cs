@@ -79,6 +79,10 @@ namespace NovelCollector
                 {
                     book = (Book)Voodoo.IO.XML.DeSerialize(typeof(Book), Voodoo.Net.Url.GetHtml(Domain + "e/api/getBook.aspx?title=" + b.Title + "&author=" + b.Author, "utf-8"));
                 }
+                if (book.ID <= 0)//书籍添加失败或者没有这本书
+                {
+                    return;
+                }
 
                 //获取章节列表
                 List<ChapterList> cs = new List<ChapterList>();
