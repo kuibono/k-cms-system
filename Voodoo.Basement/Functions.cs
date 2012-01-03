@@ -385,5 +385,53 @@ namespace Voodoo.Basement
             return result;
         }
         #endregion
+
+        #region 获取小说栏目列表
+        /// <summary>
+        /// 获取小说栏目列表
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string getallnovelclass(string str)
+        {
+            List<Class> cls = ClassView.GetModelList("ModelID=4");
+            StringBuilder sb = new StringBuilder();
+            foreach (Class c in cls)
+            {
+                sb.Append(string.Format("<a href=\"{0}\">{1}</a> ",BasePage.GetClassUrl(c),c.ClassName));
+            }
+            return sb.ToS();
+        }
+        #endregion 获取小说栏目列表
+
+        #region 获取最新更新的书籍
+        /// <summary>
+        /// 获取最新更新的书籍
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public string getnoveltopupdate(string top)
+        {
+            int i_top = top.ToInt32();
+            List<Book> bs = BookView.GetModelList("Enable=1 order by UpdateTime desc", i_top);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Book b in bs)
+            {
+                Class c=BookView.GetClass(b);
+                sb.AppendLine(string.Format("<tr><td>[<a href=\"{0}\">{1}</a>]</td><td> <a href=\"{2}\">{3}</a></td><td><a href=\"{4}\">{5}</a></td><td>{6}</td><td>[{7}]</td></tr>",
+                    BasePage.GetClassUrl(c),
+                    b.ClassName,
+                    BasePage.GetBookUrl(b,c),
+                    b.Title,
+                    BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),c),
+                    b.LastChapterTitle,
+                    b.Author,
+                    b.UpdateTime.ToString("MM-dd")
+                    ));
+            }
+            return sb.ToS();
+        }
+        #endregion 获取最新更新的书籍
     }
 }

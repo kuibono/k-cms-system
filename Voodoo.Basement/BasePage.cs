@@ -261,6 +261,78 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取书籍url地址
+        /// <summary>
+        /// 获取问答url地址
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetBookUrl(Book b, Class cls)
+        {
+            string result = "";
+            string fileName = b.Title+"-"+b.Author;//书名+作者
+
+
+            string sitrurl = "/Book/";
+
+            string parentForder = cls.ClassForder;
+            if (!parentForder.IsNullOrEmpty())
+            {
+                parentForder += "/";
+            }
+
+
+            result = string.Format("{0}{1}{2}/{3}/index{4}",
+                sitrurl,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                cls.ClassForder,
+                fileName,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+        #endregion
+
+        #region 获取书籍章节url地址
+        /// <summary>
+        /// 获取问答url地址
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetBookChapterUrl(BookChapter cp, Class cls)
+        {
+            string result = "";
+            string fileName = cp.ID.ToString();
+
+            Book b = BookView.GetModelByID(cp.BookID.ToS());
+
+
+            string sitrurl = "/Book/";
+
+            string parentForder = cls.ClassForder;
+            if (!parentForder.IsNullOrEmpty())
+            {
+                parentForder += "/";
+            }
+
+
+            result = string.Format("{0}{1}{2}/{3}/{4}{5}",
+                sitrurl,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                cls.ClassForder,
+                 b.Title+"-"+b.Author,
+                cp.ID,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+        #endregion
+
+
         #region 获取栏目地址
         /// <summary>
         /// 获取栏目地址
@@ -274,7 +346,7 @@ namespace Voodoo.Basement
             //{
             //    sitrurl = "/";
             //}
-            string sitrurl = "";
+            string sitrurl = "/Book/";
             string result = string.Format("{0}/{1}{2}/index{3}",
                 //return string.Format("{0}/{1}{2}/",
                 sitrurl,
@@ -300,7 +372,7 @@ namespace Voodoo.Basement
             //{
             //    sitrurl = "/";
             //}
-            string sitrurl = "";
+            string sitrurl = "/Book/";
             return string.Format("{0}/{1}{2}/index{3}",
                 sitrurl,
                 cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
@@ -358,6 +430,44 @@ namespace Voodoo.Basement
         public static Question GetPreQuestion(Question qs, Class cls)
         {
             List<Question> lresult = QuestionView.GetModelList(string.Format("classID={0} and ID<{1} order by ID Desc", cls.ID, qs.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取上一本小说
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static Book GetPreBook(Book b, Class cls)
+        {
+            List<Book> lresult = BookView.GetModelList(string.Format("classID={0} and ID<{1} order by ID Desc", cls.ID, b.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取上一章节
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static BookChapter GetPreChapter(BookChapter cp, Book b)
+        {
+            List<BookChapter> lresult = BookChapterView.GetModelList(string.Format("BookID={0} and ID<{1} order by ID Desc", b.ID, cp.ID), 1);
             if (lresult.Count == 0)
             {
                 return null;
@@ -426,6 +536,39 @@ namespace Voodoo.Basement
                 return lresult.First();
             }
         }
+
+        public static Book GetNextBook(Book b, Class cls)
+        {
+            List<Book> lresult = BookView.GetModelList(string.Format("classID={0} and ID>{1} order by ID Asc", cls.ID, b.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取下一章节
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static BookChapter GetNextChapter(BookChapter cp, Book b)
+        {
+            List<BookChapter> lresult = BookChapterView.GetModelList(string.Format("BookID={0} and ID>{1} order by ID Asc", b.ID, cp.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
         #endregion
 
         #region 上传文件

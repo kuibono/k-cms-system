@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2011-11-8 15:30:47
+*生成时间：2012/1/3 2:20:23
 *生成者：kuibono
 */
 using System;
@@ -48,36 +48,16 @@ namespace Voodoo.DAL
 			for (int i = 0; i < dt.Rows.Count; i++)
             {
 				TemplateList M = new TemplateList();
-					
-					M.ID=dt.Rows[i]["ID"].ToInt32();
-					
-					
-					M.GroupID=dt.Rows[i]["GroupID"].ToInt32();
-					
-					
-					M.TempName=dt.Rows[i]["TempName"].ToString();
-					
-					
-					M.SysModel=dt.Rows[i]["SysModel"].ToInt32();
-					
-					
-					M.CutKeywords=dt.Rows[i]["CutKeywords"].ToInt32();
-					
-					
-					M.CutTitle=dt.Rows[i]["CutTitle"].ToInt32();
-					
-					
-					M.ShowRecordCount=dt.Rows[i]["ShowRecordCount"].ToInt32();
-					
-					
-					M.TimeFormat=dt.Rows[i]["TimeFormat"].ToString();
-					
-					
-					M.Content=dt.Rows[i]["Content"].ToString();
-					
-					
-					M.ListVar=dt.Rows[i]["ListVar"].ToString();
-					
+				M.ID=dt.Rows[i]["ID"].ToInt32();
+				M.GroupID=dt.Rows[i]["GroupID"].ToInt32();
+				M.TempName=dt.Rows[i]["TempName"].ToString();
+				M.SysModel=dt.Rows[i]["SysModel"].ToInt32();
+				M.CutKeywords=dt.Rows[i]["CutKeywords"].ToInt32();
+				M.CutTitle=dt.Rows[i]["CutTitle"].ToInt32();
+				M.ShowRecordCount=dt.Rows[i]["ShowRecordCount"].ToInt32();
+				M.TimeFormat=dt.Rows[i]["TimeFormat"].ToString();
+				M.Content=dt.Rows[i]["Content"].ToString();
+				M.ListVar=dt.Rows[i]["ListVar"].ToString();
 				
 				Ms.Add(M);
 			}
@@ -96,10 +76,10 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into TemplateList(GroupID,TempName,SysModel,CutKeywords,CutTitle,ShowRecordCount,TimeFormat,Content,ListVar) values(");
+			sb.Append("insert into [TemplateList]([GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(");
 			sb.Append(M.GroupID.ToS());
 			sb.Append(",");	
-			sb.Append("'"+M.TempName+"'");
+			sb.Append("N'"+M.TempName+"'");
 			sb.Append(",");	
 			sb.Append(M.SysModel.ToS());
 			sb.Append(",");	
@@ -109,11 +89,11 @@ namespace Voodoo.DAL
 			sb.Append(",");	
 			sb.Append(M.ShowRecordCount.ToS());
 			sb.Append(",");	
-			sb.Append("'"+M.TimeFormat+"'");
+			sb.Append("N'"+M.TimeFormat+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.Content+"'");
+			sb.Append("N'"+M.Content+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.ListVar+"'");
+			sb.Append("N'"+M.ListVar+"'");
 			sb.Append(")");
 			
 			if(DataBase.CmsDbType==DataBase.DbType.SqlServer)
@@ -153,25 +133,25 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
 			StringBuilder sb = new StringBuilder();
-            sb.Append("update TemplateList set ");
+            sb.Append("update [TemplateList] set ");
 			
-			sb.Append("GroupID="+M.GroupID.ToS());
+			sb.Append("[GroupID]="+M.GroupID.ToS());
 			sb.Append(",");
-			sb.Append("TempName='"+M.TempName+"'");
+			sb.Append("[TempName]=N'"+M.TempName+"'");
 			sb.Append(",");
-			sb.Append("SysModel="+M.SysModel.ToS());
+			sb.Append("[SysModel]="+M.SysModel.ToS());
 			sb.Append(",");
-			sb.Append("CutKeywords="+M.CutKeywords.ToS());
+			sb.Append("[CutKeywords]="+M.CutKeywords.ToS());
 			sb.Append(",");
-			sb.Append("CutTitle="+M.CutTitle.ToS());
+			sb.Append("[CutTitle]="+M.CutTitle.ToS());
 			sb.Append(",");
-			sb.Append("ShowRecordCount="+M.ShowRecordCount.ToS());
+			sb.Append("[ShowRecordCount]="+M.ShowRecordCount.ToS());
 			sb.Append(",");
-			sb.Append("TimeFormat='"+M.TimeFormat+"'");
+			sb.Append("[TimeFormat]=N'"+M.TimeFormat+"'");
 			sb.Append(",");
-			sb.Append("Content='"+M.Content+"'");
+			sb.Append("[Content]=N'"+M.Content+"'");
 			sb.Append(",");
-			sb.Append("ListVar='"+M.ListVar+"'");
+			sb.Append("[ListVar]=N'"+M.ListVar+"'");
 			
 			sb.Append(" where ID='" + M.ID + "'");
 			sb.Append("");
@@ -224,7 +204,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplateList M = new TemplateList();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,GroupID,TempName,SysModel,CutKeywords,CutTitle,ShowRecordCount,TimeFormat,Content,ListVar from TemplateList where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where ID='" + id.ToString()+"'", true);
 			if (!Rs.Read())
 			{
 					M.ID=0;
@@ -259,7 +239,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             TemplateList M = new TemplateList();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,GroupID,TempName,SysModel,CutKeywords,CutTitle,ShowRecordCount,TimeFormat,Content,ListVar from TemplateList where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.ID=0;
@@ -292,7 +272,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select ID,GroupID,TempName,SysModel,CutKeywords,CutTitle,ShowRecordCount,TimeFormat,Content,ListVar from TemplateList where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -313,7 +293,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  ID,GroupID,TempName,SysModel,CutKeywords,CutTitle,ShowRecordCount,TimeFormat,Content,ListVar from TemplateList where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where "+ m_where);
             return dt;
         }
 		#endregion
@@ -349,7 +329,7 @@ namespace Voodoo.DAL
 		public static int Count(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from TemplateList where "+m_where));
+			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from [TemplateList] where "+m_where));
 		}
 		#endregion
 		
@@ -364,7 +344,7 @@ namespace Voodoo.DAL
 			bool returnValue = false;
             IDbHelper Sql = GetHelper();
             DbDataReader sd = null;
-            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from TemplateList where " + m_where, true);
+            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from [TemplateList] where " + m_where, true);
             if (sd.Read())
             {
                 returnValue = true;
@@ -408,7 +388,7 @@ namespace Voodoo.DAL
 			IDbHelper Sql = GetHelper();
 			try
 			{
-				Sql.ExecuteNonQuery(CommandType.Text, "delete from TemplateList where "+ m_where);
+				Sql.ExecuteNonQuery(CommandType.Text, "delete from [TemplateList] where "+ m_where);
 				return true;
 			}
 			catch

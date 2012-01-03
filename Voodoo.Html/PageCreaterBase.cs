@@ -24,7 +24,20 @@ namespace Voodoo.Html
         /// 获取模版内容
         /// </summary>
         /// <returns></returns>
-        protected abstract string GetTemplateString();
+        protected virtual string GetTemplateString()
+        {
+            return "";
+        }
+
+        /// <summary>
+        /// 获取模版内容
+        /// </summary>
+        /// <param name="ModelID"></param>
+        /// <returns></returns>
+        protected virtual string GetTemplateString(int ModelID)
+        {
+            return "";
+        }
         #endregion
 
         #region 默认模板组

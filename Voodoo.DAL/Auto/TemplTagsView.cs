@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2011-11-8 15:30:47
+*生成时间：2012/1/3 2:20:24
 *生成者：kuibono
 */
 using System;
@@ -48,30 +48,14 @@ namespace Voodoo.DAL
 			for (int i = 0; i < dt.Rows.Count; i++)
             {
 				TemplTags M = new TemplTags();
-					
-					M.ID=dt.Rows[i]["ID"].ToInt32();
-					
-					
-					M.TagName=dt.Rows[i]["TagName"].ToString();
-					
-					
-					M.TagCode=dt.Rows[i]["TagCode"].ToString();
-					
-					
-					M.FunctionName=dt.Rows[i]["FunctionName"].ToString();
-					
-					
-					M.TagFormat=dt.Rows[i]["TagFormat"].ToString();
-					
-					
-					M.Remark=dt.Rows[i]["Remark"].ToString();
-					
-					
-					M.Enable=dt.Rows[i]["Enable"].ToBoolean();
-					
-					
-					M.TagIndex=dt.Rows[i]["TagIndex"].ToInt32();
-					
+				M.ID=dt.Rows[i]["ID"].ToInt32();
+				M.TagName=dt.Rows[i]["TagName"].ToString();
+				M.TagCode=dt.Rows[i]["TagCode"].ToString();
+				M.FunctionName=dt.Rows[i]["FunctionName"].ToString();
+				M.TagFormat=dt.Rows[i]["TagFormat"].ToString();
+				M.Remark=dt.Rows[i]["Remark"].ToString();
+				M.Enable=dt.Rows[i]["Enable"].ToBoolean();
+				M.TagIndex=dt.Rows[i]["TagIndex"].ToInt32();
 				
 				Ms.Add(M);
 			}
@@ -90,16 +74,16 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into TemplTags(TagName,TagCode,FunctionName,TagFormat,Remark,Enable,TagIndex) values(");
-			sb.Append("'"+M.TagName+"'");
+			sb.Append("insert into [TemplTags]([TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex]) values(");
+			sb.Append("N'"+M.TagName+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.TagCode+"'");
+			sb.Append("N'"+M.TagCode+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.FunctionName+"'");
+			sb.Append("N'"+M.FunctionName+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.TagFormat+"'");
+			sb.Append("N'"+M.TagFormat+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.Remark+"'");
+			sb.Append("N'"+M.Remark+"'");
 			sb.Append(",");	
 			sb.Append(M.Enable.ToS());
 			sb.Append(",");	
@@ -143,21 +127,21 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
 			StringBuilder sb = new StringBuilder();
-            sb.Append("update TemplTags set ");
+            sb.Append("update [TemplTags] set ");
 			
-			sb.Append("TagName='"+M.TagName+"'");
+			sb.Append("[TagName]=N'"+M.TagName+"'");
 			sb.Append(",");
-			sb.Append("TagCode='"+M.TagCode+"'");
+			sb.Append("[TagCode]=N'"+M.TagCode+"'");
 			sb.Append(",");
-			sb.Append("FunctionName='"+M.FunctionName+"'");
+			sb.Append("[FunctionName]=N'"+M.FunctionName+"'");
 			sb.Append(",");
-			sb.Append("TagFormat='"+M.TagFormat+"'");
+			sb.Append("[TagFormat]=N'"+M.TagFormat+"'");
 			sb.Append(",");
-			sb.Append("Remark='"+M.Remark+"'");
+			sb.Append("[Remark]=N'"+M.Remark+"'");
 			sb.Append(",");
-			sb.Append("Enable="+M.Enable.ToS());
+			sb.Append("[Enable]="+M.Enable.ToS());
 			sb.Append(",");
-			sb.Append("TagIndex="+M.TagIndex.ToS());
+			sb.Append("[TagIndex]="+M.TagIndex.ToS());
 			
 			sb.Append(" where ID='" + M.ID + "'");
 			sb.Append("");
@@ -210,7 +194,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplTags M = new TemplTags();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,TagName,TagCode,FunctionName,TagFormat,Remark,Enable,TagIndex from TemplTags where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where ID='" + id.ToString()+"'", true);
 			if (!Rs.Read())
 			{
 					M.ID=0;
@@ -243,7 +227,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             TemplTags M = new TemplTags();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,TagName,TagCode,FunctionName,TagFormat,Remark,Enable,TagIndex from TemplTags where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.ID=0;
@@ -274,7 +258,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select ID,TagName,TagCode,FunctionName,TagFormat,Remark,Enable,TagIndex from TemplTags where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -295,7 +279,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  ID,TagName,TagCode,FunctionName,TagFormat,Remark,Enable,TagIndex from TemplTags where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where "+ m_where);
             return dt;
         }
 		#endregion
@@ -331,7 +315,7 @@ namespace Voodoo.DAL
 		public static int Count(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from TemplTags where "+m_where));
+			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from [TemplTags] where "+m_where));
 		}
 		#endregion
 		
@@ -346,7 +330,7 @@ namespace Voodoo.DAL
 			bool returnValue = false;
             IDbHelper Sql = GetHelper();
             DbDataReader sd = null;
-            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from TemplTags where " + m_where, true);
+            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from [TemplTags] where " + m_where, true);
             if (sd.Read())
             {
                 returnValue = true;
@@ -390,7 +374,7 @@ namespace Voodoo.DAL
 			IDbHelper Sql = GetHelper();
 			try
 			{
-				Sql.ExecuteNonQuery(CommandType.Text, "delete from TemplTags where "+ m_where);
+				Sql.ExecuteNonQuery(CommandType.Text, "delete from [TemplTags] where "+ m_where);
 				return true;
 			}
 			catch

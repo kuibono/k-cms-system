@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011-11-17 9:28:07
+*生成时间：2012/1/3 2:24:16
 *生成者：kuibono
 */
 using System;
@@ -9,7 +9,7 @@ namespace Voodoo.Model
 	///<summary>
 	///表File的实体类
 	///</summary>
-	public class File
+	public partial class File
 	{
 		/// <summary>
 		/// 
@@ -19,13 +19,15 @@ namespace Voodoo.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		public int ClassID{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public System.DateTime UpTime{get ; set; }
 		
 		/// <summary>
-		/// 图片
-   //Flash
-   //多媒体
-   //其他
+		/// 
 		/// </summary>
 		public int FileType{get ; set; }
 		

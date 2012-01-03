@@ -50,7 +50,7 @@ namespace Web.e.tool
                     str_sql += str_insert;
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        str_sql += "'" + dt.Rows[i][j].ToString().Replace("'", "''") + "'";
+                        str_sql += "N'" + dt.Rows[i][j].ToString().Replace("'", "''") + "'";
                         if (j != dt.Columns.Count - 1)
                         {
                             str_sql += ",";

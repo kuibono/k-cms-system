@@ -25,10 +25,10 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FileInfo file = new FileInfo(Server.MapPath("~/Index" + SystemSetting.ExtName));
+            FileInfo file = new FileInfo(Server.MapPath("~/Book/Index" + SystemSetting.ExtName));
             if (file.Exists)
             {
-                Server.Transfer("~/Index" + SystemSetting.ExtName);
+                Server.Transfer("~/Book/Index" + SystemSetting.ExtName);
             }
             else
             {

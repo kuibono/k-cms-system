@@ -20,6 +20,9 @@ namespace Web.e.tool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
+            #region 阅读统计
             int model = WS.RequestInt("m");
             int id = WS.RequestInt("id");
 
@@ -36,8 +39,38 @@ namespace Web.e.tool
             string str_sql = string.Format("update {0} set ClickCount=ClickCount+1 where ID={1}; select ClickCount from {0}  where ID={1}", tableName, id);
             Response.Clear();
             Response.Write(string.Format("document.write('{0}')",GetHelper().ExecuteScalar(CommandType.Text, str_sql)));
-            Response.End();
+            //Response.End();
+            #endregion
 
+            #region 阅读历史记录
+
+            string bookids = "";
+            if (Voodoo.Cookies.Cookies.GetCookie("history") != null)
+            {
+                bookids = Voodoo.Cookies.Cookies.GetCookie("history").Value;
+            }
+            string[] ids = bookids.Split(',');
+
+            var tids = ids.ToList();
+            tids.Add(id.ToS());
+            tids = tids.Distinct(p => p).ToList();
+            tids = tids.Where(p => p.Trim().Length > 0).ToList();
+            tids = tids.Take(5).ToList();
+
+            bookids = "";
+            foreach (string str in tids)
+            {
+                if (str.Trim().Length > 0)
+                {
+                    bookids += str + ",";
+                }
+            }
+            bookids=bookids.TrimEnd(',');
+
+            HttpCookie cookie = new HttpCookie("history", bookids);
+            Voodoo.Cookies.Cookies.SetCookie(cookie);
+
+            #endregion
 
         }
     }

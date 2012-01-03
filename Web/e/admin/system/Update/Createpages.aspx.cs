@@ -60,6 +60,12 @@ namespace Web.e.admin.system.Update
                 CreatePage.CreateContentPage(q, q.GetClass());
             }
 
+            var books = BookView.GetModelList();
+            foreach (var b in books)
+            {
+                CreatePage.CreateContentPage(b, BookView.GetClass(b));
+            }
+
             Js.AlertAndGoback("成功！");
         }
 
@@ -75,6 +81,36 @@ namespace Web.e.admin.system.Update
                     file.Directory.Delete(true);
                 }
             }
+
+            DirectoryInfo dir = new DirectoryInfo(Server.MapPath("~/Book/"));
+            if (dir.Exists)
+            {
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    file.Delete();
+                }
+
+                DirectoryInfo[]  subdirs=dir.GetDirectories();
+                foreach (DirectoryInfo subdir in subdirs)
+                {
+                    subdir.Delete(true);
+                }
+
+
+            }
+
+            Js.AlertAndGoback("成功！");
+        }
+
+        protected void btn_Chapter_Click(object sender, EventArgs e)
+        {
+            var chapters = BookChapterView.GetModelList();
+            foreach (var c in chapters)
+            {
+                CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
+            }
+
             Js.AlertAndGoback("成功！");
         }
     }

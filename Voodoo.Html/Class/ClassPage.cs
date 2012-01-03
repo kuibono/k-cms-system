@@ -47,10 +47,10 @@ namespace Voodoo.Html.Class
         }
         #endregion 
 
-        protected string GetClassHtml(Class c, int page)
+        protected string GetClassHtml(Voodoo.Model.Class c, int page)
         {
-
-        }-
+            return "";
+        }
 
         #region 获取分类页面的物理路径
         /// <summary>
@@ -83,9 +83,9 @@ namespace Voodoo.Html.Class
         /// 获取模版内容
         /// </summary>
         /// <returns></returns>
-        protected override string GetTemplateString()
+        protected override string GetTemplateString(int ModelID)
         {
-            TemplateList tl = TemplateListView.Find(string.Format("GroupID={0}", DefaultGroup.ID.ToS()));
+            TemplateList tl = TemplateListView.Find(string.Format("GroupID={0} and SysModel={1}", DefaultGroup.ID.ToS(),ModelID.ToString()));
 
             return tl.Content;
         }
@@ -98,7 +98,20 @@ namespace Voodoo.Html.Class
         /// <returns></returns>
         public override string GetHtml(object Model)
         {
-            string templateContent = this.GetTemplateString();
+            Voodoo.Model.Class cls = Model as Voodoo.Model.Class;
+
+            string templateContent = this.GetTemplateString(cls.ModelID);
+
+            return templateContent;
+        }
+
+        /// <summary>
+        /// 创建静态页面
+        /// </summary>
+        /// <param name="Model"></param>
+        public override void CreatePage(object Model)
+        {
+            base.CreatePage(Model);
         }
     }
 }
