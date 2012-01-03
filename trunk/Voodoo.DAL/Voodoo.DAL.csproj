@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auto\AnswerView.cs" />
+    <Compile Include="Auto\BookChapterView.cs" />
+    <Compile Include="Auto\BookView.cs" />
+    <Compile Include="Auto\BookVolumeView.cs" />
     <Compile Include="Auto\ClassView.cs" />
     <Compile Include="Auto\FileView.cs" />
     <Compile Include="Auto\GroupRoleView.cs" />
@@ -72,9 +75,9 @@
     <Compile Include="Auto\UserClassRelationView.cs" />
     <Compile Include="Auto\UserFormView.cs" />
     <Compile Include="Auto\UserGroupView.cs" />
-    <Compile Include="Auto\UserRegormView.cs" />
     <Compile Include="Auto\UserView.cs" />
     <Compile Include="Auto\ZtView.cs" />
+    <Compile Include="BookView.cs" />
     <Compile Include="ClassExtend.cs" />
     <Compile Include="ClassView.cs" />
     <Compile Include="Auto\ImageAlbumView.cs" />
@@ -83,7 +86,7 @@
     <Compile Include="UserGroupView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>

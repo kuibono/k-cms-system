@@ -75,7 +75,11 @@ namespace Web.e.intaller
 
 
             //写入连接字符串
-            Voodoo.Config.Info.SetAppSetting("ConnStr", ConnStr);
+            try
+            {
+                Voodoo.Config.Info.SetAppSetting("ConnStr", ConnStr);
+            }
+            catch { }
 
             //导入表
 

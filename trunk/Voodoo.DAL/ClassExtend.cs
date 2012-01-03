@@ -27,6 +27,10 @@ namespace Voodoo.DAL
             {
                 return QuestionView.Count(string.Format("ClassID={0}", cls.ID));
             }
+            else if (cls.ModelID == 4)
+            {
+                return BookView.Count(string.Format("ClassID={0}", cls.ID));
+            }
             else
             {
                 return 0;

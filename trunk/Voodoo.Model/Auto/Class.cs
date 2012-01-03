@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2011-11-8 15:29:08
+*生成时间：2012/1/3 2:24:15
 *生成者：kuibono
 */
 using System;
@@ -9,7 +9,7 @@ namespace Voodoo.Model
 	///<summary>
 	///表Class的实体类
 	///</summary>
-	public class Class
+	public partial class Class
 	{
 		/// <summary>
 		/// 
@@ -39,9 +39,12 @@ namespace Voodoo.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		public string ParentClassForder{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public string ClassForder{get ; set; }
-
-        public string ParentClassForder { get; set; }
 		
 		/// <summary>
 		/// 
@@ -94,7 +97,7 @@ namespace Voodoo.Model
 		public string PostRoles{get ; set; }
 		
 		/// <summary>
-		/// 不生成
+		/// 
 		/// </summary>
 		public int PostcreateList{get ; set; }
 		
@@ -109,13 +112,12 @@ namespace Voodoo.Model
 		public bool NeedAudit{get ; set; }
 		
 		/// <summary>
-		/// 不能管理信息 
+		/// 
 		/// </summary>
 		public int PostManagement{get ; set; }
 		
 		/// <summary>
-		/// 不生成
-
+		/// 
 		/// </summary>
 		public int EditcreateList{get ; set; }
 		
@@ -160,32 +162,22 @@ namespace Voodoo.Model
 		public int SearchModel{get ; set; }
 		
 		/// <summary>
-		/// 静态
-  // 动态
+		/// 
 		/// </summary>
 		public int ClassPageMode{get ; set; }
 		
 		/// <summary>
-		/// 静态
-   //动态
+		/// 
 		/// </summary>
 		public int ContentPageMode{get ; set; }
 		
 		/// <summary>
-   //     /// 发布时间
-   //ID
-   //点击率
-   //下载数
-   //评论数
+		/// 
 		/// </summary>
 		public string ManagementOrder{get ; set; }
 		
 		/// <summary>
-		/// 发布时间
-   //ID
-   //点击率
-   //下载数
-   //评论数
+		/// 
 		/// </summary>
 		public string ListPageOrder{get ; set; }
 		
@@ -210,14 +202,12 @@ namespace Voodoo.Model
 		public string ContentPageExtName{get ; set; }
 		
 		/// <summary>
-		/// id
-   //time
-   //md5
+		/// 
 		/// </summary>
 		public int ContentPageNameMode{get ; set; }
 		
 		/// <summary>
-		/// yyyy-MM-dd
+		/// 
 		/// </summary>
 		public string ContentPageDirMode{get ; set; }
 		

@@ -216,6 +216,14 @@ namespace Web.e.admin
             n_mp_AnswerList.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=AnswerList')";
             n_model_public.Nodes.Add(n_mp_AnswerList);
 
+            Ext.Net.TreeNode n_mp_ChapterList = new Ext.Net.TreeNode("小说章节列表", Icon.UserRed);
+            n_mp_ChapterList.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=ChapterList')";
+            n_model_public.Nodes.Add(n_mp_ChapterList);
+
+            Ext.Net.TreeNode n_mp_BookChapter = new Ext.Net.TreeNode("小说章节", Icon.UserRed);
+            n_mp_BookChapter.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=BookChapter')";
+            n_model_public.Nodes.Add(n_mp_BookChapter);
+
             root_model.Nodes.Add(n_model_public);
             //-----------------------------------公共模版-----------------------------------------------//
 

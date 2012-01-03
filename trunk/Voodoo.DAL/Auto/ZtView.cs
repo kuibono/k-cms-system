@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2011-11-8 15:30:47
+*生成时间：2012/1/3 2:20:24
 *生成者：kuibono
 */
 using System;
@@ -48,48 +48,20 @@ namespace Voodoo.DAL
 			for (int i = 0; i < dt.Rows.Count; i++)
             {
 				Zt M = new Zt();
-					
-					M.ID=dt.Rows[i]["ID"].ToInt32();
-					
-					
-					M.ClassID=dt.Rows[i]["ClassID"].ToInt32();
-					
-					
-					M.ZtName=dt.Rows[i]["ZtName"].ToString();
-					
-					
-					M.Forder=dt.Rows[i]["Forder"].ToString();
-					
-					
-					M.ExtName=dt.Rows[i]["ExtName"].ToString();
-					
-					
-					M.ICON=dt.Rows[i]["ICON"].ToString();
-					
-					
-					M.KeyWords=dt.Rows[i]["KeyWords"].ToString();
-					
-					
-					M.Description=dt.Rows[i]["Description"].ToString();
-					
-					
-					M.LtIndex=dt.Rows[i]["LtIndex"].ToInt32();
-					
-					
-					M.ShowInNav=dt.Rows[i]["ShowInNav"].ToBoolean();
-					
-					
-					M.FaceModel=dt.Rows[i]["FaceModel"].ToInt32();
-					
-					
-					M.ListModel=dt.Rows[i]["ListModel"].ToInt32();
-					
-					
-					M.ListOrder=dt.Rows[i]["ListOrder"].ToInt32();
-					
-					
-					M.ListPageSize=dt.Rows[i]["ListPageSize"].ToInt32();
-					
+				M.ID=dt.Rows[i]["ID"].ToInt32();
+				M.ClassID=dt.Rows[i]["ClassID"].ToInt32();
+				M.ZtName=dt.Rows[i]["ZtName"].ToString();
+				M.Forder=dt.Rows[i]["Forder"].ToString();
+				M.ExtName=dt.Rows[i]["ExtName"].ToString();
+				M.ICON=dt.Rows[i]["ICON"].ToString();
+				M.KeyWords=dt.Rows[i]["KeyWords"].ToString();
+				M.Description=dt.Rows[i]["Description"].ToString();
+				M.LtIndex=dt.Rows[i]["LtIndex"].ToInt32();
+				M.ShowInNav=dt.Rows[i]["ShowInNav"].ToBoolean();
+				M.FaceModel=dt.Rows[i]["FaceModel"].ToInt32();
+				M.ListModel=dt.Rows[i]["ListModel"].ToInt32();
+				M.ListOrder=dt.Rows[i]["ListOrder"].ToInt32();
+				M.ListPageSize=dt.Rows[i]["ListPageSize"].ToInt32();
 				
 				Ms.Add(M);
 			}
@@ -108,20 +80,20 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into Zt(ClassID,ZtName,Forder,ExtName,ICON,KeyWords,Description,LtIndex,ShowInNav,FaceModel,ListModel,ListOrder,ListPageSize) values(");
+			sb.Append("insert into [Zt]([ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize]) values(");
 			sb.Append(M.ClassID.ToS());
 			sb.Append(",");	
-			sb.Append("'"+M.ZtName+"'");
+			sb.Append("N'"+M.ZtName+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.Forder+"'");
+			sb.Append("N'"+M.Forder+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.ExtName+"'");
+			sb.Append("N'"+M.ExtName+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.ICON+"'");
+			sb.Append("N'"+M.ICON+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.KeyWords+"'");
+			sb.Append("N'"+M.KeyWords+"'");
 			sb.Append(",");	
-			sb.Append("'"+M.Description+"'");
+			sb.Append("N'"+M.Description+"'");
 			sb.Append(",");	
 			sb.Append(M.LtIndex.ToS());
 			sb.Append(",");	
@@ -173,33 +145,33 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
 			StringBuilder sb = new StringBuilder();
-            sb.Append("update Zt set ");
+            sb.Append("update [Zt] set ");
 			
-			sb.Append("ClassID="+M.ClassID.ToS());
+			sb.Append("[ClassID]="+M.ClassID.ToS());
 			sb.Append(",");
-			sb.Append("ZtName='"+M.ZtName+"'");
+			sb.Append("[ZtName]=N'"+M.ZtName+"'");
 			sb.Append(",");
-			sb.Append("Forder='"+M.Forder+"'");
+			sb.Append("[Forder]=N'"+M.Forder+"'");
 			sb.Append(",");
-			sb.Append("ExtName='"+M.ExtName+"'");
+			sb.Append("[ExtName]=N'"+M.ExtName+"'");
 			sb.Append(",");
-			sb.Append("ICON='"+M.ICON+"'");
+			sb.Append("[ICON]=N'"+M.ICON+"'");
 			sb.Append(",");
-			sb.Append("KeyWords='"+M.KeyWords+"'");
+			sb.Append("[KeyWords]=N'"+M.KeyWords+"'");
 			sb.Append(",");
-			sb.Append("Description='"+M.Description+"'");
+			sb.Append("[Description]=N'"+M.Description+"'");
 			sb.Append(",");
-			sb.Append("LtIndex="+M.LtIndex.ToS());
+			sb.Append("[LtIndex]="+M.LtIndex.ToS());
 			sb.Append(",");
-			sb.Append("ShowInNav="+M.ShowInNav.ToS());
+			sb.Append("[ShowInNav]="+M.ShowInNav.ToS());
 			sb.Append(",");
-			sb.Append("FaceModel="+M.FaceModel.ToS());
+			sb.Append("[FaceModel]="+M.FaceModel.ToS());
 			sb.Append(",");
-			sb.Append("ListModel="+M.ListModel.ToS());
+			sb.Append("[ListModel]="+M.ListModel.ToS());
 			sb.Append(",");
-			sb.Append("ListOrder="+M.ListOrder.ToS());
+			sb.Append("[ListOrder]="+M.ListOrder.ToS());
 			sb.Append(",");
-			sb.Append("ListPageSize="+M.ListPageSize.ToS());
+			sb.Append("[ListPageSize]="+M.ListPageSize.ToS());
 			
 			sb.Append(" where ID='" + M.ID + "'");
 			sb.Append("");
@@ -252,7 +224,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			Zt M = new Zt();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,ClassID,ZtName,Forder,ExtName,ICON,KeyWords,Description,LtIndex,ShowInNav,FaceModel,ListModel,ListOrder,ListPageSize from Zt where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where ID='" + id.ToString()+"'", true);
 			if (!Rs.Read())
 			{
 					M.ID=0;
@@ -291,7 +263,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             Zt M = new Zt();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select ID,ClassID,ZtName,Forder,ExtName,ICON,KeyWords,Description,LtIndex,ShowInNav,FaceModel,ListModel,ListOrder,ListPageSize from Zt where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.ID=0;
@@ -328,7 +300,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select ID,ClassID,ZtName,Forder,ExtName,ICON,KeyWords,Description,LtIndex,ShowInNav,FaceModel,ListModel,ListOrder,ListPageSize from Zt where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -349,7 +321,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  ID,ClassID,ZtName,Forder,ExtName,ICON,KeyWords,Description,LtIndex,ShowInNav,FaceModel,ListModel,ListOrder,ListPageSize from Zt where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where "+ m_where);
             return dt;
         }
 		#endregion
@@ -385,7 +357,7 @@ namespace Voodoo.DAL
 		public static int Count(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from Zt where "+m_where));
+			return Convert.ToInt32(Sql.ExecuteScalar(CommandType.Text,"select count(0) from [Zt] where "+m_where));
 		}
 		#endregion
 		
@@ -400,7 +372,7 @@ namespace Voodoo.DAL
 			bool returnValue = false;
             IDbHelper Sql = GetHelper();
             DbDataReader sd = null;
-            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from Zt where " + m_where, true);
+            sd = Sql.ExecuteReader(CommandType.Text, "select 1 from [Zt] where " + m_where, true);
             if (sd.Read())
             {
                 returnValue = true;
@@ -444,7 +416,7 @@ namespace Voodoo.DAL
 			IDbHelper Sql = GetHelper();
 			try
 			{
-				Sql.ExecuteNonQuery(CommandType.Text, "delete from Zt where "+ m_where);
+				Sql.ExecuteNonQuery(CommandType.Text, "delete from [Zt] where "+ m_where);
 				return true;
 			}
 			catch

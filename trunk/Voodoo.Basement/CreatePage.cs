@@ -55,7 +55,9 @@ namespace Voodoo.Basement
             列表,
             搜索,
             相册图片列表,
-            问答回答列表
+            问答回答列表,
+            小说章节列表,
+            小说章节
         }
         #endregion
 
@@ -69,7 +71,7 @@ namespace Voodoo.Basement
         {
             SysSetting setting = BasePage.SystemSetting;
 
-            string IndexFile = "~/index" + setting.ExtName;
+            string IndexFile = "~/Book/index" + setting.ExtName;
 
             string Content = "";
             Content = GetTempateString(1, TempType.首页);
@@ -85,7 +87,7 @@ namespace Voodoo.Basement
             Content = ReplaceTagContent(Content);
 
             //BasePage.SystemSetting.ExtName
-            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~/Index") + BasePage.SystemSetting.ExtName, Content);
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~/Book/Index") + BasePage.SystemSetting.ExtName, Content);
 
 
             return Content;
@@ -399,6 +401,227 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region  生成内容页--书籍
+        /// <summary>
+        /// 生成内容页--图片
+        /// </summary>
+        /// <param name="album"></param>
+        /// <param name="cls"></param>
+        public static void CreateContentPage(Book b, Class cls)
+        {
+
+
+            string FileName = BasePage.GetBookUrl(b, cls);
+            string Content = "";
+
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
+
+
+
+            Content = GetTempateString(tmpid, TempType.内容);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro};
+
+            Content = ReplacePageAttribute(Content, pa);
+
+
+
+            #region 替换内容
+
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+
+            Content = Content.Replace("[!--book.url--]", BasePage.GetBookUrl(b, cls));//问题地址
+            Content = Content.Replace("[!--book.id--]", b.ID.ToString());
+            Content = Content.Replace("[!--book.classid--]", b.ClassID.ToS());
+            Content = Content.Replace("[!--book.classname--]", b.ClassName);
+            Content = Content.Replace("[!--book.ztid--]", b.ZtID.ToS());
+            Content = Content.Replace("[!--book.ztname--]", b.ZtName);
+            Content = Content.Replace("[!--book.title--]", b.Title);
+            Content = Content.Replace("[!--book.oldtitle--]", b.Title);
+            Content = Content.Replace("[!--book.author--]", b.Author);
+            Content = Content.Replace("[!--book.intro--]", b.Intro);
+            Content = Content.Replace("[!--book.length--]", b.Length.ToS());
+            Content = Content.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
+            Content = Content.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--book.status--]", b.Status.ToS());
+            Content = Content.Replace("[!--book.isvip--]", b.IsVip.ToChinese());
+            Content = Content.Replace("[!--book.faceimage--]", b.FaceImage);
+            Content = Content.Replace("[!--book.savecount--]", b.SaveCount.ToS());
+            Content = Content.Replace("[!--book.enable--]", b.Enable.ToChinese());
+            Content = Content.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
+            Content = Content.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
+            Content = Content.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
+            Content = Content.Replace("[!--book.updatetime--]", b.UpdateTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
+            Content = Content.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);
+            Content = Content.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
+            Content = Content.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+
+            List<BookChapter> chapters = BookChapterView.GetModelList(string.Format("BookID={0}", b.ID.ToS()));
+
+            StringBuilder sb = new StringBuilder();
+            string list_tmp = GetTempateString(1, TempType.小说章节列表);
+            //sb.AppendLine("<ul>");
+            foreach (BookChapter cp in chapters)
+            {
+                string row = list_tmp.Replace("[!--chapter.url--]", BasePage.GetBookChapterUrl(cp,cls));
+                row = row.Replace("[!--chapter.title--]", cp.Title);
+
+                sb.AppendLine(row);
+            }
+            //sb.AppendLine("</ul>");
+
+            Content = Content.Replace("[!--chapter.list--]", sb.ToS());
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            #region 上一篇  下一篇 链接
+            Book news_pre = BasePage.GetPreBook(b, cls);
+            Book news_next = BasePage.GetNextBook(b, cls);
+
+            //上一篇
+            string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_pre != null)
+            {
+                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.prelink--]", pre_link);
+
+            //下一篇
+            string next_link = "<a href=\"javascript:void(0)\">没有了</a>";
+            if (news_next != null)
+            {
+                next_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.nextlink--]", next_link);
+
+            #endregion
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+        }
+        #endregion
+
+        #region  创建章节页面
+        /// <summary>
+        /// 创建章节页面
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <param name="b"></param>
+        /// <param name="cls"></param>
+        public static void CreateBookChapterPage(BookChapter cp, Book b, Class cls)
+        {
+            string FileName = BasePage.GetBookChapterUrl(cp, cls);
+            string Content = GetTempateString(1, TempType.小说章节);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+            #region 替换内容
+
+            //替换栏目
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+            Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
+
+            //替换书籍信息
+            Content = Content.Replace("[!--book.url--]", BasePage.GetBookUrl(b, cls));//问题地址
+            Content = Content.Replace("[!--book.id--]", b.ID.ToString());
+            Content = Content.Replace("[!--book.classid--]", b.ClassID.ToS());
+            Content = Content.Replace("[!--book.classname--]", b.ClassName);
+            Content = Content.Replace("[!--book.ztid--]", b.ZtID.ToS());
+            Content = Content.Replace("[!--book.ztname--]", b.ZtName);
+            Content = Content.Replace("[!--book.title--]", b.Title);
+            Content = Content.Replace("[!--book.oldtitle--]", b.Title);
+            Content = Content.Replace("[!--book.author--]", b.Author);
+            Content = Content.Replace("[!--book.intro--]", b.Intro);
+            Content = Content.Replace("[!--book.length--]", b.Length.ToS());
+            Content = Content.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
+            Content = Content.Replace("[!--book.addtime--]", b.Addtime.ToString());
+            Content = Content.Replace("[!--book.status--]", b.Status.ToS());
+            Content = Content.Replace("[!--book.isvip--]", b.IsVip.ToChinese());
+            Content = Content.Replace("[!--book.faceimage--]", b.FaceImage);
+            Content = Content.Replace("[!--book.savecount--]", b.SaveCount.ToS());
+            Content = Content.Replace("[!--book.enable--]", b.Enable.ToChinese());
+            Content = Content.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
+            Content = Content.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
+            Content = Content.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
+            Content = Content.Replace("[!--book.updatetime--]", b.UpdateTime.ToString());
+            Content = Content.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
+            Content = Content.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);
+            Content = Content.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString());
+            Content = Content.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
+            Content = Content.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+
+            //替换章节信息
+
+            Content = Content.Replace("[!--chapter.id--]", cp.ID.ToS());
+            Content = Content.Replace("[!--chapter.bookid--]", cp.BookID.ToS());
+            Content = Content.Replace("[!--chapter.booktitle--]", cp.BookTitle);
+            Content = Content.Replace("[!--chapter.classid--]", cp.ClassID.ToS());
+            Content = Content.Replace("[!--chapter.classname--]", cp.ClassName);
+            Content = Content.Replace("[!--chapter.valumeid--]", cp.ValumeID.ToS());
+            Content = Content.Replace("[!--chapter.valumename--]", cp.ValumeName);
+            Content = Content.Replace("[!--chapter.title--]", cp.Title);
+            Content = Content.Replace("[!--chapter.isvipchapter--]", cp.IsVipChapter.ToChinese());
+            Content = Content.Replace("[!--chapter.textlength--]", cp.TextLength.ToS());
+            Content = Content.Replace("[!--chapter.updatetime--]", cp.UpdateTime.ToS());
+            Content = Content.Replace("[!--chapter.enable--]", cp.Enable.ToChinese());
+            Content = Content.Replace("[!--chapter.istemp--]", cp.IsTemp.ToChinese());
+            Content = Content.Replace("[!--chapter.isfree--]", cp.IsFree.ToChinese());
+            Content = Content.Replace("[!--chapter.chapterindex--]", cp.ChapterIndex.ToS());
+            Content = Content.Replace("[!--chapter.isimagechapter--]", cp.IsImageChapter.ToChinese());
+            Content = Content.Replace("[!--chapter.content--]", cp.Content);
+            Content = Content.Replace("[!--chapter.clickcount--]", cp.ClickCount.ToS());
+
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            #region 上一篇  下一篇 链接
+            BookChapter news_pre = BasePage.GetPreChapter(cp, b);
+            BookChapter news_next = BasePage.GetNextChapter(cp, b);
+
+            //上一篇
+            string pre_link = "<a href=\"javascript:void(0)\">上章：没有了</a>";
+            if (news_pre != null)
+            {
+                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">上章：{2}</a>", BasePage.GetBookChapterUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.prelink--]", pre_link);
+
+            //下一篇
+            string next_link = "<a href=\"javascript:void(0)\">下章：没有了</a>";
+            if (news_next != null)
+            {
+                next_link = string.Format("<a href=\"{0}\" title=\"{1}\">下章：{2}</a>", BasePage.GetBookChapterUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+            }
+            Content = Content.Replace("[!--news.nextlink--]", next_link);
+
+            #endregion
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+
+        }
+        #endregion
 
         #region 创建列表页面
         /// <summary>
@@ -519,6 +742,7 @@ namespace Voodoo.Basement
             }
             #endregion  图片系统模板
 
+            #region 问答系统
             else if(c.ModelID==3)
             {
                 StringBuilder sb_list=new StringBuilder();
@@ -546,6 +770,53 @@ namespace Voodoo.Basement
                 }
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }
+            #endregion 问答系统
+
+            #region 小说系统
+            else if (c.ModelID == 4)
+            {
+                StringBuilder sb_list = new StringBuilder();
+                List<Book> qs = BookView.GetModelList(string.Format("ClassID={0} order by id desc", c.ID));
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+                recordCount = qs.Count;
+
+                qs = qs.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+                foreach (Book b in qs)
+                {
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--book.url--]", BasePage.GetBookUrl(b, c));//书籍
+                    str_lst = str_lst.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),c));//书籍
+                    str_lst = str_lst.Replace("[!--book.id--]", b.ID.ToString());
+                    str_lst = str_lst.Replace("[!--book.classid--]", b.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--book.classname--]",b.ClassName);
+                    str_lst = str_lst.Replace("[!--book.ztid--]", b.ZtID.ToS());
+                    str_lst = str_lst.Replace("[!--book.ztname--]", b.ZtName);
+                    str_lst = str_lst.Replace("[!--book.title--]", temp.CutTitle > 0 ? b.Title.CutString(temp.CutTitle) : b.Title);
+                    str_lst = str_lst.Replace("[!--book.oldtitle--]", b.Title);
+                    str_lst = str_lst.Replace("[!--book.author--]", b.Author);
+                    str_lst = str_lst.Replace("[!--book.intro--]", b.Intro);
+                    str_lst = str_lst.Replace("[!--book.length--]", b.Length.ToS());
+                    str_lst = str_lst.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.status--]", b.Status.ToS());
+                    str_lst = str_lst.Replace("[!--book.isvip--]", b.IsVip.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.faceimage--]", b.FaceImage);
+                    str_lst = str_lst.Replace("[!--book.savecount--]", b.SaveCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.enable--]", b.Enable.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
+                    str_lst = str_lst.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
+                    str_lst = str_lst.Replace("[!--book.updatetime--]", b.UpdateTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
+                    str_lst = str_lst.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);
+                    str_lst = str_lst.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
+                    str_lst = str_lst.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+                    sb_list.AppendLine(str_lst);
+                }
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }
+            #endregion 小说系统
 
             #endregion
 
@@ -581,6 +852,212 @@ namespace Voodoo.Basement
             }
         }
         #endregion
+
+
+        public static string GetSearchResult(int SysModel,int page,string key)
+        {
+            int pagecount = 1;
+            int recordCount = 0;
+
+            string Content = GetTempateString(1, TempType.全站搜索);
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = key, UpdateTime = DateTime.Now.ToString(), Description = "全站搜索" };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+            Content = Content.Replace("[!--search.key--]", key);
+
+            //此处要区分系统模型
+            #region 替换列表
+
+            #region 未完成
+            //#region 新闻系统模板
+            //if (SysModel == 1)//新闻系统模板
+            //{
+            //    StringBuilder sb_list = new StringBuilder();
+            //    List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
+
+            //    pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(20)).YueShu();
+            //    recordCount = ns.Count;
+
+            //    ns = ns.Skip((page - 1) * 20).Take(20).ToList();
+            //    foreach (News n in ns)
+            //    {
+            //        //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+
+            //        string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
+            //        if (n.TitleB)
+            //        {
+            //            _title = "<strong>" + _title + "</strong>";
+            //        }
+            //        if (n.TitleI)
+            //        {
+            //            _title = "<I>" + _title + "</I>";
+            //        }
+            //        if (n.TitleS)
+            //        {
+            //            _title = "<STRIKE>" + _title + "</STRIKE>";
+            //        }
+
+            //        string str_lst = temp.ListVar;
+            //        str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
+            //        str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
+            //        str_lst = str_lst.Replace("[!--oldtitle--]", _title);
+            //        str_lst = str_lst.Replace("[!--description--]", n.Description);
+            //        str_lst = str_lst.Replace("[!--author--]", n.Author);
+            //        str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
+            //        string title = n.Title;
+            //        str_lst = str_lst.Replace("[!--title--]", n.Title);
+            //        sb_list.AppendLine(str_lst);
+            //    }
+
+            //    Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            //}//end 新闻系统模板
+            //#endregion  新闻系统模板
+
+            //#region 图片系统模板
+            //else if (SysModel == 2)//图片系统模板
+            //{
+            //    StringBuilder sb_list = new StringBuilder();
+            //    List<ImageAlbum> ns = ImageAlbumView.GetModelList(string.Format("ClassID={0} order by SetTop desc, id desc", c.ID)).ToList();
+            //    pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(20)).YueShu();
+            //    recordCount = ns.Count;
+
+            //    ns = ns.Skip((page - 1) * 20).Take(20).ToList();
+            //    foreach (ImageAlbum n in ns)
+            //    {
+            //        string str_lst = temp.ListVar;
+            //        str_lst = str_lst.Replace("[!--image.author--]", n.Author);
+            //        str_lst = str_lst.Replace("[!--image.authorid--]", n.AuthorID.ToS());
+            //        str_lst = str_lst.Replace("[!--image.classid--]", n.ClassID.ToS());
+            //        str_lst = str_lst.Replace("[!--image.clickcount--]", n.ClickCount.ToS());
+            //        str_lst = str_lst.Replace("[!--image.createtime--]", n.CreateTime.ToString());
+            //        str_lst = str_lst.Replace("[!--image.folder--]", n.Folder);
+            //        str_lst = str_lst.Replace("[!--image.id--]", n.ID.ToS());
+            //        str_lst = str_lst.Replace("[!--image.intro--]", n.Intro);
+            //        str_lst = str_lst.Replace("[!--image.replycount--]", n.ReplyCount.ToS());
+            //        str_lst = str_lst.Replace("[!--image.size--]", n.Size.ToS());
+            //        str_lst = str_lst.Replace("[!--image.title--]", n.Title);
+            //        str_lst = str_lst.Replace("[!--image.updatetime--]", n.UpdateTime.ToS());
+            //        str_lst = str_lst.Replace("[!--image.ztid--]", n.ZtID.ToS());
+            //        str_lst = str_lst.Replace("[!--image.url--]", BasePage.GetImageUrl(n, c));
+
+            //        sb_list.AppendLine(str_lst);
+            //    }
+
+            //    Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            //}
+            //#endregion  图片系统模板
+
+            //#region 问答系统
+            //else if (SysModel == 3)
+            //{
+            //    StringBuilder sb_list = new StringBuilder();
+            //    List<Question> qs = QuestionView.GetModelList(string.Format("ClassID={0} order by id desc", c.ID));
+            //    pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
+            //    recordCount = qs.Count;
+
+            //    qs = qs.Skip((page - 1) * 20).Take(20).ToList();
+            //    foreach (Question q in qs)
+            //    {
+            //        string str_lst = temp.ListVar;
+            //        str_lst = str_lst.Replace("[!--question.url--]", BasePage.GetQuestionUrl(q, c));//问题地址
+            //        str_lst = str_lst.Replace("[!--question.asktime--]", q.AskTime.ToString(temp.TimeFormat));
+            //        str_lst = str_lst.Replace("[!--question.classid--]", q.ClassID.ToS());
+            //        str_lst = str_lst.Replace("[!--question.clickcount--]", q.ClickCount.ToS());
+            //        str_lst = str_lst.Replace("[!--question.content--]", q.Content);
+            //        str_lst = str_lst.Replace("[!--question.id--]", q.ID.ToS());
+            //        str_lst = str_lst.Replace("[!--question.title--]", temp.CutTitle > 0 ? q.Title.CutString(temp.CutTitle) : q.Title);
+            //        str_lst = str_lst.Replace("[!--question.oldtitle--]", q.Title);
+            //        str_lst = str_lst.Replace("[!--question.userid--]", q.UserID.ToS());
+            //        str_lst = str_lst.Replace("[!--question.username--]", q.UserName);
+            //        str_lst = str_lst.Replace("[!--question.ztid--]", q.ZtID.ToS());
+            //        str_lst = str_lst.Replace("[!--question.answercount--]", AnswerView.Count(string.Format("QuestionID={0}", q.ID)).ToS());
+            //        sb_list.AppendLine(str_lst);
+            //    }
+            //    Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            //}
+            //#endregion 问答系统
+            #endregion
+
+            #region 小说系统
+            if (SysModel == 4)
+            {
+                StringBuilder sb_list = new StringBuilder();
+                List<Book> qs = BookView.GetModelList(string.Format("Title like '%{0}%' or Author like '%{0}%' or Intro like '%{0}%' order by id desc", key));
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
+                recordCount = qs.Count;
+
+                qs = qs.Skip((page - 1) * 20).Take(20).ToList();
+                foreach (Book b in qs)
+                {
+                    TemplateList temp = TemplateListView.Find("SysModel=4");
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--book.url--]", BasePage.GetBookUrl(b, BookView.GetClass(b)));//书籍
+                    str_lst = str_lst.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), BookView.GetClass(b)));//书籍
+                    str_lst = str_lst.Replace("[!--book.id--]", b.ID.ToString());
+                    str_lst = str_lst.Replace("[!--book.classid--]", b.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--book.classname--]", b.ClassName);
+                    str_lst = str_lst.Replace("[!--book.ztid--]", b.ZtID.ToS());
+                    str_lst = str_lst.Replace("[!--book.ztname--]", b.ZtName);
+                    str_lst = str_lst.Replace("[!--book.title--]", temp.CutTitle > 0 ? b.Title.CutString(temp.CutTitle) : b.Title);
+                    str_lst = str_lst.Replace("[!--book.oldtitle--]", b.Title);
+                    str_lst = str_lst.Replace("[!--book.author--]", b.Author);
+                    str_lst = str_lst.Replace("[!--book.intro--]", b.Intro);
+                    str_lst = str_lst.Replace("[!--book.length--]", b.Length.ToS());
+                    str_lst = str_lst.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.status--]", b.Status.ToS());
+                    str_lst = str_lst.Replace("[!--book.isvip--]", b.IsVip.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.faceimage--]", b.FaceImage);
+                    str_lst = str_lst.Replace("[!--book.savecount--]", b.SaveCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.enable--]", b.Enable.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
+                    str_lst = str_lst.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
+                    str_lst = str_lst.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
+                    str_lst = str_lst.Replace("[!--book.updatetime--]", b.UpdateTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
+                    str_lst = str_lst.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);
+                    str_lst = str_lst.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
+                    str_lst = str_lst.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+                    sb_list.AppendLine(str_lst);
+                }
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }
+            #endregion 小说系统
+
+            #endregion
+
+            //替换标签变量
+            Content = ReplaceTagContent(Content);
+
+            #region 替换分页模板
+
+            string tmp_pager = GetTempateString(1, TempType.列表分页);
+            tmp_pager = tmp_pager.Replace("[!--thispage--]", page.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagenum--]", pagecount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--lencord--]", "20");
+            tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagelink--]", BuildPagerLink(key, page));
+            tmp_pager = tmp_pager.Replace("[!--options--]", BuidPagerOption(key, page));
+
+            Content = Content.Replace("[!--show.listpage--]", tmp_pager);
+
+            #endregion
+
+            return Content;
+
+        }
+
+
+
+
+
+
 
         #region  创建页头和页尾 CreateHeaderString CreateFooterString
         public static string CreateHeaderString(string title)
@@ -655,6 +1132,23 @@ namespace Voodoo.Basement
             string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
+
+        public static string BuildPagerLink(string key, int page)
+        {
+            int recordCount = BookView.Count(string.Format("Title like '%{0}%' or Author like '%{0}%' or Intro like '%{0}%'", key));
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+
+            temp = TemplateListView.GetModelByID("4");
+
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+
+            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "index_" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
+        }
         #endregion
 
         #region 创建跳转下拉菜单
@@ -675,6 +1169,35 @@ namespace Voodoo.Basement
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
             }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
+
+
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<select onchange='location.href=this.value'>");
+            for (int i = 1; i <= pagecount; i++)
+            {
+                if (page == i)
+                {
+                    sb.AppendLine(string.Format("<option value='index{0}' selected>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                }
+                else
+                {
+                    sb.AppendLine(string.Format("<option value='index{0}'>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                }
+            }
+            sb.AppendLine("</select>");
+            return sb.ToS();
+        }
+
+        public static string BuidPagerOption(string key, int page)
+        {
+            int recordCount = BookView.Count(string.Format("Title like '%{0}%' or Author like '%{0}%' or Intro like '%{0}%'", key));
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+ 
+            temp = TemplateListView.GetModelByID("4");
 
 
             int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
@@ -882,7 +1405,7 @@ namespace Voodoo.Basement
                     if (TempID <= 0)
                     {
                         tl = TemplateListView.Find(string.Format("GroupID={0}", DefaultGroup.ID.ToS()));
-                    }o
+                    }
                     return tl.Content;
                 case TempType.列表分页:
                     return tp.ListPager;
@@ -935,6 +1458,12 @@ namespace Voodoo.Basement
                     break;
                 case TempType.问答回答列表:
                     return tp.AnswerList;
+                    break;
+                case TempType.小说章节列表:
+                    return tp.ChapterList;
+                    break;
+                case TempType.小说章节:
+                    return tp.BookChapter;
                     break;
                 default:
                     return "";

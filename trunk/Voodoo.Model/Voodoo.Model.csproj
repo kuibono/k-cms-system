@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auto\Answer.cs" />
+    <Compile Include="Auto\Book.cs" />
+    <Compile Include="Auto\BookChapter.cs" />
+    <Compile Include="Auto\BookVolume.cs" />
     <Compile Include="Auto\Class.cs" />
     <Compile Include="Auto\File.cs" />
     <Compile Include="Auto\GroupRole.cs" />
@@ -54,6 +57,7 @@
     <Compile Include="Auto\Link.cs" />
     <Compile Include="Auto\News.cs" />
     <Compile Include="Auto\Question.cs" />
+    <Compile Include="Auto\Relpy.cs" />
     <Compile Include="Auto\SysDepartment.cs" />
     <Compile Include="Auto\SysGroup.cs" />
     <Compile Include="Auto\SysKeyword.cs" />
@@ -73,13 +77,13 @@
     <Compile Include="Auto\UserClassRelation.cs" />
     <Compile Include="Auto\UserForm.cs" />
     <Compile Include="Auto\UserGroup.cs" />
-    <Compile Include="Auto\UserRegorm.cs" />
+    <Compile Include="Auto\UserRerm.cs" />
     <Compile Include="Auto\Zt.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>

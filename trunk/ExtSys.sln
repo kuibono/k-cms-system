@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\Voodoo\Voodoo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Html", "Voodoo.Html\Voodoo.Html.csproj", "{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelCollector", "NovelCollector\NovelCollector.csproj", "{6808A398-2ECB-46A9-94C6-3C8900EFC10A}"
+EndProject
 Global
 	GlobalSection(PowerDesigner) = preSolution
 		HasSWS = 1
@@ -52,6 +54,10 @@ Global
 		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
