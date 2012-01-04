@@ -71,16 +71,16 @@ namespace Web.e.admin.system.Update
 
         protected void btn_ClearAll_Click(object sender, EventArgs e)
         {
-            var cls = NewsAction.NewsClass;
-            cls = cls.Where(p => p.ParentID == 0).ToList();
-            foreach (var c in cls)
-            {
-                FileInfo file = new FileInfo(Server.MapPath(GetClassUrl(c)));
-                if (file.Directory.Exists)
-                {
-                    file.Directory.Delete(true);
-                }
-            }
+            //var cls = NewsAction.NewsClass;
+            //cls = cls.Where(p => p.ParentID == 0).ToList();
+            //foreach (var c in cls)
+            //{
+            //    FileInfo file = new FileInfo(Server.MapPath(GetClassUrl(c)));
+            //    if (file.Directory.Exists)
+            //    {
+            //        file.Directory.Delete(true);
+            //    }
+            //}
 
             DirectoryInfo dir = new DirectoryInfo(Server.MapPath("~/Book/"));
             if (dir.Exists)
