@@ -19,6 +19,8 @@ namespace Web.e.tool
     {
         public long id { get; set; }
 
+        public int bookid { get; set; }
+
         public DateTime time { get; set; }
     }
 
@@ -26,39 +28,47 @@ namespace Web.e.tool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int chapterid = WS.RequestInt("cid");
-            BookChapter bc = BookChapterView.GetModelByID(chapterid.ToS());
-            bc.ClickCount=bc.ClickCount > 0 ? bc.ClickCount + 1 : 1;
-            BookChapterView.Update(bc);
-
-            //写入Cookie
-
-            List<Cook> cookies = new List<Cook>();
-            if (Voodoo.Cookies.Cookies.GetCookie("history") != null)
+            try
             {
-                string[] chapters = Voodoo.Cookies.Cookies.GetCookie("history").Value.Split(',');
-                foreach (string chapter in chapters)
+                int chapterid = WS.RequestInt("cid");
+                BookChapter bc = BookChapterView.GetModelByID(chapterid.ToS());
+                bc.ClickCount = bc.ClickCount > 0 ? bc.ClickCount + 1 : 1;
+                BookChapterView.Update(bc);
+
+                //写入Cookie
+
+                List<Cook> cookies = new List<Cook>();
+                if (Voodoo.Cookies.Cookies.GetCookie("history") != null)
                 {
-                    string[] arr_chapter=chapter.Split('|');
-                    cookies.Add(new Cook(){ id=arr_chapter[0].ToInt64(), time=arr_chapter[1].ToDateTime()});
+                    string[] chapters = Voodoo.Cookies.Cookies.GetCookie("history").Value.Split(',');
+                    foreach (string chapter in chapters)
+                    {
+                        string[] arr_chapter = chapter.Split('|');
+                        cookies.Add(new Cook() { id = arr_chapter[0].ToInt64(), time = arr_chapter[1].ToDateTime(), bookid = arr_chapter[2].ToInt32() });
+                    }
                 }
-            }
 
-            cookies = cookies.Where(p => p.id != chapterid).OrderByDescending(p=>p.time).Take(4).ToList();
-            cookies.Add(new Cook() { id = chapterid, time = DateTime.Now });
+                cookies = cookies.Where(p => p.bookid != bc.BookID).OrderByDescending(p => p.time).Take(4).ToList();
+                cookies.Add(new Cook() { id = chapterid, time = DateTime.Now, bookid=bc.BookID });
 
-            StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder();
 
-            foreach (Cook c in cookies)
+                foreach (Cook c in cookies)
+                {
+                    sb.Append(string.Format("{0}|{1}|{2},", c.id, c.time.ToString(), c.bookid.ToS()));
+                }
+                sb = sb.TrimEnd(',');
+
+                HttpCookie _cookie = new HttpCookie("history", sb.ToString());
+                _cookie.Expires = DateTime.Now.AddYears(1);
+
+                Voodoo.Cookies.Cookies.SetCookie(_cookie);
+            }//end try
+            catch
             {
-                sb.Append(string.Format("{0}|{1},",c.id,c.time.ToString()));
+                Voodoo.Cookies.Cookies.Remove("history");
             }
-            sb = sb.TrimEnd(',');
 
-            HttpCookie _cookie = new HttpCookie("history", sb.ToString());
-            _cookie.Expires = DateTime.Now.AddYears(1);
-
-            Voodoo.Cookies.Cookies.SetCookie(_cookie);
         }
     }
 }
