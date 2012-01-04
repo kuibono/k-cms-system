@@ -120,23 +120,6 @@ namespace NovelCollector
                         string content = m_content.Groups["key"].Value;
                         content = Regex.Replace(content, "<script[\\s\\S]*?</script>", "").TrimDbDangerousChar();
 
-                        //BookChapter bookc = new BookChapter();
-                        //bookc.BookID = book.ID;
-                        //bookc.BookTitle = book.Title;
-                        //bookc.ChapterIndex = 0;
-                        //bookc.ClassID = cls.ID;
-                        //bookc.ClassName = cls.ClassName;
-                        //bookc.ClickCount = 0;
-                        //bookc.Content = content;
-                        //bookc.Enable = true;
-                        //bookc.IsFree = true;
-                        //bookc.IsImageChapter = false;
-                        //bookc.IsTemp = false;
-                        //bookc.IsVipChapter = false;
-                        //bookc.TextLength = content.TrimHTML().Length;
-                        //bookc.Title = cp.Title;
-                        //bookc.UpdateTime = DateTime.Now;
-                        //bookc.ValumeID = 0;
 
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
@@ -149,18 +132,6 @@ namespace NovelCollector
                         string nouse=Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8);
 
 
-                        ////不存在才允许插入
-                        //if (BookChapterView.Exist(string.Format("BookTitle='{0}' and Title='{1}'", bookc.BookTitle, bookc.Title)) == false)
-                        //{
-                        //    BookChapterView.Insert(bookc);
-                        //}
-
-
-                        //book.UpdateTime = DateTime.Now;
-                        //book.LastChapterID = bookc.ID;
-                        //book.LastChapterTitle = bookc.Title;
-
-                        //BookView.Update(book);
 
                         m_content = m_content.NextMatch();
                     }
@@ -218,6 +189,19 @@ namespace NovelCollector
             {
                 string content = m.Groups[0].Value;
                 content = Regex.Replace(content, "<script[\\s\\S]*?</script>", "");
+                content = Regex.Replace(content, "<a[\\s\\S]*?</a>", "");
+                content = Regex.Replace(content, "\\([\\s\\S]{3,50}?\\)", "");
+                content = Regex.Replace(content, "\\[[\\s\\S]{3,50}?\\]", "");
+                content = Regex.Replace(content, "{[\\s\\S]{3,50}?}", "");
+                content = Regex.Replace(content, "「[\\s\\S]{3,50}?」", "");
+                content = Regex.Replace(content, "『[\\s\\S]{3,50}?』", "");
+                content = Regex.Replace(content, "〖[\\s\\S]{3,50}?〗", "");
+                content = Regex.Replace(content, "【[\\s\\S]{3,50}?】", "");
+                content = Regex.Replace(content, "（[\\s\\S]{3,50}?）", "");
+                content = Regex.Replace(content, "www[\\s\\S]{3,10}?com", "");
+                content = Regex.Replace(content, "www[\\s\\S]{3,10}?net", "");
+                content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
+                content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
 
                 Book b = BookView.GetModelByID("1");
                 Class cls = BookView.GetClass(b);

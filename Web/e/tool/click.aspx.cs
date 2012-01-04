@@ -44,31 +44,31 @@ namespace Web.e.tool
 
             #region 阅读历史记录
 
-            string bookids = "";
-            if (Voodoo.Cookies.Cookies.GetCookie("history") != null)
-            {
-                bookids = Voodoo.Cookies.Cookies.GetCookie("history").Value;
-            }
-            string[] ids = bookids.Split(',');
+            //string bookids = "";
+            //if (Voodoo.Cookies.Cookies.GetCookie("history") != null)
+            //{
+            //    bookids = Voodoo.Cookies.Cookies.GetCookie("history").Value;
+            //}
+            //string[] ids = bookids.Split(',');
 
-            var tids = ids.ToList();
-            tids.Add(id.ToS());
-            tids = tids.Distinct(p => p).ToList();
-            tids = tids.Where(p => p.Trim().Length > 0).ToList();
-            tids = tids.Take(5).ToList();
+            //var tids = ids.ToList();
+            //tids.Add(id.ToS());
+            //tids = tids.Distinct(p => p).ToList();
+            //tids = tids.Where(p => p.Trim().Length > 0).ToList();
+            //tids = tids.Take(5).ToList();
 
-            bookids = "";
-            foreach (string str in tids)
-            {
-                if (str.Trim().Length > 0)
-                {
-                    bookids += str + ",";
-                }
-            }
-            bookids=bookids.TrimEnd(',');
+            //bookids = "";
+            //foreach (string str in tids)
+            //{
+            //    if (str.Trim().Length > 0)
+            //    {
+            //        bookids += str + ",";
+            //    }
+            //}
+            //bookids=bookids.TrimEnd(',');
 
-            HttpCookie cookie = new HttpCookie("history", bookids);
-            Voodoo.Cookies.Cookies.SetCookie(cookie);
+            //HttpCookie cookie = new HttpCookie("history", bookids);
+            //Voodoo.Cookies.Cookies.SetCookie(cookie);
 
             #endregion
 
