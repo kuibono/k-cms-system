@@ -1,0 +1,48 @@
+﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td { margin:0; padding:0; }
+body { font-size:14px; color:#eee; background:#222; text-align:left; font-family:Tahoma, Arial,'微软雅黑', SimSun;  }
+header, nav, article, footer, address, section, aside { display:block; }
+html { -webkit-font-smoothing: antialiased; }
+table { border-collapse:collapse; border-spacing:0; }
+table td img { float:left }
+a { text-decoration:none; color:#88F; }
+a:hover { text-decoration:underline; }
+img { border:0; }
+em, i, address, caption, cite, em, th { font-style:normal; font-weight:normal; }
+li, ol, ul { list-style:none; }
+th { text-align:left; }
+hr
+{
+    border:1px solid #333;
+    }
+h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-size:100%; font-weight:normal; }
+p { line-height:150%; overflow:hidden; }
+
+
+.v li{
+    float:left;
+    padding-right:12px;
+}
+
+h2{
+    font-size:16px;
+}
+.update div
+{
+    float:left;
+}
+._class a{ padding-right:12px;}
+.t1{ width:110px;}
+.t2{width:110px;}
+.t3{width:250px;}
+.t4{width:110px;}
+.t5{width:110px;}
+td
+{
+    padding-right:10px;
+}
+input[type='button'],input[type='submit']
+{
+    color:#000;
+    border:solid 1px #eee;
+    background-color:#eee;
+}
