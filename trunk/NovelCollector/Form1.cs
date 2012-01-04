@@ -119,6 +119,20 @@ namespace NovelCollector
                     {
                         string content = m_content.Groups["key"].Value;
                         content = Regex.Replace(content, "<script[\\s\\S]*?</script>", "").TrimDbDangerousChar();
+                        content = Regex.Replace(content, "<a[\\s\\S]*?</a>", "");
+                        content = Regex.Replace(content, "\\([\\s\\S]{3,50}?\\)", "");
+                        content = Regex.Replace(content, "\\[[\\s\\S]{3,50}?\\]", "");
+                        content = Regex.Replace(content, "{[\\s\\S]{3,50}?}", "");
+                        content = Regex.Replace(content, "「[\\s\\S]{3,50}?」", "");
+                        content = Regex.Replace(content, "『[\\s\\S]{3,50}?』", "");
+                        content = Regex.Replace(content, "〖[\\s\\S]{3,50}?〗", "");
+                        content = Regex.Replace(content, "【[\\s\\S]{3,50}?】", "");
+                        content = Regex.Replace(content, "（[\\s\\S]{3,50}?）", "");
+                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?com", "");
+                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?net", "");
+                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
+                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
+                        content = Regex.Replace(content, "年夜", "大");
 
 
                         NameValueCollection nv = new NameValueCollection();
@@ -202,6 +216,7 @@ namespace NovelCollector
                 content = Regex.Replace(content, "www[\\s\\S]{3,10}?net", "");
                 content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
                 content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
+                content = Regex.Replace(content, "年夜", "大");
 
                 Book b = BookView.GetModelByID("1");
                 Class cls = BookView.GetClass(b);
