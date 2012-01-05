@@ -169,7 +169,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			GroupRole M = new GroupRole();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[UserID],[RoleID] from [GroupRole] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[UserID],[RoleID] from [GroupRole] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

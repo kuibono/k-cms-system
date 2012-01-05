@@ -194,7 +194,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplTags M = new TemplTags();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[TagName],[TagCode],[FunctionName],[TagFormat],[Remark],[Enable],[TagIndex] from [TemplTags] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

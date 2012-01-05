@@ -234,7 +234,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			ImageAlbum M = new ImageAlbum();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtID],[AuthorID],[Author],[Title],[CreateTime],[UpdateTime],[Intro],[Size],[Folder],[ClickCount],[ReplyCount],[SetTop],[ShotCut],[KeyWords] from [ImageAlbum] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

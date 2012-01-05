@@ -169,7 +169,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplateFace M = new TemplateFace();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[Content] from [TemplateFace] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[Content] from [TemplateFace] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

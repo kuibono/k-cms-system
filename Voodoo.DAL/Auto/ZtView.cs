@@ -224,7 +224,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			Zt M = new Zt();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ZtName],[Forder],[ExtName],[ICON],[KeyWords],[Description],[LtIndex],[ShowInNav],[FaceModel],[ListModel],[ListOrder],[ListPageSize] from [Zt] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

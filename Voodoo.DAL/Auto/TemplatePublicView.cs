@@ -259,7 +259,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplatePublic M = new TemplatePublic();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter] from [TemplatePublic] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter] from [TemplatePublic] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

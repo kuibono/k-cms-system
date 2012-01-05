@@ -164,7 +164,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			SysGroup M = new SysGroup();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupName] from [SysGroup] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupName] from [SysGroup] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

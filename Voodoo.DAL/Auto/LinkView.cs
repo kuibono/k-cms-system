@@ -174,7 +174,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			Link M = new Link();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[LinkTitle],[Url],[Index] from [Link] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[LinkTitle],[Url],[Index] from [Link] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

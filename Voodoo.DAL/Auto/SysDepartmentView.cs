@@ -164,7 +164,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			SysDepartment M = new SysDepartment();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[DepartName] from [SysDepartment] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[DepartName] from [SysDepartment] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

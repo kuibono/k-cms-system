@@ -299,7 +299,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			News M = new News();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[NewsTime],[Title],[TitleB],[TitleI],[TitleS],[TitleColor],[FTitle],[Audit],[Tuijian],[Toutiao],[KeyWords],[NavUrl],[TitleImage],[Description],[Author],[AutorID],[Content],[SetTop],[ModelID],[ClickCount],[DownCount],[FileForder],[FileName],[ZtID],[ClassID],[ReplyCount],[Source],[EnableReply] from [News] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;
