@@ -284,7 +284,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			Book M = new Book();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[Author],[Intro],[Length],[ReplyCount],[ClickCount],[Addtime],[Status],[IsVip],[FaceImage],[SaveCount],[Enable],[IsFirstPost],[LastChapterID],[LastChapterTitle],[UpdateTime],[LastVipChapterID],[LastVipChapterTitle],[VipUpdateTime],[CorpusID],[CorpusTitle] from [Book] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[Author],[Intro],[Length],[ReplyCount],[ClickCount],[Addtime],[Status],[IsVip],[FaceImage],[SaveCount],[Enable],[IsFirstPost],[LastChapterID],[LastChapterTitle],[UpdateTime],[LastVipChapterID],[LastVipChapterTitle],[VipUpdateTime],[CorpusID],[CorpusTitle] from [Book] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

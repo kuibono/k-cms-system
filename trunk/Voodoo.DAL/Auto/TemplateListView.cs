@@ -204,7 +204,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			TemplateList M = new TemplateList();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar] from [TemplateList] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

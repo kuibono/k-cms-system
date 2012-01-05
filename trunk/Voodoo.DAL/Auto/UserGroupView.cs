@@ -194,7 +194,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			UserGroup M = new UserGroup();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupName],[Grade],[MaxPost],[PostAotuAudit],[RegForm],[EnableReg],[RegAutoAudit] from [UserGroup] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[GroupName],[Grade],[MaxPost],[PostAotuAudit],[RegForm],[EnableReg],[RegAutoAudit] from [UserGroup] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

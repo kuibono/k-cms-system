@@ -224,7 +224,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			SysUser M = new SysUser();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[UserName],[UserPass],[Logincount],[LastLoginTime],[LastLoginIP],[SafeQuestion],[SafeAnswer],[Department],[ChineseName],[UserGroup],[Email],[TelNumber],[Enabled] from [SysUser] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[UserName],[UserPass],[Logincount],[LastLoginTime],[LastLoginIP],[SafeQuestion],[SafeAnswer],[Department],[ChineseName],[UserGroup],[Email],[TelNumber],[Enabled] from [SysUser] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

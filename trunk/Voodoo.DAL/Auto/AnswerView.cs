@@ -189,7 +189,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			Answer M = new Answer();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[QuestionID],[Content],[UserID],[UserName],[AnswerTime],[Agree] from [Answer] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[QuestionID],[Content],[UserID],[UserName],[AnswerTime],[Agree] from [Answer] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

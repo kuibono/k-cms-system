@@ -174,7 +174,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			SysModel M = new SysModel();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ModelName],[TableName],[SonClass] from [SysModel] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ModelName],[TableName],[SonClass] from [SysModel] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

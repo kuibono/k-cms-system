@@ -189,7 +189,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			SysRole M = new SysRole();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[RoleName],[RoleGroup],[URL],[AddRole],[EditRole],[DelRole] from [SysRole] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[RoleName],[RoleGroup],[URL],[AddRole],[EditRole],[DelRole] from [SysRole] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

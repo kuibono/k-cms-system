@@ -169,7 +169,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			UserForm M = new UserForm();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[FormName],[Content] from [UserForm] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[FormName],[Content] from [UserForm] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;

@@ -204,7 +204,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			File M = new File();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[UpTime],[FileType],[FileSize],[FileDirectory],[FileName],[FileExtName],[FilePath],[SmallPath] from [File] where ID='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[ClassID],[UpTime],[FileType],[FileSize],[FileDirectory],[FileName],[FileExtName],[FilePath],[SmallPath] from [File] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=0;
