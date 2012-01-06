@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.DAL", "Voodoo.DAL\Vo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Setting", "Voodoo.Setting\Voodoo.Setting.csproj", "{EB265D9F-9F2C-4408-9EC1-A6C4EB2AA44F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\..\..\..\Voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\Voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Html", "Voodoo.Html\Voodoo.Html.csproj", "{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}"
 EndProject
@@ -20,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoverCollectService", "NoverCollectService\NoverCollectService.csproj", "{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}"
 EndProject
 Global
+	GlobalSection(PowerDesigner) = preSolution
+		HasSWS = 1
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -64,8 +67,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(PowerDesigner) = preSolution
-		HasSWS = 1
 	EndGlobalSection
 EndGlobal
