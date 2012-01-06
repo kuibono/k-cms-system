@@ -133,7 +133,7 @@ namespace NovelCollector
                         content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
                         content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
                         content = Regex.Replace(content, "年夜", "大");
-
+                        content = Regex.Replace(content, "/a", "");
 
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
@@ -143,8 +143,11 @@ namespace NovelCollector
                         nv.Add("content", content);
                         nv.Add("title", cp.Title);
 
-                        string nouse=Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8);
-
+                        BookChapter  nouse=(BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter),Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8));
+                        if (nouse.ID <= 0)//如果章节采集失败，则跳出这本书的采集，进行下一本书
+                        {
+                            return;
+                        }
 
 
                         m_content = m_content.NextMatch();
@@ -183,70 +186,7 @@ namespace NovelCollector
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Match m = new Regex(textBox2.Text).Match(richTextBox1.Text);
-            while (m.Success)
-            {
-                richTextBox2.Text += "\n";
-                richTextBox2.Text += textBox1.Text + m.Groups["key"].Value + "   " + m.Groups["key2"].Value;
-                GetChapter(textBox1.Text + m.Groups["key"].Value, m.Groups["key2"].Value);
-                m = m.NextMatch();
-            }
-        }
 
-        protected void GetChapter(string url, string Title)
-        {
-            string html = Voodoo.Net.Url.GetHtml(url, "gbk");
-            Match m = new Regex(textBox3.Text).Match(html);
-            if (m.Success)
-            {
-                string content = m.Groups[0].Value;
-                content = Regex.Replace(content, "<script[\\s\\S]*?</script>", "");
-                content = Regex.Replace(content, "<a[\\s\\S]*?</a>", "");
-                content = Regex.Replace(content, "\\([\\s\\S]{3,50}?\\)", "");
-                content = Regex.Replace(content, "\\[[\\s\\S]{3,50}?\\]", "");
-                content = Regex.Replace(content, "{[\\s\\S]{3,50}?}", "");
-                content = Regex.Replace(content, "「[\\s\\S]{3,50}?」", "");
-                content = Regex.Replace(content, "『[\\s\\S]{3,50}?』", "");
-                content = Regex.Replace(content, "〖[\\s\\S]{3,50}?〗", "");
-                content = Regex.Replace(content, "【[\\s\\S]{3,50}?】", "");
-                content = Regex.Replace(content, "（[\\s\\S]{3,50}?）", "");
-                content = Regex.Replace(content, "www[\\s\\S]{3,10}?com", "");
-                content = Regex.Replace(content, "www[\\s\\S]{3,10}?net", "");
-                content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
-                content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
-                content = Regex.Replace(content, "年夜", "大");
-
-                Book b = BookView.GetModelByID("1");
-                Class cls = BookView.GetClass(b);
-                BookChapter c = new BookChapter();
-                c.BookID = b.ID;
-                c.BookTitle = b.Title;
-                c.ChapterIndex = 0;
-                c.ClassID = cls.ID;
-                c.ClassName = cls.ClassName;
-                c.ClickCount = 0;
-                c.Content = content;
-                c.Enable = true;
-                c.IsFree = true;
-                c.IsImageChapter = false;
-                c.IsTemp = false;
-                c.IsVipChapter = false;
-                c.TextLength = content.TrimHTML().Length;
-                c.Title = Title;
-                c.UpdateTime = DateTime.Now;
-                c.ValumeID = 0;
-                c.ValumeName = "";
-
-                BookChapterView.Insert(c);
-                b.LastChapterID = c.ID;
-                b.LastChapterTitle = c.Title;
-                b.UpdateTime = c.UpdateTime;
-
-                BookView.Update(b);
-            }
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -278,6 +218,30 @@ namespace NovelCollector
                 SysBusy = false;
 
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //CollectRule r = new CollectRule();
+            //r.BookUrls = new List<string>();
+            //string[] urls = Voodoo.IO.File.Read(System.Environment.CurrentDirectory + "\\list.txt").Split('\n');
+            //foreach (string str in urls)
+            //{
+            //    r.BookUrls.Add(str.Trim());
+            //}
+
+            //r.BookInfo = txt_InfoReg.Text;
+            //r.ChapterList = textBox2.Text;
+            //r.Content = textBox3.Text;
+            ////Voodoo.IO.XML.Serialize(r);
+            //Voodoo.IO.File.Write("C:\\2.xml", Voodoo.IO.XML.Serialize(r));
+            //Voodoo.IO.XML.SaveSerialize(r, "C:\\rule.xml");
+
+
+            CollectRule rule = (CollectRule)Voodoo.IO.XML.DeSerialize(
+               typeof(CollectRule),
+               Voodoo.IO.File.Read("C:\\2.xml", Voodoo.IO.File.EnCode.UTF8)
+               );
         }
     }
 }

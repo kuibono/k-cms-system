@@ -91,10 +91,10 @@ namespace Voodoo.Model
 		/// </summary>
 		public bool IsImageChapter{get ; set; }
 		
-		/// <summary>
-		/// 
-		/// </summary>
-		public string Content{get ; set; }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public string Content{get ; set; }
 		
 		/// <summary>
 		/// 

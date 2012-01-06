@@ -64,7 +64,7 @@ namespace Voodoo.DAL
 				M.IsFree=dt.Rows[i]["IsFree"].ToBoolean();
 				M.ChapterIndex=dt.Rows[i]["ChapterIndex"].ToInt32();
 				M.IsImageChapter=dt.Rows[i]["IsImageChapter"].ToBoolean();
-				M.Content=dt.Rows[i]["Content"].ToString();
+				//M.Content=dt.Rows[i]["Content"].ToString();
 				M.ClickCount=dt.Rows[i]["ClickCount"].ToInt32();
 				
 				Ms.Add(M);
@@ -84,7 +84,7 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into [BookChapter]([BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[Content],[ClickCount]) values(");
+			sb.Append("insert into [BookChapter]([BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[ClickCount]) values(");
 			sb.Append(M.BookID.ToS());
 			sb.Append(",");	
 			sb.Append("N'"+M.BookTitle+"'");
@@ -115,8 +115,8 @@ namespace Voodoo.DAL
 			sb.Append(",");	
 			sb.Append(M.IsImageChapter.ToS());
 			sb.Append(",");	
-			sb.Append("N'"+M.Content+"'");
-			sb.Append(",");	
+            //sb.Append("N'"+M.Content+"'");
+            //sb.Append(",");	
 			sb.Append(M.ClickCount.ToS());
 			sb.Append(")");
 			
@@ -189,8 +189,8 @@ namespace Voodoo.DAL
 			sb.Append(",");
 			sb.Append("[IsImageChapter]="+M.IsImageChapter.ToS());
 			sb.Append(",");
-			sb.Append("[Content]=N'"+M.Content+"'");
-			sb.Append(",");
+            //sb.Append("[Content]=N'"+M.Content+"'");
+            //sb.Append(",");
 			sb.Append("[ClickCount]="+M.ClickCount.ToS());
 			
 			sb.Append(" where ID='" + M.ID + "'");
@@ -244,7 +244,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			BookChapter M = new BookChapter();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[Content],[ClickCount] from [BookChapter] where ID=" + id.ToString(), true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[ClickCount] from [BookChapter] where ID=" + id.ToString(), true);
 			if (!Rs.Read())
 			{
 					M.ID=long.MinValue;
@@ -267,7 +267,7 @@ namespace Voodoo.DAL
 				M.IsFree=Rs["IsFree"].ToBoolean();
 				M.ChapterIndex=Rs["ChapterIndex"].ToInt32();
 				M.IsImageChapter=Rs["IsImageChapter"].ToBoolean();
-				M.Content=Rs["Content"].ToString();
+				//M.Content=Rs["Content"].ToString();
 				M.ClickCount=Rs["ClickCount"].ToInt32();
 			}
 			Rs.Close();
@@ -287,7 +287,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             BookChapter M = new BookChapter();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[Content],[ClickCount] from [BookChapter] where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[ClickCount] from [BookChapter] where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.ID=long.MinValue;
@@ -310,7 +310,7 @@ namespace Voodoo.DAL
 				M.IsFree=Rs["IsFree"].ToBoolean();
 				M.ChapterIndex=Rs["ChapterIndex"].ToInt32();
 				M.IsImageChapter=Rs["IsImageChapter"].ToBoolean();
-				M.Content=Rs["Content"].ToString();
+				//M.Content=Rs["Content"].ToString();
 				M.ClickCount=Rs["ClickCount"].ToInt32();
 			}
 			Rs.Close();
@@ -328,7 +328,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[Content],[ClickCount] from [BookChapter] where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[ClickCount] from [BookChapter] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -349,7 +349,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[Content],[ClickCount] from [BookChapter] where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [ID],[BookID],[BookTitle],[ClassID],[ClassName],[ValumeID],[ValumeName],[Title],[IsVipChapter],[TextLength],[UpdateTime],[Enable],[IsTemp],[IsFree],[ChapterIndex],[IsImageChapter],[ClickCount] from [BookChapter] where "+ m_where);
             return dt;
         }
 		#endregion

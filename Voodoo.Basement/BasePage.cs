@@ -330,6 +330,41 @@ namespace Voodoo.Basement
             result = Regex.Replace(result, "[/]{2,}", "/");
             return result;
         }
+
+        /// <summary>
+        /// 获取章节txt文件路径
+        /// </summary>
+        /// <param name="cp"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetBookChapterTxtUrl(BookChapter cp, Class cls)
+        {
+            string result = "";
+            string fileName = cp.ID.ToString();
+
+            Book b = BookView.GetModelByID(cp.BookID.ToS());
+
+
+            string sitrurl = "/Txt/";
+
+            string parentForder = cls.ClassForder;
+            if (!parentForder.IsNullOrEmpty())
+            {
+                parentForder += "/";
+            }
+
+
+            result = string.Format("{0}{1}{2}/{3}/{4}{5}",
+                sitrurl,
+                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                cls.ClassForder,
+                 b.Title + "-" + b.Author,
+                cp.ID,
+                ".txt"
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
         #endregion
 
 
