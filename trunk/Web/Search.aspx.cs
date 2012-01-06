@@ -19,9 +19,10 @@ namespace Web
         {
             string Key = WS.RequestString("key");
             int Model = WS.RequestInt("m", 4);
+            int page = WS.RequestInt("p", 1);
 
             Response.Clear();
-            Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(Model, 1, Key));
+            Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(Model, page, Key));
         }
     }
 }

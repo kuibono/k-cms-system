@@ -528,7 +528,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro };
+            PageAttribute pa = new PageAttribute() { Title = string.Format("{0}", b.Title), UpdateTime = DateTime.Now.ToString(), Description = b.Intro };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -586,7 +586,9 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--chapter.isfree--]", cp.IsFree.ToChinese());
             Content = Content.Replace("[!--chapter.chapterindex--]", cp.ChapterIndex.ToS());
             Content = Content.Replace("[!--chapter.isimagechapter--]", cp.IsImageChapter.ToChinese());
-            Content = Content.Replace("[!--chapter.content--]", cp.Content);
+            Content = Content.Replace("[!--chapter.content--]", 
+                Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp,cls) ))
+                );
             Content = Content.Replace("[!--chapter.clickcount--]", cp.ClickCount.ToS());
 
             #endregion
@@ -1143,12 +1145,13 @@ namespace Voodoo.Basement
 
             int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
 
-            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "index_" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "/Search.aspx?m=4&key="+key : "javascript:void(0)");
+            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key="+key+"&p=" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
+
         #endregion
 
         #region 创建跳转下拉菜单
@@ -1209,11 +1212,11 @@ namespace Voodoo.Basement
             {
                 if (page == i)
                 {
-                    sb.AppendLine(string.Format("<option value='index{0}' selected>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                    sb.AppendLine(string.Format("<option value='index{0}' selected>{1}</option>", "/Search.aspx?m=4&key="+key,page));
                 }
                 else
                 {
-                    sb.AppendLine(string.Format("<option value='index{0}'>{1}</option>", (i > 1 ? "_" + i.ToS() : "") + BasePage.SystemSetting.ExtName, i.ToS()));
+                    sb.AppendLine(string.Format("<option value='index{0}'>{1}</option>", "/Search.aspx?m=4&key=" + key+"&p="+page,page));
                 }
             }
             sb.AppendLine("</select>");

@@ -14,9 +14,9 @@ namespace Voodoo.Setting
         {
             get
             {
-                //return Voodoo.Config.Info.GetAppSetting("ConnStr") == null ? "Data Source=localhost;Initial Catalog=kcms20120102;Persist Security Info=True;User ID=sa;Password=kuibono4264269" : Voodoo.Config.Info.GetAppSetting("ConnStr");
+                return Voodoo.Config.Info.GetAppSetting("ConnStr") == null ? "Data Source=localhost;Initial Catalog=kcms20120102;Persist Security Info=True;User ID=sa;Password=kuibono4264269" : Voodoo.Config.Info.GetAppSetting("ConnStr");
                 //return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ System.Web.HttpContext.Current.Server.MapPath("~/App_Data/db.mdb") +";User Id=;Password=;";
-                return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~/App_Data/kcms.mdb") + ";Persist Security Info=False;";
+                //return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~/App_Data/kcms.mdb") + ";Persist Security Info=False;";
                 //Data Source=localhost;Initial Catalog=kcms20111210;
             }
         }
@@ -45,8 +45,8 @@ namespace Voodoo.Setting
         {
             get
             {
-                //return DbType.SqlServer;
-                return DbType.Access;
+                return DbType.SqlServer;
+                //return DbType.Access;
             }
         }
         /// <summary>

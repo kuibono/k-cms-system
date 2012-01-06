@@ -25,7 +25,7 @@ namespace Web.e.api
             string Content = WS.RequestString("content").HtmlDeCode();
             string Title=WS.RequestString("title");
 
-            
+            Class cls=ClassView.GetModelByID(ClassID.ToS());
 
             BookChapter c = new BookChapter();
 
@@ -43,7 +43,8 @@ namespace Web.e.api
             c.ClassID = ClassID;
             c.ClassName = ClassName;
             c.ClickCount = 0;
-            c.Content = Content;
+            //c.Content = Content;
+            
             c.Enable = true;
             c.IsFree = true;
             c.IsImageChapter = false;
@@ -55,6 +56,8 @@ namespace Web.e.api
             c.ValumeID = 0;
 
             BookChapterView.Insert(c);
+            //创建内容txt
+            Voodoo.IO.File.Write(Server.MapPath(BasePage.GetBookChapterTxtUrl(c, cls)), Content);
 
             Book b = BookView.GetModelByID(BookID.ToString());
             b.LastChapterID = c.ID;

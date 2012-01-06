@@ -1,10 +1,10 @@
 ﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td { margin:0; padding:0; }
-body { font-size:14px; color:#eee; background:#222; text-align:left; font-family:Tahoma, Arial,'微软雅黑', SimSun;  }
+body { /*font-size:14px;*/ color:#333; background:rgb(228,235,241); text-align:left; font-family:Tahoma, Arial,'微软雅黑', SimSun; padding:0 10px 0px 10px  }
 header, nav, article, footer, address, section, aside { display:block; }
 html { -webkit-font-smoothing: antialiased; }
 table { border-collapse:collapse; border-spacing:0; }
 table td img { float:left }
-a { text-decoration:none; color:#88F; }
+a { text-decoration:none; color:#44b; }
 a:hover { text-decoration:underline; }
 img { border:0; }
 em, i, address, caption, cite, em, th { font-style:normal; font-weight:normal; }
@@ -12,7 +12,7 @@ li, ol, ul { list-style:none; }
 th { text-align:left; }
 hr
 {
-    border:1px solid #333;
+    border:1px solid #ddd;
     }
 h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-size:100%; font-weight:normal; }
 p { line-height:150%; overflow:hidden; }
