@@ -51,7 +51,7 @@ namespace Web.e.api
             b.Length = Length;
             b.ReplyCount = 0;
             b.SaveCount = 0;
-            b.Status = 1;
+            b.Status = 0;//连载中
             b.Title = Title;
             b.UpdateTime = DateTime.Now;
             b.VipUpdateTime = DateTime.Now;

@@ -31,6 +31,7 @@ namespace Web.e.api
 
             if (BookChapterView.Exist(string.Format("BookTitle=N'{0}' and Title=N'{1}'", BookTitle, Title)) )
             {
+                c.Title = "已经存在";
                 Response.Clear();
                 Response.Write(Voodoo.IO.XML.Serialize(c));
                 return;

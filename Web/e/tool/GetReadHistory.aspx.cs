@@ -54,7 +54,7 @@ namespace Web.e.tool
 
                     BookChapter new_Chapter = BookChapterView.GetModelByID(b.LastChapterID.ToString());
 
-                    sb.Append(string.Format("书籍：<a href=\"{0}\">{1}</a>&nbsp; 您的章节：<a href=\"{2}\">{3}</a>&nbsp; 最新：<a href=\"{4}\">{5}</a><br />",
+                    sb.Append(string.Format("<a href=\"{0}\">{1}</a>（<a href=\"{2}\">{3}</a>） 最新：<a href=\"{4}\">{5}</a><br />",
                         BasePage.GetBookUrl(b, c),
                         bc.BookTitle,
                         BasePage.GetBookChapterUrl(bc, c),

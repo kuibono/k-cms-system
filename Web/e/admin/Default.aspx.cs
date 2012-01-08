@@ -513,6 +513,10 @@ namespace Web.e.admin
                     {
                         node.Listeners.Click.Handler = "openpage('question/QuestionList.aspx?class=" + pcls.ID + "')";
                     }
+                    else if (pcls.ModelID == 4)
+                    {
+                        node.Listeners.Click.Handler = "openpage('Book/BookList.aspx?class=" + pcls.ID + "')";
+                    }
 
                 }
             }
