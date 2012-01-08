@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Createpages.aspx.cs" Inherits="Web.e.admin.system.Update.Createpages" %>
 
+<%@ Register assembly="Voodoo" namespace="Voodoo.UI" tagprefix="cc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -49,6 +51,23 @@
                 <td>
                      <asp:Button ID="btn_ClearAll" runat="server" Text="清理所有静态页面" 
                          onclick="btn_ClearAll_Click"  />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     
+                    <cc1:VTextBox ID="txt_SQL" runat="server" TextMode="MultiLine" Width="300px"></cc1:VTextBox>
+                    <asp:Button ID="btn_Excute" runat="server" onclick="btn_Excute_Click" 
+                        Text="Excute" />
+                     
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     
+                    <asp:GridView ID="GridView1" runat="server">
+                    </asp:GridView>
+                     
                 </td>
             </tr>
         </tbody>

@@ -58,9 +58,9 @@ namespace NovelCollector
                 b.ListUrl = "http://" + new Uri(url).Host + m.Groups["url"].Value;
                 b.Title = m.Groups["title"].Value;
 
-                Class cls = (Class)Voodoo.IO.XML.DeSerialize(typeof(Class), Voodoo.Net.Url.GetHtml(Domain + "e/api/getClass.aspx?class="+b.Class, "utf-8"));
+                Class cls = (Class)Voodoo.IO.XML.DeSerialize(typeof(Class), Voodoo.Net.Url.GetHtml(Domain + "e/api/getClass.aspx?class=" + b.Class, "utf-8"));
 
-                bool bookExist = (bool)Voodoo.IO.XML.DeSerialize(typeof(bool), Voodoo.Net.Url.GetHtml(Domain + "e/api/BookExist.aspx?title=" + b.Title+"&author="+b.Author, "utf-8"));
+                bool bookExist = (bool)Voodoo.IO.XML.DeSerialize(typeof(bool), Voodoo.Net.Url.GetHtml(Domain + "e/api/BookExist.aspx?title=" + b.Title + "&author=" + b.Author, "utf-8"));
                 Book book = new Book();
                 if (!bookExist)
                 {
@@ -73,14 +73,29 @@ namespace NovelCollector
                     nv.Add("intro", b.Intro);
                     nv.Add("length", b.Length.ToS());
 
-                    book = (Book)Voodoo.IO.XML.DeSerialize(typeof(Book), Voodoo.Net.Url.Post(nv, Domain + "e/api/BookAdd.aspx",Encoding.UTF8));
+                    book = (Book)Voodoo.IO.XML.DeSerialize(typeof(Book), Voodoo.Net.Url.Post(nv, Domain + "e/api/BookAdd.aspx", Encoding.UTF8));
                 }
                 else
                 {
                     book = (Book)Voodoo.IO.XML.DeSerialize(typeof(Book), Voodoo.Net.Url.GetHtml(Domain + "e/api/getBook.aspx?title=" + b.Title + "&author=" + b.Author, "utf-8"));
+                    if (book.Status == 1)
+                    {
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            this.Status.Text = b.Title + "-已完结";
+                        }));
+
+                        return;//本书已经完结
+                    }
                 }
+
+
                 if (book.ID <= 0)//书籍添加失败或者没有这本书
                 {
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        this.Status.Text = "书籍添加失败或者没有这本书";
+                    }));
                     return;
                 }
 
@@ -99,7 +114,7 @@ namespace NovelCollector
                 }
 
                 //判断哪些没有采集
-                BookChapter bc = (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Voodoo.Net.Url.GetHtml(Domain + "e/api/GetChapter.aspx?id="+book.LastChapterID, "utf-8"));
+                BookChapter bc = (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Voodoo.Net.Url.GetHtml(Domain + "e/api/GetChapter.aspx?id=" + book.LastChapterID, "utf-8"));
                 if (bc.ID > 0)
                 {
                     //这本书在数据库中有章节 找出这个章节在列表中的位置
@@ -143,12 +158,37 @@ namespace NovelCollector
                         nv.Add("content", content);
                         nv.Add("title", cp.Title);
 
-                        BookChapter  nouse=(BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter),Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8));
+                        BookChapter nouse = (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8));
                         if (nouse.ID <= 0)//如果章节采集失败，则跳出这本书的采集，进行下一本书
                         {
+                            this.Invoke(new MethodInvoker(delegate
+                            {
+                                this.Status.Text = b.Title + "-" + cp.Title + "-采集失败-" + nouse.Title;
+                            }));
+
+                            if (cs.Count > 0)
+                            {
+                                Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createindex");
+
+                                Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createclasspage");
+
+                                Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createbook&id=" + book.ID);
+
+                                Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createchapters&id=" + book.ID);
+                            }
+
                             return;
                         }
 
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            this.Status.Text = b.Title + "-" + nouse.Title;
+                        }));
+
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            this.Status.Text = b.Title + "-" + cp.Title + "-采集成功-" + nouse.Title;
+                        }));
 
                         m_content = m_content.NextMatch();
                     }
@@ -157,9 +197,14 @@ namespace NovelCollector
                 //开始生成
                 if (cs.Count > 0)
                 {
-                    Voodoo.Net.Url.GetHtml(Domain+"e/api/CreatePage.aspx?action=createindex");
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        this.Status.Text = b.Title + "-正在生成";
+                    }));
 
-                    Voodoo.Net.Url.GetHtml(Domain+"e/api/CreatePage.aspx?action=createclasspage");
+                    Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createindex");
+
+                    Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createclasspage");
 
                     Voodoo.Net.Url.GetHtml(Domain + "e/api/CreatePage.aspx?action=createbook&id=" + book.ID);
 
@@ -173,17 +218,26 @@ namespace NovelCollector
 
         protected void collect()
         {
-            foreach (var item in listBox1.Items)
+
+
+            for (int i = 0; i < listBox1.Items.Count; i++)
             {
                 try
                 {
-                    GetBookByUrl(item.ToS(), txt_InfoReg.Text, textBox2.Text, textBox3.Text);
+                    GetBookByUrl(listBox1.Items[i].ToS(), txt_InfoReg.Text, textBox2.Text, textBox3.Text);
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        this.listBox1.SelectedIndex = i;
+                        
+                    }));
+                    
                 }
                 catch
                 {
-                    
+
                 }
             }
+
         }
 
 

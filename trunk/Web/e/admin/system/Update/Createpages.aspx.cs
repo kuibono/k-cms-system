@@ -10,6 +10,7 @@ using Voodoo.Basement;
 using Voodoo.Model;
 using Voodoo.DAL;
 using System.IO;
+using System.Data;
 
 namespace Web.e.admin.system.Update
 {
@@ -112,6 +113,15 @@ namespace Web.e.admin.system.Update
             }
 
             Js.AlertAndGoback("成功！");
+        }
+
+        protected void btn_Excute_Click(object sender, EventArgs e)
+        {
+            Voodoo.Data.IDbHelper Helper = Voodoo.Setting.DataBase.GetHelper();
+            GridView1.DataSource = Helper.ExecuteDataTable(CommandType.Text, txt_SQL.Text);
+            GridView1.DataBind();
+
+
         }
     }
 }

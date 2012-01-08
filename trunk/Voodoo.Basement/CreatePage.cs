@@ -80,7 +80,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = "首页", UpdateTime = DateTime.Now.ToString() };
+            PageAttribute pa = new PageAttribute() { Title = "首页", UpdateTime = DateTime.Now.ToString(), Keyword=BasePage.SystemSetting.KeyWords, Description=BasePage.SystemSetting.Description };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -425,7 +425,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro};
+            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro, Keyword=string.Format("{0},{0}在线阅读,{0}最新章节,{0}txt下载,{1}",b.Title,b.Author)};
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -528,7 +528,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = string.Format("{0}", b.Title), UpdateTime = DateTime.Now.ToString(), Description = b.Intro };
+            PageAttribute pa = new PageAttribute() { Title = string.Format("{0}-{1}", b.Title,cp.Title), UpdateTime = DateTime.Now.ToString(), Description = b.Intro, Keyword=string.Format("{0},{1}最新章节,{1}txt下载,{1}在线阅读",cp.Title,b.Title)};
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -989,7 +989,7 @@ namespace Voodoo.Basement
             if (SysModel == 4)
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<Book> qs = BookView.GetModelList(string.Format("Title like '%{0}%' or Author like '%{0}%' or Intro like '%{0}%' order by id desc", key));
+                List<Book> qs = BookView.GetModelList(string.Format("Title like N'%{0}%' or Author like N'%{0}%' or Intro like N'%{0}%' order by id desc", key));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
                 recordCount = qs.Count;
 
@@ -1143,12 +1143,12 @@ namespace Voodoo.Basement
 
             temp = TemplateListView.GetModelByID("4");
 
-            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(20)).YueShu();
 
             string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "/Search.aspx?m=4&key="+key : "javascript:void(0)");
-            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key="+key+"&p=" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key + "&p=" + (page- 1).ToS() : "javascript:void(0)");
+            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS()  : "javascript:void(0)");
+            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS()  : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
 
@@ -1203,7 +1203,7 @@ namespace Voodoo.Basement
             temp = TemplateListView.GetModelByID("4");
 
 
-            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(20)).YueShu();
 
 
             StringBuilder sb = new StringBuilder();
@@ -1212,11 +1212,11 @@ namespace Voodoo.Basement
             {
                 if (page == i)
                 {
-                    sb.AppendLine(string.Format("<option value='index{0}' selected>{1}</option>", "/Search.aspx?m=4&key="+key,page));
+                    sb.AppendLine(string.Format("<option value='{0}' selected>{1}</option>", "/Search.aspx?m=4&key="+key,i));
                 }
                 else
                 {
-                    sb.AppendLine(string.Format("<option value='index{0}'>{1}</option>", "/Search.aspx?m=4&key=" + key+"&p="+page,page));
+                    sb.AppendLine(string.Format("<option value='{0}'>{1}</option>", "/Search.aspx?m=4&key=" + key+"&p="+i,i));
                 }
             }
             sb.AppendLine("</select>");

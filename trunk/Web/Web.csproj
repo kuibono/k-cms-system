@@ -431,30 +431,42 @@
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\Book\BookList.aspx.cs">
+      <DependentUpon>BookList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Book\BookList.aspx.designer.cs">
+      <DependentUpon>BookList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\ImageEdit.aspx.cs">
       <DependentUpon>ImageEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\ImageEdit.aspx.designer.cs">
       <DependentUpon>ImageEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\ImageList.aspx.cs">
       <DependentUpon>ImageList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\ImageList.aspx.designer.cs">
       <DependentUpon>ImageList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\images\upload.aspx.cs">
       <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\images\upload.aspx.designer.cs">
       <DependentUpon>upload.aspx</DependentUpon>
@@ -475,120 +487,140 @@
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.designer.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\ClassList.aspx.designer.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsEdit.aspx.designer.cs">
       <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\news\NewsList.aspx.designer.cs">
       <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\question\QuestionEdit.aspx.cs">
       <DependentUpon>QuestionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\question\QuestionEdit.aspx.designer.cs">
       <DependentUpon>QuestionEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\question\QuestionList.aspx.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\question\QuestionList.aspx.designer.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.designer.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkList.aspx.cs">
       <DependentUpon>LinkList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkList.aspx.designer.cs">
       <DependentUpon>LinkList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.cs">
       <DependentUpon>basic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\basic.aspx.designer.cs">
       <DependentUpon>basic.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.cs">
       <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\SystemParameter\user.aspx.designer.cs">
       <DependentUpon>user.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\Update\Createpages.aspx.cs">
       <DependentUpon>Createpages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\system\Update\Createpages.aspx.designer.cs">
       <DependentUpon>Createpages.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserEdit.aspx.designer.cs">
       <DependentUpon>SysUserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\sysuser\SysUserList.aspx.designer.cs">
       <DependentUpon>SysUserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateEdit.aspx.cs">
       <DependentUpon>ContentTemplateEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateEdit.aspx.designer.cs">
       <DependentUpon>ContentTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateList.aspx.cs">
       <DependentUpon>ContentTemplateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ContentTemplateList.aspx.designer.cs">
       <DependentUpon>ContentTemplateList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateEdit.aspx.cs">
       <DependentUpon>ListTemplateEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateEdit.aspx.designer.cs">
       <DependentUpon>ListTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateList.aspx.cs">
       <DependentUpon>ListTemplateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\ListTemplateList.aspx.designer.cs">
       <DependentUpon>ListTemplateList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\PublicTemplate.aspx.cs">
       <DependentUpon>PublicTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\PublicTemplate.aspx.designer.cs">
       <DependentUpon>PublicTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateEdit.aspx.cs">
       <DependentUpon>VarTemplateEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateEdit.aspx.designer.cs">
       <DependentUpon>VarTemplateEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateList.aspx.cs">
       <DependentUpon>VarTemplateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\template\VarTemplateList.aspx.designer.cs">
       <DependentUpon>VarTemplateList.aspx</DependentUpon>
@@ -598,54 +630,63 @@
     </Compile>
     <Compile Include="e\admin\user\GroupEdit.aspx.cs">
       <DependentUpon>GroupEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\GroupEdit.aspx.designer.cs">
       <DependentUpon>GroupEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\GroupList.aspx.cs">
       <DependentUpon>GroupList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\GroupList.aspx.designer.cs">
       <DependentUpon>GroupList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserEdit.aspx.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserEdit.aspx.designer.cs">
       <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserFormEdit.aspx.cs">
       <DependentUpon>UserFormEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserFormEdit.aspx.designer.cs">
       <DependentUpon>UserFormEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserFormList.aspx.cs">
       <DependentUpon>UserFormList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserFormList.aspx.designer.cs">
       <DependentUpon>UserFormList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\user\UserList.aspx.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\admin\user\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\BookAdd.aspx.cs">
       <DependentUpon>BookAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\BookAdd.aspx.designer.cs">
       <DependentUpon>BookAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\BookExist.aspx.cs">
       <DependentUpon>BookExist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\BookExist.aspx.designer.cs">
       <DependentUpon>BookExist.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\ChapterAdd.aspx.cs">
       <DependentUpon>ChapterAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\ChapterAdd.aspx.designer.cs">
       <DependentUpon>ChapterAdd.aspx</DependentUpon>
@@ -659,18 +700,21 @@
     </Compile>
     <Compile Include="e\api\getBook.aspx.cs">
       <DependentUpon>getBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\getBook.aspx.designer.cs">
       <DependentUpon>getBook.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\GetChapter.aspx.cs">
       <DependentUpon>GetChapter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\GetChapter.aspx.designer.cs">
       <DependentUpon>GetChapter.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\getClass.aspx.cs">
       <DependentUpon>getClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\getClass.aspx.designer.cs">
       <DependentUpon>getClass.aspx</DependentUpon>
@@ -691,18 +735,21 @@
     </Compile>
     <Compile Include="e\member\ChangeRegister.aspx.cs">
       <DependentUpon>ChangeRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\ChangeRegister.aspx.designer.cs">
       <DependentUpon>ChangeRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
@@ -716,12 +763,14 @@
     </Compile>
     <Compile Include="e\member\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\member\RegisterForm.aspx.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\member\RegisterForm.aspx.designer.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
@@ -735,18 +784,21 @@
     </Compile>
     <Compile Include="e\post\PostNews.aspx.cs">
       <DependentUpon>PostNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\post\PostNews.aspx.designer.cs">
       <DependentUpon>PostNews.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\post\question\NewQuestion.aspx.cs">
       <DependentUpon>NewQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\post\question\NewQuestion.aspx.designer.cs">
       <DependentUpon>NewQuestion.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\post\question\PostAnswer.aspx.cs">
       <DependentUpon>PostAnswer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\post\question\PostAnswer.aspx.designer.cs">
       <DependentUpon>PostAnswer.aspx</DependentUpon>
@@ -760,30 +812,35 @@
     </Compile>
     <Compile Include="e\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\ChapterRead.aspx.cs">
       <DependentUpon>ChapterRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\tool\ChapterRead.aspx.designer.cs">
       <DependentUpon>ChapterRead.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\click.aspx.cs">
       <DependentUpon>click.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\tool\click.aspx.designer.cs">
       <DependentUpon>click.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\GetReadHistory.aspx.cs">
       <DependentUpon>GetReadHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\tool\GetReadHistory.aspx.designer.cs">
       <DependentUpon>GetReadHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
@@ -791,6 +848,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
@@ -824,6 +882,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\SysSetting.xml" />
+    <Content Include="e\admin\Book\BookList.aspx" />
     <Content Include="e\admin\images\ImageEdit.aspx" />
     <Content Include="e\admin\images\ImageList.aspx" />
     <Content Include="e\admin\images\upload.aspx" />
