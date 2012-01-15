@@ -148,7 +148,9 @@ namespace NovelCollector
                         content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
                         content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
                         content = Regex.Replace(content, "年夜", "大");
+                        content = Regex.Replace(content, "德律风", "电话");
                         content = Regex.Replace(content, "/a", "");
+                        content = Regex.Replace(content, "br>", "");
 
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
