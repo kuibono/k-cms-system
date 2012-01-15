@@ -401,6 +401,7 @@ namespace Voodoo.Basement
         }
         #endregion
 
+
         #region  生成内容页--书籍
         /// <summary>
         /// 生成内容页--图片
@@ -425,7 +426,12 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = b.Title, UpdateTime = DateTime.Now.ToString(), Description = b.Intro, Keyword=string.Format("{0},{0}在线阅读,{0}最新章节,{0}txt下载,{1}",b.Title,b.Author)};
+            PageAttribute pa = new PageAttribute() {
+                Title = string.Format("{0}-{1}-{0}在线阅读-{0}txt下载", b.Title, b.Author), 
+                UpdateTime = DateTime.Now.ToString(), 
+                Description =string.Format("{0}书籍信息页面。{0}章节列表，{0}在线阅读以及txt电子书下载，为您提供包括{0}最新章节的所有章节及{0}全文阅读链接。{1}",b.Title, b.Intro.Replace("\n","")), 
+                Keyword=string.Format("{0},{0}在线阅读,{0}最新章节,{0}txt下载,{1}",b.Title,b.Author)
+            };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -435,6 +441,7 @@ namespace Voodoo.Basement
 
             Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
             Content = Content.Replace("[!--class.name--]", cls.ClassName);
+            Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--book.url--]", BasePage.GetBookUrl(b, cls));//问题地址
             Content = Content.Replace("[!--book.id--]", b.ID.ToString());
@@ -445,7 +452,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.title--]", b.Title);
             Content = Content.Replace("[!--book.oldtitle--]", b.Title);
             Content = Content.Replace("[!--book.author--]", b.Author);
-            Content = Content.Replace("[!--book.intro--]", b.Intro);
+            Content = Content.Replace("[!--book.intro--]", b.Intro.Replace("\n","<br />"));
             Content = Content.Replace("[!--book.length--]", b.Length.ToS());
             Content = Content.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
             Content = Content.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
@@ -528,7 +535,15 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = string.Format("{0}-{1}", b.Title,cp.Title), UpdateTime = DateTime.Now.ToString(), Description = b.Intro, Keyword=string.Format("{0},{1}最新章节,{1}txt下载,{1}在线阅读",cp.Title,b.Title)};
+            string ChapterContent= Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp,cls) ));
+            ChapterContent = ChapterContent.Replace("<<", "<br />");
+
+            PageAttribute pa = new PageAttribute() {
+                Title = string.Format("{0}-{1}-{2}", b.Title, cp.Title, b.Author), 
+                UpdateTime = DateTime.Now.ToString(), 
+                Description = ChapterContent.TrimHTML().Replace("\n","").CutString(100), 
+                Keyword = string.Format("{0},{1}最新章节,{1}txt下载,{1}在线阅读", cp.Title, b.Title) 
+            };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -586,9 +601,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--chapter.isfree--]", cp.IsFree.ToChinese());
             Content = Content.Replace("[!--chapter.chapterindex--]", cp.ChapterIndex.ToS());
             Content = Content.Replace("[!--chapter.isimagechapter--]", cp.IsImageChapter.ToChinese());
-            Content = Content.Replace("[!--chapter.content--]", 
-                Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp,cls) ))
-                );
+            Content = Content.Replace("[!--chapter.content--]",  ChapterContent);
             Content = Content.Replace("[!--chapter.clickcount--]", cp.ClickCount.ToS());
 
             #endregion
@@ -624,6 +637,7 @@ namespace Voodoo.Basement
 
         }
         #endregion
+
 
         #region 创建列表页面
         /// <summary>
@@ -856,6 +870,14 @@ namespace Voodoo.Basement
         #endregion
 
 
+        #region 搜索页面
+        /// <summary>
+        /// 搜索页面
+        /// </summary>
+        /// <param name="SysModel"></param>
+        /// <param name="page"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static string GetSearchResult(int SysModel,int page,string key)
         {
             int pagecount = 1;
@@ -1054,7 +1076,7 @@ namespace Voodoo.Basement
             return Content;
 
         }
-
+        #endregion
 
 
 
