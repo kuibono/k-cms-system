@@ -33,7 +33,7 @@ namespace NovelCollector
             richTextBox1.Text = Voodoo.Net.Url.GetHtml(textBox1.Text, "gbk");
         }
 
-        protected string Domain = "http://soso888.net/";
+        protected string Domain = "http://aizr.net/";
         //protected string Domain = "http://localhost/";
 
         #region 根据书籍地址采集
@@ -99,6 +99,11 @@ namespace NovelCollector
                     return;
                 }
 
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    this.Status.Text = "正在处理:"+b.Title;
+                }));
+
                 //获取章节列表
                 List<ChapterList> cs = new List<ChapterList>();
 
@@ -106,12 +111,21 @@ namespace NovelCollector
                 Match m_list_Chapter = new Regex(listRegex).Match(html);
                 int i = 0;
 
+                if (!m_list_Chapter.Success)
+                {
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        this.Status.Text = "获取列表失败";
+                    }));
+                }
+
                 while (m_list_Chapter.Success)
                 {
                     cs.Add(new ChapterList() { Url = b.ListUrl + m_list_Chapter.Groups["key"].Value, Title = m_list_Chapter.Groups["key2"].Value, Index = i });
                     i++;
                     m_list_Chapter = m_list_Chapter.NextMatch();
                 }
+                
 
                 //判断哪些没有采集
                 BookChapter bc = (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Voodoo.Net.Url.GetHtml(Domain + "e/api/GetChapter.aspx?id=" + book.LastChapterID, "utf-8"));
@@ -126,6 +140,10 @@ namespace NovelCollector
                 }
 
                 //开始采集
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    this.Status.Text = "开始采集";
+                }));
                 foreach (ChapterList cp in cs)
                 {
                     html = Voodoo.Net.Url.GetHtml(cp.Url, "gbk");
@@ -143,14 +161,32 @@ namespace NovelCollector
                         content = Regex.Replace(content, "〖[\\s\\S]{3,50}?〗", "");
                         content = Regex.Replace(content, "【[\\s\\S]{3,50}?】", "");
                         content = Regex.Replace(content, "（[\\s\\S]{3,50}?）", "");
-                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?com", "");
-                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?net", "");
-                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?org", "");
-                        content = Regex.Replace(content, "www[\\s\\S]{3,10}?cn", "");
+                        content = Regex.Replace(content, "www[\\s\\S]{3,30}?com", "",RegexOptions.IgnoreCase);
+                        content = Regex.Replace(content, "www[\\s\\S]{3,30}?net", "", RegexOptions.IgnoreCase);
+                        content = Regex.Replace(content, "www[\\s\\S]{3,30}?org", "", RegexOptions.IgnoreCase);
+                        content = Regex.Replace(content, "www[\\s\\S]{3,30}?cn", "", RegexOptions.IgnoreCase);
                         content = Regex.Replace(content, "年夜", "大");
+                        content = Regex.Replace(content, "老苍生", "老百姓");
                         content = Regex.Replace(content, "德律风", "电话");
                         content = Regex.Replace(content, "/a", "");
                         content = Regex.Replace(content, "br>", "");
+                        content = Regex.Replace(content, "mí人", "迷人");
+                        content = Regex.Replace(content, "sè", "色");
+                        content = Regex.Replace(content, "mō", "摸");
+                        content = Regex.Replace(content, "chún", "纯");
+                        content = Regex.Replace(content, "xìng", "性");
+                        content = Regex.Replace(content, "tuǐ", "腿");
+                        content = Regex.Replace(content, "chuáng", "床");
+                        content = Regex.Replace(content, "tǐng", "挺");
+                        content = Regex.Replace(content, "huā", "花");
+                        content = Regex.Replace(content, "感动", "冲动");
+                        content = Regex.Replace(content, "**局", "公安局");
+                        content = Regex.Replace(content, "ting", "挺");
+                        content = Regex.Replace(content, "卜", "小");
+                        content = Regex.Replace(content, "lu", "露");
+                        content = Regex.Replace(content, "中文网", "");
+                        content = Regex.Replace(content, "首发", "");
+                        content = Regex.Replace(content, "本章节[\\s\\S]{3,50}?手打", "");
 
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
@@ -159,6 +195,11 @@ namespace NovelCollector
                         nv.Add("classname", cls.ClassName);
                         nv.Add("content", content);
                         nv.Add("title", cp.Title);
+
+                        this.Invoke(new MethodInvoker(delegate
+                        {
+                            this.Status.Text = b.Title + "-" + cp.Title +"正在采集";
+                        }));
 
                         BookChapter nouse = (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Voodoo.Net.Url.Post(nv, Domain + "e/api/ChapterAdd.aspx", Encoding.UTF8));
                         if (nouse.ID <= 0)//如果章节采集失败，则跳出这本书的采集，进行下一本书
@@ -195,6 +236,11 @@ namespace NovelCollector
                         m_content = m_content.NextMatch();
                     }
                 }
+
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    this.Status.Text = b.Title + "-采集完成";
+                }));
                 //采集完成 
                 //开始生成
                 if (cs.Count > 0)
@@ -234,7 +280,7 @@ namespace NovelCollector
                     }));
                     
                 }
-                catch
+                catch(Exception ex)
                 {
 
                 }
