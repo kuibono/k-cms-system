@@ -180,7 +180,7 @@ namespace NovelCollector
                         content = Regex.Replace(content, "tǐng", "挺");
                         content = Regex.Replace(content, "huā", "花");
                         content = Regex.Replace(content, "感动", "冲动");
-                        content = Regex.Replace(content, "**局", "公安局");
+                        content = Regex.Replace(content, "\\*\\*局", "公安局");
                         content = Regex.Replace(content, "ting", "挺");
                         content = Regex.Replace(content, "卜", "小");
                         content = Regex.Replace(content, "lu", "露");
