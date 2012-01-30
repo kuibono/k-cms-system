@@ -29,6 +29,15 @@ namespace Web.e.api
 
             BookChapter c = new BookChapter();
 
+            if (Title.Trim().Length == 0)
+            {
+                c.ID = -1;
+                c.Title = "采集失败";
+                Response.Clear();
+                Response.Write(Voodoo.IO.XML.Serialize(c));
+                return;
+            }
+
             if (BookChapterView.Exist(string.Format("BookTitle=N'{0}' and Title=N'{1}'", BookTitle, Title)) )
             {
                 c.Title = "已经存在";
