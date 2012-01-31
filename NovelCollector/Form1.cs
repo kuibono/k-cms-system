@@ -187,6 +187,14 @@ namespace NovelCollector
                         content = Regex.Replace(content, "中文网", "");
                         content = Regex.Replace(content, "首发", "");
                         content = Regex.Replace(content, "本章节[\\s\\S]{3,50}?手打", "");
+                        content = Regex.Replace(content, "手打吧[\\s\\S]{3,50}?手打", "");
+                        content = Regex.Replace(content, "yīn", "隂");
+                        content = Regex.Replace(content, "méng", "蒙");
+                        content = Regex.Replace(content, "méng", "蒙");
+                        content = Regex.Replace(content, "wěn", "吻");
+                        content = Regex.Replace(content, "〖", "");
+                        content = Regex.Replace(content, "〗", "");
+                        content = Regex.Replace(content, "xué", "穴");
 
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
@@ -340,10 +348,10 @@ namespace NovelCollector
             //Voodoo.IO.XML.SaveSerialize(r, "C:\\rule.xml");
 
 
-            CollectRule rule = (CollectRule)Voodoo.IO.XML.DeSerialize(
-               typeof(CollectRule),
-               Voodoo.IO.File.Read("C:\\2.xml", Voodoo.IO.File.EnCode.UTF8)
-               );
+            //CollectRule rule = (CollectRule)Voodoo.IO.XML.DeSerialize(
+            //   typeof(CollectRule),
+            //   Voodoo.IO.File.Read("C:\\2.xml", Voodoo.IO.File.EnCode.UTF8)
+            //   );
         }
     }
 }
