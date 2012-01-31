@@ -332,26 +332,26 @@ namespace NovelCollector
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //CollectRule r = new CollectRule();
-            //r.BookUrls = new List<string>();
-            //string[] urls = Voodoo.IO.File.Read(System.Environment.CurrentDirectory + "\\list.txt").Split('\n');
-            //foreach (string str in urls)
-            //{
-            //    r.BookUrls.Add(str.Trim());
-            //}
+            CollectRule r = new CollectRule();
+            r.BookUrls = new List<string>();
+            string[] urls = Voodoo.IO.File.Read(System.Environment.CurrentDirectory + "\\list.txt").Split('\n');
+            foreach (string str in urls)
+            {
+                r.BookUrls.Add(str.Trim());
+            }
 
-            //r.BookInfo = txt_InfoReg.Text;
-            //r.ChapterList = textBox2.Text;
-            //r.Content = textBox3.Text;
-            ////Voodoo.IO.XML.Serialize(r);
-            //Voodoo.IO.File.Write("C:\\2.xml", Voodoo.IO.XML.Serialize(r));
-            //Voodoo.IO.XML.SaveSerialize(r, "C:\\rule.xml");
+            r.BookInfo = txt_InfoReg.Text;
+            r.ChapterList = textBox2.Text;
+            r.Content = textBox3.Text;
+            //Voodoo.IO.XML.Serialize(r);
+            Voodoo.IO.File.Write("C:\\2.xml", Voodoo.IO.XML.Serialize(r));
+            Voodoo.IO.XML.SaveSerialize(r, "C:\\rule.xml");
 
 
-            //CollectRule rule = (CollectRule)Voodoo.IO.XML.DeSerialize(
-            //   typeof(CollectRule),
-            //   Voodoo.IO.File.Read("C:\\2.xml", Voodoo.IO.File.EnCode.UTF8)
-            //   );
+            CollectRule rule = (CollectRule)Voodoo.IO.XML.DeSerialize(
+               typeof(CollectRule),
+               Voodoo.IO.File.Read("C:\\2.xml", Voodoo.IO.File.EnCode.UTF8)
+               );
         }
     }
 }
