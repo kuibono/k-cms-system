@@ -53,6 +53,12 @@
                          onclick="btn_ClearAll_Click"  />
                 </td>
             </tr>
+                        <tr>
+                <td>
+                     <asp:Button ID="btn_GenSitreMap" runat="server" Text="生成SiteMap" 
+                         onclick="btn_GenSitreMap_Click"  />
+                </td>
+            </tr>
             <tr>
                 <td>
                      

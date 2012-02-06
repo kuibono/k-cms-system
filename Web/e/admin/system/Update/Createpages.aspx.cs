@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 using Voodoo;
 using Voodoo.Basement;
@@ -11,6 +12,7 @@ using Voodoo.Model;
 using Voodoo.DAL;
 using System.IO;
 using System.Data;
+using Voodoo.other.SEO;
 
 namespace Web.e.admin.system.Update
 {
@@ -121,6 +123,40 @@ namespace Web.e.admin.system.Update
             GridView1.DataSource = Helper.ExecuteDataTable(CommandType.Text, txt_SQL.Text);
             GridView1.DataBind();
 
+
+        }
+
+        protected void btn_GenSitreMap_Click(object sender, EventArgs e)
+        {
+            
+
+            Voodoo.other.SEO.SiteMap sm = new Voodoo.other.SEO.SiteMap();
+            sm.url = new List<PageInfo>();
+
+            sm.url.Add(new PageInfo() { changefreq = "always", lastmod = DateTime.Now, loc = SystemSetting.SiteUrl, priority = "1.0" });
+            List<Voodoo.Model.Book> bs = BookView.GetModelList("id>0 order by UpdateTime desc", 100);
+            foreach (Voodoo.Model.Book b in bs)
+            {
+                sm.url.Add(new PageInfo() { 
+                    changefreq = "daily", 
+                    lastmod = b.UpdateTime, 
+                    loc = (SystemSetting.SiteUrl + BasePage.GetBookUrl(b, BookView.GetClass(b))).Replace("//Book/", "/Book/"), 
+                    priority = "0.8" 
+                });
+            }
+
+            List<BookChapter> bcs = BookChapterView.GetModelList("id>0 order by UpdateTime desc", 500);
+            foreach (BookChapter bc in bcs)
+            {
+                sm.url.Add(new PageInfo() { 
+                    changefreq = "monthly", 
+                    lastmod = bc.UpdateTime,
+                    loc = (SystemSetting.SiteUrl + BasePage.GetBookChapterUrl(bc, BookView.GetClass(bc))).Replace("//Book/", "/Book/"),
+                    priority = "0.7" 
+                });
+            }
+
+            sm.SaveSiteMap(Server.MapPath("~/sitemapxml/index.xml"));
 
         }
     }
