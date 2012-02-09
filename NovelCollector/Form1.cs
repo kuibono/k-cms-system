@@ -173,8 +173,10 @@ namespace NovelCollector
                         content = Regex.Replace(content, "mí人", "迷人");
                         content = Regex.Replace(content, "sè", "色");
                         content = Regex.Replace(content, "mō", "摸");
+                        content = Regex.Replace(content, "mo", "摸");
                         content = Regex.Replace(content, "chún", "纯");
                         content = Regex.Replace(content, "xìng", "性");
+                        content = Regex.Replace(content, "xing", "性");
                         content = Regex.Replace(content, "tuǐ", "腿");
                         content = Regex.Replace(content, "chuáng", "床");
                         content = Regex.Replace(content, "tǐng", "挺");
@@ -195,7 +197,22 @@ namespace NovelCollector
                         content = Regex.Replace(content, "〖", "");
                         content = Regex.Replace(content, "〗", "");
                         content = Regex.Replace(content, "xué", "穴");
+                        content = Regex.Replace(content, "克不及", "能");
+                        content = Regex.Replace(content, "体例", "办法");
+                        content = Regex.Replace(content, "dang", "荡");
+                        content = Regex.Replace(content, "shouda8。.com", "aizr.net");
+                        content = Regex.Replace(content, "颔首", "头");
+                        content = Regex.Replace(content, "辅佐", "帮忙");
+                        content = Regex.Replace(content, "不消", "不必");
+                        content = Regex.Replace(content, "脱手", "动手");
+                        content = Regex.Replace(content, "伶俐", "聪明");
+                        content = Regex.Replace(content, "si", "私");
+                        content = Regex.Replace(content, "工具", "东西");
+                        content = Regex.Replace(content, "欠好", "不好");
+                        
 
+
+                        
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
                         nv.Add("booktitle", book.Title);
