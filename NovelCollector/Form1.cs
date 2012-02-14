@@ -168,6 +168,7 @@ namespace NovelCollector
                         content = Regex.Replace(content, "年夜", "大");
                         content = Regex.Replace(content, "老苍生", "老百姓");
                         content = Regex.Replace(content, "德律风", "电话");
+                        content = Regex.Replace(content, "luàn", "乱");
                         content = Regex.Replace(content, "/a", "");
                         content = Regex.Replace(content, "br>", "");
                         content = Regex.Replace(content, "mí人", "迷人");
@@ -209,10 +210,18 @@ namespace NovelCollector
                         content = Regex.Replace(content, "si", "私");
                         content = Regex.Replace(content, "工具", "东西");
                         content = Regex.Replace(content, "欠好", "不好");
-                        
+                        content = Regex.Replace(content, "囘", "");
+                        content = Regex.Replace(content, "làng", "浪");
+                        content = Regex.Replace(content, "yù", "玉");
+                        content = Regex.Replace(content, "yàn", "艳");
+                        content = Regex.Replace(content, "nòng", "弄");
+                        content = Regex.Replace(content, "nv", "女");
+                        content = Regex.Replace(content, "mén", "门");
+                        content = Regex.Replace(content, "jiāo", "交");
+                        content = Regex.Replace(content, "yào", "药");
+                        content = Regex.Replace(content, "1ù", "露");
+                        content = Regex.Replace(content, "fǔ", "府");
 
-
-                        
                         NameValueCollection nv = new NameValueCollection();
                         nv.Add("bookid", book.ID.ToS());
                         nv.Add("booktitle", book.Title);
