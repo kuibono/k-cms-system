@@ -82,7 +82,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Voodoo\Voodoo.csproj">
+    <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
@@ -93,10 +93,6 @@
     <ProjectReference Include="..\Voodoo.DAL\Voodoo.DAL.csproj">
       <Project>{3339D124-C24D-420C-9AB1-DBC638912672}</Project>
       <Name>Voodoo.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Voodoo.Html\Voodoo.Html.csproj">
-      <Project>{C8C11A2F-B50F-4FE1-AE26-F8B0AF575558}</Project>
-      <Name>Voodoo.Html</Name>
     </ProjectReference>
     <ProjectReference Include="..\Voodoo.Model\Voodoo.Model.csproj">
       <Project>{5C8CB1AB-C4DC-4B43-8BAC-8D1AD1FFF3CA}</Project>

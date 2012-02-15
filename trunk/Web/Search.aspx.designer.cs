@@ -11,6 +11,6 @@
 namespace Web {
     
     
-    public partial class Search {
+    public partial class _Default {
     }
 }
