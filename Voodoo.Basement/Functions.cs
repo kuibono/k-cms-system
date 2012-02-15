@@ -433,28 +433,6 @@ namespace Voodoo.Basement
             return sb.ToS();
         }
 
-        public string getnoveltopupdate(string top,string ShowClass,string ShowAuthor,string ShowTime)
-        {
-            int i_top = top.ToInt32();
-            List<Book> bs = BookView.GetModelList("Enable=1 order by UpdateTime desc", i_top);
-            StringBuilder sb = new StringBuilder();
-
-            foreach (Book b in bs)
-            {
-                Class c = BookView.GetClass(b);
-                sb.AppendLine(string.Format("<tr><td>[<a href=\"{0}\">{1}</a>]</td><td> <a href=\"{2}\">{3}</a></td><td><a href=\"{4}\">{5}</a></td><td>{6}</td><td>[{7}]</td></tr>",
-                    ShowClass.ToInt32()>0?BasePage.GetClassUrl(c):"",
-                    ShowClass.ToInt32()>0?b.ClassName:"",
-                    BasePage.GetBookUrl(b, c),
-                    b.Title,
-                    BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), c),
-                    b.LastChapterTitle,
-                    ShowAuthor.ToInt32()>0? b.Author:"",
-                    ShowTime.ToInt32()>0? b.UpdateTime.ToString("MM-dd"):""
-                    ));
-            }
-            return sb.ToS();
-        }
         #endregion 获取最新更新的书籍
     }
 }

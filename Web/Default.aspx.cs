@@ -25,17 +25,17 @@ namespace Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FileInfo file = new FileInfo(Server.MapPath("~/Book/Index" + SystemSetting.ExtName));
-            if (file.Exists)
-            {
-                Server.Transfer("~/Book/Index" + SystemSetting.ExtName);
-            }
-            else
-            {
-                Response.Write("当前系统还没有首页，请登录<a href='e/admin/'>后台</a>生成！");
-            }
-            //Response.Write("引子".GetNumberFromTitle());
-
+            //FileInfo file = new FileInfo(Server.MapPath("~/Book/Index" + SystemSetting.ExtName));
+            //if (file.Exists)
+            //{
+            //    Server.Transfer("~/Book/Index" + SystemSetting.ExtName);
+            //}
+            //else
+            //{
+            //    Response.Write("当前系统还没有首页，请登录<a href='e/admin/'>后台</a>生成！");
+            //}
+            ////Response.Write("引子".GetNumberFromTitle());
+            Server.Transfer("~/Book/Index" + SystemSetting.ExtName);
         }
     }
 }

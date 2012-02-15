@@ -9,7 +9,6 @@ using Voodoo;
 using Voodoo.Model;
 using Voodoo.DAL;
 using Voodoo.Basement;
-using Voodoo.Html;
 namespace Web.e
 {
     public partial class Test : BasePage
