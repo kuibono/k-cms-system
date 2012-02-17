@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<BookInfoRule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CharSet>UTF-8</CharSet>
+  <SearchRefer>http://sosu.qidian.com/searchresult.aspx?searchkey={0}&amp;searchtype=%E4%B9%A6%E5%90%8D</SearchRefer>
+  <SearchPageUrl>http://sosu.qidian.com/ajax/search.ashx?method=getbooksearchlist&amp;searchtype=%E4%B9%A6%E5%90%8D&amp;searchkey={0}</SearchPageUrl>
+  <BookInfoUrl>&lt;div class="title"&gt;[\s\S]*?&lt;h1&gt;(?&lt;title&gt;[\s\S]*?)&lt;/h1&gt;[\s]*?&lt;b&gt;小说作者：&lt;/b&gt;[\s\S]*?"&gt;(?&lt;author&gt;[\s\S]*?)&lt;/a&gt;[\s\S]*?&lt;b&gt;总字数：&lt;/b&gt;(?&lt;charcount&gt;[\s\S]*?)&lt;/td&gt;[\s\S]*?&lt;div class="txt"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;span[\s\S]*?&lt;b&gt;小说类别：&lt;/b&gt;&lt;a href="[\s\S]*?target="_blank"&gt;(?&lt;class&gt;[\s\S]*?)&lt;/a&gt;[\s\S]*?&lt;b&gt;写作进程：&lt;/b&gt;(?&lt;status&gt;[\s\S]*?)&lt;/td&gt;</BookInfoUrl>
+  <ChapterListUrl>&lt;a href="(?&lt;url&gt;.*?)" title=".*?"&gt;[\s]*?点击阅读&lt;/a&gt;</ChapterListUrl>
+  <ChapterTitle>&lt;li style='width:33%;'&gt;&lt;a [\s\S]*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterTitle>
+  <BaiduCharSet>UTF-8</BaiduCharSet>
+  <ChapterUrl>&lt;table[\s\S]*?&lt;h3 class="t"&gt;&lt;a[\s\S]*? href="(?&lt;url&gt;.*?)"</ChapterUrl>
+</BookInfoRule>
