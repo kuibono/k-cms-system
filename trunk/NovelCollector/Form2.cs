@@ -50,7 +50,8 @@ namespace NovelCollector
                 new System.Net.CookieContainer(),
                 "*.*",
                 QidianRefer,
-                "");
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11");
+            richTextBox1.Text = SearchList;
             
         }
     }
