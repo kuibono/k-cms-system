@@ -8,4 +8,6 @@
   <ChapterTitle>&lt;li style='width:33%;'&gt;&lt;a [\s\S]*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterTitle>
   <BaiduCharSet>UTF-8</BaiduCharSet>
   <ChapterUrl>&lt;table[\s\S]*?&lt;h3 class="t"&gt;&lt;a[\s\S]*? href="(?&lt;url&gt;.*?)"</ChapterUrl>
+  <TargetSite>http://localhost/</TargetSite>
+
 </BookInfoRule>

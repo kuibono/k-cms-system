@@ -23,6 +23,8 @@ namespace NovelCollector
 
         public string ListUrl { get; set; }
 
+        public List<string> ChapterTitles { get; set; }
+
         public bool Exist()
         {
             return BookView.Exist(string.Format("Title='{0}' and Author='{1}'",this.Title,this.Author));

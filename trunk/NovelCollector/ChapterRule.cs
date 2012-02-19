@@ -11,7 +11,7 @@ namespace NovelCollector
 
         public string Domain { get; set; }
 
-        public Encoding CharSet { get; set; }
+        public string CharSet { get; set; }
 
         public string Content { get; set; }
 
