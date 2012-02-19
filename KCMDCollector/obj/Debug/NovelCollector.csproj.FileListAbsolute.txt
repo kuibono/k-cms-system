@@ -1,0 +1,17 @@
+D:\项目\NovelCollector\NovelCollector\bin\Debug\NovelCollector.exe
+D:\项目\NovelCollector\NovelCollector\bin\Debug\NovelCollector.pdb
+D:\项目\NovelCollector\NovelCollector\obj\Debug\ResolveAssemblyReference.cache
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.MainForm.resources
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.Properties.Resources.resources
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.csproj.GenerateResource.Cache
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.exe
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.pdb
+D:\项目\NovelCollector\NovelCollector\bin\Debug\Voodoo.dll
+D:\项目\NovelCollector\NovelCollector\bin\Debug\System.Data.SQLite.dll
+D:\项目\NovelCollector\NovelCollector\bin\Debug\MySql.Data.dll
+D:\项目\NovelCollector\NovelCollector\bin\Debug\NPOI.dll
+D:\项目\NovelCollector\NovelCollector\bin\Debug\Voodoo.pdb
+D:\项目\NovelCollector\NovelCollector\bin\Debug\Voodoo.xml
+D:\项目\NovelCollector\NovelCollector\bin\Debug\en\Voodoo.resources.dll
+D:\项目\NovelCollector\NovelCollector\bin\Debug\zh-CHT\Voodoo.resources.dll
+D:\项目\NovelCollector\NovelCollector\obj\Debug\NovelCollector.SettingForm.resources

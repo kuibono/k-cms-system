@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelCollector", "NovelColl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoverCollectService", "NoverCollectService\NoverCollectService.csproj", "{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCMDCollector", "KCMDCollector\KCMDCollector.csproj", "{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}"
+EndProject
 Global
 	GlobalSection(PowerDesigner) = preSolution
 		HasSWS = 1
@@ -58,6 +60,10 @@ Global
 		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
