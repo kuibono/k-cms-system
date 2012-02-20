@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace NovelCollector
 {
-    public partial class Form2 : MultiSearch
+    public partial class Form2 : Form //MultiSearch
     {
         public Form2()
         {
@@ -109,23 +109,23 @@ namespace NovelCollector
         private void button1_Click(object sender, EventArgs e)
         {
 
-            Thread th = new Thread(Collect);
-            th.Start();
+            //Thread th = new Thread(Collect);
+            //th.Start();
         }
 
 
 
-        public override void Status_Changed()
-        {
-            this.Invoke(new MethodInvoker(delegate
-                {
-                    this.lb_BookTitle.Text = BookTitle;
-                    this.lb_ChapterTitle.Text = ChapterTitle;
-                    this.lb_Status.Text = Status;
-                    this.lb_Class.Text = str_Class;
-                    this.lb_Author.Text = Author;
-                }));
-        }
+        //public override void Status_Changed()
+        //{
+        //    this.Invoke(new MethodInvoker(delegate
+        //        {
+        //            this.lb_BookTitle.Text = BookTitle;
+        //            this.lb_ChapterTitle.Text = ChapterTitle;
+        //            this.lb_Status.Text = Status;
+        //            this.lb_Class.Text = str_Class;
+        //            this.lb_Author.Text = Author;
+        //        }));
+        //}
 
         #region 根据书名获取书籍信息
         /// <summary>
