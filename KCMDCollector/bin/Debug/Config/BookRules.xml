@@ -26,17 +26,4 @@
     <ChapterNameAndUrl>&lt;dd&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/dd&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;td id="table_container"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/td&gt;</ChapterContent>
   </CollectRule>
-  <CollectRule>
-    <IsDefault>false</IsDefault>
-    <SiteName>35小说网</SiteName>
-    <Url>http://www.xiaoshuo555.cn</Url>
-    <CharSet>gbk</CharSet>
-    <SearchPageUrl>http://www.xiaoshuo555.cn/modules/article/search.php</SearchPageUrl>
-    <SearchPars>searchtype=articlename&amp;searchkey={0}&amp;submit=</SearchPars>
-    <BookInfoUrl>&lt;DIV class=mov-pic&gt;&lt;A href="(?&lt;url&gt;.*?)" &gt;&lt;IMG</BookInfoUrl>
-    <BookInfoRule>&lt;span style="display:inline" class="articlename"&gt;(?&lt;title&gt;.*?)&lt;/span&gt;[\s\S]*?小说作者：&lt;a href=".*?"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;[\s\S]*?&lt;div style="padding-left:10px;padding-right:10px;padding-top:5px;line-height:20px;font-size:12px;"&gt;(?&lt;intro&gt;[\s\S]*?)&amp;#9758;[\s\S]*?&lt;strong&gt;本书类别：&lt;/strong&gt;(?&lt;class&gt;.*?)&lt;/td&gt;</BookInfoRule>
-    <ChapterListUrl>&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;点击阅读&lt;/a&gt;</ChapterListUrl>
-    <ChapterNameAndUrl>&lt;a.*? href="(?&lt;url&gt;[0-9\.html]*?)".*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterNameAndUrl>
-    <ChapterContent>&lt;div id="content" align=center&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
-  </CollectRule>
 </ArrayOfCollectRule>
