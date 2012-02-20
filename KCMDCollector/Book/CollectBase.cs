@@ -272,10 +272,19 @@ namespace KCMDCollector.Book
                 "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
                 );
 
-            string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
 
-            //打开书籍信息页
-            string html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
+            string html_BookInfo = "";
+            if (html_Search.IsMatch(Rule.BookInfoUrl))
+            {
+                string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+                //打开书籍信息页
+                html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
+            }
+            else
+            {
+                //系统自动跳转到了书籍信息页
+                html_BookInfo = html_Search;
+            }
 
 
             //获得章节列表页地址
@@ -310,7 +319,7 @@ namespace KCMDCollector.Book
                     continue;
                 }
                 //获取章节在分站点的URL和标题
-                var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "") == c.Title.Replace(" ", ""));
+                var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
                 if (chapter_NeedCollect.Count() > 0)
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
@@ -459,6 +468,7 @@ namespace KCMDCollector.Book
         /// <param name="BookTitle"></param>
         public void CollectBookByTitle(string BookTitle)
         {
+            this.CollectStatus.BookTitle = BookTitle; Status_Chage();
             //1.获取起点书籍
             this.QidianBook = GetQidianBook(BookTitle);
             if (QidianBook.ID <= 0)
@@ -478,7 +488,7 @@ namespace KCMDCollector.Book
             }
             else
             {
-                var localLastBook=tmp.First();
+                var localLastBook = tmp.First();
                 BookNeedCollect = QidianBook;
                 BookNeedCollect.Chapters = BookNeedCollect.Chapters.Where(p => p.Index > localLastBook.Index).ToList();
             }
@@ -488,7 +498,7 @@ namespace KCMDCollector.Book
             BookNeedCollect.ClassID = LocalBook.ClassID;
 
             //4.循环采集书籍
-            var Rules = RulesOperate.GetBookRules();
+            var Rules = RulesOperate.GetBookRules().Where(p => p.SiteName != "手打吧").ToList();
             foreach (CollectRule rule in Rules)
             {
                 //如果没有任何章节需要采集，则直接退出章节

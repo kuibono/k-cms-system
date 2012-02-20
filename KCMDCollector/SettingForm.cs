@@ -78,7 +78,7 @@ namespace KCMDCollector
             Book.Setting set = new KCMDCollector.Book.Setting();
             set.APIKey = "111111";
             set.PassWord = "123456";
-            set.TargetUrl = "http://192.168.1.3/";
+            set.TargetUrl = "http://localhost/";
             set.UserName = "admin";
             Book.RulesOperate.SaveSetting(set);
         }
