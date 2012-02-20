@@ -21,6 +21,11 @@ namespace KCMDCollector.Book
         protected BookAndChapter QidianBook { get; set; }
 
         /// <summary>
+        /// 需要采集的书籍章节
+        /// </summary>
+        protected BookAndChapter BookNeedCollect { get; set; }
+
+        /// <summary>
         /// 本地书籍
         /// </summary>
         protected BookAndChapter LocalBook { get; set; }
@@ -250,46 +255,80 @@ namespace KCMDCollector.Book
         /// </summary>
         /// <param name="b">书籍</param>
         /// <param name="r">采集规则</param>
-        protected void CollectChapter(BookAndChapter b, CollectRule r)
+        protected void CollectChapter(BookAndChapter bc, CollectRule Rule)
         {
-            BookAndChapter newBook = b;
+
             Setting s = Book.RulesOperate.GetSetting();
-            foreach (Chapter c in b.Chapters)
+
+            BookAndChapter b = new BookAndChapter();
+            //搜索书籍
+            string html_Search = Url.Post(
+                string.Format(Rule.SearchPars, bc.BookTitle).ParamToNameValueCollection(),
+                Rule.SearchPageUrl,
+                Encoding.GetEncoding(Rule.CharSet),
+                new System.Net.CookieContainer(),
+                "*.*",
+                Rule.Url,
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                );
+
+            string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+
+            //打开书籍信息页
+            string html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
+
+
+            //获得章节列表页地址
+            string chapterListUrl = html_BookInfo.GetMatchGroup(Rule.ChapterListUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+
+
+            //打开章节列表
+            string html_ChapterList = Url.GetHtml(chapterListUrl, Rule.CharSet);
+            var match_Chapters = html_ChapterList.GetMatchGroup(Rule.ChapterNameAndUrl);
+
+            //获取章节列表
+            b.Chapters = new List<Chapter>();
+            int i = 0;
+            while (match_Chapters.Success)
             {
-                this.CollectStatus.ChapterTitle = c.Title; Status_Chage();
-                string html_Content = Url.GetHtml(c.Url, r.CharSet);
-
-                //过滤
-                string Content = html_Content.GetMatchGroup(r.ChapterContent).Groups["content"].Value;
-                Content = Filter(Content);
-                c.Content = Content;
-
-                //提交
-                NameValueCollection nv = new NameValueCollection();
-                nv.Add("bookid", b.ID.ToString());
-                nv.Add("booktitle", b.BookTitle);
-                nv.Add("classid", b.ClassID.ToS());
-                nv.Add("classname", b.Class);
-                nv.Add("content", c.Content);
-                nv.Add("title", c.Title);
-
-                Web.BookChapter bc = (Web.BookChapter)XML.DeSerialize(typeof(Web.BookChapter), Url.Post(nv, s.TargetUrl + "e/api/ChapterAdd.aspx", Encoding.UTF8));
-                if (bc.ID < 0)
+                b.Chapters.Add(new Chapter()
                 {
-                    this.CollectStatus.Status = "章节保存失败"; Status_Chage();
-
-                }
-                else
-                {
-                    //采集成功 清掉这个章节
-                    newBook.Changed = true;
-                    newBook.Chapters = b.Chapters.Where(prop => prop.Index != c.Index).ToList();
-                    LocalBook.LastChapter = c;
-                    this.CollectStatus.Status = c.Title + "_成功"; Status_Chage();
-                }
-
-                LocalBook = newBook;
+                    Title = match_Chapters.Groups["title"].Value,
+                    Url = chapterListUrl + match_Chapters.Groups["url"].Value,
+                    Index = i
+                });
+                i++;
+                match_Chapters = match_Chapters.NextMatch();
             }
+
+
+            foreach (Chapter c in bc.Chapters)
+            {
+                if (!c.Content.IsNullOrEmpty())
+                {
+                    //如果章节内容不为空，则不需要采集，继续采集下一章节
+                    continue;
+                }
+                //获取章节在分站点的URL和标题
+                var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "") == c.Title.Replace(" ", ""));
+                if (chapter_NeedCollect.Count() > 0)
+                {
+                    this.CollectStatus.ChapterTitle = c.Title;
+                    this.CollectStatus.Status = "正在采集";
+                    Status_Chage();
+                    //采集章节内容
+                    string html_Content = Url.GetHtml(chapter_NeedCollect.First().Url, Rule.CharSet);
+
+                    //过滤
+                    string Content = html_Content.GetMatchGroup(Rule.ChapterContent).Groups["content"].Value;
+                    Content = Filter(Content);
+                    c.Content = Content;
+
+
+                }//end of 判断章节在分站中存在
+
+            }//end of 循环采集章节
+
         }
         #endregion
 
@@ -350,6 +389,42 @@ namespace KCMDCollector.Book
         }
         #endregion 过滤
 
+        #region 提交章节内容到目标站点
+        /// <summary>
+        /// 提交章节内容到目标站点
+        /// </summary>
+        /// <param name="b"></param>
+        public void SubmitBook(BookAndChapter b)
+        {
+            Setting s = Book.RulesOperate.GetSetting();
+
+            foreach (Chapter c in b.Chapters)
+            {
+                NameValueCollection nv = new NameValueCollection();
+                nv.Add("bookid", b.ID.ToString());
+                nv.Add("booktitle", b.BookTitle);
+                nv.Add("classid", b.ClassID.ToS());
+                nv.Add("classname", b.Class);
+                nv.Add("content", c.Content);
+                nv.Add("title", c.Title);
+
+                Web.BookChapter chapter_Submited = (Web.BookChapter)XML.DeSerialize(typeof(Web.BookChapter), Url.Post(nv, s.TargetUrl + "e/api/ChapterAdd.aspx", Encoding.UTF8));
+                if (chapter_Submited.ID < 0)
+                {
+                    this.CollectStatus.Status = "章节保存失败"; Status_Chage();
+
+                }
+                else
+                {
+                    //采集成功 清掉这个章节
+                    b.Changed = true;
+                    b.Chapters = b.Chapters.Where(p => p.Index != c.Index).ToList();
+
+                }
+            }
+        }
+        #endregion
+
         #region 生成页面
         /// <summary>
         /// 生成页面
@@ -384,117 +459,166 @@ namespace KCMDCollector.Book
         /// <param name="BookTitle"></param>
         public void CollectBookByTitle(string BookTitle)
         {
-
-            this.CollectStatus.BookTitle = BookTitle; Status_Chage();
-
-            CollectRule MainRule = RulesOperate.GetBookRules().Where(p => p.IsDefault).First();
-            //获取主站书籍
-            this.CollectStatus.Status = "获取主站书籍"; Status_Chage();
-            this.MainBook = GetSiteBook(BookTitle, MainRule);
-
-            //获取本地书籍
-            this.CollectStatus.Status = "获取本地书籍"; Status_Chage();
-            LocalBook = this.GetLocalBook(this.MainBook);
-
-            if (LocalBook.Status == 1)
-            {
-                this.CollectStatus.Status = "已完结"; Status_Chage();
-            }
-
-            //对比本地和主站书籍
-            if (MainBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
-            {
-                LocalBook.Chapters = MainBook.Chapters;
-            }
-            else
-            {
-                var lastChapter = MainBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
-                var chapters = MainBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
-                LocalBook.Chapters = chapters;
-            }
-
-            //从主站采集书籍
-            this.CollectStatus.Status = "从主站采集书籍"; Status_Chage();
-            this.CollectChapter(LocalBook, MainRule);
-
-            //获取起点书籍
-            this.CollectStatus.Status = "获取起点书籍"; Status_Chage();
+            //1.获取起点书籍
             this.QidianBook = GetQidianBook(BookTitle);
-
-            #region  ...
-            if (QidianBook.Chapters.Count > 0)
+            if (QidianBook.ID <= 0)
             {
-                //对比起点和主站差异，如果有差异，则继续
-                var qidan_lastChapter = QidianBook.Chapters.Where(p => p.Title.Replace(" ", "") == LocalBook.LastChapter.Title.Replace(" ", "")).First();
+                return;//在起点没有采集到这本书
+            }
 
-                //起点比本站多出来的章节
-                var qidian_chapters = QidianBook.Chapters.Where(p => p.Index > qidan_lastChapter.Index).OrderBy(prop => prop.Index).ToList();
-                if (qidian_chapters.Count > 0)
-                {
-                    //循环获取分站书籍，并且采集
-                    var allRules = RulesOperate.GetBookRules().Where(prop => prop.SiteName != MainRule.SiteName);
-                    foreach (CollectRule rule in allRules)
-                    {
-                        this.CollectStatus.Status = "获取" + rule.SiteName + "书籍"; Status_Chage();
+            //2.获取本地书籍
+            this.LocalBook = GetLocalBook(QidianBook);
 
-                        //获取分站
-                        this.OtherBook = GetSiteBook(BookTitle, MainRule);
-
-                        //对比本地和分站书籍
-                        if (OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
-                        {
-                            LocalBook.Chapters = OtherBook.Chapters;
-                        }
-                        else
-                        {
-                            var lastChapter = OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
-                            var chapters = OtherBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
-                            LocalBook.Chapters = chapters;
-                        }
-
-                        //从分站采集书籍
-                        this.CollectChapter(LocalBook, rule);
-                    }
-                }
-
+            //3.对比获取需要采集的章节
+            var tmp = QidianBook.Chapters.Where(p => p.Title.Replace(" ", "") == LocalBook.LastChapter.Title.Replace(" ", ""));//最后一张在起点中的章节
+            if (LocalBook.LastChapter.Title.IsNullOrEmpty())
+            {
+                //本地书籍没有任何章节
+                BookNeedCollect = QidianBook;
             }
             else
             {
-                //起点没有这本书
-                //循环获取分站书籍，并且采集
-                var allRules = RulesOperate.GetBookRules().Where(prop => prop.SiteName != MainRule.SiteName);
-                foreach (CollectRule rule in allRules)
-                {
-                    this.CollectStatus.Status = "获取" + rule.SiteName + "书籍"; Status_Chage();
-
-                    //获取分站
-                    this.OtherBook = GetSiteBook(BookTitle, MainRule);
-
-                    //对比本地和分站书籍
-                    if (OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
-                    {
-                        LocalBook.Chapters = OtherBook.Chapters;
-                    }
-                    else
-                    {
-                        var lastChapter = OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
-                        var chapters = OtherBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
-                        LocalBook.Chapters = chapters;
-                    }
-
-                    //从分站采集书籍
-                    this.CollectChapter(LocalBook, rule);
-                }
+                var localLastBook=tmp.First();
+                BookNeedCollect = QidianBook;
+                BookNeedCollect.Chapters = BookNeedCollect.Chapters.Where(p => p.Index > localLastBook.Index).ToList();
             }
-            #endregion 
 
-            if (LocalBook.Changed)
+            BookNeedCollect.ID = LocalBook.ID;
+            BookNeedCollect.Class = LocalBook.Class;
+            BookNeedCollect.ClassID = LocalBook.ClassID;
+
+            //4.循环采集书籍
+            var Rules = RulesOperate.GetBookRules();
+            foreach (CollectRule rule in Rules)
             {
-                CreatePage(LocalBook.ID.ToString());
+                //如果没有任何章节需要采集，则直接退出章节
+                if (BookNeedCollect.Chapters.Count == 0)
+                {
+                    break;
+                }
+                CollectChapter(BookNeedCollect, rule);
             }
 
-            this.CollectStatus.Status = "完成";
-            this.Status_Chage();
+            //5.提交到目标站点
+
+            //6.采集完成 生成书籍
+            if (BookNeedCollect.Changed)
+            {
+                CreatePage(BookNeedCollect.ID.ToS());
+            }
+
+            #region 注释掉
+            //this.CollectStatus.BookTitle = BookTitle; Status_Chage();
+
+            //CollectRule MainRule = RulesOperate.GetBookRules().Where(p => p.IsDefault).First();
+            ////获取主站书籍
+            //this.CollectStatus.Status = "获取主站书籍"; Status_Chage();
+            //this.MainBook = GetSiteBook(BookTitle, MainRule);
+
+            ////获取本地书籍
+            //this.CollectStatus.Status = "获取本地书籍"; Status_Chage();
+            //LocalBook = this.GetLocalBook(this.MainBook);
+
+            //if (LocalBook.Status == 1)
+            //{
+            //    this.CollectStatus.Status = "已完结"; Status_Chage();
+            //}
+
+            ////对比本地和主站书籍
+            //if (MainBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
+            //{
+            //    LocalBook.Chapters = MainBook.Chapters;
+            //}
+            //else
+            //{
+            //    var lastChapter = MainBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
+            //    var chapters = MainBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
+            //    LocalBook.Chapters = chapters;
+            //}
+
+            ////从主站采集书籍
+            //this.CollectStatus.Status = "从主站采集书籍"; Status_Chage();
+            //this.CollectChapter(LocalBook, MainRule);
+
+            ////获取起点书籍
+            //this.CollectStatus.Status = "获取起点书籍"; Status_Chage();
+            //this.QidianBook = GetQidianBook(BookTitle);
+
+            //#region  ...
+            //if (QidianBook.Chapters.Count > 0)
+            //{
+            //    //对比起点和主站差异，如果有差异，则继续
+            //    var qidan_lastChapter = QidianBook.Chapters.Where(p => p.Title.Replace(" ", "") == LocalBook.LastChapter.Title.Replace(" ", "")).First();
+
+            //    //起点比本站多出来的章节
+            //    var qidian_chapters = QidianBook.Chapters.Where(p => p.Index > qidan_lastChapter.Index).OrderBy(prop => prop.Index).ToList();
+            //    if (qidian_chapters.Count > 0)
+            //    {
+            //        //循环获取分站书籍，并且采集
+            //        var allRules = RulesOperate.GetBookRules().Where(prop => prop.SiteName != MainRule.SiteName);
+            //        foreach (CollectRule rule in allRules)
+            //        {
+            //            this.CollectStatus.Status = "获取" + rule.SiteName + "书籍"; Status_Chage();
+
+            //            //获取分站
+            //            this.OtherBook = GetSiteBook(BookTitle, MainRule);
+
+            //            //对比本地和分站书籍
+            //            if (OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
+            //            {
+            //                LocalBook.Chapters = OtherBook.Chapters;
+            //            }
+            //            else
+            //            {
+            //                var lastChapter = OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
+            //                var chapters = OtherBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
+            //                LocalBook.Chapters = chapters;
+            //            }
+
+            //            //从分站采集书籍
+            //            this.CollectChapter(LocalBook, rule);
+            //        }
+            //    }
+
+            //}
+            //else
+            //{
+            //    //起点没有这本书
+            //    //循环获取分站书籍，并且采集
+            //    var allRules = RulesOperate.GetBookRules().Where(prop => prop.SiteName != MainRule.SiteName);
+            //    foreach (CollectRule rule in allRules)
+            //    {
+            //        this.CollectStatus.Status = "获取" + rule.SiteName + "书籍"; Status_Chage();
+
+            //        //获取分站
+            //        this.OtherBook = GetSiteBook(BookTitle, MainRule);
+
+            //        //对比本地和分站书籍
+            //        if (OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).Count() == 0)
+            //        {
+            //            LocalBook.Chapters = OtherBook.Chapters;
+            //        }
+            //        else
+            //        {
+            //            var lastChapter = OtherBook.Chapters.Where(p => p.Title == LocalBook.LastChapter.Title).First();
+            //            var chapters = OtherBook.Chapters.Where(p => p.Index > lastChapter.Index).OrderBy(prop => prop.Index).ToList();
+            //            LocalBook.Chapters = chapters;
+            //        }
+
+            //        //从分站采集书籍
+            //        this.CollectChapter(LocalBook, rule);
+            //    }
+            //}
+            //#endregion 
+
+            //if (LocalBook.Changed)
+            //{
+            //    CreatePage(LocalBook.ID.ToString());
+            //}
+
+            //this.CollectStatus.Status = "完成";
+            //this.Status_Chage();
+            #endregion
         }
         #endregion
 
