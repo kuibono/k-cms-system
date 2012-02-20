@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<QidianRule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CharSet>UTF-8</CharSet>
+  <SearchRefer>http://sosu.qidian.com/searchresult.aspx?searchkey={0}&amp;searchtype=%E4%B9%A6%E5%90%8D</SearchRefer>
+  <SearchPageUrl>http://sosu.qidian.com/ajax/search.ashx?method=getbooksearchlist&amp;searchtype=%E4%B9%A6%E5%90%8D&amp;searchkey={0}</SearchPageUrl>
+  <ChapterListUrl>http://www.qidian.com/BookReader/{0}.aspx</ChapterListUrl>
+  <ChapterTitle>&lt;li style='width:.*?%;'&gt;&lt;a [\s\S]*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterTitle>
+</QidianRule>
