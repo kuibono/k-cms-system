@@ -49,20 +49,20 @@ namespace KCMDCollector
                 BookInfoUrl = "<td class=\"odd\"><a href=\"(?<url>.*?)\">.*?</a></td>"
             });
 
-            rs.Add(new Book.CollectRule()
-            {
-                SiteName = "35小说网",
-                CharSet = "gbk",
-                ChapterContent = "<div id=\"content\" align=center>(?<content>[\\s\\S]*?)</div>",
-                ChapterNameAndUrl = "<a.*? href=\"(?<url>[0-9\\.html]*?)\".*?>(?<title>.*?)</a>",
-                IsDefault = false,
-                ChapterListUrl = "<a href=\"(?<url>.*?)\" target=\"_blank\">点击阅读</a>",
-                SearchPageUrl = "http://www.xiaoshuo555.cn/modules/article/search.php",
-                SearchPars = "searchtype=articlename&searchkey={0}&submit=",
-                Url = "http://www.xiaoshuo555.cn",
-                BookInfoRule = "<span style=\"display:inline\" class=\"articlename\">(?<title>.*?)</span>[\\s\\S]*?小说作者：<a href=\".*?\">(?<author>.*?)</a>[\\s\\S]*?<div style=\"padding-left:10px;padding-right:10px;padding-top:5px;line-height:20px;font-size:12px;\">(?<intro>[\\s\\S]*?)&#9758;[\\s\\S]*?<strong>本书类别：</strong>(?<class>.*?)</td>",
-                BookInfoUrl = "<DIV class=mov-pic><A href=\"(?<url>.*?)\" ><IMG"
-            });
+            //rs.Add(new Book.CollectRule()
+            //{
+            //    SiteName = "35小说网",
+            //    CharSet = "gbk",
+            //    ChapterContent = "<div id=\"content\" align=center>(?<content>[\\s\\S]*?)</div>",
+            //    ChapterNameAndUrl = "<a.*? href=\"(?<url>[0-9\\.html]*?)\".*?>(?<title>.*?)</a>",
+            //    IsDefault = false,
+            //    ChapterListUrl = "<a href=\"(?<url>.*?)\" target=\"_blank\">点击阅读</a>",
+            //    SearchPageUrl = "http://www.xiaoshuo555.cn/modules/article/search.php",
+            //    SearchPars = "searchtype=articlename&searchkey={0}&submit=精确搜索",
+            //    Url = "http://www.xiaoshuo555.cn",
+            //    BookInfoRule = "<span style=\"display:inline\" class=\"articlename\">(?<title>.*?)</span>[\\s\\S]*?小说作者：<a href=\".*?\">(?<author>.*?)</a>[\\s\\S]*?<div style=\"padding-left:10px;padding-right:10px;padding-top:5px;line-height:20px;font-size:12px;\">(?<intro>[\\s\\S]*?)&#9758;[\\s\\S]*?<strong>本书类别：</strong>(?<class>.*?)</td>",
+            //    BookInfoUrl = "<DIV class=mov-pic><A href=\"(?<url>.*?)\" ><IMG"
+            //});
 
             Book.RulesOperate.SaveBookRules(rs);
 

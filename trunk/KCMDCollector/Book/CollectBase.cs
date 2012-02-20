@@ -124,6 +124,7 @@ namespace KCMDCollector.Book
             string QidianSearchUrl = string.Format(Rule.SearchPageUrl, Title);
             string QidianRefer = string.Format(Rule.SearchRefer, Title);
 
+            CollectStatus.Status = "正在搜索"; Status_Chage();
             string SearchList = Voodoo.Net.Url.Post(new System.Collections.Specialized.NameValueCollection(),
                 QidianSearchUrl,
                 Encoding.GetEncoding(Rule.CharSet),
@@ -157,6 +158,7 @@ namespace KCMDCollector.Book
 
 
             //打开章节列表
+            CollectStatus.Status = "打开章节列表"; Status_Chage();
             string url_ChapterList = string.Format(Rule.ChapterListUrl, b.ID.ToString());
             string html_ChapterList = Url.Post(new System.Collections.Specialized.NameValueCollection(),
                 url_ChapterList,
@@ -213,6 +215,7 @@ namespace KCMDCollector.Book
             string html_BookInfo = "";
             if (html_Search.IsMatch(Rule.BookInfoUrl))
             {
+                CollectStatus.Status = "打开书籍信息页"; Status_Chage();
                 string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
                 //打开书籍信息页
                 html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
@@ -229,6 +232,7 @@ namespace KCMDCollector.Book
 
 
             //打开章节列表
+            CollectStatus.Status = "打开章节列表"; Status_Chage();
             string html_ChapterList = Url.GetHtml(chapterListUrl, Rule.CharSet);
             var match_Chapters = html_ChapterList.GetMatchGroup(Rule.ChapterNameAndUrl);
 
