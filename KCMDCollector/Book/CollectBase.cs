@@ -310,7 +310,7 @@ namespace KCMDCollector.Book
         {
 
             //去除特殊字符
-            Content = Regex.Replace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’“”々～‖∶＂〃〔〕〈〉《》「」『』．〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
+            Content = Regex.Replace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』．〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
             Content = Regex.Replace(Content, "[~!@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
 
             //全角转半角
@@ -334,7 +334,7 @@ namespace KCMDCollector.Book
             //删除网址
             Content = Regex.Replace(Content, "http://", "", RegexOptions.IgnoreCase);
             Content = Regex.Replace(Content, "https://", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "[\\w\\.]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "", RegexOptions.IgnoreCase);
+            Content = Regex.Replace(Content, "[\\\\\\w\\.]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "", RegexOptions.IgnoreCase);
 
             //根据预先指定的规则进行替换
             var Filter_List = Book.RulesOperate.GetFilter();
@@ -371,10 +371,10 @@ namespace KCMDCollector.Book
                 CollectStatus.ChapterTitle = c.Title;
                 Status_Chage();
 
-                if (c.Content.Trim().IsNullOrEmpty())
+                if (c.Content.IsNullOrEmpty()|| c.Content.Trim().IsNullOrEmpty())
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                    break;
+                    continue;
                 }
                 
                 NameValueCollection nv = new NameValueCollection();
