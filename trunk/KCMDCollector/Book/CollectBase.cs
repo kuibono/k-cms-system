@@ -276,7 +276,8 @@ namespace KCMDCollector.Book
                     continue;
                 }
                 //获取章节在分站点的URL和标题
-                var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
+                //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
+                var chapter_NeedCollect = (from n in b.Chapters select new { n.Index,n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
                 if (chapter_NeedCollect.Count() > 0)
                 {
                     this.CollectStatus.ChapterTitle = c.Title;

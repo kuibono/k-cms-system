@@ -47,6 +47,7 @@
             this.strip_Exit = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_Show = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.strip_Exit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,28 +177,39 @@
             this.tool_Exit,
             this.tool_Show});
             this.strip_Exit.Name = "strip_Exit";
-            this.strip_Exit.Size = new System.Drawing.Size(119, 48);
+            this.strip_Exit.Size = new System.Drawing.Size(125, 48);
             this.strip_Exit.Text = "退出";
             // 
             // tool_Exit
             // 
             this.tool_Exit.Name = "tool_Exit";
-            this.tool_Exit.Size = new System.Drawing.Size(118, 22);
+            this.tool_Exit.Size = new System.Drawing.Size(124, 22);
             this.tool_Exit.Text = "退出";
             this.tool_Exit.Click += new System.EventHandler(this.tool_Exit_Click);
             // 
             // tool_Show
             // 
             this.tool_Show.Name = "tool_Show";
-            this.tool_Show.Size = new System.Drawing.Size(118, 22);
+            this.tool_Show.Size = new System.Drawing.Size(124, 22);
             this.tool_Show.Text = "显示界面";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(158, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(245, 150);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progress_Book);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -239,6 +251,7 @@
         private System.Windows.Forms.ContextMenuStrip strip_Exit;
         private System.Windows.Forms.ToolStripMenuItem tool_Exit;
         private System.Windows.Forms.ToolStripMenuItem tool_Show;
+        private System.Windows.Forms.Button button1;
     }
 }
 
