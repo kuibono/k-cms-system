@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Threading;
+using Voodoo;
 
 namespace KCMDCollector
 {
@@ -81,6 +82,17 @@ namespace KCMDCollector
             {
                 this.Hide();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string s1 = "红豆生南国";
+            string s2 = "红豆生外国";
+
+            string s3 = "红豆生鸡毛南国啊";
+
+            MessageBox.Show(s1.GetSimilarityWith(s2).ToS());
+            MessageBox.Show(s1.GetSimilarityWith(s3).ToS());
         }
 
     }
