@@ -37,6 +37,11 @@ namespace KCMDCollector.Book
         public string SearchPars { get; set; }
 
         /// <summary>
+        /// 搜索类型，post或者get  默认为POST
+        /// </summary>
+        public string SearchMethod { get; set; }
+
+        /// <summary>
         /// 书籍信息页地址
         /// </summary>
         public string BookInfoUrl { get; set; }

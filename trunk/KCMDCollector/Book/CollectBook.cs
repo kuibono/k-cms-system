@@ -31,6 +31,12 @@ namespace KCMDCollector.Book
                 Parent.label1.Text = this.CollectStatus.BookTitle;
                 Parent.label2.Text = this.CollectStatus.ChapterTitle;
                 Parent.label3.Text = this.CollectStatus.Status;
+
+                Parent.progress_Book.Maximum = this.CollectStatus.BookCount;
+                Parent.progress_Book.Value = this.CollectStatus.BookCount - this.CollectStatus.BookLeftCount;
+
+                Parent.progress_Chapter.Maximum = this.CollectStatus.ChapterCount;
+                Parent.progress_Chapter.Value = this.CollectStatus.ChapterCount - this.CollectStatus.ChapterleftCout;
                 
             }));
         }

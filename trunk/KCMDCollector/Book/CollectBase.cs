@@ -201,16 +201,32 @@ namespace KCMDCollector.Book
 
             BookAndChapter b = new BookAndChapter();
             //搜索书籍
-            string html_Search = Url.Post(
-                string.Format(Rule.SearchPars, bc.BookTitle).ParamToNameValueCollection(),
-                Rule.SearchPageUrl,
-                Encoding.GetEncoding(Rule.CharSet),
-                new System.Net.CookieContainer(),
-                "*.*",
-                Rule.Url,
-                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
-                );
-
+            string html_Search = "";
+            if (Rule.SearchMethod.ToLower() == "get")//采集站搜索使用get提交
+            {
+                html_Search = Url.Post(
+                    new NameValueCollection(),
+                    Rule.SearchPageUrl+"?"+string.Format(Rule.SearchPars,bc.BookTitle),
+                    Encoding.GetEncoding(Rule.CharSet),
+                    new System.Net.CookieContainer(),
+                    "*.*",
+                    Rule.Url,
+                    "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                    );
+            }
+            else
+            {
+                //采集站搜索使用POST提交
+                html_Search = Url.Post(
+                    string.Format(Rule.SearchPars, bc.BookTitle).ParamToNameValueCollection(),
+                    Rule.SearchPageUrl,
+                    Encoding.GetEncoding(Rule.CharSet),
+                    new System.Net.CookieContainer(),
+                    "*.*",
+                    Rule.Url,
+                    "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                    );
+            }
 
             string html_BookInfo = "";
             if (html_Search.IsMatch(Rule.BookInfoUrl))
@@ -273,6 +289,8 @@ namespace KCMDCollector.Book
                     string Content = html_Content.GetMatchGroup(Rule.ChapterContent).Groups["content"].Value;
                     Content = Filter(Content);
                     c.Content = Content;
+
+                    this.CollectStatus.ChapterleftCout--; Status_Chage();
 
 
                 }//end of 判断章节在分站中存在
@@ -352,6 +370,13 @@ namespace KCMDCollector.Book
             {
                 CollectStatus.ChapterTitle = c.Title;
                 Status_Chage();
+
+                if (c.Content.Trim().IsNullOrEmpty())
+                {
+                    this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
+                    break;
+                }
+                
                 NameValueCollection nv = new NameValueCollection();
                 nv.Add("bookid", b.ID.ToString());
                 nv.Add("booktitle", b.BookTitle);
@@ -442,6 +467,9 @@ namespace KCMDCollector.Book
             BookNeedCollect.Class = LocalBook.Class;
             BookNeedCollect.ClassID = LocalBook.ClassID;
 
+            CollectStatus.ChapterCount = BookNeedCollect.Chapters.Count(); CollectStatus.ChapterleftCout = BookNeedCollect.Chapters.Count(); Status_Chage();//剩余章节数量
+
+
             //4.循环采集书籍
             var Rules = RulesOperate.GetBookRules();
             foreach (CollectRule rule in Rules)
@@ -476,9 +504,12 @@ namespace KCMDCollector.Book
         public void Collect()
         {
             string[] books = Book.RulesOperate.GetBooks();
+            CollectStatus.BookCount = books.Length; CollectStatus.BookLeftCount = books.Length; Status_Chage();
+
             foreach (string b in books)
             {
                 CollectBookByTitle(b.Trim());
+                CollectStatus.BookLeftCount--; Status_Chage();
             }
         }
         #endregion
