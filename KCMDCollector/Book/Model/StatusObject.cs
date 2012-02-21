@@ -36,5 +36,15 @@ namespace KCMDCollector.Book
         /// 剩余章节数量
         /// </summary>
         public int ChapterleftCout { get; set; }
+
+        /// <summary>
+        /// 书籍数量
+        /// </summary>
+        public int BookCount { get; set; }
+
+        /// <summary>
+        /// 剩余书籍数量
+        /// </summary>
+        public int BookLeftCount { get; set; }
     }
 }

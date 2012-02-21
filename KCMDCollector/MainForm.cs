@@ -26,8 +26,8 @@ namespace KCMDCollector
 
         private void btn_Test_Click(object sender, EventArgs e)
         {
-            Thread t = new Thread(Do);
-            t.Start();
+            timer_NovelCollector.Enabled = true;
+            timer_NovelCollector.Start();
         }
 
         protected void Do()
@@ -36,5 +36,52 @@ namespace KCMDCollector
             cb.Collect();
 
         }
+
+        Thread t;
+        private void timer_NovelCollector_Tick(object sender, EventArgs e)
+        {
+            if (t == null || t.IsAlive == false)
+            {
+                t = new Thread(Do);
+                t.Start();
+            }
+        }
+
+        private void notifyIcon_Sys_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.Visible)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Show();
+            }
+        }
+
+
+
+        private void tool_Exit_Click(object sender, EventArgs e)
+        {
+            if (t != null)
+            {
+                t.Abort();
+            }
+            Application.Exit();
+        }
+
+        private void tool_Show_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+            }
+        }
+
     }
 }

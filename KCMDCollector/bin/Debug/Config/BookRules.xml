@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCollectRule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CollectRule>
-    <IsDefault>true</IsDefault>
+    <IsDefault>false</IsDefault>
     <SiteName>手打吧</SiteName>
     <Url>http://www.shouda8.com</Url>
     <CharSet>gb2312</CharSet>
     <SearchPageUrl>http://www.shouda8.com/EBook/index.aspx</SearchPageUrl>
     <SearchPars>searchkey={0}&amp;SearchClass=1</SearchPars>
+    <SearchMethod>post</SearchMethod>
     <BookInfoUrl>&lt;li class="storelistbt5a"&gt; &lt;a target="_blank" href="(?&lt;url&gt;.*?)"&gt; &lt;img</BookInfoUrl>
     <BookInfoRule>&lt;h1 class="h1title"&gt;[\s\S]*?《(?&lt;title&gt;.*?)》&lt;/a&gt;&lt;/h1&gt;[\s\S]*?作者：(?&lt;author&gt;.*?)&lt;/span&gt;&lt;/li&gt;[\s\S]*?&lt;li class="a3"&gt;总字数：(?&lt;length&gt;[\d]*?)[\s\S]*?作品类别：[\s\S]*?"&gt;(?&lt;class&gt;.*?)&lt;/a&gt;[\s\S]*?&lt;li id="articledesc" class="a2"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/li&gt;[\s\S]*?&lt;a class="searchbtn03" href="(?&lt;url&gt;.*?)" target="_blank"&gt;&lt;/a&gt;</BookInfoRule>
     <ChapterListUrl>&lt;a class="searchbtn03" href="(?&lt;url&gt;.*?)" target="_blank"&gt;&lt;/a&gt;</ChapterListUrl>
@@ -15,15 +16,58 @@
   </CollectRule>
   <CollectRule>
     <IsDefault>false</IsDefault>
-    <SiteName>75小说</SiteName>
-    <Url>http://www.75dr.com</Url>
+    <SiteName>968U手打小说网</SiteName>
+    <Url>http://www.968u.com</Url>
     <CharSet>gbk</CharSet>
-    <SearchPageUrl>http://www.75dr.com/modules/article/search.php</SearchPageUrl>
-    <SearchPars>searchtype=articlename&amp;searchkey={0}&amp;submit=</SearchPars>
-    <BookInfoUrl>&lt;td class="odd"&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;.*?&lt;/a&gt;&lt;/td&gt;</BookInfoUrl>
-    <BookInfoRule>&lt;h1 style="display:inline"&gt;(?&lt;title&gt;.*?)&lt;/h1&gt;[\s\S]*?小说作者：(?&lt;autor&gt;.*?)&amp;nbsp;[\s\S]*?&lt;div class="contents" id="c01"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/div&gt;[\s\S]*?作品大类：&lt;A .*?&gt;(?&lt;class&gt;.*?)&lt;/A&gt;</BookInfoRule>
-    <ChapterListUrl>&lt;a href="(?&lt;url&gt;.*?)"&gt;阅读本书&lt;/a&gt;&lt;/li&gt;</ChapterListUrl>
-    <ChapterNameAndUrl>&lt;dd&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/dd&gt;</ChapterNameAndUrl>
-    <ChapterContent>&lt;td id="table_container"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/td&gt;</ChapterContent>
+    <SearchPageUrl>http://www.968u.com/wen/search.jsp</SearchPageUrl>
+    <SearchPars>key={0}&amp;idf=name</SearchPars>
+    <SearchMethod>post</SearchMethod>
+    <BookInfoUrl>&lt;div id="innerpageimage" align="left"&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)"&gt;</BookInfoUrl>
+    <BookInfoRule>&lt;strong&gt;&lt;h1&gt;(?&lt;title&gt;.*?)&lt;/h1&gt;&lt;/strong&gt;[\s\S]*?&lt;li&gt;类 别：(?&lt;class&gt;[\s\S]*?)&lt;/li&gt;</BookInfoRule>
+    <ChapterListUrl>&lt;a href="(?&lt;url&gt;.*?)"&gt;&lt;strong&gt;&lt;font color="#ff0000"&gt;点击阅读</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)" title=".*?"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div id="content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+  </CollectRule>
+  <CollectRule>
+    <IsDefault>false</IsDefault>
+    <SiteName>思路中文网</SiteName>
+    <Url>http://www.cilook.cn</Url>
+    <CharSet>gb2312</CharSet>
+    <SearchPageUrl>http://www.cilook.cn/search.asp</SearchPageUrl>
+    <SearchPars>key_keyword={0}&amp;key_type=list_name&amp;submit=搜索</SearchPars>
+    <SearchMethod>post</SearchMethod>
+    <BookInfoUrl>&lt;td valign="top" align="left" width="20%"&gt;</BookInfoUrl>
+    <BookInfoRule>&lt;span class="ulrowH1"&gt;(?&lt;title&gt;.*?)&lt;/span&gt;</BookInfoRule>
+    <ChapterListUrl>【&lt;a href="(?&lt;url&gt;.*?)"&gt;点击阅读&lt;/A&gt;】</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;td height='26' align='left' width='33%'&gt;&amp;nbsp;&lt;a href='(?&lt;url&gt;.*?)'&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div align="left" id="content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+  </CollectRule>
+  <CollectRule>
+    <IsDefault>false</IsDefault>
+    <SiteName>缘点小说网</SiteName>
+    <Url>http://www.ydxs.net</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://www.ydxs.net/modules/article/search.php</SearchPageUrl>
+    <SearchPars>searchkey={0}&amp;searchtype=articlename&amp;submit=搜索</SearchPars>
+    <SearchMethod>post</SearchMethod>
+    <BookInfoUrl>&lt;h2&gt;《&lt;b&gt;&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;.*?&lt;/a&gt;&lt;/b&gt;》</BookInfoUrl>
+    <BookInfoRule>&lt;div class="booktitle clearfix"&gt;&lt;h1&gt;(?&lt;title&gt;.*?)&lt;/h1&gt;&lt;span class="author"&gt;作者：&lt;a href=".*?" &gt;(?&lt;author&gt;.*?)&lt;/a&gt;&lt;/span&gt;[\s\S]*?本书属于&lt;a class="type" href=".*?" &gt;(?&lt;class&gt;.*?)&lt;/a&gt;[\s\S]*?&lt;ul class="block-intro"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/ul&gt;</BookInfoRule>
+    <ChapterListUrl>&lt;a class="ll redbtn" href="(?&lt;url&gt;.*?)"  title=".*?"&gt;&lt;span&gt;在线阅读&lt;/span&gt;&lt;/a&gt;</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;span&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/span&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div class="bookcontent clearfix" id="BookText"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+  </CollectRule>
+  <CollectRule>
+    <IsDefault>false</IsDefault>
+    <SiteName>手打小说网</SiteName>
+    <Url>http://www.sdxsw.org</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://www.sdxsw.org/search.php</SearchPageUrl>
+    <SearchPars>key={0}&amp;type=bookname</SearchPars>
+    <SearchMethod>get</SearchMethod>
+    <BookInfoUrl>&lt;h1&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" class="f14" target="_blank"&gt;.*?&lt;/a&gt;   </BookInfoUrl>
+    <BookInfoRule>&lt;/a&gt; →[\s\S]*?&lt;/a&gt; →[\s\S]*?&lt;a href=".*?"&gt;(?&lt;class&gt;.*?)&lt;/a&gt; →[\s\S]*?&lt;span&gt;[\s\S]*?&lt;h1&gt;(?&lt;title&gt;.*?)&lt;em&gt;&lt;strong&gt;作者：&lt;/strong&gt;&lt;a href=".*?" title=".*?"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;&lt;/em&gt;[\s\S]*?&lt;p&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/p&gt;</BookInfoRule>
+    <ChapterListUrl>&lt;div class="wbutton"&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div class="fontm" id="readtext" style=".*?"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
   </CollectRule>
 </ArrayOfCollectRule>
