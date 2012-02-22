@@ -445,13 +445,26 @@ namespace KCMDCollector.Book
             {
                 return;//在起点没有采集到这本书
             }
+            if (QidianBook.Chapters.Count == 0)
+            {
+                CollectStatus.Status = "没能打开章节列表";
+                Status_Chage();
+                return;
+            }
 
             //2.获取本地书籍
             CollectStatus.Status = "从本地检查"; Status_Chage();
             this.LocalBook = GetLocalBook(QidianBook);
 
             //3.对比获取需要采集的章节
-            var tmp = QidianBook.Chapters.Where(p => p.Title.Replace(" ", "") == LocalBook.LastChapter.Title.Replace(" ", ""));//最后一张在起点中的章节
+            var tmp = QidianBook.Chapters.Where(p => p.Title.ReplaceSynonyms() == LocalBook.LastChapter.Title.ReplaceSynonyms());//最后一张在起点中的章节
+            if (tmp.Count() == 0)
+            {
+                CollectStatus.Status = "最新章节在起点中不存在";
+                Status_Chage();
+
+                return;
+            }
             if (LocalBook.LastChapter.Title.IsNullOrEmpty())
             {
                 //本地书籍没有任何章节
