@@ -35,7 +35,10 @@ namespace KCMDCollector
         {
             Book.CollectBook cb = new KCMDCollector.Book.CollectBook(this);
             cb.Collect();
-
+            if (chb_Shutdown.Checked)
+            {
+                System.Diagnostics.Process.Start("shutdown.exe ", "/s /t 60"); 
+            }
         }
 
         Thread t;
@@ -43,8 +46,11 @@ namespace KCMDCollector
         {
             if (t == null || t.IsAlive == false)
             {
+                btn_Test.Enabled = false;
+
                 t = new Thread(Do);
                 t.Start();
+                btn_Test.Enabled = true;
             }
         }
 

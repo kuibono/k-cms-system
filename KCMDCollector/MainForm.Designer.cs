@@ -47,7 +47,7 @@
             this.strip_Exit = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.tool_Show = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.chb_Shutdown = new System.Windows.Forms.CheckBox();
             this.strip_Exit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,22 +194,22 @@
             this.tool_Show.Text = "显示界面";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
             // 
-            // button1
+            // chb_Shutdown
             // 
-            this.button1.Location = new System.Drawing.Point(158, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.chb_Shutdown.AutoSize = true;
+            this.chb_Shutdown.Location = new System.Drawing.Point(12, 146);
+            this.chb_Shutdown.Name = "chb_Shutdown";
+            this.chb_Shutdown.Size = new System.Drawing.Size(84, 16);
+            this.chb_Shutdown.TabIndex = 12;
+            this.chb_Shutdown.Text = "完成后关机";
+            this.chb_Shutdown.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(245, 150);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(266, 183);
+            this.Controls.Add(this.chb_Shutdown);
             this.Controls.Add(this.progress_Book);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -251,7 +251,7 @@
         private System.Windows.Forms.ContextMenuStrip strip_Exit;
         private System.Windows.Forms.ToolStripMenuItem tool_Exit;
         private System.Windows.Forms.ToolStripMenuItem tool_Show;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox chb_Shutdown;
     }
 }
 
