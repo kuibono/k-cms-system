@@ -86,13 +86,12 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s1 = "红豆生南国";
-            string s2 = "红豆生外国";
+            string s1 = "007．衣服没了";
+            string[] s2 = { "007． 衣服？" };
+            var r = (from n in s2 select new { n, weight = n.GetSimilarityWith(s1) }).OrderByDescending(p => p.weight).First();
 
-            string s3 = "红豆生鸡毛南国啊";
 
-            MessageBox.Show(s1.GetSimilarityWith(s2).ToS());
-            MessageBox.Show(s1.GetSimilarityWith(s3).ToS());
+            MessageBox.Show(r.n);
         }
 
     }

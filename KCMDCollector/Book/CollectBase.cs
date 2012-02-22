@@ -206,7 +206,7 @@ namespace KCMDCollector.Book
             {
                 html_Search = Url.Post(
                     new NameValueCollection(),
-                    Rule.SearchPageUrl+"?"+string.Format(Rule.SearchPars,bc.BookTitle),
+                    Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle),
                     Encoding.GetEncoding(Rule.CharSet),
                     new System.Net.CookieContainer(),
                     "*.*",
@@ -277,8 +277,8 @@ namespace KCMDCollector.Book
                 }
                 //获取章节在分站点的URL和标题
                 //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
-                var chapter_NeedCollect = (from n in b.Chapters select new { n.Index,n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
-                if (chapter_NeedCollect.Count() > 0)
+                var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
+                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.2).ToDecimal())
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
                     this.CollectStatus.Status = "正在采集";
@@ -335,7 +335,7 @@ namespace KCMDCollector.Book
             //删除网址
             Content = Regex.Replace(Content, "http://", "", RegexOptions.IgnoreCase);
             Content = Regex.Replace(Content, "https://", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "[\\\\\\w\\.]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "", RegexOptions.IgnoreCase);
+            Content = Regex.Replace(Content, "[\\\\\\w\\./。]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "", RegexOptions.IgnoreCase);//有些网址会出现带掺杂特殊符号的行为如 www/.aizr\。net
 
             //根据预先指定的规则进行替换
             var Filter_List = Book.RulesOperate.GetFilter();
@@ -372,12 +372,12 @@ namespace KCMDCollector.Book
                 CollectStatus.ChapterTitle = c.Title;
                 Status_Chage();
 
-                if (c.Content.IsNullOrEmpty()|| c.Content.Trim().IsNullOrEmpty())
+                if (c.Content.IsNullOrEmpty() || c.Content.Trim().IsNullOrEmpty())
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
                     continue;
                 }
-                
+
                 NameValueCollection nv = new NameValueCollection();
                 nv.Add("bookid", b.ID.ToString());
                 nv.Add("booktitle", b.BookTitle);
@@ -476,7 +476,7 @@ namespace KCMDCollector.Book
             foreach (CollectRule rule in Rules)
             {
                 //如果没有任何章节需要采集，则直接退出章节
-                CollectStatus.Status = "开始采集-"+rule.SiteName; Status_Chage();
+                CollectStatus.Status = "开始采集-" + rule.SiteName; Status_Chage();
                 if (BookNeedCollect.Chapters.Count == 0)
                 {
                     break;
@@ -494,7 +494,7 @@ namespace KCMDCollector.Book
             {
                 CreatePage(BookNeedCollect.ID.ToS());
             }
-            CollectStatus.Status = string.Format("书籍《{0}》完成",BookTitle); Status_Chage();
+            CollectStatus.Status = string.Format("书籍《{0}》完成", BookTitle); Status_Chage();
         }
         #endregion
 
