@@ -100,5 +100,14 @@ namespace KCMDCollector
             MessageBox.Show(r.n);
         }
 
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (t != null)
+            {
+                t.Abort();
+            }
+            Application.Exit();
+        }
+
     }
 }
