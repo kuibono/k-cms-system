@@ -10,6 +10,8 @@ using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using System.Collections.Specialized;
 
+using System.Threading;
+
 namespace KCMDCollector.Book
 {
     public abstract class CollectBase
@@ -494,8 +496,17 @@ namespace KCMDCollector.Book
                 CollectStatus.Status = "开始采集-" + rule.SiteName; Status_Chage();
                 if (BookNeedCollect.Chapters.Count == 0)
                 {
+                    CollectStatus.Status = "没有任何章节需要采集"; Status_Chage(); Thread.Sleep(500);
                     break;
                 }
+
+                //需要采集的章节没有空内容的，也就是说需要采集的已经全都采集完成了
+                if (BookNeedCollect.Chapters.Where(p => p.Content.IsNullOrEmpty()).Count() == 0)
+                {
+                    CollectStatus.Status = "章节全部采集完成"; Status_Chage(); Thread.Sleep(100);
+                    break;
+                }
+
                 CollectChapter(BookNeedCollect, rule);
             }
 
