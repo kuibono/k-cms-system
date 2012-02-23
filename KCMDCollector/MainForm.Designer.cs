@@ -178,20 +178,20 @@
             this.tool_Exit,
             this.tool_Show});
             this.strip_Exit.Name = "strip_Exit";
-            this.strip_Exit.Size = new System.Drawing.Size(119, 48);
+            this.strip_Exit.Size = new System.Drawing.Size(123, 48);
             this.strip_Exit.Text = "退出";
             // 
             // tool_Exit
             // 
             this.tool_Exit.Name = "tool_Exit";
-            this.tool_Exit.Size = new System.Drawing.Size(118, 22);
+            this.tool_Exit.Size = new System.Drawing.Size(122, 22);
             this.tool_Exit.Text = "退出";
             this.tool_Exit.Click += new System.EventHandler(this.tool_Exit_Click);
             // 
             // tool_Show
             // 
             this.tool_Show.Name = "tool_Show";
-            this.tool_Show.Size = new System.Drawing.Size(118, 22);
+            this.tool_Show.Size = new System.Drawing.Size(122, 22);
             this.tool_Show.Text = "显示界面";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
             // 
@@ -238,6 +238,7 @@
             this.Name = "MainForm";
             this.Text = "KCMS内容采集系统";
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.strip_Exit.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
