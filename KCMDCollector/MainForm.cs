@@ -92,8 +92,8 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s1 = "007．衣服没了";
-            string[] s2 = { "007． 衣服？" };
+            string s1 = "第1142章 伪装舒";
+            string[] s2 = { "第1114章 于仁的想法", "第0142章 又白来了", "第0124章 找上门来" };
             var r = (from n in s2 select new { n, weight = n.GetSimilarityWith(s1) }).OrderByDescending(p => p.weight).First();
 
 

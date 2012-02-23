@@ -278,7 +278,7 @@ namespace KCMDCollector.Book
                 //获取章节在分站点的URL和标题
                 //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
                 var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
-                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.2).ToDecimal())
+                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.5).ToDecimal())//相似度大于0.5的才进行采集
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
                     this.CollectStatus.Status = "正在采集";
@@ -370,6 +370,7 @@ namespace KCMDCollector.Book
             foreach (Chapter c in b.Chapters)
             {
                 CollectStatus.ChapterTitle = c.Title;
+                CollectStatus.Status = "正在提交";
                 Status_Chage();
 
                 if (c.Content.IsNullOrEmpty() || c.Content.Trim().IsNullOrEmpty())
@@ -438,6 +439,7 @@ namespace KCMDCollector.Book
         public void CollectBookByTitle(string BookTitle)
         {
             this.CollectStatus.BookTitle = BookTitle; Status_Chage();
+            CollectStatus.ChapterTitle = "";
             //1.获取起点书籍
             CollectStatus.Status = "从起点搜索"; Status_Chage();
             this.QidianBook = GetQidianBook(BookTitle);
@@ -458,7 +460,7 @@ namespace KCMDCollector.Book
 
             //3.对比获取需要采集的章节
             var tmp = QidianBook.Chapters.Where(p => p.Title.ReplaceSynonyms() == LocalBook.LastChapter.Title.ReplaceSynonyms());//最后一张在起点中的章节
-            if (tmp.Count() == 0)
+            if (tmp.Count() == 0 && !LocalBook.LastChapter.Title.IsNullOrEmpty())
             {
                 CollectStatus.Status = "最新章节在起点中不存在";
                 Status_Chage();
@@ -522,7 +524,16 @@ namespace KCMDCollector.Book
 
             foreach (string b in books)
             {
-                CollectBookByTitle(b.Trim());
+                try
+                {
+                    CollectBookByTitle(b.Trim());
+                }
+                catch (Exception e)
+                {
+                    //采集某本书的时候出现异常
+                    CollectStatus.Status = "ERR:" + e.Message;
+                    Status_Chage();
+                }
                 CollectStatus.BookLeftCount--; Status_Chage();
             }
         }
