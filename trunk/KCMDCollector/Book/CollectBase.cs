@@ -208,7 +208,7 @@ namespace KCMDCollector.Book
             {
                 html_Search = Url.Post(
                     new NameValueCollection(),
-                    Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle),
+                    Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle.UrlEncode(Encoding.GetEncoding("gb2312"))),
                     Encoding.GetEncoding(Rule.CharSet),
                     new System.Net.CookieContainer(),
                     "*.*",
@@ -262,7 +262,7 @@ namespace KCMDCollector.Book
                 b.Chapters.Add(new Chapter()
                 {
                     Title = match_Chapters.Groups["title"].Value,
-                    Url = chapterListUrl + match_Chapters.Groups["url"].Value,
+                    Url = match_Chapters.Groups["url"].Value.AppendToDomain(chapterListUrl),
                     Index = i
                 });
                 i++;
@@ -379,6 +379,13 @@ namespace KCMDCollector.Book
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
                     continue;
+                }
+
+                string content = c.Content.TrimHTML();
+                if (content.Trim().IsNullOrEmpty())
+                {
+                    this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
+                    return;
                 }
 
                 NameValueCollection nv = new NameValueCollection();
