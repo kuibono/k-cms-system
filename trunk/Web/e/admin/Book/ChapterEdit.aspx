@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChapterEdit.aspx.cs" Inherits="Web.e.admin.Book.ChapterEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChapterEdit.aspx.cs" Inherits="Web.e.admin.Book.ChapterEdit" ValidateRequest="false" %>
 
 <%@ Import Namespace="Voodoo" %>
 <%@ Register Assembly="Voodoo" Namespace="Voodoo.UI" TagPrefix="vd" %>
