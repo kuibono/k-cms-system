@@ -325,6 +325,9 @@ namespace KCMDCollector.Book
             //删除脚本
             Content = Regex.Replace(Content, "<script [\\s\\S]*?</script>", "", RegexOptions.IgnoreCase);
 
+            //删除链接
+            Content = Regex.Replace(Content, "<a [\\s\\S]*?</a>", "", RegexOptions.IgnoreCase);
+
             //删除不需要的HTML
             Content = Regex.Replace(Content, "<[/]?table>", "", RegexOptions.IgnoreCase);
             Content = Regex.Replace(Content, "<[/]?tr>", "", RegexOptions.IgnoreCase);
