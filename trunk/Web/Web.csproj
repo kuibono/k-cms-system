@@ -443,6 +443,20 @@
     <Compile Include="e\admin\Book\BookList.aspx.designer.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\admin\Book\ChapterEdit.aspx.cs">
+      <DependentUpon>ChapterEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Book\ChapterEdit.aspx.designer.cs">
+      <DependentUpon>ChapterEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Book\ChapterList.aspx.cs">
+      <DependentUpon>ChapterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Book\ChapterList.aspx.designer.cs">
+      <DependentUpon>ChapterList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -879,6 +893,8 @@
   <ItemGroup>
     <Content Include="Config\SysSetting.xml" />
     <Content Include="e\admin\Book\BookList.aspx" />
+    <Content Include="e\admin\Book\ChapterEdit.aspx" />
+    <Content Include="e\admin\Book\ChapterList.aspx" />
     <Content Include="e\admin\images\ImageEdit.aspx" />
     <Content Include="e\admin\images\ImageList.aspx" />
     <Content Include="e\admin\images\upload.aspx" />

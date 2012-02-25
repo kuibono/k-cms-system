@@ -15,7 +15,7 @@
           <PublishCopyOption>RunFiles</PublishCopyOption>
           <PublishTargetLocation>C:\Users\Administrator\Desktop\新建文件夹 (3)\</PublishTargetLocation>
           <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
-          <PublishCopyAppData>True</PublishCopyAppData>
+          <PublishCopyAppData>False</PublishCopyAppData>
           <ExternalProgram>
           </ExternalProgram>
           <StartExternalURL>
