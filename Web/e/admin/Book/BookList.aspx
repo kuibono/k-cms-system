@@ -128,8 +128,9 @@
                                 <%#Eval("LastChapterTitle")%>
                             </td>
                             <td>
-                                <a href="BookEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> <a href="?id=<%#Eval("ID") %>&action=del&class=<%=cls %>">
-                                    删除</a>
+                                <a href="BookEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> 
+                                <a href="ChapterList.aspx?bookid=<%#Eval("ID") %>">章节</a>
+                                <a href="?id=<%#Eval("ID") %>&action=del&class=<%=cls %>"> 删除</a>
                             </td>
                         </tr>
                     </ItemTemplate>
