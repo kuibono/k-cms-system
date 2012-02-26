@@ -49,6 +49,7 @@
             this.tool_Show = new System.Windows.Forms.ToolStripMenuItem();
             this.chb_Shutdown = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.strip_Exit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,20 +179,20 @@
             this.tool_Exit,
             this.tool_Show});
             this.strip_Exit.Name = "strip_Exit";
-            this.strip_Exit.Size = new System.Drawing.Size(123, 48);
+            this.strip_Exit.Size = new System.Drawing.Size(125, 48);
             this.strip_Exit.Text = "退出";
             // 
             // tool_Exit
             // 
             this.tool_Exit.Name = "tool_Exit";
-            this.tool_Exit.Size = new System.Drawing.Size(122, 22);
+            this.tool_Exit.Size = new System.Drawing.Size(124, 22);
             this.tool_Exit.Text = "退出";
             this.tool_Exit.Click += new System.EventHandler(this.tool_Exit_Click);
             // 
             // tool_Show
             // 
             this.tool_Show.Name = "tool_Show";
-            this.tool_Show.Size = new System.Drawing.Size(122, 22);
+            this.tool_Show.Size = new System.Drawing.Size(124, 22);
             this.tool_Show.Text = "显示界面";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
             // 
@@ -207,7 +208,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(195, 146);
+            this.button1.Location = new System.Drawing.Point(158, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(41, 23);
             this.button1.TabIndex = 13;
@@ -215,13 +216,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(205, 142);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "t";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(266, 183);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.chb_Shutdown);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progress_Book);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -266,6 +278,7 @@
         private System.Windows.Forms.ToolStripMenuItem tool_Show;
         private System.Windows.Forms.CheckBox chb_Shutdown;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
