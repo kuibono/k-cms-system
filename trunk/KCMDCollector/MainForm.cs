@@ -109,5 +109,11 @@ namespace KCMDCollector
             Application.Exit();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Test te = new Test();
+            te.Show();
+        }
+
     }
 }

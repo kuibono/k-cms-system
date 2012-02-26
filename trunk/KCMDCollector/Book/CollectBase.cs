@@ -280,7 +280,7 @@ namespace KCMDCollector.Book
                 //获取章节在分站点的URL和标题
                 //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
                 var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
-                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.5).ToDecimal())//相似度大于0.5的才进行采集
+                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.8).ToDecimal())//相似度大于0.8的才进行采集
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
                     this.CollectStatus.Status = "正在采集";
@@ -313,8 +313,8 @@ namespace KCMDCollector.Book
         {
 
             //去除特殊字符
-            Content = Regex.Replace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』．〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
-            Content = Regex.Replace(Content, "[~!@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
+            Content = Regex.Replace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
+            Content = Regex.Replace(Content, "[~@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
 
             //全角转半角
             Content = Content.ToDBC();
