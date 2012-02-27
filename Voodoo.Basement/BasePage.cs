@@ -693,5 +693,30 @@ namespace Voodoo.Basement
             }
         }
         #endregion
+
+        #region 生成随机背景颜色
+        /// <summary>
+        /// 生成随机背景颜色
+        /// </summary>
+        /// <returns></returns>
+        public static string RandomBGColor()
+        {
+            string[] str = new string[] { "#DDD", 
+                "RGB(164,200,264)",
+                "rgb(254,204,68)",
+                "rgb(55,149,210)",
+                "rgb(167,190,14)",
+                "rgb(255,175,53)",
+                "rgb(92,192,205)",
+                "rgb(195,195,195)",
+                "rgb(239,139,112)",
+                "rgb(153,198,35)",
+                "rgb(170,106,173)",
+                "rgb(242,181,31)"
+            };
+
+            return str[@int.GetRandomNumber(0, str.Length - 1)];
+        }
+        #endregion 生成随机背景颜色
     }
 }

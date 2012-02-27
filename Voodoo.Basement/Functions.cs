@@ -102,7 +102,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         protected string GetAllSubClass(int ClassID)
         {
-            var cls = ClassView.GetModelList(string.Format("ParentID={0}",ClassID));
+            var cls = ClassView.GetModelList(string.Format("ParentID={0}", ClassID));
             StringBuilder sb = new StringBuilder();
             foreach (var c in cls)
             {
@@ -132,13 +132,13 @@ namespace Voodoo.Basement
             string[] keys = Regex.Replace(key, "\\s+", ",").Split(',');
             foreach (string k in keys)
             {
-                str_sql+=" keywords like '%"+ k +"%' or ";
+                str_sql += " keywords like '%" + k + "%' or ";
             }
-            str_sql+=" 1=2)";
+            str_sql += " 1=2)";
 
 
 
-            List<News> nlist = NewsView.GetModelList(str_sql+" "+Order, count.ToInt32());
+            List<News> nlist = NewsView.GetModelList(str_sql + " " + Order, count.ToInt32());
             StringBuilder sb = new StringBuilder();
             foreach (News n in nlist)
             {
@@ -218,11 +218,11 @@ namespace Voodoo.Basement
             }
 
             List<News> newses = NewsView.GetModelList(str_sql, count.ToInt32());
-            newses = newses.Where(p => p.TitleImage.IndexOf(".gif")<0).ToList();//不支持GIF文件
+            newses = newses.Where(p => p.TitleImage.IndexOf(".gif") < 0).ToList();//不支持GIF文件
             foreach (News n in newses)
             {
                 sb_pics.Append(n.TitleImage + "|");
-                sb_links.Append(BasePage.GetNewsUrl(n,ClassView.GetModelByID(ClassID)) + "|");
+                sb_links.Append(BasePage.GetNewsUrl(n, ClassView.GetModelByID(ClassID)) + "|");
                 sb_texts.Append(n.Title.CutString(titleLength.ToInt32()) + "|");
             }
             sb_pics = sb_pics.TrimEnd('|');
@@ -315,7 +315,7 @@ namespace Voodoo.Basement
         {
             StringBuilder sb = new StringBuilder();
 
-            var cls = NewsAction.NewsClass.Where(p => p.ShowInNav&&p.ParentID.ToString()==parentID).ToList();
+            var cls = NewsAction.NewsClass.Where(p => p.ShowInNav && p.ParentID.ToString() == parentID).ToList();
             if (cls.Count > 0)
             {
                 foreach (Class cl in cls)
@@ -329,21 +329,21 @@ namespace Voodoo.Basement
                     {
                         sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", "javascript:void(0)", cl.ClassName));
                     }
-                    
-                    
-                    if(NewsAction.NewsClass.Where(p => p.ParentID==cl.ID).Count()>0)
+
+
+                    if (NewsAction.NewsClass.Where(p => p.ParentID == cl.ID).Count() > 0)
                     {
                         sb.AppendLine("<ul>" + buildmenustring(cl.ID.ToString()) + "</ul>");
                     }
                     sb.AppendLine("</li>");
-                    
+
                 }
             }
 
             return sb.ToString();
 
         }
-        #endregion 
+        #endregion
 
         #region 友情链接
         /// <summary>
@@ -356,7 +356,7 @@ namespace Voodoo.Basement
             var links = LinkView.GetModelList("id>0 order by [Index]");
             foreach (var l in links)
             {
-                sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a> ",l.Url,l.LinkTitle));
+                sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a> ", l.Url, l.LinkTitle));
             }
             return sb.ToString();
         }
@@ -370,8 +370,8 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string getnewsshortimg(string NewsID)
         {
-            News news=NewsView.GetModelByID(NewsID);
-            Voodoo.Model.File file = FileView.Find(string.Format("FilePath='{0}'",news.TitleImage));
+            News news = NewsView.GetModelByID(NewsID);
+            Voodoo.Model.File file = FileView.Find(string.Format("FilePath='{0}'", news.TitleImage));
 
             string result = "<img src='{0}' alt='{1}' />";
             if (!file.SmallPath.IsNullOrEmpty())//有缩略图
@@ -398,13 +398,43 @@ namespace Voodoo.Basement
             StringBuilder sb = new StringBuilder();
             foreach (Class c in cls)
             {
-                sb.Append(string.Format("<a href=\"{0}\">{1}</a> ",BasePage.GetClassUrl(c),c.ClassName));
+                sb.Append(string.Format("<a href=\"{0}\">{1}</a> ", BasePage.GetClassUrl(c), c.ClassName));
             }
             return sb.ToS();
         }
         #endregion 获取小说栏目列表
 
         #region 获取最新更新的书籍
+        /// <summary>
+        /// 获取最新更新的书籍 Metro风格
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public string getnoveltopmetroupdate(string top)
+        {
+            int i_top = top.ToInt32();
+            List<Book> bs = BookView.GetModelList("Enable=1 order by UpdateTime desc", i_top);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Book b in bs)
+            {
+                Class c = BookView.GetClass(b);
+                sb.AppendLine(string.Format("<li style=\" background-color:{0};\"><div><h1><a href=\"{1}\">{2}</a></h1><div><div class=\"class\"><a href=\"{3}\">{4}</a></div><div class=\"lastchapter\"><a href=\"{5}\" title=\"{6}\">{7}</a></div><div class=\"author\">{8}</div><div class=\"time\">{9}</div></div></div></li>",
+                    BasePage.RandomBGColor(),
+                    BasePage.GetBookUrl(b, c),
+                    b.Title,
+                    BasePage.GetClassUrl(c),
+                    b.ClassName,
+                    BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), c),
+                    b.LastChapterTitle,
+                    b.LastChapterTitle.CutString(12),
+                    b.Author,
+                    b.UpdateTime.ToString("yyyy-MM-dd HH:mm")
+                    ));
+            }
+            return sb.ToS();
+        }
+
         /// <summary>
         /// 获取最新更新的书籍
         /// </summary>
@@ -418,13 +448,13 @@ namespace Voodoo.Basement
 
             foreach (Book b in bs)
             {
-                Class c=BookView.GetClass(b);
+                Class c = BookView.GetClass(b);
                 sb.AppendLine(string.Format("<tr><td>[<a href=\"{0}\">{1}</a>]</td><td> <a href=\"{2}\">{3}</a></td><td><a href=\"{4}\">{5}</a></td><td>{6}</td><td>[{7}]</td></tr>",
                     BasePage.GetClassUrl(c),
                     b.ClassName,
-                    BasePage.GetBookUrl(b,c),
+                    BasePage.GetBookUrl(b, c),
                     b.Title,
-                    BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),c),
+                    BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), c),
                     b.LastChapterTitle,
                     b.Author,
                     b.UpdateTime.ToString("MM-dd")
