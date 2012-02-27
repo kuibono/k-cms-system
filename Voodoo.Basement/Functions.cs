@@ -415,11 +415,11 @@ namespace Voodoo.Basement
             int i_top = top.ToInt32();
             List<Book> bs = BookView.GetModelList("Enable=1 order by UpdateTime desc", i_top);
             StringBuilder sb = new StringBuilder();
-
+            int i = 1;
             foreach (Book b in bs)
             {
                 Class c = BookView.GetClass(b);
-                sb.AppendLine(string.Format("<li style=\" background-color:{0};\"><div><h1><a href=\"{1}\">{2}</a></h1><div><div class=\"class\"><a href=\"{3}\">{4}</a></div><div class=\"lastchapter\"><a href=\"{5}\" title=\"{6}\">{7}</a></div><div class=\"author\">{8}</div><div class=\"time\">{9}</div></div></div></li>",
+                sb.AppendLine(string.Format("<li style=\" background-color:{0};\"><div><h1>"+i+".<a href=\"{1}\">{2}</a></h1><div><div class=\"class\"><a href=\"{3}\">{4}</a></div><div class=\"lastchapter\"><a href=\"{5}\" title=\"{6}\">{7}</a></div><div class=\"author\">{8}</div><div class=\"time\">{9}</div></div></div></li>",
                     BasePage.RandomBGColor(),
                     BasePage.GetBookUrl(b, c),
                     b.Title,
@@ -431,6 +431,7 @@ namespace Voodoo.Basement
                     b.Author,
                     b.UpdateTime.ToString("yyyy-MM-dd HH:mm")
                     ));
+                i++;
             }
             return sb.ToS();
         }
