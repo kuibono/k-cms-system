@@ -419,7 +419,7 @@ namespace Voodoo.Basement
             foreach (Book b in bs)
             {
                 Class c = BookView.GetClass(b);
-                sb.AppendLine(string.Format("<li style=\" background-color:{0};\"><div class=\"item\"><h1><a href=\"{1}\">"+i+".{2}</a></h1><div><br /><br /><div class=\"lastchapter\"><a href=\"{5}\">{6}</a></div></div></div><div class=\"item\"><h1><a href=\"{1}\">阅读书籍</a></h1><div><div class=\"class\"><a href=\"{3}\">{4}</a></div><div class=\"lastchapter\"><a href=\"{5}\" title=\"{6}\">阅读最新章节</a></div><div class=\"author\">{8}</div><div class=\"time\">{9}</div></div></div></li>",
+                sb.AppendLine(string.Format("<li style=\" background-color:{0};\"><div class=\"item\"><h1><a href=\"{1}\">" + i + ".{2}</a></h1><div><div class=\"lastchapter\"><a href=\"{5}\">{6}</a></div></div></div><div class=\"item\"><h1><a href=\"{1}\">阅读书籍</a></h1><div><div class=\"lastchapter\"><a href=\"{5}\" title=\"{6}\">阅读最新章节</a></div><div class=\"class\">分类：<a href=\"{3}\">{4}</a></div><div class=\"author\">作者：{8}</div><div class=\"time\">更新时间：{9}</div></div></div></li>",
                     BasePage.RandomBGColor(),
                     BasePage.GetBookUrl(b, c),
                     b.Title,
