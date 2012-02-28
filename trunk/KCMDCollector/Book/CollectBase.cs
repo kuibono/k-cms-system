@@ -180,6 +180,8 @@ namespace KCMDCollector.Book
                 b.Chapters.Add(new Chapter()
                 {
                     Title = match_Chapter.Groups["title"].Value,
+                    Url = match_Chapter.Groups["url"].Value.AppendToDomain("http://www.qidian.com/"),
+                    IsVip = match_Chapter.Groups["url"].Value.ToLower().Contains("vip"),
                     Index = i
                 });
                 i++;
@@ -189,6 +191,51 @@ namespace KCMDCollector.Book
             return b;
         }
         #endregion
+
+        #region 从起点下载普通章节
+        /// <summary>
+        /// 从起点下载普通章节
+        /// </summary>
+        /// <param name="ChapterUrl"></param>
+        /// <returns></returns>
+        protected string GetQidianNormalChapter(string ChapterUrl)
+        {
+            if (ChapterUrl.Contains("vip"))
+            {
+                return null;
+            }
+
+            QidianRule Rule = Book.RulesOperate.GetQidianRule();
+            string HtmlQidianChapter = Url.Post(new NameValueCollection(),
+                ChapterUrl,
+                Encoding.GetEncoding(Rule.CharSet),
+                new System.Net.CookieContainer(),
+                "*.*",
+                "http://www.qidian.com/",
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                );
+
+            string txtUrl = HtmlQidianChapter.GetMatchGroup("<script src='(?<url>.*?)'  charset='GB2312'></script>").Groups["url"].Value;
+
+            if (txtUrl.IsNullOrEmpty())
+            {
+                return null;
+            }
+
+            string txt_Content = Url.GetHtml(txtUrl, "GB2312");
+
+
+            txt_Content = txt_Content.Replace("document.write('", "");
+            txt_Content = txt_Content.Replace("');", "");
+            //删除脚本
+            txt_Content = Regex.Replace(txt_Content, "<script [\\s\\S]*?</script>", "", RegexOptions.IgnoreCase);
+
+            //删除链接
+            txt_Content = Regex.Replace(txt_Content, "<a [\\s\\S]*?</a>", "", RegexOptions.IgnoreCase);
+
+            return txt_Content;
+        }
+        #endregion 从起点下载普通章节
 
         #region 采集章节
         /// <summary>
@@ -497,6 +544,15 @@ namespace KCMDCollector.Book
 
             CollectStatus.ChapterCount = BookNeedCollect.Chapters.Count(); CollectStatus.ChapterleftCout = BookNeedCollect.Chapters.Count(); Status_Chage();//剩余章节数量
 
+            //可以从起点采集的章节
+            if (BookNeedCollect.Chapters.Where(p => p.IsVip == false && p.Content.IsNullOrEmpty()).Count() > 0)
+            {
+                foreach (Chapter c in BookNeedCollect.Chapters.Where(p => p.IsVip == false).ToList())
+                {
+                    CollectStatus.ChapterTitle = c.Title; CollectStatus.Status = "正在从起点采集"; Status_Chage();
+                    c.Content = GetQidianNormalChapter(c.Url);
+                }
+            }
 
             //4.循环采集书籍
             var Rules = RulesOperate.GetBookRules();
@@ -510,12 +566,16 @@ namespace KCMDCollector.Book
                     break;
                 }
 
+
+
                 //需要采集的章节没有空内容的，也就是说需要采集的已经全都采集完成了
                 if (BookNeedCollect.Chapters.Where(p => p.Content.IsNullOrEmpty()).Count() == 0)
                 {
                     CollectStatus.Status = "章节全部采集完成"; Status_Chage(); Thread.Sleep(100);
                     break;
                 }
+
+
 
                 CollectChapter(BookNeedCollect, rule);
             }

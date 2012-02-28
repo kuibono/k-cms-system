@@ -23,6 +23,11 @@ namespace KCMDCollector.Book
         public string Content { get; set; }
 
         /// <summary>
+        /// 是否VIP章节
+        /// </summary>
+        public bool IsVip { get; set; }
+
+        /// <summary>
         /// 序号
         /// </summary>
         public int Index { get; set; }
