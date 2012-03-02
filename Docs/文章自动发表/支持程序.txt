@@ -1,0 +1,9 @@
+http://weibo.cn --新浪微博
+http://blog.sina.cn --新浪博客
+http://3g.163.com/blog/ --网易博客
+http://3g.163.com/t/ --网易微博
+http://waphi.baidu.com --百度空间
+http://w.sohu.com/ --搜狐微博
+http://m.renren.com/ --人人网
+http://m.kaixin001.com/ --开心网
+blogger  --部落格 使用Email发文章
