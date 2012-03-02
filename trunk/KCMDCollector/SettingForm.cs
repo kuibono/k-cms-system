@@ -68,14 +68,14 @@ namespace KCMDCollector
 
             ////Book.RulesOperate.SaveBookRules(rs);
 
-            //Book.QidianRule r = new KCMDCollector.Book.QidianRule();
-            //r.ChapterListUrl = "http://www.qidian.com/BookReader/{0}.aspx";
-            //r.ChapterTitle = "<li style='width:.*?%;'><a href=\"(?<url>.*?)\" [\\s\\S]*?>(?<title>.*?)</a>";
-            //r.CharSet = "UTF-8";
-            //r.SearchPageUrl = "http://sosu.qidian.com/ajax/search.ashx?method=getbooksearchlist&searchtype=%E4%B9%A6%E5%90%8D&searchkey={0}";
-            //r.SearchRefer = "http://sosu.qidian.com/searchresult.aspx?searchkey={0}&searchtype=%E4%B9%A6%E5%90%8D";
+            Book.QidianRule r = new KCMDCollector.Book.QidianRule();
+            r.ChapterListUrl = "http://www.qidian.com/BookReader/{0}.aspx";
+            r.ChapterTitle = "<li style='width:.*?%;'><a[\\s\\S]*?href=\"(?<url>.*?)\"[\\s\\S]*?>(?<title>.*?)</a>";
+            r.CharSet = "UTF-8";
+            r.SearchPageUrl = "http://sosu.qidian.com/ajax/search.ashx?method=getbooksearchlist&searchtype=%E4%B9%A6%E5%90%8D&searchkey={0}";
+            r.SearchRefer = "http://sosu.qidian.com/searchresult.aspx?searchkey={0}&searchtype=%E4%B9%A6%E5%90%8D";
 
-            //Book.RulesOperate.SaveQidianRule(r);
+            Book.RulesOperate.SaveQidianRule(r);
 
             //Book.Setting set = new KCMDCollector.Book.Setting();
             //set.APIKey = "111111";
