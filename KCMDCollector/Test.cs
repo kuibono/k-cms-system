@@ -7,10 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using System.Threading;
+
 namespace KCMDCollector
 {
     public partial class Test : Form
     {
+        protected bool IsCompleted { get; set; }
+
         public Test()
         {
             InitializeComponent();
@@ -18,19 +22,25 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser1.Url = new Uri("http://login.sina.com.cn/signup/signin.php");
+            IsCompleted = false;
+
+            webBrowser1.Url = new Uri("https://login.sina.com.cn/signup/signupmail.php?entry=blog&src=blog&http=1");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            webBrowser1.Document.GetElementById("username").SetAttribute("value", "bigcuibing@tom.com");
-            webBrowser1.Document.GetElementById("password").SetAttribute("value", "Admin@123");
+            webBrowser1.Document.GetElementById("username").SetAttribute("value", "kuibono@sina.com");
+            webBrowser1.Document.GetElementById("password").SetAttribute("value", "4264269");
 
             var inputs = webBrowser1.Document.GetElementsByTagName("input");
             foreach (HtmlElement input in inputs)
             {
                 if (input.GetAttribute("type") == "submit")
                 {
+                    if (IsCompleted==false)
+                    {
+                        Thread.Sleep(2000);
+                    }
 
                     input.InvokeMember("click");
                     //input.Click();
@@ -42,6 +52,7 @@ namespace KCMDCollector
 
         private void button3_Click(object sender, EventArgs e)
         {
+            IsCompleted = false;
             webBrowser1.Navigate("http://control.blog.sina.com.cn/admin/article/article_add.php");
         }
 
@@ -52,6 +63,11 @@ namespace KCMDCollector
             webBrowser1.Document.GetElementById("articleTagInput").SetAttribute("value", "小说阅读");
             webBrowser1.Document.GetElementById("SinaEditor_Iframe").GetElementsByTagName("iframe")[0].Document.Body.InnerHtml = "我操";
             //webBrowser1.Document.GetElementById("articlePostBtn").InvokeMember("click");
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            IsCompleted = true;
         }
     }
 }
