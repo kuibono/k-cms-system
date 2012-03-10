@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Voodoo;
 namespace KCMDCollector
 {
     public partial class SettingForm : Form
@@ -86,6 +87,9 @@ namespace KCMDCollector
 
             var rs = Book.RulesOperate.GetBookRules();
             dataGridView1.DataSource = rs;
+
+            var mb = Book.RulesOperate.GetMailBlogRule();
+            dataGridView2.DataSource = mb;
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,13 +115,31 @@ namespace KCMDCollector
             }
 
             Book.RulesOperate.SaveBookRules(rs);
+
+            var mb = new List<Book.MailBlog>();
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                mb.Add(new KCMDCollector.Book.MailBlog()
+                {
+                    Enable = row.Cells["Enable"].Value.ToBoolean(),
+                    BlogAddress = row.Cells["BlogAddress"].Value.ToString(),
+                    BlogName = row.Cells["BlogName"].Value.ToString(),
+                    Email = row.Cells["Email"].Value.ToString(),
+                    Password = row.Cells["Password"].Value.ToString(),
+                    RecMail = row.Cells["RecMail"].Value.ToString(),
+                    Smtp = row.Cells["Smtp"].Value.ToString()
+                });
+            }
+            Book.RulesOperate.SaveMailBlogRule(mb);
+
             MessageBox.Show("保存成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void 新增ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var rs = Book.RulesOperate.GetBookRules();
-            rs.Add(new KCMDCollector.Book.CollectRule() {
+            rs.Add(new KCMDCollector.Book.CollectRule()
+            {
                 SiteName = "",
                 CharSet = "",
                 ChapterContent = "",
@@ -126,14 +148,34 @@ namespace KCMDCollector
                 ChapterListUrl = "",
                 SearchPageUrl = "",
                 SearchPars = "",
-                SearchMethod="",
+                SearchMethod = "",
                 Url = "",
                 BookInfoRule = "",
-                BookInfoUrl = ""    
+                BookInfoUrl = ""
             });
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = rs;
             dataGridView1.Refresh();
+        }
+
+        private void 新增邮件规则ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var mb = Book.RulesOperate.GetMailBlogRule();
+
+            mb.Add(new KCMDCollector.Book.MailBlog()
+            {
+                Enable = false,
+                BlogAddress = "",
+                BlogName = "",
+                Email = "",
+                Password = "",
+                RecMail = "",
+                Smtp = ""
+            });
+
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = mb;
+            dataGridView2.Refresh();
         }
     }
 }

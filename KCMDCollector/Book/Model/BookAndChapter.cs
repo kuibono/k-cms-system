@@ -52,6 +52,11 @@ namespace KCMDCollector.Book
         public byte Status { get; set; }
 
         /// <summary>
+        /// 书籍地址
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 有更新，需要重新生成
         /// </summary>
         public bool Changed { get; set; }

@@ -97,6 +97,8 @@ namespace KCMDCollector.Book
                 book = (Web.Book)Voodoo.IO.XML.DeSerialize(typeof(Web.Book), Voodoo.Net.Url.Post(nv, s.TargetUrl + "e/api/BookAdd.aspx", Encoding.UTF8));
             }
 
+            result.Url = s.TargetUrl + "Book/" + book.ClassName + "/" + book.Title + "-" + book.Author + "/";
+
             result.BookTitle = book.Title;
             result.Class = book.ClassName;
             result.ClassID = book.ClassID;
@@ -454,14 +456,60 @@ namespace KCMDCollector.Book
                 }
                 else
                 {
-                    //采集成功 清掉这个章节
-                    b.Changed = true;
-                    b.Chapters = b.Chapters.Where(p => p.Index != c.Index).ToList();
-
+                    //保存成功 ，更新章节地址 
+                    c.Url = b.Url + chapter_Submited.ID + ".htm";
                 }
+                //else
+                //{
+                //    //采集成功 清掉这个章节
+                //    b.Changed = true;
+                //    b.Chapters = b.Chapters.Where(p => p.Index != c.Index).ToList();
+
+                //}
             }
         }
         #endregion
+
+        /// <summary>
+        /// 发博客
+        /// </summary>
+        /// <param name="b"></param>
+        public void PublishBlog(BookAndChapter b)
+        {
+
+            var blogs = Book.RulesOperate.GetMailBlogRule();
+
+            StringBuilder sb_chapters = new StringBuilder();
+            foreach (Chapter c in b.Chapters)
+            {
+                sb_chapters.AppendLine(string.Format("<a href='{0}'>{1}</a><br/>", c.Url, c.Title));
+            }
+
+            string content = string.Format("{0}<br/ ><br/ >继续阅读本次更新的其他章节：{1}<br/><br/>查看章节列表：{2}<br/><br/>回到书籍信息页{2}",
+                b.Chapters.Last().Content,
+                sb_chapters.ToS(),
+                string.Format("<a href='{0}'>{1}</a>", b.Url, b.BookTitle)
+                );
+
+            foreach (var blog in blogs)
+            {
+
+                CollectStatus.Status = "发文章到" + blog.BlogName; Status_Chage();
+
+                Voodoo.Net.Mail.SMTP.SentMail(
+                    blog.Email,
+                    blog.Email,
+                    blog.Password,
+                    blog.RecMail,
+                    "",
+                    b.BookTitle + "更新到：" + b.Chapters.Last().Title,
+                    content,
+                    blog.Smtp,
+                    "博客");
+            }
+
+
+        }
 
         #region 生成页面
         /// <summary>
@@ -584,7 +632,11 @@ namespace KCMDCollector.Book
             CollectStatus.Status = "保存到目标站点"; Status_Chage();
             SubmitBook(BookNeedCollect);
 
-            //6.采集完成 生成书籍
+
+            //6. 发博客
+            PublishBlog(BookNeedCollect);
+
+            //7.采集完成 生成书籍
             CollectStatus.Status = "采集完成，正在生成"; Status_Chage();
             if (BookNeedCollect.Changed)
             {

@@ -34,6 +34,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.timer_Exec = new System.Timers.Timer();
+            this.btn_sina = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.timer_Exec)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +93,22 @@
             this.timer_Exec.SynchronizingObject = this;
             this.timer_Exec.Elapsed += new System.Timers.ElapsedEventHandler(this.timer_Exec_Elapsed);
             // 
+            // btn_sina
+            // 
+            this.btn_sina.Location = new System.Drawing.Point(535, 3);
+            this.btn_sina.Name = "btn_sina";
+            this.btn_sina.Size = new System.Drawing.Size(75, 23);
+            this.btn_sina.TabIndex = 5;
+            this.btn_sina.Text = "sina";
+            this.btn_sina.UseVisualStyleBackColor = true;
+            this.btn_sina.Click += new System.EventHandler(this.btn_sina_Click);
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 420);
+            this.Controls.Add(this.btn_sina);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -117,5 +129,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Timers.Timer timer_Exec;
+        private System.Windows.Forms.Button btn_sina;
     }
 }

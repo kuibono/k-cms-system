@@ -164,5 +164,27 @@ namespace KCMDCollector.Book
             File.Write(CFG + "\\Books.txt", sb.ToString());
         }
         #endregion
+
+
+        #region 邮件发博规则
+
+        public static void  SaveMailBlogRule(List<MailBlog> ss)
+        {
+            XML.SaveSerialize(ss, CFG + "\\MailBlog.xml");
+        }
+
+        public static List<MailBlog> GetMailBlogRule()
+        {
+            if (Cache.GetCache("MailBlog") == null)
+            {
+                Cache.SetCache("MailBlog",
+                     (List<MailBlog>)XML.DeSerialize(typeof(List<MailBlog>), File.Read(CFG + "\\MailBlog.xml")),
+                     CFG + "\\MailBlog.xml"
+                     );
+            }
+            return (List<MailBlog>)Cache.GetCache("MailBlog");
+        }
+
+        #endregion
     }
 }

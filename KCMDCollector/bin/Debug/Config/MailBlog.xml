@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMailBlog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MailBlog>
+    <Enable>true</Enable>
+    <Smtp>smtp.163.com </Smtp>
+    <Email>aizrnet@163.com</Email>
+    <Password>Admin@123</Password>
+    <RecMail>blogmail@188.com</RecMail>
+    <BlogName>网易博客</BlogName>
+    <BlogAddress>http://blog.163.com/aizr_net/</BlogAddress>
+  </MailBlog>
+  <MailBlog>
+    <Enable>false</Enable>
+    <Smtp>smtp.163.com </Smtp>
+    <Email>aizrnet@163.com</Email>
+    <Password>Admin@123</Password>
+    <RecMail>kuibono.autopost@blogger.com</RecMail>
+    <BlogName>部落格</BlogName>
+    <BlogAddress>http://cuihexie.blogspot.com/</BlogAddress>
+  </MailBlog>
+</ArrayOfMailBlog>
