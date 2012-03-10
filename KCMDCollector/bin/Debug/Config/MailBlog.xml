@@ -10,10 +10,10 @@
     <BlogAddress>http://blog.163.com/aizr_net/</BlogAddress>
   </MailBlog>
   <MailBlog>
-    <Enable>false</Enable>
-    <Smtp>smtp.163.com </Smtp>
-    <Email>aizrnet@163.com</Email>
-    <Password>Admin@123</Password>
+    <Enable>true</Enable>
+    <Smtp>smtp.qq.com</Smtp>
+    <Email>kuibono@qq.com</Email>
+    <Password>whosyourdaddy</Password>
     <RecMail>kuibono.autopost@blogger.com</RecMail>
     <BlogName>部落格</BlogName>
     <BlogAddress>http://cuihexie.blogspot.com/</BlogAddress>
