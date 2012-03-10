@@ -186,5 +186,18 @@ namespace KCMDCollector
             timer_Exec.Enabled = true;
             timer_Exec.Start();
         }
+
+        private void btn_sina_Click(object sender, EventArgs e)
+        {
+            string url = "https://api.weibo.com/oauth2/access_token?client_id=2155855174&client_secret=75b82ff4c1b099779868cc51e88090fb&grant_type=password&username=bigcuibing@tom.com&password=Admin@123";
+            string result = Voodoo.Net.Url.Post(new NameValueCollection(),
+                url,
+                Encoding.Default,
+                new System.Net.CookieContainer(),
+                "*.*",
+                "",
+                "");
+            MessageBox.Show(result);
+        }
     }
 }

@@ -179,20 +179,20 @@
             this.tool_Exit,
             this.tool_Show});
             this.strip_Exit.Name = "strip_Exit";
-            this.strip_Exit.Size = new System.Drawing.Size(125, 48);
+            this.strip_Exit.Size = new System.Drawing.Size(123, 48);
             this.strip_Exit.Text = "退出";
             // 
             // tool_Exit
             // 
             this.tool_Exit.Name = "tool_Exit";
-            this.tool_Exit.Size = new System.Drawing.Size(124, 22);
+            this.tool_Exit.Size = new System.Drawing.Size(122, 22);
             this.tool_Exit.Text = "退出";
             this.tool_Exit.Click += new System.EventHandler(this.tool_Exit_Click);
             // 
             // tool_Show
             // 
             this.tool_Show.Name = "tool_Show";
-            this.tool_Show.Size = new System.Drawing.Size(124, 22);
+            this.tool_Show.Size = new System.Drawing.Size(122, 22);
             this.tool_Show.Text = "显示界面";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
             // 
@@ -230,7 +230,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 183);
+            this.ClientSize = new System.Drawing.Size(266, 184);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.chb_Shutdown);
             this.Controls.Add(this.button1);
