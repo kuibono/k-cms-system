@@ -235,6 +235,11 @@ namespace KCMDCollector.Book
             //删除链接
             txt_Content = Regex.Replace(txt_Content, "<a [\\s\\S]*?</a>", "", RegexOptions.IgnoreCase);
 
+            if (txt_Content.Contains("<img"))
+            {
+                return "";
+            }
+
             return txt_Content;
         }
         #endregion 从起点下载普通章节
@@ -433,7 +438,7 @@ namespace KCMDCollector.Book
                 if (c.Content.IsNullOrEmpty() || c.Content.Trim().IsNullOrEmpty())
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                    continue;
+                    return;
                 }
 
                 string content = c.Content.TrimHTML();
@@ -455,6 +460,7 @@ namespace KCMDCollector.Book
                 if (chapter_Submited.ID < 0)
                 {
                     this.CollectStatus.Status = "章节保存失败"; Status_Chage();
+                    Thread.Sleep(2000);
 
                 }
                 else
@@ -475,13 +481,19 @@ namespace KCMDCollector.Book
         }
         #endregion
 
+        #region 发博客
         /// <summary>
         /// 发博客
         /// </summary>
         /// <param name="b"></param>
         public void PublishBlog(BookAndChapter b)
         {
-            if(b.Chapters.Where(p => string.IsNullOrEmpty(p.Content) == false).Count()==0)
+            if (b.Chapters.Where(p => string.IsNullOrEmpty(p.Content) == false).Count() == 0)
+            {
+                return;
+            }
+
+            if (b.Chapters.Where(p => p.Url.IndexOf("qidian.com") > 0).Count() > 0)
             {
                 return;
             }
@@ -506,20 +518,31 @@ namespace KCMDCollector.Book
 
                 CollectStatus.Status = "发文章到" + blog.BlogName; Status_Chage();
 
-                Voodoo.Net.Mail.SMTP.SentMail(
-                    blog.Email,
-                    blog.Email,
-                    blog.Password,
-                    blog.RecMail,
-                    "爱造人小说阅读",
-                    b.BookTitle + "-" + b.Chapters.Last().Title,
-                    content,
-                    blog.Smtp,
-                    blog.BlogName);
+                try
+                {
+                    Voodoo.Net.Mail.SMTP.SentMail(
+                                        blog.Email,
+                                        blog.Email,
+                                        blog.Password,
+                                        blog.RecMail,
+                                        "爱造人小说阅读",
+                                        b.BookTitle + "-" + b.Chapters.Last().Title,
+                                        content,
+                                        blog.Smtp,
+                                        blog.BlogName);
+                }
+                catch (System.Exception e)
+                {
+                    CollectStatus.Status = e.Message;
+                    Status_Chage();
+                    Thread.Sleep(200);
+                }
+
             }
 
 
         }
+        #endregion
 
         #region 生成页面
         /// <summary>
