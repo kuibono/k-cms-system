@@ -8,8 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Collections.Specialized;
+using System.Web.Script.Serialization;
 
 using System.Threading;
+using Voodoo;
+using System.Text;
 
 namespace KCMDCollector
 {
@@ -22,182 +25,210 @@ namespace KCMDCollector
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Thread t = new Thread(DoSomething);
-            t.Start();
 
-
-        }
-
-        void DoSomething()
-        {
-            IsCompleted = false;
-            webBrowser1.Url = new Uri("https://login.sina.com.cn/signup/signupmail.php?entry=blog&src=blog&http=1");
-
-
-
-            Do(new MethodInvoker(delegate
-            {
-                IsCompleted = false;
-                webBrowser1.Navigate("http://login.sina.com.cn/signup/signin.php?entry=blog&r=http%3A%2F%2Fcontrol.blog.sina.com.cn%2Fadmin%2Farticle%2Farticle_add.php%3Findex&from=referer:http://control.blog.sina.com.cn/admin/article/article_add.php?index,func:0006");
-            }));
-
-
-
-            Do(new MethodInvoker(delegate
-            {
-                SetTimeOut(new MethodInvoker(delegate
-                {
-
-                    try
-                    {
-
-                        webBrowser1.Document.GetElementById("username").SetAttribute("value", "kuibono@sina.com");
-                        webBrowser1.Document.GetElementById("password").SetAttribute("value", "4264269");
-                        webBrowser1.Document.GetElementById("username").Focus();
-
-                        var inputs = webBrowser1.Document.GetElementsByTagName("input");
-                        foreach (HtmlElement input in inputs)
-                        {
-                            if (input.GetAttribute("type") == "submit")
-                            {
-
-                                input.InvokeMember("click");
-                                IsCompleted = false;
-                            }
-                        }
-                    }
-                    catch { }
-                }), 500);//延迟半秒点击
-
-            }));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            webBrowser1.Document.GetElementById("username").SetAttribute("value", "kuibono@sina.com");
-            webBrowser1.Document.GetElementById("password").SetAttribute("value", "4264269");
-
-            var inputs = webBrowser1.Document.GetElementsByTagName("input");
-            foreach (HtmlElement input in inputs)
-            {
-                if (input.GetAttribute("type") == "submit")
-                {
-                    if (IsCompleted == false)
-                    {
-                        Thread.Sleep(2000);
-                    }
-
-                    input.InvokeMember("click");
-                    //input.Click();
-                }
-            }
-
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            IsCompleted = false;
-            webBrowser1.Navigate("http://control.blog.sina.com.cn/admin/article/article_add.php");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var s1 = Voodoo.Net.Url.PostGetCookieAndHtml(new System.Collections.Specialized.NameValueCollection(),
-                "https://login.sina.com.cn/signup/signupmail.php?entry=blog&src=blog&http=1",
-                Encoding.GetEncoding("gb2312")
-                );
-
-            NameValueCollection nv = new NameValueCollection();
-            nv.Add("reference", "http://control.blog.sina.com.cn/admin/article/article_add.php?index");
-            nv.Add("entry", "blog");
-            nv.Add("reg_entry", "blog");
-            nv.Add("username", "kuibono@sina.com");
-            nv.Add("password", "4264269");
-            nv.Add("savestate", "1");
-            nv.Add("safe_login", "1");
-
-            var s2 = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
-                "https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.3.20)",
-                Encoding.GetEncoding("gb2312"),
-                s1.cookieContainer,
-
-                s1.cookieCollection,
-                "https://login.sina.com.cn/signup/signupmail.php?entry=blog&src=blog&http=1"
-                );
-
-            
-
-            webBrowser1.Document.Body.InnerHtml = s2.Html;
-        }
-
-
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            IsCompleted = true;
-        }
-
-        private void timer_Exec_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (!IsCompleted)
-            {
-                return;
-            }
-
-            Exec(mets[0]);
-            mets = mets.Where(p => p != mets[0]).ToList();
-            if (mets.Count == 0)
-            {
-                timer_Exec.Stop();
-                timer_Exec.Enabled = false;
-            }
-        }
-
-        protected List<Delegate> mets = new List<Delegate>();
-
-        private void Exec(Delegate method)
-        {
-            try
-            {
-                this.Invoke(method);
-            }
-            catch { }
-        }
-
-        private void SetTimeOut(Delegate method, double time)
-        {
-            System.Timers.Timer tm = new System.Timers.Timer(time);
-            tm.Elapsed += new System.Timers.ElapsedEventHandler(delegate
-            {
-                this.Invoke(method);
-                tm.Stop();
-                tm.Dispose();
-            });
-            tm.Enabled = true;
-            tm.Start();
-        }
-
-        private void Do(Delegate method)
-        {
-            this.mets.Add(method);
-            timer_Exec.Enabled = true;
-            timer_Exec.Start();
-        }
 
         private void btn_sina_Click(object sender, EventArgs e)
         {
-            string url = "https://api.weibo.com/oauth2/access_token?client_id=2155855174&client_secret=75b82ff4c1b099779868cc51e88090fb&grant_type=password&username=bigcuibing@tom.com&password=Admin@123";
-            string result = Voodoo.Net.Url.Post(new NameValueCollection(),
-                url,
-                Encoding.Default,
+            //首先获取用户字符串和服务器时间
+
+            string Pass = "Admin@123";
+            string user = "bigcuibing@tom.com";
+
+            string u1 = "http://login.sina.com.cn/sso/prelogin.php?entry=miniblog&callback=sinaSSOController.preloginCallBack&user=" + user + "&client=ssologin.js(v1.3.12)";
+            string h1 = Voodoo.Net.Url.GetHtml(u1).Replace("sinaSSOController.preloginCallBack(", "").Replace(")", "");
+            string sina_retcode = h1.FindString("\"retcode\":(?<key>.*?),");
+            string sina_servertime = h1.FindString("\"servertime\":(?<key>.*?),");
+            string sina_pcid = h1.FindString("\"pcid\":\"(?<key>.*?)\",");
+            string sina_nonce = h1.FindString("\"nonce\":\"(?<key>.*?)\"");
+
+            //开始wsse加密
+            string p1 = Voodoo.Security.Encrypt.SHA1(Pass);
+            p1 = Voodoo.Security.Encrypt.SHA1(p1);
+            p1 = Voodoo.Security.Encrypt.SHA1(p1 + sina_servertime + sina_nonce);
+
+            //准备登陆
+            string loginUrl = "http://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.3.12)";
+            NameValueCollection nv = new NameValueCollection();
+
+            nv.Add("service", "miniblog");
+            nv.Add("client", "ssologin.js%28v1.3.12%29");
+            nv.Add("entry", "miniblog");
+            nv.Add("encoding", "utf-8");
+            nv.Add("gateway", "1");
+            nv.Add("savestate", "0");
+            nv.Add("useticket", "1");
+            nv.Add("username", user);
+            nv.Add("servertime", sina_servertime);
+            nv.Add("nonce", sina_nonce);
+            nv.Add("pwencode", "wsse");
+            nv.Add("password", p1);
+            nv.Add("url", "http://www.aizr.net/");
+            nv.Add("returntype", "META");
+            nv.Add("ssosimplelogin", "1");
+            string U2 = "http://login.sina.com.cn/sso/login.php?entry=miniblog&gateway=1&from=referer%3Awww_index&savestate=0&useticket=0&su="+ user.ToEnBase64() +"&service=sso&servertime="+sina_servertime+"&nonce="+sina_nonce+"&pwencode=wsse&sp="+p1+"&encoding=UTF-8&callback=sinaSSOController.loginCallBack&cdult=3&domain=sina.com.cn&returntype=TEXT&client=ssologin.js(v1.3.19)&_="+myDateTime.GetUnixTime();
+            string pars = "service:miniblog&client:ssologin.js%28v1.3.12%29&entry:miniblog&encoding:utf-8&gateway:1&savestate:0&useticket:1&username:" + user + "&servertime:" + sina_servertime + "&nonce:" + sina_nonce + "&pwencode:wsse&password:" + p1 + "&url:http&//www.aizr.net/&returntype:META&ssosimplelogin:1";
+            //开始登陆
+
+            var result = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                //loginUrl + "&" + pars,
+                U2,
+                Encoding.GetEncoding("gbk"),
                 new System.Net.CookieContainer(),
-                "*.*",
-                "",
+                "http://www.sina.com.cn");
+
+            //打开页面表单
+            var form = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                "http://control.blog.sina.com.cn/admin/article/article_add.php",
+                Encoding.UTF8,
+                result.cookieContainer,
+                "http://www.sina.com.cn"
+                );
+
+
+            NameValueCollection aha = form.Html.SerializeForm("#editorForm");
+            aha["blog_body"] = "博文内容博文内容博文内容博文内容博文内容博文内容";
+            aha["blog_title"] = "测试标题";
+            aha["blog_class"] = "1";
+            aha["stag"] = "标签";
+
+
+            var rPost = Voodoo.Net.Url.PostGetCookieAndHtml(aha,
+                "http://control.blog.sina.com.cn/admin/article/article_post.php",
+                Encoding.UTF8,
+                result.cookieContainer,
+                "http://control.blog.sina.com.cn/admin/article/article_add.php");
+        }
+
+        private void btn_Baidu_Click(object sender, EventArgs e)
+        {
+            string url = "http://passport.sohu.com/sso/login.jsp?userid=kuibono%40sohu.com&password=2c8377f4a96899410636090ec1e699fe&appid=9999&persistentcookie=1&isSLogin=1&s=" + myDateTime.GetUnixTimestamp() + "&b=6&w=1280&pwdtype=1&v=26";
+
+            var Result = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                url,
+                Encoding.GetEncoding("GBK"),
+                new System.Net.CookieContainer()
+                );
+
+
+
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("allowComment", "0");
+            nv.Add("categoryId", "");
+            nv.Add("content", "博客内容博客内容测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试");
+            nv.Add("keywords", "关键词");
+            nv.Add("oper", "art_ok");
+            nv.Add("title", "测试标题");
+            nv.Add("vcode", "");
+            nv.Add("vcodeEn", "");
+
+            var r2 = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
+                "http://i.sohu.com/a/blog/home/entry/save.htm?_input_encode=UTF-8&_output_encode=UTF-8",
+                Encoding.UTF8,
+                Result.cookieContainer,
                 "");
-            MessageBox.Show(result);
+
+
+
+
+        }
+
+        private void btn_Neasy_Click(object sender, EventArgs e)
+        {
+            //登陆
+
+            NameValueCollection nv = new NameValueCollection();
+            nv.Add("password", "4264269");
+            nv.Add("product", "163");
+            nv.Add("selected", "");
+            nv.Add("type", "1");
+            nv.Add("ursname", "");
+            nv.Add("username", "kuibono@163.com");
+
+            string loginUrl = "https://reg.163.com/logins.jsp";
+
+            var lResult = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
+                loginUrl,
+                Encoding.UTF8,
+                new System.Net.CookieContainer(),
+                "http://www.163.com/"
+                );
+
+            //打开表单
+
+            var fResult = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                "http://kuibono.blog.163.com/blog/getBlog.do?&username=kuibono@163.com&myMailInfoWrite&fromblogurs",
+                Encoding.UTF8,
+                lResult.cookieContainer,
+                "http://www.163.com/");
+
+            NameValueCollection aha = fResult.Html.SerializeForm(".ztag");
+            aha["HEContent"] = "内容内容内容内容内容内容内容";
+            aha["tag"] = "标签";
+            aha["title"] = "标题";
+
+            //发布
+            var pResult = Voodoo.Net.Url.PostGetCookieAndHtml(aha,
+                "http://api.blog.163.com/kuibono/editBlogNew.do?p=1&n=1",
+                Encoding.UTF8,
+                lResult.cookieContainer,
+                "http://kuibono.blog.163.com/blog/getBlog.do?&username=kuibono@163.com&myMailInfoWrite&fromblogurs");
+
+        }
+
+        private void btn_Cnblogs_Click(object sender, EventArgs e)
+        {
+            //获取登录表单
+            var flResult = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                "http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/",
+                Encoding.UTF8,
+                new System.Net.CookieContainer(),
+                "http://www.cnblogs.com");
+
+            //登陆
+            NameValueCollection nv = flResult.Html.SerializeForm("#frmLogin");
+            nv["tbPassword"] = "4264269";
+            nv["tbUserName"] = "kuibono";
+            nv["__EVENTTARGET"] = "btnLogin";
+
+            var lResult = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
+                "http://passport.cnblogs.com/login.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2f",
+                Encoding.UTF8,
+                new System.Net.CookieContainer(),
+                "http://passport.cnblogs.com/login.aspx?ReturnUrl=http://www.cnblogs.com/");
+
+            //获取表单
+            var fResult = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
+                "http://www.cnblogs.com/kuibono/admin/EditPosts.aspx?opt=1",
+                Encoding.UTF8,
+                lResult.cookieContainer,
+                "http://www.cnblogs.com");
+
+            NameValueCollection aha = fResult.Html.SerializeForm("#frmMain");
+            aha["Editor$Edit$EditorBody"] = "文章内容文章内容文章内容";
+            aha["Editor$Edit$txbTitle"] = " 测试标题";
+            aha["Editor$Edit$lkbPost"] = "发布";
+            aha["name_site_categroy"] = "";
+
+            aha.Add("Editor$Edit$Advanced$chkComments", "on");
+            aha.Add("Editor$Edit$Advanced$chkMainSyndication", "on");
+            aha.Add("Editor$Edit$Advanced$ckbPublished", "on");
+            aha.Add("Editor$Edit$Advanced$tbEnryPassword", "");
+            aha.Add("Editor$Edit$Advanced$txbEntryName", "");
+            aha.Add("Editor$Edit$Advanced$txbExcerpt", "");
+            aha.Add("Editor$Edit$Advanced$txbTag", "");
+            aha.Add("Editor$Edit$APOptions$APSiteHome$chkDisplayHomePage", "on");
+            aha.Add("Editor$Edit$EditorBody$ClientState", "");
+            aha.Add("Editor$Edit$EditorBody$PostBackHandler", "");
+
+
+            //发布
+            var pResult = Voodoo.Net.Url.PostGetCookieAndHtml(aha,
+                "http://www.cnblogs.com/kuibono/admin/EditPosts.aspx?opt=1",
+                Encoding.UTF8,
+                lResult.cookieContainer,
+                "http://www.cnblogs.com/kuibono/admin/EditPosts.aspx?opt=1");
+
+            richTextBox1.Text = pResult.Html;
         }
     }
 }
