@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBlogModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BlogModel>
+    <UserName>aizrnet@163.com</UserName>
+    <Password>Admin@123</Password>
+    <type>Neasy</type>
+    <BlogName>网易博客</BlogName>
+    <BlogUrl>http://blog.163.com/aizr_net/</BlogUrl>
+  </BlogModel>
+  <BlogModel>
+    <UserName>bigcuibing@tom.com</UserName>
+    <Password>Admin@123</Password>
+    <type>Sina</type>
+    <BlogName>新浪博客</BlogName>
+    <BlogUrl>http://blog.sina.com.cn/aizrnet</BlogUrl>
+  </BlogModel>
+  <BlogModel>
+    <UserName>aizrnet</UserName>
+    <Password>Admin@123</Password>
+    <type>WordPress</type>
+    <BlogName>WordPress</BlogName>
+    <BlogUrl>https://aizrnet.wordpress.com/</BlogUrl>
+  </BlogModel>
+  <BlogModel>
+    <UserName>bigcuibing@tom.com</UserName>
+    <Password>Admin@123</Password>
+    <type>Sohu</type>
+    <BlogName>搜狐博客</BlogName>
+    <BlogUrl>http://aizrnet.blog.sohu.com</BlogUrl>
+  </BlogModel>
+</ArrayOfBlogModel>
