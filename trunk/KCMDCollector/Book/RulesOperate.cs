@@ -183,8 +183,27 @@ namespace KCMDCollector.Book
                      );
             }
             return (List<MailBlog>)Cache.GetCache("MailBlog");
+        } 
+        #endregion
+
+        #region  发博规则
+        public static void SaveBlogModel(List<BlogModel> ss)
+        {
+            XML.SaveSerialize(ss, CFG + "\\BlogModel.xml");
         }
 
-        #endregion
+        public static List<BlogModel> GetBlogModel()
+        {
+            if (Cache.GetCache("BlogModel") == null)
+            {
+                Cache.SetCache("BlogModel",
+                     (List<BlogModel>)XML.DeSerialize(typeof(List<BlogModel>), File.Read(CFG + "\\BlogModel.xml")),
+                     CFG + "\\BlogModel.xml"
+                     );
+            }
+            return (List<BlogModel>)Cache.GetCache("BlogModel");
+        }
+
+        #endregion 
     }
 }

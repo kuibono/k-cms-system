@@ -512,6 +512,7 @@ namespace KCMDCollector.Book
                 sb_chapters.ToS(),
                 string.Format("<a href='{0}'>{1}</a>", b.Url, b.BookTitle)
                 );
+            content = Regex.Replace(content, "&.{1,6};", " ").Replace("&", "");
 
             foreach (var blog in blogs)
             {
@@ -538,6 +539,36 @@ namespace KCMDCollector.Book
                     Thread.Sleep(200);
                 }
 
+            }
+
+            var Blogs = Book.RulesOperate.GetBlogModel();
+            foreach (var log in Blogs)
+            {
+                CollectStatus.Status = "发文章到" + log.BlogName; Status_Chage();
+
+                switch (log.type)
+                {
+                    case BlogType.Neasy:
+                        Voodoo.Net.BlogHelper.Neasy n = new Voodoo.Net.BlogHelper.Neasy(log.UserName, log.Password);
+                        n.Login();
+                        n.Post(b.BookTitle + "-" + b.Chapters.Last().Title, content);
+                        break;
+                    case BlogType.Sina:
+                        Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina(log.UserName, log.Password);
+                        s.Login();
+                        s.Post(b.BookTitle + "-" + b.Chapters.Last().Title, content);
+                        break;
+                    case BlogType.Sohu:
+                        Voodoo.Net.BlogHelper.Sohu so=new Voodoo.Net.BlogHelper.Sohu(log.UserName, log.Password);
+                        so.Login();
+                        so.Post(b.BookTitle + "-" + b.Chapters.Last().Title, content);
+                        break;
+                    case BlogType.WordPress:
+                        Voodoo.Net.BlogHelper.WordPress wp = new Voodoo.Net.BlogHelper.WordPress(log.BlogUrl, log.UserName, log.Password);
+                        wp.Login();
+                        wp.Post(b.BookTitle + "-" + b.Chapters.Last().Title, content);
+                        break;
+                }
             }
 
 

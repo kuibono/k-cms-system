@@ -32,6 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.3.2.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\voodoo\ref\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="JoeBlogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\voodoo\ref\JoeBlogs.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -55,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Book\CollectBase.cs" />
     <Compile Include="Book\CollectBook.cs" />
+    <Compile Include="Book\Model\BlogModel.cs" />
     <Compile Include="Book\Model\BlogRule.cs" />
     <Compile Include="Book\Model\MailBlog.cs" />
     <Compile Include="Book\Model\Web\BookChapter.cs" />
