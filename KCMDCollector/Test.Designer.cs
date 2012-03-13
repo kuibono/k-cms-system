@@ -33,6 +33,10 @@
             this.btn_Neasy = new System.Windows.Forms.Button();
             this.btn_Cnblogs = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btn_Baidu2 = new System.Windows.Forms.Button();
+            this.btn_Renren = new System.Windows.Forms.Button();
+            this.btn_Blogbus = new System.Windows.Forms.Button();
+            this.btn_Wp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_sina
@@ -79,15 +83,59 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 34);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(615, 374);
+            this.richTextBox1.Size = new System.Drawing.Size(665, 374);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
+            // 
+            // btn_Baidu2
+            // 
+            this.btn_Baidu2.Location = new System.Drawing.Point(337, 5);
+            this.btn_Baidu2.Name = "btn_Baidu2";
+            this.btn_Baidu2.Size = new System.Drawing.Size(75, 23);
+            this.btn_Baidu2.TabIndex = 10;
+            this.btn_Baidu2.Text = "baidu";
+            this.btn_Baidu2.UseVisualStyleBackColor = true;
+            this.btn_Baidu2.Click += new System.EventHandler(this.btn_Baidu2_Click);
+            // 
+            // btn_Renren
+            // 
+            this.btn_Renren.Location = new System.Drawing.Point(418, 5);
+            this.btn_Renren.Name = "btn_Renren";
+            this.btn_Renren.Size = new System.Drawing.Size(75, 23);
+            this.btn_Renren.TabIndex = 11;
+            this.btn_Renren.Text = "renren";
+            this.btn_Renren.UseVisualStyleBackColor = true;
+            this.btn_Renren.Click += new System.EventHandler(this.btn_Renren_Click);
+            // 
+            // btn_Blogbus
+            // 
+            this.btn_Blogbus.Location = new System.Drawing.Point(499, 5);
+            this.btn_Blogbus.Name = "btn_Blogbus";
+            this.btn_Blogbus.Size = new System.Drawing.Size(75, 23);
+            this.btn_Blogbus.TabIndex = 12;
+            this.btn_Blogbus.Text = "blogbus";
+            this.btn_Blogbus.UseVisualStyleBackColor = true;
+            this.btn_Blogbus.Click += new System.EventHandler(this.btn_Blogbus_Click);
+            // 
+            // btn_Wp
+            // 
+            this.btn_Wp.Location = new System.Drawing.Point(580, 5);
+            this.btn_Wp.Name = "btn_Wp";
+            this.btn_Wp.Size = new System.Drawing.Size(75, 23);
+            this.btn_Wp.TabIndex = 13;
+            this.btn_Wp.Text = "wp";
+            this.btn_Wp.UseVisualStyleBackColor = true;
+            this.btn_Wp.Click += new System.EventHandler(this.btn_Wp_Click);
             // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 420);
+            this.ClientSize = new System.Drawing.Size(689, 420);
+            this.Controls.Add(this.btn_Wp);
+            this.Controls.Add(this.btn_Blogbus);
+            this.Controls.Add(this.btn_Renren);
+            this.Controls.Add(this.btn_Baidu2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btn_Cnblogs);
             this.Controls.Add(this.btn_Neasy);
@@ -106,5 +154,9 @@
         private System.Windows.Forms.Button btn_Neasy;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btn_Cnblogs;
+        private System.Windows.Forms.Button btn_Baidu2;
+        private System.Windows.Forms.Button btn_Renren;
+        private System.Windows.Forms.Button btn_Blogbus;
+        private System.Windows.Forms.Button btn_Wp;
     }
 }

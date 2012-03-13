@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NovelCollector.Book.Model
+namespace KCMDCollector.Book
 {
     public class BlogRule
     {
