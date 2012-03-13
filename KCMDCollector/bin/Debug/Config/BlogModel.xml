@@ -19,7 +19,7 @@
     <Password>Admin@123</Password>
     <type>WordPress</type>
     <BlogName>WordPress</BlogName>
-    <BlogUrl>https://aizrnet.wordpress.com/</BlogUrl>
+    <BlogUrl>http://aizrnet.wordpress.com/</BlogUrl>
   </BlogModel>
   <BlogModel>
     <UserName>bigcuibing@tom.com</UserName>
