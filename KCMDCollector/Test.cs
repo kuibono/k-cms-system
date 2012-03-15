@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using System.Threading;
 using Voodoo;
 using System.Text;
+using Voodoo.Net.BlogHelper;
 
 namespace KCMDCollector
 {
@@ -98,9 +99,17 @@ namespace KCMDCollector
             //    result.cookieContainer,
             //    "http://control.blog.sina.com.cn/admin/article/article_add.php");
 
-            Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123");
+            Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123","http://blog.sina.com.cn/aizrnet/");
             s.Login();
-            s.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
+            //s.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
+            var ps=s.GetRecentPosts(100);
+
+
+            var p = s.GetPost(ps.First().id);
+
+            MessageBox.Show(p.Content);
+
+
         }
 
         private void btn_Baidu_Click(object sender, EventArgs e)
@@ -252,7 +261,9 @@ namespace KCMDCollector
 
         private void btn_Renren_Click(object sender, EventArgs e)
         {
-            NameValueCollection nv = new NameValueCollection();
+            Voodoo.Net.BlogHelper.Renren r = new Voodoo.Net.BlogHelper.Renren("kuibono@163.com", "123456");
+            r.Login();
+            r.Post("大大大大大大", "惺惺惜惺惺惺惺惜惺惺谢谢惺惺惜惺惺惺惺惜惺惺谢谢");
 
         }
 
