@@ -802,7 +802,7 @@ namespace Voodoo.Basement
                 foreach (Book b in qs)
                 {
                     string str_lst = temp.ListVar;
-                    str_lst = str_lst.Replace("[!--book.url--]", BasePage.GetBookUrl(b, c));//书籍
+                    str_lst = str_lst.Replace("[!--book.url--]", BasePage.GetBookUrl(b, BookView.GetClass(b)));//书籍
                     str_lst = str_lst.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), BookView.GetClass(b)));//书籍
                     str_lst = str_lst.Replace("[!--book.id--]", b.ID.ToString());
                     str_lst = str_lst.Replace("[!--book.classid--]", b.ClassID.ToS());
