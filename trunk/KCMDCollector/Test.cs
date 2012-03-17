@@ -312,7 +312,15 @@ namespace KCMDCollector
 
             Voodoo.Net.BlogHelper.WordPress wp = new Voodoo.Net.BlogHelper.WordPress("http://aizr.net/wiki/", "kuibono", "4264269");
             wp.Login();
-            wp.Post("测试标题", "文章内容文章内容文章内容文章内容");
+            //wp.Post("测试标题", "文章内容文章内容文章内容文章内容");
+            var ps = wp.GetRecentPosts(100);
+
+            string str = "";
+            foreach (var p in ps)
+            {
+                str += p.Title + ",";
+            }
+            MessageBox.Show(str);
 
         }
     }

@@ -276,16 +276,16 @@ namespace Voodoo.Basement
 
             string sitrurl = "/Book/";
 
-            string parentForder = cls.ClassForder;
-            if (!parentForder.IsNullOrEmpty())
-            {
-                parentForder += "/";
-            }
+            //string parentForder = cls.ClassForder;
+            //if (!parentForder.IsNullOrEmpty())
+            //{
+            //    parentForder += "/";
+            //}
 
 
-            result = string.Format("{0}{1}{2}/{3}/index{4}",
+            result = string.Format("{0}{1}/{2}/index{3}",
                 sitrurl,
-                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                //cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 fileName,
                 BasePage.SystemSetting.ExtName
@@ -312,16 +312,16 @@ namespace Voodoo.Basement
 
             string sitrurl = "/Book/";
 
-            string parentForder = cls.ClassForder;
-            if (!parentForder.IsNullOrEmpty())
-            {
-                parentForder += "/";
-            }
+            //string parentForder = cls.ClassForder;
+            //if (!parentForder.IsNullOrEmpty())
+            //{
+            //    parentForder += "/";
+            //}
 
 
-            result = string.Format("{0}{1}{2}/{3}/{4}{5}",
+            result = string.Format("{0}{1}/{2}/{3}{4}",
                 sitrurl,
-                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
+                //cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                  b.Title+"-"+b.Author,
                 cp.ID,
@@ -347,11 +347,11 @@ namespace Voodoo.Basement
 
             string sitrurl = "/Txt/";
 
-            string parentForder = cls.ClassForder;
-            if (!parentForder.IsNullOrEmpty())
-            {
-                parentForder += "/";
-            }
+            //string parentForder = cls.ClassForder;
+            //if (!parentForder.IsNullOrEmpty())
+            //{
+            //    parentForder += "/";
+            //}
 
 
             result = string.Format("{0}{1}{2}/{3}/{4}{5}",
@@ -376,16 +376,10 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetClassUrl(Class cls)
         {
-            //string sitrurl = BasePage.SystemSetting.SiteUrl;
-            //if (sitrurl.IsNullOrEmpty())
-            //{
-            //    sitrurl = "/";
-            //}
+
             string sitrurl = "/Book/";
-            string result = string.Format("{0}/{1}{2}/index{3}",
-                //return string.Format("{0}/{1}{2}/",
+            string result = string.Format("{0}/{1}/index{2}",
                 sitrurl,
-                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 SystemSetting.ExtName
                 );
@@ -402,15 +396,10 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetClassUrl(Class cls, int page)
         {
-            //string sitrurl = BasePage.SystemSetting.SiteUrl;
-            //if (sitrurl.IsNullOrEmpty())
-            //{
-            //    sitrurl = "/";
-            //}
+            
             string sitrurl = "/Book/";
-            return string.Format("{0}/{1}{2}/index{3}",
+            return string.Format("{0}/{1}/index{2}",
                 sitrurl,
-                cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
                 page > 1 ? "_" + page.ToS() + SystemSetting.ExtName : SystemSetting.ExtName
                 );
@@ -681,17 +670,24 @@ namespace Voodoo.Basement
         /// </summary>
         /// <param name="ModelID"></param>
         /// <param name="key"></param>
-        protected void InsertKeyWords(int ModelID, string key)
+        public static void InsertKeyWords(int ModelID, string key)
         {
-            SysKeyword k = SysKeywordView.Find(string.Format("ModelID={0} and Keyword='{1}'",ModelID,key));
-            if (k.ID <=0)
+            SysKeyword k = SysKeywordView.Find(string.Format("ModelID={0} and Keyword=N'{1}'",ModelID,key));
+            if (k.Id <= 0)
             {
                 //不存在
                 k.ModelID = ModelID;
                 k.Keyword = key;
+                k.ClickCount = 0;
                 SysKeywordView.Insert(k);
             }
+            else
+            {
+                k.ClickCount++;
+                SysKeywordView.Update(k);
+            }
         }
+
         #endregion
 
         #region 生成随机背景颜色
