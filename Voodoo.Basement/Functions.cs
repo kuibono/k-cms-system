@@ -279,6 +279,28 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 根据条件获取分类列表
+        /// <summary>
+        /// 根据条件获取分类列表
+        /// </summary>
+        /// <param name="m_where">条件语句</param>
+        /// <returns></returns>
+        public static string getclassbyfilter(string m_where)
+        {
+            List<Class> cls = ClassView.GetModelList(m_where);
+            StringBuilder sb = new StringBuilder();
+            foreach (Class c in cls)
+            {
+                sb.AppendLine(string.Format("<a href=\"{0}\">{1}</a> ",
+                    BasePage.GetClassUrl(c),
+                    c.ClassName
+                    ));
+            }
+
+            return sb.ToString();
+        }
+        #endregion 
+
         #region 获取子栏目
         /// <summary>
         /// 获取子栏目
@@ -356,9 +378,10 @@ namespace Voodoo.Basement
             var links = LinkView.GetModelList("id>0 order by [Index]");
             foreach (var l in links)
             {
-                sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a> ", l.Url, l.LinkTitle));
+                sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a>|", l.Url, l.LinkTitle));
             }
-            return sb.ToString();
+            
+            return sb.TrimEnd('|').ToString();
         }
         #endregion
 
@@ -429,7 +452,7 @@ namespace Voodoo.Basement
                     b.LastChapterTitle,
                     b.LastChapterTitle.CutString(12),
                     b.Author,
-                    b.UpdateTime.ToString("yyyy-MM-dd HH:mm")
+                    b.UpdateTime.ToString("MM-dd HH:mm")
                     ));
                 i++;
             }
@@ -447,10 +470,18 @@ namespace Voodoo.Basement
             List<Book> bs = BookView.GetModelList("Enable=1 order by UpdateTime desc", i_top);
             StringBuilder sb = new StringBuilder();
 
-            foreach (Book b in bs)
+            //foreach (Book b in bs)
+            for (int i = 0; i < bs.Count; i++)
             {
+                Book b = bs[i];
                 Class c = BookView.GetClass(b);
-                sb.AppendLine(string.Format("<tr><td>[<a href=\"{0}\">{1}</a>]</td><td> <a href=\"{2}\">{3}</a></td><td><a href=\"{4}\">{5}</a></td><td>{6}</td><td>[{7}]</td></tr>",
+                string str_style = "";
+                if (i % 2 == 0)
+                {
+                    str_style = " style=\"background-color: #f5f5f5\"";
+                }
+
+                sb.AppendLine(string.Format("<tr" + str_style + "><td>[<a target=\"_blank\" href=\"{0}\" class=\"sort\">{1}</a>]</td><td><a class=\"name\" target=\"_blank\" href=\"{2}\">{3}</a> <a target=\"_blank\" href=\"{4}\" class=\"chapter\">{5}</a></td><td><a target=\"_blank\" href=\"/Search.aspx?m=4&key={6}\" class=\"author\">{6}</a></td><td style=\"color: #666666\">{7}</td></tr>",
                     BasePage.GetClassUrl(c),
                     b.ClassName,
                     BasePage.GetBookUrl(b, c),
@@ -458,12 +489,115 @@ namespace Voodoo.Basement
                     BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), c),
                     b.LastChapterTitle,
                     b.Author,
-                    b.UpdateTime.ToString("MM-dd")
+                    b.UpdateTime.ToString("MM-dd HH:mm")
                     ));
             }
             return sb.ToS();
         }
 
         #endregion 获取最新更新的书籍
+
+        #region 获取小说列表
+        /// <summary>
+        /// 获取小说列表
+        /// </summary>
+        /// <param name="m_where"></param>
+        /// <returns></returns>
+        public static string getnovellist(string m_where, string Top, string CutTitle,string firstClass,string ShowClickCount)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var NovelList = BookView.GetModelList(m_where, Top.ToInt32());
+            foreach (var b in NovelList)
+            {
+                string str_cls = "";
+                if (firstClass.Length > 0 && b == NovelList.First())
+                {
+                    str_cls = " class=\"" + firstClass + "\"";
+                }
+
+                string str_clickcount = "";
+                if (ShowClickCount.ToBoolean())
+                {
+                    str_clickcount = string.Format("<span>{0}</span>",b.ClickCount);
+                }
+
+                sb.Append(string.Format("<li"+str_cls+"><a title=\"{0}\" href=\"{1}\">{2}</a>{3}</li>", b.Title, BasePage.GetBookUrl(b, BookView.GetClass(b)), b.Title.CutString(CutTitle.ToInt32(10)),str_clickcount));
+            }
+
+            return sb.ToS();
+        }
+        #endregion 
+
+        #region 获取系统搜索关键词
+        /// <summary>
+        /// 获取系统搜索关键词
+        /// </summary>
+        /// <param name="Top"></param>
+        /// <returns></returns>
+        public static string getsearchkey(string Top, string ModelID)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var list = SysKeywordView.GetModelList(string.Format("ModelID={0} order by ClickCount desc", ModelID), Top.ToInt32(10));
+            foreach (var item in list)
+            {
+                sb.Append(string.Format("<a href=\"/Search.aspx?m={1}&key={0}\">{0}</a>&nbsp;", item.Keyword, ModelID));
+            }
+            return sb.ToS();
+        }
+        #endregion
+
+        #region 获取小说分类新闻
+        /// <summary>
+        /// 获取小说分类新闻
+        /// </summary>
+        /// <param name="ClassID">分类ID</param>
+        /// <param name="Top">所取条数</param>
+        /// <returns></returns>
+        public static string getclassnews(string ClassID,string Top)
+        {
+            List<Book> qs = BookView.GetModelList(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by clickcount desc", ClassID),Top.ToInt32(12));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < qs.Count; i++)
+            {
+                if (i == 0)
+                {
+                    sb.AppendLine(string.Format("<ul class=\"picList\"><li><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li>",
+                        BasePage.GetBookUrl(qs[i],BookView.GetClass(qs[i])),
+                        qs[i].Title,
+                        qs[i].Intro.CutString(150)
+                        ));
+                }
+                else if (i == 1)
+                {
+                    sb.AppendLine(string.Format("<li><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li></ul>",
+                        BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
+                        qs[i].Title,
+                        qs[i].Intro.CutString(150)
+                        ));
+                }
+                else if (i == 2)
+                {
+                    sb.AppendLine(string.Format("<ul class=\"newsList\"><li><a target=\"_blank\" title=\"{1}\" href=\"{0}\">{1}：{2}</a></li>",
+                        BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
+                        qs[i].Title,
+                        qs[i].Intro.CutString(15)
+                        ));
+                }
+                else
+                {
+                    sb.AppendLine(string.Format("<li><a target=\"_blank\" title=\"{1}\" href=\"{0}\">{1}：{2}</a></li>",
+                        BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
+                        qs[i].Title,
+                        qs[i].Intro.CutString(15)
+                        ));
+                }
+                
+            }//end for
+            sb.AppendLine("</ul>");
+            return sb.ToS();
+        }
+        #endregion
     }
 }

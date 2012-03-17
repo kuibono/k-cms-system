@@ -80,7 +80,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = "首页", UpdateTime = DateTime.Now.ToString(), Keyword=BasePage.SystemSetting.KeyWords, Description=BasePage.SystemSetting.Description };
+            PageAttribute pa = new PageAttribute() { Title = "首页", UpdateTime = DateTime.Now.ToString(), Keyword = BasePage.SystemSetting.KeyWords, Description = BasePage.SystemSetting.Description };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -380,7 +380,7 @@ namespace Voodoo.Basement
             string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_pre != null)
             {
-                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetQuestionUrl(news_pre, cls), news_pre.Title,news_pre.Title.CutString(20));
+                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetQuestionUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
@@ -426,11 +426,12 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() {
-                Title = string.Format("{0}-{1}-{0}在线阅读-{0}txt下载", b.Title, b.Author), 
-                UpdateTime = DateTime.Now.ToString(), 
-                Description =string.Format("{0}书籍信息页面。{0}章节列表，{0}在线阅读以及txt电子书下载，为您提供包括{0}最新章节的所有章节及{0}全文阅读链接。{1}",b.Title, b.Intro.Replace("\n","")), 
-                Keyword=string.Format("{0},{0}在线阅读,{0}最新章节,{0}txt下载,{1}",b.Title,b.Author)
+            PageAttribute pa = new PageAttribute()
+            {
+                Title = string.Format("{0}-{1}-{0}在线阅读-{0}txt下载", b.Title, b.Author),
+                UpdateTime = DateTime.Now.ToString(),
+                Description = string.Format("{0}书籍信息页面。{0}章节列表，{0}在线阅读以及txt电子书下载，为您提供包括{0}最新章节的所有章节及{0}全文阅读链接。{1}", b.Title, b.Intro.Replace("\n", "")),
+                Keyword = string.Format("{0},{0}在线阅读,{0}最新章节,{0}txt下载,{1}", b.Title, b.Author)
             };
 
             Content = ReplacePageAttribute(Content, pa);
@@ -452,7 +453,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.title--]", b.Title);
             Content = Content.Replace("[!--book.oldtitle--]", b.Title);
             Content = Content.Replace("[!--book.author--]", b.Author);
-            Content = Content.Replace("[!--book.intro--]", b.Intro.Replace("\n","<br />"));
+            Content = Content.Replace("[!--book.intro--]", b.Intro.Replace("\n", "<br />"));
             Content = Content.Replace("[!--book.length--]", b.Length.ToS());
             Content = Content.Replace("[!--book.replycount--]", b.ReplyCount.ToS());
             Content = Content.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
@@ -478,7 +479,7 @@ namespace Voodoo.Basement
             //sb.AppendLine("<ul>");
             foreach (BookChapter cp in chapters)
             {
-                string row = list_tmp.Replace("[!--chapter.url--]", BasePage.GetBookChapterUrl(cp,cls));
+                string row = list_tmp.Replace("[!--chapter.url--]", BasePage.GetBookChapterUrl(cp, cls));
                 row = row.Replace("[!--chapter.title--]", cp.Title);
 
                 sb.AppendLine(row);
@@ -535,14 +536,15 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            string ChapterContent= Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp,cls) ));
+            string ChapterContent = Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp, cls)));
             ChapterContent = ChapterContent.Replace("<<", "<br />");
 
-            PageAttribute pa = new PageAttribute() {
-                Title = string.Format("{0}-{1}-{2}", b.Title, cp.Title, b.Author), 
-                UpdateTime = DateTime.Now.ToString(), 
-                Description = ChapterContent.TrimHTML().Replace("\n","").CutString(100), 
-                Keyword = string.Format("{0},{1}最新章节,{1}txt下载,{1}在线阅读", cp.Title, b.Title) 
+            PageAttribute pa = new PageAttribute()
+            {
+                Title = string.Format("{0}-{1}-{2}", b.Title, cp.Title, b.Author),
+                UpdateTime = DateTime.Now.ToString(),
+                Description = ChapterContent.TrimHTML().Replace("\n", "").CutString(100),
+                Keyword = string.Format("{0},{1}最新章节,{1}txt下载,{1}在线阅读", cp.Title, b.Title)
             };
 
             Content = ReplacePageAttribute(Content, pa);
@@ -601,7 +603,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--chapter.isfree--]", cp.IsFree.ToChinese());
             Content = Content.Replace("[!--chapter.chapterindex--]", cp.ChapterIndex.ToS());
             Content = Content.Replace("[!--chapter.isimagechapter--]", cp.IsImageChapter.ToChinese());
-            Content = Content.Replace("[!--chapter.content--]",  ChapterContent);
+            Content = Content.Replace("[!--chapter.content--]", ChapterContent);
             Content = Content.Replace("[!--chapter.clickcount--]", cp.ClickCount.ToS());
 
             #endregion
@@ -759,29 +761,29 @@ namespace Voodoo.Basement
             #endregion  图片系统模板
 
             #region 问答系统
-            else if(c.ModelID==3)
+            else if (c.ModelID == 3)
             {
-                StringBuilder sb_list=new StringBuilder();
-                List<Question> qs=QuestionView.GetModelList(string.Format("ClassID={0} order by id desc",c.ID));
+                StringBuilder sb_list = new StringBuilder();
+                List<Question> qs = QuestionView.GetModelList(string.Format("ClassID={0} order by id desc", c.ID));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = qs.Count;
 
                 qs = qs.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
-                foreach(Question q in qs)
+                foreach (Question q in qs)
                 {
                     string str_lst = temp.ListVar;
-                    str_lst = str_lst.Replace("[!--question.url--]", BasePage.GetQuestionUrl(q,c));//问题地址
-                    str_lst=str_lst.Replace("[!--question.asktime--]",q.AskTime.ToString(temp.TimeFormat));
-                    str_lst=str_lst.Replace("[!--question.classid--]",q.ClassID.ToS());
-                    str_lst=str_lst.Replace("[!--question.clickcount--]",q.ClickCount.ToS());
-                    str_lst=str_lst.Replace("[!--question.content--]",q.Content);
-                    str_lst=str_lst.Replace("[!--question.id--]",q.ID.ToS());
-                    str_lst=str_lst.Replace("[!--question.title--]",temp.CutTitle>0?q.Title.CutString(temp.CutTitle):q.Title);
+                    str_lst = str_lst.Replace("[!--question.url--]", BasePage.GetQuestionUrl(q, c));//问题地址
+                    str_lst = str_lst.Replace("[!--question.asktime--]", q.AskTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--question.classid--]", q.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--question.clickcount--]", q.ClickCount.ToS());
+                    str_lst = str_lst.Replace("[!--question.content--]", q.Content);
+                    str_lst = str_lst.Replace("[!--question.id--]", q.ID.ToS());
+                    str_lst = str_lst.Replace("[!--question.title--]", temp.CutTitle > 0 ? q.Title.CutString(temp.CutTitle) : q.Title);
                     str_lst = str_lst.Replace("[!--question.oldtitle--]", q.Title);
-                    str_lst=str_lst.Replace("[!--question.userid--]",q.UserID.ToS());
-                    str_lst=str_lst.Replace("[!--question.username--]",q.UserName);
-                    str_lst=str_lst.Replace("[!--question.ztid--]",q.ZtID.ToS());
-                    str_lst = str_lst.Replace("[!--question.answercount--]", AnswerView.Count(string.Format("QuestionID={0}",q.ID)).ToS());
+                    str_lst = str_lst.Replace("[!--question.userid--]", q.UserID.ToS());
+                    str_lst = str_lst.Replace("[!--question.username--]", q.UserName);
+                    str_lst = str_lst.Replace("[!--question.ztid--]", q.ZtID.ToS());
+                    str_lst = str_lst.Replace("[!--question.answercount--]", AnswerView.Count(string.Format("QuestionID={0}", q.ID)).ToS());
                     sb_list.AppendLine(str_lst);
                 }
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
@@ -792,7 +794,7 @@ namespace Voodoo.Basement
             else if (c.ModelID == 4)
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<Book> qs = BookView.GetModelList(string.Format("ClassID={0} order by id desc", c.ID));
+                List<Book> qs = BookView.GetModelList(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by id desc", c.ID));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = qs.Count;
 
@@ -801,10 +803,10 @@ namespace Voodoo.Basement
                 {
                     string str_lst = temp.ListVar;
                     str_lst = str_lst.Replace("[!--book.url--]", BasePage.GetBookUrl(b, c));//书籍
-                    str_lst = str_lst.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),c));//书籍
+                    str_lst = str_lst.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), BookView.GetClass(b)));//书籍
                     str_lst = str_lst.Replace("[!--book.id--]", b.ID.ToString());
                     str_lst = str_lst.Replace("[!--book.classid--]", b.ClassID.ToS());
-                    str_lst = str_lst.Replace("[!--book.classname--]",b.ClassName);
+                    str_lst = str_lst.Replace("[!--book.classname--]", b.ClassName);
                     str_lst = str_lst.Replace("[!--book.ztid--]", b.ZtID.ToS());
                     str_lst = str_lst.Replace("[!--book.ztname--]", b.ZtName);
                     str_lst = str_lst.Replace("[!--book.title--]", temp.CutTitle > 0 ? b.Title.CutString(temp.CutTitle) : b.Title);
@@ -828,6 +830,8 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
                     str_lst = str_lst.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
                     str_lst = str_lst.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+                    str_lst = str_lst.Replace("[!--book.clickcount--]", b.ClickCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.tjcount--]", b.TjCount.ToS());
                     sb_list.AppendLine(str_lst);
                 }
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
@@ -849,6 +853,11 @@ namespace Voodoo.Basement
             tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
             tmp_pager = tmp_pager.Replace("[!--pagelink--]", BuildPagerLink(c, page));
             tmp_pager = tmp_pager.Replace("[!--options--]", BuidPagerOption(c, page));
+
+            if (recordCount <= temp.ShowRecordCount)
+            {
+                tmp_pager = "";
+            }
 
             Content = Content.Replace("[!--show.listpage--]", tmp_pager);
 
@@ -878,8 +887,13 @@ namespace Voodoo.Basement
         /// <param name="page"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string GetSearchResult(int SysModel,int page,string key)
+        public static string GetSearchResult(int SysModel, int page, string key)
         {
+            #region 搜索关键词保存到数据库中
+
+            BasePage.InsertKeyWords(SysModel, key);
+            #endregion
+
             int pagecount = 1;
             int recordCount = 0;
 
@@ -1048,6 +1062,9 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
                     str_lst = str_lst.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
                     str_lst = str_lst.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+
+                    str_lst = str_lst.Replace("[!--book.clickcount--]", b.ClickCount.ToS());
+                    str_lst = str_lst.Replace("[!--book.tjcount--]", b.TjCount.ToS());
                     sb_list.AppendLine(str_lst);
                 }
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
@@ -1068,6 +1085,11 @@ namespace Voodoo.Basement
             tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
             tmp_pager = tmp_pager.Replace("[!--pagelink--]", BuildPagerLink(key, page));
             tmp_pager = tmp_pager.Replace("[!--options--]", BuidPagerOption(key, page));
+
+            if (recordCount <= 20)
+            {
+                tmp_pager = "";
+            }
 
             Content = Content.Replace("[!--show.listpage--]", tmp_pager);
 
@@ -1146,9 +1168,13 @@ namespace Voodoo.Basement
                 //没有选择模版
                 tmpid = TemplateListView.Find("id>0 order by id desc").ID;
             }
+            else
+            {
+                tmpid = TemplateListView.Find(string.Format("SysModel={0}",c.ModelID)).ID;
+            }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
 
-            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+            int pagecount = @int.GetPageCount(recordCount, temp.ShowRecordCount); //(Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
 
             string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
@@ -1165,12 +1191,12 @@ namespace Voodoo.Basement
 
             temp = TemplateListView.GetModelByID("4");
 
-            int pagecount = (Convert.ToDouble(recordCount) / Convert.ToDouble(20)).YueShu();
+            int pagecount = @int.GetPageCount(recordCount, 20); //(Convert.ToDouble(recordCount) / Convert.ToDouble(20)).YueShu();
 
-            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "/Search.aspx?m=4&key="+key : "javascript:void(0)");
-            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key + "&p=" + (page- 1).ToS() : "javascript:void(0)");
-            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS()  : "javascript:void(0)");
-            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS()  : "javascript:void(0)");
+            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key : "javascript:void(0)");
+            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key + "&p=" + (page - 1).ToS() : "javascript:void(0)");
+            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() : "javascript:void(0)");
+            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
 
@@ -1221,7 +1247,7 @@ namespace Voodoo.Basement
             int recordCount = BookView.Count(string.Format("Title like '%{0}%' or Author like '%{0}%' or Intro like '%{0}%'", key));
             int tmpid = 0;
             TemplateList temp = new TemplateList();
- 
+
             temp = TemplateListView.GetModelByID("4");
 
 
@@ -1234,11 +1260,11 @@ namespace Voodoo.Basement
             {
                 if (page == i)
                 {
-                    sb.AppendLine(string.Format("<option value='{0}' selected>{1}</option>", "/Search.aspx?m=4&key="+key,i));
+                    sb.AppendLine(string.Format("<option value='{0}' selected>{1}</option>", "/Search.aspx?m=4&key=" + key, i));
                 }
                 else
                 {
-                    sb.AppendLine(string.Format("<option value='{0}'>{1}</option>", "/Search.aspx?m=4&key=" + key+"&p="+i,i));
+                    sb.AppendLine(string.Format("<option value='{0}'>{1}</option>", "/Search.aspx?m=4&key=" + key + "&p=" + i, i));
                 }
             }
             sb.AppendLine("</select>");
@@ -1255,14 +1281,14 @@ namespace Voodoo.Basement
         public static string BuildClassNavString(Class c)
         {
             string str = "";
-            if (c.IsLeafClass)
-            {
+            //if (c.IsLeafClass)
+            //{
                 str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
-            }
-            else
-            {
-                str = string.Format("> <a href=\"{0}\">{1}</a>", "javascript:void(0);", c.ClassName);
-            }
+            //}
+            //else
+            //{
+            //    str = string.Format("> <a href=\"{0}\">{1}</a>", "javascript:void(0);", c.ClassName);
+            //}
 
             var cls = NewsAction.NewsClass.Where(p => p.ID == c.ParentID && c.ShowInNav).ToList();
             if (cls.Count > 0)
@@ -1378,6 +1404,7 @@ namespace Voodoo.Basement
             return Content;
         }
         #endregion
+
 
 
 

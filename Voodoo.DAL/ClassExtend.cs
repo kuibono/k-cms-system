@@ -17,19 +17,19 @@ namespace Voodoo.DAL
         {
             if (cls.ModelID == 1)
             {
-                return NewsView.Count(string.Format("ClassID={0} and Audit=1", cls.ID));
+                return NewsView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) and Audit=1", cls.ID));
             }
             else if (cls.ModelID == 2)
             {
-                return ImageAlbumView.Count(string.Format("ClassID={0}", cls.ID));
+                return ImageAlbumView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0})", cls.ID));
             }
             else if (cls.ModelID == 3)
             {
-                return QuestionView.Count(string.Format("ClassID={0}", cls.ID));
+                return QuestionView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0})", cls.ID));
             }
             else if (cls.ModelID == 4)
             {
-                return BookView.Count(string.Format("ClassID={0}", cls.ID));
+                return BookView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0})", cls.ID));
             }
             else
             {
