@@ -1176,10 +1176,10 @@ namespace Voodoo.Basement
 
             int pagecount = @int.GetPageCount(recordCount, temp.ShowRecordCount); //(Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
 
-            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "index_" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
-            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_first = string.Format("<a href=\"{0}\">首页</a>", page > 1 ? "index" + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_pre = string.Format("<a href=\"{0}\">上页</a>", page > 1 ? "index" + (page == 2 ? "" : "_" + (page - 1).ToS()) + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_next = string.Format("<a href=\"{0}\">下页</a>", page < pagecount ? "index_" + (page + 1).ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
+            string str_end = string.Format("<a href=\"{0}\">尾页</a>", page != pagecount ? "index_" + pagecount.ToS() + BasePage.SystemSetting.ExtName : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
 
@@ -1193,10 +1193,10 @@ namespace Voodoo.Basement
 
             int pagecount = @int.GetPageCount(recordCount, 20); //(Convert.ToDouble(recordCount) / Convert.ToDouble(20)).YueShu();
 
-            string str_first = string.Format("[<a href=\"{0}\">首页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key : "javascript:void(0)");
-            string str_pre = string.Format("[<a href=\"{0}\">上页</a>]", page > 1 ? "/Search.aspx?m=4&key=" + key + "&p=" + (page - 1).ToS() : "javascript:void(0)");
-            string str_next = string.Format("[<a href=\"{0}\">下页</a>]", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() : "javascript:void(0)");
-            string str_end = string.Format("[<a href=\"{0}\">尾页</a>]", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() : "javascript:void(0)");
+            string str_first = string.Format("<a href=\"{0}\">首页</a>", page > 1 ? "/Search.aspx?m=4&key=" + key : "javascript:void(0)");
+            string str_pre = string.Format("<a href=\"{0}\">上页</a>", page > 1 ? "/Search.aspx?m=4&key=" + key + "&p=" + (page - 1).ToS() : "javascript:void(0)");
+            string str_next = string.Format("<a href=\"{0}\">下页</a>", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() : "javascript:void(0)");
+            string str_end = string.Format("<a href=\"{0}\">尾页</a>", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
         }
 
