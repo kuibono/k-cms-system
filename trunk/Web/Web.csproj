@@ -652,18 +652,21 @@
     </Compile>
     <Compile Include="e\api\BookAdd.aspx.cs">
       <DependentUpon>BookAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\BookAdd.aspx.designer.cs">
       <DependentUpon>BookAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\BookExist.aspx.cs">
       <DependentUpon>BookExist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\BookExist.aspx.designer.cs">
       <DependentUpon>BookExist.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\api\ChapterAdd.aspx.cs">
       <DependentUpon>ChapterAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\ChapterAdd.aspx.designer.cs">
       <DependentUpon>ChapterAdd.aspx</DependentUpon>
@@ -689,9 +692,17 @@
     </Compile>
     <Compile Include="e\api\getClass.aspx.cs">
       <DependentUpon>getClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="e\api\getClass.aspx.designer.cs">
       <DependentUpon>getClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\api\xmlrpc.aspx.cs">
+      <DependentUpon>xmlrpc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\api\xmlrpc.aspx.designer.cs">
+      <DependentUpon>xmlrpc.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\file\addselect.aspx.cs">
       <DependentUpon>addselect.aspx</DependentUpon>
@@ -857,6 +868,7 @@
     <Content Include="e\api\getBook.aspx" />
     <Content Include="e\api\GetChapter.aspx" />
     <Content Include="e\api\getClass.aspx" />
+    <Content Include="e\api\xmlrpc.aspx" />
     <Content Include="e\data\css\loginstyle.css" />
     <Content Include="e\data\css\management.css" />
     <Content Include="e\data\images\bbs_ico.jpg" />
