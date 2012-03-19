@@ -48,6 +48,7 @@ namespace KCMDCollector
             {
                 rs.Add(new Book.CollectRule()
                 {
+                    IsImageSite = row.Cells["IsImageSite"].Value.ToBoolean(),
                     SiteName = row.Cells["SiteName"].Value.ToString(),
                     CharSet = row.Cells["CharSet"].Value.ToString(),
                     ChapterContent = row.Cells["ChapterContent"].Value.ToString(),
@@ -59,7 +60,8 @@ namespace KCMDCollector
                     SearchPars = row.Cells["SearchPars"].Value.ToString(),
                     Url = row.Cells["Url"].Value.ToString(),
                     BookInfoRule = row.Cells["BookInfoRule"].Value.ToString(),
-                    BookInfoUrl = row.Cells["BookInfoUrl"].Value.ToString()
+                    BookInfoUrl = row.Cells["BookInfoUrl"].Value.ToString(),
+                    ImageRule = row.Cells["ImageRule"].Value.ToS()
                 });
             }
 

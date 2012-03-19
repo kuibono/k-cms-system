@@ -27,6 +27,8 @@ namespace KCMDCollector.Book
         /// </summary>
         public bool IsVip { get; set; }
 
+        public bool IsImageChapter { get; set; }
+
         /// <summary>
         /// 序号
         /// </summary>

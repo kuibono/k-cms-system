@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCollectRule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CollectRule>
+    <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
     <SiteName>手打吧</SiteName>
     <Url>http://www.shouda8.com</Url>
@@ -13,8 +14,10 @@
     <ChapterListUrl>&lt;a class="searchbtn03" href="(?&lt;url&gt;.*?)" target="_blank"&gt;&lt;/a&gt;</ChapterListUrl>
     <ChapterNameAndUrl>&lt;div class="chapter_list_chapter"&gt;&lt;a href="(?&lt;url&gt;.*?)" [\s\S]*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/div&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div id="chapter_content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
   </CollectRule>
   <CollectRule>
+    <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
     <SiteName>968U手打小说网</SiteName>
     <Url>http://www.968u.com</Url>
@@ -27,8 +30,10 @@
     <ChapterListUrl>&lt;a href="(?&lt;url&gt;.*?)"&gt;&lt;strong&gt;&lt;font color="#ff0000"&gt;点击阅读</ChapterListUrl>
     <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)" title=".*?"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div id="content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
   </CollectRule>
   <CollectRule>
+    <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
     <SiteName>思路中文网</SiteName>
     <Url>http://www.cilook.cn</Url>
@@ -41,8 +46,10 @@
     <ChapterListUrl>【&lt;a href="(?&lt;url&gt;.*?)"&gt;点击阅读&lt;/A&gt;】</ChapterListUrl>
     <ChapterNameAndUrl>&lt;td height='26' align='left' width='33%'&gt;&amp;nbsp;&lt;a href='(?&lt;url&gt;.*?)'&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div align="left" id="content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
   </CollectRule>
   <CollectRule>
+    <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
     <SiteName>缘点小说网</SiteName>
     <Url>http://www.ydxs.net</Url>
@@ -55,8 +62,10 @@
     <ChapterListUrl>&lt;a class="ll redbtn" href="(?&lt;url&gt;.*?)"  title=".*?"&gt;&lt;span&gt;在线阅读&lt;/span&gt;&lt;/a&gt;</ChapterListUrl>
     <ChapterNameAndUrl>&lt;span&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/span&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div class="bookcontent clearfix" id="BookText"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
   </CollectRule>
   <CollectRule>
+    <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
     <SiteName>手打小说网</SiteName>
     <Url>http://www.sdxsw.org</Url>
@@ -69,5 +78,22 @@
     <ChapterListUrl>&lt;div class="wbutton"&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;</ChapterListUrl>
     <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div class="fontm" id="readtext" style=".*?"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
+  </CollectRule>
+  <CollectRule>
+    <IsImageSite>true</IsImageSite>
+    <IsDefault>false</IsDefault>
+    <SiteName>落秋</SiteName>
+    <Url>http://www.luoqiu.com/</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://www.luoqiu.com/modules/article/search.php</SearchPageUrl>
+    <SearchPars>searchkey={0}&amp;searchtype=articlename</SearchPars>
+    <SearchMethod>get</SearchMethod>
+    <BookInfoUrl>&lt;h2&gt;《&lt;b&gt;&lt;a href=\"(?&lt;url&gt;.*?)\" target=\"_blank\"&gt;.*?&lt;/a&gt;&lt;/b&gt;》</BookInfoUrl>
+    <BookInfoRule />
+    <ChapterListUrl>&lt;a class=\".*?\" href=\"(?&lt;url&gt;.*?)\" target=\"_blank\" title=\".*?\"&gt;&lt;span&gt;点击阅读&lt;/span&gt;&lt;/a&gt;</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;span&gt;&lt;a href=\"(?&lt;url&gt;.*?)\"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/span&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;DIV id=content name=\"content\"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/DIV&gt;</ChapterContent>
+    <ImageRule>&lt;img src="(?&lt;key&gt;.*?)" border="0" class="imagecontent"&gt;</ImageRule>
   </CollectRule>
 </ArrayOfCollectRule>

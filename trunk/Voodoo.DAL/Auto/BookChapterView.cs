@@ -113,7 +113,7 @@ namespace Voodoo.DAL
 			sb.Append(",");	
 			sb.Append(M.ChapterIndex.ToS());
 			sb.Append(",");	
-			sb.Append(M.IsImageChapter.ToS());
+			sb.Append(M.IsImageChapter.ToByte().ToS());
 			sb.Append(",");	
             //sb.Append("N'"+M.Content+"'");
             //sb.Append(",");	
@@ -458,7 +458,7 @@ namespace Voodoo.DAL
         /// </summary>
         /// <param name="ID">ID</param>
         /// <returns></returns>
-		public static bool DelByID(int ID)
+		public static bool DelByID(long ID)
 		{
 			return Del("ID="+ID.ToString());
 		}

@@ -91,10 +91,6 @@
       <Project>{CF4C09DC-B002-4A0D-856B-DCD5E3719213}</Project>
       <Name>Voodoo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NovelCollector\NovelCollector.csproj">
-      <Project>{6808A398-2ECB-46A9-94C6-3C8900EFC10A}</Project>
-      <Name>NovelCollector</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Voodoo.Model\Voodoo.Model.csproj">
       <Project>{5C8CB1AB-C4DC-4B43-8BAC-8D1AD1FFF3CA}</Project>
       <Name>Voodoo.Model</Name>
