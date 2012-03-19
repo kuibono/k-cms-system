@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{E91EA7E0-46DD-43C1-B514-341338E69392}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Basement", "Voodoo.Basement\Voodoo.Basement.csproj", "{DBF00E90-7517-477A-AD42-6539622A3AF8}"
@@ -13,16 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo.Setting", "Voodoo.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovelCollector", "NovelCollector\NovelCollector.csproj", "{6808A398-2ECB-46A9-94C6-3C8900EFC10A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoverCollectService", "NoverCollectService\NoverCollectService.csproj", "{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCMDCollector", "KCMDCollector\KCMDCollector.csproj", "{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}"
 EndProject
 Global
-	GlobalSection(PowerDesigner) = preSolution
-		HasSWS = 1
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -52,14 +45,6 @@ Global
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4C09DC-B002-4A0D-856B-DCD5E3719213}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6808A398-2ECB-46A9-94C6-3C8900EFC10A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1EE16E2-0DFD-49D7-B4C1-875E3770B1F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,5 +52,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(PowerDesigner) = preSolution
+		HasSWS = 1
 	EndGlobalSection
 EndGlobal

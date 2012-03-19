@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DBF00E90-7517-477A-AD42-6539622A3AF8}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -75,6 +75,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ClassAction.cs" />
+    <Compile Include="Client\BookHelper.cs" />
     <Compile Include="CreatePage.cs" />
     <Compile Include="ExtendClass.cs" />
     <Compile Include="Functions.cs" />

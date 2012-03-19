@@ -8,6 +8,11 @@ namespace KCMDCollector.Book
     public class CollectRule
     {
         /// <summary>
+        /// 是图片小说站
+        /// </summary>
+        public bool IsImageSite { get; set; }
+
+        /// <summary>
         /// 默认规则
         /// </summary>
         public bool IsDefault { get; set; }
@@ -65,5 +70,10 @@ namespace KCMDCollector.Book
         /// 内容规则
         /// </summary>
         public string ChapterContent { get; set; }
+
+        /// <summary>
+        /// 章节图片规则
+        /// </summary>
+        public string ImageRule { get; set; }
     }
 }
