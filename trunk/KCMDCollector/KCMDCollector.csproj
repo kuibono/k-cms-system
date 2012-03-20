@@ -86,6 +86,7 @@
     <Compile Include="Book\CollectBase.cs" />
     <Compile Include="Book\CollectBaseV2.cs" />
     <Compile Include="Book\CollectBook.cs" />
+    <Compile Include="Book\CollectText.cs" />
     <Compile Include="Book\Model\BlogModel.cs" />
     <Compile Include="Book\Model\BlogRule.cs" />
     <Compile Include="Book\Model\MailBlog.cs" />

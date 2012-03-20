@@ -61,7 +61,7 @@ namespace KCMDCollector.Book
         public CollectBaseV2()
         {
             this.CollectStatus = new StatusObject();
-            this.BH = new Voodoo.Basement.Client.BookHelper("http://localhost/");
+            this.BH = new Voodoo.Basement.Client.BookHelper(RulesOperate.GetSetting().TargetUrl);
 
         }
         #endregion
@@ -350,7 +350,10 @@ namespace KCMDCollector.Book
                     //过滤
                     string Content = html_Content.GetMatchGroup(Rule.ChapterContent).Groups["content"].Value;
                     Content = Filter(Content);
-                    c.Content = Content;
+                    if (Content.ToLower().Contains("<img ") == false)
+                    {
+                        c.Content = Content;
+                    }
 
                     this.CollectStatus.ChapterleftCout--; Status_Chage();
 
@@ -362,6 +365,7 @@ namespace KCMDCollector.Book
         }
         #endregion
 
+        #region 从落秋等采集图片章节
         /// <summary>
         /// 没能采集成功的章节在落秋采集图片
         /// </summary>
@@ -450,7 +454,7 @@ namespace KCMDCollector.Book
                 //获取章节在分站点的URL和标题
                 //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
                 var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
-                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.8).ToDecimal())//相似度大于0.8的才进行采集
+                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.5).ToDecimal())//相似度大于0.8的才进行采集
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
                     this.CollectStatus.Status = "正在采集";
@@ -491,6 +495,7 @@ namespace KCMDCollector.Book
 
             }//end of 循环采集章节
         }
+        #endregion
 
         #region 过滤
         /// <summary>
@@ -577,13 +582,13 @@ namespace KCMDCollector.Book
                     continue;
                 }
 
-                string content = c.Content.TrimHTML();
-                if (content.Trim().IsNullOrEmpty())
-                {
-                    this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, "章节内容正在处理，请稍后阅读", true);
-                    continue;
-                }
+                //string content = c.Content.TrimHTML();
+                //if (content.Trim().IsNullOrEmpty())
+                //{
+                //    this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
+                //    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, "章节内容正在处理，请稍后阅读", true);
+                //    continue;
+                //}
 
                 chapter_Submited = BH.ChapterAdd(b.ID, c.Title, c.Content, c.IsImageChapter);
 
@@ -792,7 +797,7 @@ namespace KCMDCollector.Book
 
             //4.循环采集书籍
             var Rules = RulesOperate.GetBookRules();
-            foreach (CollectRule rule in Rules.Where(p=>p.IsImageSite==false))
+            foreach (CollectRule rule in Rules.Where(p => p.IsImageSite == false))
             {
                 //如果没有任何章节需要采集，则直接退出章节
                 CollectStatus.Status = "开始采集-" + rule.SiteName; Status_Chage();
@@ -835,7 +840,7 @@ namespace KCMDCollector.Book
 
                 CollectChapterFromLuoqiu(BookNeedCollect, rule);
             }
-            
+
 
             //5.提交到目标站点
             CollectStatus.Status = "保存到目标站点"; Status_Chage();
@@ -878,6 +883,199 @@ namespace KCMDCollector.Book
                 }
                 CollectStatus.BookLeftCount--; Status_Chage();
             }
+        }
+        #endregion
+
+        #region 替换图片章节为文本章节
+        /// <summary>
+        /// 替换图片章节为文本章节
+        /// </summary>
+        public void CollectText()
+        {
+            Setting s = Book.RulesOperate.GetSetting();
+
+            this.CollectStatus.Status = "正在获取系统书籍列表"; Status_Chage();
+            var books = BH.SearchBook("", "", "");
+            foreach (var book in books)
+            {
+                this.CollectStatus.BookTitle = book.Title; Status_Chage();
+                #region 获取书籍信息
+                BookAndChapter bc = new BookAndChapter();
+                bc.Author = book.Author;
+                bc.BookTitle = book.Title;
+                bc.Class = book.ClassName;
+                bc.ClassID = book.ClassID;
+                bc.ID = book.ID;
+                bc.Intro = book.Intro;
+                bc.Status = book.Status;
+                bc.Chapters = new List<Chapter>();
+                #endregion 
+
+                #region 获取图片章节
+                this.CollectStatus.Status = "正在获取需要处理的章节"; Status_Chage();
+                var chapters = BH.ChapterSearch(book.Title, "", true);//获取所有图片章节
+
+                if (chapters.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (var chapter in chapters)
+                {
+                    bc.Chapters.Add(new Chapter()
+                    {
+                        IsImageChapter = true,
+                        IsVip = true,
+                        Title = chapter.Title,
+                         id=chapter.ID
+
+                    });
+                }//获得书籍待采集章节结束
+                #endregion
+
+
+                //获得文本采集规则
+                var Rules = RulesOperate.GetBookRules().Where(p => p.IsImageSite == false);
+
+                #region 循环规则，开始采集
+                foreach (var Rule in Rules)
+                {
+                    BookAndChapter b = new BookAndChapter();
+
+                    #region 搜索书籍
+                    this.CollectStatus.Status = string.Format("正在从{0}搜索书籍",Rule.SiteName); Status_Chage();
+                    //搜索书籍
+                    string html_Search = "";
+                    if (Rule.SearchMethod.ToLower() == "get")//采集站搜索使用get提交
+                    {
+                        html_Search = Url.Post(
+                            new NameValueCollection(),
+                            Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle.UrlEncode(Encoding.GetEncoding("gb2312"))),
+                            Encoding.GetEncoding(Rule.CharSet),
+                            new System.Net.CookieContainer(),
+                            "*.*",
+                            Rule.Url,
+                            "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                            );
+                    }
+                    else
+                    {
+                        //采集站搜索使用POST提交
+                        html_Search = Url.Post(
+                            string.Format(Rule.SearchPars, bc.BookTitle).ParamToNameValueCollection(),
+                            Rule.SearchPageUrl,
+                            Encoding.GetEncoding(Rule.CharSet),
+                            new System.Net.CookieContainer(),
+                            "*.*",
+                            Rule.Url,
+                            "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
+                            );
+                    }
+                    #endregion
+
+                    #region 打开书籍信息页
+
+                    this.CollectStatus.Status = string.Format("正在从{0}打开书籍", Rule.SiteName); Status_Chage();
+                    string html_BookInfo = "";
+                    if (html_Search.IsMatch(Rule.BookInfoUrl))
+                    {
+                        CollectStatus.Status = "打开书籍信息页"; Status_Chage();
+                        string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+                        //打开书籍信息页
+                        html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
+                    }
+                    else
+                    {
+                        //系统自动跳转到了书籍信息页
+                        html_BookInfo = html_Search;
+                    }
+                    #endregion 
+
+                    #region 获取章节列表
+                    //获得章节列表页地址
+                    this.CollectStatus.Status = string.Format("正在从{0}打开章节列表", Rule.SiteName); Status_Chage();
+                    string chapterListUrl = html_BookInfo.GetMatchGroup(Rule.ChapterListUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+
+
+                    //打开章节列表
+                    CollectStatus.Status = "打开章节列表"; Status_Chage();
+                    string html_ChapterList = Url.GetHtml(chapterListUrl, Rule.CharSet);
+                    var match_Chapters = html_ChapterList.GetMatchGroup(Rule.ChapterNameAndUrl);
+
+                    //获取章节列表
+                    b.Chapters = new List<Chapter>();
+                    int i = 0;
+                    while (match_Chapters.Success)
+                    {
+                        b.Chapters.Add(new Chapter()
+                        {
+                            Title = match_Chapters.Groups["title"].Value,
+                            Url = match_Chapters.Groups["url"].Value.AppendToDomain(chapterListUrl),
+                            Index = i
+                        });
+                        i++;
+                        match_Chapters = match_Chapters.NextMatch();
+                    }
+                    #endregion
+
+                    #region 循环获取待采集图片章节，替换成文本
+                    this.CollectStatus.Status = string.Format("正在从{0}处理章节", Rule.SiteName); Status_Chage();
+                    foreach (Chapter c in bc.Chapters)
+                    {
+                        this.CollectStatus.ChapterTitle = c.Title; Status_Chage();
+                        if (!c.Content.IsNullOrEmpty())
+                        {
+                            //如果章节内容不为空，则不需要采集，继续采集下一章节
+                            continue;
+                        }
+                        //获取章节在分站点的URL和标题
+                        //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
+                        var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
+                        if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.8).ToDecimal())//相似度大于0.8的才进行采集
+                        {
+                            this.CollectStatus.ChapterTitle = c.Title;
+                            this.CollectStatus.Status = "正在采集";
+                            Status_Chage();
+                            //采集章节内容
+
+
+                            string html_Content = Url.GetHtml(chapter_NeedCollect.First().Url, Rule.CharSet);
+
+                            //过滤
+                            string Content = html_Content.GetMatchGroup(Rule.ChapterContent).Groups["content"].Value;
+                            Content = Filter(Content);
+                            if (Content.ToLower().Contains("<img ") == false)
+                            {
+                                c.Content = Content;
+                                bc.Changed = true;
+                                //编辑章节
+                                this.CollectStatus.Status = "章节保存到系统"; Status_Chage();
+                                BH.ChapterEdit(c.id, c.Title, c.Content, false);
+
+                                //完成之后将本章节去掉
+                                bc.Chapters = bc.Chapters.Where(p => p.id != c.id).ToList();
+
+                            }
+
+                            this.CollectStatus.ChapterleftCout--; Status_Chage();
+
+
+                        }//end of 判断章节在分站中存在
+
+                    }//end of 循环采集章节
+                    #endregion 循环采集章节
+                }
+                #endregion 循环规则
+
+                #region 重新生成章节
+                if (bc.Changed)
+                {
+                    CollectStatus.Status = "正在生成章节"; Status_Chage();
+                    BH.CreateChapters(bc.ID);
+                }
+               
+                #endregion 
+            }//书籍循环结束
         }
         #endregion
     }
