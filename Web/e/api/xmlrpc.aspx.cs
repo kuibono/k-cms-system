@@ -205,7 +205,7 @@ namespace Web.e.api
                 return;
             }
 
-            b.Addtime = DateTime.Now;
+            b.Addtime = DateTime.UtcNow.AddHours(8);
             b.Author = Author;
             b.ClassID = ClassID;
             b.ClassName = ClassName;
@@ -223,8 +223,8 @@ namespace Web.e.api
             b.SaveCount = 0;
             b.Status = 0;//连载中
             b.Title = Title;
-            b.UpdateTime = DateTime.Now;
-            b.VipUpdateTime = DateTime.Now;
+            b.UpdateTime = DateTime.UtcNow.AddHours(8);
+            b.VipUpdateTime = DateTime.UtcNow.AddHours(8);
             b.ZtID = 0;
 
             bool Exist = BookView.Exist(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author));
