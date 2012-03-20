@@ -283,6 +283,27 @@ namespace Web.e.api
         }
         #endregion
 
+        protected void SaveBookFace(int id,HttpFileCollection files)
+        {
+            try
+            {
+                Book b = BookView.GetModelByID(id.ToS());
+                string ImagePath = Server.MapPath("/Book/BookFace/" + id + ".jpg");
+                files[0].SaveAs(ImagePath);
+                b.FaceImage = "/Book/BookFace/" + id + ".jpg";
+                BookView.Update(b);
+                Response.Clear();
+                Response.Write(XML.Serialize(true));
+            }
+            catch
+            {
+                Response.Clear();
+                Response.Write(XML.Serialize(false));
+            }
+
+
+        }
+
         #region 删除书籍
         /// <summary>
         /// 删除书籍
