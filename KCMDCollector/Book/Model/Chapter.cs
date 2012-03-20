@@ -8,6 +8,10 @@ namespace KCMDCollector.Book
     public class Chapter
     {
         /// <summary>
+        /// 章节ID
+        /// </summary>
+        public long id { get; set; }
+        /// <summary>
         /// 标题
         /// </summary>
         public string Title { get; set; }

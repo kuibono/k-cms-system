@@ -92,12 +92,8 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s1 = "第1142章 伪装舒";
-            string[] s2 = { "第1114章 于仁的想法", "第0142章 又白来了", "第0124章 找上门来" };
-            var r = (from n in s2 select new { n, weight = n.GetSimilarityWith(s1) }).OrderByDescending(p => p.weight).First();
-
-
-            MessageBox.Show(r.n);
+            Book.CollectBook cb = new Book.CollectBook(this);
+            cb.CollectText();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -113,6 +109,32 @@ namespace KCMDCollector
         {
             Test te = new Test();
             te.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            timer_NovelReplace.Enabled = true;
+            timer_NovelReplace.Start();
+        }
+
+        protected void Rep()
+        {
+            Book.CollectText ct = new Book.CollectText(this);
+            ct.CollectText();
+            button5.Enabled = true;
+        }
+
+        Thread th;
+        private void timer_NovelReplace_Tick(object sender, EventArgs e)
+        {
+            if (t == null || t.IsAlive == false)
+            {
+                button5.Enabled = false;
+
+                t = new Thread(Rep);
+                t.Start();
+                
+            }
         }
 
     }
