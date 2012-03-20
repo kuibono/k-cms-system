@@ -323,5 +323,18 @@ namespace KCMDCollector
             MessageBox.Show(str);
 
         }
+
+        private void btn_CreateBook_Click(object sender, EventArgs e)
+        {
+
+            List<Voodoo.Model.Book> bs = (List<Voodoo.Model.Book>)Voodoo.IO.XML.DeSerialize(typeof(List<Voodoo.Model.Book>), Voodoo.Net.Url.GetHtml("http://aizr.net/e/api/xmlrpc.aspx?A=booksearch", "utf-8"));
+            foreach (var b in bs)
+            {
+                Voodoo.Net.Url.GetHtml("http://aizr.net/e/api/xmlrpc.aspx?A=createchapters&bookid=" + b.ID, "utf-8");
+                this.Invoke(new MethodInvoker(delegate{
+                    this.richTextBox1.Text = b.Title;
+                }));
+            }
+        }
     }
 }
