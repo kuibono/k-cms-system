@@ -465,7 +465,7 @@ namespace KCMDCollector.Book
 
                     string html_Content = Url.GetHtml(chapter_NeedCollect.First().Url, Rule.CharSet);
 
-
+                    bc.Changed = true;
 
                     if (html_Content.IsMatch(Rule.ImageRule))
                     {
@@ -848,7 +848,7 @@ namespace KCMDCollector.Book
 
 
             //6. 发博客
-            //PublishBlog(BookNeedCollect);
+            PublishBlog(BookNeedCollect);
 
             //7.采集完成 生成书籍
             CollectStatus.Status = "采集完成，正在生成"; Status_Chage();
