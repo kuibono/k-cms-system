@@ -636,7 +636,7 @@ namespace KCMDCollector.Book
             }
 
             string content = string.Format("{0}<br/ ><br/ >继续阅读本次更新的其他章节：{1}<br/><br/>查看章节列表：{2}<br/><br/>回到书籍信息页：{2}",
-                lastchapter.Content,
+                lastchapter.Content.CutString(300),
                 sb_chapters.ToS(),
                 string.Format("<a href='{0}'>{1}</a>", b.Url, b.BookTitle)
                 );
