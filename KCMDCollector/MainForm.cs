@@ -29,6 +29,9 @@ namespace KCMDCollector
         {
             timer_NovelCollector.Enabled = true;
             timer_NovelCollector.Start();
+
+            timer_NovelReplace.Enabled = true;
+            timer_NovelReplace.Start();
         }
 
         protected void Do()
@@ -92,8 +95,8 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Book.CollectBook cb = new Book.CollectBook(this);
-            cb.CollectText();
+            
+            
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -113,26 +116,22 @@ namespace KCMDCollector
 
         private void button5_Click(object sender, EventArgs e)
         {
-            timer_NovelReplace.Enabled = true;
-            timer_NovelReplace.Start();
+            
         }
 
         protected void Rep()
         {
             Book.CollectText ct = new Book.CollectText(this);
             ct.CollectText();
-            button5.Enabled = true;
         }
 
         Thread th;
         private void timer_NovelReplace_Tick(object sender, EventArgs e)
         {
-            if (t == null || t.IsAlive == false)
+            if (th == null || th.IsAlive == false)
             {
-                button5.Enabled = false;
-
-                t = new Thread(Rep);
-                t.Start();
+                th = new Thread(Rep);
+                th.Start();
                 
             }
         }

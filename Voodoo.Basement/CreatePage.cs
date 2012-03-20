@@ -465,6 +465,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
             Content = Content.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
             Content = Content.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
+            Content = Content.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),cls));
             Content = Content.Replace("[!--book.updatetime--]", b.UpdateTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
             Content = Content.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);

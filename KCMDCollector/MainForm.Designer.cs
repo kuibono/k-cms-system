@@ -53,7 +53,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -265,15 +264,14 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(273, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 208);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 190);
+            this.groupBox2.Size = new System.Drawing.Size(255, 96);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "书籍替换";
@@ -286,16 +284,6 @@
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 8;
             this.label9.Text = "书名：";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(208, 124);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(41, 23);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "开始";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label10
             // 
@@ -351,9 +339,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 216);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(280, 315);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "KCMS内容采集系统";
@@ -393,7 +381,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button5;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label12;

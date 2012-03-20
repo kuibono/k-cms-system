@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace KCMDCollector.Book
 {
-    public class CollectBook : CollectBaseV2
+    public class CollectBook : CollectBase
     {
         public MainForm Parent { get; set; }
 
