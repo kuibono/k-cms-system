@@ -56,7 +56,7 @@ namespace Web.e.api
                     title = WS.RequestString("title");
                     author = WS.RequestString("author");
                     int classid = WS.RequestInt("class");
-                    intro = WS.RequestString("intro");
+                    intro = WS.RequestString("intro").HtmlDeCode();
                     long length = WS.RequestString("length").ToInt64();
                     BookAdd(title, author, classid, intro, length);
                     break;
@@ -65,7 +65,7 @@ namespace Web.e.api
                     title = WS.RequestString("title");
                     author = WS.RequestString("author");
                     classid = WS.RequestInt("class");
-                    intro = WS.RequestString("intro");
+                    intro = WS.RequestString("intro").HtmlDeCode();
                     length = WS.RequestString("length").ToInt64();
                     BookEdit(id, title, author, classid, intro, length);
                     break;
@@ -92,14 +92,14 @@ namespace Web.e.api
                 case "chapteradd":
                     int bookid = WS.RequestInt("bid");
                     chaptertitle = WS.RequestString("chaptertitle");
-                    string Content = WS.RequestString("content");
+                    string Content = WS.RequestString("content").HtmlDeCode();
                     bool IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
                     ChapterAdd(bookid, chaptertitle, Content, IsImageChapter);
                     break;
                 case "chapteredit":
                     long chapterid = WS.RequestString("chapterid").ToInt64();
                     chaptertitle = WS.RequestString("chaptertitle");
-                    Content = WS.RequestString("content");
+                    Content = WS.RequestString("content").HtmlDeCode();
                     IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
                     ChapterEdit(chapterid, chaptertitle, Content, IsImageChapter);
                     break;

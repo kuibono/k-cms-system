@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="xmlrpc.aspx.cs" Inherits="Web.e.api.xmlrpc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="xmlrpc.aspx.cs" Inherits="Web.e.api.xmlrpc" ValidateRequest="false" %>
