@@ -96,6 +96,4 @@
     <ChapterContent>&lt;DIV id=content name=\"content\"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/DIV&gt;</ChapterContent>
     <ImageRule>&lt;img src="(?&lt;key&gt;.*?)" border="0" class="imagecontent"&gt;</ImageRule>
   </CollectRule>
-=======
->>>>>>> .r170
 </ArrayOfCollectRule>
