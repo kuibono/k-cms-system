@@ -62,6 +62,8 @@ namespace Web.e.admin.Book
             Voodoo.IO.File.Write(
                 Server.MapPath(GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter))),
                 txt_Content.Text);
+            //生成章节页面
+            CreatePage.CreateBookChapterPage(chapter,BookView.GetModelByID(chapter.BookID.ToS()), BookView.GetClass(chapter));
             Response.Redirect(string.Format("ChapterList.aspx?bookid={0}",chapter.BookID));
         }
     }

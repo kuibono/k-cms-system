@@ -343,5 +343,17 @@ namespace Voodoo.Basement.Client
         }
         #endregion
 
+        #region 设置书籍封面
+        /// <summary>
+        /// 设置书籍封面
+        /// </summary>
+        /// <param name="BookID">书籍ID</param>
+        /// <param name="FilePath">本地图片路径</param>
+        public void SetBookFace(int BookID,string FilePath)
+        {
+            Voodoo.Net.Url.UpLoadFile(FilePath, xmlrpc + "?a=savebookface&id=" + BookID+"&", false);
+        }
+        #endregion
+
     }
 }

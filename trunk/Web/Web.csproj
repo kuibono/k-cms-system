@@ -434,6 +434,11 @@
     <Content Include="e\post\PostList.aspx" />
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
+    <Content Include="wap\Book\B.aspx" />
+    <Content Include="wap\Book\C.aspx" />
+    <Content Include="wap\Book\cls.aspx" />
+    <Content Include="wap\Book\Default.aspx" />
+    <Content Include="wap\Book\s.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -888,6 +893,41 @@
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wap\Book\B.aspx.cs">
+      <DependentUpon>B.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wap\Book\B.aspx.designer.cs">
+      <DependentUpon>B.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wap\Book\C.aspx.cs">
+      <DependentUpon>C.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wap\Book\C.aspx.designer.cs">
+      <DependentUpon>C.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wap\Book\cls.aspx.cs">
+      <DependentUpon>cls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wap\Book\cls.aspx.designer.cs">
+      <DependentUpon>cls.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wap\Book\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wap\Book\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wap\Book\s.aspx.cs">
+      <DependentUpon>s.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wap\Book\s.aspx.designer.cs">
+      <DependentUpon>s.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
