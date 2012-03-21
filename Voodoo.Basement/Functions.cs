@@ -299,6 +299,27 @@ namespace Voodoo.Basement
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// 根据条件获取分类列表
+        /// </summary>
+        /// <param name="m_where">条件语句</param>
+        /// <param name="Model">字符拼接模板</param>
+        /// <returns></returns>
+        public static string Getclassbyfilter(string m_where,string Model)
+        {
+            List<Class> cls = ClassView.GetModelList(m_where);
+            StringBuilder sb = new StringBuilder();
+            foreach (Class c in cls)
+            {
+                string str = Model.Replace("{classname}", c.ClassName);
+                str = str.Replace("{id}", c.ID.ToS());
+                str = str.Replace("{url}", BasePage.GetClassUrl(c));
+                sb.Append(str);
+            }
+
+            return sb.ToString();
+        }
         #endregion 
 
         #region 获取子栏目
@@ -527,6 +548,31 @@ namespace Voodoo.Basement
 
             return sb.ToS();
         }
+
+        public static string Getnovellist(string m_where, int Top, int CutTitle,string Model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var NovelList = BookView.GetModelList(m_where, Top.ToInt32());
+            foreach (var b in NovelList)
+            {
+                string str = Model;
+                str=str.Replace("{id}",b.ID.ToS());
+                str=str.Replace("{title}",b.Title.CutString(CutTitle));
+                str=str.Replace("{author}",b.Author);
+                str=str.Replace("{classid}",b.ClassID.ToS());
+                str=str.Replace("{classname}",b.ClassName);
+                str=str.Replace("{clickcount}",b.ClickCount.ToS());
+                str=str.Replace("{lastchapterid}",b.LastChapterID.ToS());
+                str=str.Replace("{lastchaptertitle}",b.LastChapterTitle);
+                str=str.Replace("{tjcount}",b.TjCount.ToS());
+                str = str.Replace("{url}", BasePage.GetBookUrl(b, BookView.GetClass(b)));
+
+                sb.Append(str);
+            }
+
+            return sb.ToS();
+        }
         #endregion 
 
         #region 获取系统搜索关键词
@@ -543,6 +589,22 @@ namespace Voodoo.Basement
             foreach (var item in list)
             {
                 sb.Append(string.Format("<a href=\"/Search.aspx?m={1}&key={0}\">{0}</a>&nbsp;", item.Keyword, ModelID));
+            }
+            return sb.ToS();
+        }
+
+        public static string Getsearchkey(string m_where,int Top,string Model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var list = SysKeywordView.GetModelList(m_where,Top);
+            foreach (var item in list)
+            {
+                string str=Model;
+                str = str.Replace("{clickcount}", item.ClickCount.ToS());
+                str = str.Replace("{id}", item.Id.ToS());
+                str = str.Replace("{keyword}", item.Keyword);
+                sb.Append(str);
             }
             return sb.ToS();
         }
@@ -563,18 +625,20 @@ namespace Voodoo.Basement
             {
                 if (i == 0)
                 {
-                    sb.AppendLine(string.Format("<ul class=\"picList\"><li><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li>",
+                    sb.AppendLine(string.Format("<ul class=\"picList\"><li><a href=\"{0}\" title=\"{1}\" class=\"ablum\"><img src=\"{3}\" alt=\"{1}\" width=\"120\" height=\"160\" /></a><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li>",
                         BasePage.GetBookUrl(qs[i],BookView.GetClass(qs[i])),
                         qs[i].Title,
-                        qs[i].Intro.CutString(150)
+                        qs[i].Intro.CutString(150),
+                        qs[i].FaceImage.IsNull("/Book/Bookface/0.jpg")
                         ));
                 }
                 else if (i == 1)
                 {
-                    sb.AppendLine(string.Format("<li><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li></ul>",
+                    sb.AppendLine(string.Format("<li><a href=\"{0}\" title=\"{1}\" class=\"ablum\"><img src=\"{3}\" alt=\"{1}\" width=\"120\" height=\"160\" /></a><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li></ul>",
                         BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
                         qs[i].Title,
-                        qs[i].Intro.CutString(150)
+                        qs[i].Intro.CutString(150),
+                        qs[i].FaceImage.IsNull("/Book/Bookface/0.jpg")
                         ));
                 }
                 else if (i == 2)
@@ -582,7 +646,7 @@ namespace Voodoo.Basement
                     sb.AppendLine(string.Format("<ul class=\"newsList\"><li><a target=\"_blank\" title=\"{1}\" href=\"{0}\">{1}：{2}</a></li>",
                         BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
                         qs[i].Title,
-                        qs[i].Intro.CutString(15)
+                        qs[i].Intro.CutString(25)
                         ));
                 }
                 else
@@ -590,7 +654,7 @@ namespace Voodoo.Basement
                     sb.AppendLine(string.Format("<li><a target=\"_blank\" title=\"{1}\" href=\"{0}\">{1}：{2}</a></li>",
                         BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
                         qs[i].Title,
-                        qs[i].Intro.CutString(15)
+                        qs[i].Intro.CutString(25)
                         ));
                 }
                 
@@ -599,5 +663,7 @@ namespace Voodoo.Basement
             return sb.ToS();
         }
         #endregion
+
+
     }
 }

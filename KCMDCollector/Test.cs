@@ -99,10 +99,10 @@ namespace KCMDCollector
             //    result.cookieContainer,
             //    "http://control.blog.sina.com.cn/admin/article/article_add.php");
 
-            Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123","http://blog.sina.com.cn/aizrnet/");
+            Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123", "http://blog.sina.com.cn/aizrnet/");
             s.Login();
             //s.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
-            var ps=s.GetRecentPosts(100);
+            var ps = s.GetRecentPosts(100);
 
 
             var p = s.GetPost(ps.First().id);
@@ -326,15 +326,27 @@ namespace KCMDCollector
 
         private void btn_CreateBook_Click(object sender, EventArgs e)
         {
-
+            Voodoo.Basement.Client.BookHelper BH = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
             List<Voodoo.Model.Book> bs = (List<Voodoo.Model.Book>)Voodoo.IO.XML.DeSerialize(typeof(List<Voodoo.Model.Book>), Voodoo.Net.Url.GetHtml("http://aizr.net/e/api/xmlrpc.aspx?A=booksearch", "utf-8"));
             foreach (var b in bs)
             {
-                Voodoo.Net.Url.GetHtml("http://aizr.net/e/api/xmlrpc.aspx?A=createchapters&bookid=" + b.ID, "utf-8");
-                this.Invoke(new MethodInvoker(delegate{
-                    this.richTextBox1.Text = b.Title;
-                }));
+                BH.CreateBook(b.ID);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Voodoo.Basement.Client.BookHelper BH = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
+            Book.CollectBook cb = new Book.CollectBook(new MainForm());
+
+            var books = BH.SearchBook("", "", "");
+            foreach (var book in books)
+            {
+                cb.UploadBookFace(book);
+            }
+
+
+
         }
     }
 }

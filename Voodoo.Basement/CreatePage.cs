@@ -459,7 +459,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.addtime--]", b.Addtime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--book.status--]", b.Status.ToS());
             Content = Content.Replace("[!--book.isvip--]", b.IsVip.ToChinese());
-            Content = Content.Replace("[!--book.faceimage--]", b.FaceImage);
+            Content = Content.Replace("[!--book.faceimage--]", b.FaceImage.IsNull("/Book/BookFace/0.jpg"));
             Content = Content.Replace("[!--book.savecount--]", b.SaveCount.ToS());
             Content = Content.Replace("[!--book.enable--]", b.Enable.ToChinese());
             Content = Content.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());

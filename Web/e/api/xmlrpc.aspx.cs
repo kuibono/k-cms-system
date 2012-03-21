@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
+using System.IO;
 using Voodoo;
 using Voodoo.IO;
 using Voodoo.other.SEO;
@@ -129,6 +130,11 @@ namespace Web.e.api
                     break;
                 case "createsitemap":
                     CreateSitemap();
+                    break;
+                case "savebookface":
+                    bookid = WS.RequestInt("id");
+                    HttpFileCollection files = Request.Files;
+                    SaveBookFace(bookid, files);
                     break;
                 default:
                     break;
@@ -283,12 +289,27 @@ namespace Web.e.api
         }
         #endregion
 
+        #region 设置书籍封面
+        /// <summary>
+        /// 设置书籍封面
+        /// </summary>
+        /// <param name="id">书籍ID</param>
+        /// <param name="files">上传文件</param>
         protected void SaveBookFace(int id,HttpFileCollection files)
         {
             try
             {
                 Book b = BookView.GetModelByID(id.ToS());
                 string ImagePath = Server.MapPath("/Book/BookFace/" + id + ".jpg");
+                DirectoryInfo dir = new FileInfo(ImagePath).Directory;
+                if (!dir.Exists)
+                {
+                    dir.Create();
+                }
+                if (Voodoo.IO.File.Exists(ImagePath))
+                {
+                    Voodoo.IO.File.Delete(ImagePath);
+                }
                 files[0].SaveAs(ImagePath);
                 b.FaceImage = "/Book/BookFace/" + id + ".jpg";
                 BookView.Update(b);
@@ -303,6 +324,7 @@ namespace Web.e.api
 
 
         }
+        #endregion
 
         #region 删除书籍
         /// <summary>

@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            Test.CheckForIllegalCrossThreadCalls = false;
-
             this.btn_sina = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btn_CreateBook = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_sina
@@ -64,11 +62,22 @@
             this.btn_CreateBook.UseVisualStyleBackColor = true;
             this.btn_CreateBook.Click += new System.EventHandler(this.btn_CreateBook_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(201, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "下载封面";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 420);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_CreateBook);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btn_sina);
@@ -83,5 +92,6 @@
         private System.Windows.Forms.Button btn_sina;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btn_CreateBook;
+        private System.Windows.Forms.Button button1;
     }
 }

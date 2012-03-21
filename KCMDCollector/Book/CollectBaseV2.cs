@@ -80,16 +80,10 @@ namespace KCMDCollector.Book
             //分类
             Class cls = BH.GetClass(bac.Class);
 
-
-            //Web.Class cls = (Web.Class)XML.DeSerialize(typeof(Web.Class), Url.GetHtml(s.TargetUrl + "e/api/getClass.aspx?class=" + bac.Class, "utf-8"));
-
-            //判断书籍是否存在
-            //bool bookExist = (bool)XML.DeSerialize(typeof(bool), Url.GetHtml(s.TargetUrl + "e/api/BookExist.aspx?title=" + bac.BookTitle + "&author=" + bac.Author, "utf-8"));
             bool bookExist = BH.BookExist(bac.BookTitle, bac.Author);
             Voodoo.Model.Book book = new Voodoo.Model.Book();
             if (bookExist)
             {
-                //book = (Web.Book)XML.DeSerialize(typeof(Web.Book), Url.GetHtml(s.TargetUrl + "e/api/getBook.aspx?title=" + bac.BookTitle + "&author=" + bac.Author, "utf-8"));
                 book = BH.GetBook(bac.BookTitle, bac.Author);
 
             }
@@ -97,6 +91,7 @@ namespace KCMDCollector.Book
             {
                 //添加书籍
                 book = BH.BookAdd(bac.BookTitle, bac.Author, cls.ID, bac.Intro, 233999);
+                UploadBookFace(book);//设置书籍封面
             }
 
             result.Url = s.TargetUrl + "Book/" + book.ClassName + "/" + book.Title + "-" + book.Author + "/";
@@ -471,7 +466,7 @@ namespace KCMDCollector.Book
                     {
                         c.IsImageChapter = true;
                         Match m_images = html_Content.GetMatchGroup(Rule.ImageRule);
-                        if (m_images.Success)
+                        while (m_images.Success)
                         {
                             c.Content += string.Format("<img src=\"{0}\" alt=\"{1}\" />", m_images.Groups["key"].Value, c.Title);
                             m_images = m_images.NextMatch();
@@ -575,20 +570,16 @@ namespace KCMDCollector.Book
 
                 Status_Chage();
 
+                StringBuilder sb = new StringBuilder();
+                sb.Append(string.Format("书籍{0}的章节：{1}正在处理中，请稍后访问阅读，或者百度搜索“{0}{1}”查找本章节。阅读{0}最新章节，尽在<a href={2}>{2}</a>。", b.BookTitle, c.Title, s.TargetUrl));
+
                 if (c.Content.IsNullOrEmpty() || c.Content.Trim().IsNullOrEmpty())
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, "章节内容正在处理，请稍后阅读", true);
+                    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, sb.ToS(), true);
                     continue;
                 }
 
-                //string content = c.Content.TrimHTML();
-                //if (content.Trim().IsNullOrEmpty())
-                //{
-                //    this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                //    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, "章节内容正在处理，请稍后阅读", true);
-                //    continue;
-                //}
 
                 chapter_Submited = BH.ChapterAdd(b.ID, c.Title, c.Content, c.IsImageChapter);
 
@@ -636,7 +627,7 @@ namespace KCMDCollector.Book
             }
 
             string content = string.Format("{0}<br/ ><br/ >继续阅读本次更新的其他章节：{1}<br/><br/>查看章节列表：{2}<br/><br/>回到书籍信息页：{2}",
-                lastchapter.Content.CutString(300),
+                lastchapter.Content.CutString(200),
                 sb_chapters.ToS(),
                 string.Format("<a href='{0}'>{1}</a>", b.Url, b.BookTitle)
                 );
@@ -909,7 +900,7 @@ namespace KCMDCollector.Book
                 bc.Intro = book.Intro;
                 bc.Status = book.Status;
                 bc.Chapters = new List<Chapter>();
-                #endregion 
+                #endregion
 
                 #region 获取图片章节
                 this.CollectStatus.Status = "正在获取需要处理的章节"; Status_Chage();
@@ -927,7 +918,7 @@ namespace KCMDCollector.Book
                         IsImageChapter = true,
                         IsVip = true,
                         Title = chapter.Title,
-                         id=chapter.ID
+                        id = chapter.ID
 
                     });
                 }//获得书籍待采集章节结束
@@ -943,7 +934,7 @@ namespace KCMDCollector.Book
                     BookAndChapter b = new BookAndChapter();
 
                     #region 搜索书籍
-                    this.CollectStatus.Status = string.Format("正在从{0}搜索书籍",Rule.SiteName); Status_Chage();
+                    this.CollectStatus.Status = string.Format("正在从{0}搜索书籍", Rule.SiteName); Status_Chage();
                     //搜索书籍
                     string html_Search = "";
                     if (Rule.SearchMethod.ToLower() == "get")//采集站搜索使用get提交
@@ -989,7 +980,7 @@ namespace KCMDCollector.Book
                         //系统自动跳转到了书籍信息页
                         html_BookInfo = html_Search;
                     }
-                    #endregion 
+                    #endregion
 
                     #region 获取章节列表
                     //获得章节列表页地址
@@ -1073,9 +1064,58 @@ namespace KCMDCollector.Book
                     CollectStatus.Status = "正在生成章节"; Status_Chage();
                     BH.CreateChapters(bc.ID);
                 }
-               
-                #endregion 
+
+                #endregion
             }//书籍循环结束
+        }
+        #endregion
+
+        #region 为书籍设置封面
+        /// <summary>
+        /// 为书籍设置封面
+        /// </summary>
+        /// <param name="book"></param>
+        public void UploadBookFace(Voodoo.Model.Book book)
+        {
+            string faceUrl = "";
+
+            string Title = book.Title.toUtf8String();
+            QidianRule Rule = Book.RulesOperate.GetQidianRule();
+
+            string QidianSearchUrl = string.Format(Rule.SearchPageUrl, Title);
+            string QidianRefer = string.Format(Rule.SearchRefer, Title);
+
+            //CollectStatus.Status = "正在搜索"; Status_Chage();
+            string SearchList = Voodoo.Net.Url.Post(new System.Collections.Specialized.NameValueCollection(),
+                QidianSearchUrl,
+                Encoding.GetEncoding(Rule.CharSet),
+                new System.Net.CookieContainer(),
+                "*.*",
+                QidianRefer,
+                "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11");
+
+
+            //解析json数据
+            try
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                var json = serializer.DeserializeObject(SearchList);
+
+                var j = ((System.Collections.Generic.Dictionary<string, object>)((object[])(((object[])(json))[0]))[0]);
+                faceUrl = string.Format("http://image.cmfu.com/books/{0}/{0}.jpg", j["BookId"].ToS());
+
+                //BH = new Voodoo.Basement.Client.BookHelper("http://localhost/");
+                Voodoo.Net.Url.DownFile(faceUrl, System.Environment.CurrentDirectory + "\\face.jpg");
+
+                BH.SetBookFace(book.ID, System.Environment.CurrentDirectory + "\\face.jpg");
+
+            }
+            catch
+            {
+                //this.CollectStatus.Status = "起点没有这本书";
+                //this.Status_Chage();
+            }
+
         }
         #endregion
     }
