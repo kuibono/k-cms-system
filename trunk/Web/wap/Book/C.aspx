@@ -20,9 +20,7 @@
                 <%=c.Title %>
                 <br />
             </div>
-            <span class="c3">
-                <div style="font-weight: bold;"><%=b.Title %>-<%=c.Title %></div>
-            </span>作者：<%=b.Author %><br />
+            <br />
 
             <div class="c4">
                 <div class="c5">
@@ -31,9 +29,13 @@
                 <%=Content %>
                
             </div>
-            <a id="tc_next_chapter" href="<%=next==null?"javascript:alert('没有了');return false;":"/wap/book/c.aspx?id="+next.ID %>" accesskey="6">下章</a> 
+            <% if(next!=null) {%>
+            <a id="tc_next_chapter" title="<%=next.Title %>" href="/wap/book/c.aspx?id=<%=next.ID %>" accesskey="6">下章</a> 
+            <%} %>
             <a  id="tc_back_novellist" href="/wap/book/b.aspx?id=<%=b.ID %>">目录</a> 
-            <a  id="tc_pre_chapter" href="<%=pre==null?"javascript:alert('没有了');return false;":"/wap/book/c.aspx?id="+pre.ID %>">上章</a> 
+            <%if(pre!=null){ %>
+            <a  id="tc_pre_chapter" title="<%=pre.Title %>" href="/wap/book/c.aspx?id="<%=pre.ID %>">上章</a> 
+            <%} %>
         </div>
         <br />
     </div>

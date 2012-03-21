@@ -8,166 +8,7 @@
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
     <title>爱造人小说阅读</title>
     <style type="text/css">
-        *
-        {
-            padding: 0;
-            margin: 0;
-        }
-        body
-        {
-            line-height: 130%;
-        }
-        img
-        {
-            border: 0;
-        }
-        *
-        {
-            color: #a06534;
-        }
-        * a
-        {
-            color: #a06534;
-            text-decoration: none;
-        }
-        .red
-        {
-            color: #f30;
-        }
-        .b
-        {
-            font-weight: bold;
-        }
-        .l, .left
-        {
-            text-align: left;
-        }
-        .left, .center, .right
-        {
-            padding: 3px 8px;
-        }
-        .logo
-        {
-            padding: 10px 8px;
-        }
-        .black
-        {
-            color: #000;
-        }
-        .categorys
-        {
-            padding-top: 3px;
-            padding-bottom: 5px;
-        }
-        .search-form
-        {
-            background: url("http://m.baidu.com/static/wapxs/colorful-se-bg.gif") repeat-x scroll 0 0 #F5CE9C;
-            padding: 8px 5px;
-            border-bottom: 1px solid #eab770;
-        }
-        .search-box
-        {
-            position: relative;
-            font-size: 14px;
-        }
-        .search-input-wrap
-        {
-            padding-right: 6em;
-        }
-        .search-button-wrap
-        {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5em;
-        }
-        .search-input
-        {
-            color: #999;
-            width: 100%;
-            padding: 2px;
-            padding-bottom: 4px;
-            font-size: 16px;
-            border: 1px solid #999;
-            -webkit-border-radius: 6px;
-            -moz-border-radius: 6px;
-        }
-        .search-button
-        {
-            color: #c25200;
-            margin-left: 5px;
-            font-size: 14px;
-            width: 100%;
-            text-align: center;
-            padding-left: 2px;
-            padding-right: 2px;
-        }
-        .bBottom
-        {
-            border-bottom: 1px solid #e4d1b7;
-        }
-        .banner
-        {
-            border: 1px solid #eab770;
-        }
-        .title-wrap
-        {
-            background: url("http://m.baidu.com/static/wapxs/colorful-title-bg.gif") repeat-x scroll 0 0 #F5CE9C;
-            border-bottom: 1px solid #eab770;
-            padding-top: 3px;
-            padding-bottom: 3px;
-        }
-        .list-time
-        {
-            color: #999;
-        }
-        .list-item
-        {
-            color: #a06534;
-            line-height: 1.5em;
-            line-height: 1.5em;
-            padding-bottom: 3px;
-        }
-        .c, .center
-        {
-            text-align: center;
-        }
-        .banner
-        {
-            padding: 1px;
-            border: 1px solid #eab770;
-        }
-        .turn-page-form
-        {
-            display: inline-block;
-            padding: 0;
-        }
-        .no-bTop
-        {
-            border-top: 0;
-        }
-        .no-bBottom
-        {
-            border-bottom: 0;
-        }
-        .nagiv-bottom
-        {
-            padding-top: 8px;
-        }
-        .list-wrap
-        {
-            line-height: 1.5em;
-        }
-        .bTop
-        {
-            border-top: 1px solid #E4D1B7;
-        }
-        .zhuanti-img
-        {
-            padding: 3px 0px 0px;
-            text-align: center;
-            line-height: 100%;
-        }
+        *{padding:0;margin:0;}body{line-height:130%;}img{border:0;}*{color:#a06534;}* a{color:#a06534;text-decoration:none;}.red{color:#f30;}.b{font-weight:bold;}.l,.left{text-align:left;}.left,.center,.right{padding:3px 8px;}.logo{padding:10px 8px;}.black{color:#000;}.categorys{padding-top:3px;padding-bottom:5px;}.search-form{background:url("http://m.baidu.com/static/wapxs/colorful-se-bg.gif") repeat-x scroll 0 0 #F5CE9C;padding:8px 5px;border-bottom:1px solid #eab770;}.search-box{position:relative;font-size:14px;}.search-input-wrap{padding-right:6em;}.search-button-wrap{position:absolute;top:0;right:0;width:5em;}.search-input{color:#999;width:100%;padding:2px;padding-bottom:4px;font-size:16px;border:1px solid #999;-webkit-border-radius:6px;-moz-border-radius:6px;}.search-button{color:#c25200;margin-left:5px;font-size:14px;width:100%;text-align:center;padding-left:2px;padding-right:2px;}.bBottom{border-bottom:1px solid #e4d1b7;}.banner{border:1px solid #eab770;}.title-wrap{background:url("http://m.baidu.com/static/wapxs/colorful-title-bg.gif") repeat-x scroll 0 0 #F5CE9C;border-bottom:1px solid #eab770;padding-top:3px;padding-bottom:3px;}.list-time{color:#999;}.list-item{color:#a06534;line-height:1.5em;line-height:1.5em;padding-bottom:3px;}.c,.center{text-align:center;}.banner{padding:1px;border:1px solid #eab770;}.turn-page-form{display:inline-block;padding:0;}.no-bTop{border-top:0;}.no-bBottom{border-bottom:0;}.nagiv-bottom{padding-top:8px;}.list-wrap{line-height:1.5em;}.bTop{border-top:1px solid #E4D1B7;}.zhuanti-img{padding:3px 0px 0px;text-align:center;line-height:100%;}
     </style>
 </head>
 <body>
@@ -206,7 +47,7 @@
             小说分类</div>
         <div class="left categorys list-wrap">
             <!--分类-->
-            <%= Voodoo.Basement.Functions.Getclassbyfilter("IsLeafClass=0","<a href='class.aspx?id={id}'>{classname}</a> ")  %>
+            <%= Voodoo.Basement.Functions.Getclassbyfilter("IsLeafClass=0","<a href='cls.aspx?id={id}'>{classname}</a> ")  %>
         </div>
         <div class="title-wrap left">
             <span class="black">点击排行</span></div>
@@ -216,7 +57,7 @@
         <div class="title-wrap left">
             火热标签</div>
         <div class="list-wrap left">
-            <%= Voodoo.Basement.Functions.Getsearchkey("ModelID=4 order by clickcount desc",10,"<a href=\"Search.aspx?key={keyword}\">{keyword}</a> ") %>
+            <%= Voodoo.Basement.Functions.Getsearchkey("ModelID=4 order by clickcount desc",10,"<a href=\"s.aspx?key={keyword}\">{keyword}</a> ") %>
         </div>
         <div class="title-wrap left">
             <span class="black">完结榜</span></div>
@@ -231,7 +72,7 @@
         <div class="title-wrap left bBottom">
             最近更新</div>
         <div class="list-wrap left bBottom">
-            <%= Voodoo.Basement.Functions.Getnovellist("id>0 order by updatetime desc", 10, 20, "<div class=\"list-item rank-list-item red\"><a href=\"b.aspx?id={id}\">{title}</a>&nbsp;<a style=\"color:black;\"href=\"chapter.aspx?id={lastchapterid}\">{lastchaptertitle}</a>&nbsp;</div>")%>
+            <%= Voodoo.Basement.Functions.Getnovellist("id>0 order by updatetime desc", 20, 20, "<div class=\"list-item rank-list-item red\"><a href=\"b.aspx?id={id}\">{title}</a>&nbsp;<a style=\"color:black;\"href=\"chapter.aspx?id={lastchapterid}\">{lastchaptertitle}</a>&nbsp;</div>")%>
         </div>
         <div class="center go-top">
             <a href="#top">
