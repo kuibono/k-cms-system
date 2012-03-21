@@ -434,6 +434,17 @@
     <Content Include="e\post\PostList.aspx" />
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
+    <Content Include="skin\novel\btn.png" />
+    <Content Include="skin\novel\ico.png" />
+    <Content Include="skin\novel\index.bak.txt" />
+    <Content Include="skin\novel\index.css" />
+    <Content Include="skin\novel\isover.png" />
+    <Content Include="skin\novel\logo.png" />
+    <Content Include="skin\novel\main_btn.png" />
+    <Content Include="skin\novel\nclassbg.png" />
+    <Content Include="skin\novel\search.css" />
+    <Content Include="skin\novel\vipmain.png" />
+    <Content Include="skin\novel\x.png" />
     <Content Include="wap\Book\B.aspx" />
     <Content Include="wap\Book\C.aspx" />
     <Content Include="wap\Book\cls.aspx" />
