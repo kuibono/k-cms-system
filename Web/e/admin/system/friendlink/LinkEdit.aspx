@@ -38,7 +38,7 @@
                     链接地址
                 </td>
                 <td>
-                    <vd:VTextBox ID="txt_Url" runat="server" EnableValidate="true" EnableNull="false" VType="url" Width="200px"></vd:VTextBox>
+                    <vd:VTextBox ID="txt_Url" runat="server" EnableValidate="false" EnableNull="false" VType="url" Width="200px"></vd:VTextBox>
                 </td>
             </tr>
             <tr>
