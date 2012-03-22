@@ -17,6 +17,7 @@ namespace Web.wap.Book
         protected void Page_Load(object sender, EventArgs e)
         {
             int id = WS.RequestInt("id", 1);
+            int page = WS.RequestInt("page", 1);
 
             IDbHelper Sql = Voodoo.Setting.DataBase.GetHelper();
 
@@ -25,7 +26,7 @@ namespace Web.wap.Book
             AspNetPager1.RecordCount = Sql.PageCountSort("Book", str_sql, "");
 
             Sql = Voodoo.Setting.DataBase.GetHelper();
-            rp.DataSource = Sql.PageListViewSort("Book", "ID", "id desc", AspNetPager1.CurrentPageIndex, AspNetPager1.PageSize, "*", str_sql, "");
+            rp.DataSource = Sql.PageListViewSort("Book", "ID", "id desc", page, AspNetPager1.PageSize, "*", str_sql, "");
             rp.DataBind();
         }
     }
