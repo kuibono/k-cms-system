@@ -99,6 +99,9 @@ namespace Web.e.admin.Book
             }
             else
             {
+                book.Addtime = DateTime.UtcNow.AddHours(8);
+                book.UpdateTime = DateTime.UtcNow.AddHours(8);
+                book.VipUpdateTime = DateTime.UtcNow.AddHours(8);
                 BookView.Insert(book);
             }
 

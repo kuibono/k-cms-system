@@ -151,6 +151,7 @@ namespace Voodoo.Basement
             }
             Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
             Content = Content.Replace("[!--class.name--]", cls.ClassName);
+            Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--news.id--]", news.ID.ToString());
             Content = Content.Replace("[!--news.title--]", title);
@@ -683,7 +684,7 @@ namespace Voodoo.Basement
             if (c.ModelID == 1)//新闻系统模板
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
+                List<News> ns = NewsView.GetModelList(string.Format("ClassID in(select {0} union select id from Class where ParentID={0})  and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
 
                 pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = ns.Count;
@@ -709,7 +710,7 @@ namespace Voodoo.Basement
 
                     string str_lst = temp.ListVar;
                     str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
-                    str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
+                    str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)));
                     str_lst = str_lst.Replace("[!--oldtitle--]", _title);
                     str_lst = str_lst.Replace("[!--description--]", n.Description);
                     str_lst = str_lst.Replace("[!--author--]", n.Author);
@@ -731,7 +732,7 @@ namespace Voodoo.Basement
             else if (c.ModelID == 2)//图片系统模板
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<ImageAlbum> ns = ImageAlbumView.GetModelList(string.Format("ClassID={0} order by SetTop desc, id desc", c.ID)).ToList();
+                List<ImageAlbum> ns = ImageAlbumView.GetModelList(string.Format("ClassID in(select {0} union select id from Class where ParentID={0}) order by SetTop desc, id desc", c.ID)).ToList();
                 pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = ns.Count;
 
@@ -765,7 +766,7 @@ namespace Voodoo.Basement
             else if (c.ModelID == 3)
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<Question> qs = QuestionView.GetModelList(string.Format("ClassID={0} order by id desc", c.ID));
+                List<Question> qs = QuestionView.GetModelList(string.Format("ClassID in(select {0} union select id from Class where ParentID={0}) order by id desc", c.ID));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = qs.Count;
 

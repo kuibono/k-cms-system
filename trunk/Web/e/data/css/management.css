@@ -25,7 +25,6 @@ tfoot th
 input[type='text'],input[type='password'],textarea
 {
 	border:solid 1px #88F;
-	width:250px;
 	margin:auto 3px auto 3px;
 }
 input[type='button'],input[type='submit'],input[type='reset']

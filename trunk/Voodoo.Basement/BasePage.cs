@@ -378,6 +378,10 @@ namespace Voodoo.Basement
         {
 
             string sitrurl = "/Book/";
+            if (cls.ModelID != 4)
+            {
+                sitrurl = "";
+            }
             string result = string.Format("{0}/{1}/index{2}",
                 sitrurl,
                 cls.ClassForder,
@@ -398,6 +402,10 @@ namespace Voodoo.Basement
         {
             
             string sitrurl = "/Book/";
+            if (cls.ModelID != 4)
+            {
+                sitrurl = "";
+            }
             return string.Format("{0}/{1}/index{2}",
                 sitrurl,
                 cls.ClassForder,

@@ -20,7 +20,7 @@ namespace Web.e.tool
 
             string str_sql = "";
             IDbHelper sql = GetHelper();
-            DbDataReader rd = sql.ExecuteReader(CommandType.Text, "select [name] from sysobjects where xtype='U'");
+            DbDataReader rd = sql.ExecuteReader(CommandType.Text, "select [name] from sysobjects where xtype='U' and name<>'Book' and name<>'Bookchapter' and name <>'Class' and name<>'news'");
             while (rd.Read())
             {
                 string tableName = rd["name"].ToString();
