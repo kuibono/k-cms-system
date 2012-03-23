@@ -78,8 +78,17 @@ namespace Web.e.admin.Book
                 chapter.BookTitle = book.Title;
                 chapter.ClassID = book.ClassID;
                 chapter.ClassName = book.ClassName;
+                chapter.UpdateTime = DateTime.UtcNow.AddHours(8);
 
                 BookChapterView.Insert(chapter);
+
+                //update Book's Last chapter
+
+                book.LastChapterID = chapter.ID;
+                book.LastChapterTitle = chapter.Title;
+                book.UpdateTime = chapter.UpdateTime;
+
+                BookView.Update(book);
 
                 //如果是添加，则同时生成书籍信息页面
                 CreatePage.CreateContentPage(book, BookView.GetClass(book));

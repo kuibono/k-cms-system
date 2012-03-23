@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E91EA7E0-46DD-43C1-B514-341338E69392}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="e\admin\Book\BookEdit.aspx" />
     <Content Include="e\admin\Default.aspx" />
     <Content Include="e\admin\Login.aspx" />
     <Content Include="e\admin\news\ClassEdit.aspx" />
@@ -459,6 +460,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Book\BookEdit.aspx.cs">
+      <DependentUpon>BookEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Book\BookEdit.aspx.designer.cs">
+      <DependentUpon>BookEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Book\BookList.aspx.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
