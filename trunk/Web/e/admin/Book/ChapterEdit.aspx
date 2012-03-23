@@ -106,7 +106,7 @@
                     <th colspan="2">
                         <asp:Button ID="btn_Save" Text="保存" runat="server" OnClick="btn_Save_Click" />
                         &nbsp;
-                        <input type="button" value="取消" onclick="history.go(-1)'" />
+                        <input type="button" value="取消" onclick="history.go(-1)" />
                     </th>
                 </tr>
             </tfoot>

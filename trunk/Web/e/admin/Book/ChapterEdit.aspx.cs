@@ -20,7 +20,10 @@ namespace Web.e.admin.Book
         /// <summary>
         /// 章节ID
         /// </summary>
-        int id = WS.RequestInt("id");
+        long id = WS.RequestString("id").ToInt64();
+
+        int bookid = WS.RequestInt("bookid");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -46,6 +49,13 @@ namespace Web.e.admin.Book
                 chk_IsImageChapter.Checked = chapter.IsImageChapter;
 
             }
+
+            if (bookid > 0)
+            {
+                var book = BookView.GetModelByID(bookid.ToS());
+                lb_BookTitle.Text = book.Title;
+
+            }
         }
 
         protected void btn_Save_Click(object sender, EventArgs e)
@@ -57,13 +67,30 @@ namespace Web.e.admin.Book
             chapter.IsTemp = chk_IsTemp.Checked;
             chapter.IsFree = chk_IsFree.Checked;
             chapter.IsImageChapter = chk_IsImageChapter.Checked;
-            BookChapterView.Update(chapter);
+            if (id > 0)
+            {
+                BookChapterView.Update(chapter);
+            }
+            else
+            {
+                Voodoo.Model.Book book = BookView.GetModelByID(bookid.ToS());
+                chapter.BookID = book.ID;
+                chapter.BookTitle = book.Title;
+                chapter.ClassID = book.ClassID;
+                chapter.ClassName = book.ClassName;
+
+                BookChapterView.Insert(chapter);
+
+                //如果是添加，则同时生成书籍信息页面
+                CreatePage.CreateContentPage(book, BookView.GetClass(book));
+            }
 
             Voodoo.IO.File.Write(
                 Server.MapPath(GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter))),
                 txt_Content.Text);
             //生成章节页面
             CreatePage.CreateBookChapterPage(chapter,BookView.GetModelByID(chapter.BookID.ToS()), BookView.GetClass(chapter));
+
             Response.Redirect(string.Format("ChapterList.aspx?bookid={0}",chapter.BookID));
         }
     }
