@@ -435,6 +435,7 @@
     <Content Include="e\post\PostList.aspx" />
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
+    <Content Include="e\Rss.aspx" />
     <Content Include="skin\novel\btn.png" />
     <Content Include="skin\novel\ico.png" />
     <Content Include="skin\novel\index.bak.txt" />
@@ -869,6 +870,13 @@
     </Compile>
     <Compile Include="e\post\upload_json.aspx.designer.cs">
       <DependentUpon>upload_json.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\Rss.aspx.cs">
+      <DependentUpon>Rss.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\Rss.aspx.designer.cs">
+      <DependentUpon>Rss.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
