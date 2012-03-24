@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using System.Collections.Specialized;
 
 using System.Threading;
+using CookComputing.XmlRpc;
 
 namespace KCMDCollector.Book
 {
@@ -55,6 +56,10 @@ namespace KCMDCollector.Book
 
         protected Voodoo.Basement.Client.BookHelper BH;
 
+        private IMath googleProxy;
+
+        private IMath baiduProxy;
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -62,6 +67,14 @@ namespace KCMDCollector.Book
         {
             this.CollectStatus = new StatusObject();
             this.BH = new Voodoo.Basement.Client.BookHelper(RulesOperate.GetSetting().TargetUrl);
+
+            googleProxy = XmlRpcProxyGen.Create<IMath>();
+            googleProxy.Url = "http://blogsearch.google.com/ping/RPC2";
+
+            baiduProxy = XmlRpcProxyGen.Create<IMath>();
+            baiduProxy.Url = "http://ping.baidu.com/ping/RPC2";
+
+            
 
         }
         #endregion
@@ -92,9 +105,18 @@ namespace KCMDCollector.Book
                 //添加书籍
                 book = BH.BookAdd(bac.BookTitle, bac.Author, cls.ID, bac.Intro, 233999);
                 UploadBookFace(book);//设置书籍封面
+
             }
 
             result.Url = s.TargetUrl + "Book/" + book.ClassName + "/" + book.Title + "-" + book.Author + "/";
+
+            #region 提交到百度谷歌
+            if (!bookExist)
+            {
+                googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", result.Url, "http://www.aizr.net/rss.aspx");
+                baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", result.Url, "http://www.aizr.net/rss.aspx");
+            }
+            #endregion
 
             result.BookTitle = book.Title;
             result.Class = book.ClassName;
@@ -594,6 +616,9 @@ namespace KCMDCollector.Book
                     //保存成功 ，更新章节地址 
                     c.Url = b.Url + chapter_Submited.ID + ".htm";
                     b.Changed = true;
+
+                    googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                    baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
                 }
             }
             BookNeedCollect = b;
@@ -851,6 +876,8 @@ namespace KCMDCollector.Book
         }
         #endregion
 
+        
+
         #region 多本采集
         /// <summary>
         /// 多本采集
@@ -874,6 +901,7 @@ namespace KCMDCollector.Book
                 }
                 CollectStatus.BookLeftCount--; Status_Chage();
             }
+           
         }
         #endregion
 
@@ -1118,5 +1146,11 @@ namespace KCMDCollector.Book
 
         }
         #endregion
+    }
+
+    public interface IMath : IXmlRpcProxy
+    {
+        [XmlRpcMethod("weblogUpdates.ping")]
+        CookComputing.XmlRpc.XmlRpcStruct ping(string a, string b, string c, string d);
     }
 }
