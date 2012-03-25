@@ -121,8 +121,12 @@ namespace KCMDCollector
 
         protected void Rep()
         {
-            Book.CollectText ct = new Book.CollectText(this);
-            ct.CollectText();
+            try
+            {
+                Book.CollectText ct = new Book.CollectText(this);
+                ct.CollectText();
+            }
+            catch { }
         }
 
         Thread th;
