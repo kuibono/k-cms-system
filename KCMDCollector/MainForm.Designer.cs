@@ -179,7 +179,7 @@
             // 
             this.notifyIcon_Sys.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon_Sys.ContextMenuStrip = this.strip_Exit;
-            //this.notifyIcon_Sys.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Sys.Icon")));
+            this.notifyIcon_Sys.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Sys.Icon")));
             this.notifyIcon_Sys.Text = "大脚采集器";
             this.notifyIcon_Sys.Visible = true;
             this.notifyIcon_Sys.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Sys_MouseDoubleClick);
@@ -342,7 +342,7 @@
             this.ClientSize = new System.Drawing.Size(280, 315);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "KCMS内容采集系统";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);

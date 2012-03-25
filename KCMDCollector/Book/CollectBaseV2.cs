@@ -616,9 +616,16 @@ namespace KCMDCollector.Book
                     //保存成功 ，更新章节地址 
                     c.Url = b.Url + chapter_Submited.ID + ".htm";
                     b.Changed = true;
-
-                    googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
-                    baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                    try
+                    {
+                        googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                    }
+                    catch { }
+                    try
+                    {
+                        baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                    }
+                    catch { }
                 }
             }
             BookNeedCollect = b;
@@ -868,10 +875,10 @@ namespace KCMDCollector.Book
 
             //7.采集完成 生成书籍
             CollectStatus.Status = "采集完成，正在生成"; Status_Chage();
-            if (BookNeedCollect.Changed)
-            {
+            //if (BookNeedCollect.Changed)
+            //{
                 CreatePage(BookNeedCollect.ID.ToS());
-            }
+            //}
             CollectStatus.Status = string.Format("书籍《{0}》完成", BookTitle); Status_Chage();
         }
         #endregion
