@@ -3,6 +3,22 @@
   <CollectRule>
     <IsImageSite>false</IsImageSite>
     <IsDefault>false</IsDefault>
+    <SiteName>手打小说网</SiteName>
+    <Url>http://www.sdxsw.org</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://www.sdxsw.org/search.php</SearchPageUrl>
+    <SearchPars>key={0}&amp;type=bookname</SearchPars>
+    <SearchMethod>get</SearchMethod>
+    <BookInfoUrl>&lt;h1&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" class="f14" target="_blank"&gt;.*?&lt;/a&gt;   </BookInfoUrl>
+    <BookInfoRule>&lt;/a&gt; →[\s\S]*?&lt;/a&gt; →[\s\S]*?&lt;a href=".*?"&gt;(?&lt;class&gt;.*?)&lt;/a&gt; →[\s\S]*?&lt;span&gt;[\s\S]*?&lt;h1&gt;(?&lt;title&gt;.*?)&lt;em&gt;&lt;strong&gt;作者：&lt;/strong&gt;&lt;a href=".*?" title=".*?"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;&lt;/em&gt;[\s\S]*?&lt;p&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/p&gt;</BookInfoRule>
+    <ChapterListUrl>&lt;div class="wbutton"&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div class="fontm" id="readtext" style=".*?"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
+  </CollectRule>
+  <CollectRule>
+    <IsImageSite>false</IsImageSite>
+    <IsDefault>false</IsDefault>
     <SiteName>手打吧</SiteName>
     <Url>http://www.shouda8.com</Url>
     <CharSet>gb2312</CharSet>
@@ -62,22 +78,6 @@
     <ChapterListUrl>&lt;a class="ll redbtn" href="(?&lt;url&gt;.*?)"  title=".*?"&gt;&lt;span&gt;在线阅读&lt;/span&gt;&lt;/a&gt;</ChapterListUrl>
     <ChapterNameAndUrl>&lt;span&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/span&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;div class="bookcontent clearfix" id="BookText"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
-    <ImageRule />
-  </CollectRule>
-  <CollectRule>
-    <IsImageSite>false</IsImageSite>
-    <IsDefault>false</IsDefault>
-    <SiteName>手打小说网</SiteName>
-    <Url>http://www.sdxsw.org</Url>
-    <CharSet>gbk</CharSet>
-    <SearchPageUrl>http://www.sdxsw.org/search.php</SearchPageUrl>
-    <SearchPars>key={0}&amp;type=bookname</SearchPars>
-    <SearchMethod>get</SearchMethod>
-    <BookInfoUrl>&lt;h1&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" class="f14" target="_blank"&gt;.*?&lt;/a&gt;   </BookInfoUrl>
-    <BookInfoRule>&lt;/a&gt; →[\s\S]*?&lt;/a&gt; →[\s\S]*?&lt;a href=".*?"&gt;(?&lt;class&gt;.*?)&lt;/a&gt; →[\s\S]*?&lt;span&gt;[\s\S]*?&lt;h1&gt;(?&lt;title&gt;.*?)&lt;em&gt;&lt;strong&gt;作者：&lt;/strong&gt;&lt;a href=".*?" title=".*?"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;&lt;/em&gt;[\s\S]*?&lt;p&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/p&gt;</BookInfoRule>
-    <ChapterListUrl>&lt;div class="wbutton"&gt;[\s\S]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;</ChapterListUrl>
-    <ChapterNameAndUrl>&lt;li&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterNameAndUrl>
-    <ChapterContent>&lt;div class="fontm" id="readtext" style=".*?"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
     <ImageRule />
   </CollectRule>
   <CollectRule>
