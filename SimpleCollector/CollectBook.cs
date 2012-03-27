@@ -28,16 +28,16 @@ namespace SimpleCollector
             }));
         }
 
-        public void Collect(string ListUrl, string BookTitle, string UrlTitleRule, string ContentRule)
+        public void Collect(string ListUrl, string BookTitle, string UrlTitleRule, string ContentRule,string encoding)
         {
-            string enciding = "utf-8";
+            //string enciding = "gb2312";
 
             BookHelper bh = new BookHelper("http://aizr.net/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
             SetStatus("打开列表页面");
-            string str_ListHtml = Url.GetHtml(ListUrl, enciding);
+            string str_ListHtml = Url.GetHtml(ListUrl, encoding);
 
             Match m_urls = str_ListHtml.GetMatchGroup(UrlTitleRule);
             while (m_urls.Success)
@@ -54,7 +54,7 @@ namespace SimpleCollector
                 }
 
                 SetStatus("打开章节：" + Title);
-                string str_HtmlContent = Url.GetHtml(url, enciding);
+                string str_HtmlContent = Url.GetHtml(url, encoding);
 
                 string content = str_HtmlContent.GetMatch(ContentRule).First();
                 content = Filter(content);

@@ -27,7 +27,7 @@ namespace SimpleCollector
         public void collect()
         {
             CollectBook cb = new CollectBook(this);
-            cb.Collect(txt_ListUrl.Text, txt_BookTitle.Text, txt_ChapterTitleRule.Text, txt_ContentRule.Text);
+            cb.Collect(txt_ListUrl.Text, txt_BookTitle.Text, txt_ChapterTitleRule.Text, txt_ContentRule.Text,txt_Encoding.Text);
         }
     }
 }
