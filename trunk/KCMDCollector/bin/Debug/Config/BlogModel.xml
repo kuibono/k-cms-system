@@ -15,13 +15,6 @@
     <BlogUrl>http://blog.sina.com.cn/aizrnet</BlogUrl>
   </BlogModel>
   <BlogModel>
-    <UserName>kuibono</UserName>
-    <Password>4264269</Password>
-    <type>WordPress</type>
-    <BlogName>WordPress</BlogName>
-    <BlogUrl>http://aizr.net/wiki/</BlogUrl>
-  </BlogModel>
-  <BlogModel>
     <UserName>bigcuibing@tom.com</UserName>
     <Password>Admin@123</Password>
     <type>Sohu</type>
