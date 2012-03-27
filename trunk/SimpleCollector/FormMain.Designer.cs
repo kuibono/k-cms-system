@@ -39,6 +39,8 @@
             this.txt_ContentRule = new System.Windows.Forms.RichTextBox();
             this.btn_Start = new System.Windows.Forms.Button();
             this.lb_Status = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_Encoding = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txt_ListUrl
@@ -47,7 +49,7 @@
             this.txt_ListUrl.Name = "txt_ListUrl";
             this.txt_ListUrl.Size = new System.Drawing.Size(477, 21);
             this.txt_ListUrl.TabIndex = 0;
-            this.txt_ListUrl.Text = "http://www.houlongtao.com/";
+            this.txt_ListUrl.Text = "http://www.wenku.com/htmpage/14/1408/index.htm";
             // 
             // label1
             // 
@@ -71,9 +73,9 @@
             // 
             this.txt_BookTitle.Location = new System.Drawing.Point(95, 34);
             this.txt_BookTitle.Name = "txt_BookTitle";
-            this.txt_BookTitle.Size = new System.Drawing.Size(477, 21);
+            this.txt_BookTitle.Size = new System.Drawing.Size(182, 21);
             this.txt_BookTitle.TabIndex = 3;
-            this.txt_BookTitle.Text = "金鳞岂是池中物";
+            this.txt_BookTitle.Text = "少年阿宾";
             // 
             // txt_ChapterTitleRule
             // 
@@ -81,7 +83,7 @@
             this.txt_ChapterTitleRule.Name = "txt_ChapterTitleRule";
             this.txt_ChapterTitleRule.Size = new System.Drawing.Size(477, 96);
             this.txt_ChapterTitleRule.TabIndex = 4;
-            this.txt_ChapterTitleRule.Text = "<td><a href=\"(?<url>.*?)\" rel=\"bookmark\">(?<title>.*?)</a></td>";
+            this.txt_ChapterTitleRule.Text = "<span class=\'middle\'>&nbsp;<a href=\'(?<url>.*?)\'>(?<title>.*?)</a></span>";
             // 
             // label3
             // 
@@ -107,7 +109,7 @@
             this.txt_ContentRule.Name = "txt_ContentRule";
             this.txt_ContentRule.Size = new System.Drawing.Size(477, 96);
             this.txt_ContentRule.TabIndex = 6;
-            this.txt_ContentRule.Text = "<p>(?<key>[\\s\\S]*?)<p align=\"center\">";
+            this.txt_ContentRule.Text = "<!--this-is-text-->(?<key>[\\s\\S]*?)<!--this-is-text-->";
             // 
             // btn_Start
             // 
@@ -128,11 +130,30 @@
             this.lb_Status.TabIndex = 9;
             this.lb_Status.Text = "label5";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(343, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "编码：";
+            // 
+            // txt_Encoding
+            // 
+            this.txt_Encoding.Location = new System.Drawing.Point(390, 33);
+            this.txt_Encoding.Name = "txt_Encoding";
+            this.txt_Encoding.Size = new System.Drawing.Size(182, 21);
+            this.txt_Encoding.TabIndex = 11;
+            this.txt_Encoding.Text = "utf-8";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 328);
+            this.Controls.Add(this.txt_Encoding);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.label4);
@@ -162,6 +183,8 @@
         private System.Windows.Forms.RichTextBox txt_ContentRule;
         private System.Windows.Forms.Button btn_Start;
         public System.Windows.Forms.Label lb_Status;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_Encoding;
     }
 }
 
