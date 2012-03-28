@@ -40,7 +40,7 @@
             this.btn_Start = new System.Windows.Forms.Button();
             this.lb_Status = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_Encoding = new System.Windows.Forms.TextBox();
+            this.cbb_Encoding = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txt_ListUrl
@@ -139,20 +139,27 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "编码：";
             // 
-            // txt_Encoding
+            // cbb_Encoding
             // 
-            this.txt_Encoding.Location = new System.Drawing.Point(390, 33);
-            this.txt_Encoding.Name = "txt_Encoding";
-            this.txt_Encoding.Size = new System.Drawing.Size(182, 21);
-            this.txt_Encoding.TabIndex = 11;
-            this.txt_Encoding.Text = "utf-8";
+            this.cbb_Encoding.FormattingEnabled = true;
+            this.cbb_Encoding.Items.AddRange(new object[] {
+            "GB2312",
+            "UTF-8",
+            "GBK",
+            "GB18030",
+            "BIG5"});
+            this.cbb_Encoding.Location = new System.Drawing.Point(381, 33);
+            this.cbb_Encoding.Name = "cbb_Encoding";
+            this.cbb_Encoding.Size = new System.Drawing.Size(121, 20);
+            this.cbb_Encoding.TabIndex = 12;
+            this.cbb_Encoding.Text = "UTF-8";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 328);
-            this.Controls.Add(this.txt_Encoding);
+            this.Controls.Add(this.cbb_Encoding);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.btn_Start);
@@ -184,7 +191,7 @@
         private System.Windows.Forms.Button btn_Start;
         public System.Windows.Forms.Label lb_Status;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_Encoding;
+        private System.Windows.Forms.ComboBox cbb_Encoding;
     }
 }
 
