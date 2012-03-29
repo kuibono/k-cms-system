@@ -74,7 +74,7 @@ namespace KCMDCollector.Book
             baiduProxy = XmlRpcProxyGen.Create<IMath>();
             baiduProxy.Url = "http://ping.baidu.com/ping/RPC2";
 
-            
+
 
         }
         #endregion
@@ -875,15 +875,15 @@ namespace KCMDCollector.Book
 
             //7.采集完成 生成书籍
             CollectStatus.Status = "采集完成，正在生成"; Status_Chage();
-            //if (BookNeedCollect.Changed)
-            //{
+            if (BookNeedCollect.Chapters.Count > 0)
+            {
                 CreatePage(BookNeedCollect.ID.ToS());
-            //}
+            }
             CollectStatus.Status = string.Format("书籍《{0}》完成", BookTitle); Status_Chage();
         }
         #endregion
 
-        
+
 
         #region 多本采集
         /// <summary>
@@ -908,7 +908,7 @@ namespace KCMDCollector.Book
                 }
                 CollectStatus.BookLeftCount--; Status_Chage();
             }
-           
+
         }
         #endregion
 
