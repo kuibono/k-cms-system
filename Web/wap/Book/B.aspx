@@ -25,8 +25,10 @@
             <span class="c3">
                 <div style="font-weight: bold;"><%=b.Title %></div>
             </span>作者：<%=b.Author %><br />
+            <a href="/e/bookdown.aspx?id=<%=b.ID %>" target="_blank" title="<%=b.Title %>txt下载"><%=b.Title %>TXT下载</a>
+            <br />
             <div style="color: #666666;">
-                <font color="#666666">网友推荐阅读: </font>
+                <font color="#666666">简介: </font>
                 <%=b.Intro %>
             </div>
             <div class="c4">
