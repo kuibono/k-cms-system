@@ -57,7 +57,7 @@
         <div class="title-wrap left">
             火热标签</div>
         <div class="list-wrap left">
-            <%= Voodoo.Basement.Functions.Getsearchkey("ModelID=4 order by clickcount desc",10,"<a href=\"s.aspx?key={keyword}\">{keyword}</a> ") %>
+            <%= Voodoo.Basement.Functions.Getsearchkey("ModelID=4 order by clickcount desc", 10, "<a href=\"/wap/book/s.aspx?key={keyword}\">{keyword}</a> ")%>
         </div>
         <div class="title-wrap left">
             <span class="black">完结榜</span></div>
