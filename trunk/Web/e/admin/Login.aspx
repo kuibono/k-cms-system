@@ -22,11 +22,11 @@
         &nbsp;&nbsp;&nbsp;&nbsp;欢迎使用专业的.NET网站信息管理系统
       </ul>
       <div class="help_center">
-        <h3><a href="http://help.dedecms.com/" target="_blank">帮助中心</a></h3>
+        <h3><a href="http://help.aizr.net/" target="_blank">帮助中心</a></h3>
         <p><strong>提供专业的技术问题解答</strong></p>
       </div>
       <div class="bbs">
-        <h3><a href="http://bbs.dedecms.com/" target="_blank">技术论坛</a></h3>
+        <h3><a href="http://wiki.aizr.net/" target="_blank">技术论坛</a></h3>
         <p><strong>发布新产品信息,技术问题解答,资源更新等信息</strong></p>
       </div>
     </div>
@@ -63,7 +63,7 @@
       </fieldset>
     </form>
   </div>
-  <div id="footer">&copy; 2011 南京信息工程大学 计算机软件学院</div>
+  <div id="footer">&copy; 2012 kuibono</div>
 </div>
 </body>
 </html>
