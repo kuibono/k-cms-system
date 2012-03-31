@@ -108,7 +108,7 @@ namespace KCMDCollector.Book
 
             }
 
-            result.Url = s.TargetUrl + "Book/" + book.ClassName + "/" + book.Title + "-" + book.Author + "/";
+            result.Url = s.PublicUrl + "Book/" + book.ClassName + "/" + book.Title + "-" + book.Author + "/";
 
             #region 提交到百度谷歌
             if (!bookExist)
@@ -735,21 +735,23 @@ namespace KCMDCollector.Book
         {
             Setting s = Book.RulesOperate.GetSetting();
 
-            this.CollectStatus.Status = "生成首页";
+            this.CollectStatus.Status = "生成章节";
             Status_Chage();
-            BH.CreateIndex();
+            BH.CreateChapters(BookID.ToInt32());
 
-            this.CollectStatus.Status = "生成分类页";
-            Status_Chage();
-            BH.CreateClassPage();
 
             this.CollectStatus.Status = "生成书籍页";
             Status_Chage();
             BH.CreateBook(BookID.ToInt32());
 
-            this.CollectStatus.Status = "生成章节";
+            this.CollectStatus.Status = "生成分类页";
             Status_Chage();
-            BH.CreateChapters(BookID.ToInt32());
+            BH.CreateClassPage();
+
+            this.CollectStatus.Status = "生成首页";
+            Status_Chage();
+            BH.CreateIndex();
+
         }
         #endregion
 

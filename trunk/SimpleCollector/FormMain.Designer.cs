@@ -49,7 +49,7 @@
             this.txt_ListUrl.Name = "txt_ListUrl";
             this.txt_ListUrl.Size = new System.Drawing.Size(477, 21);
             this.txt_ListUrl.TabIndex = 0;
-            this.txt_ListUrl.Text = "http://www.wenku.com/htmpage/14/1408/index.htm";
+            this.txt_ListUrl.Text = "http://www.k2gou.cn/about";
             // 
             // label1
             // 
@@ -75,7 +75,7 @@
             this.txt_BookTitle.Name = "txt_BookTitle";
             this.txt_BookTitle.Size = new System.Drawing.Size(182, 21);
             this.txt_BookTitle.TabIndex = 3;
-            this.txt_BookTitle.Text = "少年阿宾";
+            this.txt_BookTitle.Text = "黑道风云20年";
             // 
             // txt_ChapterTitleRule
             // 
@@ -83,7 +83,7 @@
             this.txt_ChapterTitleRule.Name = "txt_ChapterTitleRule";
             this.txt_ChapterTitleRule.Size = new System.Drawing.Size(477, 96);
             this.txt_ChapterTitleRule.TabIndex = 4;
-            this.txt_ChapterTitleRule.Text = "<span class=\'middle\'>&nbsp;<a href=\'(?<url>.*?)\'>(?<title>.*?)</a></span>";
+            this.txt_ChapterTitleRule.Text = "<a title=\".*?\" rel=\"bookmark\" href=\"(?<url>.*?)\">(?<title>.*?)</a>";
             // 
             // label3
             // 
@@ -109,7 +109,7 @@
             this.txt_ContentRule.Name = "txt_ContentRule";
             this.txt_ContentRule.Size = new System.Drawing.Size(477, 96);
             this.txt_ContentRule.TabIndex = 6;
-            this.txt_ContentRule.Text = "<!--this-is-text-->(?<key>[\\s\\S]*?)<!--this-is-text-->";
+            this.txt_ContentRule.Text = "<!-- Baidu Button END --></div>(?<key>[\\s\\S]*?)</div>";
             // 
             // btn_Start
             // 
