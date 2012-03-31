@@ -473,6 +473,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.vipupdatetime--]", b.VipUpdateTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--book.corpusid--]", b.CorpusID.ToS());
             Content = Content.Replace("[!--book.corpustitle--]", b.CorpusTitle);
+            Content = Content.Replace("[!--book.tjcount--]", b.TjCount.ToS());
 
             List<BookChapter> chapters = BookChapterView.GetModelList(string.Format("BookID={0}", b.ID.ToS()));
 
@@ -796,7 +797,7 @@ namespace Voodoo.Basement
             else if (c.ModelID == 4)
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<Book> qs = BookView.GetModelList(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by id desc", c.ID));
+                List<Book> qs = BookView.GetModelList(string.Format("Enable=1 and ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by id desc", c.ID));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
                 recordCount = qs.Count;
 
@@ -1027,7 +1028,7 @@ namespace Voodoo.Basement
             if (SysModel == 4)
             {
                 StringBuilder sb_list = new StringBuilder();
-                List<Book> qs = BookView.GetModelList(string.Format("Title like N'%{0}%' or Author like N'%{0}%' or Intro like N'%{0}%' order by id desc", key));
+                List<Book> qs = BookView.GetModelList(string.Format("Enable=1 and (Title like N'%{0}%' or Author like N'%{0}%' or Intro like N'%{0}%') order by id desc", key));
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
                 recordCount = qs.Count;
 

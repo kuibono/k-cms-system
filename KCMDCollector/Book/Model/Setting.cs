@@ -13,6 +13,11 @@ namespace KCMDCollector.Book
         public string TargetUrl { get; set; }
 
         /// <summary>
+        /// 公共URL
+        /// </summary>
+        public string PublicUrl { get; set; }
+
+        /// <summary>
         /// API
         /// </summary>
         public string APIKey { get; set; }

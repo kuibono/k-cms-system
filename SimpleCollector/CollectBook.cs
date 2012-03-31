@@ -56,11 +56,20 @@ namespace SimpleCollector
                 SetStatus("打开章节：" + Title);
                 string str_HtmlContent = Url.GetHtml(url, encoding);
 
-                string content = str_HtmlContent.GetMatch(ContentRule).First();
+                string content = "";
+                bool isImage = false;
+                try
+                {
+                    content = str_HtmlContent.GetMatch(ContentRule).First();
+                }
+                catch {
+                    content = "章节正在处理中，请稍后阅读";
+                    isImage = true;
+                }
                 content = Filter(content);
 
                 SetStatus("保存章节");
-                bh.ChapterAdd(b.ID, Title, content, false);
+                bh.ChapterAdd(b.ID, Title, content, isImage);
 
 
                 m_urls = m_urls.NextMatch();
