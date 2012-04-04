@@ -45,19 +45,49 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WizardBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WizardBase.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectBook.cs" />
+    <Compile Include="Common\CollectBase.cs" />
+    <Compile Include="Common\RuleModel.cs" />
+    <Compile Include="FormCollecor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCollecor.Designer.cs">
+      <DependentUpon>FormCollecor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRuleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRuleEdit.Designer.cs">
+      <DependentUpon>FormRuleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRuleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRuleList.Designer.cs">
+      <DependentUpon>FormRuleList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCollecor.resx">
+      <DependentUpon>FormCollecor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRuleEdit.resx">
+      <DependentUpon>FormRuleEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
