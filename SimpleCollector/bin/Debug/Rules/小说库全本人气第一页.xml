@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>小说库全本人气第一页</SiteName>
+  <BookNeedCollect>
+    <string>坏蛋是怎样炼成的II</string>
+    <string>步步惊心</string>
+    <string>混也是一种生活</string>
+  </BookNeedCollect>
+  <Encoding>GB2312</Encoding>
+  <ListPageUrl>http://www.xiaoshuoku.com.cn/order.php?subcate_id=1&amp;type=2</ListPageUrl>
+  <BookPageUrl>&lt;div class="col_part_title "&gt;&lt;a href="(?&lt;url&gt;.*?)" class="a_hei14b" title=".*?" target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/div&gt;</BookPageUrl>
+  <BookInfo>您当前位置： &lt;a href="/" target="_self" class="a_bai14b"&gt;小说首页&lt;/a&gt; &amp;gt; &lt;a href='.*?' target='_self' class='a_bai14b'&gt;(?&lt;class&gt;.*?)&lt;/a&gt;  &amp;gt; [\s\S]*?&lt;div class="listlefttop_title2"&gt;&lt;a href='.*?' target='_self' title='.*?'&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/div&gt;[\s\S]*?&lt;div class="listleft_auto"&gt;&lt;b&gt;作者：&lt;/b&gt;(?&lt;author&gt;.*?)&lt;/div&gt;[\s\S]*?&lt;div class="lrCon"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/div&gt;</BookInfo>
+  <ChapterListPageUrl>&lt;div class="listlefttop_title2"&gt;&lt;a href='(?&lt;key&gt;.*?)' target='_self' title='.*?'&gt;.*?&lt;/a&gt;&lt;/div&gt;</ChapterListPageUrl>
+  <ChapterTitleAndUrl>&lt;td width="33%" align="center" bgcolor="#FFFFFF"&gt;&lt;a href="(?&lt;url&gt;.*?)" class='lv' target='_self' title='.*?'&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</ChapterTitleAndUrl>
+  <Content>&lt;div class="last_title1 "&gt;(?&lt;key&gt;[\s\S]*?)&lt;/div&gt;</Content>
+</RuleModel>
