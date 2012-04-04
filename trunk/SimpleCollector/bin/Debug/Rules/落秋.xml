@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>落秋</SiteName>
+  <BookNeedCollect>
+    <string>斗破苍穹</string>
+    <string>超级农民</string>
+    <string>七界传说</string>
+  </BookNeedCollect>
+  <Encoding>GBK</Encoding>
+  <ListPageUrl>http://www.luoqiu.com/modules/article/index.php?fullflag=1</ListPageUrl>
+  <BookPageUrl>&lt;div class="c1"&gt;&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/div&gt;</BookPageUrl>
+  <BookInfo>&lt;div class="booktitle clearfix"&gt;&lt;h1&gt;(?&lt;title&gt;.*?)&lt;/h1&gt;&lt;span class="author"&gt;作者：&lt;a href=".*?" target="_blank"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;&lt;/span&gt;[\s\S]*?本书属于&lt;a class="type" href=".*?" target="_blank"&gt;(?&lt;class&gt;.*?)&lt;/a&gt;小说&lt;br /&gt;[\s\S]*?,已写了&lt;b&gt;(?&lt;length&gt;.*?)&lt;/b&gt;字[\s\S]*?&lt;ul class="block-intro"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/ul&gt;</BookInfo>
+  <ChapterListPageUrl>&lt;a class="ll redbtn" href="(?&lt;key&gt;.*?)" target="_blank" title=".*?"&gt;&lt;span&gt;点击阅读&lt;/span&gt;&lt;/a&gt;</ChapterListPageUrl>
+  <ChapterTitleAndUrl>&lt;span&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/span&gt;</ChapterTitleAndUrl>
+  <Content>&lt;DIV id=content name="content"&gt;(?&lt;key&gt;[\s\S]*?)&lt;/DIV&gt;</Content>
+</RuleModel>
