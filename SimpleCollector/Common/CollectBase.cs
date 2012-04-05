@@ -102,6 +102,10 @@ namespace SimpleCollector
                     m_books = m_books.NextMatch();//已经存在的书籍
                     continue;
                 }
+                else
+                {
+                    //不存在
+                }
 
                 SetStatus("打开书籍页面");
                 string bookInfoHtml = Url.GetHtml(bookUrl, encoding); ;

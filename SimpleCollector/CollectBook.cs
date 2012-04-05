@@ -40,6 +40,7 @@ namespace SimpleCollector
             string str_ListHtml = Url.GetHtml(ListUrl, encoding);
 
             Match m_urls = str_ListHtml.GetMatchGroup(UrlTitleRule);
+
             while (m_urls.Success)
             {
                 string url = m_urls.Groups["url"].Value.AppendToDomain(ListUrl);
