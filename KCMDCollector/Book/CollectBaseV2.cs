@@ -487,6 +487,7 @@ namespace KCMDCollector.Book
                     if (html_Content.IsMatch(Rule.ImageRule))
                     {
                         c.IsImageChapter = true;
+                        c.Content = "《"+b.BookTitle+"》-最新章节："+c.Title +"    目前是图片章节，读起来很不爽？赶快把本页加入收藏夹，"+c.Title+" 文字章节稍后为您呈现！阅读"+b.BookTitle+"最新章节，尽在"+s.PublicUrl+","+s.TargetUrl +"<br/ >";
                         Match m_images = html_Content.GetMatchGroup(Rule.ImageRule);
                         while (m_images.Success)
                         {
