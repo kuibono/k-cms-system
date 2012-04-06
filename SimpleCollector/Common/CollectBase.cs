@@ -97,40 +97,43 @@ namespace SimpleCollector
                     continue;
                 }
                 SetStatus("验证是否存在");
+                string bookInfoHtml = Url.GetHtml(bookUrl, encoding); 
                 if (bh.SearchBook(bookTitle, "", "").Count > 0)
                 {
-                    m_books = m_books.NextMatch();//已经存在的书籍
-                    continue;
+                    //m_books = m_books.NextMatch();//已经存在的书籍
+                    //continue;
                 }
                 else
                 {
                     //不存在
-                }
+                    SetStatus("打开书籍页面");
+                    Match m_bookInfo = bookInfoHtml.GetMatchGroup(BookInfoRule);
+                    if (m_bookInfo.Success)
+                    {
+                        //获取到书籍信息，并且添加到系统
+                        string title = m_bookInfo.Groups["title"].Value;
+                        string author = m_bookInfo.Groups["author"].Value;
+                        string cls = m_bookInfo.Groups["class"].Value;
+                        string length = m_bookInfo.Groups["length"].Value;
+                        string intro = m_bookInfo.Groups["intro"].Value;
 
-                SetStatus("打开书籍页面");
-                string bookInfoHtml = Url.GetHtml(bookUrl, encoding); ;
-                Match m_bookInfo = bookInfoHtml.GetMatchGroup(BookInfoRule);
-                if (m_bookInfo.Success)
-                {
-                    //获取到书籍信息，并且添加到系统
-                    string title = m_bookInfo.Groups["title"].Value;
-                    string author = m_bookInfo.Groups["author"].Value;
-                    string cls = m_bookInfo.Groups["class"].Value;
-                    string length = m_bookInfo.Groups["length"].Value;
-                    string intro = m_bookInfo.Groups["intro"].Value;
+                        //处理类别 
+                        Class c = bh.GetClass(cls);
 
-                    //处理类别 
-                    Class c = bh.GetClass(cls);
+                        //添加书籍
+                        bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
 
-                    //添加书籍
-                    bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
 
-                    //处理章节
-                    string chapterListUrl = bookInfoHtml.GetMatch(ChapterListUrl).First().AppendToDomain(bookUrl);
-                    Collect(chapterListUrl, title, urlTitleRule
-                        , ContentRule, encoding);
+
+                    }
+
+
 
                 }
+                //处理章节
+                string chapterListUrl = bookInfoHtml.GetMatch(ChapterListUrl).First().AppendToDomain(bookUrl);
+                Collect(chapterListUrl, bookTitle, urlTitleRule
+                         , ContentRule, encoding);
             }
         }
 
