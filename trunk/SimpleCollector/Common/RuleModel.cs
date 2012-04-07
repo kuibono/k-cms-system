@@ -15,6 +15,8 @@ namespace SimpleCollector.Common
 
         public string ListPageUrl { get; set; }
 
+        public string NextPageUrl { get; set; }
+
         public string BookPageUrl { get; set; }
 
         public string BookInfo { get; set; }
