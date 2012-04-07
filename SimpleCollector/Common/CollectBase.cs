@@ -34,7 +34,7 @@ namespace SimpleCollector
         {
             //string enciding = "gb2312";
 
-            BookHelper bh = new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://localhost:9969/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
@@ -46,6 +46,7 @@ namespace SimpleCollector
             {
                 string url = m_urls.Groups["url"].Value.AppendToDomain(ListUrl);
                 string Title = m_urls.Groups["title"].Value;
+
 
                 SetStatus("判断章节是否存在-" + Title);
                 var chapter = bh.ChapterSearch(b.Title, Title, false);
@@ -81,9 +82,10 @@ namespace SimpleCollector
 
         }
 
-        public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule)
+        public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule)
         {
-            BookHelper bh = new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://localhost:9969/");
+        begin:
             SetStatus("打开列表页面");
             string listHtml = Url.GetHtml(ListPageUrl, encoding);
             Match m_books = listHtml.GetMatchGroup(BookUrlRule);
@@ -91,10 +93,13 @@ namespace SimpleCollector
             {
                 string bookUrl = m_books.Groups["url"].Value.AppendToDomain(ListPageUrl);
                 string bookTitle = m_books.Groups["title"].Value;
-                if (BookNeedCollect.Where(p => p == bookTitle).Count() == 0)
+                if (BookNeedCollect.Count != 1 || BookNeedCollect.First() != "*")
                 {
-                    m_books = m_books.NextMatch();//不需要采集的书籍
-                    continue;
+                    if (BookNeedCollect.Where(p => p == bookTitle).Count() == 0)
+                    {
+                        m_books = m_books.NextMatch();//不需要采集的书籍
+                        continue;
+                    }
                 }
                 SetStatus("验证是否存在");
                 string bookInfoHtml = Url.GetHtml(bookUrl, encoding); 
@@ -118,7 +123,7 @@ namespace SimpleCollector
                         string intro = m_bookInfo.Groups["intro"].Value;
 
                         //处理类别 
-                        Class c = bh.GetClass(cls);
+                        Class c = bh.GetClass(cls.Length>0?cls:"和谐小说");
 
                         //添加书籍
                         bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
@@ -134,6 +139,14 @@ namespace SimpleCollector
                 string chapterListUrl = bookInfoHtml.GetMatch(ChapterListUrl).First().AppendToDomain(bookUrl);
                 Collect(chapterListUrl, bookTitle, urlTitleRule
                          , ContentRule, encoding);
+                m_books = m_books.NextMatch();
+            }//结束书籍列表书籍采集
+            //开始判断是够有下一页
+            Match m_NextPage = listHtml.GetMatchGroup(NextPageUrl);
+            while (m_NextPage.Success)
+            {
+                ListPageUrl = m_NextPage.Groups["key"].Value.AppendToDomain(ListPageUrl);
+                goto begin; ;
             }
         }
 

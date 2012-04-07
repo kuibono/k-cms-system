@@ -56,6 +56,8 @@
             this.finishStep1 = new WizardBase.FinishStep();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Content = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_NextPageUrl = new System.Windows.Forms.TextBox();
             this.step_SiteName.SuspendLayout();
             this.step_ListPage.SuspendLayout();
             this.step_BookUrl.SuspendLayout();
@@ -145,6 +147,8 @@
             // step_ListPage
             // 
             this.step_ListPage.BindingImage = ((System.Drawing.Image)(resources.GetObject("step_ListPage.BindingImage")));
+            this.step_ListPage.Controls.Add(this.txt_NextPageUrl);
+            this.step_ListPage.Controls.Add(this.label2);
             this.step_ListPage.Controls.Add(this.txt_ListPageUrl);
             this.step_ListPage.Name = "step_ListPage";
             this.step_ListPage.Subtitle = "需要采集的书籍列表页面的地址。";
@@ -154,7 +158,7 @@
             // 
             // txt_ListPageUrl
             // 
-            this.txt_ListPageUrl.Location = new System.Drawing.Point(12, 130);
+            this.txt_ListPageUrl.Location = new System.Drawing.Point(12, 75);
             this.txt_ListPageUrl.Name = "txt_ListPageUrl";
             this.txt_ListPageUrl.Size = new System.Drawing.Size(478, 21);
             this.txt_ListPageUrl.TabIndex = 0;
@@ -333,6 +337,22 @@
             this.txt_Content.TabIndex = 0;
             this.txt_Content.Text = "";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "下一页地址：";
+            // 
+            // txt_NextPageUrl
+            // 
+            this.txt_NextPageUrl.Location = new System.Drawing.Point(14, 144);
+            this.txt_NextPageUrl.Name = "txt_NextPageUrl";
+            this.txt_NextPageUrl.Size = new System.Drawing.Size(476, 21);
+            this.txt_NextPageUrl.TabIndex = 2;
+            // 
             // FormRuleEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -390,6 +410,8 @@
         private System.Windows.Forms.Label label1;
         private WizardBase.IntermediateStep step_BookList;
         private System.Windows.Forms.RichTextBox txt_BookList;
+        private System.Windows.Forms.TextBox txt_NextPageUrl;
+        private System.Windows.Forms.Label label2;
 
     }
 }

@@ -223,7 +223,7 @@ namespace Web.e.admin.Book
             string ids = WS.RequestString("id");
 
             #region 删除目录
-            List<Voodoo.Model.Book> books = BookView.GetModelList(string.Format("id in {0}", ids));
+            List<Voodoo.Model.Book> books = BookView.GetModelList(string.Format("id in ({0})", ids));
             foreach (var book in books)
             {
                 DirectoryInfo dir = new FileInfo(

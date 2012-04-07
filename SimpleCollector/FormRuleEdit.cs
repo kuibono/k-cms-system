@@ -49,6 +49,7 @@ namespace SimpleCollector
                     case 2:
                         //输入了列表页地址
                         CurrentRule.ListPageUrl = txt_ListPageUrl.Text;
+                        CurrentRule.NextPageUrl = txt_NextPageUrl.Text;
                         txt_ListPageHtml.Text = Url.GetHtml(CurrentRule.ListPageUrl, CurrentRule.Encoding);
                         if (txt_ListPageUrl.Text.IsNullOrEmpty())
                         {

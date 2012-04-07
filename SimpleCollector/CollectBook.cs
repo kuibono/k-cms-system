@@ -32,7 +32,7 @@ namespace SimpleCollector
         {
             //string enciding = "gb2312";
 
-            BookHelper bh = new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://localhost:9969/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
@@ -79,20 +79,24 @@ namespace SimpleCollector
             
         }
 
-        public void CollectBooks(List<string> BookNeedCollect,string ListPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl,string encoding,string urlTitleRule,string ContentRule)
+        public void CollectBooks(List<string> BookNeedCollect,string ListPageUrl,string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl,string encoding,string urlTitleRule,string ContentRule)
         {
-            BookHelper bh=new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://localhost:9969/");
 
+            begin:
             string listHtml = Url.GetHtml(ListPageUrl, encoding);
             Match m_books = listHtml.GetMatchGroup(BookUrlRule);
             while (m_books.Success)
             {
                 string bookUrl = m_books.Groups["url"].Value.AppendToDomain(ListPageUrl);
                 string bookTitle = m_books.Groups["title"].Value;
-                if (BookNeedCollect.Where(p => p == bookTitle).Count() == 0)
+                if (BookNeedCollect.Count != 1 || BookNeedCollect.First() != "*")
                 {
-                    m_books = m_books.NextMatch();//不需要采集的书籍
-                    continue;
+                    if (BookNeedCollect.Where(p => p == bookTitle).Count() == 0)
+                    {
+                        m_books = m_books.NextMatch();//不需要采集的书籍
+                        continue;
+                    }
                 }
                 if (bh.SearchBook(bookTitle,"","").Count > 0)
                 {
@@ -108,7 +112,7 @@ namespace SimpleCollector
                     string title = m_bookInfo.Groups["title"].Value;
                     string author = m_bookInfo.Groups["author"].Value;
                     string cls = m_bookInfo.Groups["class"].Value;
-                    string length = m_bookInfo.Groups["length"].Value;
+                    string length = (m_bookInfo.Groups["length"].Value.ToInt32()*1024).ToS();
                     string intro = m_bookInfo.Groups["intro"].Value;
 
                     //处理类别 
@@ -122,6 +126,13 @@ namespace SimpleCollector
                         , ContentRule, encoding);
 
                 }
+            }//结束书籍列表书籍采集
+            //开始判断是够有下一页
+            Match m_NextPage=listHtml.GetMatchGroup(NextPageUrl);
+            while (m_NextPage.Success)
+            {
+                ListPageUrl = m_NextPage.Groups["key"].Value.AppendToDomain(ListPageUrl);
+                goto begin; ;
             }
         }
 

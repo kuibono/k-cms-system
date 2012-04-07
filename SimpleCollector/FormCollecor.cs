@@ -54,6 +54,7 @@ namespace SimpleCollector
             CollectBase cb = new CollectBase(this);
             cb.CollectBooks(rm.BookNeedCollect,
                 rm.ListPageUrl,
+                rm.NextPageUrl,
                 rm.BookPageUrl,
                 rm.BookInfo,
                 rm.ChapterListPageUrl,
