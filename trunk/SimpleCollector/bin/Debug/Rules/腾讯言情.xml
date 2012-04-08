@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>腾讯言情</SiteName>
+  <BookNeedCollect>
+    <string>*</string>
+  </BookNeedCollect>
+  <Encoding>GB2312</Encoding>
+  <ListPageUrl>http://book.qq.com/lianzaiindex/sort4/index_1.htm</ListPageUrl>
+  <NextPageUrl />
+  <BookPageUrl>&lt;td&gt;&lt;a href="(?&lt;url&gt;.*?)" class="fclblack" target="_blank"&gt;&lt;strong&gt;.*?：(?&lt;title&gt;.*?)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;</BookPageUrl>
+  <BookInfo>&lt;h1&gt;.*?：(?&lt;title&gt;.*?)&lt;/h1&gt;
+[\s]*?&lt;p&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/p&gt;
+[\s\S]*?&lt;div&gt;作 者：&lt;span&gt;&lt;script&gt;document.write\(splitAuthor\('(?&lt;author&gt;.*?)'\)\)&lt;/script&gt;[\s\S]*?&lt;div class=" tr"&gt;类 型：&lt;a.*?target="_blank"&gt;(?&lt;class&gt;[\S]*?)&lt;/a&gt;&lt;/div&gt;</BookInfo>
+  <ChapterListPageUrl></ChapterListPageUrl>
+  <ChapterTitleAndUrl>&lt;a href="javascript:opennew\('(?&lt;url&gt;.*?)'\)" &gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterTitleAndUrl>
+  <Content>&lt;div id="content" style="width:90%;margin:0 auto;color:#Black;font-size:14px;line-height:24px;"&gt;
+(?&lt;key&gt;[\s\S]*?)&lt;/div&gt;</Content>
+  <NextContentUrl>(?&lt;key&gt;[\\s]{200,}?)</NextContentUrl>
+</RuleModel>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>郭敬明作品集</SiteName>
+  <BookNeedCollect>
+    <string>梦里花落知多少</string>
+    <string>无极(影视小说)</string>
+    <string>无极之二：郭敬明创意空间</string>
+    <string>刻下来的幸福时光</string>
+    <string>N世界</string>
+  </BookNeedCollect>
+  <Encoding>GB2312</Encoding>
+  <ListPageUrl>http://book.kanunu.org/files/writer/130.html</ListPageUrl>
+  <NextPageUrl />
+  <BookPageUrl>&lt;td align="center"&gt;&lt;a target="_blank" href="(?&lt;url&gt;.*?)"&gt;&lt;strong&gt;(?&lt;title&gt;.*?)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;</BookPageUrl>
+  <BookInfo>当前位置：&lt;a href='http://book.kanunu.org/'&gt;首页&lt;/a&gt;&gt;&lt;a href='.*?'&gt;(?&lt;class&gt;.*?)&lt;/a&gt;&gt;[\s\S]*?&lt;h2&gt;&lt;b&gt;(?&lt;title&gt;.*?)&lt;/b&gt;&lt;/h2&gt;[\s\S]*?作者：(?&lt;author&gt;.*?) 发布时间[\s\S]*?&lt;td class="p10-.*?"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/td&gt;</BookInfo>
+  <ChapterListPageUrl />
+  <ChapterTitleAndUrl>&lt;td.*?&gt;&lt;a href="(?&lt;url&gt;[^"]*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</ChapterTitleAndUrl>
+  <Content>&lt;td width="820" align="left" bgcolor="#FFFFFF"&gt;(?&lt;key&gt;[\s\S]*?)&lt;/td&gt;</Content>
+  <NextContentUrl>没有(?&lt;key&gt;[\s]{100}?)必要</NextContentUrl>
+</RuleModel>
