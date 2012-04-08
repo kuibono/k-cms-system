@@ -130,6 +130,10 @@ namespace SimpleCollector
                         }
                         break;
                     case 8:
+                        CurrentRule.NextContentUrl = txt_NextContent.Text;
+                        
+                        break;
+                    case 9:
                         string[] books = txt_BookList.Text.Split('\n');
                         CurrentRule.BookNeedCollect = new List<string>();
                         foreach (string str in books)
