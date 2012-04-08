@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>韩寒作品集</SiteName>
+  <BookNeedCollect>
+    <string>光荣日（第一季）</string>
+  </BookNeedCollect>
+  <Encoding>GB2312</Encoding>
+  <ListPageUrl>http://book.kanunu.org/files/writer/104.html</ListPageUrl>
+  <NextPageUrl />
+  <BookPageUrl>&lt;td bgcolor="#fff7e7"&gt;&lt;a target="_blank" href="(?&lt;url&gt;.*?)"&gt;&lt;strong&gt;(?&lt;title&gt;.*?)&lt;/strong&gt;&lt;/a&gt;&lt;/td&gt;</BookPageUrl>
+  <BookInfo>&lt;h2&gt;(?&lt;title&gt;.*?)&lt;/h2&gt;[\s\S]*?者：(?&lt;author&gt;.*?) 发布时间[\s\S]*?&lt;td class="p10-21"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/td&gt;</BookInfo>
+  <ChapterListPageUrl />
+  <ChapterTitleAndUrl>&lt;td.*?&gt;&lt;a href="(?&lt;url&gt;[\S]*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</ChapterTitleAndUrl>
+  <Content>&lt;td width="820" align="left" bgcolor="#FFFFFF"&gt;(?&lt;key&gt;[\s\S]*?)&lt;/td&gt;</Content>
+  <NextContentUrl>(?&lt;key&gt;[\s]{300,}?)</NextContentUrl>
+</RuleModel>
