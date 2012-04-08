@@ -35,6 +35,8 @@
             this.com_Encoding = new System.Windows.Forms.ComboBox();
             this.txt_SiteName = new System.Windows.Forms.TextBox();
             this.step_ListPage = new WizardBase.IntermediateStep();
+            this.txt_NextPageUrl = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_ListPageUrl = new System.Windows.Forms.TextBox();
             this.step_BookUrl = new WizardBase.IntermediateStep();
             this.txt_BookInfoUrl = new System.Windows.Forms.TextBox();
@@ -56,8 +58,8 @@
             this.finishStep1 = new WizardBase.FinishStep();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Content = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_NextPageUrl = new System.Windows.Forms.TextBox();
+            this.step_NextContent = new WizardBase.IntermediateStep();
+            this.txt_NextContent = new System.Windows.Forms.TextBox();
             this.step_SiteName.SuspendLayout();
             this.step_ListPage.SuspendLayout();
             this.step_BookUrl.SuspendLayout();
@@ -67,6 +69,7 @@
             this.step_ChapterContentRule.SuspendLayout();
             this.step_BookList.SuspendLayout();
             this.finishStep1.SuspendLayout();
+            this.step_NextContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -96,6 +99,7 @@
             this.wizardControl1.WizardSteps.Add(this.step_ChapterListUrl);
             this.wizardControl1.WizardSteps.Add(this.step_ChapterTitleAndUrl);
             this.wizardControl1.WizardSteps.Add(this.step_ChapterContentRule);
+            this.wizardControl1.WizardSteps.Add(this.step_NextContent);
             this.wizardControl1.WizardSteps.Add(this.step_BookList);
             this.wizardControl1.WizardSteps.Add(this.finishStep1);
             this.wizardControl1.CancelButtonClick += new System.EventHandler(this.wizardControl1_CancelButtonClick);
@@ -155,6 +159,22 @@
             this.step_ListPage.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.step_ListPage.Title = "列表页地址";
             this.step_ListPage.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            // 
+            // txt_NextPageUrl
+            // 
+            this.txt_NextPageUrl.Location = new System.Drawing.Point(14, 144);
+            this.txt_NextPageUrl.Name = "txt_NextPageUrl";
+            this.txt_NextPageUrl.Size = new System.Drawing.Size(476, 21);
+            this.txt_NextPageUrl.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "下一页地址：";
             // 
             // txt_ListPageUrl
             // 
@@ -337,21 +357,22 @@
             this.txt_Content.TabIndex = 0;
             this.txt_Content.Text = "";
             // 
-            // label2
+            // step_NextContent
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "下一页地址：";
+            this.step_NextContent.BindingImage = ((System.Drawing.Image)(resources.GetObject("step_NextContent.BindingImage")));
+            this.step_NextContent.Controls.Add(this.txt_NextContent);
+            this.step_NextContent.Name = "step_NextContent";
+            this.step_NextContent.Subtitle = "地址规则中，key必需";
+            this.step_NextContent.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.step_NextContent.Title = "下一段地址规则";
+            this.step_NextContent.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             // 
-            // txt_NextPageUrl
+            // txt_NextContent
             // 
-            this.txt_NextPageUrl.Location = new System.Drawing.Point(14, 144);
-            this.txt_NextPageUrl.Name = "txt_NextPageUrl";
-            this.txt_NextPageUrl.Size = new System.Drawing.Size(476, 21);
-            this.txt_NextPageUrl.TabIndex = 2;
+            this.txt_NextContent.Location = new System.Drawing.Point(3, 74);
+            this.txt_NextContent.Name = "txt_NextContent";
+            this.txt_NextContent.Size = new System.Drawing.Size(496, 21);
+            this.txt_NextContent.TabIndex = 0;
             // 
             // FormRuleEdit
             // 
@@ -377,6 +398,8 @@
             this.step_BookList.ResumeLayout(false);
             this.finishStep1.ResumeLayout(false);
             this.finishStep1.PerformLayout();
+            this.step_NextContent.ResumeLayout(false);
+            this.step_NextContent.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,6 +435,8 @@
         private System.Windows.Forms.RichTextBox txt_BookList;
         private System.Windows.Forms.TextBox txt_NextPageUrl;
         private System.Windows.Forms.Label label2;
+        private WizardBase.IntermediateStep step_NextContent;
+        private System.Windows.Forms.TextBox txt_NextContent;
 
     }
 }

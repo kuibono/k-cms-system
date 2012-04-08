@@ -56,11 +56,12 @@ namespace SimpleCollector
                 rm.ListPageUrl,
                 rm.NextPageUrl,
                 rm.BookPageUrl,
-                rm.BookInfo,
+                rm.BookInfo.Replace("\n",""),
                 rm.ChapterListPageUrl,
                 rm.Encoding,
                 rm.ChapterTitleAndUrl,
-                rm.Content);
+                rm.Content.Replace("\n", ""),
+                rm.NextContentUrl.Replace("\n", ""));
         }
 
         private void button1_Click(object sender, EventArgs e)
