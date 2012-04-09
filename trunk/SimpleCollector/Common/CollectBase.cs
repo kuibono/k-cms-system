@@ -93,7 +93,7 @@ namespace SimpleCollector
 
         }
 
-        public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule,string NextContentUrl)
+        public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule, string NextContentUrl)
         {
             BookHelper bh = new BookHelper("http://aizr.net/");
         begin:
@@ -133,14 +133,27 @@ namespace SimpleCollector
                         string length = m_bookInfo.Groups["length"].Value;
                         string intro = m_bookInfo.Groups["intro"].Value.TrimHTML();
 
+                        string imageUrl = m_bookInfo.Groups["image"].Value.ToS();
+
                         bookTitle = title;
 
                         //处理类别 
                         Class c = bh.GetClass(cls.Length > 0 ? cls : "综合");
 
                         //添加书籍
-                        bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
+                        Book b = bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
 
+                        if (b.ID > 0 || imageUrl.IsNullOrEmpty() == false)
+                        {
+                            imageUrl = imageUrl.AppendToDomain(bookUrl);
+                            Url.DownFile(imageUrl, System.Environment.CurrentDirectory + "\\Face.jpg");
+                            Voodoo.IO.ImageHelper.MakeThumbnail(System.Environment.CurrentDirectory + "\\Face.jpg",
+                                System.Environment.CurrentDirectory + "\\stand.jpg",
+                                120,
+                                150,
+                                "Cut");
+                            bh.SetBookFace(b.ID, System.Environment.CurrentDirectory + "\\stand.jpg");
+                        }
 
 
                     }
@@ -151,7 +164,7 @@ namespace SimpleCollector
                 //处理章节
                 string chapterListUrl = bookInfoHtml.GetMatch(ChapterListUrl).First().AppendToDomain(bookUrl);
                 Collect(chapterListUrl, bookTitle, urlTitleRule
-                         , ContentRule,NextContentUrl, encoding);
+                         , ContentRule, NextContentUrl, encoding);
                 m_books = m_books.NextMatch();
             }//结束书籍列表书籍采集
             //开始判断是够有下一页

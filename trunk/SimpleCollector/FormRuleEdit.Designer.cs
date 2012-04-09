@@ -53,13 +53,13 @@
             this.step_ChapterContentRule = new WizardBase.IntermediateStep();
             this.txt_ChapterContentRule = new System.Windows.Forms.RichTextBox();
             this.txt_ChapterContentHtml = new System.Windows.Forms.RichTextBox();
+            this.step_NextContent = new WizardBase.IntermediateStep();
+            this.txt_NextContent = new System.Windows.Forms.TextBox();
             this.step_BookList = new WizardBase.IntermediateStep();
             this.txt_BookList = new System.Windows.Forms.RichTextBox();
             this.finishStep1 = new WizardBase.FinishStep();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Content = new System.Windows.Forms.RichTextBox();
-            this.step_NextContent = new WizardBase.IntermediateStep();
-            this.txt_NextContent = new System.Windows.Forms.TextBox();
             this.step_SiteName.SuspendLayout();
             this.step_ListPage.SuspendLayout();
             this.step_BookUrl.SuspendLayout();
@@ -67,9 +67,9 @@
             this.step_ChapterListUrl.SuspendLayout();
             this.step_ChapterTitleAndUrl.SuspendLayout();
             this.step_ChapterContentRule.SuspendLayout();
+            this.step_NextContent.SuspendLayout();
             this.step_BookList.SuspendLayout();
             this.finishStep1.SuspendLayout();
-            this.step_NextContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -215,7 +215,7 @@
             this.step_BookInfo.Controls.Add(this.txt_BookInfoRule);
             this.step_BookInfo.Controls.Add(this.txt_BookInfoHtml);
             this.step_BookInfo.Name = "step_BookInfo";
-            this.step_BookInfo.Subtitle = "比较复杂的规则，需要哦后去title,author,class,length,intro几个字段，不能有缺失。";
+            this.step_BookInfo.Subtitle = "比较复杂的规则，需要哦后去title,image,author,class,length,intro几个字段，不能有缺失。";
             this.step_BookInfo.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.step_BookInfo.Title = "书籍信息规则";
             this.step_BookInfo.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -314,6 +314,23 @@
             this.txt_ChapterContentHtml.TabIndex = 0;
             this.txt_ChapterContentHtml.Text = "";
             // 
+            // step_NextContent
+            // 
+            this.step_NextContent.BindingImage = ((System.Drawing.Image)(resources.GetObject("step_NextContent.BindingImage")));
+            this.step_NextContent.Controls.Add(this.txt_NextContent);
+            this.step_NextContent.Name = "step_NextContent";
+            this.step_NextContent.Subtitle = "地址规则中，key必需";
+            this.step_NextContent.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.step_NextContent.Title = "下一段地址规则";
+            this.step_NextContent.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            // 
+            // txt_NextContent
+            // 
+            this.txt_NextContent.Location = new System.Drawing.Point(3, 74);
+            this.txt_NextContent.Name = "txt_NextContent";
+            this.txt_NextContent.Size = new System.Drawing.Size(496, 21);
+            this.txt_NextContent.TabIndex = 0;
+            // 
             // step_BookList
             // 
             this.step_BookList.BindingImage = ((System.Drawing.Image)(resources.GetObject("step_BookList.BindingImage")));
@@ -357,23 +374,6 @@
             this.txt_Content.TabIndex = 0;
             this.txt_Content.Text = "";
             // 
-            // step_NextContent
-            // 
-            this.step_NextContent.BindingImage = ((System.Drawing.Image)(resources.GetObject("step_NextContent.BindingImage")));
-            this.step_NextContent.Controls.Add(this.txt_NextContent);
-            this.step_NextContent.Name = "step_NextContent";
-            this.step_NextContent.Subtitle = "地址规则中，key必需";
-            this.step_NextContent.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.step_NextContent.Title = "下一段地址规则";
-            this.step_NextContent.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            // 
-            // txt_NextContent
-            // 
-            this.txt_NextContent.Location = new System.Drawing.Point(3, 74);
-            this.txt_NextContent.Name = "txt_NextContent";
-            this.txt_NextContent.Size = new System.Drawing.Size(496, 21);
-            this.txt_NextContent.TabIndex = 0;
-            // 
             // FormRuleEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -395,11 +395,11 @@
             this.step_ChapterListUrl.ResumeLayout(false);
             this.step_ChapterTitleAndUrl.ResumeLayout(false);
             this.step_ChapterContentRule.ResumeLayout(false);
+            this.step_NextContent.ResumeLayout(false);
+            this.step_NextContent.PerformLayout();
             this.step_BookList.ResumeLayout(false);
             this.finishStep1.ResumeLayout(false);
             this.finishStep1.PerformLayout();
-            this.step_NextContent.ResumeLayout(false);
-            this.step_NextContent.PerformLayout();
             this.ResumeLayout(false);
 
         }
