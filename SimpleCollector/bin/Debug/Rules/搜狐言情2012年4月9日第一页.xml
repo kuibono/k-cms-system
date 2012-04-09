@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SiteName>搜狐言情2012年4月9日第一页</SiteName>
+  <BookNeedCollect>
+    <string>*</string>
+  </BookNeedCollect>
+  <Encoding>GB2312</Encoding>
+  <ListPageUrl>http://lz.book.sohu.com/lz_list.php?ps=40&amp;sec=2&amp;tp=4</ListPageUrl>
+  <NextPageUrl>不需要(?&lt;key&gt;[\s]{1000}?)也是</NextPageUrl>
+  <BookPageUrl>&lt;h3&gt;&lt;a target="_blank" href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)：.*?&lt;/a&gt;&lt;/h3&gt;</BookPageUrl>
+  <BookInfo>&lt;a href=".*?" target="_blank"&gt;文学总馆&lt;/a&gt;&amp;nbsp;&amp;gt;&amp;nbsp;&lt;a href=".*?" target="_blank"&gt;(?&lt;class&gt;.*?)&lt;/a&gt;&amp;nbsp;&amp;gt;&amp;nbsp;(?&lt;title&gt;.*?)：.*?&lt;/div&gt;
+[\s\S]*?&lt;div class="pic"&gt;&lt;a href="(?&lt;image&gt;.*?)" target="_blank"&gt;&lt;img[\s\S]*?&lt;p id="info1" style="height:85px; overflow:hidden;word-wrap:break-word;"&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/p&gt;[\s\S]*?&lt;span&gt;作者：&lt;/span&gt;[\s]*?&lt;a href=".*?" target="_blank"&gt;(?&lt;author&gt;.*?)&lt;/a&gt;&amp;nbsp;</BookInfo>
+  <ChapterListPageUrl />
+  <ChapterTitleAndUrl>&lt;li&gt;&lt;a target="_blank" href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</ChapterTitleAndUrl>
+  <Content>&lt;/h4&gt;[\s]*?&lt;p&gt;(?&lt;key&gt;[\s\S]*?)&lt;/p&gt;</Content>
+  <NextContentUrl>&lt;div class="page"&gt;&lt;a href="(?&lt;key&gt;.*?)" target="_self"&gt;下一页&lt;/a&gt;&lt;/div&gt;</NextContentUrl>
+</RuleModel>
