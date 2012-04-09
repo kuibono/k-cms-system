@@ -78,12 +78,13 @@ namespace SimpleCollector
                         Match m = txt_BookInfoHtml.Text.GetMatchGroup(CurrentRule.BookInfo);
                         if (m.Success)
                         {
-                            txt_BookInfos.Text = string.Format("\n\n标题：{0}\n\n作者：{1}\n\n分类：{2}\n\n字数：{3}\n\n简介：{4}\n\n",
+                            txt_BookInfos.Text = string.Format("\n\n标题：{0}\n\n作者：{1}\n\n分类：{2}\n\n字数：{3}\n\n简介：{4}\n\n图片：{5}",
                                 m.Groups["title"].Value,
                                 m.Groups["author"].Value,
                                 m.Groups["class"].Value,
                                 m.Groups["length"].Value,
-                                m.Groups["intro"].Value
+                                m.Groups["intro"].Value,
+                                m.Groups["image"].Value
                                 );
                         }
                         else
