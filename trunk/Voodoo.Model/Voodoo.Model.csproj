@@ -76,7 +76,12 @@
     <Compile Include="Auto\GroupRole.cs" />
     <Compile Include="Auto\ImageAlbum.cs" />
     <Compile Include="Auto\Images.cs" />
+    <Compile Include="Auto\Info.cs" />
+    <Compile Include="Auto\InfoImage.cs" />
+    <Compile Include="Auto\InfoType.cs" />
     <Compile Include="Auto\Link.cs" />
+    <Compile Include="Auto\MovieInfo.cs" />
+    <Compile Include="Auto\MovieUrl.cs" />
     <Compile Include="Auto\News.cs" />
     <Compile Include="Auto\Question.cs" />
     <Compile Include="Auto\Relpy.cs" />
