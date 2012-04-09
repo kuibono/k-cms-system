@@ -76,9 +76,15 @@
     <Compile Include="Auto\FileView.cs" />
     <Compile Include="Auto\GroupRoleView.cs" />
     <Compile Include="Auto\ImagesView.cs" />
+    <Compile Include="Auto\InfoImageView.cs" />
+    <Compile Include="Auto\InfoTypeView.cs" />
+    <Compile Include="Auto\InfoView.cs" />
     <Compile Include="Auto\LinkView.cs" />
+    <Compile Include="Auto\MovieInfoView.cs" />
+    <Compile Include="Auto\MovieUrlView.cs" />
     <Compile Include="Auto\NewsView.cs" />
     <Compile Include="Auto\QuestionView.cs" />
+    <Compile Include="Auto\RelpyView.cs" />
     <Compile Include="Auto\SysDepartmentView.cs" />
     <Compile Include="Auto\SysGroupView.cs" />
     <Compile Include="Auto\SysKeywordView.cs" />
