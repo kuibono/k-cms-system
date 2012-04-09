@@ -14,511 +14,261 @@ SET IDENTITY_INSERT [UserGroup] ON ;
 
 
 SET IDENTITY_INSERT [UserForm] ON ;
- insert into [UserForm]([ID],[FormName],[Content]) values(N'1',N'学生注册',N'                           <table cellspacing="1" class="style1">
-
-                                <tr>
-
-
-
-                                    <td width="100" align="right">
-
-
-
-                                        学&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="studentno" class="req" id="stuno" type="text"/>&nbsp;*
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-
-
-                                    <td width="100" align="right">
-
-
-
-                                        中&nbsp;文&nbsp;名 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="tel" id="tel" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="mobile" id="mobile" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电子信箱 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="email" id="email" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        QQ&nbsp;号&nbsp;码</td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="qq" id="qq" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        个人简介</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                            </table>
-
+ insert into [UserForm]([ID],[FormName],[Content]) values(N'1',N'学生注册',N'                           <table cellspacing="1" class="style1">
+                                <tr>
+
+                                    <td width="100" align="right">
+
+                                        学&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
+
+                                    <td>
+
+                                        <input name="studentno" class="req" id="stuno" type="text"/>&nbsp;*
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td width="100" align="right">
+
+                                        中&nbsp;文&nbsp;名 </td>
+
+                                    <td>
+
+                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
+
+                                    <td>
+
+                                        <input name="tel" id="tel" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
+
+                                    <td>
+
+                                        <input name="mobile" id="mobile" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        电子信箱 </td>
+
+                                    <td>
+
+                                        <input name="email" id="email" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        QQ&nbsp;号&nbsp;码</td>
+
+                                    <td>
+
+                                        <input name="qq" id="qq" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
+
+                                    <td>
+
+                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
+
+                                    <td>
+                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        个人简介</td>
+
+                                    <td>
+                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
 ')
  SET IDENTITY_INSERT [UserForm] OFF ;
 
 
 SET IDENTITY_INSERT [UserForm] ON ;
- insert into [UserForm]([ID],[FormName],[Content]) values(N'2',N'教师注册',N'                           <table cellspacing="1" class="style1">
-
-                                <tr>
-
-
-
-                                    <td width="100" align="right">
-
-
-
-                                        工&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="tecno" class="req" id="teachno" type="text"/>&nbsp;*
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-
-
-                                    <td width="100" align="right">
-
-
-
-                                        中&nbsp;文&nbsp;名 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="tel" id="tel" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="mobile" id="mobile" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电子信箱 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="email" id="email" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        QQ&nbsp;号&nbsp;码</td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="qq" id="qq" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        个人简介</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                            </table>
-
+ insert into [UserForm]([ID],[FormName],[Content]) values(N'2',N'教师注册',N'                           <table cellspacing="1" class="style1">
+                                <tr>
+
+                                    <td width="100" align="right">
+
+                                        工&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
+
+                                    <td>
+
+                                        <input name="tecno" class="req" id="teachno" type="text"/>&nbsp;*
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td width="100" align="right">
+
+                                        中&nbsp;文&nbsp;名 </td>
+
+                                    <td>
+
+                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
+
+                                    <td>
+
+                                        <input name="tel" id="tel" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
+
+                                    <td>
+
+                                        <input name="mobile" id="mobile" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        电子信箱 </td>
+
+                                    <td>
+
+                                        <input name="email" id="email" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        QQ&nbsp;号&nbsp;码</td>
+
+                                    <td>
+
+                                        <input name="qq" id="qq" type="text" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
+
+                                    <td>
+
+                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
+
+                                    <td>
+                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right">
+
+                                        个人简介</td>
+
+                                    <td>
+                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
+
+                                    </td>
+
+                                </tr>
+
+                            </table>
 ')
  SET IDENTITY_INSERT [UserForm] OFF ;
 
@@ -723,7 +473,7 @@ SET IDENTITY_INSERT [UserForm] ON ;
 
 
 SET IDENTITY_INSERT [User] ON ;
- insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values(N'1',N'lhg2005',N'e10adc3949ba59abbe56e057f20f883e',N'lhg2005@163.com,',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'11/19/2011 4:08:18 PM',N'::1',N'19',N'11/30/2011 2:36:33 PM',N'127.0.0.1',N'40',N'0',N'',N'',N'',N'',N'2',N'True',N'',N'')
+ insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values(N'1',N'lhg2005',N'e10adc3949ba59abbe56e057f20f883e',N'lhg2005@163.com,',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'2011/11/19 16:08:18',N'::1',N'19',N'2011/11/30 14:36:33',N'127.0.0.1',N'40',N'0',N'',N'',N'',N'',N'2',N'True',N'',N'')
  SET IDENTITY_INSERT [User] OFF ;
 
 
@@ -732,8 +482,8 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>[!--page.title--]-[!--sys.sitename--]</title>
-    <meta name="keywords" content="[!--page.keyword--]" />
-    <meta name="description" content="[!--page.description--]" />
+    <meta name="keywords" content="[!--page.keyword--] [!--sys.keywords--]" />
+    <meta name="description" content="[!--page.description--] [!--sys.description--]" />
     <meta name="update" content="[!--page.updatetime--]" />
     <link rel="stylesheet" type="text/css" href="/skin/novel/index.css" />
 </head>
@@ -744,7 +494,6 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
                 <img src="/skin/novel/logo.png" alt="爱造人小说阅读" border="0" /></a></div>
         <div class="nav">
             <div class="chongzhi">
-                <a href="/wap/book/">手机站</a> |
                 <a href="/wiki/" target="_blank">wiki</a>
             </div>
         </div>
@@ -768,7 +517,7 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
             <input class="searchBtn mr10" name="searchBtn" id="searchBtn" type="submit" value="搜索" />
             </form>
             <div class="hotSearch">
-                <strong>热门搜索：</strong> [getsearchkey]7,4[/getsearchkey]
+                <strong>热门搜索：</strong> [getsearchkey]10,4[/getsearchkey]
             </div>
         </div>
         <span class="searchRight"></span>
@@ -798,7 +547,7 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
                     本周强推</h3>
             </div>
             <ul class="qiangtuiList">
-            [getnovellist]id>0 order by TjCount desc,18,12,,0[/getnovellist]
+            [getnovellist]id>0 order by TjCount desc,10,12,,0[/getnovellist]
             </ul>
         </div>
         <div class="firstRight">
@@ -836,10 +585,10 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
         <div class="articleBox">
             <div class="articleBar">
                 <h3>
-                    <a href="/Book/都市/">都市·异能</a></h3>
+                    <a href="#">都市·异能</a></h3>
             </div>
             <div class="articleBody">
-               [getclassnews]50,12[/getclassnews]
+               [getclassnews]6,12[/getclassnews]
             </div>
         </div>
         <div class="top10">
@@ -861,10 +610,10 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
         <div class="articleBox">
             <div class="articleBar">
                 <h3>
-                    <a href="/Book/历史/">历史·穿越</a></h3>
+                    <a href="#">女生·言情</a></h3>
             </div>
             <div class="articleBody">
-                [getclassnews]53,12[/getclassnews]
+                [getclassnews]11,12[/getclassnews]
             </div>
         </div>
         <div class="top10">
@@ -881,31 +630,6 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
     </div>
     <!--  3 End -->
     
-    <!--  4 Start -->
-    <div class="warp980 mt10">
-        <div class="articleBox">
-            <div class="articleBar">
-                <h3>
-                    <a href="/Book/玄幻/">玄幻·异界</a></h3>
-            </div>
-            <div class="articleBody">
-                [getclassnews]55,12[/getclassnews]
-            </div>
-        </div>
-        <div class="top10">
-            <div class="top10Title">
-                <h3>
-                    最新上架</h3>
-            </div>
-            <div class="top10Body" id="Div1">
-                <ul class="items">
-                    [getnovellist]id >0 order by AddTime desc,11,10,first,1[/getnovellist]
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--  4 End -->
-    
     <!--  friendLink start -->
     <div class="friendLink mt10">
         <div class="title">
@@ -921,9 +645,10 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
 ',N'',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>[!--search.key--]-[!--sys.sitename--]</title>
-    <meta name="keywords" content="[!--search.key--]" />
-    <meta name="description" content="[!--search.key--],关于[!--search.key--]的小说推荐" />
+    <title>[!--sys.sitename--]</title>
+    <meta name="keywords" content="[!--page.keyword--] [!--sys.keywords--]" />
+    <meta name="description" content="[!--page.description--] [!--sys.description--]" />
+    <meta name="update" content="[!--page.updatetime--]" />
     <link rel="stylesheet" type="text/css" href="/skin/novel/index.css" />
     <link rel="stylesheet" type="text/css" href="/skin/novel/search.css" />
 </head>
@@ -933,10 +658,17 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
             <a href="/">
                 <img src="/skin/novel/logo.png" alt="爱造人小说阅读" border="0" /></a></div>
         <div class="nav">
+            <!--<a href="/" class="indexLink">首页</a>
+            <div class="navList">
+                <span class="navListLeft"></span>
+                <ul>
+                    <li><a href="/user">个人书屋</a></li>
+                </ul>
+                <span class="navListRight"></span>
+            </div>-->
             <div class="chongzhi">
-                <a href="/wap/book/">手机站</a> |
-                <a href="/wiki/" target="_blank">wiki</a>
-             </div>
+                <a href="/wapread/" target="_blank">手机阅读</a>|<a href="/pay" target="_blank">在线充值</a>|<a
+                    target="_blank" href="/user/goForum.aspx">论坛</a></div>
         </div>
     </div>
     <!--  subNav Start -->
@@ -1035,10 +767,10 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
          
     </div>
     <!--  chapterContentEnd -->
-    <script type="text/javascript" src="/e/tool/ChapterRead.aspx?cid= [!--chapter.id--]"></script>
    
 
-[!--temp.footer--]')
+[!--temp.footer--]
+')
  SET IDENTITY_INSERT [TemplatePublic] OFF ;
 
 
@@ -1283,7 +1015,7 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 
 
 SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'4',N'1',N'小说列表模版',N'4',N'50',N'50',N'30',N'MM-dd',N'[!--temp.header--]
+ insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'4',N'1',N'小说列表模版',N'4',N'50',N'50',N'10',N'yyyy-MM-dd',N'[!--temp.header--]
     <div class="friendLink mt10">
         <div class="friendBody">
             <a href="/">爱造人小说阅读</a>[!--newsnav--]
@@ -1726,14 +1458,12 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
             <a href="/">爱造人小说阅读</a>[!--newsnav--]>[!--book.title--]
         </div>
     </div>
+ 
+
    <div class="warp980 ohide mt10 mb10">
         <div class="warp735 fl">
             <div class="vipBookFirst">
                 <span class="vipflag" style="position: absolute; top: 0px; left: 0px; z-index: 999; display: block;"></span>
-            <div class="ablum">
-                <img alt="[!--book.title--]" src="[!--book.faceimage--]" onerror="noCover();" height="160" width="120"/>
-            </div>
-
                 <div class="text">
                     <div class="title ohide">
                         <h1 class="fYaHei">
@@ -1743,7 +1473,7 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
                     </div>
 
                     <div class="mt10">
-                        <a href="#bookdir" class="vipBtn_1 vipBtn_0">开始阅读本书</a> <a href="/e/BookDown.aspx?id=[!--book.id--]" class="vipBtn_4 vipBtn_0">电子书下载</a>
+                        <a href="#chapterlist" class="vipBtn_1 vipBtn_0">开始阅读本书</a> <a href="#" class="vipBtn_4 vipBtn_0">电子书下载</a>
                     </div>
                 </div>
             </div>
@@ -1753,29 +1483,33 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
                     <li class="current" style="margin-left: 0;"><a href="#">本书相关</a><i></i></li>
                 </ul>
                 <div id="ckepop" class="fr mt5">
-                <!-- JiaThis Button BEGIN -->
-                <div id="ckepop">
-                	<span class="jiathis_txt">分享到：</span>
-                	<a class="jiathis_button_icons_1"></a>
-                	<a class="jiathis_button_icons_2"></a>
-                	<a class="jiathis_button_icons_3"></a>
-                	<a class="jiathis_button_icons_4"></a>
-                	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-                	<a class="jiathis_counter_style"></a>
+<!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_icons_1"></a>
+	<a class="jiathis_button_icons_2"></a>
+	<a class="jiathis_button_icons_3"></a>
+	<a class="jiathis_button_icons_4"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
                 </div>
-                <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
-                </div>
+
             </div>
 
             <div class="haopingdu" style="border-top: 0;">
+
                 <div class="haopingduLie">
+
                     <p>
                         <strong>作品分类：</strong><span class="blue2"><a href="[!--class.url--]">[!--class.name--]</a></span></p>
                     <p class="mt5">
                         <strong>完成字数：</strong><span class="blue2">[!--book.length--]</span></p>
                     <p class="mt5">
                         <strong>阅读次数：</strong><span class="blue2"><script type="text/javascript" src="/e/Tool/click.aspx?m=4&id=[!--book.id--]"></script></span></p>
+
                 </div>
 
                 <div class="haopingduLie">
@@ -1783,12 +1517,13 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
                     <p class="mt5"> <strong>授权状态：</strong><span class="blue2">授权刊载</span></p>
                     <p class="mt5"> <strong>本周推荐：</strong><span class="blue2">5</span></p>
                 </div>
+
                 <div class="haopingduLie">
                     <p>
                         <strong>作品性质：</strong><span class="red b">签约作品</span></p>
                     <p class="mt5">
-                        <strong>更新时间：</strong><span class="red b">[!--book.updatetime--]</span></p>
-                    <p class="mt5"><strong>最新章节：</strong><span class="red b"><a href="[!--book.lastchapterurl--]">[!--book.lastchaptertitle--]</a></span></p>
+                        [!--book.updatetime--]</p>
+                    <p class="mt5"></p>
                 </div>
             </div>
 
@@ -1821,7 +1556,7 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
                 </div>
 
                 <ul class="tuijian_picList2 aboutbooks">
-                  [getnovellist]classid=[!--class.id--] order by clickcount desc,11,10,,0[/getnovellist]
+
                 </ul>
 
             </div>
@@ -1833,7 +1568,8 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
     <div class="warp980 mt10 mb10">
 
     </div>
-[!--temp.footer--]')
+[!--temp.footer--]
+')
  SET IDENTITY_INSERT [TemplateContent] OFF ;
 
 
@@ -1857,614 +1593,14 @@ SET IDENTITY_INSERT [SysModel] ON ;
  SET IDENTITY_INSERT [SysModel] OFF ;
 
 
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'136',N'很纯很暧昧',N'4',N'7')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
+SET IDENTITY_INSERT [SysModel] ON ;
+ insert into [SysModel]([ID],[ModelName],[TableName],[SonClass]) values(N'5',N'分类系统模型',N'Info',N'')
+ SET IDENTITY_INSERT [SysModel] OFF ;
 
 
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'137',N'权财',N'4',N'11')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'138',N'校花的贴身高手',N'4',N'14')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'139',N'美女凶猛',N'4',N'9')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'140',N'我当阴阳先生的那几年',N'4',N'4')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'141',N'吞噬星空',N'4',N'10')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'142',N'终极手机',N'4',N'3')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'143',N'数据修散',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'144',N'数据',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'145',N'另一种灿烂生活',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'146',N'疑云',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'147',N'数据散修',N'4',N'12')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'148',N'东北迷踪',N'4',N'6')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'149',N'东北',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'150',N'勿明',N'4',N'3')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'151',N'请输入关键字...',N'4',N'2')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'152',N'色情小说',N'4',N'3')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'153',N'做爱',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'154',N'大观山人',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'155',N'五志',N'4',N'2')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'156',N'尝谕',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'157',N'城北风',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'158',N'笑溪溪',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'159',N'奥比椰',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'160',N'浪子刀',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'161',N'黑色火种',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'162',N'魅影制造',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'163',N'独孤神狐',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'164',N'雷紫三弟',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'165',N'躁动的青春',N'4',N'2')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'166',N'豆子惹的祸',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'167',N'爱潜水的乌贼',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'168',N'无法理解生活',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'169',N'荆柯守',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'170',N'鏁版嵁鏁ｄ慨',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'171',N'鍚炲櫖鏄熺┖',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'172',N'缇庡コ鍑剁寷',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'173',N'鏉冭储',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'174',N'涓滃寳杩疯釜',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'175',N'寰愬緪鑻嶈摑',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'176',N'钃濇尝姘? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'177',N'鍩庡寳椋? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'178',N'鑽嗘煰瀹? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'179',N'鐖辨綔姘寸殑涔岃醇',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'180',N'绗戞邯婧? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'181',N'灏濊皶',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'182',N'浜斿織',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'183',N'韬佸姩鐨勯潚鏄? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'184',N'澶ц灞变汉',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'185',N'濂ユ瘮妞? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'186',N'娴瓙鍒€',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'187',N'榛戣壊鐏',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'188',N'榄呭奖鍒堕€? class=',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'189',N'鏃犳硶鐞嗚в鐢熸椿',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'190',N'仙鸿路',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'191',N'任怨',N'4',N'2')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'192',N'很纯很暧�',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'193',N'伏醉',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'194',N'观棋',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'195',N'齐橙',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'196',N'徐徐苍蓝',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'197',N'浪荡邪少',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'198',N'隔壁小王',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'199',N'',N'4',N'22')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'200',N'以身破戒',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'201',N'有时糊涂',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'202',N'蓝波水',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'203',N'面红耳赤',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'204',N'愤怒的香蕉',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'205',N'权倾一世',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'206',N'道食堂包子',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'207',N'都市相士',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'208',N'水浒',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'209',N'何常在',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'210',N'白马神',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'211',N'浪拍云',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'212',N'摇滚鸭',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'213',N'美人如狐',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'214',N'鱼人二代',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'215',N'玄一十四',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'216',N'贼眉鼠眼',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'217',N'机器人瓦力',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'218',N'醉爱咖啡猫',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'219',N'如果我是',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'220',N'斗罗大陆',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'221',N'神印',N'4',N'4')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'222',N'诡电脑',N'4',N'10')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'223',N'傲世',N'4',N'3')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'224',N'东北谜踪',N'4',N'8')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'225',N'我当鸟人的那几年',N'4',N'8')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'226',N'长生不死',N'4',N'5')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'227',N'我的老婆是军阀',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'228',N'庚新',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'229',N'天空之承',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'230',N'上山打老虎额',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'231',N'辰东',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'232',N'不是浮云',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'233',N'珺子',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'234',N'魅影制�',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'235',N'风凌天下',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'236',N'夜困',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'237',N'迷路的小猫',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'238',N'我当鸟人的那�',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'239',N'异界',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'240',N'个瓶子',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'241',N'瓶子',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'242',N'22风云20年',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'243',N'穿越',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'244',N'都市',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'245',N'22',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'246',N'蔡晋',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'247',N'晨光路西法',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'248',N'不信天上掉馅饼',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'249',N'贴身男医',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'250',N'唐家三少',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'251',N'悲催的巫师',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'252',N'都市百草王',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'253',N'大周皇族',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'254',N'泥螺',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'255',N'红肠发菜',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'256',N'一个人喝醉',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'257',N'西瓜四代',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
+SET IDENTITY_INSERT [SysModel] ON ;
+ insert into [SysModel]([ID],[ModelName],[TableName],[SonClass]) values(N'6',N'影视系统模型',N'MovieInfo',N'')
+ SET IDENTITY_INSERT [SysModel] OFF ;
 
 
 SET IDENTITY_INSERT [SysGroup] ON ;
@@ -2483,71 +1619,112 @@ SET IDENTITY_INSERT [SysDepartment] ON ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'20',N'wdcdn',N'http://www.wdcdn.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'1',N'自由导航',N'http://soso888.net',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'23',N'新浪博客',N'http://blog.sina.com.cn/aizrnet',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'2',N'新浪宽频',N'http://v.sina.com.cn',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'24',N'网易博客',N'http://blog.163.com/aizr_net/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'3',N'Google',N'http://www.google.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'25',N'部落格',N'http://cuihexie.blogspot.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'4',N'凤凰网',N'http://www.ifeng.com',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'26',N'友情链接交换中心',N'http://lian666.com',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'5',N'人人网',N'http://www.renren.com',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'27',N'搜狐博客',N'http://aizrnet.blog.sohu.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'6',N'当当网',N'http://www.dangdang.com',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'28',N'★自助链',N'http://je66.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'7',N'南京信息工程大学',N'http://www.nuist.edu.cn',N'-1')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'29',N'OK自助链',N'http://www.guilinok.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'8',N'起点',N'http://www.qidian.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'30',N'自动友情链接',N'/lian18.php',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'9',N'淘宝',N'http://www.taobao.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'31',N'1181网址大全',N'http://link.1181.com/go.asp?id=9257',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'10',N'CNN新闻',N'http://www.cnn.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'32',N'酷站大聚合',N'http://www.ad666.com/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'11',N'维基百科',N'http://www.wikipedia.org/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'33',N'网址中国',N'http://www.wzcn.cc/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'12',N'FaceBook',N'http://www.facebook.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'34',N'1525网址大全',N'http://www.1525.net/',N'0')
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'13',N'Twitter',N'http://www.twitter.com/',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'14',N'万卷书屋',N'http://www.wjsw.com/',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'15',N'新浪微博',N'http://www.weibo.cn/',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'16',N'腾讯网',N'http://www.qq.com/',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'17',N'PPTV',N'http://www.pptv.com/',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'18',N'大众点评网',N'http://www.dianping.com',N'0')
+ SET IDENTITY_INSERT [Link] OFF ;
+
+
+SET IDENTITY_INSERT [Link] ON ;
+ insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'19',N'Youtube',N'http://www.youtube.com/',N'0')
  SET IDENTITY_INSERT [Link] OFF ;
 
 
 SET IDENTITY_INSERT [BookVolume] ON ;
  insert into [BookVolume]([ID],[BookID],[booktitle],[booknclass]) values(N'1',N'1',N'校花的贴身高手',N'校花的贴身高手')
  SET IDENTITY_INSERT [BookVolume] OFF ;
+
+
+SET IDENTITY_INSERT [InfoType] ON ;
+ insert into [InfoType]([id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'房屋出租',N'',N'',N'',N'租金',N'室',N'厅',N'卫',N'楼层',N'共{0}层',N'面积{0} 平',N'',N'',N'',N'单位',N'立即入住',N'装修状况',N'入住时间',N'房屋类型',N'房屋朝向',N'区域',N'小区',N'房屋配置',N'出租方式',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
+ SET IDENTITY_INSERT [InfoType] OFF ;
+
+
+SET IDENTITY_INSERT [Info] ON ;
+ insert into [Info]([id],[InfoTypeID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[UserName],[UserID],[Contact],[ContactType],[Tel],[TelLocation],[Address],[Intro],[ImageCount],[ReplyCount],[ClickCount],[IsSetTop],[OutTime],[PostTime],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'1',N'',N'',N'',N'',N'经典生活4号楼跃层',N'',N'1',N'高晓乐',N'经纪人',N'13591101345',N'大连',N'中山区长江路',N'经典生活4号楼大跃层一室一厅  独立厨房 有煤气',N'1',N'0',N'0',N'False',N'2012/4/29 20:54:46',N'2012/4/9 20:54:55',N'2500',N'1',N'1',N'1',N'4',N'6',N'75',N'',N'',N'',N'元/月',N'入住',N'精装修',N'立即入住',N'商住两用',N'坐北朝南',N'中山 民主广场',N'经典生活一期',N'床 空调 冰箱 洗衣机 电视 宽带 管道煤气 热水器',N'整套出租',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
+ SET IDENTITY_INSERT [Info] OFF ;
+
 
