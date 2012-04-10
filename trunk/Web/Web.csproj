@@ -85,6 +85,7 @@
     <Content Include="e\admin\Book\BookEdit.aspx" />
     <Content Include="e\admin\Default.aspx" />
     <Content Include="e\admin\Info\InfoEdit.aspx" />
+    <Content Include="e\admin\Info\InfoList.aspx" />
     <Content Include="e\admin\Info\InfoTypeEdit.aspx" />
     <Content Include="e\admin\Info\InfoTypeList.aspx" />
     <Content Include="e\admin\Login.aspx" />
@@ -527,6 +528,13 @@
     </Compile>
     <Compile Include="e\admin\Info\InfoEdit.aspx.designer.cs">
       <DependentUpon>InfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoList.aspx.cs">
+      <DependentUpon>InfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoList.aspx.designer.cs">
+      <DependentUpon>InfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Info\InfoTypeEdit.aspx.cs">
       <DependentUpon>InfoTypeEdit.aspx</DependentUpon>
