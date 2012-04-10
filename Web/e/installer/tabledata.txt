@@ -473,7 +473,7 @@ SET IDENTITY_INSERT [UserForm] ON ;
 
 
 SET IDENTITY_INSERT [User] ON ;
- insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values(N'1',N'lhg2005',N'e10adc3949ba59abbe56e057f20f883e',N'lhg2005@163.com,',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'2011/11/19 16:08:18',N'::1',N'19',N'2011/11/30 14:36:33',N'127.0.0.1',N'40',N'0',N'',N'',N'',N'',N'2',N'True',N'',N'')
+ insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values(N'1',N'lhg2005',N'e10adc3949ba59abbe56e057f20f883e',N'lhg2005@163.com,',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'2011-11-19 16:08:18',N'::1',N'19',N'2011-11-30 14:36:33',N'127.0.0.1',N'40',N'0',N'',N'',N'',N'',N'2',N'True',N'',N'')
  SET IDENTITY_INSERT [User] OFF ;
 
 
@@ -1719,12 +1719,205 @@ SET IDENTITY_INSERT [BookVolume] ON ;
 
 
 SET IDENTITY_INSERT [InfoType] ON ;
- insert into [InfoType]([id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'房屋出租',N'',N'',N'',N'租金',N'室',N'厅',N'卫',N'楼层',N'共{0}层',N'面积{0} 平',N'',N'',N'',N'单位',N'立即入住',N'装修状况',N'入住时间',N'房屋类型',N'房屋朝向',N'区域',N'小区',N'房屋配置',N'出租方式',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
+ insert into [InfoType]([id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'房屋出租',N'',N'',N'<script type="text/javascript">
+$(function(){
+	$("[name=''nvarchar3'']").val(json["Nvarchar3"]);
+	$("[name=''nvarchar5'']").val(json["Nvarchar5"]);
+	$("[name=''nvarchar6'']").val(json["Nvarchar6"]);
+	$("[name=''nvarchar10'']").val(json["Nvarchar10"]);
+	$("[name=''nvarchar11'']").val(json["Nvarchar11"]);
+        $("[name=''nvarchar9'']").each(function(){
+          if(json["Nvarchar9"].indexOf($(this).val())>-1){ $(this).attr("checked","checked") }
+        })
+        if(json["ContactType"]=="中介"){ $("#contacttype").attr("checked","checked") }
+
+})
+</script>
+        <div class="tip">
+            分类信息的编辑和修改</div>
+        <table border="1" cellpadding="0" cellspacing="0" class="edit">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        分类信息编辑
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="163">
+                        出租方式
+                    </td>
+                    <td>
+                        <select name="nvarchar10" class="validate[required]" >
+                           <option>整套出租</option>
+                           <option>单间出租</option>
+                           <option>床位</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="163" class="validate[required]" >
+                        标题
+                    </td>
+                    <td>
+                        <input type="text" value="{title}" name="title">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="163">
+                        所在小区
+                    </td>
+                    <td>
+                        区域：<input type="text" value="{nvarchar7}" name="nvarchar7" class="validate[required]" >
+                        商圈：<input type="text" value="{nvarchar12}" name="nvarchar12" class="validate[required]" >
+                        小区：<input type="text" value="{nvarchar8}" name="nvarchar8" class="validate[required]" >
+                    </td>
+                </tr>
+                <tr>
+                    <td width="163">
+                       地址
+                    </td>
+                    <td>
+                        <input type="text" value="{address}" name="address" class="validate[required]" style="width:250px;" />
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       户型
+                    </td>
+                    <td>
+                        <input type="text" value="{num2}" name="num2" class="validate[required,custom[integer]]" style="width:30px;">室
+                       <input type="text" value="{num3}" name="num3"  class="validate[required,custom[integer]]"  style="width:30px;">厅
+                       <input type="text" value="{num4}" name="num4"  class="validate[required,custom[integer]]"  style="width:30px;">卫
+                        <select name="nvarchar3" class="validate[required]" >
+                           <option value="">装修状况</option>
+                           <option value="毛坯">毛坯</option>
+                           <option value="简单装修">简单装修</option>
+                           <option value="中等装修">中等装修</option>
+                           <option value="精装修">精装修</option>
+                           <option value="豪华装修">豪华装修</option>
+                        </select>
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       楼层
+                    </td>
+                    <td>
+                        <input type="text" value="{num5}" name="num5" class="validate[required,custom[integer]]"  style="width:30px;" />层，
+                       共<input type="text" value="{num6}" name="num6"  class="validate[required,custom[integer]]"  style="width:30px;" />层
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       租金
+                    </td>
+                    <td>
+                        <input type="text" value="{num1}" name="num1" >元/月 
+
+                        <select name="nvarchar11">
+                           <option value="">押金方式</option>
+                           <option value="面议">面议</option>
+                           <option value="押一付三">押一付三</option>
+                           <option value="押一付一">押一付一</option>
+                           <option value="押二付一">押二付一</option>
+                           <option value="半年付">半年付</option>
+                           <option value="年付">年付</option>
+                        </select>
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       入住时间
+                    </td>
+                    <td>
+                        <input type="text" value="{nvarchar4}" name="nvarchar4">
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       房屋状况
+                    </td>
+                    <td>
+                        <select name="nvarchar5">
+                           <option value="普通住宅">普通住宅</option>
+                           <option value="商住两用">商住两用</option>
+                           <option value="公寓">公寓</option>
+                           <option value="别墅">别墅</option>
+                           <option value="其他">其他</option>
+                        </select>
+                         朝向： 
+                        <select name="nvarchar6">
+                           <option value="东">东</option>
+                           <option value="南">南</option>
+                           <option value="西">西</option>
+                           <option value="北">北</option>
+                           <option value="东南">东南</option>
+                           <option value="西南">西南</option>
+                           <option value="东北">东北</option>
+                           <option value="西北">西北</option>
+                        </select>
+                        面积：
+                        <input type="text" value="{num7}" name="num7" style="width:40px;"/>平米
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       房屋配置
+                    </td>
+                    <td>
+                        <input type="checkbox" value="床" name="nvarchar9" id="nvarchar9_1" /><label for="nvarchar9_1">床</label>
+                        <input type="checkbox" value="热水器" name="nvarchar9" id="nvarchar9_2" /><label for="nvarchar9_2">热水器</label>
+                        <input type="checkbox" value="空调" name="nvarchar9" id="nvarchar9_3" /><label for="nvarchar9_3">空调</label>
+                        <input type="checkbox" value="洗衣机" name="nvarchar9" id="nvarchar9_4" /><label for="nvarchar9_4">洗衣机</label>
+                        <input type="checkbox" value="冰箱" name="nvarchar9" id="nvarchar9_5" /><label for="nvarchar9_5">冰箱</label>
+                        <input type="checkbox" value="电视机" name="nvarchar9" id="nvarchar9_6" /><label for="nvarchar9_6">电视机</label>
+                        <input type="checkbox" value="宽带" name="nvarchar9" id="nvarchar9_7" /><label for="nvarchar9_7">宽带</label>
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       补充说明
+                    </td>
+                    <td>
+                        <textarea name="intro" style="width:300px;">{intro}</textarea>
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       电话
+                    </td>
+                    <td>
+                        <input type="text" value="{tel}" name="tel" class="validate[required,custom[phone]]"/>
+                    </td>
+                </tr>
+               <tr>
+                    <td width="163">
+                       联系人
+                    </td>
+                    <td>
+                        <input type="contact" value="{contact}" name="contact" class="validate[required]"/> 
+                        <input type="checkbox" value="中介" name="contacttype" id="contacttype" /><label for="contacttype">中介</label>
+
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" ID="btn_Save" value="保存" name="submit" />
+                        &nbsp;
+                        <input type="button" value="取消" onclick="history.go(-1)" />
+                    </th>
+                </tr>
+            </tfoot>
+        </table>',N'',N'',N'租金',N'室',N'厅',N'卫',N'楼层',N'共层',N'面积',N'',N'',N'',N'单位',N'立即入住',N'装修状况',N'入住时间',N'房屋类型',N'房屋朝向',N'区域',N'小区',N'房屋配置',N'出租方式',N'押金方式',N'商圈',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
  SET IDENTITY_INSERT [InfoType] OFF ;
 
 
 SET IDENTITY_INSERT [Info] ON ;
- insert into [Info]([id],[InfoTypeID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[UserName],[UserID],[Contact],[ContactType],[Tel],[TelLocation],[Address],[Intro],[ImageCount],[ReplyCount],[ClickCount],[IsSetTop],[OutTime],[PostTime],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'1',N'',N'',N'',N'',N'经典生活4号楼跃层',N'',N'1',N'高晓乐',N'经纪人',N'13591101345',N'大连',N'中山区长江路',N'经典生活4号楼大跃层一室一厅  独立厨房 有煤气',N'1',N'0',N'0',N'False',N'2012/4/29 20:54:46',N'2012/4/9 20:54:55',N'2500',N'1',N'1',N'1',N'4',N'6',N'75',N'',N'',N'',N'元/月',N'入住',N'精装修',N'立即入住',N'商住两用',N'坐北朝南',N'中山 民主广场',N'经典生活一期',N'床 空调 冰箱 洗衣机 电视 宽带 管道煤气 热水器',N'整套出租',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
+ insert into [Info]([id],[InfoTypeID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[UserName],[UserID],[Contact],[ContactType],[Tel],[TelLocation],[Address],[Intro],[ImageCount],[ReplyCount],[ClickCount],[IsSetTop],[OutTime],[PostTime],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'5',N'1',N'1',N'大连房屋出租',N'0',N'',N'兴工街大户型',N'',N'-2147483648',N'刘林',N'中介',N'13813009317',N'',N'信工街西安路2号',N'不接受美元日元',N'0',N'0',N'0',N'False',N'2000-1-1 0:00:00',N'2000-1-1 0:00:00',N'2000',N'3',N'1',N'1',N'4',N'6',N'90',N'0',N'0',N'0',N'',N'',N'豪华装修',N'随时入住',N'别墅',N'南',N'沙河口区',N'罗斯福',N'床,热水器,空调',N'整套出租',N'押一付三',N'兴工街',N'',N'',N'',N'0.00',N'0.00',N'0.00',N'0.00',N'0.00',N'',N'',N'',N'',N'',N'False',N'False',N'False',N'False',N'False')
  SET IDENTITY_INSERT [Info] OFF ;
 
 
