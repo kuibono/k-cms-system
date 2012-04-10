@@ -10,7 +10,7 @@ using Voodoo.DAL;
 
 namespace Web.wap.Book
 {
-    public partial class B : System.Web.UI.Page
+    public partial class B : Voodoo.Basement.BasePage
     {
         public Voodoo.Model.Book b;
         public List<BookChapter> cs;

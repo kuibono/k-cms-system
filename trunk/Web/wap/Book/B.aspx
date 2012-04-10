@@ -60,5 +60,6 @@
         <br />
         <%= DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-dd HH:mm:ss") %> 
     </div>
+    <%=SystemSetting.CountCode %>
 </body>
 </html>

@@ -84,6 +84,9 @@
     <Content Include="Default.aspx" />
     <Content Include="e\admin\Book\BookEdit.aspx" />
     <Content Include="e\admin\Default.aspx" />
+    <Content Include="e\admin\Info\InfoEdit.aspx" />
+    <Content Include="e\admin\Info\InfoTypeEdit.aspx" />
+    <Content Include="e\admin\Info\InfoTypeList.aspx" />
     <Content Include="e\admin\Login.aspx" />
     <Content Include="e\admin\news\ClassEdit.aspx" />
     <Content Include="e\admin\news\ClassList.aspx" />
@@ -517,6 +520,27 @@
     </Compile>
     <Compile Include="e\admin\images\upload.aspx.designer.cs">
       <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoEdit.aspx.cs">
+      <DependentUpon>InfoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoEdit.aspx.designer.cs">
+      <DependentUpon>InfoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoTypeEdit.aspx.cs">
+      <DependentUpon>InfoTypeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoTypeEdit.aspx.designer.cs">
+      <DependentUpon>InfoTypeEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoTypeList.aspx.cs">
+      <DependentUpon>InfoTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Info\InfoTypeList.aspx.designer.cs">
+      <DependentUpon>InfoTypeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

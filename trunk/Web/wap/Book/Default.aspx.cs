@@ -13,7 +13,7 @@ namespace Web.wap.Book
 {
 
 
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : Voodoo.Basement.BasePage
     {
         protected List<BookChapter> ReadingChapters=new List<BookChapter>();
         protected void Page_Load(object sender, EventArgs e)

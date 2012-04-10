@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2012/4/9 20:37:00
+*生成时间：2012-4-10 14:28:34
 *生成者：Kuibono
 */
 using System;
@@ -52,6 +52,8 @@ namespace Voodoo.DAL
 				M.TypeName=dt.Rows[i]["TypeName"].ToString();
 				M.TemplateIndex=dt.Rows[i]["TemplateIndex"].ToString();
 				M.TemplateList=dt.Rows[i]["TemplateList"].ToString();
+				M.TemlateAdminForm=dt.Rows[i]["TemlateAdminForm"].ToString();
+				M.TemplateForm=dt.Rows[i]["TemplateForm"].ToString();
 				M.TemplateContent=dt.Rows[i]["TemplateContent"].ToString();
 				M.Num1=dt.Rows[i]["num1"].ToString();
 				M.Num2=dt.Rows[i]["num2"].ToString();
@@ -73,6 +75,11 @@ namespace Voodoo.DAL
 				M.Nvarchar8=dt.Rows[i]["nvarchar8"].ToString();
 				M.Nvarchar9=dt.Rows[i]["nvarchar9"].ToString();
 				M.Nvarchar10=dt.Rows[i]["nvarchar10"].ToString();
+				M.Nvarchar11=dt.Rows[i]["nvarchar11"].ToString();
+				M.Nvarchar12=dt.Rows[i]["nvarchar12"].ToString();
+				M.Nvarchar13=dt.Rows[i]["nvarchar13"].ToString();
+				M.Nvarchar14=dt.Rows[i]["nvarchar14"].ToString();
+				M.Nvarchar15=dt.Rows[i]["nvarchar15"].ToString();
 				M.Decimal1=dt.Rows[i]["decimal1"].ToString();
 				M.Decimal2=dt.Rows[i]["decimal2"].ToString();
 				M.Decimal3=dt.Rows[i]["decimal3"].ToString();
@@ -106,12 +113,16 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into [InfoType]([TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(");
+			sb.Append("insert into [InfoType]([TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(");
 			sb.Append("N'"+M.TypeName+"'");
 			sb.Append(",");	
 			sb.Append("N'"+M.TemplateIndex+"'");
 			sb.Append(",");	
 			sb.Append("N'"+M.TemplateList+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.TemlateAdminForm+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.TemplateForm+"'");
 			sb.Append(",");	
 			sb.Append("N'"+M.TemplateContent+"'");
 			sb.Append(",");	
@@ -154,6 +165,16 @@ namespace Voodoo.DAL
 			sb.Append("N'"+M.Nvarchar9+"'");
 			sb.Append(",");	
 			sb.Append("N'"+M.Nvarchar10+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.Nvarchar11+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.Nvarchar12+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.Nvarchar13+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.Nvarchar14+"'");
+			sb.Append(",");	
+			sb.Append("N'"+M.Nvarchar15+"'");
 			sb.Append(",");	
 			sb.Append("N'"+M.Decimal1+"'");
 			sb.Append(",");	
@@ -231,6 +252,10 @@ namespace Voodoo.DAL
 			sb.Append(",");
 			sb.Append("[TemplateList]=N'"+M.TemplateList+"'");
 			sb.Append(",");
+			sb.Append("[TemlateAdminForm]=N'"+M.TemlateAdminForm+"'");
+			sb.Append(",");
+			sb.Append("[TemplateForm]=N'"+M.TemplateForm+"'");
+			sb.Append(",");
 			sb.Append("[TemplateContent]=N'"+M.TemplateContent+"'");
 			sb.Append(",");
 			sb.Append("[num1]=N'"+M.Num1+"'");
@@ -272,6 +297,16 @@ namespace Voodoo.DAL
 			sb.Append("[nvarchar9]=N'"+M.Nvarchar9+"'");
 			sb.Append(",");
 			sb.Append("[nvarchar10]=N'"+M.Nvarchar10+"'");
+			sb.Append(",");
+			sb.Append("[nvarchar11]=N'"+M.Nvarchar11+"'");
+			sb.Append(",");
+			sb.Append("[nvarchar12]=N'"+M.Nvarchar12+"'");
+			sb.Append(",");
+			sb.Append("[nvarchar13]=N'"+M.Nvarchar13+"'");
+			sb.Append(",");
+			sb.Append("[nvarchar14]=N'"+M.Nvarchar14+"'");
+			sb.Append(",");
+			sb.Append("[nvarchar15]=N'"+M.Nvarchar15+"'");
 			sb.Append(",");
 			sb.Append("[decimal1]=N'"+M.Decimal1+"'");
 			sb.Append(",");
@@ -354,7 +389,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
 			InfoType M = new InfoType();
-			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where Id='" + id.ToString()+"'", true);
+			DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where Id='" + id.ToString()+"'", true);
 			if (!Rs.Read())
 			{
 					M.Id=0;
@@ -365,6 +400,8 @@ namespace Voodoo.DAL
 				M.TypeName=Rs["TypeName"].ToString();
 				M.TemplateIndex=Rs["TemplateIndex"].ToString();
 				M.TemplateList=Rs["TemplateList"].ToString();
+				M.TemlateAdminForm=Rs["TemlateAdminForm"].ToString();
+				M.TemplateForm=Rs["TemplateForm"].ToString();
 				M.TemplateContent=Rs["TemplateContent"].ToString();
 				M.Num1=Rs["num1"].ToString();
 				M.Num2=Rs["num2"].ToString();
@@ -386,6 +423,11 @@ namespace Voodoo.DAL
 				M.Nvarchar8=Rs["nvarchar8"].ToString();
 				M.Nvarchar9=Rs["nvarchar9"].ToString();
 				M.Nvarchar10=Rs["nvarchar10"].ToString();
+				M.Nvarchar11=Rs["nvarchar11"].ToString();
+				M.Nvarchar12=Rs["nvarchar12"].ToString();
+				M.Nvarchar13=Rs["nvarchar13"].ToString();
+				M.Nvarchar14=Rs["nvarchar14"].ToString();
+				M.Nvarchar15=Rs["nvarchar15"].ToString();
 				M.Decimal1=Rs["decimal1"].ToString();
 				M.Decimal2=Rs["decimal2"].ToString();
 				M.Decimal3=Rs["decimal3"].ToString();
@@ -419,7 +461,7 @@ namespace Voodoo.DAL
 		{
 			IDbHelper Sql = GetHelper();
             InfoType M = new InfoType();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where " + m_where, true);
 			if (!Rs.Read())
             {
 					M.Id=0;
@@ -430,6 +472,8 @@ namespace Voodoo.DAL
 				M.TypeName=Rs["TypeName"].ToString();
 				M.TemplateIndex=Rs["TemplateIndex"].ToString();
 				M.TemplateList=Rs["TemplateList"].ToString();
+				M.TemlateAdminForm=Rs["TemlateAdminForm"].ToString();
+				M.TemplateForm=Rs["TemplateForm"].ToString();
 				M.TemplateContent=Rs["TemplateContent"].ToString();
 				M.Num1=Rs["num1"].ToString();
 				M.Num2=Rs["num2"].ToString();
@@ -451,6 +495,11 @@ namespace Voodoo.DAL
 				M.Nvarchar8=Rs["nvarchar8"].ToString();
 				M.Nvarchar9=Rs["nvarchar9"].ToString();
 				M.Nvarchar10=Rs["nvarchar10"].ToString();
+				M.Nvarchar11=Rs["nvarchar11"].ToString();
+				M.Nvarchar12=Rs["nvarchar12"].ToString();
+				M.Nvarchar13=Rs["nvarchar13"].ToString();
+				M.Nvarchar14=Rs["nvarchar14"].ToString();
+				M.Nvarchar15=Rs["nvarchar15"].ToString();
 				M.Decimal1=Rs["decimal1"].ToString();
 				M.Decimal2=Rs["decimal2"].ToString();
 				M.Decimal3=Rs["decimal3"].ToString();
@@ -482,7 +531,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where)
 		{
 			IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where "+ m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where "+ m_where);
 		}
 		
 		/// <summary>
@@ -503,7 +552,7 @@ namespace Voodoo.DAL
 		public static DataTable getTable(string m_where,int top)
         {   
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [id],[TypeName],[TemplateIndex],[TemplateList],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where "+ m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top "+ top.ToString() +"  [id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5] from [InfoType] where "+ m_where);
             return dt;
         }
 		#endregion

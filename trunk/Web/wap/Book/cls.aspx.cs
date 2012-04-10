@@ -12,7 +12,7 @@ using Voodoo.DAL;
 
 namespace Web.wap.Book
 {
-    public partial class cls : System.Web.UI.Page
+    public partial class cls : Voodoo.Basement.BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
