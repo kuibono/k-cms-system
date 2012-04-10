@@ -95,5 +95,7 @@
             </div>
         </div>
     </div>
+    <%=SystemSetting.CountCode %>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码。
-*生成时间：2012/4/9 20:34:15
+*生成时间：2012-4-10 14:27:16
 *生成者：Kuibono
 */
 using System;
@@ -30,6 +30,16 @@ namespace Voodoo.Model
 		/// 
 		/// </summary>
 		public string TemplateList{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string TemlateAdminForm{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string TemplateForm{get ; set; }
 		
 		/// <summary>
 		/// 
@@ -135,6 +145,31 @@ namespace Voodoo.Model
 		/// 
 		/// </summary>
 		public string Nvarchar10{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Nvarchar11{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Nvarchar12{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Nvarchar13{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Nvarchar14{get ; set; }
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Nvarchar15{get ; set; }
 		
 		/// <summary>
 		/// 

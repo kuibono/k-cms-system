@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Web.wap.Book
 {
-    public partial class C : System.Web.UI.Page
+    public partial class C : Voodoo.Basement.BasePage
     {
         public Voodoo.Model.Book b;
         public BookChapter c;
