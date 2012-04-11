@@ -32,6 +32,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btn_CreateBook = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Tieba = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_sina
@@ -72,11 +73,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Tieba
+            // 
+            this.Tieba.Location = new System.Drawing.Point(294, 5);
+            this.Tieba.Name = "Tieba";
+            this.Tieba.Size = new System.Drawing.Size(75, 23);
+            this.Tieba.TabIndex = 12;
+            this.Tieba.Text = "贴吧";
+            this.Tieba.UseVisualStyleBackColor = true;
+            this.Tieba.Click += new System.EventHandler(this.Tieba_Click);
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 420);
+            this.Controls.Add(this.Tieba);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_CreateBook);
             this.Controls.Add(this.richTextBox1);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btn_CreateBook;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Tieba;
     }
 }

@@ -155,6 +155,10 @@ namespace Web.e.api
         protected void SearchBook(string Title, string Author, string Intro)
         {
             var books = BookView.GetModelList(string.Format("Title like N'%{0}%' and Author like N'%{1}%' and Intro like N'%{2}%'", Title, Author, Intro));
+            foreach (var book in books)
+            {
+                book.Intro = "";
+            }
             Response.Clear();
             Response.Write(XML.Serialize(books));
         }
@@ -675,7 +679,7 @@ namespace Web.e.api
 
 
         /////////////////////////////////////////////////////////////////
-        ///
+        ///                                                           
         ///  分类系统API
         ///
         /////////////////////////////////////////////////////////////////
