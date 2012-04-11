@@ -31,74 +31,7 @@ namespace KCMDCollector
 
         private void btn_sina_Click(object sender, EventArgs e)
         {
-            ////首先获取用户字符串和服务器时间
-
-            //string Pass = "Admin@123";
-            //string user = "bigcuibing@tom.com";
-
-            //string u1 = "http://login.sina.com.cn/sso/prelogin.php?entry=miniblog&callback=sinaSSOController.preloginCallBack&user=" + user + "&client=ssologin.js(v1.3.12)";
-            //string h1 = Voodoo.Net.Url.GetHtml(u1).Replace("sinaSSOController.preloginCallBack(", "").Replace(")", "");
-            //string sina_retcode = h1.FindString("\"retcode\":(?<key>.*?),");
-            //string sina_servertime = h1.FindString("\"servertime\":(?<key>.*?),");
-            //string sina_pcid = h1.FindString("\"pcid\":\"(?<key>.*?)\",");
-            //string sina_nonce = h1.FindString("\"nonce\":\"(?<key>.*?)\"");
-
-            ////开始wsse加密
-            //string p1 = Voodoo.Security.Encrypt.SHA1(Pass);
-            //p1 = Voodoo.Security.Encrypt.SHA1(p1);
-            //p1 = Voodoo.Security.Encrypt.SHA1(p1 + sina_servertime + sina_nonce);
-
-            ////准备登陆
-            //string loginUrl = "http://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.3.12)";
-            //NameValueCollection nv = new NameValueCollection();
-
-            //nv.Add("service", "miniblog");
-            //nv.Add("client", "ssologin.js%28v1.3.12%29");
-            //nv.Add("entry", "miniblog");
-            //nv.Add("encoding", "utf-8");
-            //nv.Add("gateway", "1");
-            //nv.Add("savestate", "0");
-            //nv.Add("useticket", "1");
-            //nv.Add("username", user);
-            //nv.Add("servertime", sina_servertime);
-            //nv.Add("nonce", sina_nonce);
-            //nv.Add("pwencode", "wsse");
-            //nv.Add("password", p1);
-            //nv.Add("url", "http://www.aizr.net/");
-            //nv.Add("returntype", "META");
-            //nv.Add("ssosimplelogin", "1");
-            //string U2 = "http://login.sina.com.cn/sso/login.php?entry=miniblog&gateway=1&from=referer%3Awww_index&savestate=0&useticket=0&su="+ user.ToEnBase64() +"&service=sso&servertime="+sina_servertime+"&nonce="+sina_nonce+"&pwencode=wsse&sp="+p1+"&encoding=UTF-8&callback=sinaSSOController.loginCallBack&cdult=3&domain=sina.com.cn&returntype=TEXT&client=ssologin.js(v1.3.19)&_="+myDateTime.GetUnixTime();
-            //string pars = "service:miniblog&client:ssologin.js%28v1.3.12%29&entry:miniblog&encoding:utf-8&gateway:1&savestate:0&useticket:1&username:" + user + "&servertime:" + sina_servertime + "&nonce:" + sina_nonce + "&pwencode:wsse&password:" + p1 + "&url:http&//www.aizr.net/&returntype:META&ssosimplelogin:1";
-            ////开始登陆
-
-            //var result = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
-            //    //loginUrl + "&" + pars,
-            //    U2,
-            //    Encoding.GetEncoding("gbk"),
-            //    new System.Net.CookieContainer(),
-            //    "http://www.sina.com.cn");
-
-            ////打开页面表单
-            //var form = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
-            //    "http://control.blog.sina.com.cn/admin/article/article_add.php",
-            //    Encoding.UTF8,
-            //    result.cookieContainer,
-            //    "http://www.sina.com.cn"
-            //    );
-
-
-            //NameValueCollection aha = form.Html.SerializeForm("#editorForm");
-            //aha["blog_body"] = "博文内容博文内容博文内容博文内容博文内容博文内容";
-            //aha["blog_title"] = "测试标题";
-            //aha["blog_class"] = "1";
-            //aha["stag"] = "标签";
-
-
-            //var rPost = Voodoo.Net.Url.PostGetCookieAndHtml(aha,
-            //    "http://control.blog.sina.com.cn/admin/article/article_post.php",
-            //    Encoding.UTF8,
-            //    result.cookieContainer,
-            //    "http://control.blog.sina.com.cn/admin/article/article_add.php");
+            
 
             Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123", "http://blog.sina.com.cn/aizrnet/");
             s.Login();
@@ -115,31 +48,7 @@ namespace KCMDCollector
 
         private void btn_Baidu_Click(object sender, EventArgs e)
         {
-            //string url = "http://passport.sohu.com/sso/login.jsp?userid=kuibono%40sohu.com&password=2c8377f4a96899410636090ec1e699fe&appid=9999&persistentcookie=1&isSLogin=1&s=" + myDateTime.GetUnixTimestamp() + "&b=6&w=1280&pwdtype=1&v=26";
-
-            //var Result = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
-            //    url,
-            //    Encoding.GetEncoding("GBK"),
-            //    new System.Net.CookieContainer()
-            //    );
-
-
-
-            //NameValueCollection nv = new NameValueCollection();
-            //nv.Add("allowComment", "0");
-            //nv.Add("categoryId", "");
-            //nv.Add("content", "博客内容博客内容测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试");
-            //nv.Add("keywords", "关键词");
-            //nv.Add("oper", "art_ok");
-            //nv.Add("title", "测试标题");
-            //nv.Add("vcode", "");
-            //nv.Add("vcodeEn", "");
-
-            //var r2 = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
-            //    "http://i.sohu.com/a/blog/home/entry/save.htm?_input_encode=UTF-8&_output_encode=UTF-8",
-            //    Encoding.UTF8,
-            //    Result.cookieContainer,
-            //    "");
+           
             Voodoo.Net.BlogHelper.Sohu s = new Voodoo.Net.BlogHelper.Sohu("kuibono@sohu.com", "4264269");
             s.Login();
             s.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
@@ -151,45 +60,7 @@ namespace KCMDCollector
 
         private void btn_Neasy_Click(object sender, EventArgs e)
         {
-            //登陆
-
-            //NameValueCollection nv = new NameValueCollection();
-            //nv.Add("password", "4264269");
-            //nv.Add("product", "163");
-            //nv.Add("selected", "");
-            //nv.Add("type", "1");
-            //nv.Add("ursname", "");
-            //nv.Add("username", "kuibono@163.com");
-
-            //string loginUrl = "https://reg.163.com/logins.jsp";
-
-            //var lResult = Voodoo.Net.Url.PostGetCookieAndHtml(nv,
-            //    loginUrl,
-            //    Encoding.UTF8,
-            //    new System.Net.CookieContainer(),
-            //    "http://www.163.com/"
-            //    );
-
-            ////打开表单
-
-            //var fResult = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
-            //    "http://kuibono.blog.163.com/blog/getBlog.do?&username=kuibono@163.com&myMailInfoWrite&fromblogurs",
-            //    Encoding.UTF8,
-            //    lResult.cookieContainer,
-            //    "http://www.163.com/");
-
-            //NameValueCollection aha = fResult.Html.SerializeForm(".ztag");
-            //aha["HEContent"] = "内容内容内容内容内容内容内容";
-            //aha["tag"] = "标签";
-            //aha["title"] = "标题";
-
-            ////发布
-            //var pResult = Voodoo.Net.Url.PostGetCookieAndHtml(aha,
-            //    "http://api.blog.163.com/kuibono/editBlogNew.do?p=1&n=1",
-            //    Encoding.UTF8,
-            //    lResult.cookieContainer,
-            //    "http://kuibono.blog.163.com/blog/getBlog.do?&username=kuibono@163.com&myMailInfoWrite&fromblogurs");
-
+            
             Voodoo.Net.BlogHelper.Neasy n = new Voodoo.Net.BlogHelper.Neasy("aizrnet@163.com", "Admin@123");
             n.Login();
             n.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
@@ -287,13 +158,7 @@ namespace KCMDCollector
 
             var fResult = lResult.Click("<a class=\"submenuNewPost\" href=\"(?<key>.*?)\">写新日志</a>", Encoding.UTF8);
 
-            //var fResult = Voodoo.Net.Url.PostGetCookieAndHtml(new NameValueCollection(),
-            //    "http://blog.home.blogbus.com/posts/form",
-            //    Encoding.UTF8,
-            //    lResult.cookieContainer,
-            //    "http://www.blogbus.com",
-            //    false
-            //    );
+
             string action = fResult.Html.FindString("<form method=\"post\" action=\"(?<key>.*?)\" name=\"EditorForm\">").AppendToDomain("http://blog.home.blogbus.com/");
 
             var aha = fResult.Html.SerializeForm("@EditorForm");
@@ -353,41 +218,13 @@ namespace KCMDCollector
         private void Tieba_Click(object sender, EventArgs e)
         {
             testc();
-            //string html = Voodoo.Net.Url.GetHtml("http://tieba.baidu.com/p/1505650949", "gbk");
-            //Match m = html.GetMatchGroup("<p id=\"post_content_.*?\" class=\"d_post_content\">(?<key>[\\s\\S]*?)</div>");
-
-            //string result = "";
-            //while (m.Success)
-            //{
-            //    string v=m.Groups["key"].Value;
-            //    if (v.Length < 300)
-            //    {
-            //        m = m.NextMatch();
-            //        continue;
-            //    }
-            //    if (v.Contains("<img") || v.Contains("div>"))
-            //    {
-            //        m = m.NextMatch();
-            //        continue;
-            //    }
-            //    if (v.ToLower().CountString("<br") + v.ToLower().CountString("<p") < 3)
-            //    {
-            //        m = m.NextMatch();
-            //        continue;
-            //    }
-
-            //    result += v;
-
-            //    m = m.NextMatch();
-            //}
-
-            //richTextBox1.Text = result;
+           
         }
 
         protected void  testc()
         {
             Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
-            var books = bh.SearchBook("", "", "");
+            var books = bh.SearchBook("很纯很暧昧", "", "");
             foreach (var book in books)
             {
                 var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节
@@ -428,7 +265,8 @@ namespace KCMDCollector
         /// <returns>地址</returns>
         protected string SearchChapterFromTieba(string Title)
         {
-            if (!Regex.IsMatch(Title, "第[1234567890一二三四五六七八九〇零十千百万两壹贰叁肆伍陆柒捌玖]*?章"))
+            //if (!Regex.IsMatch(Title, "第[1234567890一二三四五六七八九〇零十千百万两壹贰叁肆伍陆柒捌玖]*?章"))
+            if (!Regex.IsMatch(Title, ".*?第*?[1234567890一二三四五六七八九〇零十千百万两壹贰叁肆伍陆柒捌玖-]+?章*?[\\w]+?.+"))
             {
                 return "";
             }
@@ -527,6 +365,7 @@ namespace KCMDCollector
         }
         #endregion 
 
+        #region 标题标准化
         /// <summary>
         /// 标题标准化
         /// </summary>
@@ -540,5 +379,6 @@ namespace KCMDCollector
             Title=Regex.Replace(Title,"[`~@#$%^&*()_+:;'|><?,./]{1,}","");
             return Title;
         }
+        #endregion
     }
 }
