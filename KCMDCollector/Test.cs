@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using System.Collections.Specialized;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 
 using System.Threading;
 using Voodoo;
@@ -347,6 +348,197 @@ namespace KCMDCollector
 
 
 
+        }
+
+        private void Tieba_Click(object sender, EventArgs e)
+        {
+            testc();
+            //string html = Voodoo.Net.Url.GetHtml("http://tieba.baidu.com/p/1505650949", "gbk");
+            //Match m = html.GetMatchGroup("<p id=\"post_content_.*?\" class=\"d_post_content\">(?<key>[\\s\\S]*?)</div>");
+
+            //string result = "";
+            //while (m.Success)
+            //{
+            //    string v=m.Groups["key"].Value;
+            //    if (v.Length < 300)
+            //    {
+            //        m = m.NextMatch();
+            //        continue;
+            //    }
+            //    if (v.Contains("<img") || v.Contains("div>"))
+            //    {
+            //        m = m.NextMatch();
+            //        continue;
+            //    }
+            //    if (v.ToLower().CountString("<br") + v.ToLower().CountString("<p") < 3)
+            //    {
+            //        m = m.NextMatch();
+            //        continue;
+            //    }
+
+            //    result += v;
+
+            //    m = m.NextMatch();
+            //}
+
+            //richTextBox1.Text = result;
+        }
+
+        protected void  testc()
+        {
+            Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
+            var books = bh.SearchBook("", "", "");
+            foreach (var book in books)
+            {
+                var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节
+                if (chapters.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (var c in chapters)
+                {
+                    string url = SearchChapterFromTieba(book.Title+" "+c.Title);
+                    Thread.Sleep(1000);
+                    if (url.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    string content = GetContentFromTieba(url);
+                    Thread.Sleep(800);
+                    content = Filter(content);
+                    if (content.Length > 0)
+                    {
+
+                        bh.ChapterEdit(c.ID, c.Title, content, false);
+                    }
+                    
+                }
+                bh.CreateChapters(book.ID);
+                
+            }
+        }
+
+        #region 从贴吧按照标题搜索
+        /// <summary>
+        /// 从贴吧按照标题搜索
+        /// </summary>
+        /// <param name="Title">标题</param>
+        /// <returns>地址</returns>
+        protected string SearchChapterFromTieba(string Title)
+        {
+            if (!Regex.IsMatch(Title, "第[1234567890一二三四五六七八九〇零十千百万两壹贰叁肆伍陆柒捌玖]*?章"))
+            {
+                return "";
+            }
+
+            Title = StandardTitle(Title);
+
+            string str_EncodeTitle = Title.UrlEncode(Encoding.GetEncoding("gb2312"));
+            string str_url = string.Format("http://www.baidu.com/s?tn=baiduhome_pg&bs={0}&f=8&rsv_bp=1&rsv_spt=1&wd={0}+site%3Atieba.baidu.com&inputT=6519", str_EncodeTitle);
+
+            //string str_url = "http://tieba.baidu.com/f/search/res?ie=utf-8&qw=" + Title;
+            string html = Voodoo.Net.Url.GetHtml(str_url, "gbk");
+            List<Book.Chapter> cs = new List<Book.Chapter>();
+
+            
+            //Match m = html.GetMatchGroup("<span class=\"p_title\"><a href=\"(?<url>.*?)\" class=\"bluelink\" target=\"_blank\" >(?<title>.*?)</a></span>");
+            Match m = html.GetMatchGroup("<h3 class=\"t\"><a onmousedown=\".*?\" href=\"(?<url>.*?)\"target=\"_blank\">(?<title>.*?)</a>");
+            while (m.Success)
+            {
+                cs.Add(new Book.Chapter()
+                {
+                    Title=StandardTitle(m.Groups["title"].Value),
+                    Url=m.Groups["url"].Value.AppendToDomain(str_url)
+                });
+                m = m.NextMatch();
+            }
+
+            var chapter_NeedCollect = (from n in cs select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(Title) }).OrderByDescending(p => p.weight).ToList();
+
+            if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.25).ToDecimal())//相似度大于0.3的才进行采集
+            {
+                return Regex.Replace(chapter_NeedCollect.First().Url, "\\?pn=.*?", "");
+            }
+            return "";
+        }
+        #endregion 
+
+        #region 从贴吧获得内容
+        /// <summary>
+        /// 从贴吧获得内容
+        /// </summary>
+        /// <param name="Url"></param>
+        /// <returns></returns>
+        protected string GetContentFromTieba(string Url)
+        {
+            string html = Voodoo.Net.Url.GetHtml(Url, "gbk");
+            Match m = html.GetMatchGroup("<p id=\"post_content_.*?\" class=\"d_post_content\">(?<key>[\\s\\S]*?)</div>");
+
+            string result = "";
+            while (m.Success)
+            {
+                string v = m.Groups["key"].Value;
+                if (v.Length < 300)
+                {
+                    m = m.NextMatch();
+                    continue;
+                }
+                if (v.Contains("<img") || v.Contains("div>"))
+                {
+                    m = m.NextMatch();
+                    continue;
+                }
+                //总连载贴
+                if (v.Contains("总连载贴："))
+                {
+                    m = m.NextMatch();
+                    continue;
+                }
+                if (v.ToLower().CountString("<br") + v.ToLower().CountString("<p") < 3)
+                {
+                    m = m.NextMatch();
+                    continue;
+                }
+
+                result += v;
+
+                m = m.NextMatch();
+            }
+            return result;
+        }
+        #endregion
+
+        #region  过滤
+        /// <summary>
+        /// 过滤
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        protected string Filter(string content)
+        {
+            content = content.Replace("【启航】", "");
+            content = content.Replace("【更新组】", "");
+            content = content.Replace("【启航更新组】", "");
+            content = Regex.Replace(content, "【.*?更新.*?】", "");
+            content = Regex.Replace(content, "<a .*?</a>", "");
+            return content;
+        }
+        #endregion 
+
+        /// <summary>
+        /// 标题标准化
+        /// </summary>
+        /// <param name="Title"></param>
+        /// <returns></returns>
+        protected string StandardTitle(string Title)
+        {
+            Title = Regex.Replace(Title, "&.{2,10};", "");
+            Title = Regex.Replace(Title, "\\(.*?\\).*?", "");
+            Title = Regex.Replace(Title, "（.*?）.*", "");
+            Title=Regex.Replace(Title,"[`~@#$%^&*()_+:;'|><?,./]{1,}","");
+            return Title;
         }
     }
 }
