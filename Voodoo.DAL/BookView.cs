@@ -27,5 +27,21 @@ namespace Voodoo.DAL
         {
             return BookView.GetModelByID(bc.BookID.ToS());
         }
+
+        public static void SaveBookRoles(List<BookRole> roles)
+        {
+            foreach (var r in roles)
+            {
+                var newR = BookRoleView.Find(string.Format("RoleName='{0}' and BookID={1}", r.RoleName, r.BookID.ToS()));
+                if (newR.Id > 0)
+                {
+                    BookRoleView.Update(r);
+                }
+                else
+                {
+                    BookRoleView.Insert(r);
+                }
+            }
+        }
     }
 }
