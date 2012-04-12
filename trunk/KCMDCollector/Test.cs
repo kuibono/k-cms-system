@@ -224,7 +224,7 @@ namespace KCMDCollector
         protected void  testc()
         {
             Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
-            var books = bh.SearchBook("很纯很暧昧", "", "");
+            var books = bh.SearchBook("", "", "");
             foreach (var book in books)
             {
                 var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节

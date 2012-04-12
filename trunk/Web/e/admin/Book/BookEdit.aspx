@@ -84,6 +84,15 @@
                 </tr>
                 <tr>
                     <td width="163">
+                        人物</td>
+                    <td>
+                        
+                        <vd:VTextBox ID="txt_BookRole" runat="server" Height="100px" TextMode="MultiLine"></vd:VTextBox>每行一个
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td width="163">
                         字数</td>
                     <td>
                         

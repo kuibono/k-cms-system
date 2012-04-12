@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Text;
 using Voodoo;
 using Voodoo.Basement;
 using Voodoo.Model;
@@ -33,7 +33,7 @@ namespace Web.e.admin.Book
         {
             #region 数据绑定
 
-            var classes = NewsAction.NewsClass.Where(p => p.ModelID == 4&&p.IsLeafClass==true);
+            var classes = NewsAction.NewsClass.Where(p => p.ModelID == 4 && p.IsLeafClass == true);
             ddl_CLass.DataSource = classes;
             ddl_CLass.DataTextField = "ClassName";
             ddl_CLass.DataValueField = "id";
@@ -60,6 +60,15 @@ namespace Web.e.admin.Book
                 chk_IsFirstpost.Checked = book.IsFirstPost;
                 chk_Enable.Checked = book.Enable;
                 img_Bookface.ImageUrl = book.FaceImage;
+
+                List<BookRole> roles = BookRoleView.GetModelList(string.Format("BookID={0}", book.ID.ToS()));
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var role in roles)
+                {
+                    sb.AppendLine(role.RoleName);
+                }
+                txt_BookRole.Text = sb.ToS();
             }
 
 
@@ -91,7 +100,7 @@ namespace Web.e.admin.Book
             book.ZtID = 0;
             book.ZtName = "";
 
-            
+
 
             if (book.ID > 0)
             {
@@ -113,8 +122,22 @@ namespace Web.e.admin.Book
                 BookView.Update(book);
             }
 
+            //小说角色
+            string[] roles = txt_BookRole.Text.Trim().Split('\n');
+            List<BookRole> rs = new List<BookRole>();
+            foreach (string str in roles)
+            {
+                rs.Add(new BookRole()
+                {
+                    BookID = book.ID,
+                    RoleName = str.Trim(),
+                    Intro = ""
+                });
+            }
+            BookView.SaveBookRoles(rs);
+
             CreatePage.CreateContentPage(book, BookView.GetClass(book));
-            Response.Redirect("BookList.aspx?class="+cls.ToS());
+            Response.Redirect("BookList.aspx?class=" + cls.ToS());
         }
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="Auto\Answer.cs" />
     <Compile Include="Auto\Book.cs" />
     <Compile Include="Auto\BookChapter.cs" />
+    <Compile Include="Auto\BookRole.cs" />
     <Compile Include="Auto\BookVolume.cs" />
     <Compile Include="Auto\Class.cs" />
     <Compile Include="Auto\File.cs" />
