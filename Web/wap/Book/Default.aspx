@@ -6,7 +6,7 @@
 <!--STATUS OK-->
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>爱造人小说阅读</title>
+    <title><%=SystemSetting.SiteName %></title>
     <style type="text/css">
         *{padding:0;margin:0;}body{line-height:130%;}img{border:0;}*{color:#a06534;}* a{color:#a06534;text-decoration:none;}.red{color:#f30;}.b{font-weight:bold;}.l,.left{text-align:left;}.left,.center,.right{padding:3px 8px;}.logo{padding:10px 8px;}.black{color:#000;}.categorys{padding-top:3px;padding-bottom:5px;}.search-form{background:url("http://m.baidu.com/static/wapxs/colorful-se-bg.gif") repeat-x scroll 0 0 #F5CE9C;padding:8px 5px;border-bottom:1px solid #eab770;}.search-box{position:relative;font-size:14px;}.search-input-wrap{padding-right:6em;}.search-button-wrap{position:absolute;top:0;right:0;width:5em;}.search-input{color:#999;width:100%;padding:2px;padding-bottom:4px;font-size:16px;border:1px solid #999;-webkit-border-radius:6px;-moz-border-radius:6px;}.search-button{color:#c25200;margin-left:5px;font-size:14px;width:100%;text-align:center;padding-left:2px;padding-right:2px;}.bBottom{border-bottom:1px solid #e4d1b7;}.banner{border:1px solid #eab770;}.title-wrap{background:url("http://m.baidu.com/static/wapxs/colorful-title-bg.gif") repeat-x scroll 0 0 #F5CE9C;border-bottom:1px solid #eab770;padding-top:3px;padding-bottom:3px;}.list-time{color:#999;}.list-item{color:#a06534;line-height:1.5em;line-height:1.5em;padding-bottom:3px;}.c,.center{text-align:center;}.banner{padding:1px;border:1px solid #eab770;}.turn-page-form{display:inline-block;padding:0;}.no-bTop{border-top:0;}.no-bBottom{border-bottom:0;}.nagiv-bottom{padding-top:8px;}.list-wrap{line-height:1.5em;}.bTop{border-top:1px solid #E4D1B7;}.zhuanti-img{padding:3px 0px 0px;text-align:center;line-height:100%;}
     </style>
@@ -17,7 +17,7 @@
             <a id="top"></a>
         </div>
         <div class="center logo">
-            <img src="/skin/novel/logo.png" width="100" height="35" alt="爱造人小说阅读" /></div>
+            <img src="/skin/novel/logo.png" width="100" height="35" alt="<%=SystemSetting.SiteName %>" /></div>
         <div class="search-form-wrap">
             <!--include colorful/common/inc_form.xhtml-->
             <form class="search-form" action="/wap/book/s.aspx?" method="get">

@@ -34,7 +34,7 @@ namespace SimpleCollector
         {
             //string enciding = "gb2312";
 
-            BookHelper bh = new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://zuoaiai.net/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
@@ -95,7 +95,7 @@ namespace SimpleCollector
 
         public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule, string NextContentUrl)
         {
-            BookHelper bh = new BookHelper("http://aizr.net/");
+            BookHelper bh = new BookHelper("http://zuoaiai.net/");
         begin:
             SetStatus("打开列表页面");
             string listHtml = Url.GetHtml(ListPageUrl, encoding);
@@ -128,7 +128,8 @@ namespace SimpleCollector
                     {
                         //获取到书籍信息，并且添加到系统
                         string title = m_bookInfo.Groups["title"].Value.TrimHTML();
-                        string author = m_bookInfo.Groups["author"].Value;
+                        //string author = m_bookInfo.Groups["author"].Value;
+                        string author = "robot";
                         string cls = m_bookInfo.Groups["class"].Value;
                         string length = m_bookInfo.Groups["length"].Value;
                         string intro = m_bookInfo.Groups["intro"].Value.TrimHTML();
@@ -138,22 +139,22 @@ namespace SimpleCollector
                         bookTitle = title;
 
                         //处理类别 
-                        Class c = bh.GetClass(cls.Length > 0 ? cls : "综合");
+                        Class c = bh.GetClass(cls.Length > 0 ? cls : "其他");
 
                         //添加书籍
                         Book b = bh.BookAdd(title, author, c.ID, intro, length.ToInt64());
 
-                        if (b.ID > 0 || imageUrl.IsNullOrEmpty() == false)
-                        {
-                            imageUrl = imageUrl.AppendToDomain(bookUrl);
-                            Url.DownFile(imageUrl, System.Environment.CurrentDirectory + "\\Face.jpg");
-                            Voodoo.IO.ImageHelper.MakeThumbnail(System.Environment.CurrentDirectory + "\\Face.jpg",
-                                System.Environment.CurrentDirectory + "\\stand.jpg",
-                                120,
-                                150,
-                                "Cut");
-                            bh.SetBookFace(b.ID, System.Environment.CurrentDirectory + "\\stand.jpg");
-                        }
+                        //if (b.ID > 0 || imageUrl.IsNullOrEmpty() == false)
+                        //{
+                        //    imageUrl = imageUrl.AppendToDomain(bookUrl);
+                        //    Url.DownFile(imageUrl, System.Environment.CurrentDirectory + "\\Face.jpg");
+                        //    Voodoo.IO.ImageHelper.MakeThumbnail(System.Environment.CurrentDirectory + "\\Face.jpg",
+                        //        System.Environment.CurrentDirectory + "\\stand.jpg",
+                        //        120,
+                        //        150,
+                        //        "Cut");
+                        //    bh.SetBookFace(b.ID, System.Environment.CurrentDirectory + "\\stand.jpg");
+                        //}
 
 
                     }

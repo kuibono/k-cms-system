@@ -1,7 +1,7 @@
 [!--temp.header--]
     <div class="header block">
         <h1 style="font-size: 20px">
-            爱造人小说阅读
+            <%=SystemSetting.SiteName %>
         </h1>
     </div>
     <hr />
