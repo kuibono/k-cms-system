@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 using System.Collections.Specialized;
 using System.Web.Script.Serialization;
@@ -202,17 +203,33 @@ namespace KCMDCollector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Voodoo.Basement.Client.BookHelper BH = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
+            Voodoo.Basement.Client.BookHelper BH = new Voodoo.Basement.Client.BookHelper("http://zuoaiai.net/");
             Book.CollectBook cb = new Book.CollectBook(new MainForm());
 
             var books = BH.SearchBook("", "", "");
             foreach (var book in books)
             {
-                cb.UploadBookFace(book);
+                //cb.UploadBookFace(book);
+                Voodoo.IO.ImageHelper.MakeThumbnail(GetRandImage(),
+                                    System.Environment.CurrentDirectory + "\\face.jpg",
+                                    120,
+                                    150,
+                                    "Cut");
+                Voodoo.IO.ImageHelper.AddTextToImg(System.Environment.CurrentDirectory + "\\face.jpg", book.Title, System.Environment.CurrentDirectory + "\\stand.jpg");
+                BH.SetBookFace(book.ID, System.Environment.CurrentDirectory + "\\stand.jpg");
+                BH.CreateBook(book.ID);
             }
 
 
 
+        }
+
+        public string GetRandImage()
+        {
+            DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory + "\\girl");
+            var file = dir.GetFiles().Where(p=>p.FullName.EndsWith(".jpg")).ToList();
+
+            return file[@int.GetRandomNumber(0, file.Count - 1)].FullName;
         }
 
         private void Tieba_Click(object sender, EventArgs e)
@@ -224,7 +241,7 @@ namespace KCMDCollector
         protected void  testc()
         {
             Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
-            var books = bh.SearchBook("", "", "");
+            var books = bh.SearchBook("很纯很暧昧", "", "");
             foreach (var book in books)
             {
                 var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节

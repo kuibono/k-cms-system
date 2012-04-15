@@ -114,6 +114,10 @@ namespace Web.e.api
                     IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
                     ChapterSearch(booktitle, chaptertitle, IsImageChapter);
                     break;
+                case "getchaptercontent":
+                    chapterid = WS.RequestString("chapterid").ToInt64();
+                    GetChapterContent(chapterid);
+                    break;
                 case "createindex":
                     CreateIndex();
                     break;
@@ -155,10 +159,6 @@ namespace Web.e.api
         protected void SearchBook(string Title, string Author, string Intro)
         {
             var books = BookView.GetModelList(string.Format("Title like N'%{0}%' and Author like N'%{1}%' and Intro like N'%{2}%'", Title, Author, Intro));
-            foreach (var book in books)
-            {
-                book.Intro = "";
-            }
             Response.Clear();
             Response.Write(XML.Serialize(books));
         }
@@ -531,6 +531,23 @@ namespace Web.e.api
             var cs = BookChapterView.GetModelList(string.Format("BookTitle like N'%{0}%' and Title like N'%{1}%' and IsImageChapter={2}", BookTitle, ChapterTitle, IsImagechapter.BoolToShort()));
             Response.Clear();
             Response.Write(XML.Serialize(cs));
+        }
+        #endregion
+
+        #region  获取章节内容
+        /// <summary>
+        /// 获取章节内容
+        /// </summary>
+        /// <param name="chapterID">章节id</param>
+        protected void GetChapterContent(long chapterID)
+        {
+            BookChapter chapter = BookChapterView.GetModelByID(chapterID.ToS());
+
+            string path=BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter));
+
+            string content = Voodoo.IO.File.Read(Server.MapPath(path));
+            Response.Clear();
+            Response.Write(XML.Serialize(content));
         }
         #endregion
 

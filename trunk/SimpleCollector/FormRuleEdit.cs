@@ -96,7 +96,15 @@ namespace SimpleCollector
                     case 5:
                         //输入章节列表地址规则 
                         CurrentRule.ChapterListPageUrl = txt_ChapterListUrl.Text;
-                        str_chapterUrl = txt_BookInfoHtml.Text.GetMatch(CurrentRule.ChapterListPageUrl).First().AppendToDomain(bookUrl);
+                        var ml = txt_BookInfoHtml.Text.GetMatch(CurrentRule.ChapterListPageUrl);
+                        if (ml.Count > 0)
+                        {
+                            str_chapterUrl = ml.First().AppendToDomain(bookUrl);
+                        }
+                        else
+                        {
+                            str_chapterUrl = bookUrl;
+                        }
                         txt_ChapterListHtml.Text = Url.GetHtml(str_chapterUrl, CurrentRule.Encoding);
                         if (txt_ChapterListHtml.Text.IsNullOrEmpty())
                         {
@@ -132,7 +140,7 @@ namespace SimpleCollector
                         break;
                     case 8:
                         CurrentRule.NextContentUrl = txt_NextContent.Text;
-                        
+
                         break;
                     case 9:
                         string[] books = txt_BookList.Text.Split('\n');
