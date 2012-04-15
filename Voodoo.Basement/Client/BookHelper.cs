@@ -281,6 +281,19 @@ namespace Voodoo.Basement.Client
         }
         #endregion
 
+        /// <summary>
+        /// 获取章节内容
+        /// </summary>
+        /// <param name="ChapterID"></param>
+        /// <returns></returns>
+        public string GetChapterContent(long ChapterID)
+        {
+            string url = string.Format(xmlrpc + "?a=getchaptercontent&chapterid={0}",
+                ChapterID.ToS()
+                );
+            return (string)Voodoo.IO.XML.DeSerialize(typeof(string), Url.Post(new NameValueCollection(), url, Encoding.UTF8));
+        }
+
         #region 生成首页
         /// <summary>
         /// 生成首页
