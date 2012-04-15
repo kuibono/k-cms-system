@@ -46,7 +46,7 @@ namespace SimpleCollector
 
             Thread t = new Thread(Start);
             t.Start();
-            
+
         }
 
         protected void Start()
@@ -56,7 +56,7 @@ namespace SimpleCollector
                 rm.ListPageUrl,
                 rm.NextPageUrl,
                 rm.BookPageUrl,
-                rm.BookInfo.Replace("\n",""),
+                rm.BookInfo.Replace("\n", ""),
                 rm.ChapterListPageUrl,
                 rm.Encoding,
                 rm.ChapterTitleAndUrl,
@@ -64,9 +64,43 @@ namespace SimpleCollector
                 rm.NextContentUrl.Replace("\n", ""));
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("../xxxx.html".AppendToDomain("http://baidu.com/book/"));
+            Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net");
+            Voodoo.Basement.Client.BookHelper bh2 = new Voodoo.Basement.Client.BookHelper("http://zuoaiai.net");
+
+            var books = bh.SearchBook("沧澜曲", "", "");
+
+            foreach (var book in books)
+            {
+                var bs = bh2.SearchBook(book.Title, book.Author, "");
+                Voodoo.Model.Book b;
+                if (bs.Count == 0)
+                {
+                    var cls = bh2.GetClass("传世经典");
+
+                    b = bh2.BookAdd(book.Title, book.Author, cls.ID, book.Intro, @int.GetRandomNumber(40000, 900000));
+                }
+                else
+                {
+                    b = bs.First();
+                }
+
+                var chapters = bh.ChapterSearch(b.Title, "", false);
+                foreach (var chapter in chapters)
+                {
+                    if (bh2.ChapterSearch(b.Title, chapter.Title, false).Count == 0)
+                    {
+                        string content = bh.GetChapterContent(chapter.ID);
+                        var c = bh2.ChapterAdd(b.ID, chapter.Title, content, false);
+                    }
+                    
+                }
+                bh2.CreateChapters(b.ID);
+                bh2.CreateBook(b.ID);
+            }
         }
     }
 }
