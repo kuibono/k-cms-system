@@ -53,6 +53,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.3.2.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\voodoo\ref\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -76,6 +80,7 @@
     </Compile>
     <Compile Include="ClassAction.cs" />
     <Compile Include="Client\BookHelper.cs" />
+    <Compile Include="Client\RpcBookHelper.cs" />
     <Compile Include="CreatePage.cs" />
     <Compile Include="ExtendClass.cs" />
     <Compile Include="Functions.cs" />

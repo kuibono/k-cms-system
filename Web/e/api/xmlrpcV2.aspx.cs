@@ -11,145 +11,61 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using System.Reflection;
 
 using System.IO;
 using Voodoo;
+using Voodoo.other;
 using Voodoo.IO;
 using Voodoo.other.SEO;
 using Voodoo.Basement;
 using Voodoo.Model;
 using Voodoo.DAL;
+
 namespace Web.e.api
 {
-    /// <summary>
-    /// xml-rpc接口，为系统提供一切可能。可以完成客户端的操作
-    /// </summary>
-    public partial class xmlrpc : System.Web.UI.Page
+    public partial class xmlrpcV2 : System.Web.UI.Page
     {
-
-
-        #region 处理请求
-        /// <summary>
-        /// 处理请求
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = WS.RequestString("a").ToLower();
-            switch (action)
+            //try
+            //{
+            var req = WS.RequestPing();
+            List<string> strs = new List<string>();
+
+            for (int i = 0; i < req.@params.Count; i++)
             {
-                case "booksearch":
-                    string title = WS.RequestString("title");
-                    string author = WS.RequestString("author");
-                    string intro = WS.RequestString("intro");
-                    SearchBook(title, author, intro);
-                    break;
-                case "bookexist":
-                    title = WS.RequestString("title");
-                    author = WS.RequestString("author");
-                    BookExist(title, author);
-                    break;
-                case "getbook":
-                    title = WS.RequestString("title");
-                    author = WS.RequestString("author");
-                    GetBook(title, author);
-                    break;
-                case "bookadd":
-                    title = WS.RequestString("title");
-                    author = WS.RequestString("author");
-                    int classid = WS.RequestInt("class");
-                    intro = WS.RequestString("intro").HtmlDeCode();
-                    long length = WS.RequestString("length").ToInt64();
-                    BookAdd(title, author, classid, intro, length);
-                    break;
-                case "bookedit":
-                    int id = WS.RequestInt("id");
-                    title = WS.RequestString("title");
-                    author = WS.RequestString("author");
-                    classid = WS.RequestInt("class");
-                    intro = WS.RequestString("intro").HtmlDeCode();
-                    length = WS.RequestString("length").ToInt64();
-                    BookEdit(id, title, author, classid, intro, length);
-                    break;
-                case "bookdelete":
-                    id = WS.RequestInt("id");
-                    BookDelete(id);
-                    break;
-                case "getclass":
-                    string ClassName = WS.RequestString("classname");
-                    int ModelID = WS.RequestInt("model");
-                    GetClass(ClassName, ModelID);
-                    break;
-                case "editclass":
-                    classid = WS.RequestInt("class");
-                    ClassName = WS.RequestString("classname");
-                    int ParentID = WS.RequestInt("pid");
-                    EditClass(classid, ClassName, ParentID);
-                    break;
-                case "getchapter":
-                    string chaptertitle = WS.RequestString("chaptertitle");
-                    string booktitle = WS.RequestString("booktitle");
-                    GetChapter(booktitle, chaptertitle);
-                    break;
-                case "chapteradd":
-                    int bookid = WS.RequestInt("bid");
-                    chaptertitle = WS.RequestString("chaptertitle");
-                    string Content = WS.RequestString("content").HtmlDeCode();
-                    bool IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
-                    ChapterAdd(bookid, chaptertitle, Content, IsImageChapter);
-                    break;
-                case "chapteredit":
-                    long chapterid = WS.RequestString("chapterid").ToInt64();
-                    chaptertitle = WS.RequestString("chaptertitle");
-                    Content = WS.RequestString("content").HtmlDeCode();
-                    IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
-                    ChapterEdit(chapterid, chaptertitle, Content, IsImageChapter);
-                    break;
-                case "chapterdelete":
-                    chapterid = WS.RequestString("chapterid").ToInt64();
-                    ChapterDelete(chapterid);
-                    break;
-                case "chaptersearch":
-                    booktitle = WS.RequestString("booktitle");
-                    chaptertitle = WS.RequestString("chaptertitle");
-                    IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
-                    ChapterSearch(booktitle, chaptertitle, IsImageChapter);
-                    break;
-                case "getchaptercontent":
-                    chapterid = WS.RequestString("chapterid").ToInt64();
-                    GetChapterContent(chapterid);
-                    break;
-                case "createindex":
-                    CreateIndex();
-                    break;
-                case "createclasspage":
-                    CreateClassPage();
-                    break;
-                case "createbook":
-                    bookid = WS.RequestInt("bookid");
-                    CreateBook(bookid);
-                    break;
-                case "createchapters":
-                    bookid = WS.RequestInt("bookid");
-                    CreateChapters(bookid);
-                    break;
-                case "createsitemap":
-                    CreateSitemap();
-                    break;
-                case "savebookface":
-                    bookid = WS.RequestInt("id");
-                    HttpFileCollection files = Request.Files;
-                    SaveBookFace(bookid, files);
-                    break;
-                default:
-                    break;
-
+                strs.Add(req.@params[i].value.@string);
             }
+
+            var pars = strs.ToArray();
+            string result = ExecMethod("xmlrpcV2", req.methodName, pars).ToS();
+            Response.Clear();
+            Response.Write(result);
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+
         }
-        #endregion
 
-
+        /// <summary>
+        /// 执行某个方法
+        /// </summary>
+        /// <param name="className">类，包括命名空间</param>
+        /// <param name="methodName">方法名</param>
+        /// <param name="objParas">参数</param>
+        /// <returns></returns>
+        protected object ExecMethod(string className, string methodName, object[] objParas)
+        {
+            Type t = typeof(xmlrpcV2);
+            /*实例化这个类*/
+            ConstructorInfo constructor = t.GetConstructor(new Type[0]);//将得到的类型传给一个新建的构造器类型变量
+            object obj = constructor.Invoke(new object[0]);//使用构造器对象来创建对象
+            /*执行Insert方法*/
+            MethodInfo m = t.GetMethod(methodName);
+            return m.Invoke(obj, objParas);
+        }
 
         #region 书籍搜索
         /// <summary>
@@ -158,11 +74,11 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Author">作者</param>
         /// <param name="Intro">简介</param>
-        protected void SearchBook(string Title, string Author, string Intro)
+        public string SearchBook(string Title, string Author, string Intro)
         {
             var books = BookView.GetModelList(string.Format("Title like N'%{0}%' and Author like N'%{1}%' and Intro like N'%{2}%'", Title, Author, Intro));
-            Response.Clear();
-            Response.Write(XML.Serialize(books));
+
+            return XML.Serialize(books);
         }
         #endregion
 
@@ -172,10 +88,10 @@ namespace Web.e.api
         /// </summary>
         /// <param name="Title">标题</param>
         /// <param name="Author">作者</param>
-        protected void BookExist(string Title, string Author)
+        protected string BookExist(string Title, string Author)
         {
-            Response.Clear();
-            Response.Write(XML.Serialize(BookView.Exist(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author))));
+
+            return XML.Serialize(BookView.Exist(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author)));
 
         }
         #endregion
@@ -186,11 +102,11 @@ namespace Web.e.api
         /// </summary>
         /// <param name="Title">标题</param>
         /// <param name="Author">作者</param>
-        protected void GetBook(string Title, string Author)
+        protected string GetBook(string Title, string Author)
         {
-            Book b = BookView.Find(string.Format("Title=N'{0}' and Author=N'{1}'",Title,Author));
-            Response.Clear();
-            Response.Write(XML.Serialize(b));
+            Book b = BookView.Find(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author));
+
+            return XML.Serialize(b);
         }
         #endregion
 
@@ -203,7 +119,7 @@ namespace Web.e.api
         /// <param name="ClassID">类别ID</param>
         /// <param name="Intro">简介</param>
         /// <param name="Length">长度</param>
-        protected void BookAdd(string Title, string Author, int ClassID, string Intro, long Length)
+        protected string BookAdd(string Title, string Author, int ClassID, string Intro, long Length)
         {
             string ClassName = ClassView.GetModelByID(ClassID.ToString()).ClassName;
 
@@ -212,9 +128,8 @@ namespace Web.e.api
             if (Title.IsNullOrEmpty() && BookView.Exist(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author)))
             {
                 b.ID = int.MinValue;
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(b));
-                return;
+
+                return Voodoo.IO.XML.Serialize(b);
             }
 
             b.Addtime = DateTime.UtcNow.AddHours(8);
@@ -250,8 +165,8 @@ namespace Web.e.api
                 b = BookView.Find(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author));
             }
 
-            Response.Clear();
-            Response.Write(Voodoo.IO.XML.Serialize(b));
+
+            return Voodoo.IO.XML.Serialize(b);
         }
         #endregion
 
@@ -265,7 +180,7 @@ namespace Web.e.api
         /// <param name="ClassID">类别ID</param>
         /// <param name="Intro">简介</param>
         /// <param name="Length">长度</param>
-        protected void BookEdit(int id, string Title, string Author, int ClassID, string Intro, long Length)
+        protected string BookEdit(int id, string Title, string Author, int ClassID, string Intro, long Length)
         {
             Book b = BookView.GetModelByID(id.ToS());
             string ClassName = ClassView.GetModelByID(ClassID.ToString()).ClassName;
@@ -278,19 +193,19 @@ namespace Web.e.api
 
             if (b.ID < 0)
             {
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(false));
+
+                return Voodoo.IO.XML.Serialize(false);
             }
             try
             {
                 BookView.Update(b);
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(true));
+
+                return Voodoo.IO.XML.Serialize(true);
             }
             catch
             {
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(false));
+
+                return Voodoo.IO.XML.Serialize(false);
             }
         }
         #endregion
@@ -301,7 +216,7 @@ namespace Web.e.api
         /// </summary>
         /// <param name="id">书籍ID</param>
         /// <param name="files">上传文件</param>
-        protected void SaveBookFace(int id,HttpFileCollection files)
+        protected string SaveBookFace(int id, HttpFileCollection files)
         {
             try
             {
@@ -319,13 +234,13 @@ namespace Web.e.api
                 files[0].SaveAs(ImagePath);
                 b.FaceImage = "/Book/BookFace/" + id + ".jpg";
                 BookView.Update(b);
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
 
 
@@ -337,10 +252,10 @@ namespace Web.e.api
         /// 删除书籍
         /// </summary>
         /// <param name="id">ID</param>
-        protected void BookDelete(int id)
+        protected string BookDelete(int id)
         {
-            Response.Clear();
-            Response.Write(Voodoo.IO.XML.Serialize(BookView.DelByID(id)));
+
+            return Voodoo.IO.XML.Serialize(BookView.DelByID(id));
         }
         #endregion
 
@@ -350,7 +265,7 @@ namespace Web.e.api
         /// </summary>
         /// <param name="ClassName">栏目名称</param>
         /// <param name="ModelID">模型 1新闻 2图片 3问答 4小说</param>
-        protected void GetClass(string ClassName, int ModelID)
+        protected string GetClass(string ClassName, int ModelID)
         {
             Class cls = ClassView.Find(string.Format("ClassName=N'{0}' and ModelID={1}", ClassName, ModelID));
             if (cls.ID <= 0)
@@ -365,8 +280,8 @@ namespace Web.e.api
                 cls.ShowInNav = true;
                 ClassView.Insert(cls);
             }
-            Response.Clear();
-            Response.Write(Voodoo.IO.XML.Serialize(cls));
+
+            return Voodoo.IO.XML.Serialize(cls);
         }
         #endregion
 
@@ -377,26 +292,26 @@ namespace Web.e.api
         /// <param name="ClassID">类别ID</param>
         /// <param name="ClassName">类别名称</param>
         /// <param name="ParentID">父ID</param>
-        protected void EditClass(int ClassID, string ClassName, int ParentID)
+        protected string EditClass(int ClassID, string ClassName, int ParentID)
         {
             Class c = ClassView.GetModelByID(ClassID.ToS());
             if (c.ID < 0)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
             c.ParentID = ParentID.IsNull(c.ParentID);
             c.ClassName = ClassName.IsNull(c.ClassName);
             try
             {
                 ClassView.Update(c);
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
         }
         #endregion
@@ -407,11 +322,11 @@ namespace Web.e.api
         /// </summary>
         /// <param name="BookTitle">书籍标题</param>
         /// <param name="ChapterTitle">章节标题</param>
-        protected void GetChapter(string BookTitle, string ChapterTitle)
+        protected string GetChapter(string BookTitle, string ChapterTitle)
         {
-            BookChapter c = BookChapterView.Find(string.Format("BookTitle=N'{0}' and Title=N'{1}'",BookTitle,ChapterTitle));
-            Response.Clear();
-            Response.Write(XML.Serialize(c));
+            BookChapter c = BookChapterView.Find(string.Format("BookTitle=N'{0}' and Title=N'{1}'", BookTitle, ChapterTitle));
+
+            return XML.Serialize(c);
         }
         #endregion
 
@@ -423,7 +338,7 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter)
+        protected string ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter)
         {
 
             Book b = BookView.GetModelByID(BookID.ToS());
@@ -456,8 +371,8 @@ namespace Web.e.api
                 b.UpdateTime = c.UpdateTime;
                 BookView.Update(b);
             }
-            Response.Clear();
-            Response.Write(Voodoo.IO.XML.Serialize(c));
+
+            return Voodoo.IO.XML.Serialize(c);
         }
 
         #endregion
@@ -470,7 +385,7 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter)
+        protected string ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter)
         {
             var chapter = BookChapterView.GetModelByID(ChapterID.ToS());
             var cls = ClassView.GetModelByID(chapter.ClassID.ToS());
@@ -482,8 +397,8 @@ namespace Web.e.api
                 Voodoo.IO.File.Write(Server.MapPath(BasePage.GetBookChapterTxtUrl(chapter, cls)), Content);
             }
 
-            Response.Clear();
-            Response.Write(Voodoo.IO.XML.Serialize(chapter));
+
+            return Voodoo.IO.XML.Serialize(chapter);
 
         }
         #endregion
@@ -493,7 +408,7 @@ namespace Web.e.api
         /// 删除章节
         /// </summary>
         /// <param name="id">章节ID</param>
-        protected void ChapterDelete(long id)
+        protected string ChapterDelete(long id)
         {
             try
             {
@@ -509,13 +424,13 @@ namespace Web.e.api
                 b.LastChapterTitle = lastChapter.Title;
                 BookView.Update(b);
 
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(true));
+
+                return Voodoo.IO.XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(Voodoo.IO.XML.Serialize(false));
+
+                return Voodoo.IO.XML.Serialize(false);
             }
 
         }
@@ -528,11 +443,11 @@ namespace Web.e.api
         /// <param name="BookTitle">书籍标题</param>
         /// <param name="ChapterTitle">章节标题</param>
         /// <param name="IsImagechapter">是否图片章节</param>
-        protected void ChapterSearch(string BookTitle, string ChapterTitle, bool IsImagechapter)
+        protected string ChapterSearch(string BookTitle, string ChapterTitle, bool IsImagechapter)
         {
             var cs = BookChapterView.GetModelList(string.Format("BookTitle like N'%{0}%' and Title like N'%{1}%' and IsImageChapter={2}", BookTitle, ChapterTitle, IsImagechapter.BoolToShort()));
-            Response.Clear();
-            Response.Write(XML.Serialize(cs));
+
+            return XML.Serialize(cs);
         }
         #endregion
 
@@ -541,15 +456,15 @@ namespace Web.e.api
         /// 获取章节内容
         /// </summary>
         /// <param name="chapterID">章节id</param>
-        protected void GetChapterContent(long chapterID)
+        protected string GetChapterContent(long chapterID)
         {
             BookChapter chapter = BookChapterView.GetModelByID(chapterID.ToS());
 
-            string path=BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter));
+            string path = BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter));
 
             string content = Voodoo.IO.File.Read(Server.MapPath(path));
-            Response.Clear();
-            Response.Write(XML.Serialize(content));
+
+            return XML.Serialize(content);
         }
         #endregion
 
@@ -557,18 +472,18 @@ namespace Web.e.api
         /// <summary>
         /// 生成首页
         /// </summary>
-        protected void CreateIndex()
+        protected string CreateIndex()
         {
             try
             {
                 Voodoo.Basement.CreatePage.GreateIndexPage();
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
 
         }
@@ -578,7 +493,7 @@ namespace Web.e.api
         /// <summary>
         /// 创建列表页面
         /// </summary>
-        protected void CreateClassPage()
+        protected string CreateClassPage()
         {
             try
             {
@@ -587,13 +502,13 @@ namespace Web.e.api
                 {
                     Voodoo.Basement.CreatePage.CreateListPage(c, 1);
                 }
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
 
 
@@ -605,19 +520,19 @@ namespace Web.e.api
         /// 生成书籍页面
         /// </summary>
         /// <param name="bookid">书籍ID</param>
-        protected void CreateBook(int bookid)
+        protected string CreateBook(int bookid)
         {
             try
             {
                 Book b = BookView.GetModelByID(bookid.ToS());
                 Voodoo.Basement.CreatePage.CreateContentPage(b, BookView.GetClass(b));
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
 
         }
@@ -628,7 +543,7 @@ namespace Web.e.api
         /// 生成章节
         /// </summary>
         /// <param name="bookid">书籍ID</param>
-        protected void CreateChapters(int bookid)
+        protected string CreateChapters(int bookid)
         {
             try
             {
@@ -637,13 +552,13 @@ namespace Web.e.api
                 {
                     Voodoo.Basement.CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
                 }
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch (System.Exception e)
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
 
         }
@@ -653,7 +568,7 @@ namespace Web.e.api
         /// <summary>
         /// 生成站点地图
         /// </summary>
-        protected void CreateSitemap()
+        protected string CreateSitemap()
         {
             Voodoo.other.SEO.SiteMap sm = new Voodoo.other.SEO.SiteMap();
             sm.url = new List<PageInfo>();
@@ -685,23 +600,15 @@ namespace Web.e.api
             try
             {
                 sm.SaveSiteMap(Server.MapPath("~/sitemapxml/index.xml"));
-                Response.Clear();
-                Response.Write(XML.Serialize(true));
+
+                return XML.Serialize(true);
             }
             catch
             {
-                Response.Clear();
-                Response.Write(XML.Serialize(false));
+
+                return XML.Serialize(false);
             }
         }
         #endregion
-
-
-        /////////////////////////////////////////////////////////////////
-        ///                                                           
-        ///  分类系统API
-        ///
-        /////////////////////////////////////////////////////////////////
-
     }
 }

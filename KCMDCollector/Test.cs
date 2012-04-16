@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Web;
+using System.Net;
 
 using System.Collections.Specialized;
 using System.Web.Script.Serialization;
@@ -32,7 +34,7 @@ namespace KCMDCollector
 
         private void btn_sina_Click(object sender, EventArgs e)
         {
-            
+
 
             Voodoo.Net.BlogHelper.Sina s = new Voodoo.Net.BlogHelper.Sina("bigcuibing@tom.com", "Admin@123", "http://blog.sina.com.cn/aizrnet/");
             s.Login();
@@ -49,7 +51,7 @@ namespace KCMDCollector
 
         private void btn_Baidu_Click(object sender, EventArgs e)
         {
-           
+
             Voodoo.Net.BlogHelper.Sohu s = new Voodoo.Net.BlogHelper.Sohu("kuibono@sohu.com", "4264269");
             s.Login();
             s.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
@@ -61,7 +63,7 @@ namespace KCMDCollector
 
         private void btn_Neasy_Click(object sender, EventArgs e)
         {
-            
+
             Voodoo.Net.BlogHelper.Neasy n = new Voodoo.Net.BlogHelper.Neasy("aizrnet@163.com", "Admin@123");
             n.Login();
             n.Post("测试自动发送", "自动发送的内容自动发送的内容自动发送的内容");
@@ -227,7 +229,7 @@ namespace KCMDCollector
         public string GetRandImage()
         {
             DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory + "\\girl");
-            var file = dir.GetFiles().Where(p=>p.FullName.EndsWith(".jpg")).ToList();
+            var file = dir.GetFiles().Where(p => p.FullName.EndsWith(".jpg")).ToList();
 
             return file[@int.GetRandomNumber(0, file.Count - 1)].FullName;
         }
@@ -235,13 +237,13 @@ namespace KCMDCollector
         private void Tieba_Click(object sender, EventArgs e)
         {
             testc();
-           
+
         }
 
-        protected void  testc()
+        protected void testc()
         {
             Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
-            var books = bh.SearchBook("很纯很暧昧", "", "");
+            var books = bh.SearchBook("花都兽医", "", "");
             foreach (var book in books)
             {
                 var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节
@@ -252,7 +254,7 @@ namespace KCMDCollector
 
                 foreach (var c in chapters)
                 {
-                    string url = SearchChapterFromTieba(book.Title+" "+c.Title);
+                    string url = SearchChapterFromTieba(book.Title + " " + c.Title);
                     Thread.Sleep(1000);
                     if (url.Length == 0)
                     {
@@ -267,10 +269,10 @@ namespace KCMDCollector
 
                         bh.ChapterEdit(c.ID, c.Title, content, false);
                     }
-                    
+
                 }
                 bh.CreateChapters(book.ID);
-                
+
             }
         }
 
@@ -291,21 +293,21 @@ namespace KCMDCollector
             Title = StandardTitle(Title);
 
             string str_EncodeTitle = Title.UrlEncode(Encoding.GetEncoding("gb2312"));
-            string str_url = string.Format("http://www.baidu.com/s?tn=baiduhome_pg&bs={0}&f=8&rsv_bp=1&rsv_spt=1&wd={0}+site%3Atieba.baidu.com&inputT=6519", str_EncodeTitle);
+            //string str_url = string.Format("http://www.baidu.com/s?tn=baiduhome_pg&bs={0}&f=8&rsv_bp=1&rsv_spt=1&wd={0}+site%3Atieba.baidu.com&inputT=6519", str_EncodeTitle);
 
-            //string str_url = "http://tieba.baidu.com/f/search/res?ie=utf-8&qw=" + Title;
+            string str_url = "http://tieba.baidu.com/f/search/res?ie=utf-8&qw=" + Title;
             string html = Voodoo.Net.Url.GetHtml(str_url, "gbk");
             List<Book.Chapter> cs = new List<Book.Chapter>();
 
-            
+
             //Match m = html.GetMatchGroup("<span class=\"p_title\"><a href=\"(?<url>.*?)\" class=\"bluelink\" target=\"_blank\" >(?<title>.*?)</a></span>");
             Match m = html.GetMatchGroup("<h3 class=\"t\"><a onmousedown=\".*?\" href=\"(?<url>.*?)\"target=\"_blank\">(?<title>.*?)</a>");
             while (m.Success)
             {
                 cs.Add(new Book.Chapter()
                 {
-                    Title=StandardTitle(m.Groups["title"].Value),
-                    Url=m.Groups["url"].Value.AppendToDomain(str_url)
+                    Title = StandardTitle(m.Groups["title"].Value),
+                    Url = m.Groups["url"].Value.AppendToDomain(str_url)
                 });
                 m = m.NextMatch();
             }
@@ -318,7 +320,7 @@ namespace KCMDCollector
             }
             return "";
         }
-        #endregion 
+        #endregion
 
         #region 从贴吧获得内容
         /// <summary>
@@ -380,7 +382,7 @@ namespace KCMDCollector
             content = Regex.Replace(content, "<a .*?</a>", "");
             return content;
         }
-        #endregion 
+        #endregion
 
         #region 标题标准化
         /// <summary>
@@ -393,9 +395,60 @@ namespace KCMDCollector
             Title = Regex.Replace(Title, "&.{2,10};", "");
             Title = Regex.Replace(Title, "\\(.*?\\).*?", "");
             Title = Regex.Replace(Title, "（.*?）.*", "");
-            Title=Regex.Replace(Title,"[`~@#$%^&*()_+:;'|><?,./]{1,}","");
+            Title = Regex.Replace(Title, "[`~@#$%^&*()_+:;'|><?,./]{1,}", "");
             return Title;
         }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Voodoo.Net.BlogHelper.WordPress wp = new WordPress("http://www.aizr.net/wiki/", "kuibono", "4264269");
+            //wp.Login();
+            //wp.Post(new Post()
+            //{
+            //    Class = "测试",
+            //    Content = "xml-rpc测试发送内容",
+            //    CreateTime = DateTime.Now,
+            //    Tags = "标签".Split(','),
+            //    Title = "测试标题"
+
+
+            //});
+
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.fuck.com/e/test.aspx");
+            ////request.Method = "Post";
+            //request.ContentType = "application/x-www-form-urlencoded; charset=GBK";
+
+            //string str_data = "<?xml version=\"1.0\"?><methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value><string>kuibono</string></value></param><param><value><string>4264269</string></value></param></params></methodCall>";
+            //request.ContentLength = str_data.Length;
+            //byte[] data = Encoding.UTF8.GetBytes(str_data);
+
+            //Stream newStream = request.GetRequestStream();
+            //newStream.Write(data, 0, data.Length);
+            //newStream.Close();
+
+            //HttpWebResponse responseSorce = (HttpWebResponse)request.GetResponse();
+            //Stream stream = responseSorce.GetResponseStream();
+            //StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            //string content = reader.ReadToEnd();
+
+            //stream.Close();
+
+            //Voodoo.Net.XmlRpc.methodCall mc = new Voodoo.Net.XmlRpc.methodCall();
+            //mc.methodName = "method.name";
+            //mc.@params = new List<Voodoo.Net.XmlRpc.param>();
+            //mc.@params.Add(new Voodoo.Net.XmlRpc.param() { value = new Voodoo.Net.XmlRpc.ttring() { @string = "kuibono" } });
+            //mc.@params.Add(new Voodoo.Net.XmlRpc.param() { value = new Voodoo.Net.XmlRpc.ttring() { @string = "4264269" } });
+            //string s = Voodoo.IO.XML.Serialize(mc);
+
+
+
+            //var d = (Voodoo.Net.XmlRpc.methodCall)Voodoo.IO.XML.DeSerialize(typeof(Voodoo.Net.XmlRpc.methodCall), str_data);
+
+            //AlexJamesBrown.JoeBlogs.WordPressWrapper wp = new AlexJamesBrown.JoeBlogs.WordPressWrapper("http://www.fuck.com/e/test.aspx", "kuibono", "4264269");
+
+            Voodoo.Basement.Client.RpcBookHelper bh = new Voodoo.Basement.Client.RpcBookHelper();
+            bh.test();
+        }
     }
 }
