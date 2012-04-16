@@ -111,6 +111,7 @@
     <Content Include="e\admin\user\UserFormEdit.aspx" />
     <Content Include="e\admin\user\UserFormList.aspx" />
     <Content Include="e\admin\user\UserList.aspx" />
+    <Content Include="e\api\xmlrpcV2.aspx" />
     <Content Include="e\data\fckeditor\editor\css\behaviors\disablehandles.htc" />
     <Content Include="e\data\fckeditor\editor\css\behaviors\showtableborders.htc" />
     <Content Include="e\data\fckeditor\editor\css\fck_editorarea.css" />
@@ -805,6 +806,13 @@
     <Compile Include="e\api\xmlrpc.aspx.designer.cs">
       <DependentUpon>xmlrpc.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\api\xmlrpcV2.aspx.cs">
+      <DependentUpon>xmlrpcV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\api\xmlrpcV2.aspx.designer.cs">
+      <DependentUpon>xmlrpcV2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\BookDown.aspx.cs">
       <DependentUpon>BookDown.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1357,7 +1365,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>9969</DevelopmentServerPort>
+          <DevelopmentServerPort>6310</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -15,7 +15,13 @@ namespace Web.e
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                var req = WS.RequestPing();
 
+                Response.Write(req.methodName);
+            }
+            catch { }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
