@@ -57,6 +57,10 @@ namespace Web.e.api
 
         void ChapterDelete(string str_sql);
 
+        void CreateIndex();
+
+        void CreateClassPage();
+
 
     }
 }
