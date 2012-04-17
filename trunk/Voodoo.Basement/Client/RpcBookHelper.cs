@@ -31,7 +31,22 @@ namespace Voodoo.Basement.Client
     public interface IMath : IXmlRpcProxy
     {
         [XmlRpcMethod("SearchBook")]
-        [return: XmlRpcReturnValue(Description = "返回两个值加法的结果")]
+        [return: XmlRpcReturnValue(Description = "搜索书籍")]
         string SearchBook(string a,string b,string c);
+
+        [XmlRpcMethod("BookExist")]
+        [return: XmlRpcReturnValue(Description = "书籍是否存在")]
+        string BookExist(string Title, string Author);
+
+        [XmlRpcMethod("GetBook")]
+        [return: XmlRpcReturnValue(Description = "获取书籍")]
+        string GetBook(string Title, string Author);
+
+        [XmlRpcMethod("BookAdd")]
+        [return: XmlRpcReturnValue(Description = "添加书籍")]
+        string BookAdd(string Title, string Author, int ClassID, string Intro, long Length);
+
+
+
     }
 }
