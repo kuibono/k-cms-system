@@ -24,6 +24,9 @@ namespace SimpleCollector
 
         private void FormCollecor_Load(object sender, EventArgs e)
         {
+            ClientService.ClientServiceClient csc = new ClientService.ClientServiceClient();
+            var r = csc.BookSearch("1=1");
+
             DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory + "\\Rules\\");
             var files = dir.GetFiles();
             foreach (var file in files)

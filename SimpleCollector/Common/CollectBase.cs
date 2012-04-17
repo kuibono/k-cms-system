@@ -34,7 +34,7 @@ namespace SimpleCollector
         {
             //string enciding = "gb2312";
 
-            BookHelper bh = new BookHelper("http://zuoaiai.net/");
+            BookHelper bh = new BookHelper("http://aizr.net/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
@@ -66,7 +66,7 @@ namespace SimpleCollector
                     content = str_HtmlContent.GetMatch(ContentRule).First();
 
                     Match m_NextPage = str_HtmlContent.GetMatchGroup(NextPageUrl);
-                    while (m_NextPage.Success)
+                    while (m_NextPage.Success && NextPageUrl.Length > 0)
                     {
                         url = m_NextPage.Groups["key"].Value.AppendToDomain(url);
                         str_HtmlContent = Url.GetHtml(url, encoding);
@@ -95,7 +95,7 @@ namespace SimpleCollector
 
         public void CollectBooks(List<string> BookNeedCollect, string ListPageUrl, string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl, string encoding, string urlTitleRule, string ContentRule, string NextContentUrl)
         {
-            BookHelper bh = new BookHelper("http://zuoaiai.net/");
+            BookHelper bh = new BookHelper("http://aizr.net/");
         begin:
             SetStatus("打开列表页面");
             string listHtml = Url.GetHtml(ListPageUrl, encoding);
@@ -128,8 +128,8 @@ namespace SimpleCollector
                     {
                         //获取到书籍信息，并且添加到系统
                         string title = m_bookInfo.Groups["title"].Value.TrimHTML();
-                        //string author = m_bookInfo.Groups["author"].Value;
-                        string author = "robot";
+                        string author = m_bookInfo.Groups["author"].Value;
+                        //string author = "robot";
                         string cls = m_bookInfo.Groups["class"].Value;
                         string length = m_bookInfo.Groups["length"].Value;
                         string intro = m_bookInfo.Groups["intro"].Value.TrimHTML();

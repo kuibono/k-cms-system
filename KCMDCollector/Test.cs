@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Web;
 using System.Net;
-
+using Voodoo.Net.XmlRpc;
 using System.Collections.Specialized;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
@@ -18,6 +18,7 @@ using System.Threading;
 using Voodoo;
 using System.Text;
 using Voodoo.Net.BlogHelper;
+using Voodoo.Model;
 
 namespace KCMDCollector
 {
@@ -243,7 +244,7 @@ namespace KCMDCollector
         protected void testc()
         {
             Voodoo.Basement.Client.BookHelper bh = new Voodoo.Basement.Client.BookHelper("http://aizr.net/");
-            var books = bh.SearchBook("花都兽医", "", "");
+            var books = bh.SearchBook("权财", "", "");
             foreach (var book in books)
             {
                 var chapters = bh.ChapterSearch(book.Title, "", true);//获取所有图片章节
@@ -415,24 +416,33 @@ namespace KCMDCollector
 
             //});
 
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.fuck.com/e/test.aspx");
-            ////request.Method = "Post";
-            //request.ContentType = "application/x-www-form-urlencoded; charset=GBK";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.fuck.com/e/api/xmlrpcV2.aspx");
+            request.Method = "Post";
+            request.ContentType = "application/x-www-form-urlencoded; charset=GBK";
 
-            //string str_data = "<?xml version=\"1.0\"?><methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value><string>kuibono</string></value></param><param><value><string>4264269</string></value></param></params></methodCall>";
-            //request.ContentLength = str_data.Length;
-            //byte[] data = Encoding.UTF8.GetBytes(str_data);
+            methodCall mc = new methodCall();
+            mc.methodName = "BookExit";
+            mc.@params = new List<param>();
+            mc.@params.Add(new param { value = "1=1".SerializeToXML(), type = "System.String" });
 
-            //Stream newStream = request.GetRequestStream();
-            //newStream.Write(data, 0, data.Length);
-            //newStream.Close();
+            string str_data = Voodoo.IO.XML.Serialize(mc);
+            request.ContentLength = str_data.Length;
+            byte[] data = Encoding.UTF8.GetBytes(str_data);
 
-            //HttpWebResponse responseSorce = (HttpWebResponse)request.GetResponse();
-            //Stream stream = responseSorce.GetResponseStream();
-            //StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            //string content = reader.ReadToEnd();
+            Stream newStream = request.GetRequestStream();
+            newStream.Write(data, 0, data.Length);
+            newStream.Close();
 
-            //stream.Close();
+            HttpWebResponse responseSorce = (HttpWebResponse)request.GetResponse();
+            Stream stream = responseSorce.GetResponseStream();
+            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            string content = reader.ReadToEnd();
+
+            stream.Close();
+
+            methodResponse mr = (methodResponse)content.DeSerializeTo(typeof(methodResponse));
+
+            var result = mr.result.DeSerializeTo(Type.GetType(mr.type));
 
             //Voodoo.Net.XmlRpc.methodCall mc = new Voodoo.Net.XmlRpc.methodCall();
             //mc.methodName = "method.name";
@@ -447,8 +457,8 @@ namespace KCMDCollector
 
             //AlexJamesBrown.JoeBlogs.WordPressWrapper wp = new AlexJamesBrown.JoeBlogs.WordPressWrapper("http://www.fuck.com/e/test.aspx", "kuibono", "4264269");
 
-            Voodoo.Basement.Client.RpcBookHelper bh = new Voodoo.Basement.Client.RpcBookHelper();
-            bh.test();
+            //Voodoo.Basement.Client.RpcBookHelper bh = new Voodoo.Basement.Client.RpcBookHelper();
+            //bh.test();
         }
     }
 }
