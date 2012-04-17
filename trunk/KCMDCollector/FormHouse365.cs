@@ -30,6 +30,7 @@ namespace KCMDCollector
             {
                 dt.Columns.Add(str, typeof(string));
             }
+            dt.Columns.Add("统计", typeof(string));
 
             List<string> b = richTextBox1.Text.Trim().Split('\n').ToList();
 
@@ -40,14 +41,14 @@ namespace KCMDCollector
 
             foreach (DataRow r in dt.Rows)
             {
-                //foreach (DataColumn c in dt.Columns)
-                //{
-                //    r[c] = r.ToS() + " " + c.ToS();
-                //}
+                
                 for (int i = 1; i < dt.Columns.Count; i++)
                 {
-                    //r[i]=
                     string key = r[0] + " " + dt.Columns[i].ToString();
+                    if (dt.Columns[i].ToString() == "统计")
+                    {
+                        key = r[0].ToS();
+                    }
                     string url = string.Format("http://sell.house365.com/selllist_sell.php?keyword={0}", key.UrlEncode("gb2312"));
 
                     string html = Voodoo.Net.Url.GetHtml(url, "gb2312");
