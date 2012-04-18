@@ -15,7 +15,7 @@ namespace KCMDCollector
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormHouse365());
+            Application.Run(new MainForm());
         }
     }
 }
