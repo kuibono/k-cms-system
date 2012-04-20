@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+
+            FormHouse365.CheckForIllegalCrossThreadCalls = false;
+
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -90,11 +94,21 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "一行一个";
             // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.Location = new System.Drawing.Point(479, 379);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(29, 12);
+            this.status.TabIndex = 6;
+            this.status.Text = "就绪";
+            // 
             // FormHouse365
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 456);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,5 +130,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label status;
     }
 }

@@ -8,12 +8,14 @@ using System.Web;
 using Voodoo.Model;
 using Voodoo.DAL;
 using Voodoo.Basement;
+using System.ServiceModel.Activation;
 
 using System.IO;
 
 namespace Web.e.api
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“ClientService”。
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)] 
     public class ClientService : IClientService
     {
         public List<Book> BookSearch(string str_sql)
@@ -136,7 +138,8 @@ namespace Web.e.api
             BookChapterView.Update(chapter);
             ///保存文件
             Class cls = BookView.GetClass(chapter);
-            string txtPath = HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(chapter, cls));
+            string txtPath = AppDomain.CurrentDomain.BaseDirectory+BasePage.GetBookChapterTxtUrl(chapter, cls).Replace("/","\\");
+            
             Voodoo.IO.File.Write(txtPath, Content);
 
             //生成页面
