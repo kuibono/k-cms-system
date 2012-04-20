@@ -471,7 +471,7 @@ namespace KCMDCollector.Book
                 //获取章节在分站点的URL和标题
                 //var chapter_NeedCollect = b.Chapters.Where(p => p.Title.Replace(" ", "").Contains(c.Title.Replace(" ", "")));
                 var chapter_NeedCollect = (from n in b.Chapters select new { n.Index, n.Url, n.Length, n.Title, n.Content, weight = n.Title.GetSimilarityWith(c.Title) }).OrderByDescending(p => p.weight).ToList();
-                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.5).ToDecimal())//相似度大于0.8的才进行采集
+                if (chapter_NeedCollect.Count() > 0 && chapter_NeedCollect.First().weight > (0.9).ToDecimal())//相似度大于0.8的才进行采集
                 {
                     this.CollectStatus.ChapterTitle = c.Title;
                     this.CollectStatus.Status = "正在采集";
@@ -487,13 +487,15 @@ namespace KCMDCollector.Book
                     if (html_Content.IsMatch(Rule.ImageRule))
                     {
                         c.IsImageChapter = true;
-                        c.Content = "《"+b.BookTitle+"》-最新章节："+c.Title +"    目前是图片章节，读起来很不爽？赶快把本页加入收藏夹，"+c.Title+" 文字章节稍后为您呈现！阅读"+b.BookTitle+"最新章节，尽在"+s.PublicUrl+","+s.TargetUrl +"<br/ >";
+                        c.Content = "";//《"+b.BookTitle+"》-最新章节："+c.Title +"    目前是图片章节，读起来很不爽？赶快把本页加入收藏夹，"+c.Title+" 文字章节稍后为您呈现！阅读"+b.BookTitle+"最新章节，尽在"+s.PublicUrl+","+s.TargetUrl +"<br/ >";
                         Match m_images = html_Content.GetMatchGroup(Rule.ImageRule);
                         while (m_images.Success)
                         {
                             c.Content += string.Format("<img src=\"{0}\" alt=\"{1}\" />", m_images.Groups["key"].Value, c.Title);
                             m_images = m_images.NextMatch();
                         }
+                        c.Content += "最新章节：" + c.Title + "    目前是图片章节，读起来很不爽？赶快把本页加入收藏夹，" + c.Title + " 文字章节稍后为您呈现！阅读" + b.BookTitle + "最新章节，尽在" + s.PublicUrl + "," + s.TargetUrl + "<br/ >";
+                        
                     }
                     else
                     {

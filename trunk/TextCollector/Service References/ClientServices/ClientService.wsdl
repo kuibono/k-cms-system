@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IClientService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://aizr.net/e/api/ClientService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://aizr.net/e/api/ClientService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://aizr.net/e/api/ClientService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Voodoo.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientService_BookSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookSearch" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookExist" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookFind_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookFind" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookFind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookFindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetBookByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookByID" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetBookByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookInsert_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookInsert" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookInsert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookDelete" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_BookDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClassSearch" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassFind_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClassFind" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassFind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassFindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetClassByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassByID" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetClassByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassInsert_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClassInsert" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassInsert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClassUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClassDelete" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ClassDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClassDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterSearch" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterExist" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterFind_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterFind" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterFind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterFindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetChapterByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChapterByID" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetChapterByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChapterByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterInsert_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterInsert" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterInsert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterDelete" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_ChapterDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateIndex_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateIndex" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateIndex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateIndexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateClassPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClassPage" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_CreateClassPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateClassPageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientService">
+    <wsdl:operation name="BookSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookSearch" message="tns:IClientService_BookSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookSearchResponse" message="tns:IClientService_BookSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookExist" message="tns:IClientService_BookExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookExistResponse" message="tns:IClientService_BookExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookFind">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookFind" message="tns:IClientService_BookFind_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookFindResponse" message="tns:IClientService_BookFind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetBookByID" message="tns:IClientService_GetBookByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetBookByIDResponse" message="tns:IClientService_GetBookByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookInsert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookInsert" message="tns:IClientService_BookInsert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookInsertResponse" message="tns:IClientService_BookInsert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookUpdate" message="tns:IClientService_BookUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookUpdateResponse" message="tns:IClientService_BookUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/BookDelete" message="tns:IClientService_BookDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/BookDeleteResponse" message="tns:IClientService_BookDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ClassSearch" message="tns:IClientService_ClassSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ClassSearchResponse" message="tns:IClientService_ClassSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassFind">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ClassFind" message="tns:IClientService_ClassFind_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ClassFindResponse" message="tns:IClientService_ClassFind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetClassByID" message="tns:IClientService_GetClassByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetClassByIDResponse" message="tns:IClientService_GetClassByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassInsert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ClassInsert" message="tns:IClientService_ClassInsert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ClassInsertResponse" message="tns:IClientService_ClassInsert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ClassUpdate" message="tns:IClientService_ClassUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ClassUpdateResponse" message="tns:IClientService_ClassUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClassDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ClassDelete" message="tns:IClientService_ClassDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ClassDeleteResponse" message="tns:IClientService_ClassDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterSearch" message="tns:IClientService_ChapterSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterSearchResponse" message="tns:IClientService_ChapterSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterExist" message="tns:IClientService_ChapterExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterExistResponse" message="tns:IClientService_ChapterExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterFind">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterFind" message="tns:IClientService_ChapterFind_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterFindResponse" message="tns:IClientService_ChapterFind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChapterByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetChapterByID" message="tns:IClientService_GetChapterByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetChapterByIDResponse" message="tns:IClientService_GetChapterByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterInsert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterInsert" message="tns:IClientService_ChapterInsert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterInsertResponse" message="tns:IClientService_ChapterInsert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterUpdate" message="tns:IClientService_ChapterUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterUpdateResponse" message="tns:IClientService_ChapterUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/ChapterDelete" message="tns:IClientService_ChapterDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/ChapterDeleteResponse" message="tns:IClientService_ChapterDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateIndex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateIndex" message="tns:IClientService_CreateIndex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateIndexResponse" message="tns:IClientService_CreateIndex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateClassPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/CreateClassPage" message="tns:IClientService_CreateClassPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateClassPageResponse" message="tns:IClientService_CreateClassPage_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IClientService" type="tns:IClientService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IClientService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BookSearch">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookExist">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookFind">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookFind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookByID">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetBookByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookInsert">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookUpdate">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookDelete">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassSearch">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassFind">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassFind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClassByID">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetClassByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassInsert">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassUpdate">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClassDelete">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterSearch">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterExist">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterFind">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterFind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChapterByID">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetChapterByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterInsert">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterUpdate">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterDelete">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIndex">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/CreateIndex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateClassPage">
+      <soap12:operation soapAction="http://tempuri.org/IClientService/CreateClassPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientService">
+    <wsdl:port name="WSHttpBinding_IClientService" binding="tns:WSHttpBinding_IClientService">
+      <soap12:address location="http://aizr.net/e/api/ClientService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://aizr.net/e/api/ClientService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>http://aizr.net/</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
