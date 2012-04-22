@@ -42,6 +42,10 @@ namespace TextCollector.Common
             nv.Add("searchtype", "articlename");
 
             var SearchResult = Voodoo.Net.Url.PostGetCookieAndHtml(nv, "http://www.wcxiaoshuo.com/modules/article/search.php", Encoding.GetEncoding("gbk"));
+            while (SearchResult.Html.Length == 0)
+            {
+                SearchResult = Voodoo.Net.Url.PostGetCookieAndHtml(nv, "http://www.wcxiaoshuo.com/modules/article/search.php", Encoding.GetEncoding("gbk"));
+            }
 
             //2.打开书籍信息页面
             string hrml_BookInfo = "";//书籍信息页内容
@@ -71,6 +75,10 @@ namespace TextCollector.Common
             string list_url = hrml_BookInfo.GetMatch("<a href=\"(?<key>[^\"']*?)\" title=\"开始阅读\"><span>开始阅读</span></a>").First().AppendToDomain(SearchResult.url);
 
             WebInfo listInfo = Url.PostGetCookieAndHtml(new NameValueCollection(), list_url, Encoding.GetEncoding("gbk"));
+            while (listInfo.Html.Length == 0)
+            {
+                listInfo = Url.PostGetCookieAndHtml(new NameValueCollection(), list_url, Encoding.GetEncoding("gbk"));
+            }
 
             //4。获得
             var matchresult = listInfo.Html.GetMatchGroup("<li.*?><a.*?href=\"(?<url>.*?)\">(?<title>.+?)</a.*?></li.*?>");
@@ -110,6 +118,10 @@ namespace TextCollector.Common
         public string GetContent(string url)
         {
             string html_content = Url.GetHtml(url, "gb2312");
+            while (html_content.Length == 0)
+            {
+                html_content = Url.GetHtml(url, "gb2312");
+            }
 
             string content = html_content.GetMatch("<div id=\"htmlContent\" class=\"contentbox\" >[\\s]*?<div align=\"center\"><script type=\"text/javascript\" src=\"/js/nrh.js\"></script></div>(?<key>[\\s\\S]*?)</div>").First();
 

@@ -15,7 +15,7 @@ using System.IO;
 namespace Web.e.api
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码、svc 和配置文件中的类名“ClientService”。
-    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)] 
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class ClientService : IClientService
     {
         public List<Book> BookSearch(string str_sql)
@@ -38,9 +38,10 @@ namespace Web.e.api
             return BookView.GetModelByID(id.ToString());
         }
 
-        public void BookInsert(Book book)
+        public Book BookInsert(Book book)
         {
             BookView.Insert(book);
+            return book;
         }
 
         public void BookUpdate(Book book)
@@ -82,9 +83,10 @@ namespace Web.e.api
             return ClassView.GetModelByID(id.ToString());
         }
 
-        public void ClassInsert(Class cls)
+        public Class ClassInsert(Class cls)
         {
             ClassView.Insert(cls);
+            return cls;
         }
 
         public void ClassUpdate(Class cls)
@@ -138,8 +140,8 @@ namespace Web.e.api
             BookChapterView.Update(chapter);
             ///保存文件
             Class cls = BookView.GetClass(chapter);
-            string txtPath = AppDomain.CurrentDomain.BaseDirectory+BasePage.GetBookChapterTxtUrl(chapter, cls).Replace("/","\\");
-            
+            string txtPath = AppDomain.CurrentDomain.BaseDirectory + BasePage.GetBookChapterTxtUrl(chapter, cls).Replace("/", "\\");
+
             Voodoo.IO.File.Write(txtPath, Content);
 
             //生成页面
@@ -162,6 +164,11 @@ namespace Web.e.api
 
             BookChapterView.Del(str_sql);
 
+        }
+
+        public string GetChapterText(BookChapter chapter)
+        {
+            return Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter))));
         }
 
         #region 生成首页
@@ -202,5 +209,10 @@ namespace Web.e.api
 
         }
         #endregion
+
+        public void CreateBookPage(Book book)
+        {
+            Voodoo.Basement.CreatePage.CreateContentPage(book, BookView.GetClass(book));
+        }
     }
 }
