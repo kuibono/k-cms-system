@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Voodoo.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Voodoo.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBook" nillable="true" type="tns:ArrayOfBook" />
+  <xs:complexType name="Book">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Addtime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassID" type="xs:int" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClickCount" type="xs:long" />
+      <xs:element minOccurs="0" name="CorpusID" type="xs:int" />
+      <xs:element minOccurs="0" name="CorpusTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Enable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FaceImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFirstPost" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVip" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastChapterID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastChapterTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastVipChapterID" type="xs:long" />
+      <xs:element minOccurs="0" name="LastVipChapterTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Length" type="xs:long" />
+      <xs:element minOccurs="0" name="ReplyCount" type="xs:long" />
+      <xs:element minOccurs="0" name="SaveCount" type="xs:long" />
+      <xs:element minOccurs="0" name="Status" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TjCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VipUpdateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ZtID" type="xs:int" />
+      <xs:element minOccurs="0" name="ZtName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Book" nillable="true" type="tns:Book" />
+  <xs:complexType name="ArrayOfClass">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Class" nillable="true" type="tns:Class" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClass" nillable="true" type="tns:ArrayOfClass" />
+  <xs:complexType name="Class">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AutoAudt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ClassDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassForder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassICON" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassKeywords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassPageExtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassPageMode" type="xs:int" />
+      <xs:element minOccurs="0" name="ContentModel" type="xs:int" />
+      <xs:element minOccurs="0" name="ContentPageDirMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentPageExtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentPageForder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentPageMode" type="xs:int" />
+      <xs:element minOccurs="0" name="ContentPageNameMode" type="xs:int" />
+      <xs:element minOccurs="0" name="EditcreateList" type="xs:int" />
+      <xs:element minOccurs="0" name="EnablePost" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableReply" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableSameTitle" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableVCode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsLeafClass" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ListModel" type="xs:int" />
+      <xs:element minOccurs="0" name="ListPageOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListPageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="ManagementOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModelID" type="xs:int" />
+      <xs:element minOccurs="0" name="NavIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="NeedAudit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParentClassForder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentID" type="xs:int" />
+      <xs:element minOccurs="0" name="PostAddCent" type="xs:int" />
+      <xs:element minOccurs="0" name="PostManagement" type="xs:int" />
+      <xs:element minOccurs="0" name="PostRoles" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostcreateList" type="xs:int" />
+      <xs:element minOccurs="0" name="ReplyModel" type="xs:int" />
+      <xs:element minOccurs="0" name="ReplyNeedAudit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SearchModel" type="xs:int" />
+      <xs:element minOccurs="0" name="ShowInNav" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VisitRole" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Class" nillable="true" type="tns:Class" />
+  <xs:complexType name="ArrayOfBookChapter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookChapter" nillable="true" type="tns:BookChapter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookChapter" nillable="true" type="tns:ArrayOfBookChapter" />
+  <xs:complexType name="BookChapter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookID" type="xs:int" />
+      <xs:element minOccurs="0" name="BookTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChapterIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="ClassID" type="xs:long" />
+      <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClickCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Enable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="IsFree" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsImageChapter" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTemp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVipChapter" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TextLength" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ValumeID" type="xs:long" />
+      <xs:element minOccurs="0" name="ValumeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookChapter" nillable="true" type="tns:BookChapter" />
+</xs:schema>

@@ -463,53 +463,92 @@ namespace KCMDCollector
 
         private void button3_Click(object sender, EventArgs e)
         {
+            #region 链家
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("楼盘", typeof(string));
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("楼盘", typeof(string));
 
+            //List<string> a = new List<string>();
+            //a.Add("链家");
+            //a.Add("我爱我家");
+            //a.Add("满堂红");
+            //a.Add("顺驰不动产");
 
-            List<string> a = new List<string>();
-            a.Add("链家");
-            a.Add("我爱我家");
-            a.Add("满堂红");
-            a.Add("顺驰不动产");
+            //foreach (var str in a)
+            //{
+            //    dt.Columns.Add(str, typeof(string));
+            //}
 
-            foreach (var str in a)
+            //List<string> b = new List<string>();
+            //b.Add("天润城");
+            //b.Add("托乐嘉");
+            //b.Add("聚福园");
+            //b.Add("金信花园");
+            //b.Add("宁工新寓");
+            //b.Add("龙江小区");
+
+            //foreach (var str in b)
+            //{
+            //    dt.Rows.Add(str);
+            //}
+
+            //foreach (DataRow r in dt.Rows)
+            //{
+            //    //foreach (DataColumn c in dt.Columns)
+            //    //{
+            //    //    r[c] = r.ToS() + " " + c.ToS();
+            //    //}
+            //    for (int i = 1; i < dt.Columns.Count; i++)
+            //    {
+            //        //r[i]=
+            //        string key = r[0] + " " + dt.Columns[i].ToString();
+            //        string url = string.Format("http://sell.house365.com/selllist_sell.php?keyword={0}", key.UrlEncode("gb2312"));
+
+            //        string html = Voodoo.Net.Url.GetHtml(url, "gb2312");
+
+            //        string value = html.GetMatch("共找到<span>(?<key>.*?)</span>条房源").First();
+            //        r[i] = value;
+            //    }
+            //}
+            #endregion
+
+            NovelCollector.local.ClientServiceClient local = new NovelCollector.local.ClientServiceClient();
+            NovelCollector.zuoaiai.ClientServiceClient zuoaiai = new NovelCollector.zuoaiai.ClientServiceClient();
+
+            var localBooks = local.BookSearch("id<500 AND ID>4").ToList();
+            foreach (var book in localBooks)
             {
-                dt.Columns.Add(str, typeof(string));
-            }
-
-            List<string> b = new List<string>();
-            b.Add("天润城");
-            b.Add("托乐嘉");
-            b.Add("聚福园");
-            b.Add("金信花园");
-            b.Add("宁工新寓");
-            b.Add("龙江小区");
-
-            foreach (var str in b)
-            {
-                dt.Rows.Add(str);
-            }
-
-            foreach (DataRow r in dt.Rows)
-            {
-                //foreach (DataColumn c in dt.Columns)
-                //{
-                //    r[c] = r.ToS() + " " + c.ToS();
-                //}
-                for (int i = 1; i < dt.Columns.Count; i++)
+                var result=MessageBox.Show(book.LastChapterTitle, book.Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
                 {
-                    //r[i]=
-                    string key = r[0] + " " + dt.Columns[i].ToString();
-                    string url = string.Format("http://sell.house365.com/selllist_sell.php?keyword={0}", key.UrlEncode("gb2312"));
-
-                    string html = Voodoo.Net.Url.GetHtml(url, "gb2312");
-
-                    string value = html.GetMatch("共找到<span>(?<key>.*?)</span>条房源").First();
-                    r[i] = value;
+                    continue;
                 }
+
+                //类别
+                var zuoaiaiClass=zuoaiai.ClassFind(string.Format("ClassName=N'{0}'",book.ClassName));
+                if (zuoaiaiClass.ID < 0)
+                {
+                    zuoaiaiClass = local.GetClassByID(book.ClassID);
+                    zuoaiaiClass.ParentID = 0;
+                    zuoaiaiClass=zuoaiai.ClassInsert(zuoaiaiClass);
+                }
+
+                //增加书籍
+                book.ClassID = zuoaiaiClass.ID;
+                var zuoaiaiBook=zuoaiai.BookInsert(book);
+
+                var chapters = local.ChapterSearch(string.Format("BookID={0}", book.ID));
+                foreach (var chapter in chapters)
+                {
+                    
+                    string content = local.GetChapterText(chapter);
+                    chapter.BookID = zuoaiaiBook.ID;
+                    zuoaiai.ChapterInsert(chapter,content);
+                }
+                zuoaiai.CreateBookPage(zuoaiaiBook);
             }
+
+
         }
     }
 }

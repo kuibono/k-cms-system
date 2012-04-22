@@ -80,6 +80,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -151,6 +153,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Voodoo.Model.Book.datasource" />
+    <None Include="Properties\DataSources\Voodoo.Model.BookChapter.datasource" />
+    <None Include="Properties\DataSources\Voodoo.Model.Class.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,6 +165,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\local\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\zuoaiai\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
@@ -172,6 +188,26 @@
     <Compile Include="Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
+    <None Include="Service References\local\ClientService.wsdl" />
+    <None Include="Service References\local\ClientService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\local\ClientService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\local\ClientService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\zuoaiai\ClientService.wsdl" />
+    <None Include="Service References\zuoaiai\ClientService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\zuoaiai\ClientService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\zuoaiai\ClientService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Voodoo\Voodoo.csproj">
@@ -189,6 +225,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bigfoot.ico" />
+    <None Include="Service References\zuoaiai\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\zuoaiai\configuration.svcinfo" />
+    <None Include="Service References\zuoaiai\configuration91.svcinfo" />
+    <None Include="Service References\zuoaiai\ClientService.disco" />
+    <None Include="Service References\local\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\local\configuration.svcinfo" />
+    <None Include="Service References\local\configuration91.svcinfo" />
+    <None Include="Service References\local\ClientService.disco" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -206,6 +256,13 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\local\" />
+    <WCFMetadataStorage Include="Service References\zuoaiai\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
