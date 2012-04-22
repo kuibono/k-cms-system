@@ -25,7 +25,7 @@ namespace Web.e.api
         Book GetBookByID(int id);
 
         [OperationContract]
-        void BookInsert(Book book);
+        Book BookInsert(Book book);
 
         [OperationContract]
         void BookUpdate(Book book);
@@ -43,7 +43,7 @@ namespace Web.e.api
         Class GetClassByID(int id);
 
         [OperationContract]
-        void ClassInsert(Class cls);
+        Class ClassInsert(Class cls);
 
         [OperationContract]
         void ClassUpdate(Class cls);
@@ -74,10 +74,16 @@ namespace Web.e.api
         void ChapterDelete(string str_sql);
 
         [OperationContract]
+        string GetChapterText(BookChapter chapter);
+
+        [OperationContract]
         void CreateIndex();
 
         [OperationContract]
         void CreateClassPage();
+
+        [OperationContract]
+        void CreateBookPage(Book book);
 
 
     }

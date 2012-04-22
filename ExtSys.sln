@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voodoo", "..\voodoo\Voodoo.csproj", "{CF4C09DC-B002-4A0D-856B-DCD5E3719213}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCMDCollector", "KCMDCollector\KCMDCollector.csproj", "{28790D6F-A41B-49E1-9AB9-7B2C6C2ADF68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E91EA7E0-46DD-43C1-B514-341338E69392} = {E91EA7E0-46DD-43C1-B514-341338E69392}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCollector", "SimpleCollector\SimpleCollector.csproj", "{A47993C7-5614-497D-8C3C-0E84F8E61C06}"
 EndProject
