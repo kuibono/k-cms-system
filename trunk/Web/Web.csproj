@@ -91,6 +91,10 @@
     <Content Include="e\admin\Info\InfoTypeEdit.aspx" />
     <Content Include="e\admin\Info\InfoTypeList.aspx" />
     <Content Include="e\admin\Login.aspx" />
+    <Content Include="e\admin\Movie\MovieEdit.aspx" />
+    <Content Include="e\admin\Movie\MovieList.aspx" />
+    <Content Include="e\admin\Movie\UrlEdit.aspx" />
+    <Content Include="e\admin\Movie\UrlList.aspx" />
     <Content Include="e\admin\news\ClassEdit.aspx" />
     <Content Include="e\admin\news\ClassList.aspx" />
     <Content Include="e\admin\news\NewsEdit.aspx" />
@@ -567,6 +571,34 @@
     </Compile>
     <Compile Include="e\admin\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Movie\MovieEdit.aspx.cs">
+      <DependentUpon>MovieEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Movie\MovieEdit.aspx.designer.cs">
+      <DependentUpon>MovieEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Movie\MovieList.aspx.cs">
+      <DependentUpon>MovieList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Movie\MovieList.aspx.designer.cs">
+      <DependentUpon>MovieList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Movie\UrlEdit.aspx.cs">
+      <DependentUpon>UrlEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Movie\UrlEdit.aspx.designer.cs">
+      <DependentUpon>UrlEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Movie\UrlList.aspx.cs">
+      <DependentUpon>UrlList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Movie\UrlList.aspx.designer.cs">
+      <DependentUpon>UrlList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\news\ClassEdit.aspx.cs">
       <DependentUpon>ClassEdit.aspx</DependentUpon>
