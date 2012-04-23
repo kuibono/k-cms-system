@@ -367,6 +367,79 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取影视地址
+        /// <summary>
+        /// 获取影视地址
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetMovieUrl(MovieInfo b, Class cls)
+        {
+            string result = "";
+            string fileName = b.Title;//书名+作者
+
+
+            string sitrurl = "/Movie/";
+
+
+            result = string.Format("{0}{1}/{2}/index{3}",
+                sitrurl,
+                cls.ClassForder,
+                fileName,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+        #endregion
+
+        #region 获取影视地址
+        /// <summary>
+        /// 获取影视地址
+        /// </summary>
+        /// <param name="qs"></param>
+        /// <param name="cls"></param>
+        /// <returns></returns>
+        public static string GetMovieDramaUrl(MovieUrlBaidu b, Class cls)
+        {
+            string result = "";
+
+
+            string sitrurl = "/Movie/";
+
+
+            result = string.Format("{0}{1}/{2}/Baidu/{3}{4}",
+                sitrurl,
+                cls.ClassForder,
+                b.MovieTitle,
+                b.Id,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+
+        public static string GetMovieDramaUrl(MovieUrlKuaib b, Class cls)
+        {
+            string result = "";
+
+
+            string sitrurl = "/Movie/";
+
+
+            result = string.Format("{0}{1}/{2}/Kuaib/{3}{4}",
+                sitrurl,
+                cls.ClassForder,
+                b.MovieTitle,
+                b.Id,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+        #endregion
+
 
         #region 获取栏目地址
         /// <summary>
@@ -509,6 +582,8 @@ namespace Voodoo.Basement
                 return lresult.First();
             }
         }
+
+
         #endregion
 
         #region 获取下一篇文章、相册、提问

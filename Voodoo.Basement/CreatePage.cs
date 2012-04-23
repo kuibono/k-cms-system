@@ -402,6 +402,115 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region  生成内容页--影视
+        /// <summary>
+        /// 生成内容页--影视
+        /// </summary>
+        /// <param name="album"></param>
+        /// <param name="cls"></param>
+        public static void CreateContentPage(MovieInfo movie, Class cls)
+        {
+
+
+            string FileName = BasePage.GetMovieUrl(movie, cls);
+            string Content = "";
+
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
+
+
+
+            Content = GetTempateString(tmpid, TempType.内容);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = movie.Title, UpdateTime = DateTime.Now.ToString(), Description = movie.Intro.TrimHTML() };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+
+
+            #region 替换内容
+
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+
+            Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
+            Content = Content.Replace("[!--movie.actors--]", movie.Actors);
+            Content = Content.Replace("[!--movie.classid--]", movie.ClassID.ToS());
+            Content = Content.Replace("[!--movie.classname--]", movie.ClassName);
+            Content = Content.Replace("[!--movie.director--]", movie.Director);
+            Content = Content.Replace("[!--movie.enable--]", movie.Enable.ToInt32().ToS());
+            Content = Content.Replace("[!--movie.faceimage--]", movie.FaceImage);
+            Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
+            Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
+            Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
+            Content = Content.Replace("[!--movie.location--]", movie.Location);
+            Content = Content.Replace("[!--movie.publicyear--]", movie.PublicYear);
+            Content = Content.Replace("[!--movie.status--]", movie.Status.ToS());
+            Content = Content.Replace("[!--movie.tags--]", movie.Tags);
+            Content = Content.Replace("[!--movie.title--]", movie.Title);
+            Content = Content.Replace("[!--movie.updatetimetime--]", movie.UpdateTime.ToString(temp.TimeFormat));
+
+            StringBuilder sb = new StringBuilder();
+            List<MovieUrlKuaib> qb = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}", movie.Id.ToS()));
+            string list_tmp = GetTempateString(1, TempType.下载地址);
+            foreach (MovieUrlKuaib q in qb)
+            {
+                string row = list_tmp.Replace("[!--url.id--]", q.Id.ToS());
+                row = row.Replace("[!--url.url--]", q.Url);
+                row = row.Replace("[!--url.title--]", q.Title);
+                row = row.Replace("[!--url.movieid--]", q.MovieID.ToS());
+                row = row.Replace("[!--url.movietitle--]", q.MovieTitle);
+                row = row.Replace("[!--url--]", BasePage.GetMovieDramaUrl(q,MovieInfoView.GetClass(q)));
+                sb.Append(row);
+            }
+            Content = Content.Replace("[!--movie.kuib--]", sb.ToS());
+
+
+            sb = new StringBuilder();
+            List<MovieUrlBaidu> baidu = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0}", movie.Id.ToS()));
+            foreach (MovieUrlBaidu q in baidu)
+            {
+                string row = list_tmp.Replace("[!--url.id--]", q.Id.ToS());
+                row = row.Replace("[!--url.url--]", q.Url);
+                row = row.Replace("[!--url.title--]", q.Title);
+                row = row.Replace("[!--url.movieid--]", q.MovieID.ToS());
+                row = row.Replace("[!--url.movietitle--]", q.MovieTitle);
+                row = row.Replace("[!--url--]", BasePage.GetMovieDramaUrl(q, MovieInfoView.GetClass(q)));
+                sb.Append(row);
+            }
+            Content = Content.Replace("[!--movie.baidu--]", sb.ToS());
+
+            sb = new StringBuilder();
+            List<MovieUrlMag> mag = MovieUrlMagView.GetModelList(string.Format("MovieID={0}", movie.Id.ToS()));
+            foreach (MovieUrlMag q in mag)
+            {
+                string row = list_tmp.Replace("[!--url.id--]", q.Id.ToS());
+                row = row.Replace("[!--url.url--]", q.Url);
+                row = row.Replace("[!--url.title--]", q.Title);
+                row = row.Replace("[!--url.movieid--]", q.MovieID.ToS());
+                row = row.Replace("[!--url.movietitle--]", q.MovieTitle);
+                sb.Append(row);
+            }
+            Content = Content.Replace("[!--movie.mag--]", sb.ToS());
+
+            
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+        }
+        #endregion
+
 
         #region  生成内容页--书籍
         /// <summary>
@@ -840,6 +949,49 @@ namespace Voodoo.Basement
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }
             #endregion 小说系统
+
+            #region 分类系统
+            else if (c.ModelID == 5)
+            {
+
+            }
+            #endregion
+
+            #region 影视
+            else if (c.ModelID == 6)
+            {
+                StringBuilder sb_list = new StringBuilder();
+                List<MovieInfo> qs = MovieInfoView.GetModelList(string.Format("Enable=1 and ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by id desc", c.ID));
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
+                recordCount = qs.Count;
+
+                qs = qs.Skip((page - 1) * temp.ShowRecordCount).Take(temp.ShowRecordCount).ToList();
+                foreach (MovieInfo m in qs)
+                {
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--movie.url--]", BasePage.GetMovieUrl(m, MovieInfoView.GetClass(m)));
+                    str_lst = str_lst.Replace("[!--movie.actors--]", m.Actors);
+                    str_lst = str_lst.Replace("[!--movie.classid--]", m.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--movie.classname--]", m.ClassName);
+                    str_lst = str_lst.Replace("[!--movie.director--]", m.Director);
+                    str_lst = str_lst.Replace("[!--movie.enable--]", m.Enable.ToInt32().ToS());
+                    str_lst = str_lst.Replace("[!--movie.faceimage--]", m.FaceImage);
+                    str_lst = str_lst.Replace("[!--movie.id--]", m.Id.ToS());
+                    str_lst = str_lst.Replace("[!--movie.inserttime--]", m.InsertTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro);
+                    str_lst = str_lst.Replace("[!--movie.ismove--]", m.IsMove.ToInt32().ToS());
+                    str_lst = str_lst.Replace("[!--movie.lastdramatitle--]", m.LastDramaTitle);
+                    str_lst = str_lst.Replace("[!--movie.location--]", m.Location);
+                    str_lst = str_lst.Replace("[!--movie.publicyear--]", m.PublicYear);
+                    str_lst = str_lst.Replace("[!--movie.status--]", m.Status.ToS());
+                    str_lst = str_lst.Replace("[!--movie.tags--]", m.Tags);
+                    str_lst = str_lst.Replace("[!--movie.title--]", m.Title);
+                    str_lst = str_lst.Replace("[!--movie.updatetimetime--]", m.UpdateTime.ToString(temp.TimeFormat));
+                    sb_list.AppendLine(str_lst);
+                }
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }
+            #endregion
 
             #endregion
 

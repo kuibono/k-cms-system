@@ -517,6 +517,14 @@ namespace Web.e.admin
                     {
                         node.Listeners.Click.Handler = "openpage('Book/BookList.aspx?class=" + pcls.ID + "')";
                     }
+                    else if (pcls.ModelID == 5)
+                    {
+                        //node.Listeners.Click.Handler = "openpage('Book/BookList.aspx?class=" + pcls.ID + "')";
+                    }
+                    else if (pcls.ModelID == 6)
+                    {
+                        node.Listeners.Click.Handler = "openpage('Movie/MovieList.aspx?class=" + pcls.ID + "')";
+                    }
 
                 }
             }
