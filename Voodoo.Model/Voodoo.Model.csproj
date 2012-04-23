@@ -83,6 +83,9 @@
     <Compile Include="Auto\Link.cs" />
     <Compile Include="Auto\MovieInfo.cs" />
     <Compile Include="Auto\MovieUrl.cs" />
+    <Compile Include="Auto\MovieUrlBaidu.cs" />
+    <Compile Include="Auto\MovieUrlKuaib.cs" />
+    <Compile Include="Auto\MovieUrlMag.cs" />
     <Compile Include="Auto\News.cs" />
     <Compile Include="Auto\Question.cs" />
     <Compile Include="Auto\Relpy.cs" />
