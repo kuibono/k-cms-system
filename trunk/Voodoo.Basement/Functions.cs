@@ -306,7 +306,7 @@ namespace Voodoo.Basement
         /// <param name="m_where">条件语句</param>
         /// <param name="Model">字符拼接模板</param>
         /// <returns></returns>
-        public static string Getclassbyfilter(string m_where,string Model)
+        public static string Getclassbyfilter(string m_where, string Model)
         {
             List<Class> cls = ClassView.GetModelList(m_where);
             StringBuilder sb = new StringBuilder();
@@ -320,7 +320,7 @@ namespace Voodoo.Basement
 
             return sb.ToString();
         }
-        #endregion 
+        #endregion
 
         #region 获取子栏目
         /// <summary>
@@ -401,7 +401,7 @@ namespace Voodoo.Basement
             {
                 sb.AppendLine(string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a>|", l.Url, l.LinkTitle));
             }
-            
+
             return sb.TrimEnd('|').ToString();
         }
         #endregion
@@ -524,7 +524,7 @@ namespace Voodoo.Basement
         /// </summary>
         /// <param name="m_where"></param>
         /// <returns></returns>
-        public static string getnovellist(string m_where, string Top, string CutTitle,string firstClass,string ShowClickCount)
+        public static string getnovellist(string m_where, string Top, string CutTitle, string firstClass, string ShowClickCount)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -540,16 +540,16 @@ namespace Voodoo.Basement
                 string str_clickcount = "";
                 if (ShowClickCount.ToBoolean())
                 {
-                    str_clickcount = string.Format("<span>{0}</span>",b.ClickCount);
+                    str_clickcount = string.Format("<span>{0}</span>", b.ClickCount);
                 }
 
-                sb.Append(string.Format("<li"+str_cls+"><a title=\"{0}\" href=\"{1}\">{2}</a>{3}</li>", b.Title, BasePage.GetBookUrl(b, BookView.GetClass(b)), b.Title.CutString(CutTitle.ToInt32(10)),str_clickcount));
+                sb.Append(string.Format("<li" + str_cls + "><a title=\"{0}\" href=\"{1}\">{2}</a>{3}</li>", b.Title, BasePage.GetBookUrl(b, BookView.GetClass(b)), b.Title.CutString(CutTitle.ToInt32(10)), str_clickcount));
             }
 
             return sb.ToS();
         }
 
-        public static string Getnovellist(string m_where, int Top, int CutTitle,string Model)
+        public static string Getnovellist(string m_where, int Top, int CutTitle, string Model)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -557,15 +557,15 @@ namespace Voodoo.Basement
             foreach (var b in NovelList)
             {
                 string str = Model;
-                str=str.Replace("{id}",b.ID.ToS());
-                str=str.Replace("{title}",b.Title.CutString(CutTitle));
-                str=str.Replace("{author}",b.Author);
-                str=str.Replace("{classid}",b.ClassID.ToS());
-                str=str.Replace("{classname}",b.ClassName);
-                str=str.Replace("{clickcount}",b.ClickCount.ToS());
-                str=str.Replace("{lastchapterid}",b.LastChapterID.ToS());
-                str=str.Replace("{lastchaptertitle}",b.LastChapterTitle);
-                str=str.Replace("{tjcount}",b.TjCount.ToS());
+                str = str.Replace("{id}", b.ID.ToS());
+                str = str.Replace("{title}", b.Title.CutString(CutTitle));
+                str = str.Replace("{author}", b.Author);
+                str = str.Replace("{classid}", b.ClassID.ToS());
+                str = str.Replace("{classname}", b.ClassName);
+                str = str.Replace("{clickcount}", b.ClickCount.ToS());
+                str = str.Replace("{lastchapterid}", b.LastChapterID.ToS());
+                str = str.Replace("{lastchaptertitle}", b.LastChapterTitle);
+                str = str.Replace("{tjcount}", b.TjCount.ToS());
                 str = str.Replace("{url}", BasePage.GetBookUrl(b, BookView.GetClass(b)));
 
                 sb.Append(str);
@@ -573,7 +573,7 @@ namespace Voodoo.Basement
 
             return sb.ToS();
         }
-        #endregion 
+        #endregion
 
         #region 获取系统搜索关键词
         /// <summary>
@@ -593,14 +593,14 @@ namespace Voodoo.Basement
             return sb.ToS();
         }
 
-        public static string Getsearchkey(string m_where,int Top,string Model)
+        public static string Getsearchkey(string m_where, int Top, string Model)
         {
             StringBuilder sb = new StringBuilder();
 
-            var list = SysKeywordView.GetModelList(m_where,Top);
+            var list = SysKeywordView.GetModelList(m_where, Top);
             foreach (var item in list)
             {
-                string str=Model;
+                string str = Model;
                 str = str.Replace("{clickcount}", item.ClickCount.ToS());
                 str = str.Replace("{id}", item.Id.ToS());
                 str = str.Replace("{keyword}", item.Keyword);
@@ -617,16 +617,16 @@ namespace Voodoo.Basement
         /// <param name="ClassID">分类ID</param>
         /// <param name="Top">所取条数</param>
         /// <returns></returns>
-        public static string getclassnews(string ClassID,string Top)
+        public static string getclassnews(string ClassID, string Top)
         {
-            List<Book> qs = BookView.GetModelList(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by clickcount desc", ClassID),Top.ToInt32(12));
+            List<Book> qs = BookView.GetModelList(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0}) order by clickcount desc", ClassID), Top.ToInt32(12));
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < qs.Count; i++)
             {
                 if (i == 0)
                 {
                     sb.AppendLine(string.Format("<ul class=\"picList\"><li><a href=\"{0}\" title=\"{1}\" class=\"ablum\"><img src=\"{3}\" alt=\"{1}\" width=\"120\" height=\"160\" /></a><div class=\"text\"><h2 class=\"h22\"><a href=\"{0}\" title=\"{1}\" target=\"_blank\">《{1}》</a></h2><p>{2}</p></div></li>",
-                        BasePage.GetBookUrl(qs[i],BookView.GetClass(qs[i])),
+                        BasePage.GetBookUrl(qs[i], BookView.GetClass(qs[i])),
                         qs[i].Title,
                         qs[i].Intro.CutString(150),
                         qs[i].FaceImage.IsNull("/Book/Bookface/0.jpg")
@@ -657,13 +657,53 @@ namespace Voodoo.Basement
                         qs[i].Intro.CutString(25)
                         ));
                 }
-                
+
             }//end for
             sb.AppendLine("</ul>");
             return sb.ToS();
         }
         #endregion
 
+        #region 获取电影列表
+        /// <summary>
+        /// 获取电影列表
+        /// </summary>
+        /// <param name="top">条数</param>
+        /// <param name="custitle">标题截取</param>
+        /// <param name="m_where">条件语句</param>
+        /// <param name="htmlTemp">模板</param>
+        /// <returns></returns>
+        public static string getmovielist(string top, string custitle, string m_where, string htmlTemp)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<MovieInfo> movies = MovieInfoView.GetModelList(m_where, top.ToInt32());
+            foreach (MovieInfo m in movies)
+            {
+                string item = htmlTemp;
+                item = item.Replace("{id}", m.Id.ToS());
+                item = item.Replace("{authors}", m.Actors);
+                item = item.Replace("{classid}", m.ClassID.ToS());
+                item = item.Replace("{classname}", m.ClassName);
+                item = item.Replace("{director}", m.Director);
+                item = item.Replace("{faceimage}", m.FaceImage);
+                item = item.Replace("{inserttime}", m.InsertTime.ToString("yyyy-MM-dd"));
+                item = item.Replace("{intro}", m.Intro);
+                item = item.Replace("{ismovie}", m.IsMove ? "电影" : "电视剧");
+                item = item.Replace("{lastdramatitle}", m.LastDramaTitle);
+                item = item.Replace("{location}", m.Location);
+                item = item.Replace("{publicyear}", m.PublicYear);
+                item = item.Replace("{status}", m.Status==0?"更新中":"完结");
+                item = item.Replace("{tags}", m.Tags);
+                item = item.Replace("{title}", m.Title);
+                item = item.Replace("{ftitle}", m.Title.CutString(custitle.ToInt32()));
+                item = item.Replace("{updatetime}", m.UpdateTime.ToString("yyyy-MM-dd"));
+                sb.Append(item);
+               
+            }
+            return sb.ToS();
+        }
+        #endregion
 
     }
 }

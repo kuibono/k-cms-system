@@ -734,7 +734,7 @@ SET IDENTITY_INSERT [TemplatePublic] ON ;
     <!--  footer End -->
 </body>
 </html>
-',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]',N'',N'',N'',N'                                    <div class="details" style="width:650px">
+',N'',N'',N'',N'',N'',N'',N'',N'<div class="guankan"><a href="[!--url--]" target="_blank">[!--title--]</a></div>',N'',N'页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]',N'',N'',N'',N'                                    <div class="details" style="width:650px">
                                         <div class="float-r" style="float:right;">
                                             <span class="gray">[!--answer.answertime--]</span>
                                         </div>
@@ -1919,5 +1919,25 @@ $(function(){
 SET IDENTITY_INSERT [Info] ON ;
  insert into [Info]([id],[InfoTypeID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[UserName],[UserID],[Contact],[ContactType],[Tel],[TelLocation],[Address],[Intro],[ImageCount],[ReplyCount],[ClickCount],[IsSetTop],[OutTime],[PostTime],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'5',N'1',N'1',N'大连房屋出租',N'0',N'',N'兴工街大户型',N'',N'-2147483648',N'刘林',N'中介',N'13813009317',N'',N'信工街西安路2号',N'不接受美元日元',N'0',N'0',N'0',N'False',N'2000-1-1 0:00:00',N'2000-1-1 0:00:00',N'2000',N'3',N'1',N'1',N'4',N'6',N'90',N'0',N'0',N'0',N'',N'',N'豪华装修',N'随时入住',N'别墅',N'南',N'沙河口区',N'罗斯福',N'床,热水器,空调',N'整套出租',N'押一付三',N'兴工街',N'',N'',N'',N'0.00',N'0.00',N'0.00',N'0.00',N'0.00',N'',N'',N'',N'',N'',N'False',N'False',N'False',N'False',N'False')
  SET IDENTITY_INSERT [Info] OFF ;
+
+
+SET IDENTITY_INSERT [MovieUrlBaidu] ON ;
+ insert into [MovieUrlBaidu]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'1',N'1',N'杜拉拉升职记',N'第一集',N'2012-4-23 12:55:17',N'True',N'bdhd://390133739|B0ADDD13ABB64429EB57441290B39092|杜拉拉升职记HDTV01.rmvb')
+ SET IDENTITY_INSERT [MovieUrlBaidu] OFF ;
+
+
+SET IDENTITY_INSERT [MovieUrlBaidu] ON ;
+ insert into [MovieUrlBaidu]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'2',N'2',N'我是特种兵',N'第一集',N'2012-4-23 12:55:58',N'True',N'bdhd://226097940|EFEF2B0F6FBF6D7239811726ACFBF7B5|我是特种兵01.rmvb')
+ SET IDENTITY_INSERT [MovieUrlBaidu] OFF ;
+
+
+SET IDENTITY_INSERT [MovieInfo] ON ;
+ insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable]) values(N'1',N'2',N'大陆电视剧',N'杜拉拉升职记',N'陈铭章',N'王珞丹，李光洁，李彩桦',N'喜剧，偶像，爱情',N'大陆',N'2010',N'杜拉拉，大学毕业后进入民营企业。因老板胡阿发的骚扰，也因为想和男友李鸿明一样就职于世界500强公司，拉拉向DB公司递交求职材料。同时她也发现男友李鸿铭和自己的好朋友夏红相爱了。',N'False',N'',N'2012-4-23 12:47:04',N'第一集',N'1',N'2012-4-23 12:47:32',N'0',N'True')
+ SET IDENTITY_INSERT [MovieInfo] OFF ;
+
+
+SET IDENTITY_INSERT [MovieInfo] ON ;
+ insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable]) values(N'2',N'2',N'大陆电视剧',N'我是特种兵',N'刘猛',N'任天野 谷智鑫 刘晓洁 王奎荣',N'军旅励志',N'大陆',N'2011',N'揭开最精锐部队的神秘面纱，缔造属于青春的军旅传奇。该剧全景式表现中国人民解放军陆军最精锐的战士——狼牙特别突击队残酷悲壮、铁血精诚的训练和生活的长篇画卷。如果祖国需要，他们就是一颗上膛的子弹，时刻准备着！一曲凄美缠绵的军营恋歌，一份血与泪水的成长记录。19岁的大学新生小庄，为了追随初恋女友而开始了一段迷彩军营生活，但两个少年都没有料到，当命运的子弹穿过爱情的心脏时，面对着喷涌而出的梦想和鲜血，这无常荒诞的人生又有几许承担之重？一段激情昂扬的热血青春，一部与众不同的军旅励志剧。从一个桀骜不驯的艺术青年，到一个骁勇善战、百炼成钢的合格特种兵，小庄在绿色的军营中一遍一遍经历着蜕变、感召和洗礼……',N'False',N'/u/MoviekFace/2.jpg',N'2012-4-23 12:53:12',N'第一集',N'2',N'2012-4-23 12:53:40',N'0',N'True')
+ SET IDENTITY_INSERT [MovieInfo] OFF ;
 
 
