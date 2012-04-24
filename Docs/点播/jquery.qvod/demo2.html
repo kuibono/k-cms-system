@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>demo2演示文档</title>
+<script language="javascript" type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.qvod.js"></script>
+</head>
+<body>
+
+<br>
+
+
+
+
+
+<div id="player"></div>
+<script>
+	$().ready(function(){
+		var url = "qvod://530121830|7A77E443E9FB1E119E1BC24FB5389DB7572555D5|sohu_B+侦探(1).mp4|";		
+		$("#player").qvod({PlayerArea:"player", width:"700", height:"500", AutoPlay:"true",QvodUrl:url});
+	});
+		/*参数说明*/
+		
+		//width: "500", /*播放器的宽度*/
+		
+		//height: "400", /*播发器的高度*/
+		
+		//AutoPlay: "true", /*自动播放 默认开启*/
+		
+		//FullScreen: "false", /*自动全屏 默认关闭*/
+		
+		//PlayerArea: "",	/*播放器插入的位置，标签的id属性*/
+		
+		//QvodUrl: "", /*本集资源地址*/
+		
+		//NextWebPage: "", /*下一集播放页地址*/
+		
+		//NextQvod: "", /*下一集资源地址，预缓冲时使用*/
+		
+		//ShowControl: "1", /*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
+		
+		//AdUrl: "http://buffer-ad.qvod.com/" /*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
+
+		//该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
+
+</script>
+
+
+</body>
+</html>
