@@ -58,6 +58,7 @@ namespace Web.e.admin.Movie
 
         protected void btn_Save_Click(object sender, EventArgs e)
         {
+            movieID = WS.RequestInt("movieid", 0);
             #region deal
             switch (type)
             {
@@ -67,6 +68,7 @@ namespace Web.e.admin.Movie
                     kuaibUrl.Title = txt_Title.Text;
                     kuaibUrl.Url = txt_Url.Text;
                     kuaibUrl.MovieID = movieID;
+                    kuaibUrl.UpdateTime = DateTime.Now;
                     if (kuaibUrl.Id > 0)
                     {
                         MovieUrlKuaibView.Update(kuaibUrl);
@@ -82,6 +84,7 @@ namespace Web.e.admin.Movie
                     baiduUrl.Title = txt_Title.Text;
                     baiduUrl.Url = txt_Url.Text;
                     baiduUrl.MovieID = movieID;
+                    baiduUrl.UpdateTime = DateTime.Now;
                     if (baiduUrl.Id > 0)
                     {
                         MovieUrlBaiduView.Update(baiduUrl);
@@ -97,6 +100,7 @@ namespace Web.e.admin.Movie
                     magUrl.Title = txt_Title.Text;
                     magUrl.Url = txt_Url.Text;
                     magUrl.MovieID = movieID;
+                    magUrl.UpdateTime = DateTime.Now;
                     if (magUrl.Id > 0)
                     {
                         MovieUrlMagView.Update(magUrl);

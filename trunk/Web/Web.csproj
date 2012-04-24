@@ -459,6 +459,7 @@
     <Content Include="skin\novel\search.css" />
     <Content Include="skin\novel\vipmain.png" />
     <Content Include="skin\novel\x.png" />
+    <Content Include="skin\script\ChapterCommon.js" />
     <Content Include="wap\Book\B.aspx" />
     <Content Include="wap\Book\C.aspx" />
     <Content Include="wap\Book\cls.aspx" />
