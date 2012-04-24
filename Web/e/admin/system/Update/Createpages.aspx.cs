@@ -69,6 +69,12 @@ namespace Web.e.admin.system.Update
                 CreatePage.CreateContentPage(b, BookView.GetClass(b));
             }
 
+            var movies = MovieInfoView.GetModelList();
+            foreach (var m in movies)
+            {
+                CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+            }
+
             Js.AlertAndGoback("成功！");
         }
 

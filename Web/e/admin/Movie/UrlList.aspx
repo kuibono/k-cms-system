@@ -45,7 +45,7 @@
                         <asp:Button ID="btn_disable" Text="审核" runat="server" OnClick="btn_disable_Click" />
                         <asp:Button ID="btn_enable" Text="撤销审核" runat="server" OnClick="btn_enable_Click" />
                         <asp:Button ID="Button1" Text="删除" runat="server" OnClick="Button1_Click" />
-                        <input type="button" value="新增" onclick="location.href='UrlEdit.aspx?bookid=<%=id %>'" />
+                        <input type="button" value="新增" onclick="location.href='UrlEdit.aspx?movieid=<%=id %>&type=<%=type %>'" />
                         <input type="button" value="返回" onclick="history.go(-1)" />
                     </td>
                 </tr>

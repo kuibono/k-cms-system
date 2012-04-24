@@ -174,7 +174,7 @@ namespace Voodoo.Basement
             string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_pre != null)
             {
-                pre_link = string.Format("<a href=\"{0}\">{1}</a>", BasePage.GetNewsUrl(news_pre, cls), news_pre.Title);
+                pre_link = string.Format("<a id=\"btn_pre\" href=\"{0}\">{1}</a>", BasePage.GetNewsUrl(news_pre, cls), news_pre.Title);
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
@@ -182,7 +182,7 @@ namespace Voodoo.Basement
             string next_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_next != null)
             {
-                next_link = string.Format("<a href=\"{0}\">{1}</a>", BasePage.GetNewsUrl(news_next, cls), news_next.Title);
+                next_link = string.Format("<a id=\"btn_next\" href=\"{0}\">{1}</a>", BasePage.GetNewsUrl(news_next, cls), news_next.Title);
             }
             Content = Content.Replace("[!--news.nextlink--]", next_link);
 
@@ -511,7 +511,6 @@ namespace Voodoo.Basement
         }
         #endregion
 
-
         #region  生成内容页--书籍
         /// <summary>
         /// 生成内容页--图片
@@ -611,7 +610,7 @@ namespace Voodoo.Basement
             string pre_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_pre != null)
             {
-                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
+                pre_link = string.Format("<a id=\"btn_pre\" href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
@@ -619,7 +618,7 @@ namespace Voodoo.Basement
             string next_link = "<a href=\"javascript:void(0)\">没有了</a>";
             if (news_next != null)
             {
-                next_link = string.Format("<a href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+                next_link = string.Format("<a id=\"btn_next\" href=\"{0}\" title=\"{1}\">{2}</a>", BasePage.GetBookUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.nextlink--]", next_link);
 
@@ -631,6 +630,7 @@ namespace Voodoo.Basement
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
         }
         #endregion
+
 
         #region  创建章节页面
         /// <summary>
@@ -727,18 +727,18 @@ namespace Voodoo.Basement
             BookChapter news_next = BasePage.GetNextChapter(cp, b);
 
             //上一篇
-            string pre_link = "<a href=\"javascript:void(0)\">上章：没有了</a>";
+            string pre_link = "<a href=\"#\">上章：没有了</a>";
             if (news_pre != null)
             {
-                pre_link = string.Format("<a href=\"{0}\" title=\"{1}\">上章：{2}</a>", BasePage.GetBookChapterUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
+                pre_link = string.Format("<a id=\"btn_pre\" href=\"{0}\" title=\"{1}\">上章：{2}</a>", BasePage.GetBookChapterUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
             //下一篇
-            string next_link = "<a href=\"javascript:void(0)\">下章：没有了</a>";
+            string next_link = "<a href=\"#\">下章：没有了</a>";
             if (news_next != null)
             {
-                next_link = string.Format("<a href=\"{0}\" title=\"{1}\">下章：{2}</a>", BasePage.GetBookChapterUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+                next_link = string.Format("<a id=\"btn_next\" href=\"{0}\" title=\"{1}\">下章：{2}</a>", BasePage.GetBookChapterUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.nextlink--]", next_link);
 
@@ -1225,6 +1225,43 @@ namespace Voodoo.Basement
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
             }
             #endregion 小说系统
+
+            #region 影视
+            else if (SysModel == 6)
+            {
+                StringBuilder sb_list = new StringBuilder();
+                List<MovieInfo> qs = MovieInfoView.GetModelList(string.Format("Enable=1 and (Title like N'%{0}%' or Director like N'%{0}%' or Actors like N'%{0}%' or Tags like  N'%{0}%')", key));
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
+                recordCount = qs.Count;
+
+                qs = qs.Skip((page - 1) * 20).Take(20).ToList();
+                foreach (MovieInfo m in qs)
+                {
+                    TemplateList temp = TemplateListView.Find("SysModel=6");
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--movie.url--]", BasePage.GetMovieUrl(m, MovieInfoView.GetClass(m)));
+                    str_lst = str_lst.Replace("[!--movie.actors--]", m.Actors);
+                    str_lst = str_lst.Replace("[!--movie.classid--]", m.ClassID.ToS());
+                    str_lst = str_lst.Replace("[!--movie.classname--]", m.ClassName);
+                    str_lst = str_lst.Replace("[!--movie.director--]", m.Director);
+                    str_lst = str_lst.Replace("[!--movie.enable--]", m.Enable.ToInt32().ToS());
+                    str_lst = str_lst.Replace("[!--movie.faceimage--]", m.FaceImage);
+                    str_lst = str_lst.Replace("[!--movie.id--]", m.Id.ToS());
+                    str_lst = str_lst.Replace("[!--movie.inserttime--]", m.InsertTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro);
+                    str_lst = str_lst.Replace("[!--movie.ismove--]", m.IsMove.ToInt32().ToS());
+                    str_lst = str_lst.Replace("[!--movie.lastdramatitle--]", m.LastDramaTitle);
+                    str_lst = str_lst.Replace("[!--movie.location--]", m.Location);
+                    str_lst = str_lst.Replace("[!--movie.publicyear--]", m.PublicYear);
+                    str_lst = str_lst.Replace("[!--movie.status--]", m.Status.ToS());
+                    str_lst = str_lst.Replace("[!--movie.tags--]", m.Tags);
+                    str_lst = str_lst.Replace("[!--movie.title--]", m.Title);
+                    str_lst = str_lst.Replace("[!--movie.updatetimetime--]", m.UpdateTime.ToString(temp.TimeFormat));
+                    sb_list.AppendLine(str_lst);
+                }
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }
+            #endregion
 
             #endregion
 

@@ -73,7 +73,7 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();			
 			
-			sb.Append("insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(");
+			sb.Append("insert into [MovieUrlKuaib]([MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(");
 			sb.Append(M.MovieID.ToS());
 			sb.Append(",");	
 			sb.Append("N'"+M.MovieTitle+"'");

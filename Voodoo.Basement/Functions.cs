@@ -681,6 +681,7 @@ namespace Voodoo.Basement
             foreach (MovieInfo m in movies)
             {
                 string item = htmlTemp;
+                item=item.Replace("{url}",BasePage.GetMovieUrl(m,MovieInfoView.GetClass(m)));
                 item = item.Replace("{id}", m.Id.ToS());
                 item = item.Replace("{authors}", m.Actors);
                 item = item.Replace("{classid}", m.ClassID.ToS());
@@ -705,5 +706,36 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取类别列表
+        /// <summary>
+        /// 获取类别列表
+        /// </summary>
+        /// <param name="top">获取的条数</param>
+        /// <param name="custitle">标题截取长度</param>
+        /// <param name="m_where">条件语句</param>
+        /// <param name="htmlTemp">模板</param>
+        /// <returns></returns>
+        public static string getclasslist(string top, string custitle, string m_where, string htmlTemp)
+        {
+            StringBuilder sb = new StringBuilder();
+            List<Class> cls = ClassView.GetModelList(m_where, top.ToInt32());
+            foreach (Class c in cls)
+            {
+                string item = htmlTemp;
+                item = item.Replace("{url}", BasePage.GetClassUrl(c));
+                item = item.Replace("{alter}", c.Alter);
+                item = item.Replace("{classdescription}", c.ClassDescription);
+                item = item.Replace("{classfolder}", c.ClassForder);
+                item = item.Replace("{classicon}", c.ClassICON);
+                item = item.Replace("{classkeywords}", c.ClassKeywords);
+                item = item.Replace("{classname}", c.ClassName);
+                item = item.Replace("{fclassname}", c.ClassName.CutString(custitle.ToInt32(10)));
+                item = item.Replace("{classpageextname}", c.ClassPageExtName);
+                item = item.Replace("{id}", c.ID.ToS());
+                sb.Append(item);
+            }
+            return sb.ToS();
+        }
+        #endregion
     }
 }

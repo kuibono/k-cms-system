@@ -31,6 +31,14 @@ namespace Voodoo.DAL
             {
                 return BookView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0})", cls.ID));
             }
+            else if (cls.ModelID == 5)
+            {
+                return 0;
+            }
+            else if (cls.ModelID == 6)
+            {
+                return MovieInfoView.Count(string.Format("ClassID in(select id from Class where ID={0} union select id from Class where ParentID={0})", cls.ID));
+            }
             else
             {
                 return 0;
