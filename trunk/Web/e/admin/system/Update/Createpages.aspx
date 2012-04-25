@@ -49,6 +49,12 @@
             </tr>
             <tr>
                 <td>
+                     <asp:Button ID="btn_Drama" runat="server" Text="生成播放页面" 
+                         onclick="btn_Drama_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td>
                      <asp:Button ID="btn_ClearAll" runat="server" Text="清理所有静态页面" 
                          onclick="btn_ClearAll_Click"  />
                 </td>

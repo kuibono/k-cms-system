@@ -394,7 +394,7 @@ namespace Voodoo.Basement
         }
         #endregion
 
-        #region 获取影视地址
+        #region 获取影视播放页面地址
         /// <summary>
         /// 获取影视地址
         /// </summary>
@@ -403,6 +403,10 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetMovieDramaUrl(MovieUrlBaidu b, Class cls)
         {
+            if (b == null)
+            {
+                return "";
+            }
             string result = "";
 
 
@@ -422,6 +426,13 @@ namespace Voodoo.Basement
 
         public static string GetMovieDramaUrl(MovieUrlKuaib b, Class cls)
         {
+            if (b == null)
+            {
+                return "";
+            }
+
+            MovieInfo movie = MovieInfoView.GetModelByID(b.MovieID.ToS());
+
             string result = "";
 
 
@@ -431,7 +442,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/Kuaib/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle,
+                movie.Title,
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -583,6 +594,42 @@ namespace Voodoo.Basement
             }
         }
 
+        /// <summary>
+        /// 获取快播上一集地址
+        /// </summary>
+        /// <param name="kuai"></param>
+        /// <returns></returns>
+        public static MovieUrlKuaib GetPreKuaibo(MovieUrlKuaib kuai)
+        {
+            List<MovieUrlKuaib> lresult = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0} and id<{1} order by id desc", kuai.MovieID, kuai.Id));
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取百度上一集地址
+        /// </summary>
+        /// <param name="kuai"></param>
+        /// <returns></returns>
+        public static MovieUrlBaidu GetPreBaidu(MovieUrlBaidu kuai)
+        {
+            List<MovieUrlBaidu> lresult = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0} and id<{1} order by id desc", kuai.MovieID, kuai.Id));
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
 
         #endregion
 
@@ -666,6 +713,43 @@ namespace Voodoo.Basement
         public static BookChapter GetNextChapter(BookChapter cp, Book b)
         {
             List<BookChapter> lresult = BookChapterView.GetModelList(string.Format("BookID={0} and ID>{1} order by ID Asc", b.ID, cp.ID), 1);
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+
+        /// <summary>
+        /// 获取快播下一集地址
+        /// </summary>
+        /// <param name="kuai"></param>
+        /// <returns></returns>
+        public static MovieUrlKuaib GetNextKuaibo(MovieUrlKuaib kuai)
+        {
+            List<MovieUrlKuaib> lresult = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0} and id>{1} order by id asc", kuai.MovieID, kuai.Id));
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取百度下一集地址
+        /// </summary>
+        /// <param name="kuai"></param>
+        /// <returns></returns>
+        public static MovieUrlBaidu GetNextBaidu(MovieUrlBaidu kuai)
+        {
+            List<MovieUrlBaidu> lresult = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0} and id>{1} order by id asc", kuai.MovieID, kuai.Id));
             if (lresult.Count == 0)
             {
                 return null;

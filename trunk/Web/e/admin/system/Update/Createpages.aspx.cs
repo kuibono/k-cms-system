@@ -165,5 +165,20 @@ namespace Web.e.admin.system.Update
             sm.SaveSiteMap(Server.MapPath("~/sitemapxml/index.xml"));
 
         }
+
+        protected void btn_Drama_Click(object sender, EventArgs e)
+        {
+            List<MovieUrlKuaib> ks = MovieUrlKuaibView.GetModelList();
+            foreach (var k in ks)
+            {
+                CreatePage.CreateDramapage(k, MovieInfoView.GetClass(k));
+            }
+
+            List<MovieUrlBaidu> bs = MovieUrlBaiduView.GetModelList();
+            foreach(var b in bs)
+            {
+                CreatePage.CreateDramapage(b, MovieInfoView.GetClass(b));
+            }
+        }
     }
 }
