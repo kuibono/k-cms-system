@@ -678,8 +678,10 @@ namespace Voodoo.Basement
             StringBuilder sb = new StringBuilder();
 
             List<MovieInfo> movies = MovieInfoView.GetModelList(m_where, top.ToInt32());
+            var i=0;
             foreach (MovieInfo m in movies)
             {
+                i++;
                 string item = htmlTemp;
                 item=item.Replace("{url}",BasePage.GetMovieUrl(m,MovieInfoView.GetClass(m)));
                 item = item.Replace("{id}", m.Id.ToS());
@@ -699,6 +701,11 @@ namespace Voodoo.Basement
                 item = item.Replace("{title}", m.Title);
                 item = item.Replace("{ftitle}", m.Title.CutString(custitle.ToInt32()));
                 item = item.Replace("{updatetime}", m.UpdateTime.ToString("yyyy-MM-dd"));
+                item = item.Replace("{clickcount}", m.ClickCount.ToS());
+                //item = item.Replace("{clickcount}", m.ClickCount.ToS());
+                item = item.Replace("{replycount}", m.ReplyCount.ToS());
+                item = item.Replace("{scoreavg}", m.ScoreAvg.ToS());
+                item = item.Replace("{rownum}", i.ToS());
                 sb.Append(item);
                
             }

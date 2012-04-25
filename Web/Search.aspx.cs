@@ -21,8 +21,33 @@ namespace Web
             int Model = WS.RequestInt("m", 4);
             int page = WS.RequestInt("p", 1);
 
-            Response.Clear();
-            Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(Model, page, Key));
+            if (Model == 6)
+            {
+                string director = WS.RequestString("d");
+                string actor = WS.RequestString("a");
+                string year = WS.RequestString("y");
+                string location = WS.RequestString("l");
+                string type = WS.RequestString("t");
+
+
+                string m_where = string.Format("Director like N'%{0}%' and Actors like N'%{1}%' and tags like N'%{2}%' and PublicYear like N'%{3}%' and Location like N'%{4}%' and (Title like N'%{5}%' or Intro like N'%{5}%')",
+                    director,
+                    actor,
+                    type,
+                    year,
+                    location,
+                    Key
+                    );
+
+                Response.Clear();
+                Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(m_where,Model, page));
+            }
+            else
+            {
+
+                Response.Clear();
+                Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(Model, page, Key));
+            }
         }
     }
 }

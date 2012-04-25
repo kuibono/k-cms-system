@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SysSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SiteUrl>http://soso888.net/</SiteUrl>
+  <SiteUrl>http://niubi.com/</SiteUrl>
   <SiteOpen>true</SiteOpen>
-  <KeyWords>很纯很暧昧,手机阅读,爱造人</KeyWords>
-  <Description>简介。</Description>
-  <Copyright>&amp;copy; 爱造人 2012</Copyright>
-  <CountCode>&lt;img src="http://img.users.51.la/4756120.asp" style="display:none" /&gt;</CountCode>
+  <KeyWords>快播影院,百度影音影院,在线电影,免费电影,免费影院</KeyWords>
+  <Description>牛逼电影，为您提供最新最全的国内外精彩大片电视剧。</Description>
+  <Copyright>&amp;copy; 牛逼影视 2012</Copyright>
+  <CountCode />
   <FileDirString>/u/file/</FileDirString>
   <ExtName>.htm</ExtName>
   <SiteCloseMsg>系统维护中，请稍后访问</SiteCloseMsg>
-  <SiteName>测试</SiteName>
+  <SiteName>牛X影视</SiteName>
   <EnableReg>true</EnableReg>
   <RegisterDefaultGroup>1</RegisterDefaultGroup>
   <RegCent>20</RegCent>

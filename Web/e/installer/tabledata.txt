@@ -537,21 +537,237 @@ SET IDENTITY_INSERT [TemplateVar] ON ;
  SET IDENTITY_INSERT [TemplateVar] OFF ;
 
 
+SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'3',N'1',N'moviefooter',N'
+<div id="footArea">
+
+	<div class="footSearch">
+
+		<form name="sFormA" autocomplete="off" id="sFormA" method="post" action="" onSubmit="return false;">
+
+            <input type="text" id="sKeyA" value="杜拉拉升职记" class="tx"><input type="submit" value="搜索" id="searchBtnA" class="btn">
+
+            </form>
+
+    </div>
+
+    <div class="clear footLink">
+
+    	<dl>
+
+        	<dt><a href="http://tv.sohu.com/" target=_blank>首页</a></dt>
+
+
+
+            <dd><a href="http://tv.sohu.com/drama/" target=_blank>电视剧</a> | <a href="http://tv.sohu.com/movie/" target=_blank>电影</a><br /><a href="http://tv.sohu.com/real/" target=_blank>纪录片</a> | <a href="http://tv.sohu.com/comic/" target=_blank>动漫</a></dd>
+
+        </dl>
+
+        <dl>
+
+        	<dt><a href="http://tv.sohu.com/yule/" target=_blank>娱乐</a></dt>
+
+
+
+            <dd><a href="http://tv.sohu.com/original/" target=_blank>原创</a> | <a href="http://tv.sohu.com/music/" target=_blank>音乐</a><br /><a href="http://tv.sohu.com/zongyi/" target=_blank>综艺</a> | <a href="http://tv.sohu.com/entnews/" target=_blank>娱乐新闻</a></dd>
+
+        </dl>
+
+    	<dl>
+
+        	<dt><a href="http://tv.sohu.com/news/" target=_blank>新闻</a></dt>
+
+
+
+            <dd><a href="http://tv.sohu.com/shehui/" target=_blank>社会</a> | <a href="http://tv.sohu.com/shishi/" target=_blank>时事</a> | <a href="http://tv.sohu.com/fazhi/" target=_blank>法制</a> | <a href="http://tv.sohu.com/caijing/" target=_blank>财经</a><br /><a href="http://tv.sohu.com/junshi/" target=_blank>军事</a> | <a href="http://tv.sohu.com/keji/" target=_blank>科技</a> | <a href="http://tv.sohu.com/lvyou/" target=_blank>旅游</a></dd>
+
+
+
+        </dl>
+
+        <dl>
+
+        	<dt><a href="http://data.tv.sohu.com/lanmu/" target=_blank>电视</a></dt>
+
+            <dd><a href="http://tv.sohu.com/zhibo/" target=_blank>直播</a><br /><a href="http://data.tv.sohu.com/lanmu/" target=_blank>栏目</a></dd>
+
+        </dl>
+
+        <dl>
+
+        	<dt><a href="http://my.tv.sohu.com/" target=_blank>播客</a></dt>
+
+
+
+            <dd><a href="http://my.tv.sohu.com/channel/gaoxiao" target=_blank>搞笑</a> | <a href="http://my.tv.sohu.com/channel/bagua" target=_blank>八卦</a><br /><a href="http://my.tv.sohu.com/channel/lieqi" target=_blank>猎奇</a> | <a href="http://my.tv.sohu.com/channel/yuanchuang" target=_blank>原创</a></dd>
+
+        </dl>
+
+        <dl>
+
+        	<dt><a href="http://store.tv.sohu.com/" target=_blank>付费</a></dt>
+
+
+
+            <dd><a href="http://store.tv.sohu.com/movie/" target=_blank>电影</a> | <a href="http://tv.sohu.com/open/" target=_blank>教育</a></dd>
+
+        </dl>
+
+        <dl>
+
+        	<dt><a>服务</a></dt>
+
+            <dd><a href="http://my.tv.sohu.com/user/" target=_blank class="a1">访问空间</a> | <a href="http://tv.sohu.com/s2011/cpty/index.shtml" target=_blank>体验中心</a><br /><a href="http://tv.sohu.com/s2011/sitemap/index.shtml" target=_blank class="a5ico">网站地图</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp" target=_blank>帮助中心
+
+</a><br /><a href="http://tv.sohu.com/upload/hdfeedback/index.jsp?50" target=_blank class="a4">版权投诉</a> | <a href="http://open.tv.sohu.com" target=_blank>开放平台</a><dd>
+
+        </dl>
+
+		<dl>
+
+        	<dt><a>软件</a></dt>
+
+        	<dd><a href="http://tv.sohu.com/upload/app/index.html" target=_blank class="a2">移动客户端</a><br /><a href="http://tv.sohu.com/ifox/" target=_blank class="a3">飞狐影音</a></dd>
+
+        </dl>
+
+    </div>
+
+</div>
+
+
+
+<div id="foot" class="area">
+
+    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.sohu.com'');return false;>设置首页</a>
+
+    - <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
+
+    - <a href=http://up.sohu.com/ target=_blank>支付中心</a>
+
+    - <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
+
+    - <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
+
+    
+
+    - <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
+
+    - <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
+
+    - <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
+
+    - <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
+
+    - <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
+
+    <br />Copyright <span class="fontArial">&copy;</span> 2011 Sohu.com Inc. All Rights Reserved. 搜狐公司 <span class="unline"><a href="http://corp.sohu.com/s2007/copyright/" target="_blank">版权所有</a></span>
+
+    
+
+    <br />搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a>
+
+</div>
+
+')
+ SET IDENTITY_INSERT [TemplateVar] OFF ;
+
+
+SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'4',N'1',N'seachlabel',N'<div class="dDox bordB clear" id="theTVCategory">
+			<div class="mvRank clear">
+				<h2><span>电视剧分类</span><a target="_blank" href="http://so.tv.sohu.com/list_p12_p2_p3_p4-1_p5_p6_p70_p80_p9_2d2_p101_p11.html">更多&gt;&gt;</a></h2>
+			</div>
+  <div class="tvCls clear">
+                <div class="list clear">
+                <H3>按地区|</H3>
+<UL>
+<LI><A href="/search.aspx?l=内地">内地</A></LI>
+<LI><A href="/search.aspx?l=港剧">港剧</A></LI>
+<LI><A href="/search.aspx?l=台剧">台剧</A></LI>
+<LI><A href="/search.aspx?l=韩剧">韩剧</A></LI>
+<LI><A href="/search.aspx?l=美剧">美剧</A></LI>
+<LI><A href="/search.aspx?l=其他">其他</A></LI></UL></div>
+                <div class="line"></div>
+                <div class="list clear">
+                <H3>按类型|</H3>
+<UL>
+<LI><A href="/search.aspx?t=偶像剧">偶像剧</A></LI>
+<LI><A href="/search.aspx?t=伦理剧">伦理剧</A></LI>
+<LI><A href="/search.aspx?t=历史剧">历史剧</A></LI>
+<LI><A href="/search.aspx?t=年代剧">年代剧</A></LI>
+<LI><A href="/search.aspx?t=言情剧">言情剧</A></LI>
+<LI><A href="/search.aspx?t=武侠剧">武侠剧</A></LI>
+<LI><A href="/search.aspx?t=古装剧">古装剧</A></LI>
+<LI><A href="/search.aspx?t=都市剧">都市剧</A></LI>
+<LI><A href="/search.aspx?t=农村剧">农村剧</A></LI>
+<LI><A href="/search.aspx?t=战争剧">战争剧</A></LI>
+<LI><A href="/search.aspx?t=悬疑剧">悬疑剧</A></LI>
+<LI><A href="/search.aspx?t=谍战剧">谍战剧</A></LI>
+<LI><A href="/search.aspx?t=科幻剧">科幻剧</A></LI>
+<LI><A href="/search.aspx?t=动作剧">动作剧</A></LI></UL></div>
+                <div class="line"></div>
+
+                <div class="list clear">
+                <H3>按明星|</H3>
+<UL>
+
+
+<LI><A href="/search.aspx?a=王志文">王志文</A></LI>
+<LI><A href="/search.aspx?a=李幼斌">李幼斌</A></LI>
+<LI><A href="/search.aspx?a=黄志忠">黄志忠</A></LI>
+<LI><A href="/search.aspx?a=张嘉译">张嘉译</A></LI>
+<LI><A href="/search.aspx?a=潘粤明">潘粤明</A></LI>
+<LI><A href="/search.aspx?a=冯绍峰">冯绍峰</A></LI>
+<LI><A href="/search.aspx?a=贾乃亮">贾乃亮</A></LI>
+<LI><A href="/search.aspx?a=何晟铭">何晟铭</A></LI>
+<LI><A href="/search.aspx?a=佟大为">佟大为</A></LI>
+<LI><A href="/search.aspx?a=蒋雯丽">蒋雯丽</A></LI>
+<LI><A href="/search.aspx?a=刘涛">刘　涛</A></LI>
+<LI><A href="/search.aspx?a=马苏">马　苏</A></LI>
+<LI><A href="/search.aspx?a=海清">海　清</A></LI>
+<LI><A href="/search.aspx?a=杨幂">杨　幂</A></LI>
+<LI><A href="/search.aspx?a=董璇">董　璇</A></LI></UL></div>
+                <div class="line"></div>
+                
+                <div collection="Y" class="list clear c4">
+<H3>按年份|</H3>
+<UL>
+<LI><A href="/search.aspx?=2011">2011</A></LI>
+<LI><A href="/search.aspx?=2010">2010</A></LI>
+<LI><A href="/search.aspx?=2009">2009</A></LI>
+<LI><A href="/search.aspx?=2008">2008</A></LI>
+<LI><A href="/search.aspx?=2007">2007</A></LI>
+<LI><A href="/search.aspx?=2006">2006</A></LI>
+<LI><A href="/search.aspx?=2005">2005</A></LI>
+<LI><A href="/search.aspx?=2004">2004</A></LI>
+<LI><A href="/search.aspx?=2003">2003</A></LI>
+<LI><A href="/search.aspx?=2002">2002</A></LI>
+<LI><A href="/search.aspx?=2001">2001</A></LI>
+<LI><A href="/search.aspx?=2000">2000</A></LI>
+<LI><A href="/search.aspx?=1999">1999</A></LI>
+<LI><A href="/search.aspx?=1998">1998</A></LI>
+<LI><A href="/search.aspx?=1997">1997</A></LI></UL></div>
+    <div class="line"></div>
+			</div>
+		</div>')
+ SET IDENTITY_INSERT [TemplateVar] OFF ;
+
+
 SET IDENTITY_INSERT [TemplatePublic] ON ;
- insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter]) values(N'1',N'0',N'<!doctype HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter],[KuaiboPage],[BaiduPage],[SingleDrama]) values(N'1',N'0',N'<!doctype HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="搜狐快播专区" />
-<meta name="keywords" content="搜狐快播专区" />
+<meta name="description" content="[!--sys.description--]" />
+<meta name="keywords" content="[!--sys.keywords--]" />
 <meta name="robots" content="all" />
 <script src="http://www.sohu.com/sohuflash_1.js" type="text/javascript"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>搜狐快播专区 - 搜狐视频</title>
+<title>[!--sys.sitename--]</title>
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
-<!--<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />-->
 <link type="text/css" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/kuaibo.css" />
 <style>
 #contentA .newsBox .snList{height:auto;}
@@ -576,24 +792,18 @@ function sdown(){
 </script>
 </head>
 <body>
-<div id=fullscreenad style="display:none"></div>
-<sohuadcode></sohuadcode>
-<sohuadcode></sohuadcode>
 <DIV class=navBar>
 <DIV class=area>
 <UL id=navMain>
-<LI class=active><EM><A href="http://tv.sohu.com/">首页</A></EM></LI>
-<LI><EM><A href="http://tv.sohu.com/drama/">电视剧</A></EM></LI>
-<LI><EM><A href="http://tv.sohu.com/movie/">电影</A></EM></LI>
-<LI><EM><A href="http://tv.sohu.com/zongyi/">综艺</A></EM></LI>
-<LI><EM><A href="http://tv.sohu.com/real/">纪录片</A></EM></LI>
+[getclasslist]100,100,ModelID=6 and IsLeafClass=0 order by NavIndex asc,<li><em><a href="{url}" title="{classname}">{classname}</a></em></li>[/getclasslist]
 </UL>
-<P id=navSub><STRONG><A href="http://tv.sohu.com/yule/">娱乐<IMG height=14 alt=hot src="http://tv.sohu.com/upload/tv110421/images/ico.png" width=20></A></STRONG><A href="http://tv.sohu.com/music/">音乐</A><A href="http://tv.sohu.com/comic/">动漫</A><A href="http://tv.sohu.com/original/">出品</A><SPAN class=mg>|</SPAN><STRONG><A href="http://tv.sohu.com/news/">新闻</A></STRONG><A href="http://tv.sohu.com/zhibo/">直播</A><A href="http://tv.sohu.com/shendu/">深度</A><A href="http://tv.sohu.com/open/">教育</A><SPAN class=mg>|</SPAN><STRONG><A href="http://my.tv.sohu.com/">播客</A></STRONG><A href="http://my.tv.sohu.com/channel/gaoxiao">搞笑</A><A href="http://my.tv.sohu.com/channel/lieqi">猎奇</A><SPAN class=mg>|</SPAN><A href="http://tv.sohu.com/review/">影评</A><A href="http://so.tv.sohu.com/list_p11_p2_p3_p4-1_p5_p6_p70_p80_p9_2d2_p101_p11.html" target=_blank>分类</A><A href="http://tv.sohu.com/hothdtv/" target=_blank>排行</A><A class=home href="http://www.sohu.com/" target=_blank>搜狐首页</A> </P></DIV></DIV>
+
+</DIV></DIV>
 
 <DIV id=logoBar class=area>
 <DIV class="logo l">
-<DIV class="tvLogo l"><A href="http://tv.sohu.com/"><IMG alt=tv首页 src="http://tv.sohu.com/upload/tv110421/images/tv_logo01.gif" width=105 height=50></A></DIV>
-<DIV class="tvAd l"><A href="http://kuaib.tv.sohu.com/"><IMG alt=快播专区 src="http://i2.itc.cn/20111009/9e9_c6b52ee9_7bbe_74d4_0b7c_3246f00a189e_1.png" width=128 height=50></A></DIV></DIV><DIV class="search l" sizset="24" sizcache="1">
+<DIV class="tvLogo l"><A href="/"><img alt="[!--sys.sitename--]" src="/skin/movie/logo.gif" /></A></DIV>
+</DIV><DIV class="search l" sizset="24" sizcache="1">
 <FORM  id=sform onsubmit="kdown();return ;" method=get name=sform action=http://so.tv.sohu.com/mts target=_blank autocomplete="off" accept-charset="GBK">
 	<INPUT id=sKey class=tx value="千山暮雪" name=wd _old="千山暮雪"><INPUT id="searchbtn" class=btn value=搜索 type="submit">
 	<INPUT value=1 type=hidden name=box> 
@@ -602,13 +812,7 @@ function sdown(){
 <input type="hidden" name="__hash__" value="1227f1e9feef31a41add249c58dbbb5e" /></FORM>
 
 </DIV><LINK rel=stylesheet type=text/css href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_g.css">
-<DIV class="infos r"><div id="gNavLoginBox" class="login">
-            <span class="color1">
-                <a href="http://my.tv.sohu.com/user/index.jsp?bru=http%3A//tv.sohu.com/">登录</a>
-                | <a href="http://my.tv.sohu.com/user/reg/reginfo.do?bru=http%3A//tv.sohu.com/">注册</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp">帮助</a>
-            </span>
-        </div>
-<DIV class=lnk><A class=aUpload href="http://my.tv.sohu.com/s/normal" target="_blank">上传视频</A> <A id=gHistoryBt class=aHistory href="#">播放记录</A></DIV></DIV></DIV>
+</DIV>
 <style>
 .fi_movie .fi_btnplay{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/movie-normal.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/movie-normal.png");_background:none;}
 .fi_movie .fi_btnplay:hover{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/movie-over.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/movie-over.png");_background:none;}
@@ -693,25 +897,15 @@ function sdown(){
 		        </UL>
 		</DIV>
     </DIV>
-    
-    
-        <sohuadcode></sohuadcode>				
 
-        <sohuadcode></sohuadcode>	
-        
-        <sohuadcode></sohuadcode>	
     </div>	
     <div class="right">
         <div class="newsBox bordB clear">
             <h2><span>电影排行榜</span><!--<a href="http://tv.sohu.com/paihang/" target="_blank">更多&gt;&gt;</a>--></h2>
-                <div id="hotNewsMovieTab" class="menuA">
-                    <ul>
-                        <li datakey="hotNewsMovieTab_hotMovie_month">每月<em></em></li>
-                        <li datakey="hotNewsMovieTab_hotMovie_all">全部<em></em></li>
-                    </ul>
-                </div>
                 <div id="hotNewsMovieTab_movie" class="snList clear">
-                    <ul></ul>
+                    <ul>
+[getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
+</ul>
                 </div>
                 
                 <span id="msg"></span>
@@ -720,14 +914,9 @@ function sdown(){
         <span id="r1"></span>
         <div class="newsBox bordB clear">
             <h2><span>电视剧排行榜</span><!--<a href="http://tv.sohu.com/paihang/" target="_blank">更多&gt;&gt;</a>--></h2>
-                <div id="hotNewsTeleplayTab" class="menuA">
-                    <ul>
-                        <li datakey="hotNewsTeleplayTab_hotTeleplay_month">每月<em></em></li>
-                        <li datakey="hotNewsTeleplayTab_hotTeleplay_all">全部<em></em></li>
-                    </ul>
-                </div>
                 <div id="hotNewsTeleplayTab_movie" class="snList clear">
                     <ul>
+                      [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
                     </ul>
                 </div>
         </div>
@@ -735,14 +924,9 @@ function sdown(){
         <span id="r2"></span>
         <div class="newsBox bordB clear">
             <h2><span>综艺排行榜</span><!--<a href="http://tv.sohu.com/paihang/" target="_blank">更多&gt;&gt;</a>--></h2>
-                <div id="hotNewsMTVTab" class="menuA">
-                    <ul>
-                        <li datakey="hotNewsMTVTab_hotMTV_month">每月<em></em></li>
-                        <li datakey="hotNewsMTVTab_hotMTV_all">全部<em></em></li>
-                    </ul>
-                </div>
                 <div id="hotNewsMTVTab_movie" class="snList clear">
                     <ul>
+[getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
                     </ul>
                 </div>
         </div>
@@ -750,14 +934,9 @@ function sdown(){
         <div class="blank12H"></div>
         <div class="newsBox bordB clear">
             <h2><span>纪录片排行榜</span><!--<a href="http://tv.sohu.com/paihang/" target="_blank">更多&gt;&gt;</a>--></h2>
-                <div id="hotNewsDocumeTab" class="menuA">
-                    <ul>
-                        <li datakey="hotNewsDocumeTab_hotDocume_month">每月<em></em></li>
-                        <li datakey="hotNewsDocumeTab_hotDocume_all">全部<em></em></li>
-                    </ul>
-                </div>
                 <div id="hotNewsDocumeTab_movie" class="snList clear">
                     <ul>
+                      [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
                     </ul>
                 </div>
         </div>
@@ -765,21 +944,12 @@ function sdown(){
         <div class="blank12H"></div>
         <div class="newsBox bordB clear">
             <h2><span>原创频道排行榜</span><!--<a href="http://tv.sohu.com/paihang/" target="_blank">更多&gt;&gt;</a>--></h2>
-                <div id="hotNewsMvstationTab" class="menuA">
-                    <ul>
-                        <li datakey="hotNewsMvstationTab_hotMvstation_month">每月<em></em></li>
-                        <li datakey="hotNewsMvstationTab_hotMvstation_all">全部<em></em></li>
-                    </ul>
-                </div>
                 <div id="hotNewsMvstationTab_movie" class="snList clear">
                     <ul>
+                           [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
                     </ul>
                 </div>
         </div>
-        <sohuadcode></sohuadcode>
-        <sohuadcode></sohuadcode>
-        <sohuadcode></sohuadcode>
-        <sohuadcode></sohuadcode>
     </div>
         
     <div class="blank12H"></div>
@@ -787,132 +957,21 @@ function sdown(){
 </div>
 <!-- contentA end -->
 
-<sohuadcode></sohuadcode>
-<div id="footArea">
-    <div class="footSearch">
-        <form name="sFormA" autocomplete="off" id="sFormA" method="get" action="http://so.tv.sohu.com/mts" target="_blank" accept-charset="GBK" onsubmit="sdown();return ;">
-            <input type="text" id="sKeyA" name="wd" value="男人帮" class="tx" onfocus=""><input type="submit" value="搜索" id="searchBtnA" class="btn">
-        </form>
-    </div>
-    <div class="clear footLink">
-        <dl>
-            <dt><a href="http://tv.sohu.com/" target=_blank>首页</a></dt>
-
-            <dd><a href="http://tv.sohu.com/drama/" target=_blank>电视剧</a> | <a href="http://tv.sohu.com/movie/" target=_blank>电影</a><br /><a href="http://tv.sohu.com/real/" target=_blank>纪录片</a> | <a href="http://tv.sohu.com/comic/" target=_blank>动漫</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="http://tv.sohu.com/yule/" target=_blank>娱乐</a></dt>
-
-            <dd><a href="http://tv.sohu.com/original/" target=_blank>原创</a> | <a href="http://tv.sohu.com/music/" target=_blank>音乐</a><br /><a href="http://tv.sohu.com/zongyi/" target=_blank>综艺</a> | <a href="http://tv.sohu.com/entnews/" target=_blank>娱乐新闻</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="http://tv.sohu.com/news/" target=_blank>新闻</a></dt>
-
-            <dd><a href="http://tv.sohu.com/shehui/" target=_blank>社会</a> | <a href="http://tv.sohu.com/shishi/" target=_blank>时事</a> | <a href="http://tv.sohu.com/fazhi/" target=_blank>法制</a> | <a href="http://tv.sohu.com/caijing/" target=_blank>财经</a><br /><a href="http://tv.sohu.com/junshi/" target=_blank>军事</a> | <a href="http://tv.sohu.com/keji/" target=_blank>科技</a> | <a href="http://tv.sohu.com/lvyou/" target=_blank>旅游</a></dd>
-
-        </dl>
-        <dl>
-            <dt><a href="http://data.tv.sohu.com/lanmu/" target=_blank>电视</a></dt>
-            <dd><a href="http://tv.sohu.com/zhibo/" target=_blank>直播</a><br /><a href="http://data.tv.sohu.com/lanmu/" target=_blank>栏目</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="http://my.tv.sohu.com/" target=_blank>播客</a></dt>
-
-            <dd><a href="http://my.tv.sohu.com/channel/gaoxiao" target=_blank>搞笑</a> | <a href="http://my.tv.sohu.com/channel/bagua" target=_blank>八卦</a><br /><a href="http://my.tv.sohu.com/channel/lieqi" target=_blank>猎奇</a> | <a href="http://my.tv.sohu.com/channel/yuanchuang" target=_blank>原创</a></dd>
-        </dl>
-        <dl>
-            <dt><a href="http://store.tv.sohu.com/" target=_blank>付费</a></dt>
-
-            <dd><a href="http://store.tv.sohu.com/movie/" target=_blank>电影</a> | <a href="http://tv.sohu.com/open/" target=_blank>教育</a></dd>
-        </dl>
-        <dl>
-            <dt><a>服务</a></dt>
-            <dd><a href="http://my.tv.sohu.com/user/" target=_blank class="a1">访问空间</a> | <a href="http://tv.sohu.com/s2011/cpty/index.shtml" target=_blank>体验中心</a><br /><a href="http://tv.sohu.com/s2011/sitemap/index.shtml" target=_blank class="a5ico">网站地图</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp" target=_blank>帮助中心
-</a><br /><a href="http://tv.sohu.com/upload/hdfeedback/index.jsp?50" target=_blank class="a4">版权投诉</a> | <a href="http://open.tv.sohu.com" target=_blank>开放平台</a><dd>
-        </dl>
-        <dl>
-            <dt><a>软件</a></dt>
-            <dd><a href="http://tv.sohu.com/upload/app/index.html" target=_blank class="a2">移动客户端</a><br /><a href="http://tv.sohu.com/ifox/" target=_blank class="a3">飞狐影音</a></dd>
-        </dl>
-    </div>
-</div>
-
-<div id="foot" class="area">
-    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.sohu.com'');return false;>设置首页</a>
-    - <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
-    - <a href=http://up.sohu.com/ target=_blank>支付中心</a>
-    - <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
-    - <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
-    
-    - <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
-    - <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
-    - <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
-    - <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
-    - <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
-    <br />Copyright <span class="fontArial">&copy;</span> 2011 Sohu.com Inc. All Rights Reserved. 搜狐公司 <span class="unline"><a href="http://corp.sohu.com/s2007/copyright/" target="_blank">版权所有</a></span>
-    
-    <br />搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a>
-</div>
-
- <!--这里引用了 排行榜的数据文件  start -->
- <script src="http://kuaib.tv.sohu.com/ad/top/topm.js"></script>
- <!--<script src="http://kuaib.tv.sohu.com/ad/home.js"></script>-->
- <!-- end -->
-
- 
-<script language=JavaScript src="http://js.sohu.com/pv.js"></script>
-
-<!-- Begin New PV --> 
-<script type="text/javascript" src="http://tv.sohu.com/upload/static/global/hdpv.js"></script>
-<!-- End New PV --> 
-
-<!-- Begin PVInsight --> 
-<script type="text/javascript" src="http://js.mail.sohu.com/pv/pv_tv.1107251650.js"></script>
-<!-- End PVInsight --> 
-
-<!-- Begin IWT --> 
-<script type="text/javascript">
-var _iwt_UA="UA-sohu-123456"; 
-(function (D) {
-    var h=D.getElementsByTagName(''head'')[0],
-    s=D.createElement(''script'');
-    s.type=''text/javascript'';
-    s.charset=''utf-8'';
-    s.src=''http://tv.sohu.com/upload/Trace/iwt-min.js'';
-    h.firstChild?h.insertBefore(s,h.firstChild):h.appendChild(s);
-})(document);
-</script>
-<!-- End IWT --> 
-
-<!-- START WRating v1.0 -->
-<script type="text/javascript" src="http://sohu.wrating.com/a1.js">
-</script>
-<script type="text/javascript">
-var vjAcc="860010-2311080300";typeof areatype=="undefined"&&(areatype="variety");switch(areatype){case"tv":vjAcc="860010-2311040300";break;case"movie":vjAcc="860010-2311030300";break;case"korea":vjAcc="860010-2311070300";break;case"comic":vjAcc="860010-2311060300";break;case"variety":vjAcc="860010-2311080300";break;case"doc":vjAcc="860010-2311050300";break;case"music":vjAcc="860010-2311130300";break;case"tech":vjAcc="860010-2311140300";break;case"orshow":vjAcc="860010-2311150300";break;default:vjAcc="860010-2311080300"}var wrUrl="http://sohu.wrating.com/";vjTrack("")
-</script>
-<!-- END WRating v1.0 -->
- 
-
-<sohuadcode></sohuadcode>
-<script src=''http://w.cnzz.com/c.php?id=30059752'' language=''JavaScript''></script>
+[!--temp.moviefooter--]
 </body>
 </html>',N'',N'<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
-<meta name="description" content="搜狐视频电视剧频道，免费提供正版高清电视剧在线观看，同步播出各类最新最热港台电视剧、内地电视剧、欧美电视剧和日韩电视剧。" />
-<meta name="keywords" content="电视剧，最新电视剧，高清电视剧，电视剧在线观看，搜狐电视剧" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="电影搜索，电影在线观看" />
+<meta name="keywords" content="快播电影，百度影音电影搜索，电影在线观看" />
 <meta name="robots" content="all" />
-
-<script src="http://www.sohu.com/sohuflash_1.js" type="text/javascript"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>搜狐电视剧频道 - 搜狐视频</title>
-<link rel="Shortcut Icon" href="http://tv.sohu.com/favicon.ico" />
+<title>电影搜索 - [!--sys.sitename--]</title>
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/p_dsj.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/yingp_css/fileview.css" />
-<script src="http://tv.sohu.com/upload/jq_plugin/j_1.5.2.js"></script>
 
 <style>
 .list21 .p1 img{display:inline;}
@@ -952,14 +1011,14 @@ var vjAcc="860010-2311080300";typeof areatype=="undefined"&&(areatype="variety")
 		<div class="areaTop">
 			<div class="area clear iheader">
 				<div class="logo_ad_box">
-					<a class="logo l" target="_blank" href="http://tv.sohu.com">
-                        <img src="http://tv.sohu.com/upload/static/index/skin/images/logo_tv.png" alt="搜狐视频" />
+					<a class="logo l" target="_blank" href="/">
+                        <img src="/skin/movie/logo.gif" alt="[!--sys.sitename--]" />
 					</a>
 				</div>
 				<div class="search l">
 					<form id="sform" method="get" name="sform" action="http://so.tv.sohu.com/mts" target="_blank" autocomplete="off">
 						<div class="text l">
-                            <input id="gNewSearch" name="wd" type="text" value="[!--search.key--]" class="fs14" />
+                            <input id="gNewSearch" name="wd" type="text" value="黄金大劫案" class="fs14" />
                             <input name="box" type="hidden" value="1" class="fs14" />
                         </div>
                         <a href="javascript:;"><input class="bt vat pointer l" type="submit" value="" /></a>
@@ -973,55 +1032,22 @@ var vjAcc="860010-2311080300";typeof areatype=="undefined"&&(areatype="variety")
 <div class="navbar clear">
 				<div class="l">
 					<ul>
-						<li><a href="http://tv.sohu.com" title="" >首页</a></li>
-						<li><a href="http://tv.sohu.com/news/" title="" >新闻</a></li>
-						<li class="selected"><a href="http://tv.sohu.com/drama/" title="" >电视剧</a></li>
-						<li><a href="http://tv.sohu.com/movie/" title="" >电影</a></li>
-						<li><a href="http://tv.sohu.com/show/" title="" >综艺</a></li>
-						<li><a href="http://tv.sohu.com/comic/" title="" >动漫</a></li>
-						<li><a href="http://tv.sohu.com/documentary/" title="" >纪录片</a></li>
-						<li><a href="http://tv.sohu.com/self/" title="" >原创</a></li>
-						<li><a href="http://tv.sohu.com/yule/" title="" >娱乐</a></li>
-						<li><a href="http://tv.sohu.com/music/" title="" >音乐</a></li>
-						<li><a href="http://tv.sohu.com/mil/" title="" >军事</a></li>
-						<li><a href="http://live.tv.sohu.com/" title="" >直播</a></li>
-						<li><a href="http://my.tv.sohu.com/" title="" >播客</a></li>
-						<li><a href="http://tv.sohu.com/vip/" title="" >VIP</a></li>
+						<li><a href="/" title="[!--sys.sitename--]" >首页</a></li>
+						[getclasslist]100,100,IsLeafClass=0 order by id,<li><a href="{url}" title="{classname}">{classname}</a></li>[/getclasslist]
 					</ul>
 				</div>
 			</div>
 			<div class="subnavbar clear">
 				<div class="l">
 					<ul>
-						<li class="first selected"><a href="http://tv.sohu.com/drama/" title="电视剧首页" >电视剧首页</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_p4-1_p5_p6_p73_p80_p9-1_p101_p11.html" title="最新" target="_blank">最新</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_p4-1_p5_p6_p75_p80_p9-1_p101_p11.html" title="最热" target="_blank">最热</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_u5185_u5730_p4-1_p5_p6_p7_p80_p9-1_p101_p11.html" title="内地" target="_blank">内地</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_u6e2f_u5267_p4-1_p5_p6_p70_p80_p9-1_p101_p11.html" title="港剧" target="_blank">港剧</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_u53f0_u5267_p4-1_p5_p6_p70_p80_p9-1_p101_p11.html" title="台剧" target="_blank">台剧</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_u7f8e_u5267_p4-1_p5_p6_p70_p80_p9-1_p101_p11.html" title="美剧" target="_blank">美剧</a></li>
-						<li><a href="http://tv.sohu.com/korea/" title="韩剧" target="_blank">韩剧</a></li>
-						<li><a href="http://tv.sohu.com/thailand/" title="泰剧" target="_blank">泰剧</a></li>
-						<li><a href="http://so.tv.sohu.com/list_p12_p2_p3_u82f1_u56fd_p4-1_p5_p6_p70_p80_p9-1_p101_p11.html" title="英剧" target="_blank">英剧</a></li>
-						<li><a href="http://tv.sohu.com/hotteleplay/" title="排行" target="_blank">排行</a></li>
-						<li><a href="http://tv.sohu.com/review/" title="剧评" target="_blank">剧评</a></li>
-						<li><a href="http://tv.sohu.com/tvall/" title="电视剧大全" target="_blank">电视剧大全</a></li> 
-					</ul>
-				</div>
-				<div class="r">
-					<ul>
-						<li><a href="http://tv.sohu.com/shoubo/" title="首播剧场" target="_blank">首播剧场</a></li>
-						<li><a href="http://tv.sohu.com/weishi/" title="卫视强档" target="_blank">卫视强档</a></li>
-						<li><a href="http://tv.sohu.com/superhd/" title="超清剧院" target="_blank">超清剧院</a></li>					      
+						<li class="first selected"><a href="/search.aspx" title="电影搜索" >电影搜索</a></li>
+						
 					</ul>
 				</div>	
 			</div>
 </div>
 </div>
-	<script src="http://tv.sohu.com/upload/jq_plugin/passport.js"></script>
-<script src="http://tv.sohu.com/upload/static/plugin/g.js"></script>
-<script src="http://tv.sohu.com/upload/jq_plugin/search/search.js"></script>
-<script src="http://tv.sohu.com/upload/static/plugin/gNav.js"></script>
+
 	<!--END:TOP-->
 
 <style> 
@@ -1037,7 +1063,6 @@ var vjAcc="860010-2311080300";typeof areatype=="undefined"&&(areatype="variety")
 	
 
 	<div class="left">
-		
 <DIV class=blank12H></DIV>
 		<div class="blockLA bordA clear">
 <div class="cont">
@@ -1054,297 +1079,28 @@ var vjAcc="860010-2311080300";typeof areatype=="undefined"&&(areatype="variety")
 	</div>	
 	<div class="right">
 		<div class="blank12H"></div>
-<div class="dDox bordB clear" id="theTVCategory">
-			<div class="mvRank clear">
-				<h2><span>电视剧分类</span><a target="_blank" href="http://so.tv.sohu.com/list_p12_p2_p3_p4-1_p5_p6_p70_p80_p9_2d2_p101_p11.html">更多&gt;&gt;</a></h2>
-			</div>
-  <div class="tvCls clear">
-                <div class="list clear">
-                <H3>按地区|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''内地'',4,''tv'')">内地</A></LI>
-<LI><A href="javascript:searchKey(''港剧'',4,''tv'')">港剧</A></LI>
-<LI><A href="javascript:searchKey(''台剧'',4,''tv'')">台剧</A></LI>
-<LI><A href="javascript:searchKey(''韩剧'',4,''tv'')">韩剧</A></LI>
-<LI><A href="javascript:searchKey(''美剧'',4,''tv'')">美剧</A></LI>
-<LI><A href="javascript:searchKey(''其他'',4,''tv'')">其他</A></LI></UL></div>
-                <div class="line"></div>
-                <div class="list clear">
-                <H3>按类型|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''偶像剧'',7,''tv'')">偶像剧</A></LI>
-<LI><A href="javascript:searchKey(''伦理剧'',7,''tv'')">伦理剧</A></LI>
-<LI><A href="javascript:searchKey(''历史剧'',7,''tv'')">历史剧</A></LI>
-<LI><A href="javascript:searchKey(''年代剧'',7,''tv'')">年代剧</A></LI>
-<LI><A href="javascript:searchKey(''言情剧'',7,''tv'')">言情剧</A></LI>
-<LI><A href="javascript:searchKey(''武侠剧'',7,''tv'')">武侠剧</A></LI>
-<LI><A href="javascript:searchKey(''古装剧'',7,''tv'')">古装剧</A></LI>
-<LI><A href="javascript:searchKey(''都市剧'',7,''tv'')">都市剧</A></LI>
-<LI><A href="javascript:searchKey(''农村剧'',7,''tv'')">农村剧</A></LI>
-<LI><A href="javascript:searchKey(''战争剧'',7,''tv'')">战争剧</A></LI>
-<LI><A href="javascript:searchKey(''悬疑剧'',7,''tv'')">悬疑剧</A></LI>
-<LI><A href="javascript:searchKey(''谍战剧'',7,''tv'')">谍战剧</A></LI>
-<LI><A href="javascript:searchKey(''科幻剧'',7,''tv'')">科幻剧</A></LI>
-<LI><A href="javascript:searchKey(''动作剧'',7,''tv'')">动作剧</A></LI></UL></div>
-                <div class="line"></div>
-
-                <div class="list clear">
-                <H3>按明星|</H3>
-<UL>
-
-
-<LI><A href="javascript:searchKey(''王志文'')">王志文</A></LI>
-<LI><A href="javascript:searchKey(''李幼斌'')">李幼斌</A></LI>
-<LI><A href="javascript:searchKey(''黄志忠'')">黄志忠</A></LI>
-<LI><A href="javascript:searchKey(''张嘉译'')">张嘉译</A></LI>
-<LI><A href="javascript:searchKey(''潘粤明'')">潘粤明</A></LI>
-<LI><A href="javascript:searchKey(''冯绍峰'')">冯绍峰</A></LI>
-
-<LI><A href="javascript:searchKey(''贾乃亮'')">贾乃亮</A></LI>
-
-<LI><A href="javascript:searchKey(''何晟铭'')">何晟铭</A></LI>
-<LI><A href="javascript:searchKey(''佟大为'')">佟大为</A></LI>
-
-<LI><A href="javascript:searchKey(''蒋雯丽'')">蒋雯丽</A></LI>
-<LI><A href="javascript:searchKey(''刘涛'')">刘　涛</A></LI>
-<LI><A href="javascript:searchKey(''马苏'')">马　苏</A></LI>
-<LI><A href="javascript:searchKey(''海清'')">海　清</A></LI>
-<LI><A href="javascript:searchKey(''杨幂'')">杨　幂</A></LI>
-<LI><A href="javascript:searchKey(''董璇'')">董　璇</A></LI></UL></div>
-                <div class="line"></div>
-                
-                <div collection="Y" class="list clear c4">
-<H3>按年份|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''2011'',15,''tv'')">2011</A></LI>
-<LI><A href="javascript:searchKey(''2010'',15,''tv'')">2010</A></LI>
-<LI><A href="javascript:searchKey(''2009'',15,''tv'')">2009</A></LI>
-<LI><A href="javascript:searchKey(''2008'',15,''tv'')">2008</A></LI>
-<LI><A href="javascript:searchKey(''2007'',15,''tv'')">2007</A></LI>
-<LI><A href="javascript:searchKey(''2006'',15,''tv'')">2006</A></LI>
-<LI><A href="javascript:searchKey(''2005'',15,''tv'')">2005</A></LI>
-<LI><A href="javascript:searchKey(''2004'',15,''tv'')">2004</A></LI>
-<LI><A href="javascript:searchKey(''2003'',15,''tv'')">2003</A></LI>
-<LI><A href="javascript:searchKey(''2002'',15,''tv'')">2002</A></LI>
-<LI><A href="javascript:searchKey(''2001'',15,''tv'')">2001</A></LI>
-<LI><A href="javascript:searchKey(''2000'',15,''tv'')">2000</A></LI>
-<LI><A href="javascript:searchKey(''1999'',15,''tv'')">1999</A></LI>
-<LI><A href="javascript:searchKey(''1998'',15,''tv'')">1998</A></LI>
-<LI><A href="javascript:searchKey(''1997'',15,''tv'')">1997</A></LI></UL></div>
-    <div class="line"></div>
-			</div>
-		</div>
+<DIV class=blank12H></DIV>
+[!--temp.seachlabel--]
         <div class="blank12H"></div>
 		<div class="blockRC bordB clear" id="theViewRank">
         	<h2><span>观看排行榜</span><a href="http://tv.sohu.com/hotteleplay/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotMvTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_tv_day_10">每日<em></em></li>
-                    <li datakey="phb_tv_week_10">每周<em></em></li>
-                    <li datakey="phb_tv_total_10">全部<em></em></li>
-                </ul>
-            </div>
+        	
 
             <div class="snList clear">
-                <ul id="mv_data"></ul>
+                <ul id="mv_data">
+                    [getmovielist]10,10,id>0 order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
+                 </ul>
             </div>
         </div>
         <div class="blank12H"></div>
-        
-         <!-- Start:block -->
-        <div class="blockRE bordB clear" id="theMainLandRank">
-        	<h2><span>内地剧排行榜</span><a href="http://tv.sohu.com/hotteleplay/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotNdTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_zh_tv_day_10">每日<em></em></li>
-
-                    <li datakey="phb_zh_tv_total_10">全部<em></em></li>
-
-                </ul>
-            </div>
-
-            <div class="snList clear">
-                <ul id="nd_data"></ul>
-            </div>
-        </div>
-        <div class="blank12H"></div>
-<div class="blockRE bordB clear" id="theHongKongRank">
-        	<h2><span>港剧排行榜</span><a href="http://tv.sohu.com/hotteleplay/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotXgTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_gt_tv_day_10">每日<em></em></li>
-
-                    <li datakey="phb_gt_tv_total_10">全部<em></em></li>
-
-                </ul>
-            </div>
-
-            <div class="snList clear">
-                <ul id="xg_data"></ul>
-            </div>
-        </div>
-        <div class="blank12H"></div>
-      
-        <div class="blockRE bordB clear" id="theTaiWanRank">
-        	<h2><span>台剧排行榜</span><a href="http://tv.sohu.com/hotteleplay/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotTwTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_taiwan_tv_day_10">每日<em></em></li>
-
-                    <li datakey="phb_taiwan_tv_total_10">全部<em></em></li>
-
-                </ul>
-            </div>
-
-            <div class="snList clear">
-                <ul id="tw_data"></ul>
-            </div>
-        </div>
-        <div class="blank12H"></div>
-
-<div class="blockRE bordB clear" id="theCoreaRank">
-        	<h2><span>韩剧排行榜</span><a href="http://tv.sohu.com/hotkorea/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotHgTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_tv_hanju_day_10">每日<em></em></li>
-                    <li datakey="phb_tv_hanju_week_10">每周<em></em></li>
-                    <li datakey="phb_tv_hanju_total_10">全部<em></em></li>
-
-              </ul>
-  </div>
-
-            <div class="snList clear">
-                <ul id="hg_data"></ul>
-            </div>
-</div>
-        <div class="blank12H"></div>
-		
-	</div>
-		
-	
+    </div>
 </div>
 <!-- contentA end -->
 
-
-<div id="footArea">
-	<div class="footSearch">
-		<form name="sFormA" autocomplete="off" id="sFormA" method="post" action="" onSubmit="return false;">
-            <input type="text" id="sKeyA" value="乡村爱情5" class="tx" /><input type="submit" value="搜索" id="searchBtnA" class="btn"/>
-        </form>
-    </div>
-    <div class="clear footLink">
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/" target=_blank>首页</a></dt>
-
-            <dd><a href="http://tv.sohu.com/drama/" target=_blank>电视剧</a> | <a href="http://tv.sohu.com/movie/" target=_blank>电影</a><br /><a href="http://tv.sohu.com/documentary/" target=_blank>纪录片</a> | <a href="http://tv.sohu.com/comic/" target=_blank>动漫</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://tv.sohu.com/yule/" target=_blank>娱乐</a></dt>
-
-            <dd><a href="http://tv.sohu.com/self/" target=_blank>原创</a> | <a href="http://tv.sohu.com/music/" target=_blank>音乐</a><br /><a href="http://tv.sohu.com/show" target=_blank>综艺</a> | <a href="http://tv.sohu.com/entnews/" target=_blank>娱乐新闻</a></dd>
-        </dl>
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/news/" target=_blank>新闻</a></dt>
-
-            <dd><a href="http://so.tv.sohu.com/list_p11300_p2_u56fd_u5185_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>国内</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u56fd_u9645_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>国际</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u519b_u4e8b_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>军事</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u79d1_u6559_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>科技</a><br /><a href="http://so.tv.sohu.com/list_p11300_p2_u8d22_u7ecf_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>财经</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u793e_u4f1a_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>社会</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u751f_u6d3b_u89c6_u89d2_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>生活</a></dd>
-
-        </dl>
-        <dl>
-        	<dt><a href="http://tv.sohu.com/drama/" target=_blank>电视</a></dt>
-            <dd><a href="http://live.tv.sohu.com/" target=_blank>直播</a><br /><a href="http://data.tv.sohu.com/tvshow" target=_blank>栏目</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://my.tv.sohu.com/" target=_blank>播客</a></dt>
-
-            <dd><a href="http://my.tv.sohu.com/channel/funny" target=_blank>搞笑</a> | <a href="http://my.tv.sohu.com/channel/bagua" target=_blank>八卦</a><br /><a href="http://my.tv.sohu.com/channel/rare" target=_blank>猎奇</a> | <a href="http://my.tv.sohu.com/channel/yuanchuang" target=_blank>原创</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://store.tv.sohu.com/" target=_blank>BIP</a></dt>
-
-            <dd><a href="http://store.tv.sohu.com/movie/" target=_blank>电影</a> | <a href="http://store.tv.sohu.com/edu/" target=_blank>教育</a></dd>
-        </dl>
-        <dl>
-        	<dt><a>服务</a></dt>
-            <dd><a href="http://index.tv.sohu.com/" target=_blank class="a1">指数中心</a> | <a href="http://tv.sohu.com/s2011/cpty/index.shtml" target=_blank>体验中心</a><br /><a href="http://tv.sohu.com/s2011/sitemap/" target=_blank class="a5ico">网站地图</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp" target=_blank>帮助中心
-</a><br /><a href="http://tv.sohu.com/upload/hdfeedback/index.jsp?50" target=_blank class="a4">版权投诉</a> | <a href="http://open.tv.sohu.com" target=_blank>开放平台</a><dd>
-        </dl>
-		<dl>
-        	<dt><a>软件</a></dt>
-        	<dd><a href="http://tv.sohu.com/upload/app/index.html" target=_blank class="a2">移动客户端</a><br /><a href="http://tv.sohu.com/ifox/" target=_blank class="a3">搜狐影音</a></dd>
-        </dl>
-    </div>
-</div>
-
-<div id="foot" class="area">
-    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.sohu.com'');return false;>设置首页</a>
-    - <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
-    - <a href=http://up.sohu.com/ target=_blank>支付中心</a>
-    - <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
-    - <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
-    
-    - <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
-    - <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
-    - <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
-    - <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
-    - <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
-    <br />Copyright <span class="fontArial">&copy;</span> 2012 Sohu.com Inc. All Rights Reserved. 搜狐公司 <span class="unline"><a href="http://corp.sohu.com/s2007/copyright/" target="_blank">版权所有</a></span>
-    
-    <br />搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a>
-</div>
-<script type="text/javascript" src="http://tv.sohu.com/upload/static/global/hdpv.js"></script>
-<script type="text/javascript">
-var _iwt_UA="UA-sohu-123456"; 
-(function (D) {
-    var h=D.getElementsByTagName(''head'')[0],
-    s=D.createElement(''script'');
-    s.type=''text/javascript'';
-    s.charset=''utf-8'';
-    s.src=''http://tv.sohu.com/upload/Trace/iwt-min.js'';
-    h.firstChild?h.insertBefore(s,h.firstChild):h.appendChild(s);
-})(document);
-</script>
-<!-- Begin comScore Tag --> 
-<script> 
-  document.write(unescape("%3Cscript src='' " + (document.location.protocol == "https:" ? "https://sb" : "http://b") 
-+ ".scorecardresearch.com/beacon.js''  %3E%3C/script%3E")); 
-</script> 
- 
-<script> 
-if(typeof COMSCORE!=="undefined"){
-  COMSCORE.beacon({ 
-    c1:2, 
-    c2:"7395122", 
-    c3:"", 
-    c4:"", 
-    c5:"", 
-    c6:"", 
-    c15:"" 
-  }); 
-}
-</script> 
-<noscript> 
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=7395122&c3=&c4=&c5=&c6=&c15=&cj=1" /> 
-</noscript> 
-<!-- End comScore Tag -->
-<script>(function(){function a(){var a=/win/i.test(navigator.userAgent);if(a)if(typeof window.ActiveXObject=="function")try{var b=new ActiveXObject("SoHuVA.SoHuDector.1");b.StartSoHuVA()}catch(c){}else{function d(){var a=navigator.plugins||[];for(var b=0,c;c=a[b];b++)if(/npifox/i.test(c.description))return!0;return!1}if(d()){var e=document.getElementById("embed_ifox");if(!e){var f=document.createElement("div");f.style.cssText="position:absolute;zIndex:-1;height:1px",f.innerHTML=''<embed id="embed_ifox" type="application/ifox-plugin" width="0" height="0"></embed>'',document.body&&(document.body.insertBefore(f,document.body.firstChild),e=document.getElementById("embed_ifox"))}try{e.RunSohuVA()}catch(c){}}}}var b=window._IFoxContext||(window._IFoxContext={});b.isCalled||(b.isCalled=!0,setTimeout(function(){a()},2e3))})()</script>
-<script src="http://tv.sohu.com/upload/tv110421/js/g.js"></script>
-<script src="http://tv.sohu.com/upload/tv110421/js/tv.js"></script>
-
-<SCRIPT language=JavaScript src="http://js.sohu.com/pv.js"></SCRIPT>
-<!-- START WRating v1.0 -->
-<script type="text/javascript" src="http://tv.sohu.com/upload/Trace/wrating.js">
-</script>
-<script type="text/javascript">
-var vjAcc="860010-2311040100";
-var wrUrl="http://sohu.wrating.com/";
-vjTrack("");
-</script>
-<noscript><img src="http://sohu.wrating.com/a.gif?a=&c=860010-2311040100" width="1" height="1"/></noscript>
-<!-- END WRating v1.0 -->
+[!--temp.moviefooter--]
 
 </body>
-</html>',N'',N'',N'',N'',N'',N'',N'',N'<li ><a target="_self" href="javascript:" onclick="play(''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'');s(this);" >[!--url.title--]</a></li>
-                    <input type="hidden" id=''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'' value="[!--url.url--]" />',N'<li ><a target="_self" href="javascript:" onclick="play(''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'');s(this);" >[!--url.title--]</a></li>
+</html>',N'',N'',N'',N'',N'',N'',N'',N'<li ><a target="_self" href="[!--url--]" >[!--url.title--]</a></li>',N'<li ><a target="_self" href="javascript:" onclick="play(''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'');s(this);" >[!--url.title--]</a></li>
                     <input type="hidden" id=''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'' value="[!--url.url--]" />',N'页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]',N'',N'',N'',N'                                    <div class="details" style="width:650px">
                                         <div class="float-r" style="float:right;">
                                             <span class="gray">[!--answer.answertime--]</span>
@@ -1381,7 +1137,517 @@ vjTrack("");
    
 
 [!--temp.footer--]
-')
+',N'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>[!--movie.title--] - 高清正版在线观看 - 搜狐视频</title>
+<meta name="keywords" content="[!--movie.title--],[!--movie.title--]快播,[!--movie.title--]百度影音,[!--movie.title--]在线观看">
+<meta name="description" content="[!--movie.title--],[!--movie.title--]在线观看">
+<meta name="robots" content="all">
+
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main_boke.css" />
+<link type="text/css" charset="UTF-8" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/play1.css" />
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
+
+<script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
+
+<script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
+
+<style>
+.heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
+.heatRank .pt div a:hover img{border:1px #DD0D0B solid}
+.heatRank .pt{ text-align:left;}
+.heatRank .pt div {float: left;margin: 0 10px 0 0;}
+#contentA .heatRank .pt{width:276px;margin:8px auto;line-height:18px}
+#contentA .heatRank .pt .l{width:14px;margin-right:0;font:600 14px/14px "Arial";color:#FF6000}
+#contentA .heatRank .pt .c{width:180px;margin:0}
+.title{background:url(http://tv.sohu.com/upload/tv110421/images/bg2.png) repeat-x;height:20px;line-height:25px;margin:0 2px;padding:15px 0 0;color:#c9c9c9;text-align:left}
+.title span{float:left;margin-left:16px;display:inline}
+.title a{margin:0 12px}
+.title span a{margin:0}
+.bordA,.bordB{border:1px #c5c5c5 solid;background:#fff;}
+.pp,.pt,.list12 ul,.list14 ul{width:100%;margin:0 auto;}
+.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
+.left .pp{text-align:center;width:662px;}
+.pp img{display:block;margin:0 auto;}	
+.pp span{display:block;}
+.pt{line-height:20px;text-align:left;}
+.pt div{float:left;margin:0 10px 0 0;}			
+.pt p{clear:none}
+.pp li{float:left;display:inline;width:100%}
+.pt div img,.pp img,.pic img{border:1px #c5c5c5 solid;padding:1px}
+.pt div a:hover img,.pp a:hover img,.pic a:hover img{border:1px #dd0d0b solid}
+.pp li{position:relative;width:109px;height:148px;margin-right:29px;}
+.pp span{width:108px;margin:7px auto 0;display:block;line-height:18px;text-align:left}
+.pp span strong{display:block;font-weight:normal;margin:0 auto 2px;color:#4b4b4b;}
+.pp .end{margin:0}
+.pp .label{position:absolute;top:54px;left:2px;height:15px;width:103px;margin:0 auto;color:#FFF;line-height:14px;text-align:right;padding:3px 2px 0 0;}
+.pp .label i{position:absolute;height:18px;width:95px;left:0;top:0;background:#000;filter:alpha(opacity=60);opacity: 0.60;}
+.pp .label code{background:url(http://tv.sohu.com/upload/tv110421/images/images/q_c.gif) no-repeat;z-index:20;display:block;width:27px;height:16px;position:absolute;top:1px;left:1px;}
+.pp .label code.ch{background:url(http://tv.sohu.com/upload/tv110421/images/q_g.gif) no-repeat;}
+.pp .label code.cb{background:url(http://tv.sohu.com/upload/tv110421/images/q_b.gif) no-repeat;}
+.pp .label code.cc{background:url(http://tv.sohu.com/upload/tv110421/images/q_c.gif) no-repeat;}
+.pp .label em{position:relative;z-index:2;color:#FFF;line-height:14px;}
+.pp .bp{top:120px}
+.bordA .pp{text-align:left;}
+#contentA .left .pp li{height:190px}
+#contentA .left .bpp li{height:213px}
+#contentA .left .bpp img{width:95px;height:131px;}
+#contentA .left .pp img{width:95px;}
+#contentA .left .pp span.label{text-align:right;}
+#contentA .left .pp span{width:99px;}
+#contentA .left .pp span.label{width:95px;}
+.menuA .now {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #F7F7F7;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    color: #DD0D0B;
+    font-weight: bold;
+    position: relative;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="logoFull">
+<div id="logoFocus" class="area">
+	<div class="left">
+		<div class="logo l" collection="Y"><style>
+#logoFocus .left{margin:2px 0 0;}
+</style>
+<a href="http://tv.sohu.com/" target="_blank">
+<img height="30" width="72" alt="tv视频" src="http://tv.sohu.com/upload/101116tvplay/images/logo_bo01.gif">
+</a></div>
+		<div class="ado l">
+			<div><SOHUADCODE></SOHUADCODE></div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="navList l" collection="Y">
+			<div id="nvId" class="nv"><a target="_blank" href="http://tv.sohu.com/">首页</a> | <a target="_blank" href="http://tv.sohu.com/drama/">电视剧</a> | <a target="_blank" href="http://tv.sohu.com/movie/">电影</a> | <a target="_blank" href="http://tv.sohu.com/zongyi/">综艺</a> | <a target="_blank" href="http://tv.sohu.com/real/">纪录片</a> | <a target="_blank" href="http://store.tv.sohu.com/">付费</a></div>
+		</div>
+		<div class="search l">
+			<form action="http://so.tv.sohu.com/mts" method="GET" target="_blank" id="sForm" autocomplete="off" name="sForm">
+				<input type="text" class="tx" value="[!--movie.title--]" id="sKey" name="wd" /><input type="hidden" value="1" name="box" />
+				<span ><input type="submit" class="btn" id="searchBtn" value="搜 索" /></span>
+			<input type="hidden" name="__hash__" value="cade39d59e884663ccd074ff733f6a0a" /></form>
+		</div>
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/jq_plugin/search/skin/search.css" />
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/reback.css" />
+
+	</div>
+</div>
+</div>
+<div id="location" class="area">
+    <div class="left">
+	<!--- <div class="adB">
+	<a href="http://tv.sohu.com/qvod/" target=_blank style="font-size: 16px;color: #CB001B;font-family:黑体;">搜狐视频快播专区</a>
+	</div> -->
+	<div class="adB" style="font-size: 16px;font-family:黑体;">
+       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
+        </div>
+	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
+    </div>
+</div>
+<div class="fullVideo">
+<div id="video" class="area">
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
+    <td>
+<table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
+        <tr>
+            <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
+            <td width="640" height="399" id="tdqvod" >
+                <div style="position:relative;width:640px;height:399px;">
+                
+                </div>
+            </td>
+        </tr>
+<script>
+	$(document).ready(function(){
+
+		//页面加载自动打开播放器
+		var url = "[!--drama.url--]";
+		//下一集资源地址
+		var nextqvod = "";
+		//下一集播放页面 播放结束自动跳转到该页面
+		var nextpage = "[!--movie.nextpageurl--]";
+		
+		//调用播放器
+		$("#tdqvod").qvod({PlayerArea:"tdqvod", width:"640", height:"399", AutoPlay:"true",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
+
+		/*参数说明*/
+		
+		//width: "500", /*播放器的宽度*/
+		
+		//height: "400", /*播发器的高度*/
+		
+		//AutoPlay: "true", /*自动播放 默认开启*/
+		
+		//FullScreen: "false", /*自动全屏 默认关闭*/
+		
+		//PlayerArea: "",	/*播放器插入的位置，标签的id属性*/
+		
+		//QvodUrl: "", /*本集资源地址*/
+		
+		//NextWebPage: "", /*下一集播放页地址*/
+		
+		//NextQvod: "", /*下一集资源地址，预缓冲时使用*/
+		
+		//ShowControl: "1", /*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
+		
+		//AdUrl: "http://buffer-ad.qvod.com/" /*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
+
+		//该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
+
+	});
+</script>
+    </table>
+</td>
+        <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
+    </table>
+</div>
+</div>
+<div id="contentA" class="area">
+	<div class="left">
+		<div class="playList bord clear" id="playList">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>[!--movie.title--]快播剧集</strong><span id="playCounts"></span></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="menuA hidden">
+					<ul id="playTag"></ul>
+				</div>
+				<div class="pList clear" id="playContF">
+				    <ul>
+				         [!--movie.kuib--]
+				     </ul>
+				</div>
+			</div>
+		</div>
+		<div class="playList bord clear" id="playList">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="menuA hidden">
+					<ul id="playTag"></ul>
+				</div>
+				<div class="pList clear" id="playContF">
+				    <ul>
+				         [!--movie.baidu--]
+				     </ul>
+				</div>
+			</div>
+		</div>
+	
+<DIV class=blank12H></DIV>
+<DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
+<DIV class=title><SPAN>相关剧集</SPAN></DIV>
+	<DIV class=pp>
+		<UL>
+			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
+		</UL>
+	</DIV>
+</DIV>
+<DIV class=blank12H></DIV>
+
+</div>
+
+	<div class="right">
+
+		<div class="videoInfo bord clear">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong><em id="specialIDC">[!--movie.title--]</em> 剧情介绍</strong></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="vInfo clear">
+					<div id="vrs_data"></div>
+					<p><em id="specialNumA"></em>剧情：</p>
+
+					<div id="introID">
+						<p>[!--movie.intro--]</p>
+                        </br>
+						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="heatRank bord clear" style="height:350px;">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>热度排行榜</strong></div>
+				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
+			</div>
+			
+             <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
+                 <ul>
+                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
+                 </ul>
+             </div>
+</div>
+	</div>
+</div>
+
+[!--temp.moviefooter--]
+
+</html>',N'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>[!--movie.title--] - 高清正版在线观看 - 搜狐视频</title>
+<meta name="keywords" content="[!--movie.title--],[!--movie.title--]快播,[!--movie.title--]百度影音,[!--movie.title--]在线观看">
+<meta name="description" content="[!--movie.title--],[!--movie.title--]在线观看">
+<meta name="robots" content="all">
+
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main_boke.css" />
+<link type="text/css" charset="UTF-8" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/play1.css" />
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
+
+<script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
+
+<style>
+.heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
+.heatRank .pt div a:hover img{border:1px #DD0D0B solid}
+.heatRank .pt{ text-align:left;}
+.heatRank .pt div {float: left;margin: 0 10px 0 0;}
+#contentA .heatRank .pt{width:276px;margin:8px auto;line-height:18px}
+#contentA .heatRank .pt .l{width:14px;margin-right:0;font:600 14px/14px "Arial";color:#FF6000}
+#contentA .heatRank .pt .c{width:180px;margin:0}
+.title{background:url(http://tv.sohu.com/upload/tv110421/images/bg2.png) repeat-x;height:20px;line-height:25px;margin:0 2px;padding:15px 0 0;color:#c9c9c9;text-align:left}
+.title span{float:left;margin-left:16px;display:inline}
+.title a{margin:0 12px}
+.title span a{margin:0}
+.bordA,.bordB{border:1px #c5c5c5 solid;background:#fff;}
+.pp,.pt,.list12 ul,.list14 ul{width:100%;margin:0 auto;}
+.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
+.left .pp{text-align:center;width:662px;}
+.pp img{display:block;margin:0 auto;}	
+.pp span{display:block;}
+.pt{line-height:20px;text-align:left;}
+.pt div{float:left;margin:0 10px 0 0;}			
+.pt p{clear:none}
+.pp li{float:left;display:inline;width:100%}
+.pt div img,.pp img,.pic img{border:1px #c5c5c5 solid;padding:1px}
+.pt div a:hover img,.pp a:hover img,.pic a:hover img{border:1px #dd0d0b solid}
+.pp li{position:relative;width:109px;height:148px;margin-right:29px;}
+.pp span{width:108px;margin:7px auto 0;display:block;line-height:18px;text-align:left}
+.pp span strong{display:block;font-weight:normal;margin:0 auto 2px;color:#4b4b4b;}
+.pp .end{margin:0}
+.pp .label{position:absolute;top:54px;left:2px;height:15px;width:103px;margin:0 auto;color:#FFF;line-height:14px;text-align:right;padding:3px 2px 0 0;}
+.pp .label i{position:absolute;height:18px;width:95px;left:0;top:0;background:#000;filter:alpha(opacity=60);opacity: 0.60;}
+.pp .label code{background:url(http://tv.sohu.com/upload/tv110421/images/images/q_c.gif) no-repeat;z-index:20;display:block;width:27px;height:16px;position:absolute;top:1px;left:1px;}
+.pp .label code.ch{background:url(http://tv.sohu.com/upload/tv110421/images/q_g.gif) no-repeat;}
+.pp .label code.cb{background:url(http://tv.sohu.com/upload/tv110421/images/q_b.gif) no-repeat;}
+.pp .label code.cc{background:url(http://tv.sohu.com/upload/tv110421/images/q_c.gif) no-repeat;}
+.pp .label em{position:relative;z-index:2;color:#FFF;line-height:14px;}
+.pp .bp{top:120px}
+.bordA .pp{text-align:left;}
+#contentA .left .pp li{height:190px}
+#contentA .left .bpp li{height:213px}
+#contentA .left .bpp img{width:95px;height:131px;}
+#contentA .left .pp img{width:95px;}
+#contentA .left .pp span.label{text-align:right;}
+#contentA .left .pp span{width:99px;}
+#contentA .left .pp span.label{width:95px;}
+.menuA .now {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #F7F7F7;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    color: #DD0D0B;
+    font-weight: bold;
+    position: relative;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="logoFull">
+<div id="logoFocus" class="area">
+	<div class="left">
+		<div class="logo l" collection="Y"><style>
+#logoFocus .left{margin:2px 0 0;}
+</style>
+<a href="http://tv.sohu.com/" target="_blank">
+<img height="30" width="72" alt="tv视频" src="http://tv.sohu.com/upload/101116tvplay/images/logo_bo01.gif">
+</a></div>
+		<div class="ado l">
+			<div><SOHUADCODE></SOHUADCODE></div>
+		</div>
+	</div>
+	<div class="right">
+		<div class="navList l" collection="Y">
+			<div id="nvId" class="nv"><a target="_blank" href="http://tv.sohu.com/">首页</a> | <a target="_blank" href="http://tv.sohu.com/drama/">电视剧</a> | <a target="_blank" href="http://tv.sohu.com/movie/">电影</a> | <a target="_blank" href="http://tv.sohu.com/zongyi/">综艺</a> | <a target="_blank" href="http://tv.sohu.com/real/">纪录片</a> | <a target="_blank" href="http://store.tv.sohu.com/">付费</a></div>
+		</div>
+		<div class="search l">
+			<form action="http://so.tv.sohu.com/mts" method="GET" target="_blank" id="sForm" autocomplete="off" name="sForm">
+				<input type="text" class="tx" value="[!--movie.title--]" id="sKey" name="wd" /><input type="hidden" value="1" name="box" />
+				<span ><input type="submit" class="btn" id="searchBtn" value="搜 索" /></span>
+			<input type="hidden" name="__hash__" value="cade39d59e884663ccd074ff733f6a0a" /></form>
+		</div>
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/jq_plugin/search/skin/search.css" />
+<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/reback.css" />
+
+	</div>
+</div>
+</div>
+<div id="location" class="area">
+    <div class="left">
+	<!--- <div class="adB">
+	<a href="http://tv.sohu.com/qvod/" target=_blank style="font-size: 16px;color: #CB001B;font-family:黑体;">搜狐视频快播专区</a>
+	</div> -->
+	<div class="adB" style="font-size: 16px;font-family:黑体;">
+       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
+        </div>
+	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
+    </div>
+</div>
+<div class="fullVideo">
+<div id="video" class="area">
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
+    <td>
+<table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
+        <tr>
+            <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
+            <td width="640" height="399" id="tdqvod" >
+                <div style="position:relative;width:640px;height:399px;">
+                <script language="javascript">
+var BdPlayer = new Array();
+BdPlayer[''time''] = 0;//缓冲广告展示时间(如果设为0,则根据缓冲进度自动控制广告展示时间)
+BdPlayer[''buffer''] = '''';//贴片广告网页地址
+BdPlayer[''pause''] = '''';//暂停广告网页地址
+BdPlayer[''end''] = '''';//影片播放完成后加载的广告
+BdPlayer[''download''] = ''http://dl.client.baidu.com/BaiduPlayer/BaiduPlayer1.0.22.39.exe'';//播放器下载地址
+BdPlayer[''width''] = 640;//播放器宽度(只能为数字)
+BdPlayer[''height''] = 399;//播放器高度(只能为数字)
+BdPlayer[''showclient''] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
+BdPlayer[''url''] = ''[!--drama.url--]'';//当前播放任务播放地址
+BdPlayer[''nextcacheurl''] = '''';//下一集播放地址(没有请留空)
+BdPlayer[''lastwebpage''] = '''';//上一集网页地址(没有请留空)
+BdPlayer[''nextwebpage''] = ''[!--movie.nextpageurl--]'';//下一集网页地址(没有请留空)
+</script>
+<script language="javascript" src="http://player.baidu.com/lib/player.js" charset="utf-8"></script>
+                </div>
+            </td>
+        </tr>
+    </table>
+</td>
+        <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
+    </table>
+</div>
+</div>
+<div id="contentA" class="area">
+	<div class="left">
+		<div class="playList bord clear" id="playList">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>[!--movie.title--]快播剧集</strong><span id="playCounts"></span></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="menuA hidden">
+					<ul id="playTag"></ul>
+				</div>
+				<div class="pList clear" id="playContF">
+				    <ul>
+				         [!--movie.kuib--]
+				     </ul>
+				</div>
+			</div>
+		</div>
+		<div class="playList bord clear" id="playList">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="menuA hidden">
+					<ul id="playTag"></ul>
+				</div>
+				<div class="pList clear" id="playContF">
+				    <ul>
+				         [!--movie.baidu--]
+				     </ul>
+				</div>
+			</div>
+		</div>
+	
+<DIV class=blank12H></DIV>
+<DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
+<DIV class=title><SPAN>相关剧集</SPAN></DIV>
+	<DIV class=pp>
+		<UL>
+			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
+		</UL>
+	</DIV>
+</DIV>
+<DIV class=blank12H></DIV>
+
+</div>
+
+	<div class="right">
+
+		<div class="videoInfo bord clear">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong><em id="specialIDC">[!--movie.title--]</em> 剧情介绍</strong></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="vInfo clear">
+					<div id="vrs_data"></div>
+					<p><em id="specialNumA"></em>剧情：</p>
+
+					<div id="introID">
+						<p>[!--movie.intro--]</p>
+                        </br>
+						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="heatRank bord clear" style="height:350px;">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>热度排行榜</strong></div>
+				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
+			</div>
+			
+             <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
+                 <ul>
+                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
+                 </ul>
+             </div>
+</div>
+	</div>
+</div>
+
+[!--temp.moviefooter--]
+
+</html>',N'')
  SET IDENTITY_INSERT [TemplatePublic] OFF ;
 
 
@@ -1679,20 +1945,16 @@ SET IDENTITY_INSERT [TemplateList] ON ;
  insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'5',N'1',N'影视模板',N'6',N'0',N'10',N'200',N'yyyy-MM-dd',N'<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
-<meta name="description" content="搜狐视频电视剧频道，免费提供正版高清电视剧在线观看，同步播出各类最新最热港台电视剧、内地电视剧、欧美电视剧和日韩电视剧。" />
-<meta name="keywords" content="电视剧，最新电视剧，高清电视剧，电视剧在线观看，搜狐电视剧" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="[!--class.description--]" />
+<meta name="keywords" content="[!--class.classname--]，最新[!--class.classname--]，高清[!--class.classname--]，电视剧[!--class.classname--]，快播[!--class.classname--]，百度影音[!--class.classname--]" />
 <meta name="robots" content="all" />
-
-<script src="http://www.sohu.com/sohuflash_1.js" type="text/javascript"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>搜狐电视剧频道 - 搜狐视频</title>
-<link rel="Shortcut Icon" href="http://tv.sohu.com/favicon.ico" />
+<title>[!--class.classname--]频道 - [!--sys.sitename--]</title>
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/p_dsj.css" />
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/yingp_css/fileview.css" />
-<script src="http://tv.sohu.com/upload/jq_plugin/j_1.5.2.js"></script>
 
 <style>
 .list21 .p1 img{display:inline;}
@@ -1732,8 +1994,8 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 		<div class="areaTop">
 			<div class="area clear iheader">
 				<div class="logo_ad_box">
-					<a class="logo l" target="_blank" href="http://tv.sohu.com">
-                        <img src="http://tv.sohu.com/upload/static/index/skin/images/logo_tv.png" alt="搜狐视频" />
+					<a class="logo l" target="_blank" href="/">
+                        <img src="/skin/movie/logo.gif" alt="[!--sys.sitename--]" />
 					</a>
 				</div>
 				<div class="search l">
@@ -1753,22 +2015,15 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 <div class="navbar clear">
 				<div class="l">
 					<ul>
-						<li><a href="http://tv.sohu.com" title="" >首页</a></li>
-						<li class="selected"><a href="http://tv.sohu.com/drama/" title="" >电视剧</a></li>
-						<li><a href="http://tv.sohu.com/movie/" title="" >电影</a></li>
-						<li><a href="http://tv.sohu.com/show/" title="" >综艺</a></li>
-						<li><a href="http://tv.sohu.com/comic/" title="" >动漫</a></li>
-						<li><a href="http://tv.sohu.com/documentary/" title="" >纪录片</a></li>
-						<li><a href="http://tv.sohu.com/self/" title="" >原创</a></li>
-						<li><a href="http://tv.sohu.com/yule/" title="" >娱乐</a></li>
-						<li><a href="http://tv.sohu.com/music/" title="" >音乐</a></li>
+						<li><a href="/" title="[!--sys.sitename--]" >首页</a></li>
+						[getclasslist]100,100,IsLeafClass=0 order by id,<li><a href="{url}" title="{classname}">{classname}</a></li>[/getclasslist]
 					</ul>
 				</div>
 			</div>
 			<div class="subnavbar clear">
 				<div class="l">
 					<ul>
-						<li class="first selected"><a href="/drama/" title="电视剧首页" >电视剧首页</a></li>
+						<li class="first selected"><a href="[!--class.url--]" title="[!--class.classname--]首页" >[!--class.classname--]首页</a></li>
 						[getclasslist]20,100,parentid=[!--class.id--],<li><a href="{url}" title="{classname}" target="_blank">{classname}</a></li>[/getclasslist]
 					</ul>
 				</div>	
@@ -1791,113 +2046,33 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 	
 
 	<div class="left">
-		
 <DIV class=blank12H></DIV>
 		<div class="blockLA bordA clear">
 <div class="cont">
 <DIV class=blank12H></DIV>
 <div class="pp pp4" sizcache="5" sizset="1">
+[!--show.listpage--]
 <ul sizcache="5" sizset="1">
      <!--list.var-->
-</ul></div></div></div>
+</ul>
+[!--show.listpage--]
+</div></div></div>
 	
 		<div class="blank12H"></div>	
 	</div>	
 	<div class="right">
 		<div class="blank12H"></div>
-<div class="dDox bordB clear" id="theTVCategory">
-			<div class="mvRank clear">
-				<h2><span>电视剧分类</span><a target="_blank" href="http://so.tv.sohu.com/list_p12_p2_p3_p4-1_p5_p6_p70_p80_p9_2d2_p101_p11.html">更多&gt;&gt;</a></h2>
-			</div>
-  <div class="tvCls clear">
-                <div class="list clear">
-                <H3>按地区|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''内地'',4,''tv'')">内地</A></LI>
-<LI><A href="javascript:searchKey(''港剧'',4,''tv'')">港剧</A></LI>
-<LI><A href="javascript:searchKey(''台剧'',4,''tv'')">台剧</A></LI>
-<LI><A href="javascript:searchKey(''韩剧'',4,''tv'')">韩剧</A></LI>
-<LI><A href="javascript:searchKey(''美剧'',4,''tv'')">美剧</A></LI>
-<LI><A href="javascript:searchKey(''其他'',4,''tv'')">其他</A></LI></UL></div>
-                <div class="line"></div>
-                <div class="list clear">
-                <H3>按类型|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''偶像剧'',7,''tv'')">偶像剧</A></LI>
-<LI><A href="javascript:searchKey(''伦理剧'',7,''tv'')">伦理剧</A></LI>
-<LI><A href="javascript:searchKey(''历史剧'',7,''tv'')">历史剧</A></LI>
-<LI><A href="javascript:searchKey(''年代剧'',7,''tv'')">年代剧</A></LI>
-<LI><A href="javascript:searchKey(''言情剧'',7,''tv'')">言情剧</A></LI>
-<LI><A href="javascript:searchKey(''武侠剧'',7,''tv'')">武侠剧</A></LI>
-<LI><A href="javascript:searchKey(''古装剧'',7,''tv'')">古装剧</A></LI>
-<LI><A href="javascript:searchKey(''都市剧'',7,''tv'')">都市剧</A></LI>
-<LI><A href="javascript:searchKey(''农村剧'',7,''tv'')">农村剧</A></LI>
-<LI><A href="javascript:searchKey(''战争剧'',7,''tv'')">战争剧</A></LI>
-<LI><A href="javascript:searchKey(''悬疑剧'',7,''tv'')">悬疑剧</A></LI>
-<LI><A href="javascript:searchKey(''谍战剧'',7,''tv'')">谍战剧</A></LI>
-<LI><A href="javascript:searchKey(''科幻剧'',7,''tv'')">科幻剧</A></LI>
-<LI><A href="javascript:searchKey(''动作剧'',7,''tv'')">动作剧</A></LI></UL></div>
-                <div class="line"></div>
-
-                <div class="list clear">
-                <H3>按明星|</H3>
-<UL>
-
-
-<LI><A href="javascript:searchKey(''王志文'')">王志文</A></LI>
-<LI><A href="javascript:searchKey(''李幼斌'')">李幼斌</A></LI>
-<LI><A href="javascript:searchKey(''黄志忠'')">黄志忠</A></LI>
-<LI><A href="javascript:searchKey(''张嘉译'')">张嘉译</A></LI>
-<LI><A href="javascript:searchKey(''潘粤明'')">潘粤明</A></LI>
-<LI><A href="javascript:searchKey(''冯绍峰'')">冯绍峰</A></LI>
-
-<LI><A href="javascript:searchKey(''贾乃亮'')">贾乃亮</A></LI>
-
-<LI><A href="javascript:searchKey(''何晟铭'')">何晟铭</A></LI>
-<LI><A href="javascript:searchKey(''佟大为'')">佟大为</A></LI>
-
-<LI><A href="javascript:searchKey(''蒋雯丽'')">蒋雯丽</A></LI>
-<LI><A href="javascript:searchKey(''刘涛'')">刘　涛</A></LI>
-<LI><A href="javascript:searchKey(''马苏'')">马　苏</A></LI>
-<LI><A href="javascript:searchKey(''海清'')">海　清</A></LI>
-<LI><A href="javascript:searchKey(''杨幂'')">杨　幂</A></LI>
-<LI><A href="javascript:searchKey(''董璇'')">董　璇</A></LI></UL></div>
-                <div class="line"></div>
-                
-                <div collection="Y" class="list clear c4">
-<H3>按年份|</H3>
-<UL>
-<LI><A href="javascript:searchKey(''2011'',15,''tv'')">2011</A></LI>
-<LI><A href="javascript:searchKey(''2010'',15,''tv'')">2010</A></LI>
-<LI><A href="javascript:searchKey(''2009'',15,''tv'')">2009</A></LI>
-<LI><A href="javascript:searchKey(''2008'',15,''tv'')">2008</A></LI>
-<LI><A href="javascript:searchKey(''2007'',15,''tv'')">2007</A></LI>
-<LI><A href="javascript:searchKey(''2006'',15,''tv'')">2006</A></LI>
-<LI><A href="javascript:searchKey(''2005'',15,''tv'')">2005</A></LI>
-<LI><A href="javascript:searchKey(''2004'',15,''tv'')">2004</A></LI>
-<LI><A href="javascript:searchKey(''2003'',15,''tv'')">2003</A></LI>
-<LI><A href="javascript:searchKey(''2002'',15,''tv'')">2002</A></LI>
-<LI><A href="javascript:searchKey(''2001'',15,''tv'')">2001</A></LI>
-<LI><A href="javascript:searchKey(''2000'',15,''tv'')">2000</A></LI>
-<LI><A href="javascript:searchKey(''1999'',15,''tv'')">1999</A></LI>
-<LI><A href="javascript:searchKey(''1998'',15,''tv'')">1998</A></LI>
-<LI><A href="javascript:searchKey(''1997'',15,''tv'')">1997</A></LI></UL></div>
-    <div class="line"></div>
-			</div>
-		</div>
+<DIV class=blank12H></DIV>
+[!--temp.seachlabel--]
         <div class="blank12H"></div>
 		<div class="blockRC bordB clear" id="theViewRank">
         	<h2><span>观看排行榜</span><a href="http://tv.sohu.com/hotteleplay/" target="_blank">TOP50&gt;&gt;</a></h2>
-        	<div id="hotMvTab" class="menuA clear">
-                <ul>
-                    <li datakey="phb_tv_day_10">每日<em></em></li>
-                    <li datakey="phb_tv_week_10">每周<em></em></li>
-                    <li datakey="phb_tv_total_10">全部<em></em></li>
-                </ul>
-            </div>
+        	
 
             <div class="snList clear">
-                <ul id="mv_data"></ul>
+                <ul id="mv_data">
+                    [getmovielist]10,10,ClassID in(select [!--class.id--] union select id from Class where ParentID=[!--class.id--]) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
+                 </ul>
             </div>
         </div>
         <div class="blank12H"></div>
@@ -1905,75 +2080,10 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 </div>
 <!-- contentA end -->
 
-
-<div id="footArea">
-	<div class="footSearch">
-		<form name="sFormA" autocomplete="off" id="sFormA" method="post" action="" onSubmit="return false;">
-            <input type="text" id="sKeyA" value="乡村爱情5" class="tx" /><input type="submit" value="搜索" id="searchBtnA" class="btn"/>
-        </form>
-    </div>
-    <div class="clear footLink">
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/" target=_blank>首页</a></dt>
-
-            <dd><a href="http://tv.sohu.com/drama/" target=_blank>电视剧</a> | <a href="http://tv.sohu.com/movie/" target=_blank>电影</a><br /><a href="http://tv.sohu.com/documentary/" target=_blank>纪录片</a> | <a href="http://tv.sohu.com/comic/" target=_blank>动漫</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://tv.sohu.com/yule/" target=_blank>娱乐</a></dt>
-
-            <dd><a href="http://tv.sohu.com/self/" target=_blank>原创</a> | <a href="http://tv.sohu.com/music/" target=_blank>音乐</a><br /><a href="http://tv.sohu.com/show" target=_blank>综艺</a> | <a href="http://tv.sohu.com/entnews/" target=_blank>娱乐新闻</a></dd>
-        </dl>
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/news/" target=_blank>新闻</a></dt>
-
-            <dd><a href="http://so.tv.sohu.com/list_p11300_p2_u56fd_u5185_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>国内</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u56fd_u9645_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>国际</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u519b_u4e8b_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>军事</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u79d1_u6559_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>科技</a><br /><a href="http://so.tv.sohu.com/list_p11300_p2_u8d22_u7ecf_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>财经</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u793e_u4f1a_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>社会</a> | <a href="http://so.tv.sohu.com/list_p11300_p2_u751f_u6d3b_u89c6_u89d2_p3_p4-1_p5_p6_p73_p80_p9-2_p101_p11.html" target=_blank>生活</a></dd>
-
-        </dl>
-        <dl>
-        	<dt><a href="http://tv.sohu.com/drama/" target=_blank>电视</a></dt>
-            <dd><a href="http://live.tv.sohu.com/" target=_blank>直播</a><br /><a href="http://data.tv.sohu.com/tvshow" target=_blank>栏目</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://my.tv.sohu.com/" target=_blank>播客</a></dt>
-
-            <dd><a href="http://my.tv.sohu.com/channel/funny" target=_blank>搞笑</a> | <a href="http://my.tv.sohu.com/channel/bagua" target=_blank>八卦</a><br /><a href="http://my.tv.sohu.com/channel/rare" target=_blank>猎奇</a> | <a href="http://my.tv.sohu.com/channel/yuanchuang" target=_blank>原创</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://store.tv.sohu.com/" target=_blank>BIP</a></dt>
-
-            <dd><a href="http://store.tv.sohu.com/movie/" target=_blank>电影</a> | <a href="http://store.tv.sohu.com/edu/" target=_blank>教育</a></dd>
-        </dl>
-        <dl>
-        	<dt><a>服务</a></dt>
-            <dd><a href="http://index.tv.sohu.com/" target=_blank class="a1">指数中心</a> | <a href="http://tv.sohu.com/s2011/cpty/index.shtml" target=_blank>体验中心</a><br /><a href="http://tv.sohu.com/s2011/sitemap/" target=_blank class="a5ico">网站地图</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp" target=_blank>帮助中心
-</a><br /><a href="http://tv.sohu.com/upload/hdfeedback/index.jsp?50" target=_blank class="a4">版权投诉</a> | <a href="http://open.tv.sohu.com" target=_blank>开放平台</a><dd>
-        </dl>
-		<dl>
-        	<dt><a>软件</a></dt>
-        	<dd><a href="http://tv.sohu.com/upload/app/index.html" target=_blank class="a2">移动客户端</a><br /><a href="http://tv.sohu.com/ifox/" target=_blank class="a3">搜狐影音</a></dd>
-        </dl>
-    </div>
-</div>
-
-<div id="foot" class="area">
-    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.sohu.com'');return false;>设置首页</a>
-    - <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
-    - <a href=http://up.sohu.com/ target=_blank>支付中心</a>
-    - <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
-    - <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
-    
-    - <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
-    - <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
-    - <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
-    - <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
-    - <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
-    <br />Copyright <span class="fontArial">&copy;</span> 2012 Sohu.com Inc. All Rights Reserved. 搜狐公司 <span class="unline"><a href="http://corp.sohu.com/s2007/copyright/" target="_blank">版权所有</a></span>
-    
-    <br />搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a>
-</div>
+[!--temp.moviefooter--]
 
 </body>
-</html>',N'<li style="Z-INDEX: 1" sizcache="4" sizset="4"><a href="[!--movie.url--]" target="_blank" sizcache="4" sizset="4"><img height="145" alt="[!--movie.title--]" src="[!--movie.faceimage--]" width="105" border="0"></a><span sizcache="1" sizset="375"><strong sizcache="1" sizset="375"><a href="[!--movie.url--]" target="_blank">[!--movie.title--]</a></strong></span><span class="label"><i></i><code class="cc"></code><em>[!--movie.lastdramatitle--]</em></span></li>')
+</html>',N'<li style="Z-INDEX: 1" sizcache="4" sizset="4"><a href="[!--movie.url--]" target="_blank" sizcache="4" sizset="4"><img alt="[!--movie.title--]" src="[!--movie.faceimage--]" border="0" style="width:105px; height:145px;" /></a><span sizcache="1" sizset="375"><strong sizcache="1" sizset="375"><a href="[!--movie.url--]" target="_blank">[!--movie.title--]</a></strong></span><span class="label"><i></i><code class="cc"></code><em>[!--movie.lastdramatitle--]</em></span></li>')
  SET IDENTITY_INSERT [TemplateList] OFF ;
 
 
@@ -2503,23 +2613,9 @@ SET IDENTITY_INSERT [TemplateContent] ON ;
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
 
 <script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
-<script type="text/javascript" src="http://js.sohu.com/library/jquery.plugin.1.0.js"></script>
-<script type="text/javascript" src="http://tv.sohu.com/upload/jq_plugin/g.js"></script>
-<script type="text/javascript" src="http://tv.sohu.com/upload/101116tvplay/js/date.gb.js"></script>
-<script type="text/javascript" src="http://tv.sohu.com/upload/jq_plugin/passport.js"></script>
 
-<script type="text/javascript" src="http://tv.sohu.com/upload/101116tvplay/js/play_pub.js"></script>
-<script type="text/javascript" src="http://js.dm.kuaibo.com/channel/1/1.js?vt=1334110227"></script>
-<!-- video player code begin -->
-<script type="text/javascript">
-var vid="";
-var filmType="";
+<script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
 
-
-</script> 
-<!--video player code end-->
-
-<script type="text/javascript" src="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/kuaibo_play.js"></script>
 <style>
 .heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
 .heatRank .pt div a:hover img{border:1px #DD0D0B solid}
@@ -2618,112 +2714,69 @@ var filmType="";
 	<a href="http://tv.sohu.com/qvod/" target=_blank style="font-size: 16px;color: #CB001B;font-family:黑体;">搜狐视频快播专区</a>
 	</div> -->
 	<div class="adB" style="font-size: 16px;font-family:黑体;">
-       搜狐视频快播专区：<a href="http://kuaib.tv.sohu.com/" >首页</a>>><a href="http://kuaib.tv.sohu.com/html/more_list31.htm" >电视剧</a>>>
+       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
         </div>
-	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em></span>
+	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
     </div>
 </div>
 <div class="fullVideo">
 <div id="video" class="area">
 <table border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-    <td><div style="width:170px;height:270px;" id="ad_l_id"><script type="text/javascript">/*快播播放页-对联*/ var cpro_id = ''u795303'';</script><script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script></div></td>
+    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
     <td>
 <table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
         <tr>
             <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
             <td width="640" height="399" id="tdqvod" >
                 <div style="position:relative;width:640px;height:399px;">
-                <iframe id="iframe_down" name="iframe_down" scrolling="no" frameborder="0" style="margin: 0;
-                    width: 100%; height: 100%; display: none;" src=""></iframe>
                 
-                <iframe id="divad" name="iframe_down" scrolling="no" frameborder="0" style="margin: 0px;position: absolute; width:320px;height:240px;display: none; " allowtransparency="true" src=""></iframe>
-                
-                <!--QVOD播放器-->
-                <object classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" width="100%" height="100%"
-                    id="QvodPlayer" name="QvodPlayer" onerror="document.getElementById(''QvodPlayer'').style.display=''none'';document.getElementById(''iframe_down'').style.display='''';document.getElementById(''iframe_down'').src=''http://error2.qvod.com/error4_sohu.htm'';">
-                    <param name=''Showcontrol'' value=''2''>
-                    <param name=''URL'' value=''qvod://80083869|FDE848F82F8FC3E1515C115674DB96946A4203B8|418_《秘密天使》第5集.mp4|''>
-                    <param name=''Autoplay'' value=''1''>
-                    <!--缓冲广告,只对QVOD地址有效,如不想使用可以删除-->
-                    <param name=''QvodAdUrl'' value=''''>
-                    <!--缓冲广告,只对QVOD地址有效,如不想使用可以删除-->
-                    <!--播放当前节目后自动导航到下一集或者其它网页的功能,默认为空即不导航。网页地址请以http://开头 启用请删除注释符,把value中的地址换成要跳转的地址 -->
-                    <!--<param name=''NextWebPage'' value=''http://www.qvod.com/''>-->
-                    <!--播放当前节目后自动导航到下一集或者其它网页的功能,默认为空即不导航。网页地址请以http://开头 启用请删除注释符,把value中的地址换成要跳转的地址 -->
-                    <embed id="QvodPlayer2" name="QvodPlayer2" width="100%" height="100%" URL=''qvod://80083869|FDE848F82F8FC3E1515C115674DB96946A4203B8|418_《秘密天使》第5集.mp4|'' type=''application/qvod-plugin'' Autoplay=''1'' QvodAdUrl="" Showcontrol=''2'' ></embed>
-                </object>
-                <!--QVOD播放器-->
-
-                <script>
-                //预缓冲下一集, nexturl 改成下一集的 qvod 或者 http 地址, 注意:非页面地址,必须是真实的播放地址,启用请删除注释符,修改地址
-                //var nexturl="qvod://235214032|5AAD0EA01AC5EABAA9DDA2AC391B04A54EC77293|夏家三千金_《夏家三千金》第1集.mp4|";
-                //预缓冲下一集, nexturl 改成下一集的 qvod 或者 http 地址, 注意:非页面地址,必须是真实的播放地址,启用请删除注释符,修改地址
-                </script>
                 </div>
             </td>
         </tr>
-        <tr>
-            <td valign="top">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td style="text-align: left; background: url(''http://tv.sohu.com/upload/qvodblack/image/progressd.gif'');
-                            background-repeat: repeat-x; left: 0px; position: relative; cursor: pointer;"
-                            id="pZone" onmousedown="mouseDown(0)" onmouseout="document.getElementById(''noroll'').style.display = ''none'';">
-                            <div id="pBox" style="text-align: left; margin: 0; left: 0px; overflow: hidden; width: 19px;
-                                position: relative; top: 0px">
-                                <img alt="移动滑块控制影片进度" src="http://tv.sohu.com/upload/qvodblack/image/21.gif"></div>
-                            <div id="noroll" style="left: 0px; position: absolute; top: -20px; width: 100px;display: none;">
-                                <img src="http://tv.sohu.com/upload/qvodblack/image/noroll.gif" width="100" height="30" border="0" />
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                    <tr style="background-image: url(''http://tv.sohu.com/upload/qvodblack/image/05.gif'')"
-                        height="25">
-                        <td width="2">
-                        </td>
-                        <td valign="top" width="44" style="font-size: 0;">
-                            <img src="http://tv.sohu.com/upload/qvodblack/image/07.gif" border="0" id="playControl"
-                                style="cursor: pointer" onclick="QvodPlay();" alt="播放">
-                        </td>
-                        <td width="120" align="right"
-                            valign="center" id="mediaTime" style="font-size: 12px; color: #ffffff; border-top-style: none;
-                            border-right-style: none; border-left-style: none; border-bottom-style: none">
-                        </td>
-<td width="347">&nbsp;</td>
-                        <td width="20" valign="top" style="font-size: 0;">
-                            <img id="muteControl" style="cursor: pointer" onclick="Mute();" src="http://tv.sohu.com/upload/qvodblack/image/mute.gif"
-                                border="0" alt="静音">
-                        </td>
-                        <td width="68" align="left">
-                            <table width="61" style="height: 6px;" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td width="61" style="background-image: url(''http://tv.sohu.com/upload/qvodblack/image/volume.gif'');
-                                        text-align: left; position: relative; background-repeat: repeat-x; background-position: 0px;
-                                        cursor: pointer;" onmousedown="mouseDown(1)" id="vZone">
-                                        <div id="vBox" style="text-align: left; margin: 0; left: 23px; overflow: hidden;width: 16px; position:relative; top: 2px">
-                                            <img alt="移动滑块控制音量大小" src="http://tv.sohu.com/upload/qvodblack/image/gw_bn_vol_21.gif" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td width="33" valign="top" style="font-size: 0; width: 29px;">
-                            <img src="http://tv.sohu.com/upload/qvodblack/image/gw_bn_player_03.gif" style="cursor: pointer" onclick="FullScreen()" alt="全屏显示" />
-                        </td>
-                        <td valign="top" width="2">
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+<script>
+	$(document).ready(function(){
+
+		//页面加载自动打开播放器
+		var url = "[!--drama.url--]";
+		//下一集资源地址
+		var nextqvod = "";
+		//下一集播放页面 播放结束自动跳转到该页面
+		var nextpage = "[!--movie.nextpageurl--]";
+		
+		//调用播放器
+		$("#tdqvod").qvod({PlayerArea:"tdqvod", width:"640", height:"399", AutoPlay:"true",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
+
+		/*参数说明*/
+		
+		//width: "500", /*播放器的宽度*/
+		
+		//height: "400", /*播发器的高度*/
+		
+		//AutoPlay: "true", /*自动播放 默认开启*/
+		
+		//FullScreen: "false", /*自动全屏 默认关闭*/
+		
+		//PlayerArea: "",	/*播放器插入的位置，标签的id属性*/
+		
+		//QvodUrl: "", /*本集资源地址*/
+		
+		//NextWebPage: "", /*下一集播放页地址*/
+		
+		//NextQvod: "", /*下一集资源地址，预缓冲时使用*/
+		
+		//ShowControl: "1", /*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
+		
+		//AdUrl: "http://buffer-ad.qvod.com/" /*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
+
+		//该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
+
+	});
+</script>
     </table>
 </td>
         <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
     </table>
-<script language="JavaScript" src="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/Player.js"></script>
 </div>
 </div>
 <div id="contentA" class="area">
@@ -2744,34 +2797,29 @@ var filmType="";
 				</div>
 			</div>
 		</div>
-
+		<div class="playList bord clear" id="playList">
+			<div class="titleFun">
+				<div class="tag"></div>
+				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
+			</div>
+			<div class="conts clear" collection="Y">
+				<div class="menuA hidden">
+					<ul id="playTag"></ul>
+				</div>
+				<div class="pList clear" id="playContF">
+				    <ul>
+				         [!--movie.baidu--]
+				     </ul>
+				</div>
+			</div>
+		</div>
 	
 <DIV class=blank12H></DIV>
 <DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
 <DIV class=title><SPAN>相关剧集</SPAN></DIV>
 	<DIV class=pp>
 		<UL>
-			    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39876.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/1/4f4f3331d4273.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39876.htm" target=_blank>红娘子</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-40095.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/23/4f6c33d3c9d7e.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-40095.htm" target=_blank>屋塔房王世子</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-40054.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/21/4f697a006ccf8.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-40054.htm" target=_blank>时尚王</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39957.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/13/4f5ef21755a87.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39957.htm" target=_blank>小资女孩向前冲</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI class=end><A href="http://kuaib.tv.sohu.com/html/t-3_id-39955.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/13/4f5eeaeacfccf.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39955.htm" target=_blank>假如明天来临</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39874.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/2/29/4f4d7cbf8cf53.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39874.htm" target=_blank>亲爱的回家</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39901.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/6/4f55ce90c45d5.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39901.htm" target=_blank>我可能不会爱你</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39897.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/6/4f55ab6d270a8.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39897.htm" target=_blank>北京爱情故事</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI ><A href="http://kuaib.tv.sohu.com/html/t-3_id-39894.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/5/4f548871ee1af.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39894.htm" target=_blank>华丽的挑战</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    	        	    	    
-	    	        	    	    <LI class=end><A href="http://kuaib.tv.sohu.com/html/t-3_id-39893.htm" target=_blank><IMG alt="" src="http://is.kuaibo.com/tvsohu/Uploads/2012/3/5/4f5484625a2ab.jpg" width=105 height=145></A><SPAN><STRONG><A href="http://kuaib.tv.sohu.com/html/t-3_id-39893.htm" target=_blank>如意</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM></EM></SPAN> </LI>
-	    	    
+			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
 		</UL>
 	</DIV>
 </DIV>
@@ -2793,29 +2841,6 @@ var filmType="";
 
 					<div id="introID">
 						<p>[!--movie.intro--]</p>
-						<script type="text/javascript">
-						var VRS_DIRECTOR="[!--movie.director--]:";
-						var VRS_CATEGORY="";
-						var VRS_ACTOR="[!--movie.actors--]";
-						var VRS_AREA="[!--movie.location--]";
-						var VRS_PLAY_YEAR="[!--movie.publicyear--]";
-						var VRS_PROMOTION=";:";
-						var VRS_TAG="";
-						var VRS_SPORTS_EVENT="";
-						var VRS_MODERATOR="";
-						var VRS_PURL="";var VRS_ALBUM_ID="";
-						var VRS_ACTROLE="[!--movie.actors--]";
-						var VRS_ENGLISH_NAME="";
-						var VRS_SOURCE=":";
-						var VRS_RATE="16:9";
-						var VRS_VIDEO_TYPE="2";
-						var PLAYLIST_ID="";
-						var VRS_PLAYLIST_NAME="秘密天使";
-						var VRS_PLAYLIST_SUB_NAME="";
-						var TV_VIDEO_TYPE="1";
-						var TV_PRODUCER="";
-						var TV_TOTAL_PRODUCER="";var TV_STATION="";var TV_VIDEO_LENTH="4250";var TV_GUEST="";var TV_IS_INTREST="0";var TV_S_TYPE="1";var TV_CHANNEL_ID="4";
-						</script>
                         </br>
 						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
 					</div>
@@ -2828,120 +2853,17 @@ var filmType="";
 				<div class="tInfo"><strong>热度排行榜</strong></div>
 				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
 			</div>
-			<!-- 
-            <div id="hotNewsTab" class="menuA2">
-					<ul>
-						<li datakey="phb_v_news_all_day_10" class="now">每日<em></em></li>
-						<li datakey="phb_v_news_all_week_10">每周<em></em></li>
-					</ul>
-			</div>
-			<div id="news_data" class="snList clear">
-               	<ul></ul>
-            </div>
-			 -->
-			<div id="hotNewsTeleplayTab" class="menuA" style="margin-left:14px;">
-                    <ul>
-                        <li datakey="hotNewsTeleplayTab_hotTeleplay_month">每日<em></em></li>
-                        <li datakey="hotNewsTeleplayTab_hotTeleplay_all">每周<em></em></li>
-                    </ul>
-             </div>
+			
              <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
                  <ul>
+                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
                  </ul>
              </div>
 </div>
 	</div>
 </div>
 
-<div id="footArea">
-	<div class="footSearch">
-		<form name="sFormA" autocomplete="off" id="sFormA" method="post" action="" onSubmit="return false;">
-            <input type="text" id="sKeyA" value="[!--movie.title--]" class="tx"><input type="submit" value="搜索" id="searchBtnA" class="btn">
-            </form>
-    </div>
-    <div class="clear footLink">
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/" target=_blank>首页</a></dt>
-
-            <dd><a href="http://tv.sohu.com/drama/" target=_blank>电视剧</a> | <a href="http://tv.sohu.com/movie/" target=_blank>电影</a><br /><a href="http://tv.sohu.com/real/" target=_blank>纪录片</a> | <a href="http://tv.sohu.com/comic/" target=_blank>动漫</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://tv.sohu.com/yule/" target=_blank>娱乐</a></dt>
-
-            <dd><a href="http://tv.sohu.com/original/" target=_blank>原创</a> | <a href="http://tv.sohu.com/music/" target=_blank>音乐</a><br /><a href="http://tv.sohu.com/zongyi/" target=_blank>综艺</a> | <a href="http://tv.sohu.com/entnews/" target=_blank>娱乐新闻</a></dd>
-        </dl>
-    	<dl>
-        	<dt><a href="http://tv.sohu.com/news/" target=_blank>新闻</a></dt>
-
-            <dd><a href="http://tv.sohu.com/shehui/" target=_blank>社会</a> | <a href="http://tv.sohu.com/shishi/" target=_blank>时事</a> | <a href="http://tv.sohu.com/fazhi/" target=_blank>法制</a> | <a href="http://tv.sohu.com/caijing/" target=_blank>财经</a><br /><a href="http://tv.sohu.com/junshi/" target=_blank>军事</a> | <a href="http://tv.sohu.com/keji/" target=_blank>科技</a> | <a href="http://tv.sohu.com/lvyou/" target=_blank>旅游</a></dd>
-
-        </dl>
-        <dl>
-        	<dt><a href="http://data.tv.sohu.com/lanmu/" target=_blank>电视</a></dt>
-            <dd><a href="http://tv.sohu.com/zhibo/" target=_blank>直播</a><br /><a href="http://data.tv.sohu.com/lanmu/" target=_blank>栏目</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://my.tv.sohu.com/" target=_blank>播客</a></dt>
-
-            <dd><a href="http://my.tv.sohu.com/channel/gaoxiao" target=_blank>搞笑</a> | <a href="http://my.tv.sohu.com/channel/bagua" target=_blank>八卦</a><br /><a href="http://my.tv.sohu.com/channel/lieqi" target=_blank>猎奇</a> | <a href="http://my.tv.sohu.com/channel/yuanchuang" target=_blank>原创</a></dd>
-        </dl>
-        <dl>
-        	<dt><a href="http://store.tv.sohu.com/" target=_blank>付费</a></dt>
-
-            <dd><a href="http://store.tv.sohu.com/movie/" target=_blank>电影</a> | <a href="http://tv.sohu.com/open/" target=_blank>教育</a></dd>
-        </dl>
-        <dl>
-        	<dt><a>服务</a></dt>
-            <dd><a href="http://my.tv.sohu.com/user/" target=_blank class="a1">访问空间</a> | <a href="http://tv.sohu.com/s2011/cpty/index.shtml" target=_blank>体验中心</a><br /><a href="http://tv.sohu.com/s2011/sitemap/index.shtml" target=_blank class="a5ico">网站地图</a> | <a href="http://tv.sohu.com/upload/hdfeedback/index.jsp" target=_blank>帮助中心
-</a><br /><a href="http://tv.sohu.com/upload/hdfeedback/index.jsp?50" target=_blank class="a4">版权投诉</a> | <a href="http://open.tv.sohu.com" target=_blank>开放平台</a><dd>
-        </dl>
-		<dl>
-        	<dt><a>软件</a></dt>
-        	<dd><a href="http://tv.sohu.com/upload/app/index.html" target=_blank class="a2">移动客户端</a><br /><a href="http://tv.sohu.com/ifox/" target=_blank class="a3">飞狐影音</a></dd>
-        </dl>
-    </div>
-</div>
-
-<div id="foot" class="area">
-    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.sohu.com'');return false;>设置首页</a>
-    - <a href=http://pinyin.sogou.com/ target=_blank>搜狗输入法</a>
-    - <a href=http://up.sohu.com/ target=_blank>支付中心</a>
-    - <a href=http://hr.sohu.com target=_blank>搜狐招聘</a>
-    - <a href=http://ad.sohu.com/ target=_blank>广告服务</a>
-    
-    - <a href=http://sohucallcenter.blog.sohu.com/ target=_blank>客服中心</a>
-    - <a href=http://corp.sohu.com/s2006/contactus/ target=_blank>联系方式</a>
-    - <a href=http://www.sohu.com/about/privacy.html target=_blank>保护隐私权</a>
-    - <a href=http://corp.sohu.com/ target=_blank>About SOHU</a>
-    - <a href=http://corp.sohu.com/indexcn.shtml target=_blank>公司介绍</a>
-    <br />Copyright <span class="fontArial">&copy;</span> 2011 Sohu.com Inc. All Rights Reserved. 搜狐公司 <span class="unline"><a href="http://corp.sohu.com/s2007/copyright/" target="_blank">版权所有</a></span>
-    
-    <br />搜狐不良信息举报电话：010－62728061 举报邮箱：<a href="mailto:jubao@contact.sohu.com">jubao@contact.sohu.com</a>
-</div>
-
- 
-<script> 
-//点播当前影片
-function play( link ){
-    QvodIEFF.stop();
-    var k = $("#" + link).val();
-	QvodIEFF.URL = k;
-	QvodIEFF.Play();
-    /*
-    $("#QvodPlayer2").attr("URL","");
-    $("param[name=''URL'']").attr("value","");
-    
-    $("#QvodPlayer2").attr("URL",k);
-    $("param[name=''URL'']").attr("value",k);
-    alert($("param[name=''URL'']").attr("value"));
-    QvodIEFF.Play();*/
-}
-function s(t){
-    $("#playContF ul li").removeClass();
-    $(t).parent().addClass("color1");
-}
-</script> 
-
+[!--temp.moviefooter--]
 
 </html>')
  SET IDENTITY_INSERT [TemplateContent] OFF ;
@@ -2978,7 +2900,7 @@ SET IDENTITY_INSERT [SysModel] ON ;
 
 
 SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'1',N'',N'4',N'1')
+ insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'1',N'',N'4',N'17')
  SET IDENTITY_INSERT [SysKeyword] OFF ;
 
 
@@ -3311,32 +3233,7 @@ SET IDENTITY_INSERT [Info] ON ;
 
 
 SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'3',N'0',N'',N'第一集',N'2012-4-24 14:06:16',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'4',N'0',N'',N'第一集',N'2012-4-24 14:08:58',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'5',N'0',N'',N'第一集',N'2012-4-24 14:09:55',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'6',N'0',N'',N'第一集',N'2012-4-24 14:10:18',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'7',N'0',N'',N'第一集',N'2012-4-24 14:10:59',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'8',N'1',N'',N'第一集',N'2012-4-24 14:11:40',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
+ insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'8',N'1',N'杜拉拉升职记',N'第一集',N'2012-4-24 14:11:40',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
  SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
 
 
@@ -3351,12 +3248,12 @@ SET IDENTITY_INSERT [MovieUrlBaidu] ON ;
 
 
 SET IDENTITY_INSERT [MovieInfo] ON ;
- insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable]) values(N'1',N'2',N'大陆电视剧',N'杜拉拉升职记',N'陈铭章',N'王珞丹，李光洁，李彩桦',N'喜剧，偶像，爱情',N'大陆',N'2010',N'杜拉拉，大学毕业后进入民营企业。因老板胡阿发的骚扰，也因为想和男友李鸿明一样就职于世界500强公司，拉拉向DB公司递交求职材料。同时她也发现男友李鸿铭和自己的好朋友夏红相爱了。',N'False',N'/u/MoviekFace/1.jpg',N'2012-4-23 12:47:04',N'第一集',N'1',N'2012-4-23 12:47:32',N'0',N'True')
+ insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ClickCount],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime]) values(N'1',N'2',N'大陆电视剧',N'杜拉拉升职记',N'陈铭章',N'王珞丹，李光洁，李彩桦',N'喜剧，偶像，爱情',N'大陆',N'2010',N'杜拉拉，大学毕业后进入民营企业。因老板胡阿发的骚扰，也因为想和男友李鸿明一样就职于世界500强公司，拉拉向DB公司递交求职材料。同时她也发现男友李鸿铭和自己的好朋友夏红相爱了。',N'False',N'/u/MoviekFace/1.jpg',N'2012-4-23 12:47:04',N'第一集',N'1',N'2012-4-23 12:47:32',N'0',N'True',N'0',N'',N'',N'',N'')
  SET IDENTITY_INSERT [MovieInfo] OFF ;
 
 
 SET IDENTITY_INSERT [MovieInfo] ON ;
- insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable]) values(N'2',N'2',N'大陆电视剧',N'我是特种兵',N'刘猛',N'任天野 谷智鑫 刘晓洁 王奎荣',N'军旅励志',N'大陆',N'2011',N'揭开最精锐部队的神秘面纱，缔造属于青春的军旅传奇。该剧全景式表现中国人民解放军陆军最精锐的战士——狼牙特别突击队残酷悲壮、铁血精诚的训练和生活的长篇画卷。如果祖国需要，他们就是一颗上膛的子弹，时刻准备着！一曲凄美缠绵的军营恋歌，一份血与泪水的成长记录。19岁的大学新生小庄，为了追随初恋女友而开始了一段迷彩军营生活，但两个少年都没有料到，当命运的子弹穿过爱情的心脏时，面对着喷涌而出的梦想和鲜血，这无常荒诞的人生又有几许承担之重？一段激情昂扬的热血青春，一部与众不同的军旅励志剧。从一个桀骜不驯的艺术青年，到一个骁勇善战、百炼成钢的合格特种兵，小庄在绿色的军营中一遍一遍经历着蜕变、感召和洗礼……',N'False',N'/u/MoviekFace/2.jpg',N'2012-4-23 12:53:12',N'第一集',N'2',N'2012-4-23 12:53:40',N'0',N'True')
+ insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ClickCount],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime]) values(N'2',N'2',N'大陆电视剧',N'我是特种兵',N'刘猛',N'任天野 谷智鑫 刘晓洁 王奎荣',N'军旅励志',N'大陆',N'2011',N'揭开最精锐部队的神秘面纱，缔造属于青春的军旅传奇。该剧全景式表现中国人民解放军陆军最精锐的战士——狼牙特别突击队残酷悲壮、铁血精诚的训练和生活的长篇画卷。如果祖国需要，他们就是一颗上膛的子弹，时刻准备着！一曲凄美缠绵的军营恋歌，一份血与泪水的成长记录。19岁的大学新生小庄，为了追随初恋女友而开始了一段迷彩军营生活，但两个少年都没有料到，当命运的子弹穿过爱情的心脏时，面对着喷涌而出的梦想和鲜血，这无常荒诞的人生又有几许承担之重？一段激情昂扬的热血青春，一部与众不同的军旅励志剧。从一个桀骜不驯的艺术青年，到一个骁勇善战、百炼成钢的合格特种兵，小庄在绿色的军营中一遍一遍经历着蜕变、感召和洗礼……',N'False',N'/u/MoviekFace/2.jpg',N'2012-4-23 12:53:12',N'第一集',N'2',N'2012-4-23 12:53:40',N'0',N'True',N'0',N'',N'',N'',N'')
  SET IDENTITY_INSERT [MovieInfo] OFF ;
 
 

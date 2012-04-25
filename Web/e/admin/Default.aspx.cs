@@ -224,6 +224,19 @@ namespace Web.e.admin
             n_mp_BookChapter.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=BookChapter')";
             n_model_public.Nodes.Add(n_mp_BookChapter);
 
+            Ext.Net.TreeNode n_mp_kuaibo = new Ext.Net.TreeNode("快播页面", Icon.PlayBlue);
+            n_mp_kuaibo.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=KuaiboPage')";
+            n_model_public.Nodes.Add(n_mp_kuaibo);
+
+
+            Ext.Net.TreeNode n_mp_baidu = new Ext.Net.TreeNode("百度影音页面", Icon.PlayGreen);
+            n_mp_baidu.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=BaiduPage')";
+            n_model_public.Nodes.Add(n_mp_baidu);
+
+            Ext.Net.TreeNode n_mp_singleurl = new Ext.Net.TreeNode("单集列表", Icon.TextListBullets);
+            n_mp_singleurl.Listeners.Click.Handler = "openpage('template/PublicTemplate.aspx?action=SingleDrama')";
+            n_model_public.Nodes.Add(n_mp_singleurl);
+
             root_model.Nodes.Add(n_model_public);
             //-----------------------------------公共模版-----------------------------------------------//
 

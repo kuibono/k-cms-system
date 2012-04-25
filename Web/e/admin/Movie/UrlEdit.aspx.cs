@@ -59,15 +59,16 @@ namespace Web.e.admin.Movie
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             movieID = WS.RequestInt("movieid", 0);
+            MovieInfo movie = MovieInfoView.GetModelByID(movieID.ToS());
             #region deal
             switch (type)
             {
                 case "kuaib":
                     var kuaibUrl = MovieUrlKuaibView.GetModelByID(id.ToS());
-                    kuaibUrl.MovieTitle = txt_BookTitle.Text;
+                    kuaibUrl.MovieTitle = movie.Title;
                     kuaibUrl.Title = txt_Title.Text;
                     kuaibUrl.Url = txt_Url.Text;
-                    kuaibUrl.MovieID = movieID;
+                    kuaibUrl.MovieID = movie.Id;
                     kuaibUrl.UpdateTime = DateTime.Now;
                     if (kuaibUrl.Id > 0)
                     {
@@ -80,10 +81,10 @@ namespace Web.e.admin.Movie
                     break;
                 case "baidu":
                     var baiduUrl = MovieUrlBaiduView.GetModelByID(id.ToS());
-                    baiduUrl.MovieTitle = txt_BookTitle.Text;
+                    baiduUrl.MovieTitle = movie.Title;
                     baiduUrl.Title = txt_Title.Text;
                     baiduUrl.Url = txt_Url.Text;
-                    baiduUrl.MovieID = movieID;
+                    baiduUrl.MovieID = movie.Id;
                     baiduUrl.UpdateTime = DateTime.Now;
                     if (baiduUrl.Id > 0)
                     {
@@ -96,10 +97,10 @@ namespace Web.e.admin.Movie
                     break;
                 case "mag":
                     var magUrl = MovieUrlMagView.GetModelByID(id.ToS());
-                    magUrl.MovieTitle = txt_BookTitle.Text;
+                    magUrl.MovieTitle =  movie.Title;
                     magUrl.Title = txt_Title.Text;
                     magUrl.Url = txt_Url.Text;
-                    magUrl.MovieID = movieID;
+                    magUrl.MovieID = movie.Id;
                     magUrl.UpdateTime = DateTime.Now;
                     if (magUrl.Id > 0)
                     {
