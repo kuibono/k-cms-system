@@ -14,7 +14,7 @@
         $(function () {
             $("#btn_Add").click(function () {
                 if ($("#ddl_Class_search").val() != "") {
-                    location.href = "NewsEdit.aspx?class=" + $("#ddl_Class_search").val();
+                    location.href = "MovieEdit.aspx?class=" + $("#ddl_Class_search").val();
                 }
                 return false;
             });

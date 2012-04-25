@@ -70,7 +70,8 @@ namespace Web.e.admin.Movie
             mi.IsMove = chk_IsMovie.Checked;
             mi.Status = rbl_Status.SelectedValue.ToInt32();
             mi.Enable = chk_Enable.Checked;
-
+            mi.InsertTime = DateTime.UtcNow.AddHours(8);
+            mi.UpdateTime = DateTime.UtcNow.AddHours(8);
             if (mi.Id > 0)
             {
                 //update
