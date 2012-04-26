@@ -995,8 +995,6 @@ function sdown(){
 
 <body>
 
-<script type="text/javascript" src="http://txt.go.sohu.com/ip/soip"></script>
-
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/static/play/skin/public.css" />
 <link type="text/css" rel="stylesheet"  href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_new_play.css" />
 <style>
@@ -1012,7 +1010,7 @@ function sdown(){
 			<div class="area clear iheader">
 				<div class="logo_ad_box">
 					<a class="logo l" target="_blank" href="/">
-                        <img src="/skin/movie/logo.gif" alt="[!--sys.sitename--]" />
+                        <img src="/skin/movie/logo_small.gif" alt="[!--sys.sitename--]" />
 					</a>
 				</div>
 				<div class="search l">
@@ -1978,8 +1976,6 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 
 <body>
 
-<script type="text/javascript" src="http://txt.go.sohu.com/ip/soip"></script>
-
 <link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/static/play/skin/public.css" />
 <link type="text/css" rel="stylesheet"  href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_new_play.css" />
 <style>
@@ -1995,7 +1991,7 @@ SET IDENTITY_INSERT [TemplateList] ON ;
 			<div class="area clear iheader">
 				<div class="logo_ad_box">
 					<a class="logo l" target="_blank" href="/">
-                        <img src="/skin/movie/logo.gif" alt="[!--sys.sitename--]" />
+                        <img src="/skin/movie/logo_small.gif" alt="[!--sys.sitename--]" />
 					</a>
 				</div>
 				<div class="search l">
@@ -2900,7 +2896,7 @@ SET IDENTITY_INSERT [SysModel] ON ;
 
 
 SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'1',N'',N'4',N'17')
+ insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'1',N'',N'4',N'66')
  SET IDENTITY_INSERT [SysKeyword] OFF ;
 
 
