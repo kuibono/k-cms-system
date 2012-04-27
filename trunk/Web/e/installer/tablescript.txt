@@ -1,5 +1,5 @@
 ﻿
-/****** Object:  Table [dbo].[Zt]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Zt]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[Zt](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[UserRerm]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[UserRerm]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -41,7 +41,7 @@ CREATE TABLE [dbo].[UserRerm](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[UserGroup]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[UserGroup]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -61,7 +61,7 @@ CREATE TABLE [dbo].[UserGroup](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[UserForm]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[UserForm]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -76,7 +76,7 @@ CREATE TABLE [dbo].[UserForm](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[UserClassRelation]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[UserClassRelation]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[UserClassRelation](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[User]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -132,7 +132,7 @@ CREATE TABLE [dbo].[User](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplTags]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplTags]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[TemplTags](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateVar]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateVar]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -168,7 +168,7 @@ CREATE TABLE [dbo].[TemplateVar](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateSearch]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateSearch]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[TemplateSearch](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateReply]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateReply]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -205,7 +205,7 @@ CREATE TABLE [dbo].[TemplateReply](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplatePublic]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplatePublic]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -241,7 +241,7 @@ CREATE TABLE [dbo].[TemplatePublic](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateList]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateList]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -263,7 +263,7 @@ CREATE TABLE [dbo].[TemplateList](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateGroup]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateGroup]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -278,7 +278,7 @@ CREATE TABLE [dbo].[TemplateGroup](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateFace]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateFace]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -293,7 +293,7 @@ CREATE TABLE [dbo].[TemplateFace](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[TemplateContent]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[TemplateContent]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -311,7 +311,7 @@ CREATE TABLE [dbo].[TemplateContent](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[SysUser]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysUser]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -337,7 +337,7 @@ CREATE TABLE [dbo].[SysUser](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[SysRole]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysRole]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -356,7 +356,7 @@ CREATE TABLE [dbo].[SysRole](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[SysModel]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysModel]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -378,7 +378,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'表' , @level0
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'子类' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'SysModel', @level2type=N'COLUMN',@level2name=N'SonClass'
 
-/****** Object:  Table [dbo].[SysKeyword]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysKeyword]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -394,7 +394,7 @@ CREATE TABLE [dbo].[SysKeyword](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[SysGroup]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysGroup]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -408,7 +408,7 @@ CREATE TABLE [dbo].[SysGroup](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[SysDepartment]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[SysDepartment]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -422,7 +422,7 @@ CREATE TABLE [dbo].[SysDepartment](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Relpy]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Relpy]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -442,7 +442,7 @@ CREATE TABLE [dbo].[Relpy](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Question]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Question]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -475,7 +475,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'提问时间' 
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'浏览次数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Question', @level2type=N'COLUMN',@level2name=N'ClickCount'
 
-/****** Object:  Table [dbo].[News]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[News]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -516,7 +516,7 @@ CREATE TABLE [dbo].[News](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieUrlMag]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieUrlMag]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -535,7 +535,7 @@ CREATE TABLE [dbo].[MovieUrlMag](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieUrlKuaib]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieUrlKuaib]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -554,7 +554,7 @@ CREATE TABLE [dbo].[MovieUrlKuaib](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieUrlBaidu]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieUrlBaidu]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -573,7 +573,7 @@ CREATE TABLE [dbo].[MovieUrlBaidu](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieUrl]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieUrl]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -595,7 +595,7 @@ CREATE TABLE [dbo].[MovieUrl](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieInfo]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieInfo]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -630,7 +630,7 @@ CREATE TABLE [dbo].[MovieInfo](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieDramaUrl]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieDramaUrl]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -651,7 +651,7 @@ CREATE TABLE [dbo].[MovieDramaUrl](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[MovieDrama]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[MovieDrama]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -669,7 +669,7 @@ CREATE TABLE [dbo].[MovieDrama](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Link]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Link]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -685,7 +685,7 @@ CREATE TABLE [dbo].[Link](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[InfoType]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[InfoType]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -744,7 +744,7 @@ CREATE TABLE [dbo].[InfoType](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[InfoImage]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[InfoImage]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -765,7 +765,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片标题' 
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图片地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'InfoImage', @level2type=N'COLUMN',@level2name=N'Url'
 
-/****** Object:  Table [dbo].[Info]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Info]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -838,7 +838,7 @@ CREATE TABLE [dbo].[Info](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Images]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Images]    Script Date: 04/27/2012 14:56:10 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -879,7 +879,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'缩略图地�
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'文件大小' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Images', @level2type=N'COLUMN',@level2name=N'FileSize'
 
-/****** Object:  Table [dbo].[ImageAlbum]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[ImageAlbum]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -937,7 +937,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'封面' , @lev
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'关键词' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'ImageAlbum', @level2type=N'COLUMN',@level2name=N'KeyWords'
 
-/****** Object:  Table [dbo].[GroupRole]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[GroupRole]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -952,7 +952,7 @@ CREATE TABLE [dbo].[GroupRole](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[File]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[File]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -974,7 +974,7 @@ CREATE TABLE [dbo].[File](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Class]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Class]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1026,7 +1026,7 @@ CREATE TABLE [dbo].[Class](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[BookVolume]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[BookVolume]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1042,7 +1042,7 @@ CREATE TABLE [dbo].[BookVolume](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[BookRole]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[BookRole]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1058,7 +1058,7 @@ CREATE TABLE [dbo].[BookRole](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Table [dbo].[BookChapter]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[BookChapter]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1088,7 +1088,7 @@ CREATE TABLE [dbo].[BookChapter](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Book]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Book]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1127,7 +1127,7 @@ CREATE TABLE [dbo].[Book](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-/****** Object:  Table [dbo].[Answer]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Table [dbo].[Answer]    Script Date: 04/27/2012 14:56:09 ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
@@ -1156,54 +1156,54 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'回答时间' 
 
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'赞同' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Answer', @level2type=N'COLUMN',@level2name=N'Agree'
 
-/****** Object:  Default [DF_Answer_Agree]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_Answer_Agree]    Script Date: 04/27/2012 14:56:09 ******/
 ALTER TABLE [dbo].[Answer] ADD  CONSTRAINT [DF_Answer_Agree]  DEFAULT ((0)) FOR [Agree]
 
-/****** Object:  Default [DF_Book_TjCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_Book_TjCount]    Script Date: 04/27/2012 14:56:09 ******/
 ALTER TABLE [dbo].[Book] ADD  CONSTRAINT [DF_Book_TjCount]  DEFAULT ((0)) FOR [TjCount]
 
-/****** Object:  Default [DF_BookChapter_ChapterIndex]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_BookChapter_ChapterIndex]    Script Date: 04/27/2012 14:56:09 ******/
 ALTER TABLE [dbo].[BookChapter] ADD  CONSTRAINT [DF_BookChapter_ChapterIndex]  DEFAULT ((0)) FOR [ChapterIndex]
 
-/****** Object:  Default [DF_BookChapter_ClickCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_BookChapter_ClickCount]    Script Date: 04/27/2012 14:56:09 ******/
 ALTER TABLE [dbo].[BookChapter] ADD  CONSTRAINT [DF_BookChapter_ClickCount]  DEFAULT ((0)) FOR [ClickCount]
 
-/****** Object:  Default [DF_MovieDrama_UpdateTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieDrama_UpdateTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieDrama] ADD  CONSTRAINT [DF_MovieDrama_UpdateTime]  DEFAULT (getdate()) FOR [UpdateTime]
 
-/****** Object:  Default [DF_MovieDramaUrl_UpdateTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieDramaUrl_UpdateTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieDramaUrl] ADD  CONSTRAINT [DF_MovieDramaUrl_UpdateTime]  DEFAULT (getdate()) FOR [UpdateTime]
 
-/****** Object:  Default [DF_MovieInfo_ClickCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieInfo_ClickCount]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieInfo] ADD  CONSTRAINT [DF_MovieInfo_ClickCount]  DEFAULT ((0)) FOR [ClickCount]
 
-/****** Object:  Default [DF_MovieInfo_ReplyCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieInfo_ReplyCount]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieInfo] ADD  CONSTRAINT [DF_MovieInfo_ReplyCount]  DEFAULT ((0)) FOR [ReplyCount]
 
-/****** Object:  Default [DF_MovieInfo_TjCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieInfo_TjCount]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieInfo] ADD  CONSTRAINT [DF_MovieInfo_TjCount]  DEFAULT ((0)) FOR [TjCount]
 
-/****** Object:  Default [DF_MovieInfo_ScoreAvg]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieInfo_ScoreAvg]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieInfo] ADD  CONSTRAINT [DF_MovieInfo_ScoreAvg]  DEFAULT ((10)) FOR [ScoreAvg]
 
-/****** Object:  Default [DF_MovieInfo_ScoreTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieInfo_ScoreTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieInfo] ADD  CONSTRAINT [DF_MovieInfo_ScoreTime]  DEFAULT ((0)) FOR [ScoreTime]
 
-/****** Object:  Default [DF_MovieUrlBaidu_UpdateTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieUrlBaidu_UpdateTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieUrlBaidu] ADD  CONSTRAINT [DF_MovieUrlBaidu_UpdateTime]  DEFAULT (getdate()) FOR [UpdateTime]
 
-/****** Object:  Default [DF_MovieUrlKuaib_UpdateTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieUrlKuaib_UpdateTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieUrlKuaib] ADD  CONSTRAINT [DF_MovieUrlKuaib_UpdateTime]  DEFAULT (getdate()) FOR [UpdateTime]
 
-/****** Object:  Default [DF_MovieUrlMag_UpdateTime]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_MovieUrlMag_UpdateTime]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[MovieUrlMag] ADD  CONSTRAINT [DF_MovieUrlMag_UpdateTime]  DEFAULT (getdate()) FOR [UpdateTime]
 
-/****** Object:  Default [DF_Question_ZtID]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_Question_ZtID]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[Question] ADD  CONSTRAINT [DF_Question_ZtID]  DEFAULT ((0)) FOR [ZtID]
 
-/****** Object:  Default [DF_SysKeyword_ModelID]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_SysKeyword_ModelID]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[SysKeyword] ADD  CONSTRAINT [DF_SysKeyword_ModelID]  DEFAULT ((0)) FOR [ModelID]
 
-/****** Object:  Default [DF_SysKeyword_ClickCount]    Script Date: 04/25/2012 17:31:07 ******/
+/****** Object:  Default [DF_SysKeyword_ClickCount]    Script Date: 04/27/2012 14:56:10 ******/
 ALTER TABLE [dbo].[SysKeyword] ADD  CONSTRAINT [DF_SysKeyword_ClickCount]  DEFAULT ((0)) FOR [ClickCount]
 
