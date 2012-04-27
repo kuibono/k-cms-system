@@ -1,4 +1,4 @@
-/*
+﻿/*
 *	name:	jquery.qvod.js?v=1.3
 *	author:	D.Liao
 *	email:	liaodong@qvod.com
@@ -35,7 +35,7 @@ var _timer;
 			/*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
 			ShowControl: "1",
 			/*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
-			AdUrl: "http://buffer-ad.qvod.com/"
+			AdUrl: ""
 
 	}/*配置参数结束*/
 	

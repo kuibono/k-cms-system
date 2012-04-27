@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IClientService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://zuoaiai.net/e/api/ClientService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -249,228 +256,235 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/CreateBookPageResponse" message="tns:IClientService_CreateBookPage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IClientService" type="tns:IClientService">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  <wsdl:binding name="WSHttpBinding_IClientService" type="tns:IClientService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IClientService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="BookSearch">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookSearch" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookSearch" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BookExist">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookExist" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookExist" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BookFind">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookFind" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookFind" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookByID">
-      <soap:operation soapAction="http://tempuri.org/IClientService/GetBookByID" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetBookByID" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BookInsert">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookInsert" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookInsert" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BookUpdate">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookUpdate" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookUpdate" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BookDelete">
-      <soap:operation soapAction="http://tempuri.org/IClientService/BookDelete" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/BookDelete" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClassSearch">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ClassSearch" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassSearch" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClassFind">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ClassFind" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassFind" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetClassByID">
-      <soap:operation soapAction="http://tempuri.org/IClientService/GetClassByID" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetClassByID" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClassInsert">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ClassInsert" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassInsert" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClassUpdate">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ClassUpdate" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassUpdate" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ClassDelete">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ClassDelete" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ClassDelete" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterSearch">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterSearch" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterSearch" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterExist">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterExist" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterExist" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterFind">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterFind" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterFind" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetChapterByID">
-      <soap:operation soapAction="http://tempuri.org/IClientService/GetChapterByID" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetChapterByID" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterInsert">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterInsert" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterInsert" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterUpdate">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterUpdate" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterUpdate" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ChapterDelete">
-      <soap:operation soapAction="http://tempuri.org/IClientService/ChapterDelete" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/ChapterDelete" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetChapterText">
-      <soap:operation soapAction="http://tempuri.org/IClientService/GetChapterText" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/GetChapterText" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateIndex">
-      <soap:operation soapAction="http://tempuri.org/IClientService/CreateIndex" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/CreateIndex" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateClassPage">
-      <soap:operation soapAction="http://tempuri.org/IClientService/CreateClassPage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/CreateClassPage" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateBookPage">
-      <soap:operation soapAction="http://tempuri.org/IClientService/CreateBookPage" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IClientService/CreateBookPage" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ClientService">
-    <wsdl:port name="BasicHttpBinding_IClientService" binding="tns:BasicHttpBinding_IClientService">
-      <soap:address location="http://zuoaiai.net/e/api/ClientService.svc" />
+    <wsdl:port name="WSHttpBinding_IClientService" binding="tns:WSHttpBinding_IClientService">
+      <soap12:address location="http://zuoaiai.net/e/api/ClientService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://zuoaiai.net/e/api/ClientService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>http://zuoaiai.net/</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

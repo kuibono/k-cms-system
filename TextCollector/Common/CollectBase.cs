@@ -266,7 +266,7 @@ namespace TextCollector.Common
         public void Main()
         {
             ClientServices.ClientServiceClient csc = new ClientServices.ClientServiceClient();
-            var books=csc.BookSearch("Title=N'超级物流公司'");
+            var books = csc.BookSearch("id in(select distinct bookid from bookchapter where IsImageChapter=1)");
 
             foreach (var book in books)
             {
