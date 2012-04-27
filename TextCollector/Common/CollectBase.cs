@@ -105,7 +105,19 @@ namespace TextCollector.Common
         public List<BookChapter> chapterNeedCollect(string BookTitle)
         {
             ClientServices.ClientServiceClient cs = new ClientServices.ClientServiceClient();
-            return cs.ChapterSearch(string.Format("BookTitle=N'{0}' and IsImageChapter=1", BookTitle)).ToList();
+            try
+            {
+                
+                return cs.ChapterSearch(string.Format("BookTitle=N'{0}' and IsImageChapter=1", BookTitle)).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                cs.Close();
+            }
         }
         #endregion
 
@@ -255,6 +267,7 @@ namespace TextCollector.Common
                 csc.ChapterUpdate(newchapter, content);
                 status.ChapterTitle = "";
                 Status_Chage();
+                csc.Close();
             }
 
         }
@@ -266,8 +279,8 @@ namespace TextCollector.Common
         public void Main()
         {
             ClientServices.ClientServiceClient csc = new ClientServices.ClientServiceClient();
-            var books = csc.BookSearch("id in(select distinct bookid from bookchapter where IsImageChapter=1)");
-
+            var books = csc.BookSearch("id in(select distinct bookid from bookchapter where IsImageChapter=1) and id>464");
+            csc.Close();
             foreach (var book in books)
             {
                 RepalceImageChapter(book.Title);
