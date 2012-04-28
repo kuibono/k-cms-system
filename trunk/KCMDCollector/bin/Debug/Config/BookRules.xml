@@ -96,4 +96,20 @@
     <ChapterContent>&lt;DIV id=content name=\"content\"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/DIV&gt;</ChapterContent>
     <ImageRule>&lt;img src="(?&lt;key&gt;.*?)" border="0" class="imagecontent"&gt;</ImageRule>
   </CollectRule>
+  <CollectRule>
+    <IsImageSite>false</IsImageSite>
+    <IsDefault>false</IsDefault>
+    <SiteName>无错小说网</SiteName>
+    <Url>http://www.wcxiaoshuo.com/</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://www.wcxiaoshuo.com/modules/article/search.php</SearchPageUrl>
+    <SearchPars>searchkey={0}&amp;searchtype=articlename</SearchPars>
+    <SearchMethod>post</SearchMethod>
+    <BookInfoUrl>td class="odd"&gt;&lt;a href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/td&gt;</BookInfoUrl>
+    <BookInfoRule />
+    <ChapterListUrl>&lt;a href="(?&lt;key&gt;[^"']*?)" title="开始阅读"&gt;&lt;span&gt;开始阅读&lt;/span&gt;&lt;/a&gt;</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;li.*?&gt;&lt;a.*?href="(?&lt;url&gt;.*?)"&gt;(?&lt;title&gt;.+?)&lt;/a.*?&gt;&lt;/li.*?&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;div id="htmlContent" class="contentbox" &gt;[\s]*?&lt;div align="center"&gt;&lt;script type="text/javascript" src="/js/nrh.js"&gt;&lt;/script&gt;&lt;/div&gt;(?&lt;key&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
+    <ImageRule />
+  </CollectRule>
 </ArrayOfCollectRule>
