@@ -678,12 +678,12 @@ namespace Voodoo.Basement
             StringBuilder sb = new StringBuilder();
 
             List<MovieInfo> movies = MovieInfoView.GetModelList(m_where, top.ToInt32());
-            var i=0;
+            var i = 0;
             foreach (MovieInfo m in movies)
             {
                 i++;
                 string item = htmlTemp;
-                item=item.Replace("{url}",BasePage.GetMovieUrl(m,MovieInfoView.GetClass(m)));
+                item = item.Replace("{url}", BasePage.GetMovieUrl(m, MovieInfoView.GetClass(m)));
                 item = item.Replace("{id}", m.Id.ToS());
                 item = item.Replace("{authors}", m.Actors);
                 item = item.Replace("{classid}", m.ClassID.ToS());
@@ -696,7 +696,7 @@ namespace Voodoo.Basement
                 item = item.Replace("{lastdramatitle}", m.LastDramaTitle);
                 item = item.Replace("{location}", m.Location);
                 item = item.Replace("{publicyear}", m.PublicYear);
-                item = item.Replace("{status}", m.Status==0?"更新中":"完结");
+                item = item.Replace("{status}", m.Status == 0 ? "更新中" : "完结");
                 item = item.Replace("{tags}", m.Tags);
                 item = item.Replace("{title}", m.Title);
                 item = item.Replace("{ftitle}", m.Title.CutString(custitle.ToInt32()));
@@ -707,7 +707,7 @@ namespace Voodoo.Basement
                 item = item.Replace("{scoreavg}", m.ScoreAvg.ToS());
                 item = item.Replace("{rownum}", i.ToS());
                 sb.Append(item);
-               
+
             }
             return sb.ToS();
         }
@@ -744,5 +744,156 @@ namespace Voodoo.Basement
             return sb.ToS();
         }
         #endregion
+
+        #region 获取导演列表
+        /// <summary>
+        /// 获取导演列表
+        /// </summary>
+        /// <param name="m_where"></param>
+        /// <param name="top"></param>
+        /// <param name="templatestring"></param>
+        /// <returns></returns>
+        public static string getdirectorlist(string cutstring, string m_where, string top, string templatestring)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var movies = MovieInfoView.GetModelList(m_where).Where(p => p.Director.IndexOf("不详") == -1);
+
+            var directors = movies.GroupBy(p => p.Director).OrderByDescending(p => p.Count()).Take(top.ToInt32(10));
+
+            foreach (var dir in directors)
+            {
+                string tmp = templatestring;
+                tmp = tmp.Replace("{name}", dir.Key.Replace(":",""));
+                tmp = tmp.Replace("{fname}", dir.Key.Replace(":", "").CutString(cutstring.ToInt32(100)));
+                sb.AppendLine(tmp);
+            }
+
+            return sb.ToS();
+        }
+        #endregion
+
+        #region 获取Tag列表
+        /// <summary>
+        /// 获取Tag列表
+        /// </summary>
+        /// <param name="m_where"></param>
+        /// <param name="top"></param>
+        /// <param name="templatestring"></param>
+        /// <returns></returns>
+        public static string gettaglist(string cutstring,string m_where, string top, string templatestring)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var movies = MovieInfoView.GetModelList(m_where);
+
+            var tags = movies.GroupBy(p => p.Tags).OrderByDescending(p => p.Count()).Take(top.ToInt32(10));
+
+            foreach (var tag in tags)
+            {
+                string tmp = templatestring;
+                tmp = tmp.Replace("{name}", tag.Key.Replace(":", ""));
+                tmp = tmp.Replace("{fname}", tag.Key.Replace(":", "").CutString(cutstring.ToInt32(100)));
+                sb.AppendLine(tmp);
+            }
+
+            return sb.ToS();
+        }
+        #endregion
+
+        #region 获取地区列表
+        /// <summary>
+        /// 获取地区列表
+        /// </summary>
+        /// <param name="m_where"></param>
+        /// <param name="top"></param>
+        /// <param name="templatestring"></param>
+        /// <returns></returns>
+        public static string getlocationlist(string cutstring, string m_where, string top, string templatestring)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var movies = MovieInfoView.GetModelList(m_where);
+
+            var locations = movies.GroupBy(p => p.Location).OrderByDescending(p => p.Count()).Take(top.ToInt32(10));
+
+            foreach (var location in locations)
+            {
+                string tmp = templatestring;
+                tmp = tmp.Replace("{name}", location.Key.Replace(":", ""));
+                tmp = tmp.Replace("{fname}", location.Key.Replace(":", "").CutString(cutstring.ToInt32(100)));
+                sb.AppendLine(tmp);
+            }
+
+            return sb.ToS();
+        }
+        #endregion
+
+        #region 获取年代列表
+        /// <summary>
+        /// 获取年代列表
+        /// </summary>
+        /// <param name="m_where"></param>
+        /// <param name="top"></param>
+        /// <param name="templatestring"></param>
+        /// <returns></returns>
+        public static string getyearlist(string cutstring, string m_where, string top, string templatestring)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            var movies = MovieInfoView.GetModelList(m_where);
+
+            var years = movies.GroupBy(p => p.PublicYear).OrderByDescending(p => p.Count()).Take(top.ToInt32(10));
+
+            foreach (var year in years)
+            {
+                string tmp = templatestring;
+                tmp = tmp.Replace("{name}", year.Key.Replace(":", ""));
+                tmp = tmp.Replace("{fname}", year.Key.Replace(":", "").CutString(cutstring.ToInt32(100)));
+                sb.AppendLine(tmp);
+            }
+
+            return sb.ToS();
+        }
+        #endregion
+
+        #region 获取演员列表
+        /// <summary>
+        /// 获取演员列表
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="m_where"></param>
+        /// <param name="templatestring"></param>
+        /// <returns></returns>
+        public static string getactorlist(string cutstring, string m_where, string top, string templatestring)
+        {
+            StringBuilder sb = new StringBuilder();
+            var movies = MovieInfoView.GetModelList(m_where);
+            List<string> results = new List<string>();
+
+            var actors = movies.GroupBy(p => p.Actors).OrderByDescending(p => p.Count()).Take(top.ToInt32(10));
+            foreach (var actor in actors)
+            {
+                string[] acts=actor.Key.Split('/',':',',');
+                foreach (string str in acts)
+                {
+                    results.Add(str);
+                }
+            }
+
+            //分组处理最终结果
+            var al_result = results.GroupBy(p => p.ToString()).OrderByDescending(p=>p.Count());
+
+            foreach (var str in al_result)
+            {
+                string tmp = templatestring;
+                tmp = tmp.Replace("{name}", str.Key.ToS());
+                tmp = tmp.Replace("{fname}", str.Key.ToS().CutString(cutstring.ToInt32(100)));
+                sb.AppendLine(tmp);
+            }
+            return sb.ToS();
+        }
+        #endregion
+
     }
 }

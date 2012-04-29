@@ -433,7 +433,7 @@ namespace Voodoo.Basement
 
             Content = ReplacePageAttribute(Content, pa);
 
-            MovieUrlKuaib firstKuaibo = MovieUrlKuaibView.Find(string.Format("MovieID={0} order by id asc",movie.Id));
+            MovieUrlKuaib firstKuaibo = MovieUrlKuaibView.Find(string.Format("MovieID={0} order by id asc", movie.Id));
             MovieUrlKuaib nextKuaibo = BasePage.GetNextKuaibo(firstKuaibo);
             if (nextKuaibo == null)
             {
@@ -483,7 +483,7 @@ namespace Voodoo.Basement
                 row = row.Replace("[!--url.title--]", q.Title);
                 row = row.Replace("[!--url.movieid--]", q.MovieID.ToS());
                 row = row.Replace("[!--url.movietitle--]", q.MovieTitle);
-                row = row.Replace("[!--url--]", BasePage.GetMovieDramaUrl(q,MovieInfoView.GetClass(q)));
+                row = row.Replace("[!--url--]", BasePage.GetMovieDramaUrl(q, MovieInfoView.GetClass(q)));
                 sb.Append(row);
             }
             Content = Content.Replace("[!--movie.kuib--]", sb.ToS());
@@ -516,7 +516,7 @@ namespace Voodoo.Basement
             }
             Content = Content.Replace("[!--movie.mag--]", sb.ToS());
 
-            
+
             #endregion
 
             Content = ReplaceTagContent(Content);
@@ -591,7 +591,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--book.isfirstpost--]", b.IsFirstPost.ToChinese());
             Content = Content.Replace("[!--book.lastchapterid--]", b.LastChapterID.ToS());
             Content = Content.Replace("[!--book.lastchaptertitle--]", b.LastChapterTitle);
-            Content = Content.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()),cls));
+            Content = Content.Replace("[!--book.lastchapterurl--]", BasePage.GetBookChapterUrl(BookChapterView.GetModelByID(b.LastChapterID.ToS()), cls));
             Content = Content.Replace("[!--book.updatetime--]", b.UpdateTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--book.lastvipchapterid--]", b.LastVipChapterID.ToS());
             Content = Content.Replace("[!--book.lastvipchaptertitle--]", b.LastVipChapterTitle);
@@ -655,7 +655,7 @@ namespace Voodoo.Basement
         /// </summary>
         /// <param name="kuaib">快播地址</param>
         /// <param name="cls">分类</param>
-        public static void CreateDramapage(MovieUrlKuaib kuaib,Class cls)
+        public static void CreateDramapage(MovieUrlKuaib kuaib, Class cls)
         {
             MovieInfo movie = MovieInfoView.GetModelByID(kuaib.MovieID.ToS());
 
@@ -673,7 +673,7 @@ namespace Voodoo.Basement
 
             Content = ReplaceSystemSetting(Content);
 
-            PageAttribute pa = new PageAttribute() { Title = movie.Title + "-" + kuaib.Title + "快播在线播放", UpdateTime = DateTime.Now.ToString(), Description = string.Format("电影《{0}》{1} 快播在线播放页面,《{0}》{1}高清版下载。",movie.Title,kuaib.Title) };
+            PageAttribute pa = new PageAttribute() { Title = movie.Title + "-" + kuaib.Title + "快播在线播放", UpdateTime = DateTime.Now.ToString(), Description = string.Format("电影《{0}》{1} 快播在线播放页面,《{0}》{1}高清版下载。", movie.Title, kuaib.Title) };
 
             Content = ReplacePageAttribute(Content, pa);
 
@@ -716,7 +716,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.tags--]", movie.Tags);
             Content = Content.Replace("[!--movie.title--]", movie.Title);
             Content = Content.Replace("[!--movie.updatetimetime--]", movie.UpdateTime.ToString(temp.TimeFormat));
-            
+
 
             StringBuilder sb = new StringBuilder();
             List<MovieUrlKuaib> qb = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}", movie.Id.ToS()));
@@ -1556,9 +1556,9 @@ namespace Voodoo.Basement
             return Content;
 
         }
-        public static string GetSearchResult( string m_where,int SysModel, int page)
+        public static string GetSearchResult(string m_where, int SysModel, int page,string searchword)
         {
-
+            int itemcount = 0;
             int pagecount = 1;
             int recordCount = 0;
 
@@ -1575,12 +1575,13 @@ namespace Voodoo.Basement
 
             //此处要区分系统模型
             #region 替换列表
-
+            
             #region 小说系统
             if (SysModel == 4)
             {
                 StringBuilder sb_list = new StringBuilder();
                 List<Book> qs = BookView.GetModelList(m_where);
+                itemcount = qs.Count;
                 pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
                 recordCount = qs.Count;
 
@@ -1627,14 +1628,17 @@ namespace Voodoo.Basement
             #endregion 小说系统
 
             #region 影视
+                 
             else if (SysModel == 6)
             {
                 StringBuilder sb_list = new StringBuilder();
                 List<MovieInfo> qs = MovieInfoView.GetModelList(m_where);
-                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(20)).YueShu();
+                itemcount = qs.Count;
+
+                pagecount = (Convert.ToDouble(qs.Count) / Convert.ToDouble(50)).YueShu();
                 recordCount = qs.Count;
 
-                qs = qs.Skip((page - 1) * 20).Take(20).ToList();
+                qs = qs.Skip((page - 1) * 50).Take(50).ToList();
                 foreach (MovieInfo m in qs)
                 {
                     TemplateList temp = TemplateListView.Find("SysModel=6");
@@ -1671,7 +1675,22 @@ namespace Voodoo.Basement
             #region 替换分页模板
 
 
-            Content = Content.Replace("[!--show.listpage--]", "");//自定义的不大好分页
+            string tmp_pager = GetTempateString(1, TempType.列表分页);
+            tmp_pager = tmp_pager.Replace("[!--thispage--]", page.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagenum--]", pagecount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--lencord--]", "50");
+            tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
+            tmp_pager = tmp_pager.Replace("[!--pagelink--]",
+                BuildPagerLink("<a href=\"/search.aspx?m=6&key=" + searchword + "&p={first}\">首页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={pre}\">上页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={next}\">下页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={end}\">尾页</a>", page, pagecount)
+                );
+           tmp_pager = tmp_pager.Replace("[!--options--]","");
+
+            if (recordCount <= 50)
+            {
+                tmp_pager = "";
+            }
+
+            Content = Content.Replace("[!--show.listpage--]", tmp_pager);
 
             #endregion
 
@@ -1750,7 +1769,7 @@ namespace Voodoo.Basement
             }
             else
             {
-                tmpid = TemplateListView.Find(string.Format("SysModel={0}",c.ModelID)).ID;
+                tmpid = TemplateListView.Find(string.Format("SysModel={0}", c.ModelID)).ID;
             }
             temp = TemplateListView.GetModelByID(tmpid.ToS());
 
@@ -1778,6 +1797,18 @@ namespace Voodoo.Basement
             string str_next = string.Format("<a href=\"{0}\">下页</a>", page < pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + (page + 1).ToS() : "javascript:void(0)");
             string str_end = string.Format("<a href=\"{0}\">尾页</a>", page != pagecount ? "/Search.aspx?m=4&key=" + key + "&p=" + pagecount.ToS() : "javascript:void(0)");
             return string.Format("{0} {1} {2} {3}", str_first, str_pre, str_next, str_end);
+        }
+
+        public static string BuildPagerLink(string TemplateString, int page, int pagecount)
+        {
+            //<a href="xx.aspx?p={first}">首页</a> <a href="xxx.aspx?p={pre}">上页</a> <a href="xxx.aspx?p={next}">下页</a> <a href="xxx.aspx?p={end}">尾页</a>
+
+            string result = TemplateString;
+            result = result.Replace("{first}", "1");
+            result = result.Replace("{pre}", (page > 1 ? page - 1 : 1).ToS());
+            result = result.Replace("{next}", (page < pagecount ? page + 1 : page).ToS());
+            result = result.Replace("{end}", pagecount.ToS());
+            return result;
         }
 
         #endregion
@@ -1863,7 +1894,7 @@ namespace Voodoo.Basement
             string str = "";
             //if (c.IsLeafClass)
             //{
-                str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
+            str = string.Format("> <a href=\"{0}\">{1}</a>", BasePage.GetClassUrl(c), c.ClassName);
             //}
             //else
             //{
@@ -2210,7 +2241,7 @@ namespace Voodoo.Basement
             if (mc_pars.Success)
             {
                 pars = mc_pars.Groups["key"].Value.Split(',');
-               
+
             }
             else
             {
