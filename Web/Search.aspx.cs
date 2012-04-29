@@ -29,8 +29,34 @@ namespace Web
                 string location = WS.RequestString("l");
                 string type = WS.RequestString("t");
 
+                string searchword = "";
+                if (!Key.IsNullOrEmpty())
+                {
+                    searchword = Key;
+                }
+                else if (!director.IsNullOrEmpty())
+                {
+                    searchword = director;
+                }
+                else if (!actor.IsNullOrEmpty())
+                {
+                    searchword = actor;
+                }
+                else if (!year.IsNullOrEmpty())
+                {
+                    searchword = year;
+                }
+                else if (!location.IsNullOrEmpty())
+                {
+                    searchword = location;
+                }
+                else
+                {
+                    searchword = type;
+                }
 
-                string m_where = string.Format("Director like N'%{0}%' and Actors like N'%{1}%' and tags like N'%{2}%' and PublicYear like N'%{3}%' and Location like N'%{4}%' and (Title like N'%{5}%' or Intro like N'%{5}%')",
+
+                string m_where = string.Format("Director like N'%{0}%' and Actors like N'%{1}%' and tags like N'%{2}%' and PublicYear like N'%{3}%' and Location like N'%{4}%' and (Title like N'%{5}%' or Intro like N'%{5}%' or Director like N'%{5}%' or Actors like N'%{5}%' or tags like N'%{5}%' or PublicYear like N'%{5}%' or Location like N'%{5}%')",
                     director,
                     actor,
                     type,
@@ -40,7 +66,7 @@ namespace Web
                     );
 
                 Response.Clear();
-                Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(m_where,Model, page));
+                Response.Write(Voodoo.Basement.CreatePage.GetSearchResult(m_where,Model, page,searchword));
             }
             else
             {
