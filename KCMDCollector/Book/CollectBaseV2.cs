@@ -897,6 +897,7 @@ namespace KCMDCollector.Book
         public void Collect()
         {
             string[] books = Book.RulesOperate.GetBooks();
+
             CollectStatus.BookCount = books.Length; CollectStatus.BookLeftCount = books.Length; Status_Chage();
 
             foreach (string b in books)
