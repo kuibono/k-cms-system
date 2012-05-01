@@ -1,7 +1,10 @@
-<img src=['\"]/sss/
-.jpg['\"]>
-是[\\s]*?由.*?会员手打，更多章节请到网址：www.wcxiaoshuo.com
+<img src['"]/sss/
+.jpg['"]>
+是[\s]*?由.*?会员手打，更多章节请到网址：www.wcxiaoshuo.com
+是 由无错小说网会员手打,更多章节请到网址:
+无错小说网不少字
 edajihexr|大姐
+dianhua|电话
 gstjhranjgwjo|上午
 shangwo|上午
 feilrpto|老婆
