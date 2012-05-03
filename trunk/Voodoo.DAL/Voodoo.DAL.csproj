@@ -81,6 +81,8 @@
     <Compile Include="Auto\InfoTypeView.cs" />
     <Compile Include="Auto\InfoView.cs" />
     <Compile Include="Auto\LinkView.cs" />
+    <Compile Include="Auto\MovieDramaUrlView.cs" />
+    <Compile Include="Auto\MovieDramaView.cs" />
     <Compile Include="Auto\MovieInfoView.cs" />
     <Compile Include="Auto\MovieUrlBaiduView.cs" />
     <Compile Include="Auto\MovieUrlKuaibView.cs" />

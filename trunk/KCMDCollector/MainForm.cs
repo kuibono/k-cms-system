@@ -140,5 +140,33 @@ namespace KCMDCollector
             }
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //注册热键Ctrl+B，Id号为101。HotKey.KeyModifiers.Ctrl也可以直接使用数字2来表示。   
+            HotKey.RegisterHotKey(Handle, 101, HotKey.KeyModifiers.Ctrl, Keys.B);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            switch (m.WParam.ToInt32())
+            {
+                case 101:    //按下的是Ctrl+B   
+                    //此处填写快捷键响应代码   
+                    //this.Text = "按下的是Ctrl+B";
+                    if (notifyIcon_Sys.Visible == false)
+                    {
+                        notifyIcon_Sys.Visible = true;
+                    }
+                    else
+                    {
+                        notifyIcon_Sys.Visible = false;
+                    }
+                    break;   
+            }
+
+            base.WndProc(ref m);
+        }
+
     }
 }

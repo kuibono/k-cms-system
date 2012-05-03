@@ -346,6 +346,7 @@
             this.Name = "MainForm";
             this.Text = "KCMS内容采集系统";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.strip_Exit.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
