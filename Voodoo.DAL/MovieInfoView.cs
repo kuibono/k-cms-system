@@ -27,5 +27,10 @@ namespace Voodoo.DAL
         {
             return ClassView.GetModelByID(MovieInfoView.GetModelByID(mu.MovieID.ToS()).ClassID.ToS());
         }
+
+        public static Class GetClass(MovieDrama mu)
+        {
+            return ClassView.GetModelByID(MovieInfoView.GetModelByID(mu.MovieID.ToS()).ClassID.ToS());
+        }
     }
 }

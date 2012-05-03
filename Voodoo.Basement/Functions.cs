@@ -895,5 +895,37 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        #region 获取搜索系统中，剧集播放页面的地址
+        /// <summary>
+        /// 获取搜索系统中，剧集播放页面的地址
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="custitle"></param>
+        /// <param name="m_where"></param>
+        /// <param name="htmlTemp"></param>
+        /// <returns></returns>
+        public static string getmoviedramaurllist(string top, string custitle, string m_where, string htmlTemp)
+        {
+            var itemList = MovieDramaUrlView.GetModelList(m_where, top.ToInt32(100));
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var item in itemList)
+            {
+                string itemTemp = htmlTemp;
+                itemTemp = itemTemp.Replace("{id}", item.Id.ToS());
+                itemTemp = itemTemp.Replace("{moviedramaid}", item.MovieDramaID.ToString());
+                itemTemp = itemTemp.Replace("moviedramatitle", item.MovieDramaTitle);
+                itemTemp = itemTemp.Replace("movieid", item.MovieID.ToS());
+                itemTemp = itemTemp.Replace("{movietitle}", item.MovieTitle);
+                itemTemp = itemTemp.Replace("{title}", item.Title);
+                itemTemp = itemTemp.Replace("{ftitle}", item.Title.CutString(custitle.ToInt32(10)));
+                itemTemp = itemTemp.Replace("{updatetime}", item.UpdateTime.ToS());
+                itemTemp = itemTemp.Replace("{url}", item.Url);
+
+                sb.Append(itemTemp);
+            }
+            return sb.ToString();
+        }
+        #endregion
     }
 }

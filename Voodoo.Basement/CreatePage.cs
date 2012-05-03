@@ -897,6 +897,88 @@ namespace Voodoo.Basement
         }
         #endregion 生成播放页面--快播
 
+        #region 生成播放页面--单集列表页面
+        /// <summary>
+        /// 生成播放页面--单集列表页面
+        /// </summary>
+        /// <param name="kuaib">百度影音地址</param>
+        /// <param name="cls">分类</param>
+        public static void CreateDramapage(MovieDrama drama, Class cls)
+        {
+            MovieInfo movie = MovieInfoView.GetModelByID(drama.MovieID.ToS());
+
+            string FileName = BasePage.GetMovieDramaUrl(drama, cls);
+            string Content = "";
+
+            TemplateContent temp = TemplateContentView.Find(string.Format("SysModel={0}", cls.ModelID));
+            int tmpid = temp.ID;
+
+
+
+            Content = GetTempateString(1, TempType.单集列表页面);
+
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            PageAttribute pa = new PageAttribute() { Title = movie.Title + "-" + drama.Title + "快播在线播放", UpdateTime = DateTime.Now.ToString(), Description = string.Format("电影《{0}》{1} 快播在线播放页面,《{0}》{1}高清版下载。", movie.Title, drama.Title) };
+
+            Content = ReplacePageAttribute(Content, pa);
+
+
+
+            #region 替换内容
+
+            MovieDrama next = BasePage.GetNextDrama(drama);
+            if (next == null)
+            {
+                next = drama.Clone();
+            }
+
+            Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
+            Content = Content.Replace("[!--class.name--]", cls.ClassName);
+            Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
+
+            Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
+            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(movie)));
+
+            Content = Content.Replace("[!--drama.title--]", drama.Title);
+            Content = Content.Replace("[!--drama.id--]", drama.Id.ToS());
+            Content = Content.Replace("[!--drama.updatetime--]", drama.UpdateTime.ToString(temp.TimeFormat));
+
+            Content = Content.Replace("[!--movie.actors--]", movie.Actors);
+            Content = Content.Replace("[!--movie.classid--]", movie.ClassID.ToS());
+            Content = Content.Replace("[!--movie.classname--]", movie.ClassName);
+            Content = Content.Replace("[!--movie.director--]", movie.Director);
+            Content = Content.Replace("[!--movie.enable--]", movie.Enable.ToInt32().ToS());
+            Content = Content.Replace("[!--movie.faceimage--]", movie.FaceImage);
+            Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
+            Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
+            Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
+            Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
+            Content = Content.Replace("[!--movie.location--]", movie.Location);
+            Content = Content.Replace("[!--movie.publicyear--]", movie.PublicYear);
+            Content = Content.Replace("[!--movie.status--]", movie.Status.ToS());
+            Content = Content.Replace("[!--movie.tags--]", movie.Tags);
+            Content = Content.Replace("[!--movie.title--]", movie.Title);
+            Content = Content.Replace("[!--movie.updatetimetime--]", movie.UpdateTime.ToString(temp.TimeFormat));
+
+
+
+            #endregion
+
+            Content = ReplaceTagContent(Content);
+
+            //替换导航条
+            Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
+
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+        }
+        #endregion 生成播放页面--单集列表页面
+
+
+
         #region  创建章节页面
         /// <summary>
         /// 创建章节页面

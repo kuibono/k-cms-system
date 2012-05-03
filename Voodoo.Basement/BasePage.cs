@@ -449,6 +449,30 @@ namespace Voodoo.Basement
             result = Regex.Replace(result, "[/]{2,}", "/");
             return result;
         }
+
+        public static string GetMovieDramaUrl(MovieDrama b, Class cls)
+        {
+            if (b == null)
+            {
+                return "";
+            }
+            string result = "";
+
+
+            string sitrurl = "/Movie/";
+
+
+            result = string.Format("{0}{1}/{2}/urls/{3}{4}",
+                sitrurl,
+                cls.ClassForder,
+                b.MovieTitle,
+                b.Id,
+                BasePage.SystemSetting.ExtName
+                );
+            result = Regex.Replace(result, "[/]{2,}", "/");
+            return result;
+        }
+
         #endregion
 
 
@@ -630,6 +654,23 @@ namespace Voodoo.Basement
             }
         }
 
+        /// <summary>
+        /// 获取上一个单集
+        /// </summary>
+        /// <param name="drama"></param>
+        /// <returns></returns>
+        public static MovieDrama GetPreDrama(MovieDrama drama)
+        {
+            List<MovieDrama> lresult = MovieDramaView.GetModelList(string.Format("MovieID={0} and id<{1} order by id desc", drama.MovieID, drama.Id));
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
 
         #endregion
 
@@ -750,6 +791,24 @@ namespace Voodoo.Basement
         public static MovieUrlBaidu GetNextBaidu(MovieUrlBaidu kuai)
         {
             List<MovieUrlBaidu> lresult = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0} and id>{1} order by id asc", kuai.MovieID, kuai.Id));
+            if (lresult.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return lresult.First();
+            }
+        }
+
+        /// <summary>
+        /// 获取下一个单集
+        /// </summary>
+        /// <param name="drama"></param>
+        /// <returns></returns>
+        public static MovieDrama GetNextDrama(MovieDrama drama)
+        {
+            List<MovieDrama> lresult = MovieDramaView.GetModelList(string.Format("MovieID={0} and id>{1} order by id asc", drama.MovieID, drama.Id));
             if (lresult.Count == 0)
             {
                 return null;

@@ -44,52 +44,54 @@ namespace Web.e.admin.system.Update
 
         protected void btn_Content_Click(object sender, EventArgs e)
         {
+            Response.Buffer = false;
+
             var newses = NewsView.GetModelList();
             newses = newses.Where(p => p.Audit).ToList();
             foreach (var n in newses)
             {
+                Response.Write(string.Format("正在生成内容页：{0}<br/>", n.Title));
                 CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
             }
 
             var imgs = ImageAlbumView.GetModelList();
             foreach (var img in imgs)
             {
+                Response.Write(string.Format("正在生成内容页：{0}<br/>", img.Title));
                 CreatePage.CreateContentPage(img, img.GetClass());
             }
 
             var ques = QuestionView.GetModelList();
             foreach (var q in ques)
             {
+                Response.Write(string.Format("正在生成内容页：{0}<br/>", q.Title));
                 CreatePage.CreateContentPage(q, q.GetClass());
             }
 
             var books = BookView.GetModelList();
             foreach (var b in books)
             {
+                Response.Write(string.Format("正在生成内容页：{0}<br/>", b.Title));
                 CreatePage.CreateContentPage(b, BookView.GetClass(b));
             }
 
-            var movies = MovieInfoView.GetModelList();
-            foreach (var m in movies)
+            try
             {
-                CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+                var movies = MovieInfoView.GetModelList();
+                foreach (var m in movies)
+                {
+                    Response.Write(string.Format("正在生成内容页：{0}<br/>", m.Title));
+                    CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+                }
             }
+            catch{}
 
             Js.AlertAndGoback("成功！");
         }
 
         protected void btn_ClearAll_Click(object sender, EventArgs e)
         {
-            //var cls = NewsAction.NewsClass;
-            //cls = cls.Where(p => p.ParentID == 0).ToList();
-            //foreach (var c in cls)
-            //{
-            //    FileInfo file = new FileInfo(Server.MapPath(GetClassUrl(c)));
-            //    if (file.Directory.Exists)
-            //    {
-            //        file.Directory.Delete(true);
-            //    }
-            //}
+            Response.Buffer = false;
 
             DirectoryInfo dir = new DirectoryInfo(Server.MapPath("~/Book/"));
             if (dir.Exists)
@@ -97,12 +99,14 @@ namespace Web.e.admin.system.Update
                 FileInfo[] files = dir.GetFiles();
                 foreach (FileInfo file in files)
                 {
+                    Response.Write(string.Format("正在删除文件：{0}<br/>", file.Name));
                     file.Delete();
                 }
 
                 DirectoryInfo[]  subdirs=dir.GetDirectories();
                 foreach (DirectoryInfo subdir in subdirs)
                 {
+                    Response.Write(string.Format("正在删除目录：{0}<br/>", subdir.Name));
                     subdir.Delete(true);
                 }
 
@@ -117,6 +121,7 @@ namespace Web.e.admin.system.Update
             var chapters = BookChapterView.GetModelList();
             foreach (var c in chapters)
             {
+                Response.Write(string.Format("正在生成章节：{0}<br/>", c.Title));
                 CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
             }
 
@@ -171,13 +176,22 @@ namespace Web.e.admin.system.Update
             List<MovieUrlKuaib> ks = MovieUrlKuaibView.GetModelList();
             foreach (var k in ks)
             {
+                Response.Write(string.Format("正在生成快播页面：{0}<br/>", k.Title));
                 CreatePage.CreateDramapage(k, MovieInfoView.GetClass(k));
             }
 
             List<MovieUrlBaidu> bs = MovieUrlBaiduView.GetModelList();
             foreach(var b in bs)
             {
+                Response.Write(string.Format("正在生成百度页面：{0}<br/>", b.Title));
                 CreatePage.CreateDramapage(b, MovieInfoView.GetClass(b));
+            }
+
+            List<MovieDrama> ds = MovieDramaView.GetModelList();
+            foreach (var d in ds)
+            {
+                Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", d.Title));
+                CreatePage.CreateDramapage(d, MovieInfoView.GetClass(d));
             }
         }
     }
