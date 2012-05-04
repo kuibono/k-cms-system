@@ -448,7 +448,6 @@
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
     <Content Include="e\Rss.aspx" />
-    <Content Include="e\tool\MovieCollector.aspx" />
     <Content Include="skin\movie\logo.gif" />
     <Content Include="skin\novel\btn.png" />
     <Content Include="skin\novel\ico.png" />
@@ -994,13 +993,6 @@
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="e\tool\MovieCollector.aspx.cs">
-      <DependentUpon>MovieCollector.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="e\tool\MovieCollector.aspx.designer.cs">
-      <DependentUpon>MovieCollector.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">

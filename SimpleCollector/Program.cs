@@ -15,7 +15,7 @@ namespace SimpleCollector
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCollecor());
+            Application.Run(new FormMain());
         }
     }
 }
