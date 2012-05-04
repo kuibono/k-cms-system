@@ -32,7 +32,7 @@ namespace SimpleCollector
         {
             //string enciding = "gb2312";
 
-            BookHelper bh = new BookHelper("http://localhost:9969/");
+            BookHelper bh = new BookHelper("http://www.aizr.net/");
             SetStatus("获取本地书籍");
             Book b = bh.SearchBook(BookTitle, "", "").First();
 
@@ -81,7 +81,7 @@ namespace SimpleCollector
 
         public void CollectBooks(List<string> BookNeedCollect,string ListPageUrl,string NextPageUrl, string BookUrlRule, string BookInfoRule, string ChapterListUrl,string encoding,string urlTitleRule,string ContentRule)
         {
-            BookHelper bh = new BookHelper("http://localhost:9969/");
+            BookHelper bh = new BookHelper("http://www.aizr.net/");
 
             begin:
             string listHtml = Url.GetHtml(ListPageUrl, encoding);
