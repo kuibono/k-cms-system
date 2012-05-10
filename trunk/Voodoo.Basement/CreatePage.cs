@@ -16,6 +16,63 @@ namespace Voodoo.Basement
 {
     public class CreatePage
     {
+        #region 伪原创字符替换--汉字变成拼音
+        /// <summary>
+        /// 伪原创字符替换--汉字变成拼音
+        /// </summary>
+        /// <param name="Content"></param>
+        /// <returns></returns>
+        public static string ReplaceContentKey(string Content)
+        {
+            Content = Content.Replace("垩", "");
+            Content = Content.Replace("声音", "shengyin");
+            Content = Content.Replace("地方", "difang");
+            Content = Content.Replace("这个", "zhege");
+            Content = Content.Replace("有些", "youxie");
+            Content = Content.Replace("注意", "zhuyi");
+            Content = Content.Replace("非常", "feichang");
+            Content = Content.Replace("大家", "dajia");
+            Content = Content.Replace("衣服", "yifu");
+            Content = Content.Replace("自己", "ziji");
+            Content = Content.Replace("来不及", "laibuji");
+            Content = Content.Replace("意思", "yisi");
+            Content = Content.Replace("能力", "nengli");
+            Content = Content.Replace("容易", "rongyi");
+            Content = Content.Replace("朋友", "pengyou");
+            Content = Content.Replace("消息", "xiaoxi");
+            Content = Content.Replace("这样", "zheyang");
+            Content = Content.Replace("如此", "ruci");
+            Content = Content.Replace("说话", "shuohua");
+            Content = Content.Replace("：“", "maohaoyinhao");
+            Content = Content.Replace("明天", "mingtian");
+            Content = Content.Replace("你们", "nimen");
+            Content = Content.Replace("没有", "meiyou");
+            Content = Content.Replace("激动", "jidong");
+            Content = Content.Replace("可以", "keyi");
+            Content = Content.Replace("一起", "yiqi");
+            Content = Content.Replace("小姐", "xiaojie");
+            Content = Content.Replace("不但", "budan");
+            Content = Content.Replace("而且", "erqie");
+            Content = Content.Replace("其他", "qita");
+            Content = Content.Replace("事情", "shiqing");
+            Content = Content.Replace("一会", "yihui");
+            Content = Content.Replace("一样", "yiyang");
+            Content = Content.Replace("儿子", "erzi");
+            Content = Content.Replace("应该", "yinggai");
+            Content = Content.Replace("时候", "shihou");
+            Content = Content.Replace("以前", "yiqian");
+            Content = Content.Replace("不是", "bushi");
+            Content = Content.Replace("什么", "shenme");
+            Content = Content.Replace("怎么", "zenme");
+            Content = Content.Replace("成功", "chenggong");
+            Content = Content.Replace("如何", "ruhe");
+            Content = Content.Replace("过去", "guoqu");
+            Content = Content.Replace("出来", "chulai");
+            
+            return Content;
+        }
+        #endregion
+
         #region 默认模板组
         /// <summary>
         /// 默认模板组
@@ -997,6 +1054,7 @@ namespace Voodoo.Basement
 
             string ChapterContent = Voodoo.IO.File.Read(System.Web.HttpContext.Current.Server.MapPath(BasePage.GetBookChapterTxtUrl(cp, cls)));
             ChapterContent = ChapterContent.Replace("<<", "<br />");
+            ChapterContent = ReplaceContentKey(ChapterContent);//伪原创
 
             PageAttribute pa = new PageAttribute()
             {
