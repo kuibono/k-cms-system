@@ -54,6 +54,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ref\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="QConnectSDK">
+      <HintPath>..\ref\QConnectSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\ref\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -444,6 +450,8 @@
     <Content Include="e\member\Logout.aspx" />
     <Content Include="e\member\Register.aspx" />
     <Content Include="e\member\RegisterForm.aspx" />
+    <Content Include="e\OAuth\QQlogin\CallBack.aspx" />
+    <Content Include="e\OAuth\QQlogin\Default.aspx" />
     <Content Include="e\post\PostList.aspx" />
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
@@ -917,6 +925,20 @@
     </Compile>
     <Compile Include="e\member\RegisterForm.aspx.designer.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\OAuth\QQlogin\CallBack.aspx.cs">
+      <DependentUpon>CallBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\OAuth\QQlogin\CallBack.aspx.designer.cs">
+      <DependentUpon>CallBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\OAuth\QQlogin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\OAuth\QQlogin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\post\PostList.aspx.cs">
       <DependentUpon>PostList.aspx</DependentUpon>
