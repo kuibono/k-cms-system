@@ -122,7 +122,6 @@
     <Compile Include="FormHouse365.Designer.cs">
       <DependentUpon>FormHouse365.cs</DependentUpon>
     </Compile>
-    <Compile Include="HotKey.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
