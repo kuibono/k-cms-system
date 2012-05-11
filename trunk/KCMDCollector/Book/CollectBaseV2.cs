@@ -527,8 +527,11 @@ namespace KCMDCollector.Book
         {
 
             //去除特殊字符
-            Content = Regex.Replace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
-            Content = Regex.Replace(Content, "[~@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
+
+            Content = RegexReplace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
+            Content = RegexReplace(Content, "[~@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
+
+            
 
             //全角转半角
             Content = Content.ToDBC();
@@ -537,24 +540,26 @@ namespace KCMDCollector.Book
             Content = Content.ToLower();
 
             //删除脚本
-            Content = Regex.Replace(Content, "<script [\\s\\S]*?</script>", "", RegexOptions.IgnoreCase);
+            Content = RegexReplace(Content, "<script [\\s\\S]*?</script>", "");
 
             //删除链接
-            Content = Regex.Replace(Content, "<a [\\s\\S]*?</a>", "", RegexOptions.IgnoreCase);
+            Content = RegexReplace(Content, "<a [\\s\\S]*?</a>", "");
 
             //删除不需要的HTML
-            Content = Regex.Replace(Content, "<[/]?table>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?tr>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?td>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?div>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?span>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?font>", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "<[/]?p>", "", RegexOptions.IgnoreCase);
+            Content = RegexReplace(Content, "<[/]?table>", "");
+            Content = RegexReplace(Content, "<[/]?tr>", "");
+            Content = RegexReplace(Content, "<[/]?div>", "");
+            Content = RegexReplace(Content, "<[/]?td>", "");
+            Content = RegexReplace(Content, "<[/]?span>", "");
+            Content = RegexReplace(Content, "<[/]?font>", "");
+            Content = RegexReplace(Content, "<[/]?p>", "");
+            Content = RegexReplace(Content, "<[/]?cc>", "");
 
             //删除网址
-            Content = Regex.Replace(Content, "http://", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "https://", "", RegexOptions.IgnoreCase);
-            Content = Regex.Replace(Content, "[\\\\\\w\\./。]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "", RegexOptions.IgnoreCase);//有些网址会出现带掺杂特殊符号的行为如 www/.aizr\。net
+            Content = RegexReplace(Content, "http://", "");
+            Content = RegexReplace(Content, "https://", "");
+            Content = RegexReplace(Content, "[\\\\\\w\\./。]{3,20}\\.[com|net|org|cn|co|info|us|cc|xxx|tv|ws|hk|tw]+", "");
+            //Content = RegexReplace(Content, "", "");
 
             //根据预先指定的规则进行替换
             var Filter_List = Book.RulesOperate.GetFilter();
@@ -563,11 +568,15 @@ namespace KCMDCollector.Book
                 string[] pa = f.Split('|');
                 if (pa.Length > 1)
                 {
-                    Content = Regex.Replace(Content, pa[0], pa[1], RegexOptions.None);
+                    //Content = Regex.Replace(Content, pa[0], pa[1], RegexOptions.None);
+                    //Content = new Regex(pa[0]).Replace(Content, pa[1], 100);
+                    Content = RegexReplace(Content, pa[0], pa[1]);
                 }
                 else
                 {
-                    Content = Regex.Replace(Content, pa[0], "", RegexOptions.None);
+                    //Content = Regex.Replace(Content, pa[0], "", RegexOptions.None);
+                    //Content = new Regex(pa[0]).Replace(Content,"", 100);
+                    Content = Content.Replace(pa[0],"");
                 }
 
             }
@@ -1159,6 +1168,15 @@ namespace KCMDCollector.Book
 
         }
         #endregion
+
+        public static string RegexReplace(string Content, string parrten, string newvalue)
+        {
+            while (Regex.IsMatch(Content,parrten))
+            {
+                Content = Regex.Replace(Content, parrten, newvalue,RegexOptions.IgnoreCase);
+            }
+            return Content;
+        }
     }
 
     public interface IMath : IXmlRpcProxy
