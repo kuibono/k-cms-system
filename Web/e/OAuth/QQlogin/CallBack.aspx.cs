@@ -20,10 +20,11 @@ namespace Web.e.OAuth.QQlogin
                 var verifier = Request.Params["code"];
                 string state = Session["requeststate"].ToString();
                 qzone = new QOpenClient(verifier, state);
+                var i=qzone.GetWeiboUserInfo();
                 currentUser = qzone.GetCurrentUser();
                 if (null != currentUser)
                 {
-                    
+
                 }
                 Session["QzoneOauth"] = qzone;
             }
