@@ -33,6 +33,8 @@ namespace KCMDCollector.Book
 
         public bool IsImageChapter { get; set; }
 
+        public bool IsTemp { get; set; }
+
         /// <summary>
         /// 序号
         /// </summary>

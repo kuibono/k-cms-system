@@ -217,7 +217,7 @@ namespace Voodoo.Basement.Client
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        public BookChapter ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter)
+        public BookChapter ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter,bool IsTemp=false)
         {
             string url = xmlrpc;
             NameValueCollection nv = new NameValueCollection();
@@ -226,6 +226,7 @@ namespace Voodoo.Basement.Client
             nv.Add("chaptertitle", Title);
             nv.Add("content", Content);
             nv.Add("isimagechapter", IsImageChapter ? "1" : "0");
+            nv.Add("istemp", IsTemp ? "1" : "0");
             return (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Url.Post(nv, url, Encoding.UTF8));
         }
         #endregion
@@ -238,7 +239,7 @@ namespace Voodoo.Basement.Client
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        public BookChapter ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter)
+        public BookChapter ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter, bool IsTemp = false)
         {
             string url = xmlrpc + "?a=chapteredit";
             NameValueCollection nv = new NameValueCollection();
@@ -246,6 +247,7 @@ namespace Voodoo.Basement.Client
             nv.Add("chaptertitle", Title);
             nv.Add("content", Content);
             nv.Add("isimagechapter", IsImageChapter ? "1" : "0");
+            nv.Add("istemp", IsTemp ? "1" : "0");
             return (BookChapter)Voodoo.IO.XML.DeSerialize(typeof(BookChapter), Url.Post(nv, url, Encoding.UTF8));
 
         }

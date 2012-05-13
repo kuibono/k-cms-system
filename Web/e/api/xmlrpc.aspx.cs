@@ -97,14 +97,16 @@ namespace Web.e.api
                     chaptertitle = WS.RequestString("chaptertitle");
                     string Content = WS.RequestString("content").HtmlDeCode();
                     bool IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
-                    ChapterAdd(bookid, chaptertitle, Content, IsImageChapter);
+                    bool IsTemp = WS.RequestString("istemp").ToBoolean();
+                    ChapterAdd(bookid, chaptertitle, Content, IsImageChapter, IsTemp);
                     break;
                 case "chapteredit":
                     long chapterid = WS.RequestString("chapterid").ToInt64();
                     chaptertitle = WS.RequestString("chaptertitle");
                     Content = WS.RequestString("content").HtmlDeCode();
                     IsImageChapter = WS.RequestString("isimagechapter").ToBoolean();
-                    ChapterEdit(chapterid, chaptertitle, Content, IsImageChapter);
+                    IsTemp = WS.RequestString("istemp").ToBoolean();
+                    ChapterEdit(chapterid, chaptertitle, Content, IsImageChapter, IsTemp);
                     break;
                 case "chapterdelete":
                     chapterid = WS.RequestString("chapterid").ToInt64();
@@ -423,7 +425,7 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter)
+        protected void ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter,bool IsTemp=false)
         {
 
             Book b = BookView.GetModelByID(BookID.ToS());
@@ -440,7 +442,7 @@ namespace Web.e.api
                 c.Enable = true;
                 c.IsFree = true;
                 c.IsImageChapter = IsImageChapter;
-                c.IsTemp = false;
+                c.IsTemp = IsTemp;
                 c.IsVipChapter = false;
                 c.TextLength = Content.Length;
                 c.Title = Title;
@@ -470,12 +472,13 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter)
+        protected void ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter,bool IsTemp=false)
         {
             var chapter = BookChapterView.GetModelByID(ChapterID.ToS());
             var cls = ClassView.GetModelByID(chapter.ClassID.ToS());
             chapter.Title = Title.IsNull(chapter.Title);
             chapter.IsImageChapter = IsImageChapter;
+            chapter.IsTemp = IsTemp;
             BookChapterView.Update(chapter);
             if (!Content.IsNullOrEmpty())
             {

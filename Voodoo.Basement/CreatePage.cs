@@ -1056,6 +1056,19 @@ namespace Voodoo.Basement
             ChapterContent = ChapterContent.Replace("<<", "<br />");
             ChapterContent = ReplaceContentKey(ChapterContent);//伪原创
 
+            //如果章节正在处理中，则填入自定义内容
+            if (cp.IsTemp)
+            {
+                ChapterContent = string.Format("{0}的小说{1}最新章节-{2}正在处理中，请稍后访问阅读。同时推荐您阅读以下精品小说<ul id=\"ul_tjlist\">{3}</ul>,<br /><br />阅读{1}最新章节{2},尽在<a href=\"{4}\">{5}</a>",
+                    b.Author,
+                    b.Title,
+                    cp.Title,
+                    Functions.Getnovellist("Enable=1 order by clickcount desc", 10, 100, "<li><a href=\"{url}\" title=\"{title}\"></a>{title}</li>"),
+                    BasePage.SystemSetting.SiteUrl,
+                    BasePage.SystemSetting.SiteName
+                    );
+            }
+
             PageAttribute pa = new PageAttribute()
             {
                 Title = string.Format("{0}-{1}-{2}", b.Title, cp.Title, b.Author),

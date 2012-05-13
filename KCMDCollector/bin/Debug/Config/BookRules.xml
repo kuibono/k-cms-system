@@ -32,4 +32,20 @@
     <ChapterContent>&lt;div id="htmlContent" class="contentbox" &gt;[\s]*?&lt;div align="center"&gt;&lt;script type="text/javascript" src="/js/nrh.js"&gt;&lt;/script&gt;&lt;/div&gt;(?&lt;content&gt;[\s\S]*?)&lt;/div&gt;</ChapterContent>
     <ImageRule />
   </CollectRule>
+  <CollectRule>
+    <IsImageSite>false</IsImageSite>
+    <IsDefault>false</IsDefault>
+    <SiteName>贴吧</SiteName>
+    <Url>http://tieba.baidu.com/</Url>
+    <CharSet>gbk</CharSet>
+    <SearchPageUrl>http://tieba.baidu.com/f</SearchPageUrl>
+    <SearchPars>kw={0}&amp;tb=on</SearchPars>
+    <SearchMethod>get</SearchMethod>
+    <BookInfoUrl>askjhwkajd(?&lt;key&gt;.*?)llllll</BookInfoUrl>
+    <BookInfoRule />
+    <ChapterListUrl>askjhwkajd(?&lt;key&gt;.*?)llllll</ChapterListUrl>
+    <ChapterNameAndUrl>&lt;a href="(?&lt;url&gt;.*?)" target="_blank" class="th_tit"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;|&lt;td class="thread_title"&gt;[\s]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterNameAndUrl>
+    <ChapterContent>&lt;p id=".*?" class="d_post_content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/p&gt;</ChapterContent>
+    <ImageRule>&lt;img.*?src="(?&lt;key&gt;.*?)".*?&gt;</ImageRule>
+  </CollectRule>
 </ArrayOfCollectRule>

@@ -11,7 +11,13 @@ namespace Web.e.member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             Voodoo.Cookies.Cookies.Clear();
+
+            System.Web.HttpCookie cookie = new System.Web.HttpCookie("User");
+            cookie.Expires = DateTime.Now.AddDays(-1);
+            Voodoo.Cookies.Cookies.SetCookie(cookie);
+
             Response.Redirect("~/");
         }
     }
