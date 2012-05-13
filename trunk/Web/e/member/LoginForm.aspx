@@ -49,12 +49,12 @@
                   <a href="/user" style="COLOR: #FF6600;"><%=Voodoo.Basement.UserAction.opuser.ChineseName %></a>┊
                 </li>
                 <li class="menu2" onMouseOver="this.className='menu1'" onMouseOut="this.className='menu2'">
-                  <a href="/user/bookcase.aspx" class="mybookcase">我的书架</a>
+                  <a href="#" class="mybookcase" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">我的书架</a>
                   <div class="list">
-		                <a href="/user/bookcase.aspx" class="red">最近阅读</a><br />                        <a href="/user/bookcase.aspx?id=1">我的书架1</a><br />                        <a href="/user/bookcase.aspx?id=2">我的书架2</a><br />                        <a href="/user/bookcase.aspx?id=3">我的书架3</a><br />
+		                <a href="#" class="red" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">最近阅读</a><br />                        <a href="#" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">我的书架1</a><br />                        <a href="#" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">我的书架2</a><br />                        <a href="#" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">我的书架3</a><br />
 	                </div>
                 </li>
-                <li>┊<a href="/user/edit.aspx">设置</a></li>
+                <li>┊<a href="#" onclick="alert('您好，会员系统正在开发过程中，请稍后使用！');return false;">设置</a></li>
                 <li>┊<a href="/e/member/logout.aspx">退出</a></li>
               </ul>
         </div>
