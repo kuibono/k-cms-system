@@ -495,7 +495,7 @@ namespace KCMDCollector.Book
                             m_images = m_images.NextMatch();
                         }
                         c.Content += "最新章节：" + c.Title + "    目前是图片章节，读起来很不爽？赶快把本页加入收藏夹，" + c.Title + " 文字章节稍后为您呈现！阅读" + b.BookTitle + "最新章节，尽在" + s.PublicUrl + "," + s.TargetUrl + "<br/ >";
-                        
+
                     }
                     else
                     {
@@ -531,7 +531,7 @@ namespace KCMDCollector.Book
             Content = RegexReplace(Content, "[§№☆★○●◎◇◆□■△▲※→←↑↓〓＃＆＠＼＾＿￣―♂♀‘’々～‖＂〃〔〕〈〉《》「」『』〖〗【】（）［｛｝°＄￡￥‰％℃¤￠]{1,}?", "");
             Content = RegexReplace(Content, "[~@#$%^*()_=\\-\\+\\[\\]]{1,}?", "");
 
-            
+
 
             //全角转半角
             Content = Content.ToDBC();
@@ -576,7 +576,7 @@ namespace KCMDCollector.Book
                 {
                     //Content = Regex.Replace(Content, pa[0], "", RegexOptions.None);
                     //Content = new Regex(pa[0]).Replace(Content,"", 100);
-                    Content = Content.Replace(pa[0],"");
+                    Content = Content.Replace(pa[0], "");
                 }
 
             }
@@ -610,7 +610,7 @@ namespace KCMDCollector.Book
                 if (c.Content.IsNullOrEmpty() || c.Content.Trim().IsNullOrEmpty())
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
-                    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, sb.ToS(), true);
+                    chapter_Submited = BH.ChapterAdd(b.ID, c.Title, sb.ToS(), true, true);
                     continue;
                 }
 
@@ -630,11 +630,13 @@ namespace KCMDCollector.Book
                     b.Changed = true;
                     try
                     {
+                        this.CollectStatus.Status = "Ping Google"; Status_Chage();
                         googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
                     }
                     catch { }
                     try
                     {
+                        this.CollectStatus.Status = "Ping Baidu"; Status_Chage();
                         baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
                     }
                     catch { }
@@ -987,21 +989,18 @@ namespace KCMDCollector.Book
                     this.CollectStatus.Status = string.Format("正在从{0}搜索书籍", Rule.SiteName); Status_Chage();
                     //搜索书籍
                     string html_Search = "";
+                    string url_search = "";
                     if (Rule.SearchMethod.ToLower() == "get")//采集站搜索使用get提交
                     {
-                        html_Search = Url.Post(
-                            new NameValueCollection(),
-                            Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle.UrlEncode(Encoding.GetEncoding("gb2312"))),
-                            Encoding.GetEncoding(Rule.CharSet),
-                            new System.Net.CookieContainer(),
-                            "*.*",
-                            Rule.Url,
-                            "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.2 Safari/535.11"
-                            );
+                        url_search = Rule.SearchPageUrl + "?" + string.Format(Rule.SearchPars, bc.BookTitle.UrlEncode(Encoding.GetEncoding("gb2312")));
+                        html_Search = Url.GetHtml(url_search,
+                            Rule.CharSet);
+
                     }
                     else
                     {
                         //采集站搜索使用POST提交
+                        url_search = Rule.SearchPageUrl;
                         html_Search = Url.Post(
                             string.Format(Rule.SearchPars, bc.BookTitle).ParamToNameValueCollection(),
                             Rule.SearchPageUrl,
@@ -1018,10 +1017,11 @@ namespace KCMDCollector.Book
 
                     this.CollectStatus.Status = string.Format("正在从{0}打开书籍", Rule.SiteName); Status_Chage();
                     string html_BookInfo = "";
+                    string bookUrl = "";
                     if (html_Search.IsMatch(Rule.BookInfoUrl))
                     {
                         CollectStatus.Status = "打开书籍信息页"; Status_Chage();
-                        string bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+                        bookUrl = html_Search.GetMatchGroup(Rule.BookInfoUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
                         //打开书籍信息页
                         html_BookInfo = Url.GetHtml(bookUrl, Rule.CharSet);
                     }
@@ -1029,6 +1029,7 @@ namespace KCMDCollector.Book
                     {
                         //系统自动跳转到了书籍信息页
                         html_BookInfo = html_Search;
+                        bookUrl = url_search;
                     }
                     #endregion
 
@@ -1036,11 +1037,23 @@ namespace KCMDCollector.Book
                     //获得章节列表页地址
                     this.CollectStatus.Status = string.Format("正在从{0}打开章节列表", Rule.SiteName); Status_Chage();
                     string chapterListUrl = html_BookInfo.GetMatchGroup(Rule.ChapterListUrl).Groups["url"].Value.AppendToDomain(Rule.Url);
+                    if (Regex.IsMatch(html_BookInfo, Rule.ChapterListUrl) == false)
+                    {
+                        chapterListUrl = bookUrl;
+                    }
 
 
                     //打开章节列表
                     CollectStatus.Status = "打开章节列表"; Status_Chage();
-                    string html_ChapterList = Url.GetHtml(chapterListUrl, Rule.CharSet);
+                    string html_ChapterList = "";
+                    if (chapterListUrl == bookUrl)
+                    {
+                        html_ChapterList = html_BookInfo;
+                    }
+                    else
+                    {
+                        html_ChapterList = Url.GetHtml(chapterListUrl, Rule.CharSet);
+                    }
                     var match_Chapters = html_ChapterList.GetMatchGroup(Rule.ChapterNameAndUrl);
 
                     //获取章节列表
@@ -1082,8 +1095,20 @@ namespace KCMDCollector.Book
 
                             string html_Content = Url.GetHtml(chapter_NeedCollect.First().Url, Rule.CharSet);
 
+                            Match matchGroup = html_Content.GetMatchGroup(Rule.ChapterContent);
+
+                            string Content = "";
+                            while (matchGroup.Success)
+                            {
+
+                                if (matchGroup.Groups["content"].Value.Length > 200)
+                                {
+                                    Content += matchGroup.Groups["content"].Value;
+                                }
+                                matchGroup = matchGroup.NextMatch();
+                            }
+
                             //过滤
-                            string Content = html_Content.GetMatchGroup(Rule.ChapterContent).Groups["content"].Value;
                             Content = Filter(Content);
                             if (Content.ToLower().Contains("<img ") == false)
                             {
@@ -1091,7 +1116,7 @@ namespace KCMDCollector.Book
                                 bc.Changed = true;
                                 //编辑章节
                                 this.CollectStatus.Status = "章节保存到系统"; Status_Chage();
-                                BH.ChapterEdit(c.id, c.Title, c.Content, false);
+                                BH.ChapterEdit(c.id, c.Title, c.Content, false,false);
 
                                 //完成之后将本章节去掉
                                 bc.Chapters = bc.Chapters.Where(p => p.id != c.id).ToList();
@@ -1171,9 +1196,9 @@ namespace KCMDCollector.Book
 
         public static string RegexReplace(string Content, string parrten, string newvalue)
         {
-            while (Regex.IsMatch(Content,parrten))
+            while (Regex.IsMatch(Content, parrten))
             {
-                Content = Regex.Replace(Content, parrten, newvalue,RegexOptions.IgnoreCase);
+                Content = Regex.Replace(Content, parrten, newvalue, RegexOptions.IgnoreCase);
             }
             return Content;
         }
