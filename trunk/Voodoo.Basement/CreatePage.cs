@@ -1063,7 +1063,7 @@ namespace Voodoo.Basement
                     b.Author,
                     b.Title,
                     cp.Title,
-                    Functions.Getnovellist("Enable=1 order by clickcount desc", 10, 100, "<li><a href=\"{url}\" title=\"{title}\"></a>{title}</li>"),
+                    Functions.Getnovellist("Enable=1 order by clickcount desc", 10, 100, "<li><a href=\"{url}\" title=\"{title}\">{title}</a></li>"),
                     BasePage.SystemSetting.SiteUrl,
                     BasePage.SystemSetting.SiteName
                     );
