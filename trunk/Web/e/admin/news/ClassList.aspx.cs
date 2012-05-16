@@ -12,16 +12,21 @@ using Voodoo.DAL;
 using Voodoo.Basement;
 using Voodoo.Setting;
 
+using Ext.Net;
+
 namespace Web.e.admin.news
 {
-    public partial class ClassList : AdminBase
+    public partial class ClassList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
             if (WS.RequestString("action") == "del")
             {
-                string ids=WS.RequestString("id");
-                ClassView.Del(string.Format("id in ({0})",ids));
+                string ids = WS.RequestString("id");
+                ClassView.Del(string.Format("id in ({0})", ids));
                 Voodoo.Cache.Cache.SetCache("_NewClassList", null);
             }
 
@@ -30,6 +35,7 @@ namespace Web.e.admin.news
                 LoadList();
             }
         }
+
 
         protected void LoadList()
         {
