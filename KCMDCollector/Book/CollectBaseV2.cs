@@ -907,24 +907,25 @@ namespace KCMDCollector.Book
         /// </summary>
         public void Collect()
         {
-            string[] books = Book.RulesOperate.GetBooks();
+            CollectBookByTitle("校花的贴身高手");
+            //string[] books = Book.RulesOperate.GetBooks();
 
-            CollectStatus.BookCount = books.Length; CollectStatus.BookLeftCount = books.Length; Status_Chage();
+            //CollectStatus.BookCount = books.Length; CollectStatus.BookLeftCount = books.Length; Status_Chage();
 
-            foreach (string b in books)
-            {
-                try
-                {
-                    CollectBookByTitle(b.Trim());
-                }
-                catch (Exception e)
-                {
-                    //采集某本书的时候出现异常
-                    CollectStatus.Status = "ERR:" + e.Message;
-                    Status_Chage();
-                }
-                CollectStatus.BookLeftCount--; Status_Chage();
-            }
+            //foreach (string b in books)
+            //{
+            //    try
+            //    {
+            //        CollectBookByTitle(b.Trim());
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        //采集某本书的时候出现异常
+            //        CollectStatus.Status = "ERR:" + e.Message;
+            //        Status_Chage();
+            //    }
+            //    CollectStatus.BookLeftCount--; Status_Chage();
+            //}
 
         }
         #endregion
