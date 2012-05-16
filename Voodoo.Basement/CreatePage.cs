@@ -1641,7 +1641,13 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--book.tjcount--]", b.TjCount.ToS());
                     sb_list.AppendLine(str_lst);
                 }
+                
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+                if (qs.Count() == 1)
+                {
+                    Book firstBook = qs.First();
+                    System.Web.HttpContext.Current.Response.Redirect(BasePage.GetBookUrl(firstBook, BookView.GetClass(firstBook)));
+                }
             }
             #endregion 小说系统
 
