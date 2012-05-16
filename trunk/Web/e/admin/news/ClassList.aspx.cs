@@ -22,6 +22,7 @@ namespace Web.e.admin.news
             {
                 string ids=WS.RequestString("id");
                 ClassView.Del(string.Format("id in ({0})",ids));
+                Voodoo.Cache.Cache.SetCache("_NewClassList", null);
             }
 
             if (!IsPostBack)

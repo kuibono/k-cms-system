@@ -222,10 +222,14 @@ namespace Web.e.admin.Book
         {
             string ids = WS.RequestString("id");
 
+
+
             #region 删除目录
             List<Voodoo.Model.Book> books = BookView.GetModelList(string.Format("id in ({0})", ids));
             foreach (var book in books)
             {
+                BookChapter firstChapter = BookChapterView.Find(string.Format("BookID={0}", book.ID.ToS()));
+
                 DirectoryInfo dir = new FileInfo(
                     Server.MapPath(
                         GetBookUrl(
@@ -237,6 +241,17 @@ namespace Web.e.admin.Book
                 if (dir.Exists)
                 {
                     dir.Delete(true);
+                }
+
+
+                DirectoryInfo dirTxt = new FileInfo(
+                    Server.MapPath(
+                        GetBookChapterTxtUrl(firstChapter, BookView.GetClass(book))
+                        )
+                        ).Directory;
+                if (dirTxt.Exists)
+                {
+                    dirTxt.Delete(true);
                 }
             }
             #endregion 删除目录
@@ -271,7 +286,7 @@ namespace Web.e.admin.Book
 
             }
 
-           
+
             CreatePage.GreateIndexPage();
             Js.Jump(url);
         }
