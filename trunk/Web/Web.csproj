@@ -105,6 +105,7 @@
     <Content Include="e\admin\news\ClassList.aspx" />
     <Content Include="e\admin\news\NewsEdit.aspx" />
     <Content Include="e\admin\news\NewsList.aspx" />
+    <Content Include="e\admin\system\Basement\FileManagement.aspx" />
     <Content Include="e\admin\system\friendlink\LinkEdit.aspx" />
     <Content Include="e\admin\system\friendlink\LinkList.aspx" />
     <Content Include="e\admin\system\SystemParameter\basic.aspx" />
@@ -660,6 +661,13 @@
     </Compile>
     <Compile Include="e\admin\question\QuestionList.aspx.designer.cs">
       <DependentUpon>QuestionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\system\Basement\FileManagement.aspx.cs">
+      <DependentUpon>FileManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\system\Basement\FileManagement.aspx.designer.cs">
+      <DependentUpon>FileManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\system\friendlink\LinkEdit.aspx.cs">
       <DependentUpon>LinkEdit.aspx</DependentUpon>

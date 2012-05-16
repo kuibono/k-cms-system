@@ -107,6 +107,10 @@ namespace Web.e.admin
             friend_link.Listeners.Click.Handler = "openpage('system/friendlink/LinkList.aspx')";
             _root_sys.Nodes.Add(friend_link);
 
+            Ext.Net.TreeNode file_manager = new Ext.Net.TreeNode("文件管理", Icon.MonitorEdit);
+            file_manager.Listeners.Click.Handler = "openpage('system/Basement/FileManagement.aspx')";
+            _root_sys.Nodes.Add(file_manager);
+
             Tree_Sys.Root.Add(_root_sys);//树根加进去
             #endregion
 
