@@ -465,6 +465,7 @@
     <Content Include="e\post\PostNews.aspx" />
     <Content Include="e\post\upload_json.aspx" />
     <Content Include="e\Rss.aspx" />
+    <Content Include="e\tool\BookOperate.aspx" />
     <Content Include="skin\movie\logo.gif" />
     <Content Include="skin\novel\btn.png" />
     <Content Include="skin\novel\ico.png" />
@@ -478,6 +479,7 @@
     <Content Include="skin\novel\vipmain.png" />
     <Content Include="skin\novel\x.png" />
     <Content Include="skin\script\ChapterCommon.js" />
+    <Content Include="skin\script\infocommon.js" />
     <Content Include="skin\script\TextFilter.js" />
     <Content Include="wap\Book\B.aspx" />
     <Content Include="wap\Book\C.aspx" />
@@ -1004,6 +1006,13 @@
     </Compile>
     <Compile Include="e\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\BookOperate.aspx.cs">
+      <DependentUpon>BookOperate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\BookOperate.aspx.designer.cs">
+      <DependentUpon>BookOperate.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\ChapterRead.aspx.cs">
       <DependentUpon>ChapterRead.aspx</DependentUpon>
