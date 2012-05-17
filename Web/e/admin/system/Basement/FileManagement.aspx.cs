@@ -27,7 +27,13 @@ namespace Web.e.admin.system.Basement
         /// </summary>
         protected void BindTree()
         {
-            TreeView1.Nodes.Add(AppendSubNode(new DirectoryInfo(Server.MapPath("~/"))));
+            var node=new TreeNode();
+            node.Text="root";
+            node.Value=Server.MapPath("~/");
+            
+            //AppendSubNode(new DirectoryInfo(Server.MapPath("~/")), node);
+            node.ChildNodes.Add(new TreeNode("正在加载"));
+            TreeView1.Nodes.Add(node);
         }
 
         /// <summary>
@@ -35,16 +41,11 @@ namespace Web.e.admin.system.Basement
         /// </summary>
         /// <param name="dir"></param>
         /// <returns></returns>
-        protected TreeNode AppendSubNode(DirectoryInfo dir)
+        protected void AppendSubNode(DirectoryInfo dir,TreeNode root)
         {
-            TreeNode root = new TreeNode();
-            root.Text = dir.Name;
-            root.Value = Server.MapPath("~/");
-
             var subdirs = dir.GetDirectories();
             foreach (var subdir in subdirs)
             {
-                //root.ChildNodes.Add(AppendSubNode(subdir));
                 TreeNode n = new TreeNode();
                 n.Text = subdir.Name;
                 n.Expanded = false;
@@ -52,7 +53,6 @@ namespace Web.e.admin.system.Basement
                 n.ChildNodes.Add(new TreeNode("正在加载"));
                 root.ChildNodes.Add(n);
             }
-
 
             var files = dir.GetFiles();
             foreach (var file in files)
@@ -63,16 +63,43 @@ namespace Web.e.admin.system.Basement
                 root.ChildNodes.Add(n);
 
             }
-            return root;
+
+            //TreeNode root = new TreeNode();
+            //root.Text = dir.Name;
+            //root.Value = Server.MapPath("~/");
+
+            //var subdirs = dir.GetDirectories();
+            //foreach (var subdir in subdirs)
+            //{
+            //    //root.ChildNodes.Add(AppendSubNode(subdir));
+            //    TreeNode n = new TreeNode();
+            //    n.Text = subdir.Name;
+            //    n.Expanded = false;
+            //    n.Value = subdir.FullName;
+            //    n.ChildNodes.Add(new TreeNode("正在加载"));
+            //    root.ChildNodes.Add(n);
+            //}
+
+
+            //var files = dir.GetFiles();
+            //foreach (var file in files)
+            //{
+            //    TreeNode n = new TreeNode();
+            //    n.Text = file.Name;
+            //    n.Value = file.FullName;
+            //    root.ChildNodes.Add(n);
+
+            //}
+            //return root;
         }
 
         protected void TreeView1_TreeNodeExpanded(object sender, TreeNodeEventArgs e)
         {
             if (e.Node.ChildNodes.Count > 0)
             {
-                //e.Node.ChildNodes.Clear();
+                e.Node.ChildNodes.Clear();
                 DirectoryInfo dir = new DirectoryInfo(e.Node.Value);
-                e.Node.ChildNodes.Add(AppendSubNode(dir));
+                AppendSubNode(dir,e.Node);
             }
         }
 
