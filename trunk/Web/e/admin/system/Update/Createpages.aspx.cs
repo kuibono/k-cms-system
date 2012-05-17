@@ -39,40 +39,69 @@ namespace Web.e.admin.system.Update
             }
 
             Js.AlertAndGoback("成功！");
-            
+
         }
 
         protected void btn_Content_Click(object sender, EventArgs e)
         {
             Response.Buffer = false;
-
+            Js.ScrollEnd();
             var newses = NewsView.GetModelList();
             newses = newses.Where(p => p.Audit).ToList();
             foreach (var n in newses)
             {
                 Response.Write(string.Format("正在生成内容页：{0}<br/>", n.Title));
-                CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
+                try
+                {
+                    CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
             }
 
             var imgs = ImageAlbumView.GetModelList();
             foreach (var img in imgs)
             {
-                Response.Write(string.Format("正在生成内容页：{0}<br/>", img.Title));
-                CreatePage.CreateContentPage(img, img.GetClass());
+                try
+                {
+                    Response.Write(string.Format("正在生成内容页：{0}<br/>", img.Title));
+                    CreatePage.CreateContentPage(img, img.GetClass());
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
             }
 
             var ques = QuestionView.GetModelList();
             foreach (var q in ques)
             {
-                Response.Write(string.Format("正在生成内容页：{0}<br/>", q.Title));
-                CreatePage.CreateContentPage(q, q.GetClass());
+                try
+                {
+                    Response.Write(string.Format("正在生成内容页：{0}<br/>", q.Title));
+                    CreatePage.CreateContentPage(q, q.GetClass());
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
             }
 
             var books = BookView.GetModelList();
             foreach (var b in books)
             {
-                Response.Write(string.Format("正在生成内容页：{0}<br/>", b.Title));
-                CreatePage.CreateContentPage(b, BookView.GetClass(b));
+                try
+                {
+                    Response.Write(string.Format("正在生成内容页：{0}<br/>", b.Title));
+                    CreatePage.CreateContentPage(b, BookView.GetClass(b));
+                    Js.ScrollEndStart();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
             }
 
             try
@@ -80,11 +109,19 @@ namespace Web.e.admin.system.Update
                 var movies = MovieInfoView.GetModelList();
                 foreach (var m in movies)
                 {
-                    Response.Write(string.Format("正在生成内容页：{0}<br/>", m.Title));
-                    CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+                    try
+                    {
+                        Response.Write(string.Format("正在生成内容页：{0}<br/>", m.Title));
+                        CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+                        Js.ScrollEnd();
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(string.Format("{0}<br/>", ex.Message));
+                    }
                 }
             }
-            catch{}
+            catch { }
 
             Js.AlertAndGoback("成功！");
         }
@@ -103,7 +140,7 @@ namespace Web.e.admin.system.Update
                     file.Delete();
                 }
 
-                DirectoryInfo[]  subdirs=dir.GetDirectories();
+                DirectoryInfo[] subdirs = dir.GetDirectories();
                 foreach (DirectoryInfo subdir in subdirs)
                 {
                     Response.Write(string.Format("正在删除目录：{0}<br/>", subdir.Name));
@@ -118,11 +155,21 @@ namespace Web.e.admin.system.Update
 
         protected void btn_Chapter_Click(object sender, EventArgs e)
         {
+            Response.Buffer = false;
             var chapters = BookChapterView.GetModelList();
             foreach (var c in chapters)
             {
-                Response.Write(string.Format("正在生成章节：{0}<br/>", c.Title));
-                CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
+                try
+                {
+                    Response.Write(string.Format("正在生成章节：{0}<br/>", c.Title));
+                    CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
+                    Js.ScrollEndStart();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
+
             }
 
             Js.AlertAndGoback("成功！");
@@ -139,7 +186,7 @@ namespace Web.e.admin.system.Update
 
         protected void btn_GenSitreMap_Click(object sender, EventArgs e)
         {
-            
+
 
             Voodoo.other.SEO.SiteMap sm = new Voodoo.other.SEO.SiteMap();
             sm.url = new List<PageInfo>();
@@ -148,22 +195,24 @@ namespace Web.e.admin.system.Update
             List<Voodoo.Model.Book> bs = BookView.GetModelList("id>0 order by UpdateTime desc", 100);
             foreach (Voodoo.Model.Book b in bs)
             {
-                sm.url.Add(new PageInfo() { 
-                    changefreq = "daily", 
-                    lastmod = b.UpdateTime, 
-                    loc = (SystemSetting.SiteUrl + BasePage.GetBookUrl(b, BookView.GetClass(b))).Replace("//Book/", "/Book/"), 
-                    priority = "0.8" 
+                sm.url.Add(new PageInfo()
+                {
+                    changefreq = "daily",
+                    lastmod = b.UpdateTime,
+                    loc = (SystemSetting.SiteUrl + BasePage.GetBookUrl(b, BookView.GetClass(b))).Replace("//Book/", "/Book/"),
+                    priority = "0.8"
                 });
             }
 
             List<BookChapter> bcs = BookChapterView.GetModelList("id>0 order by UpdateTime desc", 500);
             foreach (BookChapter bc in bcs)
             {
-                sm.url.Add(new PageInfo() { 
-                    changefreq = "monthly", 
+                sm.url.Add(new PageInfo()
+                {
+                    changefreq = "monthly",
                     lastmod = bc.UpdateTime,
                     loc = (SystemSetting.SiteUrl + BasePage.GetBookChapterUrl(bc, BookView.GetClass(bc))).Replace("//Book/", "/Book/"),
-                    priority = "0.7" 
+                    priority = "0.7"
                 });
             }
 
@@ -181,7 +230,7 @@ namespace Web.e.admin.system.Update
             }
 
             List<MovieUrlBaidu> bs = MovieUrlBaiduView.GetModelList();
-            foreach(var b in bs)
+            foreach (var b in bs)
             {
                 Response.Write(string.Format("正在生成百度页面：{0}<br/>", b.Title));
                 CreatePage.CreateDramapage(b, MovieInfoView.GetClass(b));

@@ -29,12 +29,12 @@
                         HorizontalPadding="0px" VerticalPadding="0px" />
                 </asp:treeview>
                 </td>
-                <td class="style1">
+                <td class="style1" height="14">
                     <asp:Label ID="lb_Path" runat="server" Text=""></asp:Label><asp:Button ID="btn_Save" runat="server" onclick="btn_Save_Click" Text="保存" />
                 </td>
             </tr>
             <tr>
-                <td class="style1">
+                <td class="style1" height="14">
                     <asp:FileUpload ID="FileUpload1" runat="server" />
                     <asp:Button ID="btn_Upload" runat="server" onclick="btn_Upload_Click" 
                         Text="上传" />
