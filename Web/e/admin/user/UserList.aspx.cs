@@ -22,10 +22,15 @@ namespace Web.e.admin.user
         protected string url = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (WS.RequestString("action") == "del")
+            {
+                Button1_Click(sender,e);
+            }
             if (!IsPostBack)
             {
                 BindList();
             }
+            
         }
 
         protected void BindList()

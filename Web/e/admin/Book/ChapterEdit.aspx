@@ -72,7 +72,7 @@
                         是否启用
                     </td>
                     <td>
-                        <asp:CheckBox ID="chk_IsEnable" runat="server" />
+                        <asp:CheckBox ID="chk_IsEnable" runat="server" Checked="true" />
                     </td>
                 </tr>
                 <tr>
@@ -88,7 +88,7 @@
                         是否免费章节
                     </td>
                     <td>
-                        <asp:CheckBox ID="chk_IsFree" runat="server" />
+                        <asp:CheckBox ID="chk_IsFree" runat="server" Checked="true" />
                     </td>
                 </tr>
                 <tr>
