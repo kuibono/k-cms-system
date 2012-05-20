@@ -17,7 +17,7 @@ namespace Voodoo.Basement
     {
         protected override void OnInit(EventArgs e)
         {
-            if (WS.GetIP() == "127.0.0.1")
+            if (WS.GetIP() == "::1")
             {
                 //本地不做验证
             }

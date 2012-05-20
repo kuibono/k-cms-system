@@ -136,7 +136,11 @@ namespace Voodoo.Basement
             string Content = "";
             Content = GetTempateString(1, TempType.首页);
 
+            //替换三层公共模版变量
             Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+
 
             Content = ReplaceSystemSetting(Content);
 
@@ -185,6 +189,9 @@ namespace Voodoo.Basement
             Content = GetTempateString(tmpid, TempType.内容);
 
             Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+
 
             Content = ReplaceSystemSetting(Content);
 
@@ -275,6 +282,8 @@ namespace Voodoo.Basement
 
             Content = GetTempateString(tmpid, TempType.内容);
 
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
@@ -383,6 +392,8 @@ namespace Voodoo.Basement
 
 
             Content = GetTempateString(tmpid, TempType.内容);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
 
             Content = ReplacePublicTemplate(Content);
 
@@ -481,6 +492,8 @@ namespace Voodoo.Basement
 
 
             Content = GetTempateString(tmpid, TempType.内容);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
 
             Content = ReplacePublicTemplate(Content);
 
@@ -606,6 +619,8 @@ namespace Voodoo.Basement
             Content = GetTempateString(tmpid, TempType.内容);
 
             Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
 
@@ -726,6 +741,8 @@ namespace Voodoo.Basement
 
             Content = GetTempateString(1, TempType.快播页面);
 
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
@@ -851,6 +868,8 @@ namespace Voodoo.Basement
             Content = GetTempateString(1, TempType.百度影音页面);
 
             Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
 
@@ -975,6 +994,8 @@ namespace Voodoo.Basement
             Content = GetTempateString(1, TempType.单集列表页面);
 
             Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
 
@@ -1048,6 +1069,8 @@ namespace Voodoo.Basement
             string FileName = BasePage.GetBookChapterUrl(cp, cls);
             string Content = GetTempateString(1, TempType.小说章节);
 
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
@@ -1194,6 +1217,8 @@ namespace Voodoo.Basement
 
             Content = GetTempateString(temp.ID, TempType.列表);
 
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
@@ -1472,6 +1497,10 @@ namespace Voodoo.Basement
             int recordCount = 0;
 
             string Content = GetTempateString(1, TempType.全站搜索);
+
+            //替换三层公共模版变量
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
@@ -1722,6 +1751,9 @@ namespace Voodoo.Basement
             int recordCount = 0;
 
             string Content = GetTempateString(1, TempType.全站搜索);
+
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
             Content = ReplacePublicTemplate(Content);
 
             Content = ReplaceSystemSetting(Content);
