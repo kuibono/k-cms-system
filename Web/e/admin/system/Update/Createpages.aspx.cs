@@ -33,9 +33,18 @@ namespace Web.e.admin.system.Update
         {
             var cls = ClassView.GetModelList();
             //cls = cls.Where(p => p.IsLeafClass).ToList();
+            Response.Buffer = false;
             foreach (var c in cls)
             {
-                CreatePage.CreateListPage(c, 1);
+                try
+                {
+                    Response.Write(string.Format("正在生成列表页：{0}<br/>", c.ClassName));
+                    CreatePage.CreateListPage(c, 1);
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                }
             }
 
             Js.AlertAndGoback("成功！");
@@ -216,12 +225,14 @@ namespace Web.e.admin.system.Update
                 });
             }
 
+
             sm.SaveSiteMap(Server.MapPath("~/sitemapxml/index.xml"));
 
         }
 
         protected void btn_Drama_Click(object sender, EventArgs e)
         {
+            Response.Buffer = false;
             List<MovieUrlKuaib> ks = MovieUrlKuaibView.GetModelList();
             foreach (var k in ks)
             {

@@ -45,14 +45,14 @@ a{text-decoration:none}
 #aimizi_d{width:966px;height:38px; position:relative; background:url(g_topbg_n.jpg) repeat-x 0 -105px;}
 #aimizi_d_l{width:1px; height:38px; position:absolute; left:0; top:0;background:url(henxi.jpg);}
 #aimizi_d_r{width:1px; height:38px; position:absolute; right:0; top:0;background:url(henxi.jpg);}
-#aimizi_d .bt{position:absolute; height:38px;OVERFLOW: hidden; right:0px;top:0px;}
-#aimizi_d .bt li{ float:left; padding:9px 13px 0px 8px;list-style:none;}
+#aimizi_d .bt{position:absolute; height:38px; top:0px;}
+#aimizi_d .bt li{ float:left; padding:9px 13px 0px 8px;list-style:none; height:38px;}
 #aimizi_d .bt a{ color:#FFF; display:inline-block;font-size:14px;OVERFLOW: hidden;padding:4px 2px 1px 2px; font-weight:bold;}
 #aimizi_d .bt a:hover{ text-decoration:none;}
 
 #aimizidy{width:964px;height:33px; background:url(drepeat.gif) repeat-x 0 -337px;border-left:1px solid #DCDCDC;border-right:1px solid #DCDCDC;border-bottom:1px solid #DCDCDC;margin-bottom:3px;}
 #aimizidy .dy{display:inline-block;OVERFLOW: hidden;padding:3px 4px 0px 5px;float:left; width:635px; height:21px; padding-top:9px;}
-#aimizidy .dy ul {overflow: hidden; color: #CCCCCC; font-size: 12px;background: url(dhj.gif) no-repeat 10px 0px;letter-spacing: 2px;}
+#aimizidy .dy ul {overflow: hidden; color: #CCCCCC; font-size: 12px;background: url(dhj.gif) no-repeat 10px 0px;letter-spacing: 2px;text-align: left;padding-left: 30px;}
 #aimizidy .dy ul a{color: #000000; overflow: hidden;font-size: 13px;display:inline-block;OVERFLOW: hidden;padding:2px 4px 0px 5px;}
 #aimizidy .dy ul a:hover{color:#FF3300;text-decoration:none;}
 #aimizidy .ys{text-align:right;padding-right:9px;float:right; height:21px; padding-top:6px;color: #CCCCCC;}
@@ -164,7 +164,7 @@ a{text-decoration:none}
 #aimizi_l{text-align:left;color:#CCC;margin:12px 5px 12px 22px;}
 #aimizi_l a{margin:0px 8px 0px 5px;color:#666;}
 
-#aimizi_foot_a{background:url(Bg1.png) 0 0 repeat-x #ebebeb; border:1px solid #e2e2e2;margin-top:18px;overflow:hidden;height:100px;}
+#aimizi_foot_a{background:url(Bg1.png) 0 0 repeat-x #ebebeb; border:1px solid #e2e2e2;margin-top:18px;overflow:hidden;height:100px; display:block;float:none;margin: 0 auto;clear: both;}
 #aimizi_foot_b{width:962px; margin:0 auto;}
 #aimizi_foot_b .sm{ margin-top:12px;}
 #aimizi_foot_b .sm .z{ float:left;margin-top:3px;}
@@ -180,3 +180,126 @@ a{text-decoration:none}
 #aimizi_foot_b .sm .y .t img{ vertical-align:middle;}
 #aimizi_foot_b p{ line-height:210%; color:#666;}
 #aimizi_foot_b p a{ color:#333;}
+
+.type_list
+{
+    width:712px;
+    height:auto;
+    padding:9px 0 9px 0;
+}
+.type_list ul li
+{
+    height:auto;
+    line-height:auto;
+    width:120px;
+    margin:0 6px 6px;
+}
+.type_list ul li img
+{border: 0;
+width: 120px;
+height: 142px;
+}
+.aimizi_zb_x
+{
+    height:auto;
+}
+.type_list ul li h5 {
+    width: 120px;
+    height: 22px;
+    line-height: 22px;
+    padding-top: 2px;
+    background: #555;
+    filter: alpha(opacity=82);
+    opacity: 0.9;
+    font-size: 12px;
+    margin-top: -31px;
+    color: white;
+    font-weight: normal;
+    padding-left:5px;
+}
+.type_list ul li p {
+padding: 6px 0px 6px;
+}
+
+.playbox
+{
+    background-image:url(bgx02.gif);
+    background-repeat:repeat-x;
+    min-height:500px;
+    width:100%;
+    text-align:center;
+}
+#qvod2011
+{
+    width:100%;
+    text-align:center;
+    text-align:-webkit-center;
+}
+.playerarea
+{
+    float:none;
+}
+#btn_search
+{
+    cursor: pointer;
+    width: 40px;
+    height: 21px;
+    border: 0;
+    background: none;
+    color: white;
+    line-height: 25px;
+    background-color:#f00;
+    border:solid 1px #888;
+}
+#txt_key
+{
+    width: 140px;
+    height: 18px;
+    padding: 0 0 1px 5px;
+    border: 0;
+    color: #C1C1C1;
+    line-height: 25px;
+    background: none;
+    border:solid 1px #888;
+}
+.searchform
+{
+    position: relative;
+    z-index: 1;
+}
+.aimizi_kd_tj p
+{
+    text-align:left;
+    padding:5px 5px 5px 5px ;
+}
+ul.bt li:hover ul
+{
+    display:block;
+}
+
+.bt li
+{
+    position: relative;
+}
+.bt li ul
+{
+    background-color:transparent;
+    display:none;
+    position:absolute;
+    width:800px;
+    top:34px;
+    padding:0;    
+    left:-50px;
+}
+.bt li ul li
+{
+    float:left;
+}
+#aimizi_d .bt li ul li span a
+{
+    color:#f30;
+}
+#header
+{
+    text-align:left;
+}
