@@ -28,6 +28,18 @@ namespace Web.e
                 });
             }
 
+            var movies = MovieInfoView.GetModelList();
+            foreach (var m in movies)
+            {
+                items.Add(new Voodoo.other.SEO.RssItem()
+                {
+                    Title = m.Title,
+                    PutTime = m.UpdateTime,
+                    Link = SystemSetting.SiteUrl + GetMovieUrl(m,MovieInfoView.GetClass(m)),// GetBookChapterUrl(chapter, BookView.GetClass(chapter)),
+                    Description = m.Title + "Update to :" + m.LastDramaTitle + ", from chanel" + m.ClassName+", Intro:"+m.Intro
+                });
+            }
+
             Response.Clear();
             Voodoo.other.SEO.Rss.GetRss(items, SystemSetting.SiteName, SystemSetting.SiteUrl, SystemSetting.Description, SystemSetting.Copyright);
         }
