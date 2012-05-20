@@ -135,13 +135,13 @@ namespace Web.e.tool
 
                 //生成
                  Response.Write("生成<br/>");
-                CreatePage.CreateDramapage(mk,cls);
+                //CreatePage.CreateDramapage(mk,cls);
 
-                CreatePage.CreateContentPage(mv,cls);
+                //CreatePage.CreateContentPage(mv,cls);
 
-                CreatePage.CreateListPage(cls,0);
+                //CreatePage.CreateListPage(cls,0);
 
-                CreatePage.GreateIndexPage();
+                //CreatePage.GreateIndexPage();
 
                 Response.Write(title+"-完成<br/><br/><br/>");
 

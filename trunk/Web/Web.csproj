@@ -466,7 +466,39 @@
     <Content Include="e\post\upload_json.aspx" />
     <Content Include="e\Rss.aspx" />
     <Content Include="e\tool\BookOperate.aspx" />
+    <Content Include="e\tool\MovieCollector.aspx" />
+    <Content Include="skin\movie\aimiziso.gif" />
+    <Content Include="skin\movie\bf.gif" />
+    <Content Include="skin\movie\bg05.gif" />
+    <Content Include="skin\movie\bg1.png" />
+    <Content Include="skin\movie\bg2.png" />
+    <Content Include="skin\movie\bgx02.gif" />
+    <Content Include="skin\movie\bodybg.png" />
+    <Content Include="skin\movie\bodybg2.png" />
+    <Content Include="skin\movie\bylm2.gif" />
+    <Content Include="skin\movie\dhj.gif" />
+    <Content Include="skin\movie\dhj2.gif" />
+    <Content Include="skin\movie\drepeat.gif" />
+    <Content Include="skin\movie\fenxiang.gif" />
+    <Content Include="skin\movie\ffzm.gif" />
+    <Content Include="skin\movie\fjrk.png" />
+    <Content Include="skin\movie\fxiang.gif" />
+    <Content Include="skin\movie\g_topbg_n.jpg" />
+    <Content Include="skin\movie\henxi.jpg" />
+    <Content Include="skin\movie\hhh.jpg" />
+    <Content Include="skin\movie\ico_01.gif" />
+    <Content Include="skin\movie\liehao.gif" />
+    <Content Include="skin\movie\liere.gif" />
     <Content Include="skin\movie\logo.gif" />
+    <Content Include="skin\movie\neirong.css" />
+    <Content Include="skin\movie\repeat.gif" />
+    <Content Include="skin\movie\sc.gif" />
+    <Content Include="skin\movie\sh_2.jpg" />
+    <Content Include="skin\movie\ss.png" />
+    <Content Include="skin\movie\whvod.css" />
+    <Content Include="skin\movie\whvodtu.css" />
+    <Content Include="skin\movie\xnav.gif" />
+    <Content Include="skin\movie\xuanz.gif" />
     <Content Include="skin\novel\btn.png" />
     <Content Include="skin\novel\ico.png" />
     <Content Include="skin\novel\index.bak.txt" />
@@ -480,6 +512,7 @@
     <Content Include="skin\novel\x.png" />
     <Content Include="skin\script\ChapterCommon.js" />
     <Content Include="skin\script\infocommon.js" />
+    <Content Include="skin\script\public.js" />
     <Content Include="skin\script\TextFilter.js" />
     <Content Include="wap\Book\B.aspx" />
     <Content Include="wap\Book\C.aspx" />
@@ -1041,6 +1074,13 @@
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\MovieCollector.aspx.cs">
+      <DependentUpon>MovieCollector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\MovieCollector.aspx.designer.cs">
+      <DependentUpon>MovieCollector.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
