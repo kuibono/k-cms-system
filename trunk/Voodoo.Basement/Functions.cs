@@ -370,7 +370,7 @@ namespace Voodoo.Basement
                     }
                     else
                     {
-                        sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", "javascript:void(0)", cl.ClassName));
+                        sb.AppendLine(string.Format("<span><a href=\"{0}\">{1}</a></span>", BasePage.GetClassUrl(cl), cl.ClassName));
                     }
 
 
@@ -706,6 +706,7 @@ namespace Voodoo.Basement
                 item = item.Replace("{replycount}", m.ReplyCount.ToS());
                 item = item.Replace("{scoreavg}", m.ScoreAvg.ToS());
                 item = item.Replace("{rownum}", i.ToS());
+                item = item.Replace("{index}", (i-1).ToS());
                 sb.Append(item);
 
             }
