@@ -112,6 +112,7 @@
     <Compile Include="Auto\UserGroup.cs" />
     <Compile Include="Auto\UserRerm.cs" />
     <Compile Include="Auto\Zt.cs" />
+    <Compile Include="MovieInfo.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
