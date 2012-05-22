@@ -21,6 +21,71 @@ namespace Web.e.tool
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //获取所有电影的概况
+
+            Response.Buffer = false;
+            Js.ScrollEnd();
+
+            #region 打开列表页面
+            Response.Write(string.Format("打开列表页面获得书籍信息<br />"));
+            Js.ScrollEndStart();
+
+            var Movies = GetAllMovies("utf-8",
+                "http://kuaib.tv.sohu.com/html/more_list31.htm",
+                "<a href='(?<key>[^<>]*?)'>下一页</a>",
+                "<div class=\"vInfo\">[\\s]*?<div class=\"vPic\">[\\s\\S]*?<img src=\"(?<image>.*?)\".*?/>[\\s\\S]*?<div class=\"vTxt\">[\\s]*?<h4>[\\s]*?<a href=\"(?<url>.*?)\" target=\"_blank\">(?<title>.*?)</a>[\\s\\S]*?<p>主演：<font class=\"highlight\"></font>(?<actors>.*?)</p>[\\s\\S]*?<p>导演：<font class=\"highlight\"></font>(?<director>.*?)</p>[\\S\\s]*?<dd>年份：<a.*?>(?<publicyear>.*?)</a></dd>[\\s\\S]*?<p class=\"detail\".*?>(?<intro>[\\s\\S]*?)<a href=\"",
+                "其他",
+                false);
+            #endregion
+
+            #region 补充电影的详细内容 剧集
+
+            Response.Write(string.Format("获取影视详细内容<br />"));
+            Js.ScrollEndStart();
+
+            var NewMovies = new List<MovieInfo>();
+            foreach (var m in Movies)
+            {
+                var nm = GetMovieInfo("utf-8",
+                    m,
+                    "<div id=\"introID\">[\\s]*?<p>(?<intro>.*?)</p>[\\s\\S]*?var VRS_AREA=\"(?<location>.*?)\";",
+                    "<div class=\"pList clear\" id=\"playContF\">(?<key>[\\s\\S]*?)</div>",
+                    "",
+                    "<li.*?><a target=\"_self\" href=\"javascript:\" onclick=\".*?\" >(?<title>.*?)</a></li>[\\s]*?<input type=\"hidden\" id='.*?' value=\"(?<url>.*?)\" />",
+                    "");
+                NewMovies.Add(nm);
+            }
+
+            Movies = NewMovies;
+
+            #endregion
+
+            #region 补充带单集播放页面的资源URL
+
+
+            #endregion
+
+            #region 补充资源URL单独存放的单集信息
+
+            #endregion
+
+            #region 保存
+
+            foreach (var m in Movies)
+            {
+                SaveMovie(m);
+            }
+
+            #endregion 
+
+        }
+
+        #region 旧的电影采集
+        /// <summary>
+        /// 旧的电影采集
+        /// </summary>
+        protected void OldCollect()
+        {
             Response.Buffer = false;
 
 
@@ -157,8 +222,8 @@ namespace Web.e.tool
                 goto openurl;
             }
 
-
         }
+        #endregion
 
         #region 获取所有剧集的信息
         /// <summary>
@@ -169,7 +234,7 @@ namespace Web.e.tool
         /// <param name="NextUrlRule">下一页规则</param>
         /// <param name="InfoRule">信息规则</param>
         /// <returns></returns>
-        protected List<MovieInfo> GetAllMovies(string Encoding, string ListPageUrl, string NextUrlRule, string InfoRule)
+        protected List<MovieInfo> GetAllMovies(string Encoding, string ListPageUrl, string NextUrlRule, string InfoRule, string DefaultClass, bool IsMovie)
         {
             List<MovieInfo> result = new List<MovieInfo>();
 
@@ -181,7 +246,7 @@ namespace Web.e.tool
                 result.Add(new MovieInfo()
                 {
                     Actors = match_moviesinfo.Groups["actors"].Value,
-                    ClassName = match_moviesinfo.Groups["class"].Value,
+                    ClassName = match_moviesinfo.Groups["class"].Value.IsNull(DefaultClass),
                     Director = match_moviesinfo.Groups["director"].Value,
                     FaceImage = match_moviesinfo.Groups["image"].Value.AppendToDomain(ListPageUrl),
                     Intro = match_moviesinfo.Groups["intro"].Value,
@@ -189,7 +254,8 @@ namespace Web.e.tool
                     PublicYear = match_moviesinfo.Groups["publicyear"].Value,
                     Tags = match_moviesinfo.Groups["tags"].Value,
                     Title = match_moviesinfo.Groups["title"].Value,
-                    Url = match_moviesinfo.Groups["url"].Value.AppendToDomain(ListPageUrl)
+                    Url = match_moviesinfo.Groups["url"].Value.AppendToDomain(ListPageUrl),
+                    IsMove = IsMovie
                 });
 
                 match_moviesinfo = match_moviesinfo.NextMatch();
@@ -221,6 +287,8 @@ namespace Web.e.tool
         /// <returns></returns>
         protected MovieInfo GetMovieInfo(string Encoding, MovieInfo mv, string InfoRule, string KuaibAreaRule, string BaiduAreaRule, string KuaibDramaRule, string BaiduDramaRule)
         {
+            Response.Write(string.Format("打开信息页面：{0}<br />",mv.Title));
+            Js.ScrollEndStart();
             string html = Url.GetHtml(mv.Url, Encoding);
             mv.Html = html;
             Match m_info = html.GetMatchGroup(InfoRule);
@@ -247,9 +315,9 @@ namespace Web.e.tool
 
             #region 获取快播剧集地址
             Match m_kuaiboArea = html.GetMatchGroup(KuaibAreaRule);
-            if (m_kuaiboArea.Success)
+            if (m_kuaiboArea.Success && KuaibAreaRule.IsNullOrEmpty() == false)
             {
-                Match m_drama = html.GetMatchGroup(m_kuaiboArea.Groups[1].Value);
+                Match m_drama = m_kuaiboArea.Groups[1].Value.GetMatchGroup(KuaibDramaRule);
                 while (m_drama.Success)
                 {
                     mv.KuaiboDramas.Add(new MovieDrama()
@@ -266,9 +334,9 @@ namespace Web.e.tool
 
             #region 获取百度影音剧集地址
             Match m_baiduArea = html.GetMatchGroup(BaiduAreaRule);
-            if (m_baiduArea.Success)
+            if (m_baiduArea.Success && BaiduAreaRule.IsNullOrEmpty() == false)
             {
-                Match m_drama = html.GetMatchGroup(m_kuaiboArea.Groups[1].Value);
+                Match m_drama = m_kuaiboArea.Groups[1].Value.GetMatchGroup(BaiduDramaRule);
                 while (m_drama.Success)
                 {
                     mv.BaiduDramas.Add(new MovieDrama()
@@ -288,6 +356,246 @@ namespace Web.e.tool
         }
 
         #endregion
+
+        #region 获取单集资源地址
+        protected MovieInfo GetMovieDrama(string Encoding, MovieInfo mv, string BaiduUrlRule, string KuaibUrlRule)
+        {
+            #region 获取百度Url
+            foreach (var drama in mv.BaiduDramas)
+            {
+                Response.Write(string.Format("获取百度URL:{0}<br />" ,drama.Title));
+                Js.ScrollEndStart();
+
+                if (drama.Url.IsNullOrEmpty() == false)
+                {
+                    continue;
+                }
+                else
+                {
+                    string html = Url.GetHtml(drama.PlayUrl, Encoding);
+                    Match m_url = html.GetMatchGroup(BaiduUrlRule);
+                    if (m_url.Success)
+                    {
+                        drama.Url = m_url.Groups["Url"].Value;
+                        drama.SourceDataUrl = m_url.Groups["source"].Value;
+                    }
+                }
+            }
+            #endregion
+
+            #region 获取快播Url
+            foreach (var drama in mv.KuaiboDramas)
+            {
+                Response.Write(string.Format("获取快播URL:{0}<br />", drama.Title));
+                Js.ScrollEndStart();
+
+                if (drama.Url.IsNullOrEmpty() == false)
+                {
+                    continue;
+                }
+                else
+                {
+                    string html = Url.GetHtml(drama.PlayUrl, Encoding);
+                    Match m_url = html.GetMatchGroup(KuaibUrlRule);
+                    if (m_url.Success)
+                    {
+                        drama.Url = m_url.Groups[1].Value;
+                        drama.SourceDataUrl = m_url.Groups["source"].Value;
+                    }
+                }
+            }
+            #endregion
+
+
+            return mv;
+        }
+
+        #endregion
+
+        #region 获取资源URL单独存放的资源
+        /// <summary>
+        /// 获取资源URL单独存放的资源
+        /// </summary>
+        /// <param name="Encoding"></param>
+        /// <param name="mv"></param>
+        /// <param name="BaiduUrlRule"></param>
+        /// <param name="KuaiboUrlRule"></param>
+        /// <param name="UrlEncoding"></param>
+        /// <returns></returns>
+        protected MovieInfo GetMovieSource(string Encoding, MovieInfo mv, string BaiduUrlRule, string KuaiboUrlRule)
+        {
+            foreach (var drama in mv.KuaiboDramas)
+            {
+                Response.Write(string.Format("打开资源脚本:{0}<br />", drama.Title));
+                Js.ScrollEndStart();
+
+                string html = Url.GetHtml(drama.SourceDataUrl, Encoding);
+                Match m_source = html.GetMatchGroup(KuaiboUrlRule);
+                if (m_source.Success)
+                {
+                    Response.Write(string.Format("成功！:-D<br />"));
+                    Js.ScrollEndStart();
+                    drama.Url = m_source.Groups[1].Value.UrlDecode(System.Text.Encoding.Unicode);
+                }
+            }
+            foreach (var drama in mv.BaiduDramas)
+            {
+                Response.Write(string.Format("打开资源脚本:{0}<br />", drama.Title));
+                Js.ScrollEndStart();
+                string html = Url.GetHtml(drama.SourceDataUrl, Encoding);
+                Match m_source = html.GetMatchGroup(BaiduUrlRule);
+                if (m_source.Success)
+                {
+                    Response.Write(string.Format("成功！:-D<br />"));
+                    Js.ScrollEndStart();
+                    drama.Url = m_source.Groups[1].Value.UrlDecode(System.Text.Encoding.Unicode);
+                }
+            }
+
+            return mv;
+        }
+        #endregion
+
+        #region 保存影视信息
+        /// <summary>
+        /// 保存影视信息
+        /// </summary>
+        /// <param name="mv"></param>
+        protected void SaveMovie(MovieInfo mv)
+        {
+            #region 处理分类
+            Class cls = ClassView.Find(string.Format("ClassName=N'{0}'", mv.ClassName));
+            if (cls.ID <= 0)
+            {
+                cls.IsLeafClass = true;
+                cls.Alter = mv.ClassName;
+                cls.ClassForder = mv.ClassName;
+                cls.ShowInNav = true;
+                cls.ParentID = 0;
+                cls.ClassName = mv.ClassName;
+                cls.ModelID = 6;
+
+                ClassView.Insert(cls);
+            }
+            mv.ClassID = cls.ID;
+            #endregion
+
+            #region 保存影视
+            MovieInfo sysMv = MovieInfoView.Find(string.Format("Title=N'{0}' and ClassName=N'{1}'", mv.Title, mv.ClassName));
+            if (sysMv.Id <= 0)
+            {
+                sysMv = mv;
+                sysMv.ClickCount = 0;
+                sysMv.Enable = true;
+                sysMv.InsertTime = DateTime.UtcNow.AddHours(8);
+                sysMv.ReplyCount = 0;
+                sysMv.ScoreAvg = 10;
+                sysMv.ScoreTime = 0;//评分次数
+                sysMv.Status = 0;
+                sysMv.TjCount = 0;
+                sysMv.UpdateTime = DateTime.UtcNow.AddHours(8);
+
+                MovieInfoView.Insert(sysMv);
+            }
+            else
+            {
+                sysMv.BaiduDramas = mv.BaiduDramas;
+                sysMv.KuaiboDramas = mv.KuaiboDramas;
+            }
+            #endregion
+
+            #region 下载封面
+            try
+            {
+                Url.DownFile(sysMv.FaceImage, Server.MapPath(string.Format("~/u/MoviekFace/{0}.jpg", sysMv.Id)));
+                sysMv.FaceImage = string.Format("/u/MoviekFace/{0}.jpg", sysMv.Id);
+
+            }
+            catch
+            {
+                sysMv.FaceImage = "/u/MoviekFace/0.jpg";
+            }
+
+            MovieInfoView.Update(sysMv);
+            #endregion
+
+            #region 保存单集资源
+
+            foreach (var drama in sysMv.BaiduDramas)
+            {
+                var sysDrama = MovieUrlBaiduView.Find(string.Format("MovieID={0} and Title=M'{0}' ", sysMv.Id, drama.Title));
+                if (sysDrama.Id <= 0)
+                {
+                    sysDrama.Title = drama.Title;
+                    sysDrama.Url = drama.Url;
+
+                    sysDrama.Enable = true;
+                    sysDrama.MovieID = sysMv.Id;
+                    sysDrama.MovieTitle = sysMv.Title;
+                    sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
+
+                    MovieUrlBaiduView.Insert(sysDrama);
+
+                    sysMv.LastDramaTitle = sysDrama.Title;
+                    sysMv.LastDramaID = sysDrama.Id;
+                    MovieInfoView.Update(sysMv);
+
+                    CreatePage.CreateDramapage(sysDrama, cls);//生成
+
+                    Response.Write(string.Format("百度影音《{0}》《{1}》保存成功！:-D<br />",sysDrama.MovieTitle,sysDrama.Title)); 
+                }
+                else
+                {
+                    Response.Write(string.Format("已经存在%>_<%<br />")); 
+                }
+            }
+
+            foreach (var drama in sysMv.KuaiboDramas)
+            {
+                var sysDrama = MovieUrlKuaibView.Find(string.Format("MovieID={0} and Title=N'{0}' ", sysMv.Id, drama.Title));
+                if (sysDrama.Id <= 0)
+                {
+                    sysDrama.Title = drama.Title;
+                    sysDrama.Url = drama.Url;
+
+                    sysDrama.Enable = true;
+                    sysDrama.MovieID = sysMv.Id;
+                    sysDrama.MovieTitle = sysMv.Title;
+                    sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
+
+                    MovieUrlKuaibView.Insert(sysDrama);
+
+                    sysMv.LastDramaTitle = sysDrama.Title;
+                    sysMv.LastDramaID = sysDrama.Id;
+                    MovieInfoView.Update(sysMv);
+
+                    CreatePage.CreateDramapage(sysDrama, cls);
+
+                    Response.Write(string.Format("快播《{0}》《{1}》保存成功！:-D<br />", sysDrama.MovieTitle, sysDrama.Title));
+                }
+                else
+                {
+                    Response.Write(string.Format("已经存在%>_<%<br />"));
+                }
+            }
+
+
+            #endregion
+
+            #region 生成
+
+            Response.Write(string.Format("生成《{0}》信息页<br />",sysMv.Title));
+            CreatePage.CreateContentPage(sysMv, cls);
+
+            Response.Write(string.Format("生成“{0}”分类<br />", cls.ClassName));
+            CreatePage.CreateListPage(cls, 1);
+
+            #endregion
+
+
+        }
+        #endregion 保存影视信息
+
     }
 
     public class CollectRule
