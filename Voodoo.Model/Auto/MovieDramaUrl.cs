@@ -55,6 +55,8 @@ namespace Voodoo.Model
 		/// 
 		/// </summary>
 		public string Url{get ; set; }
+
+        public string SourceSite { get; set; }
 		
 		///实体复制
 		public MovieDramaUrl Clone()
