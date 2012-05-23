@@ -467,6 +467,7 @@
     <Content Include="e\Rss.aspx" />
     <Content Include="e\tool\BookOperate.aspx" />
     <Content Include="e\tool\MovieCollector.aspx" />
+    <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="skin\movie\aimiziso.gif" />
     <Content Include="skin\movie\bf.gif" />
     <Content Include="skin\movie\bg05.gif" />
@@ -1081,6 +1082,13 @@
     </Compile>
     <Compile Include="e\tool\MovieCollector.aspx.designer.cs">
       <DependentUpon>MovieCollector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\MovieRules.aspx.cs">
+      <DependentUpon>MovieRules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\MovieRules.aspx.designer.cs">
+      <DependentUpon>MovieRules.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">

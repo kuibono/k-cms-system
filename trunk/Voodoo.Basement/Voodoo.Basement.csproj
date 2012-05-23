@@ -81,6 +81,7 @@
     <Compile Include="ClassAction.cs" />
     <Compile Include="Client\BookHelper.cs" />
     <Compile Include="Client\RpcBookHelper.cs" />
+    <Compile Include="Collect\MovieRule.cs" />
     <Compile Include="CreatePage.cs" />
     <Compile Include="ExtendClass.cs" />
     <Compile Include="Functions.cs" />

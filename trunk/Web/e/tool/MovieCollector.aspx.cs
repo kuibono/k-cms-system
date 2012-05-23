@@ -376,7 +376,7 @@ namespace Web.e.tool
                     Match m_url = html.GetMatchGroup(BaiduUrlRule);
                     if (m_url.Success)
                     {
-                        drama.Url = m_url.Groups["Url"].Value;
+                        drama.Url = m_url.Groups["url"].Value;
                         drama.SourceDataUrl = m_url.Groups["source"].Value.AppendToDomain(drama.Url);
                     }
                 }
@@ -400,7 +400,7 @@ namespace Web.e.tool
                     Match m_url = html.GetMatchGroup(KuaibUrlRule);
                     if (m_url.Success)
                     {
-                        drama.Url = m_url.Groups[1].Value;
+                        drama.Url = m_url.Groups["url"].Value;
                         drama.SourceDataUrl = m_url.Groups["source"].Value.AppendToDomain(drama.Url);
                     }
                 }
