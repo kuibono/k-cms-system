@@ -13,6 +13,8 @@ using Voodoo.DAL;
 using Voodoo.Net;
 using Voodoo.Basement;
 using Voodoo.Basement.Collect;
+using System.IO;
+
 
 namespace Web.e.tool
 {
@@ -21,62 +23,81 @@ namespace Web.e.tool
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //获取所有电影的概况
-
             Response.Buffer = false;
             Js.ScrollEnd();
 
-            #region 打开列表页面
-            Response.Write(string.Format("打开列表页面获得书籍信息<br />"));
-            Js.ScrollEndStart();
+            #region 注释 
+            //获取所有电影的概况
 
-            var Movies = GetAllMovies("utf-8",
-                "http://kuaib.tv.sohu.com/html/more_list31.htm",
-                "<a href='(?<key>[^<>]*?)'>下一页</a>",
-                "<div class=\"vInfo\">[\\s]*?<div class=\"vPic\">[\\s\\S]*?<img src=\"(?<image>.*?)\".*?/>[\\s\\S]*?<div class=\"vTxt\">[\\s]*?<h4>[\\s]*?<a href=\"(?<url>.*?)\" target=\"_blank\">(?<title>.*?)</a>[\\s\\S]*?<p>主演：<font class=\"highlight\"></font>(?<actors>.*?)</p>[\\s\\S]*?<p>导演：<font class=\"highlight\"></font>(?<director>.*?)</p>[\\S\\s]*?<dd>年份：<a.*?>(?<publicyear>.*?)</a></dd>[\\s\\S]*?<p class=\"detail\".*?>(?<intro>[\\s\\S]*?)<a href=\"",
+            //Response.Buffer = false;
+            //Js.ScrollEnd();
 
-                false);
+            //#region 打开列表页面
+            //Response.Write(string.Format("打开列表页面获得书籍信息<br />"));
+            //Js.ScrollEndStart();
+
+            //var Movies = GetAllMovies("utf-8",
+            //    "http://kuaib.tv.sohu.com/html/more_list31.htm",
+            //    "<a href='(?<key>[^<>]*?)'>下一页</a>",
+            //    "<div class=\"vInfo\">[\\s]*?<div class=\"vPic\">[\\s\\S]*?<img src=\"(?<image>.*?)\".*?/>[\\s\\S]*?<div class=\"vTxt\">[\\s]*?<h4>[\\s]*?<a href=\"(?<url>.*?)\" target=\"_blank\">(?<title>.*?)</a>[\\s\\S]*?<p>主演：<font class=\"highlight\"></font>(?<actors>.*?)</p>[\\s\\S]*?<p>导演：<font class=\"highlight\"></font>(?<director>.*?)</p>[\\S\\s]*?<dd>年份：<a.*?>(?<publicyear>.*?)</a></dd>[\\s\\S]*?<p class=\"detail\".*?>(?<intro>[\\s\\S]*?)<a href=\"",
+
+            //    false);
+            //#endregion
+
+            //#region 补充电影的详细内容 剧集
+
+            //Response.Write(string.Format("获取影视详细内容<br />"));
+            //Js.ScrollEndStart();
+
+            //var NewMovies = new List<MovieInfo>();
+            //foreach (var m in Movies)
+            //{
+            //    var nm = GetMovieInfo("utf-8",
+            //        m,
+            //        "<div id=\"introID\">[\\s]*?<p>(?<intro>.*?)</p>[\\s\\S]*?var VRS_AREA=\"(?<location>.*?)\";",
+            //        "<div class=\"pList clear\" id=\"playContF\">(?<key>[\\s\\S]*?)</div>",
+            //        "",
+            //        "<li.*?><a target=\"_self\" href=\"javascript:\" onclick=\".*?\" >(?<title>.*?)</a></li>[\\s]*?<input type=\"hidden\" id='.*?' value=\"(?<url>.*?)\" />",
+            //        "");
+            //    NewMovies.Add(nm);
+            //}
+
+            //Movies = NewMovies;
+
+            //#endregion
+
+            //#region 补充带单集播放页面的资源URL
+
+
+            //#endregion
+
+            //#region 补充资源URL单独存放的单集信息
+
+            //#endregion
+
+            //#region 保存
+
+            //foreach (var m in Movies)
+            //{
+            //    SaveMovie(m, false,"搜狐");
+            //}
+
+            //#endregion
             #endregion
 
-            #region 补充电影的详细内容 剧集
-
-            Response.Write(string.Format("获取影视详细内容<br />"));
-            Js.ScrollEndStart();
-
-            var NewMovies = new List<MovieInfo>();
-            foreach (var m in Movies)
+            FileInfo[] files = new DirectoryInfo(Server.MapPath("~/Config/MovieRule")).GetFiles();
+            foreach (var file in files)
             {
-                var nm = GetMovieInfo("utf-8",
-                    m,
-                    "<div id=\"introID\">[\\s]*?<p>(?<intro>.*?)</p>[\\s\\S]*?var VRS_AREA=\"(?<location>.*?)\";",
-                    "<div class=\"pList clear\" id=\"playContF\">(?<key>[\\s\\S]*?)</div>",
-                    "",
-                    "<li.*?><a target=\"_self\" href=\"javascript:\" onclick=\".*?\" >(?<title>.*?)</a></li>[\\s]*?<input type=\"hidden\" id='.*?' value=\"(?<url>.*?)\" />",
-                    "");
-                NewMovies.Add(nm);
+                try
+                {
+                    MovieRule r = (MovieRule)Voodoo.IO.XML.DeSerialize(typeof(MovieRule), Voodoo.IO.File.Read(file.FullName));
+                    CollectByRule(r);
+                }
+                catch(Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
             }
-
-            Movies = NewMovies;
-
-            #endregion
-
-            #region 补充带单集播放页面的资源URL
-
-
-            #endregion
-
-            #region 补充资源URL单独存放的单集信息
-
-            #endregion
-
-            #region 保存
-
-            foreach (var m in Movies)
-            {
-                SaveMovie(m, false,"搜狐");
-            }
-
-            #endregion
 
         }
 
@@ -239,6 +260,8 @@ namespace Web.e.tool
             List<MovieInfo> result = new List<MovieInfo>();
 
         OpenListPage:
+            Response.Write(string.Format("正在打开列表:{0}<br />",ListPageUrl));
+        Js.ScrollEndStart();
             string listHtml = Url.GetHtml(ListPageUrl, Encoding);
             Match match_moviesinfo = listHtml.GetMatchGroup(InfoRule);
             while (match_moviesinfo.Success)
@@ -667,6 +690,7 @@ namespace Web.e.tool
         #endregion 保存影视信息
 
 
+        #region  根据采集规则采集
         /// <summary>
         /// 根据采集规则采集
         /// </summary>
@@ -695,7 +719,7 @@ namespace Web.e.tool
             var NewMovies = new List<MovieInfo>();
             foreach (var m in Movies)
             {
-                var nm = GetMovieInfo("utf-8",
+                var nm = GetMovieInfo(r.Encoding,
                     m,
                     r.InfoRule,
                     r.KuaibAreaRule,
@@ -775,6 +799,7 @@ namespace Web.e.tool
             }
             #endregion
         }
+        #endregion
 
     }
 
