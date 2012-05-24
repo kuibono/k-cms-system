@@ -10,32 +10,53 @@ using Voodoo.Net;
 using Voodoo.Basement.Collect;
 
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Web.e.tool
 {
     public partial class MovieRules : System.Web.UI.Page
     {
-        protected string html = "";
-        string contentUrl = "";
-        string ContentHtml = "";
-        string KuaiboArea = "";
-        string BaiduArea = "";
-        string KuaiboPageUrl = "";
-        string KuaiboPageContnt = "";
-        string BaiduPageUrl = "";
-        string BaiduPageContent = "";
+        #region 静态变量
+        protected static string html = "";
+        protected static string contentUrl = "";
+        protected static string ContentHtml = "";
+        protected static string KuaiboArea = "";
+        protected static string BaiduArea = "";
+        protected static string KuaiboPageUrl = "";
+        protected static string KuaiboPageContnt = "";
+        protected static string BaiduPageUrl = "";
+        protected static string BaiduPageContent = "";
 
-        string KuaibSourceUrl = "";
-        string KuaiboSourceContent = "";
+        protected static string KuaibSourceUrl = "";
+        protected static string KuaiboSourceContent = "";
 
-        string BaiduSourceUrl = "";
-        string BaiduSourceContent = "";
+        protected static string BaiduSourceUrl = "";
+        protected static string BaiduSourceContent = "";
+        #endregion
 
-
+        #region 页面加载
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                LoadRuleList();
+            }
+        }
+        #endregion
+
+        #region 载入规则列表
+        protected void LoadRuleList()
+        {
+            ddl_RuleList.Items.Add(new ListItem("新建规则", ""));
+            FileInfo[] files = new DirectoryInfo(Server.MapPath("~/Config/MovieRule")).GetFiles();
+            foreach (var file in files)
+            {
+                ddl_RuleList.Items.Add(new ListItem(Path.GetFileName(file.Name)));
+            }
+            ddl_RuleList.SelectedIndex = 0;
 
         }
+        #endregion
 
         #region 测试按钮点击
         /// <summary>
@@ -78,7 +99,7 @@ namespace Web.e.tool
             Match m = ContentHtml.GetMatchGroup(txt_InfoRule.Text);
             if (m.Success)
             {
-                Button5.Text = "成功";
+                Button4.Text = "成功";
             }
         }
         protected void Button5_Click(object sender, EventArgs e)
@@ -175,10 +196,18 @@ namespace Web.e.tool
         }
         #endregion
 
+        #region 保存规则
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             //修改或者新增
             MovieRule r = new MovieRule();
+
+            if (ddl_RuleList.SelectedValue.IsNullOrEmpty() == false)
+            {
+                string FileName = Server.MapPath(string.Format("~/Config/MovieRule/{0}", ddl_RuleList.SelectedValue));
+
+                r = (MovieRule)Voodoo.IO.XML.DeSerialize(typeof(MovieRule), Voodoo.IO.File.Read(FileName));
+            }
 
             r.BaiduAreaRule = txt_BaiduAreaRule.Text;
             r.BaiduDramaRule = txt_BaiduDramaRule.Text;
@@ -201,8 +230,47 @@ namespace Web.e.tool
             r.UseLocationAsClass = chk_UseLocationAsClass.Checked;
             r.UseTagAsClass = chk_UseTagAsClass.Checked;
 
-            Voodoo.IO.XML.SaveSerialize(r, Server.MapPath(string.Format("~/Config/{0}.xml",r.Name)));
+            Voodoo.IO.XML.SaveSerialize(r, Server.MapPath(string.Format("~/Config/MovieRule/{0}.xml", r.Name)));
         }
+        #endregion
 
+        #region 加载规则
+        protected void ddl_RuleList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddl_RuleList.SelectedValue.IsNullOrEmpty() == false)
+            {
+                string FileName = Server.MapPath(string.Format("~/Config/MovieRule/{0}",ddl_RuleList.SelectedValue));
+
+                MovieRule r = (MovieRule)Voodoo.IO.XML.DeSerialize(typeof(MovieRule), Voodoo.IO.File.Read(FileName));
+
+
+                txt_Name.Enabled = false;
+                txt_SiteName.Enabled = false;
+
+                txt_BaiduAreaRule.Text = r.BaiduAreaRule;
+                txt_BaiduDramaRule.Text = r.BaiduDramaRule;
+                txt_DefaultClass.Text = r.DefaultClass;
+                txt_DramaPageBaiduRule.Text = r.DramaPageBaiduRule;
+                txt_DramaPageKuaibRule.Text = r.DramaPageKuaibRule;
+                ddl_Encoding.SelectedValue = r.Encoding;
+                txt_InfoRule.Text = r.InfoRule;
+                chk_IsMovie.Checked = r.IsMovie;
+                chk_IsSearchRule.Checked = r.IsSearchRule;
+                txt_KuaibAreaRule.Text = r.KuaibAreaRule;
+                txt_KuaibDramaRule.Text = r.KuaibDramaRule;
+                txt_ListInfoRule.Text = r.ListInfoRule;
+                txt_ListPageUrl.Text = r.ListPageUrl;
+                txt_Name.Text = r.Name;
+                txt_NextListRule.Text = r.NextListRule;
+                txt_SiteName.Text = r.SiteName;
+                txt_SourceBaiduRule.Text = r.SourceBaiduRule;
+                txt_SourceKuaibRule.Text = r.SourceKuaibRule;
+                chk_UseLocationAsClass.Checked = r.UseLocationAsClass;
+                chk_UseTagAsClass.Checked = r.UseTagAsClass;
+
+
+            }
+        }
+        #endregion
     }
 }
