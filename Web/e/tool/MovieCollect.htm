@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <link type="text/css" rel="Stylesheet" href="../data/css/management.css" />
+    <script type="text/javascript" src="../data/script/jquery-1.7.min.js"></script>
+    <script type="text/javascript">
+        var c = function () {
+            $.ajax({
+                url: "",
+                dataType: "xml",
+                success: function (rules, textStatus) {
+                    //here is all of rules ,so we should fech them and collec all the movies
+                    for (var i = 0; i < rules.length; i++) {
+                        $("#ruleinfo").text(rules[i].Name);
+                        $("#status").text("正在获取所有影视");
+                        //start ajax request
+                        $.ajax({
+                            url: "",
+                            data: { name: rules[i].Name },
+                            dataType: "xml",
+                            success: function (movies, textStatus) { },
+                            complete: function (XHR, TS) { XHR = null }
+                        });
+                    }
+                },
+                complete: function (XHR, TS) { XHR = null }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                规则：<label id="ruleinfo"></label>
+            </li>
+            <li>
+                列表：<label id="listurl"></label>
+            </li>
+             <li>
+                影视：<label id="movie"></label>
+            </li>
+            <li>
+                剧集：<label id="drama"></label>
+            </li>
+            <li>
+                状态：<label id="status"></label>
+            </li>
+        </ul>
+        <input type="button" id="btn_start" value="开始" />
+    </div>
+</body>
+</html>
