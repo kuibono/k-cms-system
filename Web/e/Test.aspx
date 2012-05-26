@@ -5,12 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
+    <script type="text/javascript">
+        var a = function () {
+            alert("a");
+            b(function () { alert("c") });
+        }
+
+
+        var b = function (c) {
+            return c();
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" OnClientClick="a();return false;" />
     
     </div>
     </form>
