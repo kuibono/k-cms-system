@@ -228,8 +228,7 @@
                     <td>
                         <asp:TextBox ID="txt_KuaibDramaRule" runat="server" Rows="5" TextMode="MultiLine"
                             Width="400px"></asp:TextBox>
-                        title/url
-                    </td>
+                        title/url/playurl</td>
                     <td>
                         <asp:Button ID="Button7" runat="server" Text="测试" OnClick="Button7_Click" />
                     </td>
@@ -241,8 +240,7 @@
                     <td>
                         <asp:TextBox ID="txt_BaiduDramaRule" runat="server" Rows="5" TextMode="MultiLine"
                             Width="400px"></asp:TextBox>
-                        title/url
-                    </td>
+                        title/url/playurl</td>
                     <td>
                         <asp:Button ID="Button8" runat="server" Text="测试" OnClick="Button8_Click" />
                     </td>
