@@ -534,6 +534,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
             Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.description--]", movie.Intro.TrimHTML());
             Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
             Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
             Content = Content.Replace("[!--movie.location--]", movie.Location);
@@ -1422,7 +1423,7 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--movie.faceimage--]", m.FaceImage);
                     str_lst = str_lst.Replace("[!--movie.id--]", m.Id.ToS());
                     str_lst = str_lst.Replace("[!--movie.inserttime--]", m.InsertTime.ToString(temp.TimeFormat));
-                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro);
+                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro.TrimHTML());
                     str_lst = str_lst.Replace("[!--movie.ismove--]", m.IsMove.ToInt32().ToS());
                     str_lst = str_lst.Replace("[!--movie.lastdramatitle--]", m.LastDramaTitle);
                     str_lst = str_lst.Replace("[!--movie.location--]", m.Location);

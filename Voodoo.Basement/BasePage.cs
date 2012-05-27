@@ -389,7 +389,14 @@ namespace Voodoo.Basement
                 fileName,
                 BasePage.SystemSetting.ExtName
                 );
+
             result = Regex.Replace(result, "[/]{2,}", "/");
+            result = result.Replace(":", "_");
+            result = result.Replace(">", "");
+            result = result.Replace("<", "");
+            result = result.Replace("*", "");
+            result = result.Replace("?", "");
+            result = result.Replace("|", "_");
             return result;
         }
         #endregion
@@ -421,6 +428,12 @@ namespace Voodoo.Basement
                 BasePage.SystemSetting.ExtName
                 );
             result = Regex.Replace(result, "[/]{2,}", "/");
+            result = result.Replace(":", "_");
+            result = result.Replace(">", "");
+            result = result.Replace("<", "");
+            result = result.Replace("*", "");
+            result = result.Replace("?", "");
+            result = result.Replace("|", "_");
             return result;
         }
 
@@ -447,6 +460,12 @@ namespace Voodoo.Basement
                 BasePage.SystemSetting.ExtName
                 );
             result = Regex.Replace(result, "[/]{2,}", "/");
+            result = result.Replace(":", "_");
+            result = result.Replace(">", "");
+            result = result.Replace("<", "");
+            result = result.Replace("*", "");
+            result = result.Replace("?", "");
+            result = result.Replace("|", "_");
             return result;
         }
 
@@ -470,6 +489,12 @@ namespace Voodoo.Basement
                 BasePage.SystemSetting.ExtName
                 );
             result = Regex.Replace(result, "[/]{2,}", "/");
+            result = result.Replace(":", "_");
+            result = result.Replace(">", "");
+            result = result.Replace("<", "");
+            result = result.Replace("*", "");
+            result = result.Replace("?", "");
+            result = result.Replace("|", "_");
             return result;
         }
 

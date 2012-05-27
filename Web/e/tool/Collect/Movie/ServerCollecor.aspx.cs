@@ -215,6 +215,9 @@ namespace Web.e.tool.Collect.Movie
                     mv.Tags = m_info.Groups["tags"].Value.IsNull(tags);
                     mv.Title = m_info.Groups["title"].Value.IsNull(title);
 
+                    mv.Intro = Regex.Replace(mv.Intro, "<a.*?>", "", RegexOptions.IgnoreCase);
+                    mv.Intro = Regex.Replace(mv.Intro, "</a>","",RegexOptions.IgnoreCase);
+
                     mv.ClickCount = 0;
                     mv.InsertTime = DateTime.UtcNow.AddHours(8);
                     mv.IsMove = r.IsMovie;

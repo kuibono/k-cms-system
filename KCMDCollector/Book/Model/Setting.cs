@@ -12,6 +12,8 @@ namespace KCMDCollector.Book
         /// </summary>
         public string TargetUrl { get; set; }
 
+        public string Domain { get; set; }
+
         /// <summary>
         /// 公共URL
         /// </summary>
