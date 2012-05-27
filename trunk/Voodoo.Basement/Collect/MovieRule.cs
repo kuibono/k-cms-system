@@ -97,7 +97,11 @@ namespace Voodoo.Basement.Collect
         /// 资源文件中的百度影音地址规则
         /// </summary>
         public string SourceBaiduRule { get; set; }
-        
 
+        ///实体复制
+        public MovieRule Clone()
+        {
+            return (MovieRule)this.MemberwiseClone();
+        }
     }
 }

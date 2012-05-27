@@ -466,7 +466,8 @@
     <Content Include="e\post\upload_json.aspx" />
     <Content Include="e\Rss.aspx" />
     <Content Include="e\tool\BookOperate.aspx" />
-    <Content Include="e\tool\MovieCollector.aspx" />
+    <Content Include="e\tool\Collect\Movie\ServerCollecor.aspx" />
+    <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="skin\movie\aimiziso.gif" />
     <Content Include="skin\movie\bf.gif" />
@@ -1062,6 +1063,13 @@
     <Compile Include="e\tool\click.aspx.designer.cs">
       <DependentUpon>click.aspx</DependentUpon>
     </Compile>
+    <Compile Include="e\tool\Collect\Movie\ServerCollecor.aspx.cs">
+      <DependentUpon>ServerCollecor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\Collect\Movie\ServerCollecor.aspx.designer.cs">
+      <DependentUpon>ServerCollecor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="e\tool\GetReadHistory.aspx.cs">
       <DependentUpon>GetReadHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1075,13 +1083,6 @@
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="e\tool\MovieCollector.aspx.cs">
-      <DependentUpon>MovieCollector.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="e\tool\MovieCollector.aspx.designer.cs">
-      <DependentUpon>MovieCollector.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\MovieRules.aspx.cs">
       <DependentUpon>MovieRules.aspx</DependentUpon>

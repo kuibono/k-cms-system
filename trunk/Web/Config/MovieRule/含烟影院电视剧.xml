@@ -14,8 +14,8 @@
   <InfoRule>&lt;h1 class="fl"&gt;《(?&lt;title&gt;.*?)》[\s]*?&lt;small&gt;.*?&lt;/small&gt;[\s]*?&lt;/h1&gt;[\s\S]*?&lt;dd&gt;类型: &lt;a href="/.*?" target="_blank"&gt;(?&lt;class&gt;.*?)&lt;/a&gt; &lt;/dd&gt;[\s\S]*?&lt;dd&gt;地区: &lt;a href=".*?" target="_blank"&gt;(?&lt;location&gt;.*?)&lt;/a&gt;&lt;/dd&gt;[\s\S]*?&lt;div class="soytxt"&gt;.*?&lt;br&gt;(?&lt;intro&gt;[\s\S]*?)&lt;/div&gt;</InfoRule>
   <KuaibAreaRule>&lt;h2&gt;&lt;span&gt; 播放来源:qvod&lt;/span&gt;(?&lt;key&gt;[\s\S]*?)&lt;/ul&gt;</KuaibAreaRule>
   <BaiduAreaRule>&lt;h2&gt;&lt;span&gt; 播放来源:百度影音&lt;/span&gt;(?&lt;key&gt;[\s\S]*?)&lt;/ul&gt;</BaiduAreaRule>
-  <KuaibDramaRule>&lt;li&gt;&lt;a title='.*?' href='(?&lt;url&gt;.*?)' target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</KuaibDramaRule>
-  <BaiduDramaRule>&lt;li&gt;&lt;a title='.*?' href='(?&lt;url&gt;.*?)' target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</BaiduDramaRule>
+  <KuaibDramaRule>&lt;li&gt;&lt;a title='.*?' href='(?&lt;playurl&gt;.*?)' target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</KuaibDramaRule>
+  <BaiduDramaRule>&lt;li&gt;&lt;a title='.*?' href='(?&lt;playurl&gt;.*?)' target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;&lt;/li&gt;</BaiduDramaRule>
   <DramaPageKuaibRule>&lt;!-- 百度影音播放器 --&gt;[\s]*?&lt;script type="text/javascript" src="(?&lt;source&gt;.*?)"&gt;&lt;/script&gt;&lt;script&gt;var param=getHtmlParas</DramaPageKuaibRule>
   <DramaPageBaiduRule>&lt;!-- 百度影音播放器 --&gt;[\s]*?&lt;script type="text/javascript" src="(?&lt;source&gt;.*?)"&gt;&lt;/script&gt;&lt;script&gt;var param=getHtmlParas</DramaPageBaiduRule>
   <SourceKuaibRule>\$(?&lt;url&gt;.*?)\$bdhd</SourceKuaibRule>
