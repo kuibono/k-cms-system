@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Setting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TargetUrl>http://www.aizr.net/</TargetUrl>
+  <Domain>http://www.aizr.net/</Domain>
   <APIKey>111111</APIKey>
   <UserName>admin</UserName>
   <PassWord>123456</PassWord>

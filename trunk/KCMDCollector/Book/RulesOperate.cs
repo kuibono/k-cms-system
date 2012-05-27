@@ -80,8 +80,12 @@ namespace KCMDCollector.Book
         {
             if (Cache.GetCache("Filter") == null)
             {
+                //Cache.SetCache("Filter",
+                //     File.Read(CFG+"\\Filter.txt"),
+                //     CFG + "\\Filter.txt"
+                // );
                 Cache.SetCache("Filter",
-                     File.Read(CFG+"\\Filter.txt"),
+                     Voodoo.Net.Url.GetHtml(GetSetting().Domain + "Config/NovelRule/Filter.txt", "utf-8"),
                      CFG + "\\Filter.txt"
                  );
             }
@@ -122,7 +126,7 @@ namespace KCMDCollector.Book
                 Cache.SetCache("Setting",
                      (Setting)XML.DeSerialize(typeof(Setting), File.Read(CFG + "\\Setting.xml")),
                      CFG + "\\Setting.xml"
-                     );
+                     ); 
             }
             return (Setting)Cache.GetCache("Setting");
         }
@@ -142,10 +146,14 @@ namespace KCMDCollector.Book
         {
             if (Cache.GetCache("Books") == null)
             {
+                //Cache.SetCache("Books",
+                //     File.Read(CFG + "\\Books.txt"),
+                //     CFG + "\\Books.txt"
+                // );
                 Cache.SetCache("Books",
-                     File.Read(CFG + "\\Books.txt"),
-                     CFG + "\\Books.txt"
-                 );
+                    Voodoo.Net.Url.GetHtml(GetSetting().Domain+"Config/NovelRule/books.txt","utf-8"),
+                    CFG + "\\Books.txt"
+                );
             }
             return  Cache.GetCache("Books").ToString().Split('\n');
         }
