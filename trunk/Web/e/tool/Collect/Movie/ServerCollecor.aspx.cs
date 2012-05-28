@@ -108,6 +108,17 @@ namespace Web.e.tool.Collect.Movie
                     movietitle = WS.RequestString("movietitle");
                     GetKuaiboSourceUrl(rulename, url, title, movieid, movietitle);
                     break;
+                case "createcontentpage":
+                    int id = WS.RequestInt("id");
+                    CreateContentPage(id);
+                    break;
+                case "createlistpage":
+                    id = WS.RequestInt("id");
+                    CreateListPage(id);
+                    break;
+                case "createindexpage":
+                    CreateIndexPage();
+                    break;
             }
         }
 
@@ -611,6 +622,43 @@ namespace Web.e.tool.Collect.Movie
             Response.Clear();
             Response.Write(JsonConvert.SerializeObject(sysDrama));
 
+        }
+        #endregion
+
+        #region 生成页面
+        /// <summary>
+        /// 生成内容页
+        /// </summary>
+        /// <param name="MovieID"></param>
+        protected void CreateContentPage(int MovieID)
+        {
+            MovieInfo mv = MovieInfoView.GetModelByID(MovieID.ToString());
+            Class cls = MovieInfoView.GetClass(mv);
+            CreatePage.CreateContentPage(mv, cls);
+            Response.Clear();
+            Response.Write(JsonConvert.SerializeObject(true));
+        }
+
+        /// <summary>
+        /// 生成列表页面
+        /// </summary>
+        /// <param name="ClassID"></param>
+        protected void CreateListPage(int ClassID)
+        {
+            Class cls = ClassView.GetModelByID(ClassID.ToString());
+            CreatePage.CreateListPage(cls, 1);
+            Response.Clear();
+            Response.Write(JsonConvert.SerializeObject(true));
+        }
+
+        /// <summary>
+        /// 生成首页
+        /// </summary>
+        protected void CreateIndexPage()
+        {
+            CreatePage.GreateIndexPage();
+            Response.Clear();
+            Response.Write(JsonConvert.SerializeObject(true));
         }
         #endregion
     }

@@ -43,7 +43,7 @@
                             getListInfo(rules, i);
                         }
                         else {
-                            if (i < rules.length-1) {
+                            if (i < rules.length - 1) {
                                 i++;
                                 getListInfo(rules, i);
                             }
@@ -80,14 +80,18 @@
                         finish++;
                         if (finish > 1) {
                             i++;
-                            if (i < movies.Movies.length-1) {
+                            if (i < movies.Movies.length - 1) {
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                               callback();
+                                createContentPage(movie.Id);
+                                createListPage(Movie.ClassID);
+                                createIndexPage();
+                                callback();
+
                             }
                         }
-                   });
+                    });
                     getBaiduDrama(rulename, movie, 0, function () {
                         finish++;
                         if (finish > 1) {
@@ -96,6 +100,9 @@
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
+                                createContentPage(movie.Id);
+                                createListPage(Movie.ClassID);
+                                createIndexPage();
                                 callback();
                             }
                         }
@@ -131,7 +138,7 @@
                             drama.Title,
                             movie.Id,
                             movie.Title, function () {
-                                if (i < movie.KuaiboDramas.length-1) {
+                                if (i < movie.KuaiboDramas.length - 1) {
                                     i++;
                                     getKuaiboDrama(rulename, movie, i, callback);
                                 }
@@ -188,7 +195,7 @@
                 complete: function (XHR, TS) { XHR = null; return false; }
             });
         }
-        var getKuaiboSource = function (rulename, url, title, movieid, movietitle,callback) {
+        var getKuaiboSource = function (rulename, url, title, movieid, movietitle, callback) {
             $("#status").text("打开快播资源文件");
             $.ajax({
                 url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=getkuaibosourceurl",
@@ -211,66 +218,47 @@
             })
         }
 
-        //        var getKuaiboDrama = function (rulename, url, title, movieid, movietitle) {
-        //            $("#drama").text(title);
-        //            $("#status").text("打开播放页面");
-        //            $.ajax({
-        //                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=getkuaibodrama",
-        //                data: { "rulename": rulename, "url": url, "title": title, "movieid": movieid, "movietitle": movietitle },
-        //                dataType: "json",
-        //                type: "POST",
-        //                success: function (drama) {
-        //                    if (drama.Id <= 0) {
-        //                        getKuaiboSource(rulename,
-        //                            drama.SourceUrl,
-        //                            drama.Title,
-        //                            movieid,
-        //                            movietitle);
-        //                    }
-        //                },
-        //                complete: function (XHR, TS) { XHR = null; return false; }
-        //            });
-        //        }
-        //        var getBaiduDrama = function (rulename, url, title, movieid, movietitle) {
-        //            $("#drama").text(title);
-        //            $("#status").text("打开播放页面");
-        //            $.ajax({
-        //                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=getbaidudrama",
-        //                data: { "rulename": rulename, "url": url, "title": title, "movieid": movieid, "movietitle": movietitle },
-        //                dataType: "json",
-        //                type: "POST",
-        //                success: function (drama) {
-        //                    if (drama.Id <= 0) {
-        //                        getKuaiboSource(rulename,
-        //                            drama.SourceUrl,
-        //                            drama.Title,
-        //                            movieid,
-        //                            movietitle);
-        //                    }
-        //                },
-        //                complete: function (XHR, TS) { XHR = null; return false; }
-        //            });
-        //        }
-//        var getKuaiboSource = function (rulename, url, title, movieid, movietitle) {
-//            $.ajax({
-//                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=getkuaibosourceurl",
-//                data: { "rulename": rulename, "url": url, "title": title, "movieid": movieid, "movietitle": movietitle },
-//                dataType: "json",
-//                type: "POST",
-//                success: function (drama) { },
-//                complete: function (XHR, TS) { XHR = null; return false; }
-//            })
-//        }
-//        var getBaiduSource = function () {
-//            $.ajax({
-//                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=getbaidusourceurl",
-//                data: { "rulename": rulename, "url": url, "title": title, "movieid": movieid, "movietitle": movietitle },
-//                dataType: "json",
-//                type: "POST",
-//                success: function (drama) { },
-//                complete: function (XHR, TS) { XHR = null; return false; }
-//            })
-//        }
+        var createContentPage = function (id) {
+            $.ajax({
+                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createcontentpage",
+                data: { "id": id },
+                dataType: "json",
+                type: "POST",
+                success: function (success) {
+                    if (success == true) {
+                        $("#status").text("生成内容页完成");
+                    }
+                },
+                complete: function (XHR, TS) { XHR = null; return false; }
+            });
+        }
+        var createListPage = function (id) {
+            $.ajax({
+                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createlistpage",
+                data: { "id": id },
+                dataType: "json",
+                type: "POST",
+                success: function (success) {
+                    if (success == true) {
+                        $("#status").text("生成列表页完成");
+                    }
+                },
+                complete: function (XHR, TS) { XHR = null; return false; }
+            });
+        }
+        var createIndexPage = function () {
+            $.ajax({
+                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createindexpage",
+                dataType: "json",
+                type: "POST",
+                success: function (success) {
+                    if (success == true) {
+                        $("#status").text("生成首页完成");
+                    }
+                },
+                complete: function (XHR, TS) { XHR = null; return false; }
+            });
+        }
     </script>
 </head>
 <body>
