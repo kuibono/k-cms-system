@@ -43,7 +43,7 @@
                             getListInfo(rules, i);
                         }
                         else {
-                            if (i < rules.length) {
+                            if (i < rules.length-1) {
                                 i++;
                                 getListInfo(rules, i);
                             }
@@ -80,23 +80,23 @@
                         finish++;
                         if (finish > 1) {
                             i++;
-                            if (ik < movies.Movies.length-1) {
-                                getMovieInfo(rulename, movies, i, callback);
-                            }
-                            else {
-                                return callback();
-                            }
-                        }
-                    });
-                    getBaiduDrama(rulename, movie, 0, function () {
-                        finish++;
-                        if (finish > 1) {
-                            i++;
                             if (i < movies.Movies.length-1) {
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                                return callback();
+                               callback();
+                            }
+                        }
+                   });
+                    getBaiduDrama(rulename, movie, 0, function () {
+                        finish++;
+                        if (finish > 1) {
+                            i++;
+                            if (i < movies.Movies.length - 1) {
+                                getMovieInfo(rulename, movies, i, callback);
+                            }
+                            else {
+                                callback();
                             }
                         }
                     });
@@ -136,13 +136,13 @@
                                     getKuaiboDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    return callback();
+                                    callback();
                                 }
                             }
                             );
                     }
                     else {
-                        return callback();
+                        callback();
                     }
                 },
                 complete: function (XHR, TS) { XHR = null; return false; }
@@ -172,17 +172,17 @@
                             drama.Title,
                             movie.Id,
                             movie.Title, function () {
-                                if (i < movie.BaiduDramas.length-1) {
+                                if (i < movie.BaiduDramas.length - 1) {
                                     i++;
                                     getBaiduDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    return callback();
+                                    callback();
                                 }
                             });
                     }
                     else {
-                        return callback();
+                        callback();
                     }
                 },
                 complete: function (XHR, TS) { XHR = null; return false; }

@@ -144,18 +144,18 @@ namespace KCMDCollector.Book
         /// <returns></returns>
         public static string[] GetBooks()
         {
-            if (Cache.GetCache("Books") == null)
-            {
-                //Cache.SetCache("Books",
-                //     File.Read(CFG + "\\Books.txt"),
-                //     CFG + "\\Books.txt"
-                // );
-                Cache.SetCache("Books",
-                    Voodoo.Net.Url.GetHtml(GetSetting().Domain+"Config/NovelRule/books.txt","utf-8"),
-                    CFG + "\\Books.txt"
-                );
-            }
-            return  Cache.GetCache("Books").ToString().Split('\n');
+            //if (Cache.GetCache("Books") == null)
+            //{
+            //    //Cache.SetCache("Books",
+            //    //     File.Read(CFG + "\\Books.txt"),
+            //    //     CFG + "\\Books.txt"
+            //    // );
+            //    Cache.SetCache("Books",
+            //        Voodoo.Net.Url.GetHtml(GetSetting().Domain+"Config/NovelRule/books.txt","utf-8"),
+            //        CFG + "\\Books.txt"
+            //    );
+            //}
+            return Voodoo.Net.Url.GetHtml(GetSetting().Domain + "Config/NovelRule/books.txt", "utf-8").Split('\n');
         }
 
         /// <summary>

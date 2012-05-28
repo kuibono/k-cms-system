@@ -1482,7 +1482,6 @@
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="e\data\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
     <None Include="e\installer\2000.sql" />
-    <None Include="服务外包管理网-南京信息工程大学.url" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

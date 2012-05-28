@@ -1,1 +1,1 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServerCollecor.aspx.cs" Inherits="Web.e.tool.Collect.Movie.ServerCollecor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ServerCollecor.aspx.cs" Inherits="Web.e.tool.Collect.Movie.ServerCollecor" ValidateRequest="false" %>
