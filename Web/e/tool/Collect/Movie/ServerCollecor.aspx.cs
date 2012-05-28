@@ -288,6 +288,12 @@ namespace Web.e.tool.Collect.Movie
                 Match m_kuaibo = html_kuaiboArea.GetMatchGroup(r.KuaibDramaRule);
                 while (m_kuaibo.Success)
                 {
+                    //判断是够存在
+                    if (MovieUrlKuaibView.Exist(string.Format("MovieId={0} and Title=N'{1}'", mv.Id, m_kuaibo.Groups["title"].Value)))
+                    {
+                        m_kuaibo = m_kuaibo.NextMatch();
+                        continue;
+                    }
                     mv.KuaiboDramas.Add(new MovieUrlKuaib()
                     {
                         MovieID = mv.Id,
@@ -312,6 +318,12 @@ namespace Web.e.tool.Collect.Movie
                 Match m_baidu = html_baiduArea.GetMatchGroup(r.BaiduDramaRule);
                 while (m_baidu.Success)
                 {
+                    //判断是够存在
+                    if (MovieUrlBaiduView.Exist(string.Format("MovieId={0} and Title=N'{1}'", mv.Id, m_baidu.Groups["title"].Value)))
+                    {
+                        m_baidu = m_baidu = m_baidu.NextMatch();
+                        continue;
+                    }
                     mv.BaiduDramas.Add(new MovieUrlBaidu()
                     {
                         MovieID = mv.Id,
@@ -553,6 +565,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.Url = m.Groups["url"].Value;
                     sysDrama.Url = Regex.Replace(sysDrama.Url, "\\\\u.*?\\.", string.Format("{0}-{1}.", sysDrama.MovieTitle, sysDrama.Title));
                     MovieUrlBaiduView.Insert(sysDrama);
+                    CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
                 }
             }
             Response.Clear();
@@ -591,6 +604,8 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.Url = Regex.Replace(sysDrama.Url, "\\\\u.*?\\.", string.Format("{0}-{1}.",sysDrama.MovieTitle,sysDrama.Title));
 
                     MovieUrlKuaibView.Insert(sysDrama);
+
+                    CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
                 }
             }
             Response.Clear();

@@ -516,8 +516,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.id--]", cls.ID.ToString());
             Content = Content.Replace("[!--class.name--]", cls.ClassName);
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
-
-            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.GetMovieDramaUrl(nextKuaibo, MovieInfoView.GetClass(nextKuaibo)));
+            if (nextKuaibo.Id > 0)
+            {
+                Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.GetMovieDramaUrl(nextKuaibo, MovieInfoView.GetClass(nextKuaibo)));
+            }
 
             Content = Content.Replace("[!--drama.title--]", firstKuaibo.Title);
             Content = Content.Replace("[!--drama.url--]", firstKuaibo.Url);
@@ -1703,7 +1705,7 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--movie.faceimage--]", m.FaceImage);
                     str_lst = str_lst.Replace("[!--movie.id--]", m.Id.ToS());
                     str_lst = str_lst.Replace("[!--movie.inserttime--]", m.InsertTime.ToString(temp.TimeFormat));
-                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro);
+                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro.TrimHTML());
                     str_lst = str_lst.Replace("[!--movie.ismove--]", m.IsMove.ToInt32().ToS());
                     str_lst = str_lst.Replace("[!--movie.lastdramatitle--]", m.LastDramaTitle);
                     str_lst = str_lst.Replace("[!--movie.location--]", m.Location);
@@ -1844,7 +1846,7 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--movie.faceimage--]", m.FaceImage);
                     str_lst = str_lst.Replace("[!--movie.id--]", m.Id.ToS());
                     str_lst = str_lst.Replace("[!--movie.inserttime--]", m.InsertTime.ToString(temp.TimeFormat));
-                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro);
+                    str_lst = str_lst.Replace("[!--movie.intro--]", m.Intro.TrimHTML());
                     str_lst = str_lst.Replace("[!--movie.ismove--]", m.IsMove.ToInt32().ToS());
                     str_lst = str_lst.Replace("[!--movie.lastdramatitle--]", m.LastDramaTitle);
                     str_lst = str_lst.Replace("[!--movie.location--]", m.Location);
