@@ -84,11 +84,7 @@
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                                createContentPage(movie.Id);
-                                createListPage(Movie.ClassID);
-                                createIndexPage();
-                                callback();
-
+                                createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                             }
                         }
                     });
@@ -100,10 +96,7 @@
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                                createContentPage(movie.Id);
-                                createListPage(Movie.ClassID);
-                                createIndexPage();
-                                callback();
+                                createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                             }
                         }
                     });
@@ -218,7 +211,7 @@
             })
         }
 
-        var createContentPage = function (id) {
+        var createContentPage = function (id, classid, callback) {
             $.ajax({
                 url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createcontentpage",
                 data: { "id": id },
@@ -227,12 +220,13 @@
                 success: function (success) {
                     if (success == true) {
                         $("#status").text("生成内容页完成");
+                        createListPage(classid, function () { callback() });
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; }
             });
         }
-        var createListPage = function (id) {
+        var createListPage = function (id, callback) {
             $.ajax({
                 url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createlistpage",
                 data: { "id": id },
@@ -241,12 +235,13 @@
                 success: function (success) {
                     if (success == true) {
                         $("#status").text("生成列表页完成");
+                        createIndexPage(function () { callback() });
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; }
             });
         }
-        var createIndexPage = function () {
+        var createIndexPage = function (callback) {
             $.ajax({
                 url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createindexpage",
                 dataType: "json",
@@ -254,9 +249,10 @@
                 success: function (success) {
                     if (success == true) {
                         $("#status").text("生成首页完成");
+                        callback();
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; }
             });
         }
     </script>
