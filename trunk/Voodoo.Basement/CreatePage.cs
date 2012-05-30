@@ -770,7 +770,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
-            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
+            Content = Content.Replace("[!--movie.nextpageurl--]",BasePage.SystemSetting.SiteUrl+BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
 
             Content = Content.Replace("[!--drama.title--]", kuaib.Title);
             Content = Content.Replace("[!--drama.url--]", kuaib.Url);
@@ -896,7 +896,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
-            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
+            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.SystemSetting.SiteUrl + BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
 
             Content = Content.Replace("[!--drama.title--]", kuaib.Title);
             Content = Content.Replace("[!--drama.url--]", kuaib.Url);

@@ -215,25 +215,36 @@ namespace Web.e.admin.Movie
 
         protected void btn_createPage_Click(object sender, EventArgs e)
         {
+
+            Class c = ClassView.GetModelByID(cls.ToS());
             string[] ids = WS.RequestString("id").Split(',');
             foreach (string id in ids)
             {
-                //News n = NewsView.GetModelByID(id);
-                //CreatePage.CreateContentPage(n, NewsView.GetNewsClass(n));
+                MovieInfo mv = MovieInfoView.GetModelByID(id);
+                CreatePage.CreateContentPage(mv,c);
+                var kuaibos = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}",id));
+                var baidus = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0}", id));
+                var dramas = MovieDramaView.GetModelList(string.Format("MovieID={0}", id));
+                foreach (var kuaib in kuaibos)
+                {
+                    CreatePage.CreateDramapage(kuaib, c);
+                }
+                foreach (var baidu in baidus)
+                {
+                    CreatePage.CreateDramapage(baidu, c);
+                }
+                foreach (var drama in dramas)
+                {
+                    CreatePage.CreateDramapage(drama, c);
+                }
 
-                //News news_pre = GetPreNews(n, NewsView.GetNewsClass(n));
-
-                //if (news_pre != null)
-                //{
-                //    CreatePage.CreateContentPage(news_pre, NewsView.GetNewsClass(n));
-                //}
             }
 
             if (cls > 0)
             {
                 try
                 {
-                    CreatePage.CreateListPage(ClassView.GetModelByID(cls.ToS()), 1);
+                    CreatePage.CreateListPage(c, 1);
                 }
                 catch { }
             }
