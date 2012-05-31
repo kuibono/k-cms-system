@@ -60,6 +60,10 @@ namespace Voodoo.Basement
 		/// 
 		/// </summary>
 		public string SiteName{get ; set; }
+
+        public bool EnablePing { get; set; }
+
+        public string PingAddress { get; set; }
 		
 		/// <summary>
 		/// 

@@ -40,6 +40,9 @@ namespace Web.e.admin.system.SystemParameter
             txt_CountCode.Text = st.CountCode;
             txt_FileDirString.Text = st.FileDirString;
             txt_ExtName.Text = st.ExtName;
+
+            txt_PingAddress.Text = st.PingAddress;
+            chk_EnalePing.Checked = st.EnablePing;
         }
 
         /// <summary>
@@ -60,6 +63,8 @@ namespace Web.e.admin.system.SystemParameter
             st.CountCode = txt_CountCode.Text;
             st.FileDirString = txt_FileDirString.Text;
             st.ExtName = txt_ExtName.Text;
+            st.PingAddress = txt_PingAddress.Text;
+            st.EnablePing = chk_EnalePing.Checked;
 
             
 

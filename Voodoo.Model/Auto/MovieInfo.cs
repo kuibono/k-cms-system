@@ -126,6 +126,8 @@ namespace Voodoo.Model
         /// </summary>
         public long ScoreTime { get; set; }
 
+        public string Info { get; set; }
+
         ///实体复制
         public MovieInfo Clone()
         {

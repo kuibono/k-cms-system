@@ -576,7 +576,7 @@ namespace KCMDCollector.Book
                 {
                     //Content = Regex.Replace(Content, pa[0], "", RegexOptions.None);
                     //Content = new Regex(pa[0]).Replace(Content,"", 100);
-                    Content = Content.Replace(pa[0], "");
+                    Content = RegexReplace(Content, pa[0], "");
                 }
 
             }

@@ -467,6 +467,7 @@
     <Content Include="e\Rss.aspx" />
     <Content Include="e\tool\BookOperate.aspx" />
     <Content Include="e\tool\Collect\Movie\ServerCollecor.aspx" />
+    <Content Include="e\tool\Collect\Novel\ServerCollect.aspx" />
     <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="skin\movie\aimiziso.gif" />
@@ -1069,6 +1070,13 @@
     </Compile>
     <Compile Include="e\tool\Collect\Movie\ServerCollecor.aspx.designer.cs">
       <DependentUpon>ServerCollecor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\Collect\Novel\ServerCollect.aspx.cs">
+      <DependentUpon>ServerCollect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\Collect\Novel\ServerCollect.aspx.designer.cs">
+      <DependentUpon>ServerCollect.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\GetReadHistory.aspx.cs">
       <DependentUpon>GetReadHistory.aspx</DependentUpon>
