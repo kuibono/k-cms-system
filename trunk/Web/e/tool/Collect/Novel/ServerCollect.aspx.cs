@@ -20,14 +20,17 @@ namespace Web.e.tool.Collect.Novel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetContentList("官雄", "第一百七十七章 巧合吗？");
+            //GetContentList("官雄", "第一百七十七章 巧合吗？");
 
-            //string action = WS.RequestString("a");
-            //switch (action)
-            //{
-            //    case "getcontentlist":
-
-            //}
+            string action = WS.RequestString("a");
+            switch (action)
+            {
+                case "getcontentlist":
+                    string booktitle = WS.RequestString("booktitle");
+                    string chaptertitle = WS.RequestString("chaptertitle");
+                    GetContentList(booktitle, chaptertitle);
+                    break;
+            }
         }
         public static List<string> GetFilter()
         {
@@ -194,14 +197,16 @@ namespace Web.e.tool.Collect.Novel
             Content = RegexReplace(Content, "<a [\\s\\S]*?</a>", "");
 
             //删除不需要的HTML
-            Content = RegexReplace(Content, "<[/]?table>", "");
-            Content = RegexReplace(Content, "<[/]?tr>", "");
-            Content = RegexReplace(Content, "<[/]?div>", "");
-            Content = RegexReplace(Content, "<[/]?td>", "");
-            Content = RegexReplace(Content, "<[/]?span>", "");
-            Content = RegexReplace(Content, "<[/]?font>", "");
-            Content = RegexReplace(Content, "<[/]?p>", "");
-            Content = RegexReplace(Content, "<[/]?cc>", "");
+            Content = RegexReplace(Content, "<[/]?table.*?>", "");
+            Content = RegexReplace(Content, "<[/]?tr.*?>", "");
+            Content = RegexReplace(Content, "<[/]?div.*?>", "");
+            Content = RegexReplace(Content, "<[/]?td.*?>", "");
+            Content = RegexReplace(Content, "<[/]?span.*?>", "");
+            Content = RegexReplace(Content, "<[/]?font.*?>", "");
+            Content = RegexReplace(Content, "<[/]?p.*?>", "");
+            Content = RegexReplace(Content, "<[/]?cc.*?>", "");
+            Content = RegexReplace(Content, "<h1[\\s\\S]*?</h1>", "");
+            Content = RegexReplace(Content, "\r\n", "");
 
             //删除网址
             Content = RegexReplace(Content, "http://", "");

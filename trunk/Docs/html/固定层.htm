@@ -1,101 +1,180 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Untitled Page</title>
     <style type="text/css">
         *
         {
-            margin:0;
+            margin: 0;
         }
-    div {
-        position: fixed;
-        bottom: 0;
-        background: black;
-        width: 100%;
-        height: 23px;
-        line-height: 23px;
-        z-index: 9999;
-        opacity: .60;
-        filter: alpha(opacity=60);
-        _bottom: auto;
-        _width: 100%;
-        _position: absolute;
-        _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
-        -webkit-box-shadow: 10px 0 5px #000;
-        -moz-box-shadow: 10px 0 5px #000;
-        box-shadow: 10px 0 5px #000;
-        color:#FFF;
+        div.float
+        {
+            position: fixed;
+            bottom: 0;
+            background: black;
+            width: 100%;
+            height: 23px;
+            line-height: 23px;
+            z-index: 9999;
+            opacity: .60;
+            filter: alpha(opacity=60);
+            _bottom: auto;
+            _width: 100%;
+            _position: absolute;
+            _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+            -webkit-box-shadow: 10px 0 5px #000;
+            -moz-box-shadow: 10px 0 5px #000;
+            box-shadow: 10px 0 5px #000;
+            color: #FFF;
+            text-align: right;
+        }
+        div.collect
+        {
+            position: fixed;
+            bottom: 23px;
+            right: 0;
+            background: #DDD;
+            width: 300px;
+            height: 100%;
+            line-height: 23px;
+            z-index: 99999;
+            opacity: .60;
+            filter: alpha(opacity=60);
+            _bottom: auto;
+            _width: 100%;
+            _position: absolute;
+            _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+            -webkit-box-shadow: 10px 0 5px #000;
+            -moz-box-shadow: 10px 0 5px #000;
+            box-shadow: 10px 0 5px #000;
+            color: #111;
+            display:none;
+            overflow:scroll;
+        }
+        div.float a
+        {
+            color: #FFF;
+            font-size: small;
+            text-decoration: none;
+        }
+        div.item
+        {
+            height:150px;
+            overflow:hidden;
         }
     </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#trymyself").toggle(function () {
+                $(".collect").show("fast");
+            }, function () {
+                $(".collect").hide("fast");
+            });
+
+            $("#senderror").click(function () {
+                alert("报错成功！");
+            });
+            $("#btn_ok").click(function () {
+                //do save
+                $("#content").html($("#"+$("input:checked").attr("itemid")).html())
+                $(".collect").hide("fast");
+            });
+            $("#btn_collect").click(function () {
+                $.ajax({
+                    url: "/e/tool/collect/novel/ServerCollect.aspx?a=getcontentlist&" + Math.random(),
+                    data: { "booktitle": "官雄", "chaptertitle": "第一百七十七章 巧合吗？" },
+                    dataType: "json",
+                    type:"POST",
+                    success: function (j) {
+                        for (var i = 0; i < j.length; i++) {
+                            $("#table_collect").prepend("<tr><td><div class='item'><input type='radio' name='content' id='c_" + i + "' itemid='i_" + i + "' /><label id='i_" + i + "' for='c_" + i + "'>" + j[i] + "</label></div></td></tr>");
+                        }
+                    }
+                });
+            })
+        })
+    </script>
 </head>
 <body>
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-sda<br />
-zczxc<br />
-
-<div>
-    asdasasdasdasdssssssssss
-</div>
+    <div class="collect">
+        <table id="table_collect" border="1" style="border:solid 1px gray;width:100%; height:100%; border-collapse:collapse;">
+            <tr>
+                <td style="height:50px" valign="bottom">
+                    <input type="button" id="btn_collect" value="采集" />
+                    &nbsp;
+                    <input type="button" id="btn_ok" value="确定" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="float">
+        [<a id="senderror" href="javascript:void(0)">章节有错</a>]|[<a id="trymyself" href="javascript:void(0)">我自己试试</a>]
+    </div>
+    <div id="content"></div>
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
+    sda<br />
+    zczxc<br />
 </body>
 </html>
