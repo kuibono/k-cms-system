@@ -103,6 +103,22 @@
                         <vd:VTextBox ID="txt_ExtName" runat="server" EnableValidate="true" EnableNull="false"></vd:VTextBox>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                    启用PING
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="chk_EnalePing" Text="启用" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    PING接口
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_PingAddress" runat="server" TextMode="MultiLine"></vd:VTextBox>
+                    </td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>

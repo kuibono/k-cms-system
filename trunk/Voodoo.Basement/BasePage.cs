@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 
 using Voodoo.IO;
 using System.IO;
+using CookComputing.XmlRpc;
 
 namespace Voodoo.Basement
 {
@@ -247,7 +248,7 @@ namespace Voodoo.Basement
             {
                 parentForder += "/";
             }
-            
+
 
             result = string.Format("{0}{1}{2}/{3}{4}",
                 sitrurl,
@@ -271,7 +272,7 @@ namespace Voodoo.Basement
         public static string GetBookUrl(Book b, Class cls)
         {
             string result = "";
-            string fileName = b.Title+"-"+b.Author;//书名+作者
+            string fileName = b.Title + "-" + b.Author;//书名+作者
 
 
             string sitrurl = "/Book/";
@@ -323,7 +324,7 @@ namespace Voodoo.Basement
                 sitrurl,
                 //cls.ParentClassForder.IsNullOrEmpty() ? "" : cls.ParentClassForder + "/",
                 cls.ClassForder,
-                 b.Title+"-"+b.Author,
+                 b.Title + "-" + b.Author,
                 cp.ID,
                 BasePage.SystemSetting.ExtName
                 );
@@ -484,7 +485,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/urls/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle.Replace("/", "_").Replace(" ",""),
+                b.MovieTitle.Replace("/", "_").Replace(" ", ""),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -533,7 +534,7 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static string GetClassUrl(Class cls, int page)
         {
-            
+
             string sitrurl = "/Book/";
             if (cls.ModelID != 4)
             {
@@ -896,7 +897,7 @@ namespace Voodoo.Basement
             }
             FileInfo savedFile = new FileInfo(System.Web.HttpContext.Current.Server.MapPath(FilePath));
 
-           
+
 
             f.FileDirectory = ss.FileDir;
             f.FileExtName = ExtName;
@@ -913,7 +914,7 @@ namespace Voodoo.Basement
             r.Text = FilePath;
             return r;
         }
-        #endregion 
+        #endregion
 
         #region 创建系统关键词
         /// <summary>
@@ -923,7 +924,7 @@ namespace Voodoo.Basement
         /// <param name="key"></param>
         public static void InsertKeyWords(int ModelID, string key)
         {
-            SysKeyword k = SysKeywordView.Find(string.Format("ModelID={0} and Keyword=N'{1}'",ModelID,key));
+            SysKeyword k = SysKeywordView.Find(string.Format("ModelID={0} and Keyword=N'{1}'", ModelID, key));
             if (k.Id <= 0)
             {
                 //不存在
@@ -965,5 +966,33 @@ namespace Voodoo.Basement
             return str[@int.GetRandomNumber(0, str.Length - 1)];
         }
         #endregion 生成随机背景颜色
+
+        #region Ping搜索引擎
+        /// <summary>
+        /// Ping搜索引擎
+        /// </summary>
+        /// <param name="url">url地址（带域名）</param>
+        public static void PingSE(string url)
+        {
+            var ses = SystemSetting.PingAddress.Split('\n');
+            foreach (var se in ses)
+            {
+                try
+                {
+                    var proxy = XmlRpcProxyGen.Create<IMath>();
+                    proxy.Url = se.Trim();
+
+                    proxy.ping(SystemSetting.SiteName, SystemSetting.SiteUrl, url, SystemSetting.SiteUrl + "rss.aspx");
+                }
+                catch { }
+            }
+        }
+        #endregion
+    }
+
+    public interface IMath : IXmlRpcProxy
+    {
+        [XmlRpcMethod("weblogUpdates.ping")]
+        CookComputing.XmlRpc.XmlRpcStruct ping(string a, string b, string c, string d);
     }
 }

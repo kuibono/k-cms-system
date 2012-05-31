@@ -84,7 +84,8 @@
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                                createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                //createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                callback();
                             }
                         }
                     });
@@ -96,7 +97,8 @@
                                 getMovieInfo(rulename, movies, i, callback);
                             }
                             else {
-                                createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                //createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                callback();
                             }
                         }
                     });
@@ -136,7 +138,8 @@
                                     getKuaiboDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    callback();
+                                    //();
+                                    createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                                 }
                             }
                             );
@@ -177,7 +180,8 @@
                                     getBaiduDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    callback();
+                                    //callback();
+                                    createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                                 }
                             });
                     }

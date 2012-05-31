@@ -68,7 +68,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("如何", "ruhe");
             Content = Content.Replace("过去", "guoqu");
             Content = Content.Replace("出来", "chulai");
-            
+
             return Content;
         }
         #endregion
@@ -153,7 +153,10 @@ namespace Voodoo.Basement
             //BasePage.SystemSetting.ExtName
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~/Book/Index") + BasePage.SystemSetting.ExtName, Content);
 
-
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl);
+            }
             return Content;
         }
         #endregion
@@ -259,6 +262,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -370,6 +377,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -470,6 +481,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -598,6 +613,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -720,6 +739,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -770,7 +793,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
-            Content = Content.Replace("[!--movie.nextpageurl--]",BasePage.SystemSetting.SiteUrl+BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
+            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.SystemSetting.SiteUrl + BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
 
             Content = Content.Replace("[!--drama.title--]", kuaib.Title);
             Content = Content.Replace("[!--drama.url--]", kuaib.Url);
@@ -847,6 +870,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion 生成播放页面--快播
 
@@ -973,6 +1000,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion 生成播放页面--快播
 
@@ -1055,6 +1086,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion 生成播放页面--单集列表页面
 
@@ -1192,7 +1227,10 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(cls));
 
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
-
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
         }
         #endregion
 
@@ -1470,7 +1508,10 @@ namespace Voodoo.Basement
 
             string FileName = BasePage.GetClassUrl(c, page);
             Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath(FileName), Content);
-
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
+            }
 
             //下一页链接
             if (pagecount > page)
@@ -1673,7 +1714,7 @@ namespace Voodoo.Basement
                     str_lst = str_lst.Replace("[!--book.tjcount--]", b.TjCount.ToS());
                     sb_list.AppendLine(str_lst);
                 }
-                
+
                 Content = Content.Replace("<!--list.var-->", sb_list.ToString());
                 if (qs.Count() == 1)
                 {
@@ -1747,7 +1788,7 @@ namespace Voodoo.Basement
             return Content;
 
         }
-        public static string GetSearchResult(string m_where, int SysModel, int page,string searchword)
+        public static string GetSearchResult(string m_where, int SysModel, int page, string searchword)
         {
             int itemcount = 0;
             int pagecount = 1;
@@ -1769,7 +1810,7 @@ namespace Voodoo.Basement
 
             //此处要区分系统模型
             #region 替换列表
-            
+
             #region 小说系统
             if (SysModel == 4)
             {
@@ -1822,7 +1863,7 @@ namespace Voodoo.Basement
             #endregion 小说系统
 
             #region 影视
-                 
+
             else if (SysModel == 6)
             {
                 StringBuilder sb_list = new StringBuilder();
@@ -1877,7 +1918,7 @@ namespace Voodoo.Basement
             tmp_pager = tmp_pager.Replace("[!--pagelink--]",
                 BuildPagerLink("<a href=\"/search.aspx?m=6&key=" + searchword + "&p={first}\">首页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={pre}\">上页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={next}\">下页</a> <a href=\"/search.aspx?m=6&key=" + searchword + "&p={end}\">尾页</a>", page, pagecount)
                 );
-           tmp_pager = tmp_pager.Replace("[!--options--]","");
+            tmp_pager = tmp_pager.Replace("[!--options--]", "");
 
             if (recordCount <= 50)
             {

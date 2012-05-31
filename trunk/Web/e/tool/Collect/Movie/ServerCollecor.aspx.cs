@@ -39,7 +39,7 @@ namespace Web.e.tool.Collect.Movie
                         }
                         catch (Exception ex)
                         {
-                            Response.Write(ex.Message);
+                            //Response.Write(ex.Message);
                         }
                     }
                     Voodoo.Cache.Cache.SetCache("movierules", rules);
@@ -128,6 +128,22 @@ namespace Web.e.tool.Collect.Movie
         /// </summary>
         protected void GetRules()
         {
+            List<MovieRule> rules = new List<MovieRule>();
+            FileInfo[] files = new DirectoryInfo(Server.MapPath("~/Config/MovieRule")).GetFiles();
+            foreach (var file in files)
+            {
+                try
+                {
+                    MovieRule r = (MovieRule)Voodoo.IO.XML.DeSerialize(typeof(MovieRule), Voodoo.IO.File.Read(file.FullName));
+                    rules.Add(r);
+                }
+                catch (Exception ex)
+                {
+                    //Response.Write(ex.Message);
+                }
+            }
+            Voodoo.Cache.Cache.SetCache("movierules", rules);
+
             Response.Clear();
 
             Response.Write(
@@ -226,8 +242,11 @@ namespace Web.e.tool.Collect.Movie
                     mv.Tags = m_info.Groups["tags"].Value.IsNull(tags);
                     mv.Title = m_info.Groups["title"].Value.IsNull(title);
 
-                    mv.Intro = Regex.Replace(mv.Intro, "<a.*?>", "", RegexOptions.IgnoreCase);
-                    mv.Intro = Regex.Replace(mv.Intro, "</a>","",RegexOptions.IgnoreCase);
+
+                    mv.Info = Regex.Replace(mv.Intro, "<a.*?>", "", RegexOptions.IgnoreCase);
+                    mv.Info = Regex.Replace(mv.Intro, "</a>", "", RegexOptions.IgnoreCase);
+
+                    mv.Intro = mv.Info.TrimHTML().CutString(200);
 
                     mv.ClickCount = 0;
                     mv.InsertTime = DateTime.UtcNow.AddHours(8);
@@ -420,6 +439,12 @@ namespace Web.e.tool.Collect.Movie
                     #endregion
 
                 }
+                if (mv.BaiduDramas.Count > 0)
+                {
+                    mv.LastDramaTitle = mv.BaiduDramas.Last().Title;
+                    mv.UpdateTime = DateTime.UtcNow.AddHours(8);
+                    MovieInfoView.Update(mv);
+                }
             }
             #endregion
 
@@ -453,6 +478,12 @@ namespace Web.e.tool.Collect.Movie
                             CreatePage.CreateDramapage(drama, c);
                         }
                     }
+                }
+                if(mv.BaiduDramas.Count>0)
+                {
+                    mv.LastDramaTitle = mv.BaiduDramas.Last().Title;
+                    mv.UpdateTime = DateTime.UtcNow.AddHours(8);
+                    MovieInfoView.Update(mv);
                 }
             }
             #endregion
