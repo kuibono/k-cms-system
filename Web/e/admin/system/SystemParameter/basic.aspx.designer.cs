@@ -130,6 +130,15 @@ namespace Web.e.admin.system.SystemParameter {
         protected global::Voodoo.UI.VTextBox txt_PingAddress;
         
         /// <summary>
+        /// txt_ClassFolder 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_ClassFolder;
+        
+        /// <summary>
         /// btn_Save 控件。
         /// </summary>
         /// <remarks>

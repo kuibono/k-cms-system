@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\MovieRule\含烟影院电视剧.xml" />
     <Content Include="Default.aspx" />
     <Content Include="e\admin\Book\BookEdit.aspx" />
     <Content Include="e\admin\Default.aspx" />
@@ -126,7 +127,6 @@
     <Content Include="e\admin\user\UserList.aspx" />
     <Content Include="e\api\ClientService.svc" />
     <Content Include="e\api\xmlrpcV2.aspx" />
-    <Content Include="e\data\css\jquery.treeTable.css" />
     <Content Include="e\data\fckeditor\editor\css\behaviors\disablehandles.htc" />
     <Content Include="e\data\fckeditor\editor\css\behaviors\showtableborders.htc" />
     <Content Include="e\data\fckeditor\editor\css\fck_editorarea.css" />
@@ -445,13 +445,6 @@
     <Content Include="e\data\fckeditor\fckstyles.xml" />
     <Content Include="e\data\fckeditor\fcktemplates.xml" />
     <Content Include="e\data\images\pixviewer.swf" />
-    <Content Include="e\data\images\toggle-collapse-dark.png" />
-    <Content Include="e\data\images\toggle-collapse-light.png" />
-    <Content Include="e\data\images\toggle-expand-dark.png" />
-    <Content Include="e\data\images\toggle-expand-light.png" />
-    <Content Include="e\data\script\jquery.blockUI.js" />
-    <Content Include="e\data\script\jquery.treeTable.min.js" />
-    <Content Include="e\data\script\jquery.ui.js" />
     <Content Include="e\file\addselect.aspx" />
     <Content Include="e\member\ChangeRegister.aspx" />
     <Content Include="e\member\Login.aspx" />

@@ -6,6 +6,7 @@
   <Description>牛逼电影，为您提供最新最全的国内外精彩大片电视剧。</Description>
   <Copyright>&amp;copy; 牛逼影视 2012</Copyright>
   <CountCode />
+  <ClassFolder>/Movie</ClassFolder>
   <FileDirString>/u/file/</FileDirString>
   <ExtName>.htm</ExtName>
   <SiteCloseMsg>系统维护中，请稍后访问</SiteCloseMsg>

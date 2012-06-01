@@ -511,10 +511,10 @@ namespace Voodoo.Basement
         public static string GetClassUrl(Class cls)
         {
 
-            string sitrurl = "/Book/";
-            if (cls.ModelID != 4)
+            string sitrurl = BasePage.SystemSetting.ClassFolder;
+            if (sitrurl.IsNullOrEmpty())
             {
-                sitrurl = "";
+                sitrurl = "/Book";
             }
             string result = string.Format("{0}/{1}/index{2}",
                 sitrurl,
@@ -535,10 +535,10 @@ namespace Voodoo.Basement
         public static string GetClassUrl(Class cls, int page)
         {
 
-            string sitrurl = "/Book/";
-            if (cls.ModelID != 4)
+            string sitrurl = BasePage.SystemSetting.ClassFolder;
+            if (sitrurl.IsNullOrEmpty())
             {
-                sitrurl = "";
+                sitrurl = "/Book";
             }
             return string.Format("{0}/{1}/index{2}",
                 sitrurl,
