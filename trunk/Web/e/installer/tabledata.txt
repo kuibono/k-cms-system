@@ -1,1504 +1,733 @@
-﻿SET IDENTITY_INSERT [UserGroup] ON ;
- insert into [UserGroup]([ID],[GroupName],[Grade],[MaxPost],[PostAotuAudit],[RegForm],[EnableReg],[RegAutoAudit]) values(N'1',N'学生',N'0',N'0',N'False',N'1',N'True',N'True')
- SET IDENTITY_INSERT [UserGroup] OFF ;
-
-
-SET IDENTITY_INSERT [UserGroup] ON ;
- insert into [UserGroup]([ID],[GroupName],[Grade],[MaxPost],[PostAotuAudit],[RegForm],[EnableReg],[RegAutoAudit]) values(N'2',N'教师',N'1',N'10',N'False',N'2',N'True',N'False')
- SET IDENTITY_INSERT [UserGroup] OFF ;
-
-
-SET IDENTITY_INSERT [UserGroup] ON ;
- insert into [UserGroup]([ID],[GroupName],[Grade],[MaxPost],[PostAotuAudit],[RegForm],[EnableReg],[RegAutoAudit]) values(N'3',N'企业',N'3',N'100',N'True',N'3',N'True',N'False')
- SET IDENTITY_INSERT [UserGroup] OFF ;
-
-
-SET IDENTITY_INSERT [UserForm] ON ;
- insert into [UserForm]([ID],[FormName],[Content]) values(N'1',N'学生注册',N'                           <table cellspacing="1" class="style1">
-                                <tr>
-
-                                    <td width="100" align="right">
-
-                                        学&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
-
-                                    <td>
-
-                                        <input name="studentno" class="req" id="stuno" type="text"/>&nbsp;*
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td width="100" align="right">
-
-                                        中&nbsp;文&nbsp;名 </td>
-
-                                    <td>
-
-                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
-
-                                    <td>
-
-                                        <input name="tel" id="tel" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
-
-                                    <td>
-
-                                        <input name="mobile" id="mobile" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        电子信箱 </td>
-
-                                    <td>
-
-                                        <input name="email" id="email" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        QQ&nbsp;号&nbsp;码</td>
-
-                                    <td>
-
-                                        <input name="qq" id="qq" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
-
-                                    <td>
-
-                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
-
-                                    <td>
-                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        个人简介</td>
-
-                                    <td>
-                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                            </table>
-')
- SET IDENTITY_INSERT [UserForm] OFF ;
-
-
-SET IDENTITY_INSERT [UserForm] ON ;
- insert into [UserForm]([ID],[FormName],[Content]) values(N'2',N'教师注册',N'                           <table cellspacing="1" class="style1">
-                                <tr>
-
-                                    <td width="100" align="right">
-
-                                        工&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
-
-                                    <td>
-
-                                        <input name="tecno" class="req" id="teachno" type="text"/>&nbsp;*
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td width="100" align="right">
-
-                                        中&nbsp;文&nbsp;名 </td>
-
-                                    <td>
-
-                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
-
-                                    <td>
-
-                                        <input name="tel" id="tel" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
-
-                                    <td>
-
-                                        <input name="mobile" id="mobile" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        电子信箱 </td>
-
-                                    <td>
-
-                                        <input name="email" id="email" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        QQ&nbsp;号&nbsp;码</td>
-
-                                    <td>
-
-                                        <input name="qq" id="qq" type="text" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
-
-                                    <td>
-
-                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
-
-                                    <td>
-                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td align="right">
-
-                                        个人简介</td>
-
-                                    <td>
-                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
-
-                                    </td>
-
-                                </tr>
-
-                            </table>
-')
- SET IDENTITY_INSERT [UserForm] OFF ;
-
-
-SET IDENTITY_INSERT [UserForm] ON ;
- insert into [UserForm]([ID],[FormName],[Content]) values(N'3',N'企业注册',N'                           <table cellspacing="1" class="style1">
-
-
-                                <tr>
-
-
-
-                                    <td width="100" align="right">
-
-
-
-                                        企业名称 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="chinesename"  id="chinesename" type="text"/>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电&nbsp;&nbsp;&nbsp;&nbsp;话 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="tel" id="tel" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        手&nbsp;&nbsp;&nbsp;&nbsp;机 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="mobile" id="mobile" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        电子信箱 </td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="email" id="email" type="text" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        邮&nbsp;&nbsp;&nbsp;&nbsp;编</td>
-
-
-
-                                    <td>
-
-
-
-                                        <input name="zipcode" id="zipcode" type="text" style="width:100px;" />&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        地&nbsp;&nbsp;&nbsp;&nbsp;址</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="address" id="address" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                                <tr>
-
-
-
-                                    <td align="right">
-
-
-
-                                        企业简介</td>
-
-
-
-                                    <td>
-
-                                        <textarea name="intro" id="intro" style="width:250px;"></textarea>&nbsp;
-
-
-
-                                    </td>
-
-
-
-                                </tr>
-
-
-
-                            </table>
-')
- SET IDENTITY_INSERT [UserForm] OFF ;
-
-
-SET IDENTITY_INSERT [User] ON ;
- insert into [User]([ID],[UserName],[UserPass],[Email],[ChineseName],[QQ],[MSN],[Tel],[Mobile],[WebSite],[Image],[Address],[ZipCode],[Intro],[RegTime],[RegIP],[LoginCount],[LastLoginTime],[LastLoginIP],[Cent],[PostCount],[GTalk],[Twitter],[weibo],[ICQ],[Group],[Enable],[StudentNo],[TeachNo]) values(N'1',N'lhg2005',N'e10adc3949ba59abbe56e057f20f883e',N'lhg2005@163.com,',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'2011-11-19 16:08:18',N'::1',N'19',N'2011-11-30 14:36:33',N'127.0.0.1',N'40',N'0',N'',N'',N'',N'',N'2',N'True',N'',N'')
- SET IDENTITY_INSERT [User] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'1',N'1',N'header',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>[!--page.title--]-[!--sys.sitename--]</title>
-    <meta name="keywords" content="[!--page.keyword--] [!--sys.keywords--]" />
-    <meta name="description" content="[!--page.description--] [!--sys.description--]" />
-    <meta name="update" content="[!--page.updatetime--]" />
-    <link rel="stylesheet" type="text/css" href="/skin/novel/index.css" />
-</head>
-<body>
-    <div class="logoNav">
-        <div class="logo">
-            <a href="/">
-                <img src="/skin/novel/logo.png" alt="爱造人小说阅读" border="0" /></a></div>
-        <div class="nav">
-            <div class="chongzhi">
-                <a href="/wiki/" target="_blank">wiki</a>
+﻿SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'1',N'1',N'movietop',N'        <!--顶部开始-->
+        <div id="aimizi">
+            <div id="aimizi_a">
+                <ul>
+                    <li class="w">如果你觉得本站不错的话，请行举手之劳推荐给你的朋友，或在博客/空间里做上[!--sys.sitename--]的链接，谢谢!</li>
+                    <li class="s"><a  href="/aimizivod.html" target="_blank">[!--sys.sitename--]公告</a></li>
+                    <li><a href="javascript:window.external.AddFavorite(''[!--sys.siteurl--]'',''[!--sys.sitename--]'')">收藏本站</a></li>
+                    <li><a href="http://www.aimizi.com" onclick="this.style.behavior=''url(#default#homepage)'';this.setHomePage(this.href);return(false);">设为主页</a></li>
+                    <li class="wx"><a href="" id="StranLink">繁體中文切換</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-    <!--  subNav Start -->
-    <div class="subNavBg">
-        <div class="subNavBody">
-            <div class="subNav">
-                <a href="/">首页</a> [getclassbyfilter]IsLeafClass=0[/getclassbyfilter]
-            </div>
-            <div class="dingyue" id="whobuy">
-            </div>
-        </div>
-    </div>
-    <div class="searchWarp">
-        <span class="searchLeft"></span>
-        <div class="searchBody">
-            <form action="/search.aspx?m=4" method="get" id="searchForms">
-            <input class="searchInput" name="key" id="searchtxts" type="text" onfocus="if(this.value==''请输入关键字...''){this.value='''';}"
-                onblur="if(this.value==''''){this.value=''请输入关键字...'';}" value="请输入关键字..." />
-            <input class="searchBtn mr10" name="searchBtn" id="searchBtn" type="submit" value="搜索" />
-            </form>
-            <div class="hotSearch">
-                <strong>热门搜索：</strong> [getsearchkey]10,4[/getsearchkey]
-            </div>
-        </div>
-        <span class="searchRight"></span>
-    </div>')
+
+        <!--顶部结束-->
+
+        <!--搜索开始-->
+        <center>
+            <table width="977" height="75">
+                <tr>
+                    <td width="222">
+                        <a href="/" title="[!--sys.sitename--]" target="_blank">
+                            <img width="205" height="75" src="/skin/movie/logo.gif" border="0">
+                        </a>
+                    </td>
+
+                    <td width="231">
+
+                    </td>
+
+                    <td width="524">
+
+                        <form id="form1" name="form1" method="post" action="/Search.aspx">
+
+                            <div id="aimizi_s">
+                                <input type="hidden" name="m" value="6"/>
+                                <input type="text" class="text" id="q" name="key" />
+                                <input type="submit" class="submit" value="搜 索" />
+
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <!--搜索结束-->')
  SET IDENTITY_INSERT [TemplateVar] OFF ;
 
 
 SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'2',N'1',N'footer',N'    <!--  footer start -->
-    <div class="footer mt10 mb10">
-        [!--sys.copyright--]
-        [!--sys.countcode--]
-    </div>
-    <!--  footer End -->
-</body>
-</html>')
- SET IDENTITY_INSERT [TemplateVar] OFF ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'2',N'1',N'menu',N'        <!--菜单开始-->
 
+        <div id="header">
 
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'3',N'1',N'moviefooter',N'<div id="footArea">
+            <div id="aimizi_d">
 
-	<div class="footSearch">
-
-		<form name="sFormA" autocomplete="off" id="sFormA" method="post" action="/search.aspx?m=6" onSubmit="return false;">
-
-            <input type="text" id="sKeyA" value="杜拉拉升职记" class="tx"><input type="submit" value="搜索" id="searchBtnA" class="btn">
-
-            </form>
-
-    </div>
-
-    <div class="clear footLink">
-    	<dl>
-            <dt><a href="/" target=_blank>首页</a></dt>
-            <dd><a href="/drama/" target=_blank>电视剧</a> | <a href="/movie/" target=_blank>电影</a><br /><a href="/real/" target=_blank>纪录片</a> | <a href="comic/" target=_blank>动漫</a></dd>
-        </dl>
-    </div>
-</div>
-
-
-
-<div id="foot" class="area">
-    <a href="javascript:void(0)" onClick=this.style.behavior=''url(#default#homepage)'';this.setHomePage(''[!--sys.siteurl--]'');return false;>设置首页</a>
-
-    <br />[!--sys.copyright--][!--sys.countcode--]
-
-</div>
-')
- SET IDENTITY_INSERT [TemplateVar] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'4',N'1',N'seachlabel',N'<div class="dDox bordB clear" id="theTVCategory">
-			<div class="mvRank clear">
-				<h2><span>电视剧分类</span></h2>
-			</div>
-  <div class="tvCls clear">
-                <div class="list clear">
-                <H3>按地区|</H3>
-<UL>
-<LI><A href="/search.aspx?m=6&l=内地">内地</A></LI>
-<LI><A href="/search.aspx?m=6&l=港剧">港剧</A></LI>
-<LI><A href="/search.aspx?m=6&l=台剧">台剧</A></LI>
-<LI><A href="/search.aspx?m=6&l=韩剧">韩剧</A></LI>
-<LI><A href="/search.aspx?m=6&l=美剧">美剧</A></LI>
-<LI><A href="/search.aspx?m=6&l=其他">其他</A></LI></UL></div>
-                <div class="line"></div>
-                <div class="list clear">
-                <H3>按类型|</H3>
-<UL>
-<LI><A href="/search.aspx?m=6&t=偶像剧">偶像剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=伦理剧">伦理剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=历史剧">历史剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=年代剧">年代剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=言情剧">言情剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=武侠剧">武侠剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=古装剧">古装剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=都市剧">都市剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=农村剧">农村剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=战争剧">战争剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=悬疑剧">悬疑剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=谍战剧">谍战剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=科幻剧">科幻剧</A></LI>
-<LI><A href="/search.aspx?m=6&t=动作剧">动作剧</A></LI></UL></div>
-                <div class="line"></div>
-
-                <div class="list clear">
-                <H3>按明星|</H3>
-<UL>
-
-
-<LI><A href="/search.aspx?m=6&a=王志文">王志文</A></LI>
-<LI><A href="/search.aspx?m=6&a=李幼斌">李幼斌</A></LI>
-<LI><A href="/search.aspx?m=6&a=黄志忠">黄志忠</A></LI>
-<LI><A href="/search.aspx?m=6&a=张嘉译">张嘉译</A></LI>
-<LI><A href="/search.aspx?m=6&a=潘粤明">潘粤明</A></LI>
-<LI><A href="/search.aspx?m=6&a=冯绍峰">冯绍峰</A></LI>
-<LI><A href="/search.aspx?m=6&a=贾乃亮">贾乃亮</A></LI>
-<LI><A href="/search.aspx?m=6&a=何晟铭">何晟铭</A></LI>
-<LI><A href="/search.aspx?m=6&a=佟大为">佟大为</A></LI>
-<LI><A href="/search.aspx?m=6&a=蒋雯丽">蒋雯丽</A></LI>
-<LI><A href="/search.aspx?m=6&a=刘涛">刘　涛</A></LI>
-<LI><A href="/search.aspx?m=6&a=马苏">马　苏</A></LI>
-<LI><A href="/search.aspx?m=6&a=海清">海　清</A></LI>
-<LI><A href="/search.aspx?m=6&a=杨幂">杨　幂</A></LI>
-<LI><A href="/search.aspx?m=6&a=董璇">董　璇</A></LI></UL></div>
-                <div class="line"></div>
-                
-                <div collection="Y" class="list clear c4">
-<H3>按年份|</H3>
-<UL>
-<LI><A href="/search.aspx?m=6&y=2011">2011</A></LI>
-<LI><A href="/search.aspx?m=6&y=2010">2010</A></LI>
-<LI><A href="/search.aspx?m=6&y=2009">2009</A></LI>
-<LI><A href="/search.aspx?m=6&y=2008">2008</A></LI>
-<LI><A href="/search.aspx?m=6&y=2007">2007</A></LI>
-<LI><A href="/search.aspx?m=6&y=2006">2006</A></LI>
-<LI><A href="/search.aspx?m=6&y=2005">2005</A></LI>
-<LI><A href="/search.aspx?m=6&y=2004">2004</A></LI>
-<LI><A href="/search.aspx?m=6&y=2003">2003</A></LI>
-<LI><A href="/search.aspx?m=6&y=2002">2002</A></LI>
-<LI><A href="/search.aspx?m=6&y=2001">2001</A></LI>
-<LI><A href="/search.aspx?m=6&y=2000">2000</A></LI>
-<LI><A href="/search.aspx?m=6&y=1999">1999</A></LI>
-<LI><A href="/search.aspx?m=6&y=1998">1998</A></LI>
-<LI><A href="/search.aspx?m=6&y=1997">1997</A></LI></UL></div>
-    <div class="line"></div>
-			</div>
-		</div>')
- SET IDENTITY_INSERT [TemplateVar] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'5',N'1',N'searchform',N'<FORM  id="sform" method="get" name="sform" action="/search.aspx" target="_blank" autocomplete="off" accept-charset="utf-8">
-	<INPUT id="key" class="tx" value="杜拉拉生殖器" name="key" >
-        <input type="hidden" value="6" name="m" />
-        <INPUT id="searchbtn" class="btn" value=搜索 type="submit">
-</FORM>')
- SET IDENTITY_INSERT [TemplateVar] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'6',N'1',N'seachword',N'杜拉拉生殖器')
- SET IDENTITY_INSERT [TemplateVar] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateVar] ON ;
- insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'7',N'1',N'indexfocus',N'<style>
-
-.fi_movie .fi_btnplay{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/movie-normal.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/movie-normal.png");_background:none;}
-
-.fi_movie .fi_btnplay:hover{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/movie-over.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/movie-over.png");_background:none;}
-
-.fi_movie .fi_jb{width:92px;height:92px;position:absolute;top:0;left:158px;background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/movie-p.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/movie-p.png");_background:none;}
-
-</style>
-
-<div id="mFocus1" class="fi_movie area">
-
-                <div class="fi_ct"><a href="#" target="_blank"><a href="#" target="_blank"><img class="fi_player" width="980" height="380" src="" /></a></a></div>
-
-                <div class="fi_tab clear">
-
-                    <div class="fi_btn fi_prev"><a href="javascript://" class="fi_off"></a></div>
-
-                    <div class="fi_tab_inner">
-
-
-
-                        <ul class="fi_tab_ clear"></ul>
-
-                        <div class="fi_pointer"></div>
-
-                    </div>
-
-                    <div class="fi_btn fi_next"><a href="javascript://"></a></div>	
+                <div id="aimizi_d_l">
 
                 </div>
 
-                <div class="fi_note">
+                <ul class="bt">
 
-                                        <div class="fi_jb"></div>
+                    <li><a href="/"><strong>首页</strong></a></li>
 
-                    <h2 class="fi_tt"><a href="#" target="_blank"></a></h2>
+                    <li><a href="/tubiao/daluju.html"><strong>电视剧</strong></a></li>
 
-                    <h3 class="fi_tt0"><a href="#" target="_blank"></a></h3>
+                    <li><a href="/tubiao/dongman.html"><strong>电影</strong></a></li>
 
-                    <div class="fi_meta">
+                    <li><a href="/tubiao/dongman.html"><strong>纪录片</strong></a></li>
 
-                        <div class="fi_mtype"><label>类型：</label><p></p></div>
+                    <li><a href="/tubiao/yule.html"><strong>综艺</strong></a></li>
 
+                </ul>
 
-
-                        <div class="fi_mdirector"><label>导演：</label><p></p></div>
-
-                        <div class="fi_mactor"><label>主演：</label><p></p></div>
-
-                        <div class="fi_mdesc"></div>
-
-                    </div>
+                <div id="aimizi_d_r">
 
                 </div>
 
-                <div class="fi_acts"><a href="#" class="fi_btnplay" target="_blank"><span></span></a></div>
+            </div>
 
-                <div class="fi_ovl_note"></div>
+            <div id="aimizidy">
+
+                <div class="dy">
+
+                    <ul>
+
+                        <a href="/tubiao/dongzuo.html" target="_blank">电视剧</a> | 
+
+                        <a href="/tubiao/kehuan.html" target="_blank">电影</a> | 
+
+                        <a href="/tubiao/kongbu.html" target="_blank">纪录片</a> | 
+
+                        <a href="/tubiao/xiju.html" target="_blank">综艺</a> | 
 
 
+                    </ul>
 
-                <div class="fi_loading"><img src="http://tv.sohu.com/upload/moviefocus1129/img/loading_black.gif" width="47" height="47"/></div>	
+                </div>
+
+                <div class="ys">
+
+                    <a href="/bz.html" target="_blank">观看帮助</a> 
+
+                    ◇<a href="/bdyy.html" target="_blank">请升级为高速播放器</a>
+
+                    ◇<a href="/rss.xml" target="_blank">RSS订阅</a></div>
 
             </div>
 
-<script type="text/javascript" src="http://tv.sohu.com/upload/moviefocus1129/js/MDCFocus_mv201012.min.js"></script>
+        </div>
 
-<script type="text/javascript">
+        <!--菜单结束-->')
+ SET IDENTITY_INSERT [TemplateVar] OFF ;
 
-            //<![CDATA[
 
-            jQuery("#mFocus1").focusImg({
+SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'3',N'1',N'footer',N'    <div id="aimizi_foot_a">
 
-                hideSubTitle:false,
 
-                flag:"fi_movie",
 
-                opacityTab:0.3,
+        <div id="aimizi_foot_b">
 
-                showPointer:true,
 
-                intelligentPaging:true,
 
-                ptStepX_:5,
+            <div class="sm">
 
-                hoverStop:true,				/* 鼠标移到tab是否停止播放 */
 
-                hoverStop1:true,				/* 鼠标移到焦点图是否停止播放 */
 
-                clickTabToNav:true,
+                <div class="z">
+                 [!--temp.bottomtip--]
+                </div>
 
-                pagingMode:1,
 
-                preloading:false},[{p:"http://kuaib.tv.sohu.com/Uploads/2012/3/2/4f508926ab50d.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/3/2/4f50892af1fd0.jpg",l:"t-3_id-39881.htm",t:"夫妻那些事",t_:"全集",t1:"该剧以生不生孩子的独特视角，讲述了唐鹏（黄磊饰演）、林君（陈数饰演）夫妇因为生子问题产生的种种悲欢际……",mtype:[{"t":"大陆剧","l":"http://kuaib.tv.sohu.com/html/more_list31.htm"}],mdirector:[{"t":"汪俊 ","l":"http://so.tv.sohu.com/mts?&wd=%u6A6C%uCA4F%20"}],mactor:[{"t":"黄磊","l":"http://so.tv.sohu.com/mts?&wd=%uC49E%uCA78"},{"t":"陈数","l":"http://so.tv.sohu.com/mts?&wd=%u4896%u7065"}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/3/7/4f572e4d7ae8f.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/3/7/4f571363e37e2.jpg",l:"t-2_id-39923.htm",t:"那些年，我们一起追的女孩",t_:"",t1:"《那些年，我们一起追的女孩》改编自九把刀自己的同名自传体小说，整个故事的风格就是青春校园爱情喜剧。该……",mtype:[{"t":"爱情片","l":"http://kuaib.tv.sohu.com/html/more_list21.htm"}],mdirector:[{"t":"九把刀 ","l":"http://so.tv.sohu.com/mts?&wd=%u5D4E%u8A62%u0052%20"}],mactor:[{"t":"柯震东","l":"http://so.tv.sohu.com/mts?&wd=%uEF67%u0797%u1C4E"},{"t":"","l":"http://so.tv.sohu.com/mts?&wd="}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/4/5/4f7d39f6d71d5.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/4/5/4f7d39fd59a12.jpg",l:"t-3_id-40227.htm",t:"AA制生活",t_:"更新至34集",t1:"何琪和韩心大学毕业不久就结婚了。婚后，何琪提出实行AA制，韩心负责96平米婚房的还贷，自己负责物业费水电……",mtype:[{"t":"大陆剧","l":"http://kuaib.tv.sohu.com/html/more_list31.htm"}],mdirector:[{"t":"赵晨阳 ","l":"http://so.tv.sohu.com/mts?&wd=%u758D%u6866%u3396%20"}],mactor:[{"t":"李小璐","l":"http://so.tv.sohu.com/mts?&wd=%u4E67%u0F5C%u9074"},{"t":"/","l":"http://so.tv.sohu.com/mts?&wd=%2F"}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/3/15/4f618c382f3fa.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/3/15/4f618c3da861b.jpg",l:"t-2_id-39991.htm",t:"龙门飞甲",t_:"",t1:"《龙门飞甲》是导演徐克的最新作品，是《新龙门客栈》的改版。徐克要将《新龙门客栈》再度搬上大银幕的消息……",mtype:[{"t":"动作片","l":"http://kuaib.tv.sohu.com/html/more_list21.htm"}],mdirector:[{"t":"徐克 ","l":"http://so.tv.sohu.com/mts?&wd=%u905F%u4B51%20"}],mactor:[{"t":"李连杰/周迅/陈坤","l":"http://so.tv.sohu.com/mts?&wd=%u4E67%uDE8F%u7067%2F%u6854%uC58F%2F%u4896%u6457"},{"t":"","l":"http://so.tv.sohu.com/mts?&wd="}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/3/15/4f618f5112cfa.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/3/15/4f618f69ce994.jpg",l:"t-3_id-39992.htm",t:"媳妇是怎样炼成的",t_:"全集",t1:"围绕着彭俏俏和范亮两家人之间展开，讲述了一些时而温馨、时而琐屑、时而让人啼笑皆非的百姓生活。彭俏俏和……",mtype:[{"t":"大陆剧","l":"http://kuaib.tv.sohu.com/html/more_list31.htm"}],mdirector:[{"t":"卢伦常 ","l":"http://so.tv.sohu.com/mts?&wd=%u6253%u264F%u385E%20"}],mactor:[{"t":"萨日娜","l":"http://so.tv.sohu.com/mts?&wd=%u2884%uE565%u1C5A"},{"t":"","l":"http://so.tv.sohu.com/mts?&wd="}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/4/11/4f8522266f54c.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/4/11/4f85222a0c526.jpg",l:"t-3_id-40056.htm",t:"秘密天使",t_:"更新至5集",t1:"天国的美丽天使L在时英遭遇车祸被撞得奄奄一息时用魔法项链救回了他，但也因此L受到天国的处罚…………",mtype:[{"t":"大陆剧","l":"http://kuaib.tv.sohu.com/html/more_list31.htm"}],mdirector:[{"t":"赵云 ","l":"http://so.tv.sohu.com/mts?&wd=%u758D%u914E%20"}],mactor:[{"t":"陈翔","l":"http://so.tv.sohu.com/mts?&wd=%u4896%uD47F"},{"t":"/","l":"http://so.tv.sohu.com/mts?&wd=%2F"}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/4/5/4f7d53f555557.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/4/5/4f7d53f9d2a44.jpg",l:"t-2_id-40231.htm",t:"翻滚吧！阿信",t_:"",t1:"电影《翻滚吧！阿信》是一部追求梦想的励志热血电影，故事描述从小拥有优异的运动天份的阿信，在偶然的机缘……",mtype:[{"t":"剧情片","l":"http://kuaib.tv.sohu.com/html/more_list21.htm"}],mdirector:[{"t":"林育贤 ","l":"http://so.tv.sohu.com/mts?&wd=%u9767%uB280%u248D%20"}],mactor:[{"t":"彭于晏","l":"http://so.tv.sohu.com/mts?&wd=%u6D5F%u8E4E%u4F66"},{"t":"/","l":"http://so.tv.sohu.com/mts?&wd=%2F"}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/4/12/4f868f6f439eb.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/4/12/4f868f743cd43.jpg",l:"t-2_id-40297.htm",t:"逆战",t_:"",t1:"从小与母亲相依为命的国家安全局警察万飞（周杰伦 饰）深入军事重地中东进行任务，枪林弹雨中发生意外，同……",mtype:[{"t":"动作片","l":"http://kuaib.tv.sohu.com/html/more_list21.htm"}],mdirector:[{"t":"林超贤 ","l":"http://so.tv.sohu.com/mts?&wd=%u9767%u858D%u248D%20"}],mactor:[{"t":"谢霆锋","l":"http://so.tv.sohu.com/mts?&wd=%u228C%u0697%u0B95"},{"t":"/","l":"http://so.tv.sohu.com/mts?&wd=%2F"}]},{p:"http://kuaib.tv.sohu.com/Uploads/2012/4/16/4f8bc479e2be5.jpg",p1:"http://is.kuaibo.com/tvsohu/Uploads/2012/4/16/4f8bc47d6ced7.jpg",l:"t-2_id-40323.htm",t:"夺命金",t_:"",t1:"《夺命金》借三个背景各异的角色：银行职员特丽莎（何韵诗 饰）、黑帮中人三脚豹（刘青云 饰）及警队督察张……",mtype:[{"t":"动作片","l":"http://kuaib.tv.sohu.com/html/more_list21.htm"}],mdirector:[{"t":"杜琪峰 ","l":"http://so.tv.sohu.com/mts?&wd=%u5C67%u2A74%uF05C%20"}],mactor:[{"t":"刘青云","l":"http://so.tv.sohu.com/mts?&wd=%u1852%u5297%u914E"},{"t":"/","l":"http://so.tv.sohu.com/mts?&wd=%2F"}]}]
 
-		);
+                <div class="y">
+                    [!--sys.copyright--]
+                </div>
 
-            //]]>
 
-            </script>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        </div>')
+ SET IDENTITY_INSERT [TemplateVar] OFF ;
+
+
+SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'4',N'1',N'bottomtip',N'<p> 友情提示：请勿长时间观看影视，注意保护视力并预防近视，合理安排时间，享受健康生活。</p>
+<p><font color="red">免责声明：</font>本网站将逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。本站仅供测试和学习交流。请大家支持正版。</p>
+<p> <font color="red">版权声明：</font>本网站为非赢利性站点，本网站所有内容均来源于互联网相关站点自动搜索采集信息，相关链接已经注明来源。</p>
+
 ')
+ SET IDENTITY_INSERT [TemplateVar] OFF ;
+
+
+SET IDENTITY_INSERT [TemplateVar] ON ;
+ insert into [TemplateVar]([ID],[GroupID],[VarName],[Content]) values(N'5',N'1',N'testmenu',N'        <!--菜单开始-->
+
+        <div id="header">
+
+            <div id="aimizi_d">
+
+                <div id="aimizi_d_l">
+
+                </div>
+
+                <ul class="bt">
+                    <li><span><a title="[!--sys.sitename--]" href="/">首页</a></span></li>
+                    [buildmenustring]0[/buildmenustring]
+
+                </ul>
+
+                <div id="aimizi_d_r">
+
+                </div>
+
+            </div>
+
+            <div id="aimizidy">
+
+              
+                <div class="ys">
+                    <a href="/e/Rss.aspx" target="_blank">RSS订阅</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--菜单结束-->')
  SET IDENTITY_INSERT [TemplateVar] OFF ;
 
 
 SET IDENTITY_INSERT [TemplatePublic] ON ;
- insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter],[KuaiboPage],[BaiduPage],[SingleDrama]) values(N'1',N'0',N'<!doctype HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+ insert into [TemplatePublic]([ID],[GroupID],[IndexContent],[Controlcontent],[SiteSearchContent],[AdvancedSearch],[HorizontaSearch],[VerticalSearch],[RelationInfo],[MessageBoard],[Reply],[FinalDown],[DownAddress],[OLPlayaddress],[ListPager],[LoginStatus],[JSLogin],[ImageList],[AnswerList],[ChapterList],[BookChapter],[KuaiboPage],[BaiduPage],[SingleDrama]) values(N'1',N'',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="[!--sys.description--]" />
-<meta name="keywords" content="[!--sys.keywords--]" />
-<meta name="robots" content="all" />
-<script src="http://www.sohu.com/sohuflash_1.js" type="text/javascript"></script>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>[!--sys.sitename--]</title>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
-<link type="text/css" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/kuaibo.css" />
-<style>
-#contentA .newsBox .snList{height:auto;}
-</style>
-<script src="http://tv.sohu.com/upload/jq_plugin/j_1.5.2.js"></script>
-<script src="http://tv.sohu.com/upload/moviefocus1129/js/MDC_FocusImage_V3.min.js"></script>
-<script type="text/javascript" language="javascript">
-var isIE = false;
-if(window.ActiveXObject){
-    isIE = true;
-}
-function kdown(){
-    if(isIE){document.charset=''GBK'';}
-    document.sform.submit();
-    if(isIE){document.charset=''UTF-8'';location.reload(false)}
-}
-function sdown(){
-    if(isIE){document.charset=''GBK'';}
-    document.sFormA.submit();
-    if(isIE){document.charset=''UTF-8'';location.reload(false)}
-}
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>[!--sys.sitename--] - 看那种电影电视剧</title>
+    <meta name="keywords" content="[!--sys.keywords--]" />
+    <meta name="description" content="[!--sys.description--]" />
+    <link href="/skin/movie/whvod.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/skin/script/jquery-1.7.min.js"></script>
+
+
 </head>
 <body>
-<DIV class=navBar>
-<DIV class=area>
-<UL id=navMain>
-[getclasslist]100,100,ModelID=6 and IsLeafClass=0,<li><em><a href="{url}" title="{classname}">{classname}</a></em></li>[/getclasslist]
-</UL>
+    <a name="top"></a>
+    <center>
+[!--temp.movietop--]
+[!--temp.testmenu--]
 
-</DIV></DIV>
-
-<DIV id=logoBar class=area>
-<DIV class="logo l">
-<DIV class="tvLogo l"><A href="/"><img alt="[!--sys.sitename--]" src="/skin/movie/logo.gif" /></A></DIV>
-</DIV><DIV class="search l" sizset="24" sizcache="1">
-[!--temp.searchform--]
-</DIV><LINK rel=stylesheet type=text/css href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_g.css">
-</DIV>
-[!--temp.indexfocus--]
-<div class="blank12H"></div>
-<sohuadcode></sohuadcode>
-<div id="contentA" class="area">
-<div class="left">
-<DIV id=mvPop class="blockLB bordA clear">
-<DIV class=title><SPAN><A href="http://kuaib.tv.sohu.com/html/more_list21.htm" target=_blank><IMG alt=高清电影 src="http://tv.sohu.com/upload/tv110421/images/tt03.gif" width=85 height=18></A>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<A title="" href="http://kuaib.tv.sohu.com/html/more_list21.htm" target=_blank>更多</A></SPAN></DIV>
-    <DIV class="pp bpp" sizset="1" sizcache="3">
-		<UL>
-		[getmovielist]10,10,id>0,<LI ><A href="{url}" target=_blank><IMG alt="" src="{faceimage}" width=105 height=145></A><SPAN><STRONG sizset="495" sizcache="1"><A href="{url}" target=_blank>{ftitle}</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM>111分7秒</EM></SPAN></LI>[/getmovielist]
-            	</UL>
-    </DIV>
-</DIV>
-<DIV class=blank12H></DIV>
-<span id="m1"></span>
-<DIV id=tvPop class="blockLA bordA clear">
-    <DIV class=title><SPAN><A href="#" target=_blank><IMG alt=高清电视剧 src="http://tv.sohu.com/upload/tv110421/images/tt02.gif" width=108 height=18></A>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<A title="" href="#" target=_blank>更多</A></SPAN></DIV>
-	   <DIV class=pp>
-		    <UL>
-		        [getmovielist]10,10,id>0,<LI ><A href="{url}" target=_blank><IMG alt="" src="{faceimage}" width=105 height=145></A><SPAN><STRONG sizset="495" sizcache="1"><A href="{url}" target=_blank>{ftitle}</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM>更新到{lastdramatitle}</EM></SPAN></LI>[/getmovielist]	
-		    </UL>
-		</DIV>
-    </DIV>
-
-<DIV class=blank12H></DIV>
-<span id="m2"></span>
-    <DIV id=news class="blockLA bordA clear">
-		<DIV class=title><SPAN><A href="#" target=_blank><IMG alt=纪录片 src="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/images/jlp.jpg" width=108 height=18></A>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<A title="" href="#" target=_blank>更多</A></SPAN></DIV>
-		<DIV class=pp>
-			<UL>
-                	[getmovielist]10,10,id>0,<LI ><A href="{url}" target=_blank><IMG alt="" src="{faceimage}" width=105 height=145></A><SPAN><STRONG sizset="495" sizcache="1"><A href="{url}" target=_blank>{ftitle}</A></STRONG></SPAN><SPAN class="label bp"><I></I><CODE class="cc"></CODE><EM>{lastdramatitle}</EM></SPAN></LI>[/getmovielist]
-		        </UL>
-		</DIV>
-    </DIV>
-
-    </div>	
-    <div class="right">
-        <div class="newsBox bordB clear">
-            <h2><span>电影排行榜</span></h2>
-                <div id="hotNewsMovieTab_movie" class="snList clear">
-                    <ul>
-[getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-</ul>
-                </div>
-                
-                <span id="msg"></span>
-        </div>
-        <div class="blank12H"></div>
-        <span id="r1"></span>
-        <div class="newsBox bordB clear">
-            <h2><span>电视剧排行榜</span></h2>
-                <div id="hotNewsTeleplayTab_movie" class="snList clear">
-                    <ul>
-                      [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                    </ul>
-                </div>
-        </div>
-        <div class="blank12H"></div>
-        <span id="r2"></span>
-        <div class="newsBox bordB clear">
-            <h2><span>综艺排行榜</span></h2>
-                <div id="hotNewsMTVTab_movie" class="snList clear">
-                    <ul>
-[getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                    </ul>
-                </div>
-        </div>
-        
-        <div class="blank12H"></div>
-        <div class="newsBox bordB clear">
-            <h2><span>纪录片排行榜</span></h2>
-                <div id="hotNewsDocumeTab_movie" class="snList clear">
-                    <ul>
-                      [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                    </ul>
-                </div>
-        </div>
-        
-        <div class="blank12H"></div>
-        <div class="newsBox bordB clear">
-            <h2><span>原创频道排行榜</span></h2>
-                <div id="hotNewsMvstationTab_movie" class="snList clear">
-                    <ul>
-                           [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                    </ul>
-                </div>
-        </div>
+        <div class="aimizi_kd_tj">
+            <div class="aimizi_kd_h">
+                <h4><span>
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+		<a class="shareCount"></a>
     </div>
-        
-    <div class="blank12H"></div>
-    
-</div>
-<!-- contentA end -->
-
-[!--temp.moviefooter--]
-</body>
-</html>',N'',N'<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="电影搜索，电影在线观看" />
-<meta name="keywords" content="快播电影，百度影音电影搜索，电影在线观看" />
-<meta name="robots" content="all" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>电影搜索 - [!--sys.sitename--]</title>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/p_dsj.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/yingp_css/fileview.css" />
-
-<style>
-.list21 .p1 img{display:inline;}
-.navBar{margin-top:5px;}
-.pp4 li img{width:105px;height:78px;}
-#contentA .blockLD .list12 {
-    margin-right: 0px;
-}
-#contentA .blockLD .list12 li {
-    float: left;
-    width: 200px;
-}
-#contentA .blockLA .l{width:205px;margin:0 3px 0 19px}
-#contentA .blockLA .pic{margin:0 auto}
-#contentA .blockLA .pic span{display:block;margin:8px auto 5px;font:600 14px/20px "宋体";text-align:center;}
-.shadowbox .inner{padding:15px;overflow:hidden;}
-.pp4 .label {
-top: 130px;
-width: 103px;
-}
-</style>
-
-</head>
-
-<body>
-
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/static/play/skin/public.css" />
-<link type="text/css" rel="stylesheet"  href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_new_play.css" />
-<style>
-.homepage .blank10H{display:none;}
-.footLink dd a{margin-right:0}
-#footArea .footLink dl{margin-right:8px;}
-.footSearch{width:auto;}
-#footArea{background:none;}
-</style>
-	<!--BEGIN:TOP-->
-	<div class="header homepage">
-		<div class="areaTop">
-			<div class="area clear iheader">
-				<div class="logo_ad_box">
-					<a class="logo l" target="_blank" href="/">
-                        <img src="/skin/movie/logo_small.gif" alt="[!--sys.sitename--]" />
-					</a>
-				</div>
-				<div class="search l">
-					<form id="sform" method="get" name="sform" action="/search.aspx?m=6" target="_blank" autocomplete="off">
-						<div class="text l"><input type="hidden" name="m" value="6" />
-                            <input id="gNewSearch" name="key" type="text" value="[!--temp.seachword--]" class="fs14" />
-                        </div>
-                        <input class="bt vat pointer l" type="submit" value="" />
-					</form>
-				</div>
-			</div>
-		</div>
-
-<div class="blank10H"></div>
-		<div class="menubox">
-<div class="navbar clear">
-				<div class="l">
-					<ul>
-						<li><a href="/" title="[!--sys.sitename--]" >首页</a></li>
-						[getclasslist]100,100,IsLeafClass=0 order by id,<li><a href="{url}" title="{classname}">{classname}</a></li>[/getclasslist]
-					</ul>
-				</div>
-			</div>
-			<div class="subnavbar clear">
-				<div class="l">
-					<ul>
-						<li class="first selected"><a href="/search.aspx" title="电影搜索" >电影搜索</a></li>
-						
-					</ul>
-				</div>	
-			</div>
-</div>
-</div>
-
-	<!--END:TOP-->
-
-<style> 
-.fi_movie .fi_btnplay{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-normal.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-normal.png");_background:none;}
-.fi_movie .fi_btnplay:hover{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-over.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-over.png");_background:none;}
-.fi_movie .fi_jb{width:92px;height:92px;position:absolute;top:0;left:158px;background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-p.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-p.png");_background:none;}
-.fi_movie .fi_loading img{left : 40%;top : 45%;}
-</style>
-
-
-
-<div id="contentA" class="area">
-	
-
-	<div class="left">
-<DIV class=blank12H></DIV>
-		<div class="blockLA bordA clear">
-<div class="cont">
-<DIV class=blank12H></DIV>
-<div class="pp pp4" sizcache="5" sizset="1">
-[!--show.listpage--]
-<ul sizcache="5" sizset="1">
-     <!--list.var-->
-</ul>
-[!--show.listpage--]
-</div></div></div>
-	
-		<div class="blank12H"></div>	
-	</div>	
-	<div class="right">
-		<div class="blank12H"></div>
-<DIV class=blank12H></DIV>
-[!--temp.seachlabel--]
-        <div class="blank12H"></div>
-		<div class="blockRC bordB clear" id="theViewRank">
-        	<h2><span>观看排行榜</span></h2>
-        	
-
-            <div class="snList clear">
-                <ul id="mv_data">
-                    [getmovielist]10,10,id>0 order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                 </ul>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=280559" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+              </span>今日看点</h4>
+            </div>
+            <div id="aimizi_t">
+                <ul>
+                    [getmovielist]14,6,Enable=1 order by clickcount desc,<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                </ul>
             </div>
         </div>
-        <div class="blank12H"></div>
-    </div>
-</div>
-<!-- contentA end -->
 
-[!--temp.moviefooter--]
+        <div class="aimizi_kd_tj">
+            <div class="aimizi_kd_h">
+                <h4>最新更新</h4>
+            </div>
+            <div id="aimizi_t">
+                <ul>
+                    [getmovielist]14,6,Enable=1 order by updatetime desc,<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                </ul>
+            </div>
+        </div>
+
+ 
+
+        <div id="aimizi_qk">
+
+            <!--右侧开始-->
+
+            <div class="aimizi_yb">
+
+                <div class="aimizi_gao">
+                    <div class="aimiziys">
+                        <div class="aimizi_yb_h">
+                            <h2>
+                                <span>周排行</span>上升最快</h2>
+                        </div>
+                        <ul>
+                           [getmovielist]16,6,Enable=1 order by updatetime desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="aimizi_gao">
+                    <div class="aimiziys">
+                        <div class="aimizi_yb_h">
+                            <h2>
+                                <span>月排行</span>电视剧</h2>
+                        </div>
+                        <ul>
+                            [getmovielist]16,6,Enable=1 order by updatetime desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="aimizi_duan">
+
+                    <div class="aimiziys">
+
+                        <div class="aimizi_yb_h">
+
+                            <h2>
+
+                                <span>月排行</span>电影</h2>
+
+                        </div>
+
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by clickcount desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="aimizi_duan">
+
+                    <div class="aimiziys">
+
+                        <div class="aimizi_yb_h">
+
+                            <h2>
+
+                                <span>月排行</span>动漫</h2>
+
+                        </div>
+
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by clickcount desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                        </ul>
+                    </div>
+                </div>
+                <div class="aimizi_duan">
+                    <div class="aimiziys">
+                        <div class="aimizi_yb_h">
+                            <h2>
+                                <span>月排行</span>综艺</h2>
+                        </div>
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by clickcount desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--右侧结束-->
+
+
+
+            <!--左侧开始-->
+
+            <div class="aimizi_zb">
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+                            <span><a href="/tubiao/daluju.html">显示更多</a></span>大陆剧</h1>
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                    </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/hanguoju.html">显示更多</a></span>韩国剧</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/meiguoju.html">显示更多</a></span>美国剧</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/ribenju.html">显示更多</a></span>日本剧</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/xianggangju.html">显示更多</a></span>香港剧</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/taiwanju.html">显示更多</a></span>台湾剧</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="#top">电影类型</a></span>电影迷</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="aimizi_zb_x">
+
+                    <div class="aimizi_zb_h">
+
+                        <h1>
+
+                            <span><a href="/tubiao/yule.html">显示更多</a></span>综艺迷</h1>
+
+                    </div>
+
+                    <div class="type_list">
+                        <ul>
+                            [getmovielist]10,6,Enable=1 order by newid(),<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--左侧结束-->
+
+        </div>
+
+        <div class="aimizi_footer">
+
+            <div class="aimizi_f">
+
+                <h4>
+                    友情链接
+                </h4>
+
+            </div>
+
+            <div id="aimizi_l">
+                [getlink][/getlink]                
+            </div>
+        </div>
+
+        </center>
+
+    [!--temp.footer--]
 
 </body>
-</html>',N'',N'',N'',N'',N'',N'',N'',N'<li ><a target="_self" title="[!--url.movietitle--][!--url.title--]" href="[!--url--]" >[!--url.title--]</a></li>',N'<li ><a target="_self" href="javascript:" onclick="play(''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'');s(this);" >[!--url.title--]</a></li>
-                    <input type="hidden" id=''qvod_sh_3fad03de3b8691cdb2323b92cc0c0c50'' value="[!--url.url--]" />',N'页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]',N'',N'',N'',N'                                    <div class="details" style="width:650px">
-                                        <div class="float-r" style="float:right;">
-                                            <span class="gray">[!--answer.answertime--]</span>
-                                        </div>
-                                        <span class="gray">[!--answer.username--]</span>
-                                    </div>
-                                    <div class="content mt10">
-                                   		<p>[!--answer.content--]</p>
-                               		</div>',N'<li style="width: 50%;"><a href="[!--chapter.url--]" title="[!--chapter.title--]">[!--chapter.title--]</a></li>',N'[!--temp.header--]
-    <div class="friendLink mt10">
-        <div class="friendBody">
-        <a href="/">首页</a> > <a href="[!--class.url--]">[!--class.name--]</a> > <a href="[!--book.url--]">[!--book.title--]</a>>[!--chapter.title--] 
-        </div>
-    </div>
-    <!--  chapterContentstart -->
 
-    <div class="chapterContent mt10">
-
-        <div class="title">
-
-            <h3> [!--chapter.title--] </h3>
-
-        </div>
-
-        <div class="chapterBody">
-         [!--chapter.content--] 
-          <div class="content block">
-            [[!--news.nextlink--]]  [[!--news.prelink--]]  [<a href="[!--book.url--]">目录</a>]
-          </div>
-        </div>
-         
-    </div>
-    <!--  chapterContentEnd -->
-   
-
-[!--temp.footer--]
-',N'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+</html>',N'',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>[!--movie.title--][!--drama.title--]|[!--movie.title--][!--drama.title--]快播在线观看|[!--movie.title--]高清在线观看 - [!--sys.sitename--]</title>
-<meta name="keywords" content="[!--movie.title--][!--drama.title--],[!--movie.title--][!--drama.title--]快播,[!--movie.title--][!--movie.title--]快播在线观看,[!--movie.title--]在线观看">
-<meta name="description" content="[!--movie.title--],[!--movie.title--]快播在线观看">
-
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main_boke.css" />
-<link type="text/css" charset="UTF-8" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/play1.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
-
-<script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
-
-<script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
-
-<style>
-.heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
-.heatRank .pt div a:hover img{border:1px #DD0D0B solid}
-.heatRank .pt{ text-align:left;}
-.heatRank .pt div {float: left;margin: 0 10px 0 0;}
-#contentA .heatRank .pt{width:276px;margin:8px auto;line-height:18px}
-#contentA .heatRank .pt .l{width:14px;margin-right:0;font:600 14px/14px "Arial";color:#FF6000}
-#contentA .heatRank .pt .c{width:180px;margin:0}
-.title{background:url(http://tv.sohu.com/upload/tv110421/images/bg2.png) repeat-x;height:20px;line-height:25px;margin:0 2px;padding:15px 0 0;color:#c9c9c9;text-align:left}
-.title span{float:left;margin-left:16px;display:inline}
-.title a{margin:0 12px}
-.title span a{margin:0}
-.bordA,.bordB{border:1px #c5c5c5 solid;background:#fff;}
-.pp,.pt,.list12 ul,.list14 ul{width:100%;margin:0 auto;}
-.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
-.left .pp{text-align:center;width:662px;}
-.pp img{display:block;margin:0 auto;}	
-.pp span{display:block;}
-.pt{line-height:20px;text-align:left;}
-.pt div{float:left;margin:0 10px 0 0;}			
-.pt p{clear:none}
-.pp li{float:left;display:inline;width:100%}
-.pt div img,.pp img,.pic img{border:1px #c5c5c5 solid;padding:1px}
-.pt div a:hover img,.pp a:hover img,.pic a:hover img{border:1px #dd0d0b solid}
-.pp li{position:relative;width:109px;height:148px;margin-right:29px;}
-.pp span{width:108px;margin:7px auto 0;display:block;line-height:18px;text-align:left}
-.pp span strong{display:block;font-weight:normal;margin:0 auto 2px;color:#4b4b4b;}
-.pp .end{margin:0}
-.pp .label{position:absolute;top:54px;left:2px;height:15px;width:103px;margin:0 auto;color:#FFF;line-height:14px;text-align:right;padding:3px 2px 0 0;}
-.pp .label i{position:absolute;height:18px;width:95px;left:0;top:0;background:#000;filter:alpha(opacity=60);opacity: 0.60;}
-.pp .label code{background:url(http://tv.sohu.com/upload/tv110421/images/images/q_c.gif) no-repeat;z-index:20;display:block;width:27px;height:16px;position:absolute;top:1px;left:1px;}
-.pp .label code.ch{background:url(http://tv.sohu.com/upload/tv110421/images/q_g.gif) no-repeat;}
-.pp .label code.cb{background:url(http://tv.sohu.com/upload/tv110421/images/q_b.gif) no-repeat;}
-.pp .label code.cc{background:url(http://tv.sohu.com/upload/tv110421/images/q_c.gif) no-repeat;}
-.pp .label em{position:relative;z-index:2;color:#FFF;line-height:14px;}
-.pp .bp{top:120px}
-.bordA .pp{text-align:left;}
-#contentA .left .pp li{height:190px}
-#contentA .left .bpp li{height:213px}
-#contentA .left .bpp img{width:95px;height:131px;}
-#contentA .left .pp img{width:95px;}
-#contentA .left .pp span.label{text-align:right;}
-#contentA .left .pp span{width:99px;}
-#contentA .left .pp span.label{width:95px;}
-.menuA .now {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F7F7F7;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    color: #DD0D0B;
-    font-weight: bold;
-    position: relative;
-}
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>影视搜索-[!--sys.sitename--]</title>
+    <meta name="keywords" content="高清电影,电影搜索,高清电视剧,电视剧搜索,快播影院,百度影音在线观看" />
+    <meta name="description" content="为您提供最快最新的高清电影和电视剧在线点播收看，以及高清电影电视剧的搜索功能。" />
+    <link href="/skin/movie/whvod.css" rel="stylesheet" type="text/css" />
+    <link href="/skin/movie/whvodtu.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-
-
-<div class="logoFull">
-<div id="logoFocus" class="area">
-	<div class="left">
-		<div class="logo l" collection="Y"><style>
-#logoFocus .left{margin:2px 0 0;}
-</style>
-<a href="/" target="_blank">
-<img height="30" width="72" alt="[!--sys.sitename--]" src="/skin/movie/logo_small.gif" />
-</a></div>
-		<div class="ado l">
-		</div>
-	</div>
-	<div class="right">
-		<div class="navList l" collection="Y">
-			<div id="nvId" class="nv"><a target="_blank" href="http://tv.sohu.com/">首页</a> [getclasslist]100,100,ModelID=6 and IsLeafClass=0 order by NavIndex asc, |<a href="{url}" target="_blank" title="{classname}">{classname}</a> [/getclasslist]</div>
-		</div>
-		<div class="search l">
-			<form action="/search.aspx" method="GET" target="_blank" id="sForm" autocomplete="off" name="sForm">
-				<input type="text" class="tx" value="[!--movie.title--]" id="sKey" name="key" /><input type="hidden" value="6" name="m" />
-				<span ><input type="submit" class="btn" id="searchBtn" value="搜 索" /></span>
-			</form>
-		</div>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/jq_plugin/search/skin/search.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/reback.css" />
-
-	</div>
-</div>
-</div>
-<div id="location" class="area">
-    <div class="left">
-	<!--- <div class="adB">
-	<a href="http://tv.sohu.com/qvod/" target=_blank style="font-size: 16px;color: #CB001B;font-family:黑体;">搜狐视频快播专区</a>
-	</div> -->
-	<div class="adB" style="font-size: 16px;font-family:黑体;">
-       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
-        </div>
-	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
-    </div>
-</div>
-<div class="fullVideo">
-<div id="video" class="area">
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
-    <td>
-<table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
-        <tr>
-            <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
-            <td width="640" height="399" id="tdqvod" >
-                <div style="position:relative;width:640px;height:399px;">
-                
+    <center>
+        [!--temp.movietop--] [!--temp.testmenu--]
+        <div id="aimizi_z">
+            <div id="aimizi_z_y">
+                <div class="aimizi_z_q">
+                    <div class="aimizi_z_h">
+                        <span>
+                            <!--时间-->
+                        </span>
+                        <p>
+                            热播</p>
+                    </div>
+                    <ul>
+                        [getmovielist]20,6,Enable=1 order by clickcount desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                    </ul>
                 </div>
-            </td>
-        </tr>
-<script>
-	$(document).ready(function(){
-
-		//页面加载自动打开播放器
-		var url = "[!--drama.url--]";
-		//下一集资源地址
-		var nextqvod = "";
-		//下一集播放页面 播放结束自动跳转到该页面
-		var nextpage = "[!--movie.nextpageurl--]";
-		
-		//调用播放器
-		$("#tdqvod").qvod({PlayerArea:"tdqvod", width:"640", height:"399", AutoPlay:"true",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
-
-		/*参数说明*/
-		
-		//width: "500", /*播放器的宽度*/
-		
-		//height: "400", /*播发器的高度*/
-		
-		//AutoPlay: "true", /*自动播放 默认开启*/
-		
-		//FullScreen: "false", /*自动全屏 默认关闭*/
-		
-		//PlayerArea: "",	/*播放器插入的位置，标签的id属性*/
-		
-		//QvodUrl: "", /*本集资源地址*/
-		
-		//NextWebPage: "", /*下一集播放页地址*/
-		
-		//NextQvod: "", /*下一集资源地址，预缓冲时使用*/
-		
-		//ShowControl: "1", /*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
-		
-		//AdUrl: "http://buffer-ad.qvod.com/" /*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
-
-		//该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
-
-	});
-</script>
-    </table>
-</td>
-        <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
-    </table>
-</div>
-</div>
-<div id="contentA" class="area">
-	<div class="left">
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]快播剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.kuib--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.baidu--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-	
-<DIV class=blank12H></DIV>
-<DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
-<DIV class=title><SPAN>相关剧集</SPAN></DIV>
-	<DIV class=pp>
-		<UL>
-			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
-		</UL>
-	</DIV>
-</DIV>
-<DIV class=blank12H></DIV>
-
-</div>
-
-	<div class="right">
-
-		<div class="videoInfo bord clear">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong><em id="specialIDC">[!--movie.title--]</em> 剧情介绍</strong></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="vInfo clear">
-					<div id="vrs_data"></div>
-					<p><em id="specialNumA"></em>剧情：</p>
-
-					<div id="introID">
-						<p>[!--movie.intro--]</p>
-                        </br>
-						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="heatRank bord clear" style="height:350px;">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>热度排行榜</strong></div>
-				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
-			</div>
-			
-             <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
-                 <ul>
-                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                 </ul>
-             </div>
-</div>
-	</div>
-</div>
-
-[!--temp.moviefooter--]
-
-</html>',N'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            </div>
+            <div id="aimizi_z_z">
+                <div class="xiagua_d_t">
+                    <div class="xiagua_d_h">
+                        <h2>
+                            <span><b>影视搜索</b></h2>
+                    </div>
+                    <div class="aimizi_b">
+                        <div class="x">
+                            <ul>
+                                <!--list.var-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="aimizi_fy">
+                    <div class="aimizi_box">
+                        [!--show.listpage--]</div>
+                </div>
+                <div style="margin-top: 5px;">
+                </div>
+            </div>
+        </div>
+        [!--temp.footer--]
+    </center>
+    
+</body>
+</html>',N'',N'',N'',N'',N'',N'',N'',N' <li><a title=''[!--url.movietitle--][!--url.title--]'' href=''[!--url--]'' target="_blank">[!--url.title--]</a></li>',N'',N'页次：[!--thispage--]/[!--pagenum--]&nbsp;每页[!--lencord--]&nbsp;总数[!--num--]&nbsp;&nbsp;&nbsp;&nbsp;[!--pagelink--]&nbsp;&nbsp;&nbsp;&nbsp;转到:[!--options--]',N'',N'',N'',N'',N'',N'',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>[!--movie.title--][!--drama.title--]|[!--movie.title--][!--drama.title--]百度影音在线观看|[!--movie.title--]高清在线观看 - [!--sys.sitename--]</title>
-<meta name="keywords" content="[!--movie.title--][!--drama.title--],[!--movie.title--][!--drama.title--]百度影音,[!--movie.title--][!--movie.title--]百度影音在线观看,[!--movie.title--]在线观看">
-<meta name="description" content="[!--movie.title--][!--drama.title--],[!--movie.title--][!--drama.title--]百度影音在线观看">
-
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main_boke.css" />
-<link type="text/css" charset="UTF-8" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/play1.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
-
-<script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
-
-<style>
-.heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
-.heatRank .pt div a:hover img{border:1px #DD0D0B solid}
-.heatRank .pt{ text-align:left;}
-.heatRank .pt div {float: left;margin: 0 10px 0 0;}
-#contentA .heatRank .pt{width:276px;margin:8px auto;line-height:18px}
-#contentA .heatRank .pt .l{width:14px;margin-right:0;font:600 14px/14px "Arial";color:#FF6000}
-#contentA .heatRank .pt .c{width:180px;margin:0}
-.title{background:url(http://tv.sohu.com/upload/tv110421/images/bg2.png) repeat-x;height:20px;line-height:25px;margin:0 2px;padding:15px 0 0;color:#c9c9c9;text-align:left}
-.title span{float:left;margin-left:16px;display:inline}
-.title a{margin:0 12px}
-.title span a{margin:0}
-.bordA,.bordB{border:1px #c5c5c5 solid;background:#fff;}
-.pp,.pt,.list12 ul,.list14 ul{width:100%;margin:0 auto;}
-.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
-.left .pp{text-align:center;width:662px;}
-.pp img{display:block;margin:0 auto;}	
-.pp span{display:block;}
-.pt{line-height:20px;text-align:left;}
-.pt div{float:left;margin:0 10px 0 0;}			
-.pt p{clear:none}
-.pp li{float:left;display:inline;width:100%}
-.pt div img,.pp img,.pic img{border:1px #c5c5c5 solid;padding:1px}
-.pt div a:hover img,.pp a:hover img,.pic a:hover img{border:1px #dd0d0b solid}
-.pp li{position:relative;width:109px;height:148px;margin-right:29px;}
-.pp span{width:108px;margin:7px auto 0;display:block;line-height:18px;text-align:left}
-.pp span strong{display:block;font-weight:normal;margin:0 auto 2px;color:#4b4b4b;}
-.pp .end{margin:0}
-.pp .label{position:absolute;top:54px;left:2px;height:15px;width:103px;margin:0 auto;color:#FFF;line-height:14px;text-align:right;padding:3px 2px 0 0;}
-.pp .label i{position:absolute;height:18px;width:95px;left:0;top:0;background:#000;filter:alpha(opacity=60);opacity: 0.60;}
-.pp .label code{background:url(http://tv.sohu.com/upload/tv110421/images/images/q_c.gif) no-repeat;z-index:20;display:block;width:27px;height:16px;position:absolute;top:1px;left:1px;}
-.pp .label code.ch{background:url(http://tv.sohu.com/upload/tv110421/images/q_g.gif) no-repeat;}
-.pp .label code.cb{background:url(http://tv.sohu.com/upload/tv110421/images/q_b.gif) no-repeat;}
-.pp .label code.cc{background:url(http://tv.sohu.com/upload/tv110421/images/q_c.gif) no-repeat;}
-.pp .label em{position:relative;z-index:2;color:#FFF;line-height:14px;}
-.pp .bp{top:120px}
-.bordA .pp{text-align:left;}
-#contentA .left .pp li{height:190px}
-#contentA .left .bpp li{height:213px}
-#contentA .left .bpp img{width:95px;height:131px;}
-#contentA .left .pp img{width:95px;}
-#contentA .left .pp span.label{text-align:right;}
-#contentA .left .pp span{width:99px;}
-#contentA .left .pp span.label{width:95px;}
-.menuA .now {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F7F7F7;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    color: #DD0D0B;
-    font-weight: bold;
-    position: relative;
-}
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>[!--movie.title--][!--drama.title--]快播在线观看 - [!--sys.sitename--]</title>
+    <meta name="keywords" content="[!--movie.title--][!--drama.title--]快播电影,[!--movie.title--][!--drama.title--]快播在线观看,[!--movie.title--][!--drama.title--]快播，[!--movie.title--][!--drama.title--]快播页面" />
+    <meta name="description" content="[!--sys.sitename--]提供[!--movie.title--][!--drama.title--]高清在线观看,[!--movie.title--][!--drama.title--]极速下载,[!--movie.title--][!--drama.title--]快播在线观看,为您呈现不一样的视觉体验" />
+    <link href="/skin/movie/whvod.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/skin/script/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
 </head>
 <body>
-
-
-
-<div class="logoFull">
-<div id="logoFocus" class="area">
-	<div class="left">
-		<div class="logo l" collection="Y"><style>
-#logoFocus .left{margin:2px 0 0;}
-</style>
-<a href="/" target="_blank">
-<img height="30" width="72" alt="[!--sys.sitename--]" src="/skin/movie/logo_small.gif" />
-</a></div>
-		<div class="ado l">
-		</div>
-	</div>
-	<div class="right">
-		<div class="navList l" collection="Y">
-			<div id="nvId" class="nv"><a target="_blank" href="http://tv.sohu.com/">首页</a> [getclasslist]100,100,ModelID=6 and IsLeafClass=0 order by NavIndex asc, |<a href="{url}" target="_blank" title="{classname}">{classname}</a> [/getclasslist]</div>
-		</div>
-		<div class="search l">
-			<form action="/search.aspx" method="GET" target="_blank" id="sForm" autocomplete="off" name="sForm">
-				<input type="text" class="tx" value="[!--movie.title--]" id="sKey" name="key" /><input type="hidden" value="6" name="m" />
-				<span ><input type="submit" class="btn" id="searchBtn" value="搜 索" /></span>
-			</form>
-		</div>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/jq_plugin/search/skin/search.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/reback.css" />
-
-	</div>
-</div>
-</div>
-<div id="location" class="area">
-    <div class="left">
-	<div class="adB" style="font-size: 16px;font-family:黑体;">
-       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
+    <a name="top"></a>
+    <center>
+        <div id="aimizi">
+            <div id="aimizi_a" class="searchform">
+                <ul>
+                    <li class="w"><a href="/">首页</a> [getclasslist]100,100,parentID=0,| <a href="{url}" title="{alter}">{classname}</a> [/getclasslist]</li>
+                    <li class="s">
+                        <form action="/Search.aspx" method="get">
+                        <input type="hidden" value="6" name="m" />
+                        <input type="text" class="text" id="txt_key" name="key" />
+                        <input type="submit" id="btn_search" value="搜 索" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
+        <div class="aimizi_kd_tj" style="width: 99%">
+            <center>
+                <div id="aimizi_t" class="playbox" style="width: 100%">
+                </div>
+            </center>
+            <script type="text/javascript">
+                $(function () {
+                    $("#aimizi_t").qvod({ PlayerArea: "aimizi_t", width: "700", height: "500", AutoPlay: "true", QvodUrl: "[!--drama.url--]", NextWebPage: "[!--movie.nextpageurl--]" });
+                })
+            </script>
+        </div>
+        <div style="clear: both; height: 0; width: 0">
+        </div>
+        <div id="aimizi_qk">
+            <div class="aimizi_yb">
+                <div class="aimizi_gao" style="height: auto;">
+                    <div class="aimiziys">
+                        <div class="aimizi_yb_h">
+                            <h2>
+                                影视信息</h2>
+                        </div>
+                        <ul>
+                            <li style="color:red">[!--movie.title--] [!--drama.title--]</li>
+                            <li>演员：[!--movie.actors--]</li>
+                            <li>地区：[!--movie.location--]</li>
+                            <li>年份：[!--movie.publicyear--]</li>
+                            <li>类型：[!--movie.tags--]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="aimizi_zb">
+                <div class="aimizi_zb_x">
+                    <div class="aimizi_zb_h" style="height:177">
+                        <h1>同类推荐</h1>
+                    </div>
+                    <ul>
+                        [getmovielist]5,6,classid=[!--class.id--] order by clickcount desc,<li style="width:auto;height:auto;line-height:auto;"><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" style="width:110px; height:150px;" /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both; height: 0; width: 0">
+        </div>
+        <div class="aimizi_kd_tj">
+            <div class="aimizi_zb_h" style="text-align:left">
+                <h1>
+                    剧情简介</h1>
+            </div>
+            <p>
+                [!--movie.intro--]
+            </p>
+        </div>
+    </center>
+    <div id="aimizi_foot_a">
+        <div id="aimizi_foot_b">
+            <div class="sm">
+                <div class="z">
+                    <p>
+                        友情提示：请勿长时间观看影视，注意保护视力并预防近视，合理安排时间，享受>健康生活。</p>
+                    <p>
+                        <font color="red">免责声明：</font>本网站将逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。本站仅供测试和学习交流。请大家支持正版。</p>
+                    <p>
+                        <font color="red">版权声明：</font>本网站为非赢利性站点，本网站所有内容均来源于互联网相关站点自动搜索采集信息，相关链接已经注明来源。</p>
+                </div>
+                <div class="y">
+                    <ul>
+                        <li><a href="/sm.html" target="_blank">免责申明</a></li><li><a href="/allmovie.html"
+                            target="_blank">网站地图</a></li><li><a href="http://ask.aimizi.com" target="_blank">意见建议</a></li><li>
+                                <a href="/lx.html" target="_blank">联系我们</a></li></ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="fullVideo">
-<div id="video" class="area">
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
-    <td>
-<table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
-        <tr>
-            <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
-            <td width="640" height="399" id="tdqvod" >
-                <div style="position:relative;width:640px;height:399px;">
-                <script language="javascript">
+</body>
+</html>',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>[!--movie.title--][!--drama.title--]百度影音在线观看 - [!--sys.sitename--]</title>
+    <meta name="keywords" content="[!--movie.title--][!--drama.title--]百度影音电影,[!--movie.title--][!--drama.title--]百度影音在线观看,[!--movie.title--][!--drama.title--]百度影音，[!--movie.title--][!--drama.title--]百度影音页面" />
+    <meta name="description" content="[!--sys.sitename--]提供[!--movie.title--][!--drama.title--]高清在线观看,[!--movie.title--][!--drama.title--]极速下载,[!--movie.title--][!--drama.title--]百度影音在线观看,为您呈现不一样的视觉体验" />
+    <link href="/skin/movie/whvod.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/skin/script/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
+    <style type="text/css">#BdInstall{display:none; }</style>
+    <script type="text/javascript">
+    $(function(){
+       $("#aimizi_t img").hide();
+
+       $("#BdPlayer div").css("width","100%");
+    })
+    </script>
+</head>
+<body>
+    <a name="top"></a>
+    <center>
+        <div id="aimizi">
+            <div id="aimizi_a" class="searchform">
+                <ul>
+                    <li class="w"><a href="/">首页</a> [getclasslist]100,100,parentID=0,| <a href="{url}" title="{alter}">{classname}</a> [/getclasslist]</li>
+                    <li class="s">
+                        <form action="/Search.aspx" method="get">
+                        <input type="hidden" value="6" name="m" />
+                        <input type="text" class="text" id="txt_key" name="key" />
+                        <input type="submit" id="btn_search" value="搜 索" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="aimizi_kd_tj" style="width: 99%">
+            <center>
+                <div id="aimizi_t" class="playbox" style="width: 100%">
+<script language="javascript">
 var BdPlayer = new Array();
-BdPlayer[''time''] = 0;//缓冲广告展示时间(如果设为0,则根据缓冲进度自动控制广告展示时间)
+BdPlayer[''time''] = 1;//缓冲广告展示时间(如果设为0,则根据缓冲进度自动控制广告展示时间)
 BdPlayer[''buffer''] = '''';//贴片广告网页地址
 BdPlayer[''pause''] = '''';//暂停广告网页地址
 BdPlayer[''end''] = '''';//影片播放完成后加载的广告
 BdPlayer[''download''] = ''http://dl.client.baidu.com/BaiduPlayer/BaiduPlayer1.0.22.39.exe'';//播放器下载地址
-BdPlayer[''width''] = 640;//播放器宽度(只能为数字)
-BdPlayer[''height''] = 399;//播放器高度(只能为数字)
+BdPlayer[''width''] = 700;//播放器宽度(只能为数字)
+BdPlayer[''height''] = 500;//播放器高度(只能为数字)
 BdPlayer[''showclient''] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
 BdPlayer[''url''] = ''[!--drama.url--]'';//当前播放任务播放地址
 BdPlayer[''nextcacheurl''] = '''';//下一集播放地址(没有请留空)
@@ -1507,539 +736,135 @@ BdPlayer[''nextwebpage''] = ''[!--movie.nextpageurl--]'';//下一集网页地址
 </script>
 <script language="javascript" src="http://player.baidu.com/lib/player.js" charset="utf-8"></script>
                 </div>
-            </td>
-        </tr>
-    </table>
-</td>
-        <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
-    </table>
-</div>
-</div>
-<div id="contentA" class="area">
-	<div class="left">
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]快播剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.kuib--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.baidu--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-	
-<DIV class=blank12H></DIV>
-<DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
-<DIV class=title><SPAN>相关剧集</SPAN></DIV>
-	<DIV class=pp>
-		<UL>
-			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
-		</UL>
-	</DIV>
-</DIV>
-<DIV class=blank12H></DIV>
-
-</div>
-
-	<div class="right">
-
-		<div class="videoInfo bord clear">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong><em id="specialIDC">[!--movie.title--]</em> 剧情介绍</strong></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="vInfo clear">
-					<div id="vrs_data"></div>
-					<p><em id="specialNumA"></em>剧情：</p>
-
-					<div id="introID">
-						<p>[!--movie.intro--]</p>
-                        </br>
-						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="heatRank bord clear" style="height:350px;">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>热度排行榜</strong></div>
-				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
-			</div>
-			
-             <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
-                 <ul>
-                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                 </ul>
-             </div>
-</div>
-	</div>
-</div>
-
-[!--temp.moviefooter--]
-
+            </center>>
+        </div>
+        <div style="clear: both; height: 0; width: 0">
+        </div>
+        <div id="aimizi_qk">
+            <div class="aimizi_yb">
+                <div class="aimizi_gao" style="height: auto;">
+                    <div class="aimiziys">
+                        <div class="aimizi_yb_h">
+                            <h2>
+                                影视信息</h2>
+                        </div>
+                        <ul>
+                            <li style="color:red">[!--movie.title--] [!--drama.title--]</li>
+                            <li>演员：[!--movie.actors--]</li>
+                            <li>地区：[!--movie.location--]</li>
+                            <li>年份：[!--movie.publicyear--]</li>
+                            <li>类型：[!--movie.tags--]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="aimizi_zb">
+                <div class="aimizi_zb_x">
+                    <div class="aimizi_zb_h" style="height:177">
+                        <h1>同类推荐</h1>
+                    </div>
+                    <ul>
+                        [getmovielist]5,6,classid=[!--class.id--] order by clickcount desc,<li style="width:auto;height:auto;line-height:auto;"><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" style="width:110px; height:150px;"  /></a></p><h5>{ftitle} {lastdramatitle}</h5></li>[/getmovielist]
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both; height: 0; width: 0">
+        </div>
+        <div class="aimizi_kd_tj">
+            <div class="aimizi_zb_h" style="text-align:left">
+                <h1>
+                    剧情简介</h1>
+            </div>
+            <p>
+                [!--movie.intro--]
+            </p>
+        </div>
+    </center>
+    <div id="aimizi_foot_a">
+        <div id="aimizi_foot_b">
+            <div class="sm">
+                <div class="z">
+                    <p>
+                        友情提示：请勿长时间观看影视，注意保护视力并预防近视，合理安排时间，享受>健康生活。</p>
+                    <p>
+                        <font color="red">免责声明：</font>本网站将逐步删除和规避程序自动搜索采集到的不提供分享的版权影视。本站仅供测试和学习交流。请大家支持正版。</p>
+                    <p>
+                        <font color="red">版权声明：</font>本网站为非赢利性站点，本网站所有内容均来源于互联网相关站点自动搜索采集信息，相关链接已经注明来源。</p>
+                </div>
+                <div class="y">
+                    <ul>
+                        <li><a href="/sm.html" target="_blank">免责申明</a></li><li><a href="/allmovie.html"
+                            target="_blank">网站地图</a></li><li><a href="http://ask.aimizi.com" target="_blank">意见建议</a></li><li>
+                                <a href="/lx.html" target="_blank">联系我们</a></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>',N'')
  SET IDENTITY_INSERT [TemplatePublic] OFF ;
 
 
 SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'1',N'1',N'列表模板',N'1',N'0',N'0',N'5',N'yyyy-MM-dd',N'[!--temp.header--]
-
-        <div id="main_1" class="clearfix mg">
-
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]</div>
-
-            <div id="newslist" class="left inner" style="width: 660px;">
-
-                <div class="clearfix classtitle mg">
-
-                    <h1>
-
-                        [!--class.classname--]
-
-                    </h1>
-
-                    <div class="class_description">[!--class.description--]</div>
-
-                </div>
-
-                <ul>
-
-                    <!--list.var-->
-
-                </ul>
-
-                <div class="pager inner">[!--show.listpage--]</div>
-
-            </div>
-
-            <div class="right" style="width: 259px; margin-left:32px;">
-
-                <h1>
-
-                    分类查看
-
-                </h1>
-
-                <ul class="inner">
-
-                    [cmsclasslist],100[/cmsclasslist]
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-
-[!--temp.footer--]
-
-
-
-
-
-
-
-',N'                        <div class="clearfix inner newsitem mg">
-
-                            <h2><a href="[!--titleurl--]">
-
-                                [!--oldtitle--]
-
-                            </a>
-
-                            </h2>
-
-                            <div class="newsprop">[!--author--] 发布于[!--newstime--] </div>
-
-                            <div class="description">[!--description--]</div>
-
-                            <!--[getnewsshortimg][!--id--][/getnewsshortimg]-->
-
-                        </div>
-
-
-
-')
- SET IDENTITY_INSERT [TemplateList] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'2',N'1',N'图片列表模板',N'2',N'0',N'0',N'5',N'yyyy-MM-dd',N'[!--temp.header--]
-
-        <div id="main_1" class="clearfix mg">
-
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]</div>
-
-            <div id="newslist" class="left inner" style="width: 660px;">
-
-                <div class="clearfix classtitle mg">
-
-                    <h1>
-
-                        [!--class.classname--]
-
-                    </h1>
-
-                    <div class="class_description">[!--class.description--]</div>
-
-                </div>
-
-                <ul>
-
-                    <!--list.var-->
-
-                </ul>
-
-                <div class="pager inner">[!--show.listpage--]</div>
-
-            </div>
-
-            <div class="right" style="width: 259px; margin-left:32px;">
-
-                <h1>
-
-                    分类查看
-
-                </h1>
-
-                <ul class="inner">
-
-                    [cmsclasslist],100[/cmsclasslist]
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-
-[!--temp.footer--]
-
-
-
-
-
-',N'                        <div class="clearfix inner newsitem mg">
-
-                            <h2><a href="[!--image.url--]">
-
-                                [!--image.title--]
-
-                            </a>
-
-                            </h2>
-
-                            <div class="newsprop">[!--image.author--] 发布于[!--image.createtime--] </div>
-
-                            <div class="description">[!--image.intro--]</div>
-
-
-                        </div>
-
-')
- SET IDENTITY_INSERT [TemplateList] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'3',N'1',N'问题列表模板',N'3',N'0',N'40',N'10',N'yyyy-MM-dd',N'[!--temp.header--]
-<style type="text/css">
-.newsitem 
-{
-    font-size:14px;
-    line-height:25px;
-}
-.newsitem a:visited {
-    color: #133DB6;
-}
-.newsitem a:link
-{
-    color:#133DB6;
-}
-</style>
-        <div id="main_1" class="clearfix mg">
-
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]</div>
-
-            <div id="newslist" class="left inner" style="width: 660px;">
-
-                <div class="clearfix classtitle mg">
-
-                    <h1>
-
-                        [!--class.classname--]
-
-                    </h1>
-
-                    <div class="class_description">[!--class.description--]</div>
-
-                </div>
-
-                <ul>
-                    <div class="clearfix inner newsitem mg">
-                        <!--list.var-->
-                    </div>
-                </ul>
-
-                <div class="pager inner">[!--show.listpage--]</div>
-
-            </div>
-
-            <div style="width: 259px;margin-left:5px;">
-              <div class="right" style="width: 259px; margin-left:32px;">
-                  <ul class="inner">
-                      <li><a class="btn" href="/e/post/question/NewQuestion.aspx?class=[!--class.id--]"><span><b>发布提问</b></span></a></li>
-                  </ul>
-              </div>
-              <div class="right" style="width: 259px; margin-left:32px;">
-                  <h1>
-                      分类查看
-                  </h1>
-                  <ul class="inner">
-                      [cmsclasslist],100[/cmsclasslist]
-                  </ul>
-              </div>
-            </div>
-        </div>
-
-
-
-[!--temp.footer--]
-
-',N'                         <li>
-                           <div style="width:665px;color:#666666;">
-                              <span style="float:right">[!--question.answercount--]回答</span>
-                            ·<a style="color:#133DB6" href="[!--question.url--]" title="[!--question.oldtitle--]">
-
-                                [!--question.title--]
-
-                            </a>
-                           </div>
-                         </li>
-')
- SET IDENTITY_INSERT [TemplateList] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'4',N'1',N'小说列表模版',N'4',N'50',N'50',N'10',N'yyyy-MM-dd',N'[!--temp.header--]
-    <div class="friendLink mt10">
-        <div class="friendBody">
-            <a href="/">爱造人小说阅读</a>[!--newsnav--]
-        </div>
-    </div>
-    <!--  first Start -->
-    <div class="firstWarp mt10 fix">
-        <div class="qaingtui">
-            <div class="title">
-                <h3>
-                    [!--class.classname--]热门</h3>
-            </div>
-            <ul class="qiangtuiList">
-            [getnovellist]ClassID in(select id from Class where ID=[!--class.id--] union select id from Class where ParentID=[!--class.id--]) order by ClickCount desc,10,12,,0[/getnovellist]
-            </ul>
-        </div>
-        <div class="s_rightContent">
-            <div class="mainPages">
-                [!--show.listpage--]
-            </div>
-
-            <ul>
-                <!--list.var-->
-            </ul>
-            <div class="mainPages pageList">
-                [!--show.listpage--]
-            </div>
-        </div>
-    </div>
-    <!--  first End -->
-[!--temp.footer--]
-',N'                <li class="mb15">
-                    <div class="title ohide">
-                        <h3 class="fl s_blue" style="padding-top: 4px;">
-                            <a target="_blank" href="[!--book.url--]">《[!--book.title--]》</a> / [!--book.author--]</h3>
- 
-                        <big class="fl">[!--book.clickcount--]</big>
-                    </div>
-                    <p class="jianjie mt5">
-                        <strong>作品简介：</strong>[!--book.intro--]</p>
-                    <p class="zhangjie mt5 data">
-                        最新章节：<a target="_blank" class="booktitle" href="[!--book.lastchapterurl--]">[!--book.lastchaptertitle--]</a> </p>
-                    <p class="data">
-                        更新时间：[!--book.updatetime--]</p>
-                </li>')
- SET IDENTITY_INSERT [TemplateList] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateList] ON ;
- insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'5',N'1',N'影视模板',N'6',N'0',N'10',N'200',N'yyyy-MM-dd',N'<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+ insert into [TemplateList]([ID],[GroupID],[TempName],[SysModel],[CutKeywords],[CutTitle],[ShowRecordCount],[TimeFormat],[Content],[ListVar]) values(N'5',N'1',N'影视模板',N'6',N'0',N'10',N'20',N'MM-dd',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="[!--class.description--]" />
-<meta name="keywords" content="[!--class.classname--]，最新[!--class.classname--]，高清[!--class.classname--]，电视剧[!--class.classname--]，快播[!--class.classname--]，百度影音[!--class.classname--]" />
-<meta name="robots" content="all" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>[!--class.classname--]频道 - [!--sys.sitename--]</title>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/pd.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/p_dsj.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/yingp_css/fileview.css" />
-
-<style>
-.list21 .p1 img{display:inline;}
-.navBar{margin-top:5px;}
-.pp4 li img{width:105px;height:78px;}
-#contentA .blockLD .list12 {
-    margin-right: 0px;
-}
-#contentA .blockLD .list12 li {
-    float: left;
-    width: 200px;
-}
-#contentA .blockLA .l{width:205px;margin:0 3px 0 19px}
-#contentA .blockLA .pic{margin:0 auto}
-#contentA .blockLA .pic span{display:block;margin:8px auto 5px;font:600 14px/20px "宋体";text-align:center;}
-.shadowbox .inner{padding:15px;overflow:hidden;}
-.pp4 .label {
-top: 130px;
-width: 103px;
-}
-</style>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <title>[!--class.classname--]-[!--sys.sitename--]</title>
+    <meta name="keywords" content="[!--class.classname--]在线观看,[!--class.classname--]全集,[!--class.classname--]快播,[!--class.classname--]百度影音" />
+    <meta name="description" content="[!--class.description--]" />
+    <link href="/skin/movie/whvod.css" rel="stylesheet" type="text/css" />
+    <link href="/skin/movie/whvodtu.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/static/play/skin/public.css" />
-<link type="text/css" rel="stylesheet"  href="http://tv.sohu.com/upload/jq_plugin/search/skin/search_new_play.css" />
-<style>
-.homepage .blank10H{display:none;}
-.footLink dd a{margin-right:0}
-#footArea .footLink dl{margin-right:8px;}
-.footSearch{width:auto;}
-#footArea{background:none;}
-</style>
-	<!--BEGIN:TOP-->
-	<div class="header homepage">
-		<div class="areaTop">
-			<div class="area clear iheader">
-				<div class="logo_ad_box">
-					<a class="logo l" target="_blank" href="/">
-                        <img src="/skin/movie/logo_small.gif" alt="[!--sys.sitename--]" />
-					</a>
-				</div>
-				<div class="search l">
-					<form id="sform" method="get" name="sform" action="/search.aspx" target="_blank" autocomplete="off">
-						<div class="text l">
-                            <input id="gNewSearch" name="key" type="text" value="[!--temp.seachword--]" class="fs14" />
+    <center>
+        [!--temp.movietop--] [!--temp.testmenu--]
+        <div id="aimizi_z">
+            <div id="aimizi_z_y">
+                <div class="aimizi_z_q">
+                    <div class="aimizi_z_h">
+                        <span>
+                            <!--时间-->
+                        </span>
+                        <p>
+                            热播</p>
+                    </div>
+                    <ul>
+                        [getmovielist]20,6,Enable=1 and classid in(select [!--class.id--] union select id from Class where ParentID=[!--class.id--]) order by clickcount desc,<li class="num{rownum}"><span><b></b></span><h3><a href="{url}" target="_blank" title="{title}">{title}</a></h3></li>[/getmovielist]
+                    </ul>
+                </div>
+            </div>
+            <div id="aimizi_z_z">
+                <div class="xiagua_d_t">
+                    <div class="xiagua_d_h">
+                        <h2>
+                            <span><b>[!--class.classname--]</b></h2>
+                    </div>
+                    <div class="aimizi_b">
+                        <div class="x">
+                            <ul>
+                                <!--list.var-->
+                            </ul>
                         </div>
-                        <input type="hidden" value="6" name="m" />
-                        <input class="bt vat pointer l" type="submit" value="" />
-
-					</form>
-				</div>
-			</div>
-		</div>
-
-<div class="blank10H"></div>
-		<div class="menubox">
-<div class="navbar clear">
-				<div class="l">
-					<ul>
-						<li><a href="/" title="[!--sys.sitename--]" >首页</a></li>
-						[getclasslist]100,100,IsLeafClass=0 order by id,<li><a href="{url}" title="{classname}">{classname}</a></li>[/getclasslist]
-					</ul>
-				</div>
-			</div>
-			<div class="subnavbar clear">
-				<div class="l">
-					<ul>
-						<li class="first selected"><a href="[!--class.url--]" title="[!--class.classname--]首页" >[!--class.classname--]首页</a></li>
-						[getclasslist]20,100,parentid=[!--class.id--],<li><a href="{url}" title="{classname}" target="_blank">{classname}</a></li>[/getclasslist]
-					</ul>
-				</div>	
-			</div>
-</div>
-</div>
-
-	<!--END:TOP-->
-
-<style> 
-.fi_movie .fi_btnplay{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-normal.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-normal.png");_background:none;}
-.fi_movie .fi_btnplay:hover{background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-over.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-over.png");_background:none;}
-.fi_movie .fi_jb{width:92px;height:92px;position:absolute;top:0;left:158px;background:url("http://tv.sohu.com/upload/tv110421/images/fbtn/tv-p.png") no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop,src="http://tv.sohu.com/upload/tv110421/images/fbtn/tv-p.png");_background:none;}
-.fi_movie .fi_loading img{left : 40%;top : 45%;}
-</style>
-
-
-
-<div id="contentA" class="area">
-	
-
-	<div class="left">
-<DIV class=blank12H></DIV>
-		<div class="blockLA bordA clear">
-<div class="cont">
-<DIV class=blank12H></DIV>
-<div class="pp pp4" sizcache="5" sizset="1">
-[!--show.listpage--]
-<ul sizcache="5" sizset="1">
-     <!--list.var-->
-</ul>
-[!--show.listpage--]
-</div></div></div>
-	
-		<div class="blank12H"></div>	
-	</div>	
-	<div class="right">
-		<div class="blank12H"></div>
-<DIV class=blank12H></DIV>
-[!--temp.seachlabel--]
-        <div class="blank12H"></div>
-		<div class="blockRC bordB clear" id="theViewRank">
-        	<h2><span>观看排行榜</span></h2>
-        	
-
-            <div class="snList clear">
-                <ul id="mv_data">
-                    [getmovielist]10,10,ClassID in(select [!--class.id--] union select id from Class where ParentID=[!--class.id--]) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                 </ul>
+                    </div>
+                </div>
+                <div style="clear: both; height: 0; width: 0"></div>
+                <div id="aimizi_fy">
+                    <div class="aimizi_box">[!--show.listpage--]</div>
+                </div>
+                <div style="clear: both; height: 0; width: 0"></div>
+                <div style="margin-top: 5px;">
+                </div>
             </div>
         </div>
-        <div class="blank12H"></div>
-    </div>
-</div>
-<!-- contentA end -->
-
-[!--temp.moviefooter--]
-
+        <div style="clear: both; height: 0; width: 0"></div>
+        [!--temp.footer--]
+    </center>
+    
 </body>
-</html>',N'<li style="Z-INDEX: 1" sizcache="4" sizset="4"><a href="[!--movie.url--]" target="_blank" sizcache="4" sizset="4"><img alt="[!--movie.title--]" src="[!--movie.faceimage--]" border="0" style="width:105px; height:145px;" /></a><span sizcache="1" sizset="375"><strong sizcache="1" sizset="375"><a href="[!--movie.url--]" target="_blank">[!--movie.title--]</a></strong></span><span class="label"><i></i><code class="cc"></code><em>[!--movie.lastdramatitle--]</em></span></li>')
+</html>',N'<li><div class="img"><a href="[!--movie.url--]" target=_blank><img src="[!--movie.faceimage--]" width="120" height="145" border="0" alt="[!--movie.title--]" /></a><h3><a><b><font color="red">[!--movie.updatetimetime--]</font></b></a></h3></div><dl><dt><a href="[!--movie.url--]" title="[!--movie.title--]" target=_blank>[!--movie.title--]</a> [!--movie.lastdramatitle--]</dt><dd><p>[!--movie.intro--]</p></dd></dl></li>')
  SET IDENTITY_INSERT [TemplateList] OFF ;
 
 
@@ -2049,774 +874,276 @@ SET IDENTITY_INSERT [TemplateGroup] ON ;
 
 
 SET IDENTITY_INSERT [TemplateContent] ON ;
- insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'2',N'1',N'1',N'新闻内容',N'yyyy-MM-dd',N'[!--temp.header--]
+ insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'5',N'1',N'6',N'影视内容',N'yyyy-MM-dd',N'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-        <div id="main_1" class="main clearfix mg">
-
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]> 正文</div>
-
-            <div id="content_info" class="clearfix" style="width: 690px;">
-
-                <h1 style="text-align:center;">
-
-                	<span id="news_title">[!--news.title--]</span>
-
-                </h1>
-
-                <div id="news_prop">
-
-                        <!-- JiaThis Button BEGIN -->
-
-                        <span id="ckepop">
-
-	                      <a class="jiathis_button_qzone"></a>
-
-	                      <a class="jiathis_button_tsina"></a>
-
-	                      <a class="jiathis_button_tqq"></a>
-
-	                      <a class="jiathis_button_renren"></a>
-
-	                      <a class="jiathis_button_kaixin001"></a>
-
-	                      
-
-	                      <a class="jiathis_counter_style"></a>
-
-                        </span>
-
-                        <script type="text/javascript" src="http://v2.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-
-                        <!-- JiaThis Button END -->
-
-                	作者：[!--news.author--] &nbsp; 
-
-                        发布时间：[!--news.newstime--] &nbsp; 
-
-                        来源：[!--news.source--]
-
-                        点击数：<script type="text/javascript" src="/e/Tool/click.aspx?m=1&id=[!--news.id--]"></script>
-
-                        <span style="display:none">[getnewsshortimg][!--news.id--][/getnewsshortimg]</span>
-
-                </div>
-
-                <div id="news_content" class="inner">
-
-                   [!--news.content--]
-
-                </div>
-
-                <div id="pre_next" class="inner">
-
-                	上一篇：[!--news.prelink--]&nbsp;&nbsp;&nbsp;下一篇：[!--news.nextlink--]
-
-                </div>
-
-            </div>
-
-            <div style="width: 259px;margin-left:5px;">
-
-                <div class="right" style="width: 259px;">
-
-                  <h1>
-
-                      [!--class.name--]排行
-
-                  </h1>
-
-                  <ul class="inner">
-
-                      [cmsnewslist][!--class.id--],,10,18,0,audit=1,order by id desc[/cmsnewslist]
-
-                  </ul>
-
-                </div>
-
-                <div class="right" style="margin-top:10px;width: 259px;">
-
-                  <h1>
-
-                      相关内容
-
-                  </h1>
-
-                  <ul class="inner">
-
-                      [getnewsbykeywords]10,18,0,[!--news.keywordswithspance--],order by id desc[/getnewsbykeywords]
-
-                  </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-[!--temp.footer--]
-
-
-
-')
- SET IDENTITY_INSERT [TemplateContent] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateContent] ON ;
- insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'3',N'1',N'2',N'相册内容',N'yyyy-MM-dd',N'[!--temp.header--]
-    <script type="text/javascript" src="/skin/script/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="/skin/script/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <link type="text/css" rel="stylesheet" href="/skin/script/fancybox/jquery.fancybox-1.3.4.css" media="screen"/>
-    <script type="text/javascript">
-    $(function(){
-
-			   $("a[rel=example_group]").fancybox({
-
-				''transitionIn''		: ''none'',
-
-				''transitionOut''		: ''none'',
-
-				''titlePosition'' 	: ''over'',
-
-				''titleFormat''		: function(title, currentArray, currentIndex, currentOpts) {
-
-					return ''<span id="fancybox-title-over">'' + (currentIndex + 1) + '' / '' + currentArray.length + (title.length ? '' &nbsp; '' + title : '''') + ''</span>'';
-
-				}
-
-
-
-			});
-
-	});
-    </script>
-    <style type="text/css">
-	#main_1 #content_info #news_content li
-	{
-		height:auto;
-		float:left;
-		margin:2px 12px 2px 12px;
-		text-align:center;
-		border:solid 1px #c0c0c0;
-		padding:1px;
-	}
-    </style>
-        <div id="main_1" class="main clearfix mg">
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]> 正文</div>
-            <div id="content_info" class="clearfix" style="width: 690px;">
-                <h1 style="text-align:center;">
-                	<span id="news_title">[!--image.title--]</span>
-                </h1>
-                <div id="news_prop">
-                        <!-- JiaThis Button BEGIN -->
-                        <span id="ckepop">
-	                      <a class="jiathis_button_qzone"></a>
-	                      <a class="jiathis_button_tsina"></a>
-	                      <a class="jiathis_button_tqq"></a>
-	                      <a class="jiathis_button_renren"></a>
-	                      <a class="jiathis_button_kaixin001"></a>
-	                      <a class="jiathis_counter_style"></a>
-                        </span>
-                        <script type="text/javascript" src="http://v2.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-                        <!-- JiaThis Button END -->
-                	作者：[!--image.author--] &nbsp; 
-                        发布时间：[!--image.createtime--] &nbsp; 
-                        点击数：<script type="text/javascript" src="/e/Tool/click.aspx?m=1&id=[!--image.id--]"></script>
-                        <span style="display:none">[getnewsshortimg][!--news.id--][/getnewsshortimg]</span>
-                </div>
-                <div id="news_content" class="inner">
-                  <p>
-                   [!--image.content--]
-                  </p>
-                </div>
-
-                <div id="pre_next" class="inner">
-                	上一篇：[!--news.prelink--]&nbsp;&nbsp;&nbsp;下一篇：[!--news.nextlink--]
-                </div>
-            </div>
-
-            <div style="width: 259px;margin-left:5px;">
-                <div class="right" style="width: 259px;">
-                  <h1>
-                      [!--class.name--]排行
-                  </h1>
-                  <ul class="inner">
-                      [cmsnewslist][!--class.id--],,10,18,0,audit=1,order by id desc[/cmsnewslist]
-                  </ul>
-                </div>
-
-                <div class="right" style="margin-top:10px;width: 259px;">
-                  <h1>
-                      相关内容
-                  </h1>
-
-                  <ul class="inner">
-                      [getnewsbykeywords]10,18,0,[!--news.keywordswithspance--],order by id desc[/getnewsbykeywords]
-                  </ul>
-                </div>
-            </div>
-        </div>
-[!--temp.footer--]
-
-
-')
- SET IDENTITY_INSERT [TemplateContent] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateContent] ON ;
- insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'4',N'1',N'3',N'问答内容',N'yyyy-MM-dd',N'[!--temp.header--]
-	<style type="text/css">
-	.box-gr-top {
-    background: none repeat scroll 0 0 #FCFEFC;
-    border-color: #4CBE00 #E3E3E3 #E3E3E3;
-    border-style: solid;
-    border-width: 2px 1px 1px;
-	line-height:26px;
-	}
-	.box-gr-ans {
-    background: none repeat scroll 0 0 #FCFEFC;
-    border-color: #E3E3E3 #E3E3E3 #E3E3E3;
-    border-style: solid;
-    border-width: 1px 1px 1px;
-	line-height:26px;
-	}
-	.mb10 {
-		margin-bottom: 10px;
-		padding:10px;
-	}
-	.question-box
-	{
-		width:673px;
-	}
-	.float-r
-	{
-		float:right;
-	}
-	.title,.question
-	{
-		width:100%;
-	}
-	.details
-	{
-		color: #666666;
-		font-family: tahoma;
-		font-size: 12px;
-		line-height: 22px;
-		vertical-align: middle;
-		width:100%;
-		padding:2px;
-	}
-	a.icon, span.icon {
-		background: url("/skin/image/logo/global.png") no-repeat scroll left 30px transparent;
-		display: inline-block;
-		font-family: tahoma;
-		height: 24px;
-		line-height: 24px;
-		padding-left: 20px;
-		vertical-align: middle;
-	}
-	.qbox .i-being {
-		background-position: 0 -1092px;
-	}
-	.qbox .i-otheranswer
-	{
-		background-position: left -94px;
-    	padding-left: 25px;
-	}
-	.qbox .i-finished
-	{
-		background-position: 0 -5px;
-	}
-	.content
-	{
-		border-bottom:dotted 1px gray;
-		margin-bottom:10px;
-                display:block;
-                width:650px;
-	}
-	</style>
-        <div id="main_1" class="main clearfix mg">
-        	<div class="nav">您的位置：<a href="/">首页</a>[!--newsnav--]> 正文</div>
-            <div id="content_info" class="clearfix" style="width: 690px;">
-            
-            
-
-                <div id="news_content" class="inner">
-                    <div id="question-box" class="box-gr-top mb10 qbox">
-                        <div class="header"></div>
-                        <div class="body">
-                            <div class="title clf">
-                                <div class="question">
-                                    <h1 id="question-title"  style="width:640px">
-                                        <span class="icon i-being"></span><span class="question-title">[!--question.title--]</span>
-                                    </h1>
-                                    <div class="details">
-                                        <div class="float-r" style="float:right;">
-                                            <span class="gray">[!--question.asktime--] &nbsp; </span>
-                                        </div>
-                                        <span class="gray">提问者：[!--question.username--]&nbsp;  </span>
-                                        <span class="v-split">|</span> 
-                                        <span class="visited-times">浏览次数：<script type="text/javascript" src="/e/Tool/click.aspx?m=1&id=[!--question.id--]"></script>次</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                                <div class="mt10" style="width:640px">
-                                    <p>[!--question.content--]</p>
-                               </div>
-                        </div>
-                    </div>
-                    <div id="question-box" class="box-gr-top mb10 qbox">
-                        <div class="header"></div>
-                        <div class="body">
-                            <div class="title clf">
-                                <div class="question">
-                                    <h1 id="question-title">
-                                        <span class="icon i-otheranswer"></span><span class="question-title">回答这个问题</span>
-                                    </h1>
-                                </div>
-                            </div>
-                            
-                                <div class="mt10">
-                                    <p>
-                                        <form method="post" action="/e/post/question/PostAnswer.aspx">
-                                    	<textarea name="content" style="width:640px;height:100px"></textarea>
-                                        <br />
-                                        <input type="hidden" name="qid" value="[!--question.id--]"/>
-                                        <input type="submit" value="确定" />
-                                        </form>
-                                    </p>
-                               </div>
-                        </div>
-                    </div>
-                    <div id="answer-box" class="box-gr-ans mb10 qbox" style="width:650px">
-                        <div class="header"></div>
-                        <div class="body">
-                            <div class="title clf">
-                                <div class="question">
-                                    <h1 id="question-title">
-                                        <span class="icon i-finished"></span><span class="question-title">所有回答</span>
-                                    </h1>
-                                    [!--answer.list--]
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                </div>
-
-
-                <div id="pre_next" class="inner">
-                	上一篇：[!--news.prelink--]&nbsp;&nbsp;&nbsp;下一篇：[!--news.nextlink--]
-                </div>
-            </div>
-
-            <div style="width: 259px;margin-left:5px;">
-                <div class="right" style="width: 259px;">
-                  <h1>
-                      最新提问
-                  </h1>
-                  <ul class="inner">
-                      [cmsnewslist][!--class.id--],,10,18,0,,order by id desc[/cmsnewslist]
-                  </ul>
-                </div>
-
-
-            </div>
-        </div>
-[!--temp.footer--]
-
-')
- SET IDENTITY_INSERT [TemplateContent] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateContent] ON ;
- insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'5',N'1',N'4',N'书籍信息',N'yyyy-MM-dd',N'[!--temp.header--]
-    <div class="friendLink mt10">
-        <div class="friendBody">
-            <a href="/">爱造人小说阅读</a>[!--newsnav--]>[!--book.title--]
-        </div>
-    </div>
- 
-
-   <div class="warp980 ohide mt10 mb10">
-        <div class="warp735 fl">
-            <div class="vipBookFirst">
-                <span class="vipflag" style="position: absolute; top: 0px; left: 0px; z-index: 999; display: block;"></span>
-                <div class="text">
-                    <div class="title ohide">
-                        <h1 class="fYaHei">
-                            《[!--book.title--]》</h1><span class="write"><strong>书籍作者：</strong>[!--book.author--]</span> </div>
-                    <div class="content abb" id="aboutBook">
-                        <p>[!--book.intro--]</p>
-                    </div>
-
-                    <div class="mt10">
-                        <a href="#chapterlist" class="vipBtn_1 vipBtn_0">开始阅读本书</a> <a href="#" class="vipBtn_4 vipBtn_0">电子书下载</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="listMenu_1 mt10" style="padding-left: 0;">
-                <ul>
-                    <li class="current" style="margin-left: 0;"><a href="#">本书相关</a><i></i></li>
-                </ul>
-                <div id="ckepop" class="fr mt5">
-<!-- JiaThis Button BEGIN -->
-<div id="ckepop">
-	<span class="jiathis_txt">分享到：</span>
-	<a class="jiathis_button_icons_1"></a>
-	<a class="jiathis_button_icons_2"></a>
-	<a class="jiathis_button_icons_3"></a>
-	<a class="jiathis_button_icons_4"></a>
-	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-                </div>
-
-            </div>
-
-            <div class="haopingdu" style="border-top: 0;">
-
-                <div class="haopingduLie">
-
-                    <p>
-                        <strong>作品分类：</strong><span class="blue2"><a href="[!--class.url--]">[!--class.name--]</a></span></p>
-                    <p class="mt5">
-                        <strong>完成字数：</strong><span class="blue2">[!--book.length--]</span></p>
-                    <p class="mt5">
-                        <strong>阅读次数：</strong><span class="blue2"><script type="text/javascript" src="/e/Tool/click.aspx?m=4&id=[!--book.id--]"></script></span></p>
-
-                </div>
-
-                <div class="haopingduLie">
-                    <p> <strong>作品小类：</strong><span class="blue2"><a href="[!--class.url--]">[!--class.name--]</a></span></p>
-                    <p class="mt5"> <strong>授权状态：</strong><span class="blue2">授权刊载</span></p>
-                    <p class="mt5"> <strong>本周推荐：</strong><span class="blue2">5</span></p>
-                </div>
-
-                <div class="haopingduLie">
-                    <p>
-                        <strong>作品性质：</strong><span class="red b">签约作品</span></p>
-                    <p class="mt5">
-                        [!--book.updatetime--]</p>
-                    <p class="mt5"></p>
-                </div>
-            </div>
-
-            <div class="body735 mt10">
-
-                <div class="body735_title vipShidu pl">
-
-                    <h2 class="h22 fl">
-                        章节列表</h2>
-                </div>
-                <div class="hudongBox contents_item" id="bookdir">
-                    <ul>
-                      [!--chapter.list--]
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="warp235 fr">
-
-            <div class="box235 mt10">
-
-                <div class="box235_title pl">
-
-                    <h2 class="h22">
-
-                        喜欢此作品的也喜欢</h2>
-
-                </div>
-
-                <ul class="tuijian_picList2 aboutbooks">
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="warp980 mt10 mb10">
-
-    </div>
-[!--temp.footer--]
-')
- SET IDENTITY_INSERT [TemplateContent] OFF ;
-
-
-SET IDENTITY_INSERT [TemplateContent] ON ;
- insert into [TemplateContent]([ID],[GroupID],[SysModel],[TempName],[TimeFormat],[Content]) values(N'7',N'1',N'6',N'影视内容',N'yyyy-MM-dd',N'<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>[!--movie.title--]|[!--movie.title--]快播在线观看|[!--movie.title--]百度影音在线观看-[!--sys.sitename--]</title>
-<meta name="keywords" content="[!--movie.title--],[!--movie.title--]快播,[!--movie.title--]百度影音,[!--movie.title--]在线观看">
-<meta name="description" content="[!--movie.title--],[!--movie.title--]在线观看。[!--movie.intro--]">
-<meta name="robots" content="all">
 
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/main_boke.css" />
-<link type="text/css" charset="UTF-8" rel="stylesheet" href="http://kuaib.tv.sohu.com/app/Tpl/default/admin_images/admin/css/play1.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/kuaibo/kuaibo.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<script type="text/javascript" src="http://js.sohu.com/library/jquery1.4.2.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
-<script type="text/javascript" src="/skin/script/jquery.qvod.js"></script>
+    <title>[!--movie.title--]迅雷下载,[!--movie.title--]优酷土豆,[!--movie.title--]百度影音-[!--sys.sitename--]</title>
 
-<style>
-.heatRank .pt div img{border:1px #c5c5c5 solid;background:#FFF;padding:1px}
-.heatRank .pt div a:hover img{border:1px #DD0D0B solid}
-.heatRank .pt{ text-align:left;}
-.heatRank .pt div {float: left;margin: 0 10px 0 0;}
-#contentA .heatRank .pt{width:276px;margin:8px auto;line-height:18px}
-#contentA .heatRank .pt .l{width:14px;margin-right:0;font:600 14px/14px "Arial";color:#FF6000}
-#contentA .heatRank .pt .c{width:180px;margin:0}
-.title{background:url(http://tv.sohu.com/upload/tv110421/images/bg2.png) repeat-x;height:20px;line-height:25px;margin:0 2px;padding:15px 0 0;color:#c9c9c9;text-align:left}
-.title span{float:left;margin-left:16px;display:inline}
-.title a{margin:0 12px}
-.title span a{margin:0}
-.bordA,.bordB{border:1px #c5c5c5 solid;background:#fff;}
-.pp,.pt,.list12 ul,.list14 ul{width:100%;margin:0 auto;}
-.pp:after,.pt:after,.area:after,.clear:after{content:".";display:block;visibility:hidden;height:0;clear:both;}
-.left .pp{text-align:center;width:662px;}
-.pp img{display:block;margin:0 auto;}	
-.pp span{display:block;}
-.pt{line-height:20px;text-align:left;}
-.pt div{float:left;margin:0 10px 0 0;}			
-.pt p{clear:none}
-.pp li{float:left;display:inline;width:100%}
-.pt div img,.pp img,.pic img{border:1px #c5c5c5 solid;padding:1px}
-.pt div a:hover img,.pp a:hover img,.pic a:hover img{border:1px #dd0d0b solid}
-.pp li{position:relative;width:109px;height:148px;margin-right:29px;}
-.pp span{width:108px;margin:7px auto 0;display:block;line-height:18px;text-align:left}
-.pp span strong{display:block;font-weight:normal;margin:0 auto 2px;color:#4b4b4b;}
-.pp .end{margin:0}
-.pp .label{position:absolute;top:54px;left:2px;height:15px;width:103px;margin:0 auto;color:#FFF;line-height:14px;text-align:right;padding:3px 2px 0 0;}
-.pp .label i{position:absolute;height:18px;width:95px;left:0;top:0;background:#000;filter:alpha(opacity=60);opacity: 0.60;}
-.pp .label code{background:url(http://tv.sohu.com/upload/tv110421/images/images/q_c.gif) no-repeat;z-index:20;display:block;width:27px;height:16px;position:absolute;top:1px;left:1px;}
-.pp .label code.ch{background:url(http://tv.sohu.com/upload/tv110421/images/q_g.gif) no-repeat;}
-.pp .label code.cb{background:url(http://tv.sohu.com/upload/tv110421/images/q_b.gif) no-repeat;}
-.pp .label code.cc{background:url(http://tv.sohu.com/upload/tv110421/images/q_c.gif) no-repeat;}
-.pp .label em{position:relative;z-index:2;color:#FFF;line-height:14px;}
-.pp .bp{top:120px}
-.bordA .pp{text-align:left;}
-#contentA .left .pp li{height:190px}
-#contentA .left .bpp li{height:213px}
-#contentA .left .bpp img{width:95px;height:131px;}
-#contentA .left .pp img{width:95px;}
-#contentA .left .pp span.label{text-align:right;}
-#contentA .left .pp span{width:99px;}
-#contentA .left .pp span.label{width:95px;}
-.menuA .now {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F7F7F7;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    color: #DD0D0B;
-    font-weight: bold;
-    position: relative;
-}
-</style>
+    <meta name="keywords" content="[!--movie.title--]迅雷下载,[!--movie.title--]优酷土豆,[!--movie.title--]百度影音" />
+
+    <meta name="description" content="[!--movie.title--]迅雷下载,[!--movie.title--]优酷土豆,[!--movie.title--]百度影音.[!--movie.description--]" />
+
+    <link href="/skin/movie/neirong.css" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
 
+    <center>
 
+        <div id="miniNav">
 
-<div class="logoFull">
-<div id="logoFocus" class="area">
-	<div class="left">
-		<div class="logo l" collection="Y"><style>
-#logoFocus .left{margin:2px 0 0;}
-</style>
-<a href="/" target="_blank">
-<img height="30" width="72" alt="tv视频" src="/skin/movie/logo_small.gif" />
-</a></div>
-	</div>
-	<div class="right">
-		<div class="navList l" collection="Y">
-			<div id="nvId" class="nv"><a target="_blank" href="http://tv.sohu.com/">首页</a> [getclasslist]100,100,ModelID=6 and IsLeafClass=0 order by NavIndex asc, |<a href="{url}" target="_blank" title="{classname}">{classname}</a> [/getclasslist]</div>
-		</div>
-		<div class="search l">
-			<form action="/search.aspx" method="GET" target="_blank" id="sForm" autocomplete="off" name="sForm">
-				<input type="text" class="tx" value="[!--movie.title--]" id="sKey" name="key" /><input type="hidden" value="6" name="m" />
-				<span ><input type="submit" class="btn" id="searchBtn" value="搜 索" /></span>
-			</form>
-		</div>
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/jq_plugin/search/skin/search.css" />
-<link type="text/css" rel="stylesheet" href="http://tv.sohu.com/upload/tv110421/reback.css" />
+            <div id="vbar-tool">
 
-	</div>
-</div>
-</div>
-<div id="location" class="area">
-    <div class="left">
-	<!--- <div class="adB">
-	<a href="http://tv.sohu.com/qvod/" target=_blank style="font-size: 16px;color: #CB001B;font-family:黑体;">搜狐视频快播专区</a>
-	</div> -->
-	<div class="adB" style="font-size: 16px;font-family:黑体;">
-       [!--sys.sitename--]：<a href="/" >首页</a>>><a href="[!--class.url--]" >[!--class.name--]</a>>>
+                <ul>
+
+                    <li class="qvod"></li>
+
+                    <li><a href="/url.asp">把本站放到桌面</a></li>
+
+                    <li><a href="/zhoutop.html" target="_blank">本周人气排行榜</a></li>
+
+                    <li class="kuaibo"><a href="/yuetop.html" target="_blank">本月人气排行榜</a></li>
+
+                </ul>
+
+            </div>
+
         </div>
-	<span><em id=''clsNameA''></em><em id=''specialID''>[!--movie.title--]</em>>[!--drama.title--]</span>
-    </div>
-</div>
-<div class="fullVideo">
-<div id="video" class="area">
-<table border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-    <td><div style="width:170px;height:270px;" id="ad_l_id"></div></td>
-    <td>
-<table border="0" align="center" cellpadding="0" cellspacing="0" style="background-color: #000000;">
-        <tr>
-            <!--修改这2个值可修改播放器大小, width 代表宽 , height 代表高-->
-            <td width="640" height="399" id="tdqvod" >
-                <div style="position:relative;width:640px;height:399px;">
-                
+
+        <center>
+
+            <table width="972">
+
+                <tr>
+
+                    <td width="200">
+
+                        <a href="/">
+
+                            <img width="205" height="75" src="/skin/movie/logo.gif" alt="[!--sys.sitename--]"border="0"></a>
+
+                    </td>
+
+                    <td width="772">
+
+                        <form method="post" class="fm" action="/Search.aspx">
+                        <input type="hidden" name="m" value="6" />
+                        <input class="i" maxlength="100" name="key" autocomplete="off" />
+                        <span class="btn_wr">
+                            <input type="submit" value="搜索一下" class="btn" /></span>
+
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+        <div id="header">
+            <div id="navbar">
+                <div id="navbar_l">
                 </div>
-            </td>
-        </tr>
-<script>
-	$(document).ready(function(){
+                <ul class="toolslnk">
+                    <li><span><a title="[!--sys.sitename--]" href="/">首页</a></span></li>
+                    [buildmenustring]0[/buildmenustring]
+                </ul>
+                <div id="navbar_r">
+                </div>
+            </div>
+            <div id="search">
+                <div class="sform">
 
-		//页面加载自动打开播放器
-		var url = "[!--drama.url--]";
-		//下一集资源地址
-		var nextqvod = "";
-		//下一集播放页面 播放结束自动跳转到该页面
-		var nextpage = "[!--movie.nextpageurl--]";
-		
-		//调用播放器
-		$("#tdqvod").qvod({PlayerArea:"tdqvod", width:"640", height:"399", AutoPlay:"true",QvodUrl:url,NextWebPage:nextpage, NextQvod:nextqvod});
+                </div>
+                <div class="s_hot">
+                    ◇<a>如果你喜欢[!--sys.sitename--]，请把[!--sys.sitename--]分享给你更多的朋友们</a>
+                </div>
+            </div>
+        </div>
+        <div class="htk">
+            <h3>
+                <span>
+                    <a href="javascript:void(0)">收藏本片</a></span> <a href="[!--class.url--]" title="[!--class.name--]">[!--class.name--]</a> &gt; <a href="[!--movie.url--]" title="[!--movie.title--]"><b>[!--movie.title--]</b></a></h3>
 
-		/*参数说明*/
-		
-		//width: "500", /*播放器的宽度*/
-		
-		//height: "400", /*播发器的高度*/
-		
-		//AutoPlay: "true", /*自动播放 默认开启*/
-		
-		//FullScreen: "false", /*自动全屏 默认关闭*/
-		
-		//PlayerArea: "",	/*播放器插入的位置，标签的id属性*/
-		
-		//QvodUrl: "", /*本集资源地址*/
-		
-		//NextWebPage: "", /*下一集播放页地址*/
-		
-		//NextQvod: "", /*下一集资源地址，预缓冲时使用*/
-		
-		//ShowControl: "1", /*是否显示控制栏，0=不显示  1= 显示 默认参数是显示*/
-		
-		//AdUrl: "http://buffer-ad.qvod.com/" /*缓冲广告 注：3.0.0.58及将来发布的客户端版本才支持*/
+            <div class="zckz">
 
-		//该插件，能自动根据用户观看影片上一集是否全屏，设置自动跳转之后下一集的全屏状态。
+                <div class="zcx">
 
-	});
+                    <div class="zka">
+
+                        <img src="[!--movie.faceimage--]" alt="[!--movie.title--]" width="120" height="142" /></div>
+
+                    <div class="zkb">
+
+                        <ul>
+
+                            <li>主 演 ：[!--movie.actors--]</li>
+                            <li>导 演 ：[!--movie.director--]</li>
+                            <li>类 型 ：[!--movie.tags--]</li>
+                            <li>地 区 ：[!--movie.location--]</li>
+                            <li>年 份 ：[!--movie.publicyear--]</li>
+                        </ul>
+
+                    </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="fenx">
+
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <a class="bds_qzone"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_renren"></a>
+        <a class="bds_qzone"></a>
+        <a class="bds_baidu"></a>
+        <a class="bds_renren"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_tqq"></a>
+        <a class="bds_kaixin001"></a>
+        <a class="bds_tqf"></a>
+        <a class="bds_hi"></a>
+        <a class="bds_douban"></a>
+        <a class="bds_tsohu"></a>
+        <a class="bds_msn"></a>
+        <a class="bds_fbook"></a>
+        <a class="bds_twi"></a>
+        <a class="bds_copy"></a>
+        <span class="bds_more">更多</span>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=280559" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
 </script>
-    </table>
-</td>
-        <td><div style="width:170px;height:270px;padding-left:20px;" id="ad_r_id"></div></td>
-    </table>
-</div>
-</div>
-<div id="contentA" class="area">
-	<div class="left">
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]快播剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.kuib--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-		<div class="playList bord clear" id="playList">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>[!--movie.title--]百度影音剧集</strong><span id="playCounts"></span></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="menuA hidden">
-					<ul id="playTag"></ul>
-				</div>
-				<div class="pList clear" id="playContF">
-				    <ul>
-				         [!--movie.baidu--]
-				     </ul>
-				</div>
-			</div>
-		</div>
-	
-<DIV class=blank12H></DIV>
-<DIV id=tvPop class="blockLA bordA clear" style="height:440px;">
-<DIV class=title><SPAN>相关剧集</SPAN></DIV>
-	<DIV class=pp>
-		<UL>
-			 [getmovielist]10,10,ClassID=[!--class.id--] and id <>[!--movie.id--],<li><a href="{url}" target=_blank><img alt="{title}" src="{faceimage}" width=105 height=145></a><span><strong><a href="{url}" target=_blank>{ftitle}</a></strong></span><span class="label bp"><I></I><code class="cc"></code><em></em></span> </li>[/getmovielist]
-		</UL>
-	</DIV>
-</DIV>
-<DIV class=blank12H></DIV>
+<!-- Baidu Button END -->
 
-</div>
+        </div>
 
-	<div class="right">
+        <div id="classbo">
 
-		<div class="videoInfo bord clear">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong><em id="specialIDC">[!--movie.title--]</em> 剧情介绍</strong></div>
-			</div>
-			<div class="conts clear" collection="Y">
-				<div class="vInfo clear">
-					<div id="vrs_data"></div>
-					<p><em id="specialNumA"></em>剧情：</p>
+            <div id="lk">
 
-					<div id="introID">
-						<p>[!--movie.intro--]</p>
-                        </br>
-						<span class="shTxt" style="display:none"><a href="javascript:void(0)">展开全部</a></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="heatRank bord clear" style="height:350px;">
-			<div class="titleFun">
-				<div class="tag"></div>
-				<div class="tInfo"><strong>热度排行榜</strong></div>
-				<!-- <div class="more"><a href="http://tv.sohu.com/paihang/" target="_blank">TOP &gt;&gt;</a></div> -->
-			</div>
-			
-             <div id="hotNewsTeleplayTab_movie" class="snList clear" style="float:left;padding-left:18px;">
-                 <ul>
-                    [getmovielist]10,10,ClassID in(select 2 union select id from Class where ParentID=2) order by clickcount desc,<li><span class="trend down"></span><span class="num">{clickcount}</span><em>{rownum}</em><a href="{url}" target="_blank" title="{title}">{ftitle}</a></li>[/getmovielist]
-                 </ul>
-             </div>
-</div>
-	</div>
-</div>
+                <div class="title">
 
-[!--temp.moviefooter--]
+                    <h1>
+
+                        <span>请使用快播在线播放器最新版观看本片</span></h2>
+
+                </div>
+
+            </div>
+
+            <div class="aimiziys">
+
+                <ul>
+                   [!--movie.kuib--]
+                </ul>
+            </div>
+
+            <div id="lk">
+
+                <div class="title">
+
+                    <h2>
+
+                        <span>请使用百度播放器最新版更高清更高速</span></h2>
+
+                </div>
+
+            </div>
+
+            <div class="aimiziys">
+
+                <ul>
+                    [!--movie.baidu--]
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div id="classbo">
+
+        </div>
+
+        <div id="tka">
+
+            <div id="lmt">
+
+                <h3>
+
+                    本周《[!--class.name--]》排行榜</h3>
+
+            </div>
+
+            <div id="tu">
+
+                <ul>
+                    [getmovielist]7,50,Enable=1 and classid=[!--class.id--],<li><p><a href="{url}" title="{title}" target="_blank"><img src="{faceimage}" alt="{title}" /><h3>{title}</h3></a></p></li>[/getmovielist]
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div id="tkb">
+
+            <div id="jq">
+
+                <h2>
+
+                    [!--class.name--]《<a href="[!--movie.url--]" title="[!--movie.title--]">[!--movie.title--]</a>》剧情介绍</h2>
+
+            </div>
+
+            <div class="commend">
+
+                <p>
+                    [!--movie.intro--]
+                </p>
+
+            </div>
+
+        </div>
+
+    </center>
+
+    <div id="fooda">
+
+        <div id="footer">
+
+            <div class="beihao">
+
+                <div class="ft_l">
+                    [!--temp.bottomtip--]
+                    <p>本页内容：《[!--movie.title--]》《[!--movie.title--]全集》《[!--movie.title--]在线观看》《[!--movie.title--]百度影音》</p>
+                </div>
+
+                <div class="ft_r">
+                    [!--sys.copyright--]
+                </div>
+
+            </div>
+
+        </div>
+
+
+</body>
 
 </html>')
  SET IDENTITY_INSERT [TemplateContent] OFF ;
@@ -2850,373 +1177,5 @@ SET IDENTITY_INSERT [SysModel] ON ;
 SET IDENTITY_INSERT [SysModel] ON ;
  insert into [SysModel]([ID],[ModelName],[TableName],[SonClass]) values(N'6',N'影视系统模型',N'MovieInfo',N'')
  SET IDENTITY_INSERT [SysModel] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'1',N'',N'4',N'68')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'2',N'',N'6',N'3')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'3',N'杜拉拉',N'6',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'4',N'千山暮雪',N'4',N'0')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysKeyword] ON ;
- insert into [SysKeyword]([ID],[Keyword],[ModelID],[ClickCount]) values(N'5',N'杜拉拉',N'4',N'1')
- SET IDENTITY_INSERT [SysKeyword] OFF ;
-
-
-SET IDENTITY_INSERT [SysGroup] ON ;
- insert into [SysGroup]([ID],[GroupName]) values(N'1',N'超级管理员')
- SET IDENTITY_INSERT [SysGroup] OFF ;
-
-
-SET IDENTITY_INSERT [SysDepartment] ON ;
- insert into [SysDepartment]([ID],[DepartName]) values(N'1',N'技术部')
- SET IDENTITY_INSERT [SysDepartment] OFF ;
-
-
-SET IDENTITY_INSERT [SysDepartment] ON ;
- insert into [SysDepartment]([ID],[DepartName]) values(N'2',N'客服部')
- SET IDENTITY_INSERT [SysDepartment] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'1',N'自由导航',N'http://soso888.net',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'2',N'新浪宽频',N'http://v.sina.com.cn',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'3',N'Google',N'http://www.google.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'4',N'凤凰网',N'http://www.ifeng.com',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'5',N'人人网',N'http://www.renren.com',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'6',N'当当网',N'http://www.dangdang.com',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'7',N'南京信息工程大学',N'http://www.nuist.edu.cn',N'-1')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'8',N'起点',N'http://www.qidian.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'9',N'淘宝',N'http://www.taobao.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'10',N'CNN新闻',N'http://www.cnn.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'11',N'维基百科',N'http://www.wikipedia.org/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'12',N'FaceBook',N'http://www.facebook.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'13',N'Twitter',N'http://www.twitter.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'14',N'万卷书屋',N'http://www.wjsw.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'15',N'新浪微博',N'http://www.weibo.cn/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'16',N'腾讯网',N'http://www.qq.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'17',N'PPTV',N'http://www.pptv.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'18',N'大众点评网',N'http://www.dianping.com',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [Link] ON ;
- insert into [Link]([ID],[LinkTitle],[Url],[Index]) values(N'19',N'Youtube',N'http://www.youtube.com/',N'0')
- SET IDENTITY_INSERT [Link] OFF ;
-
-
-SET IDENTITY_INSERT [BookVolume] ON ;
- insert into [BookVolume]([ID],[BookID],[booktitle],[booknclass]) values(N'1',N'1',N'校花的贴身高手',N'校花的贴身高手')
- SET IDENTITY_INSERT [BookVolume] OFF ;
-
-
-SET IDENTITY_INSERT [InfoType] ON ;
- insert into [InfoType]([id],[TypeName],[TemplateIndex],[TemplateList],[TemlateAdminForm],[TemplateForm],[TemplateContent],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'1',N'房屋出租',N'',N'',N'<script type="text/javascript">
-$(function(){
-	$("[name=''nvarchar3'']").val(json["Nvarchar3"]);
-	$("[name=''nvarchar5'']").val(json["Nvarchar5"]);
-	$("[name=''nvarchar6'']").val(json["Nvarchar6"]);
-	$("[name=''nvarchar10'']").val(json["Nvarchar10"]);
-	$("[name=''nvarchar11'']").val(json["Nvarchar11"]);
-        $("[name=''nvarchar9'']").each(function(){
-          if(json["Nvarchar9"].indexOf($(this).val())>-1){ $(this).attr("checked","checked") }
-        })
-        if(json["ContactType"]=="中介"){ $("#contacttype").attr("checked","checked") }
-
-})
-</script>
-        <div class="tip">
-            分类信息的编辑和修改</div>
-        <table border="1" cellpadding="0" cellspacing="0" class="edit">
-            <thead>
-                <tr>
-                    <th colspan="2">
-                        分类信息编辑
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td width="163">
-                        出租方式
-                    </td>
-                    <td>
-                        <select name="nvarchar10" class="validate[required]" >
-                           <option>整套出租</option>
-                           <option>单间出租</option>
-                           <option>床位</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="163" class="validate[required]" >
-                        标题
-                    </td>
-                    <td>
-                        <input type="text" value="{title}" name="title">
-                    </td>
-                </tr>
-                <tr>
-                    <td width="163">
-                        所在小区
-                    </td>
-                    <td>
-                        区域：<input type="text" value="{nvarchar7}" name="nvarchar7" class="validate[required]" >
-                        商圈：<input type="text" value="{nvarchar12}" name="nvarchar12" class="validate[required]" >
-                        小区：<input type="text" value="{nvarchar8}" name="nvarchar8" class="validate[required]" >
-                    </td>
-                </tr>
-                <tr>
-                    <td width="163">
-                       地址
-                    </td>
-                    <td>
-                        <input type="text" value="{address}" name="address" class="validate[required]" style="width:250px;" />
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       户型
-                    </td>
-                    <td>
-                        <input type="text" value="{num2}" name="num2" class="validate[required,custom[integer]]" style="width:30px;">室
-                       <input type="text" value="{num3}" name="num3"  class="validate[required,custom[integer]]"  style="width:30px;">厅
-                       <input type="text" value="{num4}" name="num4"  class="validate[required,custom[integer]]"  style="width:30px;">卫
-                        <select name="nvarchar3" class="validate[required]" >
-                           <option value="">装修状况</option>
-                           <option value="毛坯">毛坯</option>
-                           <option value="简单装修">简单装修</option>
-                           <option value="中等装修">中等装修</option>
-                           <option value="精装修">精装修</option>
-                           <option value="豪华装修">豪华装修</option>
-                        </select>
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       楼层
-                    </td>
-                    <td>
-                        <input type="text" value="{num5}" name="num5" class="validate[required,custom[integer]]"  style="width:30px;" />层，
-                       共<input type="text" value="{num6}" name="num6"  class="validate[required,custom[integer]]"  style="width:30px;" />层
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       租金
-                    </td>
-                    <td>
-                        <input type="text" value="{num1}" name="num1" >元/月 
-
-                        <select name="nvarchar11">
-                           <option value="">押金方式</option>
-                           <option value="面议">面议</option>
-                           <option value="押一付三">押一付三</option>
-                           <option value="押一付一">押一付一</option>
-                           <option value="押二付一">押二付一</option>
-                           <option value="半年付">半年付</option>
-                           <option value="年付">年付</option>
-                        </select>
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       入住时间
-                    </td>
-                    <td>
-                        <input type="text" value="{nvarchar4}" name="nvarchar4">
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       房屋状况
-                    </td>
-                    <td>
-                        <select name="nvarchar5">
-                           <option value="普通住宅">普通住宅</option>
-                           <option value="商住两用">商住两用</option>
-                           <option value="公寓">公寓</option>
-                           <option value="别墅">别墅</option>
-                           <option value="其他">其他</option>
-                        </select>
-                         朝向： 
-                        <select name="nvarchar6">
-                           <option value="东">东</option>
-                           <option value="南">南</option>
-                           <option value="西">西</option>
-                           <option value="北">北</option>
-                           <option value="东南">东南</option>
-                           <option value="西南">西南</option>
-                           <option value="东北">东北</option>
-                           <option value="西北">西北</option>
-                        </select>
-                        面积：
-                        <input type="text" value="{num7}" name="num7" style="width:40px;"/>平米
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       房屋配置
-                    </td>
-                    <td>
-                        <input type="checkbox" value="床" name="nvarchar9" id="nvarchar9_1" /><label for="nvarchar9_1">床</label>
-                        <input type="checkbox" value="热水器" name="nvarchar9" id="nvarchar9_2" /><label for="nvarchar9_2">热水器</label>
-                        <input type="checkbox" value="空调" name="nvarchar9" id="nvarchar9_3" /><label for="nvarchar9_3">空调</label>
-                        <input type="checkbox" value="洗衣机" name="nvarchar9" id="nvarchar9_4" /><label for="nvarchar9_4">洗衣机</label>
-                        <input type="checkbox" value="冰箱" name="nvarchar9" id="nvarchar9_5" /><label for="nvarchar9_5">冰箱</label>
-                        <input type="checkbox" value="电视机" name="nvarchar9" id="nvarchar9_6" /><label for="nvarchar9_6">电视机</label>
-                        <input type="checkbox" value="宽带" name="nvarchar9" id="nvarchar9_7" /><label for="nvarchar9_7">宽带</label>
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       补充说明
-                    </td>
-                    <td>
-                        <textarea name="intro" style="width:300px;">{intro}</textarea>
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       电话
-                    </td>
-                    <td>
-                        <input type="text" value="{tel}" name="tel" class="validate[required,custom[phone]]"/>
-                    </td>
-                </tr>
-               <tr>
-                    <td width="163">
-                       联系人
-                    </td>
-                    <td>
-                        <input type="contact" value="{contact}" name="contact" class="validate[required]"/> 
-                        <input type="checkbox" value="中介" name="contacttype" id="contacttype" /><label for="contacttype">中介</label>
-
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="2">
-                        <input type="submit" ID="btn_Save" value="保存" name="submit" />
-                        &nbsp;
-                        <input type="button" value="取消" onclick="history.go(-1)" />
-                    </th>
-                </tr>
-            </tfoot>
-        </table>',N'',N'',N'租金',N'室',N'厅',N'卫',N'楼层',N'共层',N'面积',N'',N'',N'',N'单位',N'立即入住',N'装修状况',N'入住时间',N'房屋类型',N'房屋朝向',N'区域',N'小区',N'房屋配置',N'出租方式',N'押金方式',N'商圈',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'',N'')
- SET IDENTITY_INSERT [InfoType] OFF ;
-
-
-SET IDENTITY_INSERT [Info] ON ;
- insert into [Info]([id],[InfoTypeID],[ClassID],[ClassName],[ZtID],[ZtName],[Title],[UserName],[UserID],[Contact],[ContactType],[Tel],[TelLocation],[Address],[Intro],[ImageCount],[ReplyCount],[ClickCount],[IsSetTop],[OutTime],[PostTime],[num1],[num2],[num3],[num4],[num5],[num6],[num7],[num8],[num9],[num10],[nvarchar1],[nvarchar2],[nvarchar3],[nvarchar4],[nvarchar5],[nvarchar6],[nvarchar7],[nvarchar8],[nvarchar9],[nvarchar10],[nvarchar11],[nvarchar12],[nvarchar13],[nvarchar14],[nvarchar15],[decimal1],[decimal2],[decimal3],[decimal4],[decimal5],[text1],[text2],[text3],[text4],[text5],[bit1],[bit2],[bit3],[bit4],[bit5]) values(N'5',N'1',N'1',N'大连房屋出租',N'0',N'',N'兴工街大户型',N'',N'-2147483648',N'刘林',N'中介',N'13813009317',N'',N'信工街西安路2号',N'不接受美元日元',N'0',N'0',N'0',N'False',N'2000-1-1 0:00:00',N'2000-1-1 0:00:00',N'2000',N'3',N'1',N'1',N'4',N'6',N'90',N'0',N'0',N'0',N'',N'',N'豪华装修',N'随时入住',N'别墅',N'南',N'沙河口区',N'罗斯福',N'床,热水器,空调',N'整套出租',N'押一付三',N'兴工街',N'',N'',N'',N'0.00',N'0.00',N'0.00',N'0.00',N'0.00',N'',N'',N'',N'',N'',N'False',N'False',N'False',N'False',N'False')
- SET IDENTITY_INSERT [Info] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlKuaib] ON ;
- insert into [MovieUrlKuaib]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'8',N'1',N'杜拉拉升职记',N'第一集',N'2012-4-24 14:11:40',N'False',N'qvod://161762827|2EF332E239BB8D194A7806839E2D042030159229|\u675C\u62C9\u62C9\u5347\u804C\u8BB0-01.rmvb|')
- SET IDENTITY_INSERT [MovieUrlKuaib] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlBaidu] ON ;
- insert into [MovieUrlBaidu]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'1',N'1',N'杜拉拉升职记',N'第一集',N'2012-4-23 12:55:17',N'True',N'bdhd://390133739|B0ADDD13ABB64429EB57441290B39092|杜拉拉升职记HDTV01.rmvb')
- SET IDENTITY_INSERT [MovieUrlBaidu] OFF ;
-
-
-SET IDENTITY_INSERT [MovieUrlBaidu] ON ;
- insert into [MovieUrlBaidu]([id],[MovieID],[MovieTitle],[Title],[UpdateTime],[Enable],[Url]) values(N'2',N'2',N'我是特种兵',N'第一集',N'2012-4-23 12:55:58',N'True',N'bdhd://226097940|EFEF2B0F6FBF6D7239811726ACFBF7B5|我是特种兵01.rmvb')
- SET IDENTITY_INSERT [MovieUrlBaidu] OFF ;
-
-
-SET IDENTITY_INSERT [MovieInfo] ON ;
- insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ClickCount],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime]) values(N'1',N'2',N'大陆电视剧',N'杜拉拉升职记',N'陈铭章',N'王珞丹，李光洁，李彩桦',N'喜剧，偶像，爱情',N'大陆',N'2010',N'杜拉拉，大学毕业后进入民营企业。因老板胡阿发的骚扰，也因为想和男友李鸿明一样就职于世界500强公司，拉拉向DB公司递交求职材料。同时她也发现男友李鸿铭和自己的好朋友夏红相爱了。',N'False',N'/u/MoviekFace/1.jpg',N'2012-4-23 12:47:04',N'第一集',N'1',N'2012-4-23 12:47:32',N'0',N'True',N'0',N'',N'',N'',N'')
- SET IDENTITY_INSERT [MovieInfo] OFF ;
-
-
-SET IDENTITY_INSERT [MovieInfo] ON ;
- insert into [MovieInfo]([id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ClickCount],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime]) values(N'2',N'2',N'大陆电视剧',N'我是特种兵',N'刘猛',N'任天野 谷智鑫 刘晓洁 王奎荣',N'军旅励志',N'大陆',N'2011',N'揭开最精锐部队的神秘面纱，缔造属于青春的军旅传奇。该剧全景式表现中国人民解放军陆军最精锐的战士——狼牙特别突击队残酷悲壮、铁血精诚的训练和生活的长篇画卷。如果祖国需要，他们就是一颗上膛的子弹，时刻准备着！一曲凄美缠绵的军营恋歌，一份血与泪水的成长记录。19岁的大学新生小庄，为了追随初恋女友而开始了一段迷彩军营生活，但两个少年都没有料到，当命运的子弹穿过爱情的心脏时，面对着喷涌而出的梦想和鲜血，这无常荒诞的人生又有几许承担之重？一段激情昂扬的热血青春，一部与众不同的军旅励志剧。从一个桀骜不驯的艺术青年，到一个骁勇善战、百炼成钢的合格特种兵，小庄在绿色的军营中一遍一遍经历着蜕变、感召和洗礼……',N'False',N'/u/MoviekFace/2.jpg',N'2012-4-23 12:53:12',N'第一集',N'2',N'2012-4-23 12:53:40',N'0',N'True',N'0',N'',N'',N'',N'')
- SET IDENTITY_INSERT [MovieInfo] OFF ;
 
 

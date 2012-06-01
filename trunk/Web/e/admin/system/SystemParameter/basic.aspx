@@ -119,6 +119,14 @@
                         <vd:VTextBox ID="txt_PingAddress" runat="server" TextMode="MultiLine"></vd:VTextBox>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                     分类文件目录
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_ClassFolder" runat="server" Text="/Book"></vd:VTextBox>
+                    </td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>

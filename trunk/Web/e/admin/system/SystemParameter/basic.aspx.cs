@@ -43,6 +43,7 @@ namespace Web.e.admin.system.SystemParameter
 
             txt_PingAddress.Text = st.PingAddress;
             chk_EnalePing.Checked = st.EnablePing;
+            txt_ClassFolder.Text = st.ClassFolder;
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Web.e.admin.system.SystemParameter
             st.ExtName = txt_ExtName.Text;
             st.PingAddress = txt_PingAddress.Text;
             st.EnablePing = chk_EnalePing.Checked;
-
+            st.ClassFolder = txt_ClassFolder.Text;
             
 
             Voodoo.Basement.Setting.SysSettingDAL.SetSetting(st);

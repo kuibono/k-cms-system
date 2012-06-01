@@ -40,6 +40,11 @@ namespace Voodoo.Basement
 		/// 
 		/// </summary>
 		public string CountCode{get ; set; }
+
+        /// <summary>
+        /// 分類页面存放目录
+        /// </summary>
+        public string ClassFolder { get; set; }
 		
 		/// <summary>
 		/// 
