@@ -37,7 +37,7 @@
             width: 300px;
             height: 100%;
             line-height: 23px;
-            z-index: 99999;
+            z-index: 99991;
             opacity: .60;
             filter: alpha(opacity=60);
             _bottom: auto;
@@ -49,7 +49,7 @@
             box-shadow: 10px 0 5px #000;
             color: #111;
             display:none;
-            overflow:scroll;
+            overflow:hidden;
         }
         div.float a
         {
@@ -73,11 +73,19 @@
             });
 
             $("#senderror").click(function () {
-                alert("报错成功！");
+                $.ajax({
+                    url: "/e/tool/BookOperate.aspx?a=err",
+                    data: { "id": chapterId },
+                    dataType: "json",
+                    type: "POST",
+                    success: function () {
+                        alert("报错成功，感谢您的支持！");
+                    }
+                });
             });
             $("#btn_ok").click(function () {
                 //do save
-                $("#content").html($("#"+$("input:checked").attr("itemid")).html())
+                $("#content").html($("#" + $("input:checked").attr("itemid")).html())
                 $(".collect").hide("fast");
             });
             $("#btn_collect").click(function () {
@@ -85,7 +93,7 @@
                     url: "/e/tool/collect/novel/ServerCollect.aspx?a=getcontentlist&" + Math.random(),
                     data: { "booktitle": "官雄", "chaptertitle": "第一百七十七章 巧合吗？" },
                     dataType: "json",
-                    type:"POST",
+                    type: "POST",
                     success: function (j) {
                         for (var i = 0; i < j.length; i++) {
                             $("#table_collect").prepend("<tr><td><div class='item'><input type='radio' name='content' id='c_" + i + "' itemid='i_" + i + "' /><label id='i_" + i + "' for='c_" + i + "'>" + j[i] + "</label></div></td></tr>");
@@ -107,6 +115,9 @@
                 </td>
             </tr>
         </table>
+        <div style="border:solid 1px #f00; height:100%;width:300px; position:absolute; top:0; left:0; z-index:99999">
+            正在处理
+        </div>
     </div>
     <div class="float">
         [<a id="senderror" href="javascript:void(0)">章节有错</a>]|[<a id="trymyself" href="javascript:void(0)">我自己试试</a>]
