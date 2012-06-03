@@ -131,7 +131,7 @@ namespace Voodoo.Basement
         {
             SysSetting setting = BasePage.SystemSetting;
 
-            string IndexFile = "~/Book/index" + setting.ExtName;
+            string IndexFile = "~/" + setting.ClassFolder + "/index" + setting.ExtName;
 
             string Content = "";
             Content = GetTempateString(1, TempType.首页);
@@ -151,7 +151,7 @@ namespace Voodoo.Basement
             Content = ReplaceTagContent(Content);
 
             //BasePage.SystemSetting.ExtName
-            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~/Book/Index") + BasePage.SystemSetting.ExtName, Content);
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath(IndexFile), Content);
 
             if (BasePage.SystemSetting.EnablePing)
             {
@@ -1486,7 +1486,10 @@ namespace Voodoo.Basement
 
             #region 替换分页模板
 
-            string tmp_pager = GetTempateString(tmpid, TempType.列表分页);
+            string tmp_pager = GetTempateString(1, TempType.列表分页);
+
+            
+
             tmp_pager = tmp_pager.Replace("[!--thispage--]", page.ToS());
             tmp_pager = tmp_pager.Replace("[!--pagenum--]", pagecount.ToS());
             tmp_pager = tmp_pager.Replace("[!--lencord--]", temp.ShowRecordCount.ToS());

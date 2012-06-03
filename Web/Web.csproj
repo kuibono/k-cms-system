@@ -463,6 +463,7 @@
     <Content Include="e\tool\Collect\Novel\ServerCollect.aspx" />
     <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
+    <Content Include="e\tool\proxy.aspx" />
     <Content Include="skin\movie\aimiziso.gif" />
     <Content Include="skin\movie\bf.gif" />
     <Content Include="skin\movie\bg05.gif" />
@@ -1091,6 +1092,13 @@
     </Compile>
     <Compile Include="e\tool\MovieRules.aspx.designer.cs">
       <DependentUpon>MovieRules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\proxy.aspx.cs">
+      <DependentUpon>proxy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\proxy.aspx.designer.cs">
+      <DependentUpon>proxy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">

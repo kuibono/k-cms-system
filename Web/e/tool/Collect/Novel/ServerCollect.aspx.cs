@@ -9,6 +9,9 @@ using Voodoo;
 using Voodoo.Net;
 using Newtonsoft.Json;
 using Voodoo.Cache;
+using Voodoo.Model;
+using Voodoo.DAL;
+using Voodoo.Basement;
 
 
 using System.Text;
@@ -16,7 +19,7 @@ using System.Text.RegularExpressions;
 
 namespace Web.e.tool.Collect.Novel
 {
-    public partial class ServerCollect : System.Web.UI.Page
+    public partial class ServerCollect : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,8 +33,33 @@ namespace Web.e.tool.Collect.Novel
                     string chaptertitle = WS.RequestString("chaptertitle");
                     GetContentList(booktitle, chaptertitle);
                     break;
+                case "savecontent":
+                    string content = WS.RequestString("content");
+                    long id = WS.RequestString("id").ToInt64();
+                    SaveContent(id, content);
+                    break;
             }
         }
+
+        protected void SaveContent(long ChapterID, string Content)
+        {
+            BookChapter chapter = BookChapterView.GetModelByID(ChapterID.ToS());
+            Book book = BookView.GetModelByID(chapter.BookID.ToS());
+            Class cls = ClassView.GetModelByID(chapter.ClassID.ToS());
+
+            string txtPath = GetBookChapterTxtUrl(chapter, cls);
+            chapter.IsImageChapter = false;
+            chapter.IsTemp = false;
+            BookChapterView.Update(chapter);
+
+
+            Voodoo.IO.File.Write(Server.MapPath(txtPath), Content);
+            CreatePage.CreateBookChapterPage(chapter, book, cls);
+            Response.Clear();
+            Response.Write("true");
+
+        }
+
         public static List<string> GetFilter()
         {
             if (Voodoo.Cache.Cache.GetCache("Filter") == null)
@@ -55,29 +83,29 @@ namespace Web.e.tool.Collect.Novel
 
             #region 1. 从贴吧搜索了
 
-            string chapterListHtml = Url.GetHtml(string.Format("http://tieba.baidu.com/f?kw={0}&tb=on", BookTitle.UrlEncode(Encoding.GetEncoding("gb2312"))), "gbk");
+            //string chapterListHtml = Url.GetHtml(string.Format("http://tieba.baidu.com/f?kw={0}&tb=on", BookTitle.UrlEncode(Encoding.GetEncoding("gb2312"))), "gbk");
 
             List<TitleAndUrl> chapters = new List<TitleAndUrl>();
-            var match_Chapters = chapterListHtml.GetMatchGroup("<a href=\"(?<url>.*?)\" target=\"_blank\" class=\"th_tit\">(?<title>.*?)</a>|<td class=\"thread_title\">[\\s]*?<a href=\"(?<url>.*?)\" target=\"_blank\">(?<title>.*?)</a>");
+            //var match_Chapters = chapterListHtml.GetMatchGroup("<a href=\"(?<url>.*?)\" target=\"_blank\" class=\"th_tit\">(?<title>.*?)</a>|<td class=\"thread_title\">[\\s]*?<a href=\"(?<url>.*?)\" target=\"_blank\">(?<title>.*?)</a>");
             int i = 0;
-            while (match_Chapters.Success)
-            {
-                chapters.Add(new TitleAndUrl()
-                {
-                    Title = match_Chapters.Groups["title"].Value,
-                    Url = match_Chapters.Groups["url"].Value.AppendToDomain("http://tieba.baidu.com/"),
-                    Index = i
-                });
-                i++;
-                match_Chapters = match_Chapters.NextMatch();
-            }
+            //while (match_Chapters.Success)
+            //{
+            //    chapters.Add(new TitleAndUrl()
+            //    {
+            //        Title = match_Chapters.Groups["title"].Value,
+            //        Url = match_Chapters.Groups["url"].Value.AppendToDomain("http://tieba.baidu.com/"),
+            //        Index = i
+            //    });
+            //    i++;
+            //    match_Chapters = match_Chapters.NextMatch();
+            //}
 
-            var chapter_NeedCollect = (from n in chapters select new { n.Index, n.Url, n.Title, weight = n.Title.GetSimilarityWith(ChapterTitle) }).OrderByDescending(p => p.weight).ToList();
-            if (chapter_NeedCollect.First().weight > (0.6).ToDecimal())
-            {
+            //var chapter_NeedCollect = (from n in chapters select new { n.Index, n.Url, n.Title, weight = n.Title.GetSimilarityWith(ChapterTitle) }).OrderByDescending(p => p.weight).ToList();
+            //if (chapter_NeedCollect.Count > 0 && chapter_NeedCollect.First().weight > (0.6).ToDecimal())
+            //{
 
-                Result.Add(GetContentFromTieba(chapter_NeedCollect.First().Url));
-            }
+            //    Result.Add(GetContentFromTieba(chapter_NeedCollect.First().Url));
+            //}
             #endregion
 
             #region 帖子搜索
@@ -99,18 +127,22 @@ namespace Web.e.tool.Collect.Novel
                 i++;
                 m_chapters = m_chapters.NextMatch();
             }
-            chapter_NeedCollect = (from n in chapters select new { n.Index, n.Url, n.Title, weight = n.Title.TrimHTML().Replace(" ", "").GetSimilarityWith(ChapterTitle.TrimHTML().Replace(" ", "")) }).OrderByDescending(p => p.weight).ToList();
-            if (chapter_NeedCollect.First().weight > (0.7).ToDecimal())
+            var chapter_NeedCollect = (from n in chapters select new { n.Index, n.Url, n.Title, weight = n.Title.TrimHTML().Replace(" ", "").GetSimilarityWith(ChapterTitle.TrimHTML().Replace(" ", "")) }).OrderByDescending(p => p.weight).ToList();
+            if (chapter_NeedCollect.Count > 0)
             {
+                //if (chapter_NeedCollect.First().weight > (0.7).ToDecimal())
+                //{
 
                 Result.Add(GetContentFromTieba(chapter_NeedCollect.First().Url));
+                //}
             }
 
             #endregion
 
             #region 从网上搜索
 
-            searchUrl = string.Format("http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&wd={0}+site%3Awcxiaoshuo.com&rsv_n=2&inputT=6588", BookTitle + " " + ChapterTitle);
+            //searchUrl = string.Format("http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&wd={0}+site%3Awcxiaoshuo.com&rsv_n=2&inputT=6588", BookTitle + " " + ChapterTitle);
+            searchUrl = string.Format("http://www.baidu.com/s?tn=baiduadv&ie=utf-8&f=8&rsv_bp=1&wd=%22{0}%22+%28site%3Axiucaiwu.com+%7C+site%3Awcxiaoshuo.com%29&inputT=4232", ChapterTitle);
 
             html_Chapterlist = Url.GetHtml(searchUrl, "utf-8");
             m_chapters = html_Chapterlist.GetMatchGroup("<h3 class=\"t\"><a.*?href=\"(?<url>.*?)\".*?>(?<title>.*?)</a>");
@@ -129,12 +161,15 @@ namespace Web.e.tool.Collect.Novel
             }
             chapter_NeedCollect = (from n in chapters select new { n.Index, n.Url, n.Title, weight = n.Title.TrimHTML().Replace(" ", "").GetSimilarityWith(ChapterTitle.TrimHTML().Replace(" ", "")) }).ToList();//.OrderByDescending(p => p.weight).ToList();
 
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < chapter_NeedCollect.Count; j++)
             {
                 string html_content = Url.GetHtml(chapter_NeedCollect[j].Url, "gbk");
 
                 string c = GetContent(html_content);
-                Result.Add(c);
+                if (c.Length > 0)
+                {
+                    Result.Add(c);
+                }
             }
 
 
@@ -249,8 +284,9 @@ namespace Web.e.tool.Collect.Novel
         public string GetContent(string html)
         {
             List<TitleAndUrl> chapters = new List<TitleAndUrl>();
-
-            Match m = new Regex("<div.*?>(?<key>[\\s\\S]{1000,}?)</div>", RegexOptions.IgnoreCase).Match(html);
+            //<div id=\"htmlContent\" class=\"contentbox\" >(?<key>[\\s\\S]{1000,}?)</div>|<div id=\"content\" name=\"content\">(?<key>[\\s\\S]{1000,}?)</div>
+            //Match m = new Regex("<div.*?>(?<key>[\\s\\S]{1000,}?)</div>", RegexOptions.IgnoreCase).Match(html);
+            Match m = new Regex("<div id=\"htmlContent\" class=\"contentbox\" >(?<key>[\\s\\S]{1000,}?)</div>|<div id=\"content\" name=\"content\">(?<key>[\\s\\S]{1000,}?)</div>", RegexOptions.IgnoreCase).Match(html);
             while (m.Success)
             {
                 chapters.Add(new TitleAndUrl()
@@ -265,8 +301,11 @@ namespace Web.e.tool.Collect.Novel
                 });
                 m = m.NextMatch();
             }
-
-            return chapters.OrderBy(p => p.wg).Last().Content;
+            if (chapters.Count > 0)
+            {
+                return chapters.OrderBy(p => p.wg).Last().Content;
+            }
+            return "";
         }
     }
 

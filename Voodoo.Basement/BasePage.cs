@@ -378,7 +378,7 @@ namespace Voodoo.Basement
         public static string GetMovieUrl(MovieInfo b, Class cls)
         {
             string result = "";
-            string fileName = b.Title.Replace("/", "_").Replace(" ", "");//书名+作者
+            string fileName = b.Title.Replace("/", "_").Replace(" ", "").Replace("~","");
 
 
             string sitrurl = "/Movie/";
@@ -424,7 +424,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/Baidu/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle.Replace("/", "_").Replace(" ", ""),
+                b.MovieTitle.Replace("/", "_").Replace(" ", "").Replace("~", ""),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -456,7 +456,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/Kuaib/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                movie.Title.Replace("/", "_").Replace(" ", ""),
+                movie.Title.Replace("/", "_").Replace(" ", "").Replace("~", ""),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -485,7 +485,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/urls/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle.Replace("/", "_").Replace(" ", ""),
+                b.MovieTitle.Replace("/", "_").Replace(" ", "").Replace("~", ""),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );

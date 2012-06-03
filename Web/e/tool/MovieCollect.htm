@@ -105,7 +105,10 @@
 
 
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; return false; },
+                error: function () {
+                    callback();
+                }
             });
         }
 
@@ -148,7 +151,10 @@
                         callback();
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; return false; },
+                error: function () {
+                    callback();
+                }
             });
         }
         var getBaiduDrama = function (rulename, movie, i, callback) {
@@ -189,7 +195,10 @@
                         callback();
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; return false; },
+                error: function () {
+                    callback();
+                }
             });
         }
         var getKuaiboSource = function (rulename, url, title, movieid, movietitle, callback) {
@@ -200,7 +209,10 @@
                 dataType: "json",
                 type: "POST",
                 success: function (drama) { return callback() },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; return false; },
+                error: function () {
+                    callback();
+                }
             })
         }
         var getBaiduSource = function (rulename, url, title, movieid, movietitle, callback) {
@@ -211,7 +223,10 @@
                 dataType: "json",
                 type: "POST",
                 success: function (drama) { return callback() },
-                complete: function (XHR, TS) { XHR = null; return false; }
+                complete: function (XHR, TS) { XHR = null; return false; },
+                error: function () {
+                    callback();
+                }
             })
         }
 
@@ -227,7 +242,10 @@
                         createListPage(classid, function () { callback() });
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; }
+                complete: function (XHR, TS) { XHR = null; },
+                error: function () {
+                    callback();
+                }
             });
         }
         var createListPage = function (id, callback) {
@@ -242,7 +260,10 @@
                         createIndexPage(function () { callback() });
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; }
+                complete: function (XHR, TS) { XHR = null; },
+                error: function () {
+                    callback();
+                }
             });
         }
         var createIndexPage = function (callback) {
@@ -256,7 +277,10 @@
                         callback();
                     }
                 },
-                complete: function (XHR, TS) { XHR = null; }
+                complete: function (XHR, TS) { XHR = null; },
+                error: function () {
+                    callback();
+                }
             });
         }
     </script>

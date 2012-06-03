@@ -32,7 +32,7 @@ namespace Web
             }
             else
             {
-                Server.Transfer("~/Book/Index" + SystemSetting.ExtName);
+                Server.Transfer(SystemSetting.ClassFolder + "/Index" + SystemSetting.ExtName);
             }
         }
     }
