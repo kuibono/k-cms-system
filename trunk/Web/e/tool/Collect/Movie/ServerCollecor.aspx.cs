@@ -592,8 +592,8 @@ namespace Web.e.tool.Collect.Movie
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
-            string html = Url.GetHtml(url, r.Encoding);
-            Match m = html.GetMatchGroup(r.SourceBaiduRule);
+            string html = Url.GetHtml(url, r.Encoding).ToLower().AsciiToNative();
+            Match m = html.GetMatchGroup(r.SourceBaiduRule.Replace("{title}", Title));
             var sysDrama = MovieUrlBaiduView.Find(string.Format("MovieID={0} and Title=N'{1}'", MovieID, Title));
             if (sysDrama.Id <= 0)
             {
@@ -604,7 +604,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.MovieTitle = MovieTitle;
                     sysDrama.Title = Title;
                     sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
-                    sysDrama.Url = m.Groups["url"].Value;
+                    sysDrama.Url = m.Groups["key"].Value;
                     sysDrama.Url = Regex.Replace(sysDrama.Url, "\\\\u.*?\\.", string.Format("{0}-{1}.", sysDrama.MovieTitle, sysDrama.Title));
                     MovieUrlBaiduView.Insert(sysDrama);
                     CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
@@ -630,8 +630,8 @@ namespace Web.e.tool.Collect.Movie
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
-            string html = Url.GetHtml(url, r.Encoding);
-            Match m = html.GetMatchGroup(r.SourceKuaibRule);
+            string html = Url.GetHtml(url, r.Encoding).ToLower().AsciiToNative();
+            Match m = html.GetMatchGroup(r.SourceKuaibRule.Replace("{title}", Title));
             var sysDrama = MovieUrlKuaibView.Find(string.Format("MovieID={0} and Title=N'{1}'", MovieID, Title));
             if (sysDrama.Id <= 0)
             {
@@ -642,7 +642,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.MovieTitle = MovieTitle;
                     sysDrama.Title = Title;
                     sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
-                    sysDrama.Url = m.Groups["url"].Value;
+                    sysDrama.Url = m.Groups["key"].Value;
                     sysDrama.Url = Regex.Replace(sysDrama.Url, "\\\\u.*?\\.", string.Format("{0}-{1}.",sysDrama.MovieTitle,sysDrama.Title));
 
                     MovieUrlKuaibView.Insert(sysDrama);
@@ -676,10 +676,18 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="ClassID"></param>
         protected void CreateListPage(int ClassID)
         {
-            Class cls = ClassView.GetModelByID(ClassID.ToString());
-            CreatePage.CreateListPage(cls, 1);
-            Response.Clear();
-            Response.Write(JsonConvert.SerializeObject(true));
+            //Response.Buffer = false;
+            try
+            {
+                Class cls = ClassView.GetModelByID(ClassID.ToString());
+                CreatePage.CreateListPage(cls, 1);
+                Response.Clear();
+                Response.Write(JsonConvert.SerializeObject(true));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
         }
 
         /// <summary>

@@ -111,6 +111,13 @@ namespace Web.e.admin
             file_manager.Listeners.Click.Handler = "openpage('system/Basement/FileManagement.aspx')";
             _root_sys.Nodes.Add(file_manager);
 
+            Ext.Net.TreeNode info_collect = new Ext.Net.TreeNode("采集管理", Icon.MonitorEdit);
+
+            Ext.Net.TreeNode movie_collect = new Ext.Net.TreeNode("<a href=\"javascript:void(0)\" onclick=\"openpage('/e/tool/MovieCollect.htm')\">电影采集</a>|<a href=\"javascript:void(0)\" onclick=\"openpage('/e/tool/MovieRules.aspx')\">规则</a>", Icon.MonitorAdd);
+            info_collect.Nodes.Add(movie_collect);
+
+            _root_sys.Nodes.Add(info_collect);
+
             Tree_Sys.Root.Add(_root_sys);//树根加进去
             #endregion
 
