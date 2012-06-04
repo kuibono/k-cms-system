@@ -144,7 +144,7 @@ namespace Web.e.tool.Create
             {
                 Class c = MovieInfoView.GetClass(k);
                 Voodoo.Basement.CreatePage.CreateDramapage(k, c);
-                Response.Write(string.Format("电影《{0}》-快播剧集《{1}》完成", k.MovieTitle, k.Title));
+                Response.Write(string.Format("《{0}》-快播剧集《{1}》完成", k.MovieTitle, k.Title));
             }
             else
             {
@@ -165,7 +165,7 @@ namespace Web.e.tool.Create
             {
                 Class c = MovieInfoView.GetClass(b);
                 Voodoo.Basement.CreatePage.CreateDramapage(b, c);
-                Response.Write(string.Format("电影《{0}》-百度影音剧集《{1}》完成", b.MovieTitle, b.Title));
+                Response.Write(string.Format("《{0}》-百度影音剧集《{1}》完成", b.MovieTitle, b.Title));
             }
             else
             {
@@ -186,7 +186,7 @@ namespace Web.e.tool.Create
             {
                 Class c = MovieInfoView.GetClass(d);
                 Voodoo.Basement.CreatePage.CreateDramapage(d, c);
-                Response.Write(string.Format("电影《{0}》-剧集列表《{1}》完成", d.MovieTitle, d.Title));
+                Response.Write(string.Format("《{0}》-剧集列表《{1}》完成", d.MovieTitle, d.Title));
             }
         }
         #endregion
