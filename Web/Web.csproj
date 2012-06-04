@@ -461,6 +461,7 @@
     <Content Include="e\tool\BookOperate.aspx" />
     <Content Include="e\tool\Collect\Movie\ServerCollecor.aspx" />
     <Content Include="e\tool\Collect\Novel\ServerCollect.aspx" />
+    <Content Include="e\tool\Create\CreatePage.aspx" />
     <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="e\tool\proxy.aspx" />
@@ -1071,6 +1072,13 @@
     </Compile>
     <Compile Include="e\tool\Collect\Novel\ServerCollect.aspx.designer.cs">
       <DependentUpon>ServerCollect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\Create\CreatePage.aspx.cs">
+      <DependentUpon>CreatePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\Create\CreatePage.aspx.designer.cs">
+      <DependentUpon>CreatePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\GetReadHistory.aspx.cs">
       <DependentUpon>GetReadHistory.aspx</DependentUpon>

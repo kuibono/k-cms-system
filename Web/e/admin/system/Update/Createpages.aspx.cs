@@ -159,6 +159,26 @@ namespace Web.e.admin.system.Update
 
             }
 
+            dir = new DirectoryInfo(Server.MapPath(SystemSetting.ClassFolder));
+            if (dir.Exists)
+            {
+                FileInfo[] files = dir.GetFiles();
+                foreach (FileInfo file in files)
+                {
+                    Response.Write(string.Format("正在删除文件：{0}<br/>", file.Name));
+                    file.Delete();
+                }
+
+                DirectoryInfo[] subdirs = dir.GetDirectories();
+                foreach (DirectoryInfo subdir in subdirs)
+                {
+                    Response.Write(string.Format("正在删除目录：{0}<br/>", subdir.Name));
+                    subdir.Delete(true);
+                }
+
+
+            }
+
             Js.AlertAndGoback("成功！");
         }
 
