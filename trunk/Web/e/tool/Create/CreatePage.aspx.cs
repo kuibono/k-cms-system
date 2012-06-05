@@ -15,7 +15,7 @@ using Voodoo.Data.DbHelper;
 
 namespace Web.e.tool.Create
 {
-    public partial class CreatePage : AdminBase
+    public partial class CreatePage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -101,6 +101,24 @@ namespace Web.e.tool.Create
             {
                 Class c = MovieInfoView.GetClass(m);
                 Voodoo.Basement.CreatePage.CreateContentPage(m, c);
+
+                var Dramas = MovieDramaView.GetModelList(string.Format("movieid={0}", id));
+                var Baidus = MovieUrlBaiduView.GetModelList(string.Format("movieid={0}", id));
+                var Kuaibos = MovieUrlKuaibView.GetModelList(string.Format("movieid={0}", id));
+
+                foreach (var d in Dramas)
+                {
+                    Voodoo.Basement.CreatePage.CreateDramapage(d, c);
+                }
+                foreach (var d in Baidus)
+                {
+                    Voodoo.Basement.CreatePage.CreateDramapage(d, c);
+                }
+                foreach (var d in Kuaibos)
+                {
+                    Voodoo.Basement.CreatePage.CreateDramapage(d, c);
+                }
+
                 Response.Write("电影" + m.Title + "完成");
             }
             else
