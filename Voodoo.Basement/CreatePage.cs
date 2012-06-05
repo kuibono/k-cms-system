@@ -1243,6 +1243,11 @@ namespace Voodoo.Basement
         /// <param name="page"></param>
         public static void CreateListPage(Class c, int page)
         {
+            CreateListPage(c, page, true);
+        }
+
+        public static void CreateListPage(Class c, int page,bool AutoCreateNext)
+        {
             int pagecount = 1;
             int recordCount = 0;
             string Content = "";
@@ -1488,7 +1493,7 @@ namespace Voodoo.Basement
 
             string tmp_pager = GetTempateString(1, TempType.列表分页);
 
-            
+
 
             tmp_pager = tmp_pager.Replace("[!--thispage--]", page.ToS());
             tmp_pager = tmp_pager.Replace("[!--pagenum--]", pagecount.ToS());
@@ -1517,7 +1522,7 @@ namespace Voodoo.Basement
             }
 
             //下一页链接
-            if (pagecount > page)
+            if (pagecount > page && AutoCreateNext)
             {
                 CreateListPage(c, page + 1);
             }

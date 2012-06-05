@@ -256,6 +256,10 @@ namespace Web.e.tool.Collect.Movie
                     mv.ScoreTime = 0;
                     mv.Status = 0;
                     mv.TjCount = 0;
+                    mv.DayClick = 0;
+                    mv.WeekClick = 0;
+                    mv.MonthClick = 0;
+                    mv.LastClickTime = DateTime.UtcNow.AddHours(8);
                     mv.UpdateTime = DateTime.UtcNow.AddHours(8);
 
                     #region 处理分类

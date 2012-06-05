@@ -462,6 +462,7 @@
     <Content Include="e\tool\Collect\Movie\ServerCollecor.aspx" />
     <Content Include="e\tool\Collect\Novel\ServerCollect.aspx" />
     <Content Include="e\tool\Create\CreatePage.aspx" />
+    <Content Include="e\tool\MovieClick.aspx" />
     <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="e\tool\proxy.aspx" />
@@ -1093,6 +1094,13 @@
     </Compile>
     <Compile Include="e\tool\gettabledata.aspx.designer.cs">
       <DependentUpon>gettabledata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\tool\MovieClick.aspx.cs">
+      <DependentUpon>MovieClick.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\tool\MovieClick.aspx.designer.cs">
+      <DependentUpon>MovieClick.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\tool\MovieRules.aspx.cs">
       <DependentUpon>MovieRules.aspx</DependentUpon>
