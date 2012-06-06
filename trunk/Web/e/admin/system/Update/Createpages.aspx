@@ -16,23 +16,50 @@
                 dataType: "json",
                 type: "POST",
                 success: function (id) {
-                    cList(1, id);
+                    //getPageCount(1, id);
+                    cList(0, id, 1, 0);
                 }
             });
         }
-        var cList = function (id, maxid) {
+        var getPageCount = function (id,maxid) {
+            $.ajax({
+                url: "/e/tool/Create/CreatePage.aspx",
+                data: { "a": "getclasspagecount", "id": id },
+                dataType: "text",
+                type: "POST",
+                success: function (count) {
+                    cList(1, id, 1, count);
+                }
+            });
+        }
+
+
+        var cList = function (id, maxid, page, pagecount) {
             if (id <= maxid) {
-                $.ajax({
-                    url: "/e/tool/Create/CreatePage.aspx",
-                    data: { "a": "createclasspage", "id": id },
-                    dataType: "text",
-                    type: "POST",
-                    success: function (msg) {
-                        $("#status").text(msg);
-                        id++;
-                        cList(id, maxid);
-                    }
-                });
+                if (page <= pagecount) {
+
+                    $.ajax({
+                        url: "/e/tool/Create/CreatePage.aspx",
+                        data: { "a": "createclasspage", "id": id, "page": page },
+                        dataType: "text",
+                        type: "POST",
+                        success: function (msg) {
+                            $("#status").text(msg);
+                            cList(id, maxid, page + 1, pagecount);
+                        }
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: "/e/tool/Create/CreatePage.aspx",
+                        data: { "a": "getclasspagecount", "id": id+1 },
+                        dataType: "text",
+                        type: "POST",
+                        success: function (count) {
+                            cList(id + 1, maxid, 1, count);
+                        }
+                    });
+                }
             }
             else {
                 $("#status").text("列表页生成完成");

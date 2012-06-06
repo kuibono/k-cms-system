@@ -630,14 +630,14 @@ namespace KCMDCollector.Book
                     b.Changed = true;
                     try
                     {
-                        this.CollectStatus.Status = "Ping Google"; Status_Chage();
-                        googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                        //this.CollectStatus.Status = "Ping Google"; Status_Chage();
+                        //googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
                     }
                     catch { }
                     try
                     {
-                        this.CollectStatus.Status = "Ping Baidu"; Status_Chage();
-                        baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
+                        //this.CollectStatus.Status = "Ping Baidu"; Status_Chage();
+                        //baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
                     }
                     catch { }
                 }
