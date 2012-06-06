@@ -38,15 +38,21 @@
                 type: "POST",
                 success: function (movies) {
                     getMovieInfo(rules[i].Name, movies, 0, function () {
-                        if (movies.NextPageUrl.length > 0) {
-                            rules[i].ListPageUrl = movies.NextPageUrl;
-                            getListInfo(rules, i);
-                        }
-                        else {
-                            if (i < rules.length - 1) {
-                                i++;
+                        try {
+                            if (movies.NextPageUrl.length > 0) {
+                                rules[i].ListPageUrl = movies.NextPageUrl;
                                 getListInfo(rules, i);
                             }
+                            else {
+                                if (i < rules.length - 1) {
+                                    i++;
+                                    getListInfo(rules, i);
+                                }
+                            }
+                        }
+                        catch (ex) {
+                            i++;
+                            getListInfo(rules, i);
                         }
                     });
 
@@ -141,8 +147,8 @@
                                     getKuaiboDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    //();
-                                    createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                   callback();
+                                   // createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                                 }
                             }
                             );
@@ -186,8 +192,8 @@
                                     getBaiduDrama(rulename, movie, i, callback);
                                 }
                                 else {
-                                    //callback();
-                                    createContentPage(movie.Id, movie.ClassID, function () { callback(); });
+                                    callback();
+                                    //createContentPage(movie.Id, movie.ClassID, function () { callback(); });
                                 }
                             });
                     }

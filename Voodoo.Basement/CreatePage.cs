@@ -1205,11 +1205,19 @@ namespace Voodoo.Basement
             BookChapter news_pre = BasePage.GetPreChapter(cp, b);
             BookChapter news_next = BasePage.GetNextChapter(cp, b);
 
+            string preurl = news_pre == null ? "index" + BasePage.SystemSetting.ExtName : BasePage.GetBookChapterUrl(news_pre, cls);
+            string nexturl = news_next == null ? "index" + BasePage.SystemSetting.ExtName : BasePage.GetBookChapterUrl(news_next, cls);
+
+            Content = Content.Replace("[!--chapter.preurl--]", preurl);
+            Content = Content.Replace("[!--chapter.nexturl--]", nexturl);
+            Content = Content.Replace("[!--chapter.pretitle--]", news_pre == null ? b.Title : news_pre.Title);
+            Content = Content.Replace("[!--chapter.nexttitle--]", news_next == null ? b.Title : news_next.Title);
+
             //上一篇
             string pre_link = "<a href=\"#\">上章：没有了</a>";
             if (news_pre != null)
             {
-                pre_link = string.Format("<a id=\"btn_pre\" href=\"{0}\" title=\"{1}\">上章：{2}</a>", BasePage.GetBookChapterUrl(news_pre, cls), news_pre.Title, news_pre.Title.CutString(20));
+                pre_link = string.Format("<a id=\"btn_pre\" href=\"{0}\" title=\"{1}\">上章：{2}</a>", nexturl, news_pre.Title, news_pre.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.prelink--]", pre_link);
 
@@ -1217,7 +1225,7 @@ namespace Voodoo.Basement
             string next_link = "<a href=\"#\">下章：没有了</a>";
             if (news_next != null)
             {
-                next_link = string.Format("<a id=\"btn_next\" href=\"{0}\" title=\"{1}\">下章：{2}</a>", BasePage.GetBookChapterUrl(news_next, cls), news_next.Title, news_next.Title.CutString(20));
+                next_link = string.Format("<a id=\"btn_next\" href=\"{0}\" title=\"{1}\">下章：{2}</a>", nexturl, news_next.Title, news_next.Title.CutString(20));
             }
             Content = Content.Replace("[!--news.nextlink--]", next_link);
 
@@ -1246,7 +1254,7 @@ namespace Voodoo.Basement
             CreateListPage(c, page, true);
         }
 
-        public static void CreateListPage(Class c, int page,bool AutoCreateNext)
+        public static void CreateListPage(Class c, int page, bool AutoCreateNext)
         {
             int pagecount = 1;
             int recordCount = 0;

@@ -21,7 +21,7 @@ namespace Web.e.tool.Create
         {
             Response.Clear();
             string action = WS.RequestString("a").ToLower();
-            string id=WS.RequestString("id");
+            string id = WS.RequestString("id");
             switch (action)
             {
                 case "createindex":
@@ -47,10 +47,13 @@ namespace Web.e.tool.Create
                     CreateDramaPage(id.ToInt64());
                     break;
                 case "createclasspage":
-                    CreateClassPage(id.ToInt32());
+                    CreateClassPage(id.ToInt32(),WS.RequestString("page").ToInt32(1));
                     break;
                 case "getmaxid":
                     GetMaxID(WS.RequestString("table"));
+                    break;
+                case "getclasspagecount":
+                    GetClassPageCount(id.ToInt32());
                     break;
 
             }
@@ -209,16 +212,63 @@ namespace Web.e.tool.Create
         }
         #endregion
 
+        #region 获取列表页面的页数
+        /// <summary>
+        /// 获取列表页面的页数
+        /// </summary>
+        /// <param name="id"></param>
+        protected void GetClassPageCount(int id)
+        {
+            Class c = ClassView.GetModelByID(id.ToS());
+            TemplateList t = TemplateListView.Find(string.Format("SysModel={0}", c.ModelID.ToS()));
+            
+            int pagecount = 0;
+            switch (c.ModelID)
+            {
+                case 1:
+                    //新闻
+                    pagecount = NewsView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                case 2:
+                    //图片
+                    pagecount = ImageAlbumView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                case 3:
+                    //问答
+                    pagecount = QuestionView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                case 4:
+                    //小说
+                    pagecount = BookView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                case 5:
+                    //分类
+                    pagecount = InfoView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                case 6:
+                    //影视
+                    pagecount = MovieInfoView.Count(string.Format("classid in(select {0} union select id from Class where parentID={0})", id)).GetPageCount(t.ShowRecordCount);
+                    break;
+                default:
+                    pagecount = 0;
+                    break;
+            }
+
+            Response.Clear();
+            Response.Write(pagecount);
+        }
+        #endregion
+
         #region 生成列表页面
         /// <summary>
         /// 生成列表页面
         /// </summary>
         /// <param name="id"></param>
-        protected void CreateClassPage(int id)
+        protected void CreateClassPage(int id, int page)
         {
             Class c = ClassView.GetModelByID(id.ToS());
-            Voodoo.Basement.CreatePage.CreateListPage(c, 1);
-            Response.Write(string.Format("创建分类“{0}”完成", c.ClassName));
+            Voodoo.Basement.CreatePage.CreateListPage(c, page, false);
+            Response.Write(string.Format("创建分类“{0}”第{1}页完成", c.ClassName,page));
         }
         #endregion
 
@@ -240,6 +290,6 @@ namespace Web.e.tool.Create
                 Response.Write("0");
             }
         }
-        #endregion 
+        #endregion
     }
 }
