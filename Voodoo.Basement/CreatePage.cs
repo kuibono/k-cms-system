@@ -157,7 +157,50 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl);
             }
+            CreatePagesByCrateWith(1);
             return Content;
+        }
+        #endregion
+
+        #region 生成静态页面
+        /// <summary>
+        /// 生成静态页面
+        /// </summary>
+        /// <param name="id">模板ID</param>
+        public static void CreatePages(TemplatePage tp)
+        {
+            string FilePath = System.Web.HttpContext.Current.Server.MapPath(tp.FileName);
+
+            string Content = tp.Content;
+            //替换三层公共模版变量
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+            Content = ReplacePublicTemplate(Content);
+
+            Content = ReplaceSystemSetting(Content);
+
+            Content = ReplaceTagContent(Content);
+
+            //BasePage.SystemSetting.ExtName
+            Voodoo.IO.File.Write(FilePath, Content);
+
+            if (BasePage.SystemSetting.EnablePing)
+            {
+                BasePage.PingSE(BasePage.SystemSetting.SiteUrl + tp.FileName);
+            }
+        }
+
+        /// <summary>
+        /// 根据条件生成静态页面
+        /// </summary>
+        /// <param name="CreateWith">0不生成 1首页 2列表 3内容 4章节、播放、图片等内页</param>
+        public static void CreatePagesByCrateWith(int CreateWith)
+        {
+            var tps = TemplatePageView.GetModelList(string.Format("CreateWith={0}",CreateWith));
+            foreach (var tp in tps)
+            {
+                CreatePages(tp);
+            }
         }
         #endregion
 
@@ -266,6 +309,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(3);
         }
         #endregion
 
@@ -381,6 +425,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(3);
         }
         #endregion
 
@@ -485,6 +530,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(3);
         }
         #endregion
 
@@ -617,6 +663,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(3);
         }
         #endregion
 
@@ -743,6 +790,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(3);
         }
         #endregion
 
@@ -874,6 +922,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(4);
         }
         #endregion 生成播放页面--快播
 
@@ -1004,6 +1053,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(4);
         }
         #endregion 生成播放页面--快播
 
@@ -1090,6 +1140,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(4);
         }
         #endregion 生成播放页面--单集列表页面
 
@@ -1239,6 +1290,7 @@ namespace Voodoo.Basement
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
             }
+            CreatePagesByCrateWith(4);
         }
         #endregion
 
@@ -1533,6 +1585,10 @@ namespace Voodoo.Basement
             if (pagecount > page && AutoCreateNext)
             {
                 CreateListPage(c, page + 1);
+            }
+            if (page == 1)
+            {
+                CreatePagesByCrateWith(2);
             }
         }
         #endregion

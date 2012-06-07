@@ -101,6 +101,7 @@
     <Compile Include="Auto\TemplateFaceView.cs" />
     <Compile Include="Auto\TemplateGroupView.cs" />
     <Compile Include="Auto\TemplateListView.cs" />
+    <Compile Include="Auto\TemplatePageView.cs" />
     <Compile Include="Auto\TemplatePublicView.cs" />
     <Compile Include="Auto\TemplateReplyView.cs" />
     <Compile Include="Auto\TemplateSearchView.cs" />
