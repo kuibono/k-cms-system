@@ -99,7 +99,15 @@ namespace Web.e.admin.Movie
                 {
                     str_sql += " and ";
                 }
-                str_sql += txt_Column.SelectedValue + " like '%" + txt_Key.Text + "%'";
+                str_sql += txt_Column.SelectedValue + " like N'%" + txt_Key.Text + "%'";
+            }
+            if (txt_Key.Text.Trim().Length > 0 && txt_Column.SelectedValue == "")
+            {
+                if (str_sql.Trim().Length > 0)
+                {
+                    str_sql += " and ";
+                }
+                str_sql +=  string.Format("Title like N'%{0}%' or Director like N'%{0}%' or Tags like N'%{0}%' or Location like N'%{0}%' or Intro like N'%{0}%'",txt_Key.Text.ToSqlEnCode());
             }
 
             if (ddl_Class.SelectedValue != "")

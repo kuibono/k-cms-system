@@ -22,7 +22,7 @@ namespace Web.e.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadFrame();
-            
+
         }
 
         /// <summary>
@@ -153,6 +153,12 @@ namespace Web.e.admin
             n_model_publicv.Listeners.Click.Handler = "openpage('template/VarTemplateList.aspx')";
             root_model.Nodes.Add(n_model_publicv);
             //-----------------------------------公共模版变量-----------------------------------------------//
+
+
+            var page_mgr = new Ext.Net.TreeNode("页面管理", Icon.Page);
+            page_mgr.Listeners.Click.Handler = "openpage('template/PageTemplateList.aspx')";
+            root_model.Nodes.Add(page_mgr);
+
 
             //-----------------------------------公共模版-----------------------------------------------//
             Ext.Net.TreeNode n_model_public = new Ext.Net.TreeNode("公共模版", Icon.World);
@@ -290,7 +296,32 @@ namespace Web.e.admin
             n_c_msg.Expanded = true;
             //---------------信息相关-----------------------------------------------//
             Ext.Net.TreeNode n_sm_mgr = new Ext.Net.TreeNode("信息管理", Icon.BookmarkEdit);
-            n_sm_mgr.Listeners.Click.Handler="openpage('news/newslist.aspx')";
+            //n_sm_mgr.Listeners.Click.Handler = "openpage('news/newslist.aspx')";
+
+            var news_mgr = new Ext.Net.TreeNode("新闻管理", Icon.Newspaper);
+            news_mgr.Listeners.Click.Handler = "openpage('news/newslist.aspx')";
+            n_sm_mgr.Nodes.Add(news_mgr);
+
+            var image_mgr = new Ext.Net.TreeNode("图片管理", Icon.ImageEdit);
+            image_mgr.Listeners.Click.Handler = "openpage('images/ImageList.aspx')";
+            n_sm_mgr.Nodes.Add(image_mgr);
+
+            var question_mgr = new Ext.Net.TreeNode("问答管理", Icon.Information);
+            question_mgr.Listeners.Click.Handler = "openpage('question/QuestionList.aspx')";
+            n_sm_mgr.Nodes.Add(question_mgr);
+
+            var book_mgr = new Ext.Net.TreeNode("小说管理", Icon.Book);
+            book_mgr.Listeners.Click.Handler = "openpage('book/BookList.aspx')";
+            n_sm_mgr.Nodes.Add(book_mgr);
+
+            var info_mgr = new Ext.Net.TreeNode("分类信息管理", Icon.ApplicationSideList);
+            //info_mgr.Listeners.Click.Handler = "openpage('Info/InfoList.aspx')";
+            n_sm_mgr.Nodes.Add(info_mgr);
+
+            var movie_mgr = new Ext.Net.TreeNode("影视管理", Icon.MonitorEdit);
+            movie_mgr.Listeners.Click.Handler = "openpage('Movie/MovieList.aspx')";
+            n_sm_mgr.Nodes.Add(movie_mgr);
+
             n_c_msg.Nodes.Add(n_sm_mgr);
             //---------------信息相关-----------------------------------------------//
 
@@ -335,12 +366,12 @@ namespace Web.e.admin
             root_user.Expanded = true;
             //------------用户管理-----------------------------------------------//
             Ext.Net.TreeNode n_user_sys = new Ext.Net.TreeNode("用户管理", Icon.UserGray);
-           
+
             n_user_sys.Expanded = true;
 
             //-----------------------------------修改个人资料-----------------------------------------------//
             Ext.Net.TreeNode n_us_modInfo = new Ext.Net.TreeNode("修改个人资料", Icon.PageWhitePaint);
-            n_us_modInfo.Listeners.Click.Handler = "openpage('sysuser/SysUserEdit.aspx?id="+UserAction.opuser.ID+"')";
+            n_us_modInfo.Listeners.Click.Handler = "openpage('sysuser/SysUserEdit.aspx?id=" + UserAction.opuser.ID + "')";
             n_user_sys.Nodes.Add(n_us_modInfo);
             //-----------------------------------修改个人资料-----------------------------------------------//
 
@@ -408,14 +439,14 @@ namespace Web.e.admin
 
             //Ext.Net.TreeNode root_msg = new Ext.Net.TreeNode("信息管理");
 
-           // root_msg.Listeners.Click.Handler = "openpage('Test.aspx')";
+            // root_msg.Listeners.Click.Handler = "openpage('Test.aspx')";
 
             //root_msg.Nodes.Add(GetSubTree(0));
 
 
             //tree_Message.Root.Add(root_msg);
             tree_Message.Root.Add(GetSubTree(0));
-            
+
             #endregion
 
 
@@ -458,12 +489,12 @@ namespace Web.e.admin
             //south.Title = "South";
             south.Height = Unit.Pixel(30);
             south.BodyStyle = "padding:0px;";
-            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>"+
+            south.Html = "<div id='southPn' style='background-color:rgb(217,231,248);height:30px;line-height:30px;color:gray;position:relative'><span>" +
                 " <a href='javascript:void(0)' onclick=\"openpage('news/NewsEdit.aspx')\" target='main'>增加信息</a>" +
                 " <a href='javascript:void(0)' onclick=\"openpage('news/newslist.aspx')\" target='main'>管理信息</a>" +
                 " <a href='javascript:void(0)' onclick=\"openpage('system/Update/Createpages.aspx')\"  target='main'>数据更新</a>" +
                 //" <a href='javascript:void(0)' onclick=\"openpage('system/Update/Main.aspx')\" target='main'>后台首页</a>" +
-                " <a href='/' target='_blank;'>网站首页</a>"+
+                " <a href='/' target='_blank;'>网站首页</a>" +
                 " </span><span style='position:absolute;top:2px;right:10px'>&copy; 2011 <a href='mailto:kuibono@163.com'>Kuibono</a></span></div>";
 
 
@@ -515,7 +546,7 @@ namespace Web.e.admin
 
             List<Class> cls = NewsAction.NewsClass;
             List<Class> lpcls = NewsAction.NewsClass.Where(p => p.ID == id).ToList();
-            if (lpcls.Count==0)
+            if (lpcls.Count == 0)
             {
                 node.Text = "所有栏目";
             }
