@@ -274,5 +274,16 @@ namespace Web.e.admin.system.Update
                 CreatePage.CreateDramapage(d, MovieInfoView.GetClass(d));
             }
         }
+
+        protected void btn_CreatePage_Click(object sender, EventArgs e)
+        {
+            Response.Buffer = false;
+            var pages = TemplatePageView.GetModelList();
+            foreach (var page in pages)
+            {
+                Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", page.PageName));
+                CreatePage.CreatePages(page);
+            }
+        }
     }
 }

@@ -118,6 +118,8 @@
     <Content Include="e\admin\template\ContentTemplateList.aspx" />
     <Content Include="e\admin\template\ListTemplateEdit.aspx" />
     <Content Include="e\admin\template\ListTemplateList.aspx" />
+    <Content Include="e\admin\template\PageTemplateEdit.aspx" />
+    <Content Include="e\admin\template\PageTemplateList.aspx" />
     <Content Include="e\admin\template\PublicTemplate.aspx" />
     <Content Include="e\admin\user\GroupEdit.aspx" />
     <Content Include="e\admin\user\GroupList.aspx" />
@@ -779,6 +781,20 @@
     </Compile>
     <Compile Include="e\admin\template\ListTemplateList.aspx.designer.cs">
       <DependentUpon>ListTemplateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\template\PageTemplateEdit.aspx.cs">
+      <DependentUpon>PageTemplateEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\template\PageTemplateEdit.aspx.designer.cs">
+      <DependentUpon>PageTemplateEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\template\PageTemplateList.aspx.cs">
+      <DependentUpon>PageTemplateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\template\PageTemplateList.aspx.designer.cs">
+      <DependentUpon>PageTemplateList.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\template\PublicTemplate.aspx.cs">
       <DependentUpon>PublicTemplate.aspx</DependentUpon>

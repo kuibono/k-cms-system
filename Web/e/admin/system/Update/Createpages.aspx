@@ -96,6 +96,10 @@
                         $("#status").text(msg);
                         id++;
                         cBookPage(id, maxid);
+                    },
+                    error: function () {
+                        id++;
+                        cBookPage(id, maxid);
                     }
                 });
             }
@@ -112,6 +116,10 @@
                     type: "POST",
                     success: function (msg) {
                         $("#status").text(msg);
+                        id++;
+                        cMoviePage(id, maxid);
+                    },
+                    error: function () {
                         id++;
                         cMoviePage(id, maxid);
                     }
@@ -310,6 +318,11 @@
             <tr>
                 <td>
                     <asp:Button ID="btn_GenSitreMap" runat="server" Text="生成SiteMap" OnClick="btn_GenSitreMap_Click" />
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <asp:Button ID="btn_CreatePage" runat="server" Text="生成静态页面" OnClick="btn_CreatePage_Click"  />
                 </td>
             </tr>
             <tr>
