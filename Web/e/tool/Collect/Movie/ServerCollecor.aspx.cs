@@ -315,7 +315,7 @@ namespace Web.e.tool.Collect.Movie
 
             #region 获取快播剧集
             Match m_kuaiboArea = html.GetMatchGroup(r.KuaibAreaRule);
-            if (m_kuaiboArea.Success)
+            if (m_kuaiboArea.Success&&r.KuaibAreaRule.IsNullOrEmpty()==false)
             {
                 string html_kuaiboArea = m_kuaiboArea.Groups[1].Value;
 
@@ -334,9 +334,9 @@ namespace Web.e.tool.Collect.Movie
                         Enable = true,
                         PlayUrl = m_kuaibo.Groups["playurl"].Value.AppendToDomain(url),
                         MovieTitle = mv.Title,
-                        Title = m_kuaibo.Groups["title"].Value,
+                        Title = m_kuaibo.Groups["title"].Value.IsNull("全集"),
                         UpdateTime = DateTime.UtcNow.AddHours(8),
-                        Url = m_kuaibo.Groups["url"].Value.IsNullOrEmpty() ? "" : m_kuaibo.Groups["url"].Value.AppendToDomain(url)
+                        Url = m_kuaibo.Groups["url"].Value
                     });
                     m_kuaibo = m_kuaibo.NextMatch();
                 }
@@ -345,7 +345,7 @@ namespace Web.e.tool.Collect.Movie
 
             #region 获取百度剧集
             Match m_baiduArea = html.GetMatchGroup(r.BaiduAreaRule);
-            if (m_baiduArea.Success)
+            if (m_baiduArea.Success&&r.BaiduAreaRule.IsNullOrEmpty()==false)
             {
                 string html_baiduArea = m_baiduArea.Groups[1].Value;
 
@@ -364,9 +364,9 @@ namespace Web.e.tool.Collect.Movie
                         Enable = true,
                         PlayUrl = m_baidu.Groups["playurl"].Value.AppendToDomain(url),
                         MovieTitle = mv.Title,
-                        Title = m_baidu.Groups["title"].Value,
+                        Title = m_baidu.Groups["title"].Value.IsNull("全集"),
                         UpdateTime = DateTime.UtcNow.AddHours(8),
-                        Url = m_baidu.Groups["url"].Value.IsNullOrEmpty() ? "" : m_baidu.Groups["url"].Value.AppendToDomain(url)
+                        Url = m_baidu.Groups["url"].Value
                     });
                     m_baidu = m_baidu = m_baidu.NextMatch();
                 }
@@ -455,6 +455,8 @@ namespace Web.e.tool.Collect.Movie
             #region 处理快播和百度影音
             else
             {
+                bool needCreate = false;
+
                 foreach (var drama in mv.KuaiboDramas)
                 {
                     if (drama.Url.IsNullOrEmpty() == false)
@@ -466,6 +468,7 @@ namespace Web.e.tool.Collect.Movie
 
                             //保存完成 生成
                             CreatePage.CreateDramapage(drama, c);
+                            needCreate = true;
                         }
                     }
                 }
@@ -480,8 +483,13 @@ namespace Web.e.tool.Collect.Movie
                             MovieUrlBaiduView.Insert(drama);
                             //保存完成 生成
                             CreatePage.CreateDramapage(drama, c);
+                            needCreate = true;
                         }
                     }
+                }
+                if (needCreate)
+                {
+                    CreatePage.CreateContentPage(mv, c);
                 }
                 if(mv.BaiduDramas.Count>0)
                 {
