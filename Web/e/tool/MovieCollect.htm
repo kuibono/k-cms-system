@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link type="text/css" rel="Stylesheet" href="../data/css/management.css" />
-    <script type="text/javascript" src="../data/script/jquery-1.7.min.js"></script>
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" rel="Stylesheet" href="../data/css/management.css" />
+    <script type="text/javascript" src="../data/script/jquery-1.7.min.js"></script>
     <script type="text/javascript">
 
 
@@ -39,7 +40,7 @@
                 success: function (movies) {
                     getMovieInfo(rules[i].Name, movies, 0, function () {
                         try {
-                            if (movies.NextPageUrl !=null && movies.NextPageUrl.length > 0) {
+                            if (movies.NextPageUrl != null && movies.NextPageUrl.length > 0) {
                                 rules[i].ListPageUrl = movies.NextPageUrl;
                                 getListInfo(rules, i);
                             }
@@ -299,24 +300,24 @@
                     callback();
                 }
             });
-        }
-    </script>
-</head>
-<body>
-    <div>
-        <ul>
-            <li>规则：<label id="ruleinfo"></label>
-            </li>
-            <li>列表：<label id="listurl"></label>
-            </li>
-            <li>影视：<label id="movie"></label>
-            </li>
-            <li>剧集：<label id="drama"></label>
-            </li>
-            <li>状态：<label id="status"></label>
-            </li>
-        </ul>
-        <input type="button" id="btn_start" value="开始" />
-    </div>
-</body>
-</html>
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>规则：<label id="ruleinfo"></label>
+            </li>
+            <li>列表：<label id="listurl"></label>
+            </li>
+            <li>影视：<label id="movie"></label>
+            </li>
+            <li>剧集：<label id="drama"></label>
+            </li>
+            <li>状态：<label id="status"></label>
+            </li>
+        </ul>
+        <input type="button" id="btn_start" value="开始" />
+    </div>
+</body>
+</html>

@@ -128,7 +128,7 @@ namespace Web.e.tool
             if (m.Success)
             {
                 Button7.Text = "成功";
-                KuaiboPageUrl = m.Groups["url"].Value.AppendToDomain(contentUrl);
+                KuaiboPageUrl = m.Groups["playurl"].Value.AppendToDomain(contentUrl);
                 KuaiboPageContnt = Url.GetHtml(KuaiboPageUrl, ddl_Encoding.SelectedValue);
             }
         }
