@@ -218,25 +218,28 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="image">图片</param>
         protected void GetMovieInfo(string rulename, string url, string cls, string title, string director, string actors, string tags, string location, string publicyear, string intro, string image)
         {
+            url = url.UrlDecode();
             MovieRule _r = Rules.Where(p => p.Name == rulename).First();
             MovieRule r = _r.Clone();
 
             Class c = new Class();
 
             string html = Url.GetHtml(url, r.Encoding);
-            MovieInfo mv = MovieInfoView.Find(string.Format("title=N'{0}'", title));
+            Match m_info = html.GetMatchGroup(r.InfoRule);
+
+            MovieInfo mv = MovieInfoView.Find(string.Format("title=N'{0}'", m_info.Groups["title"].Value));
             if (mv.Id <= 0)
             {
-                Match m_info = html.GetMatchGroup(r.InfoRule);
+               
                 if (m_info.Success)
                 {
                     //开始获取信息
-                    mv.Actors = m_info.Groups["actors"].Value.IsNull(actors);
+                    mv.Actors = m_info.Groups["actors"].Value.IsNull(actors).TrimHTML() ;
                     mv.ClassName = m_info.Groups["class"].Value.IsNull(cls).IsNull(r.DefaultClass);
                     mv.Director = m_info.Groups["director"].Value.IsNull(director);
                     mv.Enable = true;
                     mv.FaceImage = m_info.Groups["image"].Value.IsNull(image).AppendToDomain(url);
-                    mv.Intro = m_info.Groups["intro"].Value.IsNull(intro);
+                    mv.Intro = m_info.Groups["intro"].Value.IsNull(intro).TrimHTML();
                     mv.Location = m_info.Groups["location"].Value.IsNull(location);
                     mv.PublicYear = m_info.Groups["publicyear"].Value.IsNull(publicyear);
                     mv.Tags = m_info.Groups["tags"].Value.IsNull(tags);
@@ -517,6 +520,8 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="MovieTitle"></param>
         protected void GetKuaiboDrama(string RuleName, string url, string Title, int MovieID, string MovieTitle)
         {
+            url = url.UrlDecode().HtmlDeCode();
+
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
@@ -532,7 +537,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.MovieTitle = MovieTitle;
                     sysDrama.Title = Title;
                     sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
-                    sysDrama.Url = m.Groups["url"].Value.IsNullOrEmpty() ? "" : m.Groups["url"].Value.AppendToDomain(url);
+                    sysDrama.Url = m.Groups["url"].Value;
                     sysDrama.SourceUrl = m.Groups["source"].Value.AppendToDomain(url);
 
                     if (m.Groups["url"].Value.IsNullOrEmpty() == false)
@@ -559,6 +564,8 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="MovieTitle"></param>
         protected void GetBaiduDrama(string RuleName, string url, string Title, int MovieID, string MovieTitle)
         {
+            url = url.UrlDecode().HtmlDeCode();
+
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
@@ -574,7 +581,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.MovieTitle = MovieTitle;
                     sysDrama.Title = Title;
                     sysDrama.UpdateTime = DateTime.UtcNow.AddHours(8);
-                    sysDrama.Url = m.Groups["url"].Value.IsNullOrEmpty() ? "" : m.Groups["url"].Value.AppendToDomain(url);
+                    sysDrama.Url = m.Groups["url"].Value;
                     sysDrama.SourceUrl = m.Groups["source"].Value.AppendToDomain(url);
 
                     if (m.Groups["url"].Value.IsNullOrEmpty() == false)
@@ -601,6 +608,8 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="MovieTitle"></param>
         protected void GetBaiduSourceUrl(string RuleName, string url, string Title, int MovieID, string MovieTitle)
         {
+            url = url.UrlDecode().HtmlDeCode();
+
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
@@ -639,6 +648,8 @@ namespace Web.e.tool.Collect.Movie
         /// <param name="MovieTitle"></param>
         protected void GetKuaiboSourceUrl(string RuleName, string url, string Title, int MovieID, string MovieTitle)
         {
+            url = url.UrlDecode().HtmlDeCode();
+
             MovieRule _r = Rules.Where(p => p.Name == RuleName).First();
             MovieRule r = _r.Clone();
 
