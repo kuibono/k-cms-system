@@ -89,6 +89,28 @@ namespace Web.e.admin.Movie
                 mi.FaceImage = "/u/MoviekFace/" + mi.Id + ".jpg";
                 MovieInfoView.Update(mi);
             }
+
+            Class c=MovieInfoView.GetClass(mi);
+
+            //Create statis pages
+            CreatePage.CreateContentPage(mi, c);
+
+            var kuaibos = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            var baidus = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            var dramas = MovieDramaView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            foreach (var kuaib in kuaibos)
+            {
+                CreatePage.CreateDramapage(kuaib, c);
+            }
+            foreach (var baidu in baidus)
+            {
+                CreatePage.CreateDramapage(baidu, c);
+            }
+            foreach (var drama in dramas)
+            {
+                CreatePage.CreateDramapage(drama, c);
+            }
+
             Response.Redirect(url);
         }
     }
