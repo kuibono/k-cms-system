@@ -923,6 +923,7 @@ namespace KCMDCollector.Book
                     //采集某本书的时候出现异常
                     CollectStatus.Status = "ERR:" + e.Message;
                     Status_Chage();
+                    continue;
                 }
                 CollectStatus.BookLeftCount--; Status_Chage();
             }
