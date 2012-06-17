@@ -44,7 +44,7 @@
     <BookInfoUrl>askjhwkajd(?&lt;key&gt;.*?)llllll</BookInfoUrl>
     <BookInfoRule />
     <ChapterListUrl>askjhwkajd(?&lt;key&gt;.*?)llllll</ChapterListUrl>
-    <ChapterNameAndUrl>&lt;a href="(?&lt;url&gt;.*?)" target="_blank" class="th_tit"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;|&lt;td class="thread_title"&gt;[\s]*?&lt;a href="(?&lt;url&gt;.*?)" target="_blank"&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterNameAndUrl>
+    <ChapterNameAndUrl>&lt;a href=\"(?&lt;url&gt;.*?)\" target=\"_blank\".*?&gt;(?&lt;title&gt;.*?)&lt;/a&gt;</ChapterNameAndUrl>
     <ChapterContent>&lt;p id=".*?" class="d_post_content"&gt;(?&lt;content&gt;[\s\S]*?)&lt;/p&gt;</ChapterContent>
     <ImageRule>&lt;img.*?src="(?&lt;key&gt;.*?)".*?&gt;</ImageRule>
   </CollectRule>
