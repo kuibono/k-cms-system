@@ -59,6 +59,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.timer_NovelReplace = new System.Windows.Forms.Timer(this.components);
+            this.fuck1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fuck2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.split1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.split2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fuck3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fuck4 = new System.Windows.Forms.ToolStripMenuItem();
             this.strip_Exit.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -180,31 +186,37 @@
             this.notifyIcon_Sys.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon_Sys.ContextMenuStrip = this.strip_Exit;
             this.notifyIcon_Sys.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Sys.Icon")));
-            this.notifyIcon_Sys.Text = "大脚采集器";
+            this.notifyIcon_Sys.Text = "OUTLOOK Professional";
             this.notifyIcon_Sys.Visible = true;
             this.notifyIcon_Sys.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Sys_MouseDoubleClick);
             // 
             // strip_Exit
             // 
             this.strip_Exit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tool_Exit,
-            this.tool_Show});
+            this.fuck4,
+            this.fuck3,
+            this.tool_Show,
+            this.split2,
+            this.fuck2,
+            this.split1,
+            this.fuck1,
+            this.tool_Exit});
             this.strip_Exit.Name = "strip_Exit";
-            this.strip_Exit.Size = new System.Drawing.Size(123, 48);
+            this.strip_Exit.Size = new System.Drawing.Size(259, 202);
             this.strip_Exit.Text = "退出";
             // 
             // tool_Exit
             // 
             this.tool_Exit.Name = "tool_Exit";
-            this.tool_Exit.Size = new System.Drawing.Size(122, 22);
-            this.tool_Exit.Text = "退出";
+            this.tool_Exit.Size = new System.Drawing.Size(258, 22);
+            this.tool_Exit.Text = "Exit(&Q)";
             this.tool_Exit.Click += new System.EventHandler(this.tool_Exit_Click);
             // 
             // tool_Show
             // 
             this.tool_Show.Name = "tool_Show";
-            this.tool_Show.Size = new System.Drawing.Size(122, 22);
-            this.tool_Show.Text = "显示界面";
+            this.tool_Show.Size = new System.Drawing.Size(258, 22);
+            this.tool_Show.Text = "Auto Sync";
             this.tool_Show.Click += new System.EventHandler(this.tool_Show_Click);
             // 
             // chb_Shutdown
@@ -335,6 +347,42 @@
             this.timer_NovelReplace.Interval = 5000;
             this.timer_NovelReplace.Tick += new System.EventHandler(this.timer_NovelReplace_Tick);
             // 
+            // fuck1
+            // 
+            this.fuck1.Name = "fuck1";
+            this.fuck1.Size = new System.Drawing.Size(258, 22);
+            this.fuck1.Text = "Hide on Minsize(&H)";
+            // 
+            // fuck2
+            // 
+            this.fuck2.Name = "fuck2";
+            this.fuck2.Size = new System.Drawing.Size(258, 22);
+            this.fuck2.Text = "Show Newmail desctopMessage(&S)";
+            // 
+            // split1
+            // 
+            this.split1.Name = "split1";
+            this.split1.Size = new System.Drawing.Size(258, 22);
+            this.split1.Text = "-";
+            // 
+            // split2
+            // 
+            this.split2.Name = "split2";
+            this.split2.Size = new System.Drawing.Size(258, 22);
+            this.split2.Text = "-";
+            // 
+            // fuck3
+            // 
+            this.fuck3.Name = "fuck3";
+            this.fuck3.Size = new System.Drawing.Size(258, 22);
+            this.fuck3.Text = "Show Network change(&N)";
+            // 
+            // fuck4
+            // 
+            this.fuck4.Name = "fuck4";
+            this.fuck4.Size = new System.Drawing.Size(258, 22);
+            this.fuck4.Text = "Show Network Alert(&A)";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -388,6 +436,12 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timer_NovelReplace;
+        private System.Windows.Forms.ToolStripMenuItem fuck4;
+        private System.Windows.Forms.ToolStripMenuItem fuck3;
+        private System.Windows.Forms.ToolStripMenuItem split2;
+        private System.Windows.Forms.ToolStripMenuItem fuck2;
+        private System.Windows.Forms.ToolStripMenuItem split1;
+        private System.Windows.Forms.ToolStripMenuItem fuck1;
     }
 }
 
