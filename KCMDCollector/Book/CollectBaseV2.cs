@@ -1118,7 +1118,7 @@ namespace KCMDCollector.Book
                                 bc.Changed = true;
                                 //编辑章节
                                 this.CollectStatus.Status = "章节保存到系统"; Status_Chage();
-                                BH.ChapterEdit(c.id, c.Title, c.Content, false,false);
+                                BH.ChapterEdit(c.id, c.Title, c.Content, false, false);
 
                                 //完成之后将本章节去掉
                                 bc.Chapters = bc.Chapters.Where(p => p.id != c.id).ToList();
@@ -1206,9 +1206,12 @@ namespace KCMDCollector.Book
         }
     }
 
+    #region Ping接口
     public interface IMath : IXmlRpcProxy
     {
         [XmlRpcMethod("weblogUpdates.ping")]
         CookComputing.XmlRpc.XmlRpcStruct ping(string a, string b, string c, string d);
     }
+    #endregion
+
 }
