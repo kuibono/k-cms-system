@@ -13,11 +13,93 @@ using System.Text.RegularExpressions;
 using Voodoo.IO;
 using System.IO;
 using CookComputing.XmlRpc;
+using System.Web.Routing;
+using System.Web.Compilation;
 
 namespace Voodoo.Basement
 {
-    public class BasePage : System.Web.UI.Page
+    #region 路由实现接口
+    /// <summary>
+    /// 路由实现接口
+    /// </summary>
+    public interface IRoutablePage
     {
+        RequestContext RequestContext { get; set; }
+    }
+    #endregion
+
+    public class RouteHandler : IRouteHandler
+    {
+        public string VirtualPath { get; private  set; }
+
+        public RouteHandler(string virtualPath)
+        {
+            this.VirtualPath = virtualPath;
+        }
+
+        /// <summary>
+        /// 处理路由请求中有关参数协定的类
+        /// </summary>
+        /// <param name="requestContext"></param>
+        /// <returns></returns>
+        public IHttpHandler GetHttpHandler(RequestContext requestContext)
+        {
+            //as 的好处是，如果类型转换不成功，不会产生异常，而返回一个null值
+            //根据指定的要处理那条路由请求的页面的虚拟路径来创建一个相应的Page对象
+            var originalPage = BuildManager.CreateInstanceFromVirtualPath(VirtualPath, typeof(System.Web.UI.Page)) as IHttpHandler;
+            if (originalPage != null)
+            {
+                var routePage = originalPage as IRoutablePage;
+                if (routePage != null)
+                {
+                    routePage.RequestContext = requestContext;
+                }
+            }
+            return originalPage;
+        }
+    }
+
+    public class BasePage : System.Web.UI.Page, IRoutablePage
+    {
+        #region 路由功能
+        public RequestContext RequestContext { get; set; }
+
+        /// <summary>
+        /// 获取路由中URL参数值和默认值集合
+        /// </summary>
+        public RouteValueDictionary RouteValues
+        {
+            get
+            {
+                if (RequestContext != null)
+                {
+                    return RequestContext.RouteData.Values;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取路由中指定名称的URL参数值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public object GetRouteValue(string key)
+        {
+            object resultValue = null;
+            if (RouteValues != null && RouteValues.Count > 0)
+            {
+                RouteValues.TryGetValue(key, out resultValue);
+            }
+            return resultValue;
+        }
+
+        #endregion
+
+
         #region 静态系统参数
         /// <summary>
         /// 静态系统参数
@@ -378,7 +460,7 @@ namespace Voodoo.Basement
         public static string GetMovieUrl(MovieInfo b, Class cls)
         {
             string result = "";
-            string fileName = b.Title.Replace("/", "_").Replace(" ", "").Replace("~","");
+            string fileName = b.Title.Replace("/", "_").Replace(" ", "").Replace("~", "");
 
 
             string sitrurl = "/Movie/";
