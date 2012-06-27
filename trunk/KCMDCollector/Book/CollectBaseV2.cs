@@ -1196,6 +1196,7 @@ namespace KCMDCollector.Book
         }
         #endregion
 
+        #region 正则替换
         public static string RegexReplace(string Content, string parrten, string newvalue)
         {
             while (Regex.IsMatch(Content, parrten))
@@ -1204,6 +1205,7 @@ namespace KCMDCollector.Book
             }
             return Content;
         }
+        #endregion
     }
 
     #region Ping接口
