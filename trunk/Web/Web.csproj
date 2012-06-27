@@ -73,6 +73,7 @@
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -468,6 +469,7 @@
     <Content Include="e\tool\MovieCollect.htm" />
     <Content Include="e\tool\MovieRules.aspx" />
     <Content Include="e\tool\proxy.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="skin\movie\aimiziso.gif" />
     <Content Include="skin\movie\bf.gif" />
     <Content Include="skin\movie\bg05.gif" />
@@ -1131,6 +1133,9 @@
     </Compile>
     <Compile Include="e\tool\proxy.aspx.designer.cs">
       <DependentUpon>proxy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
