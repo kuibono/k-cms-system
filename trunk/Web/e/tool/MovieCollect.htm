@@ -249,57 +249,60 @@
         }
 
         var createContentPage = function (id, classid, callback) {
-            $.ajax({
-                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createcontentpage",
-                data: { "id": id },
-                dataType: "json",
-                type: "POST",
-                success: function (success) {
-                    if (success == true) {
-                        $("#status").text("生成内容页完成");
-                        createListPage(classid, function () { callback() });
-                    }
-                },
-                complete: function (XHR, TS) { XHR = null; },
-                error: function () {
-                    callback();
-                }
-            });
+            callback();
+//            $.ajax({
+//                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createcontentpage",
+//                data: { "id": id },
+//                dataType: "json",
+//                type: "POST",
+//                success: function (success) {
+//                    if (success == true) {
+//                        $("#status").text("生成内容页完成");
+//                        createListPage(classid, function () { callback() });
+//                    }
+//                },
+//                complete: function (XHR, TS) { XHR = null; },
+//                error: function () {
+//                    callback();
+//                }
+//            });
         }
         var createListPage = function (id, callback) {
-            $.ajax({
-                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createlistpage",
-                data: { "id": id },
-                dataType: "json",
-                type: "POST",
-                success: function (success) {
-                    if (success == true) {
-                        $("#status").text("生成列表页完成");
-                        createIndexPage(function () { callback() });
-                    }
-                },
-                complete: function (XHR, TS) { XHR = null; },
-                error: function () {
-                    callback();
-                }
-            });
+            callback();
+//            $.ajax({
+//                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createlistpage",
+//                data: { "id": id },
+//                dataType: "json",
+//                type: "POST",
+//                success: function (success) {
+//                    if (success == true) {
+//                        $("#status").text("生成列表页完成");
+//                        createIndexPage(function () { callback() });
+//                    }
+//                },
+//                complete: function (XHR, TS) { XHR = null; },
+//                error: function () {
+//                    callback();
+//                }
+//            });
         }
         var createIndexPage = function (callback) {
-            $.ajax({
-                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createindexpage",
-                dataType: "json",
-                type: "POST",
-                success: function (success) {
-                    if (success == true) {
-                        $("#status").text("生成首页完成");
-                        callback();
-                    }
-                },
-                complete: function (XHR, TS) { XHR = null; },
-                error: function () {
-                    callback();
-                }
-            });
+            callback();
+            //            $.ajax({
+            //                url: "/e/tool/Collect/Movie/ServerCollecor.aspx?a=createindexpage",
+            //                dataType: "json",
+            //                type: "POST",
+            //                success: function (success) {
+            //                    if (success == true) {
+            //                        $("#status").text("生成首页完成");
+            //                        callback();
+            //                    }
+            //                },
+            //                complete: function (XHR, TS) { XHR = null; },
+            //                error: function () {
+            //                    callback();
+            //                }
+            //            });
         }
     </script>
 </head>
