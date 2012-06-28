@@ -460,7 +460,7 @@ namespace Voodoo.Basement
         public static string GetMovieUrl(MovieInfo b, Class cls)
         {
             string result = "";
-            string fileName = b.Title.Replace("/", "_").Replace(" ", "").Replace("~", "");
+            string fileName = TitleFilter(b.Title);
 
 
             string sitrurl = "/Movie/";
@@ -484,6 +484,17 @@ namespace Voodoo.Basement
         }
         #endregion
 
+        /// <summary>
+        /// 标题地址标准化
+        /// </summary>
+        /// <param name="Title"></param>
+        /// <returns></returns>
+        public static string TitleFilter(string Title)
+        {
+            return Title.ChinaseUrlEncode();
+
+        }
+
         #region 获取影视播放页面地址
         /// <summary>
         /// 获取影视地址
@@ -506,7 +517,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/Baidu/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle.Replace("/", "_").Replace(" ", "").Replace("~", ""),
+                TitleFilter(b.MovieTitle),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -538,7 +549,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/Kuaib/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                movie.Title.Replace("/", "_").Replace(" ", "").Replace("~", ""),
+                TitleFilter(movie.Title.Replace("/", "_")),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -567,7 +578,7 @@ namespace Voodoo.Basement
             result = string.Format("{0}{1}/{2}/urls/{3}{4}",
                 sitrurl,
                 cls.ClassForder,
-                b.MovieTitle.Replace("/", "_").Replace(" ", "").Replace("~", ""),
+                TitleFilter(b.MovieTitle),
                 b.Id,
                 BasePage.SystemSetting.ExtName
                 );
@@ -880,6 +891,10 @@ namespace Voodoo.Basement
         /// <returns></returns>
         public static MovieUrlKuaib GetNextKuaibo(MovieUrlKuaib kuai)
         {
+            if (kuai == null)
+            {
+                return new MovieUrlKuaib() { Id = int.MinValue };
+            }
             List<MovieUrlKuaib> lresult = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0} and id>{1} order by id asc", kuai.MovieID, kuai.Id));
             if (lresult.Count == 0)
             {
