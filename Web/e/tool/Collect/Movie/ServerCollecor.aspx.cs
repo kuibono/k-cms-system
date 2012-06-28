@@ -110,14 +110,14 @@ namespace Web.e.tool.Collect.Movie
                     break;
                 case "createcontentpage":
                     int id = WS.RequestInt("id");
-                    CreateContentPage(id);
+                    //CreateContentPage(id);
                     break;
                 case "createlistpage":
                     id = WS.RequestInt("id");
-                    CreateListPage(id);
+                    //CreateListPage(id);
                     break;
                 case "createindexpage":
-                    CreateIndexPage();
+                    //CreateIndexPage();
                     break;
             }
         }
@@ -470,8 +470,8 @@ namespace Web.e.tool.Collect.Movie
                             MovieUrlKuaibView.Insert(drama);
 
                             //保存完成 生成
-                            CreatePage.CreateDramapage(drama, c);
-                            needCreate = true;
+                            //CreatePage.CreateDramapage(drama, c);
+                            //needCreate = true;
                         }
                     }
                 }
@@ -485,14 +485,14 @@ namespace Web.e.tool.Collect.Movie
                         {
                             MovieUrlBaiduView.Insert(drama);
                             //保存完成 生成
-                            CreatePage.CreateDramapage(drama, c);
-                            needCreate = true;
+                            //CreatePage.CreateDramapage(drama, c);
+                            //needCreate = true;
                         }
                     }
                 }
                 if (needCreate)
                 {
-                    CreatePage.CreateContentPage(mv, c);
+                    //CreatePage.CreateContentPage(mv, c);
                 }
                 if(mv.BaiduDramas.Count>0)
                 {
@@ -628,7 +628,7 @@ namespace Web.e.tool.Collect.Movie
                     sysDrama.Url = m.Groups["key"].Value;
                     sysDrama.Url = Regex.Replace(sysDrama.Url, "\\\\u.*?\\.", string.Format("{0}-{1}.", sysDrama.MovieTitle, sysDrama.Title));
                     MovieUrlBaiduView.Insert(sysDrama);
-                    CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
+                   // CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
                 }
             }
             Response.Clear();
@@ -670,7 +670,7 @@ namespace Web.e.tool.Collect.Movie
 
                     MovieUrlKuaibView.Insert(sysDrama);
 
-                    CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
+                    //CreatePage.CreateDramapage(sysDrama, MovieInfoView.GetClass(sysDrama));
                 }
             }
             Response.Clear();
@@ -684,44 +684,44 @@ namespace Web.e.tool.Collect.Movie
         /// 生成内容页
         /// </summary>
         /// <param name="MovieID"></param>
-        protected void CreateContentPage(int MovieID)
-        {
-            MovieInfo mv = MovieInfoView.GetModelByID(MovieID.ToString());
-            Class cls = MovieInfoView.GetClass(mv);
-            CreatePage.CreateContentPage(mv, cls);
-            Response.Clear();
-            Response.Write(JsonConvert.SerializeObject(true));
-        }
+        //protected void CreateContentPage(int MovieID)
+        //{
+        //    MovieInfo mv = MovieInfoView.GetModelByID(MovieID.ToString());
+        //    Class cls = MovieInfoView.GetClass(mv);
+        //    CreatePage.CreateContentPage(mv, cls);
+        //    Response.Clear();
+        //    Response.Write(JsonConvert.SerializeObject(true));
+        //}
 
-        /// <summary>
-        /// 生成列表页面
-        /// </summary>
-        /// <param name="ClassID"></param>
-        protected void CreateListPage(int ClassID)
-        {
-            //Response.Buffer = false;
-            try
-            {
-                Class cls = ClassView.GetModelByID(ClassID.ToString());
-                CreatePage.CreateListPage(cls, 1);
-                Response.Clear();
-                Response.Write(JsonConvert.SerializeObject(true));
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.Message);
-            }
-        }
+        ///// <summary>
+        ///// 生成列表页面
+        ///// </summary>
+        ///// <param name="ClassID"></param>
+        //protected void CreateListPage(int ClassID)
+        //{
+        //    //Response.Buffer = false;
+        //    try
+        //    {
+        //        Class cls = ClassView.GetModelByID(ClassID.ToString());
+        //        CreatePage.CreateListPage(cls, 1);
+        //        Response.Clear();
+        //        Response.Write(JsonConvert.SerializeObject(true));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Response.Write(ex.Message);
+        //    }
+        //}
 
-        /// <summary>
-        /// 生成首页
-        /// </summary>
-        protected void CreateIndexPage()
-        {
-            CreatePage.GreateIndexPage();
-            Response.Clear();
-            Response.Write(JsonConvert.SerializeObject(true));
-        }
+        ///// <summary>
+        ///// 生成首页
+        ///// </summary>
+        //protected void CreateIndexPage()
+        //{
+        //    CreatePage.GreateIndexPage();
+        //    Response.Clear();
+        //    Response.Write(JsonConvert.SerializeObject(true));
+        //}
         #endregion
     }
 
