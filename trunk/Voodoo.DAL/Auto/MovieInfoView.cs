@@ -1,6 +1,6 @@
 /*
 *本代码由代码生成器自动生成，请不要更改此文件的任何代码，如需要添加方法，请创建同名类，并在该类中添加新的方法。
-*生成时间：2012-6-5 8:56:21
+*生成时间：2012-6-28 13:47:39
 *生成者：Kuibono
 */
 using System;
@@ -76,6 +76,7 @@ namespace Voodoo.DAL
                 M.WeekClick = dt.Rows[i]["WeekClick"].ToInt64();
                 M.DayClick = dt.Rows[i]["DayClick"].ToInt64();
                 M.LastClickTime = dt.Rows[i]["LastClickTime"].ToDateTime();
+                M.StandardTitle = dt.Rows[i]["StandardTitle"].ToString();
 
                 Ms.Add(M);
             }
@@ -94,7 +95,7 @@ namespace Voodoo.DAL
             IDbHelper Sql = GetHelper();
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("insert into [MovieInfo]([ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime]) values(");
+            sb.Append("insert into [MovieInfo]([ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime],[StandardTitle]) values(");
             sb.Append(M.ClassID.ToS());
             sb.Append(",");
             sb.Append("N'" + M.ClassName + "'");
@@ -148,6 +149,8 @@ namespace Voodoo.DAL
             sb.Append(M.DayClick.ToS());
             sb.Append(",");
             sb.Append("N'" + M.LastClickTime + "'");
+            sb.Append(",");
+            sb.Append("N'" + M.Title.ChinaseUrlEncode() + "'");
             sb.Append(")");
 
             if (DataBase.CmsDbType == DataBase.DbType.SqlServer)
@@ -242,6 +245,8 @@ namespace Voodoo.DAL
             sb.Append("[DayClick]=" + M.DayClick.ToS());
             sb.Append(",");
             sb.Append("[LastClickTime]=N'" + M.LastClickTime + "'");
+            sb.Append(",");
+            sb.Append("[StandardTitle]=N'" + M.Title.ChinaseUrlEncode() + "'");
 
             sb.Append(" where Id='" + M.Id + "'");
             sb.Append("");
@@ -294,7 +299,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             MovieInfo M = new MovieInfo();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime] from [MovieInfo] where Id='" + id.ToString() + "'", true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime],[StandardTitle] from [MovieInfo] where Id='" + id.ToString() + "'", true);
             if (!Rs.Read())
             {
                 M.Id = 0;
@@ -329,6 +334,7 @@ namespace Voodoo.DAL
                 M.WeekClick = Rs["WeekClick"].ToInt64();
                 M.DayClick = Rs["DayClick"].ToInt64();
                 M.LastClickTime = Rs["LastClickTime"].ToDateTime();
+                M.StandardTitle = Rs["StandardTitle"].ToString();
             }
             Rs.Close();
             Rs = null;
@@ -347,7 +353,7 @@ namespace Voodoo.DAL
         {
             IDbHelper Sql = GetHelper();
             MovieInfo M = new MovieInfo();
-            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime] from [MovieInfo] where " + m_where, true);
+            DbDataReader Rs = Sql.ExecuteReader(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime],[StandardTitle] from [MovieInfo] where " + m_where, true);
             if (!Rs.Read())
             {
                 M.Id = 0;
@@ -382,6 +388,7 @@ namespace Voodoo.DAL
                 M.WeekClick = Rs["WeekClick"].ToInt64();
                 M.DayClick = Rs["DayClick"].ToInt64();
                 M.LastClickTime = Rs["LastClickTime"].ToDateTime();
+                M.StandardTitle = Rs["StandardTitle"].ToString();
             }
             Rs.Close();
             Rs = null;
@@ -398,7 +405,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where)
         {
             IDbHelper Sql = GetHelper();
-            return Sql.ExecuteDataTable(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime] from [MovieInfo] where " + m_where);
+            return Sql.ExecuteDataTable(CommandType.Text, "select [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime],[StandardTitle] from [MovieInfo] where " + m_where);
         }
 
         /// <summary>
@@ -419,7 +426,7 @@ namespace Voodoo.DAL
         public static DataTable getTable(string m_where, int top)
         {
             IDbHelper Sql = GetHelper();
-            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime] from [MovieInfo] where " + m_where);
+            DataTable dt = Sql.ExecuteDataTable(CommandType.Text, "select top " + top.ToString() + "  [id],[ClassID],[ClassName],[Title],[Director],[Actors],[Tags],[Location],[PublicYear],[Intro],[IsMove],[FaceImage],[InsertTime],[LastDramaTitle],[LastDramaID],[UpdateTime],[Status],[Enable],[ReplyCount],[TjCount],[ScoreAvg],[ScoreTime],[Info],[ClickCount],[MonthClick],[WeekClick],[DayClick],[LastClickTime],[StandardTitle] from [MovieInfo] where " + m_where);
             return dt;
         }
         #endregion

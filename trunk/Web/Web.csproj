@@ -92,6 +92,7 @@
   <ItemGroup>
     <Content Include="Config\MovieRule\含烟影院电视剧.xml" />
     <Content Include="Default.aspx" />
+    <Content Include="Dynamic\Movie\Default.aspx" />
     <Content Include="e\admin\Book\BookEdit.aspx" />
     <Content Include="e\admin\Default.aspx" />
     <Content Include="e\admin\Info\InfoEdit.aspx" />
@@ -522,7 +523,9 @@
     <Content Include="wap\Book\cls.aspx" />
     <Content Include="wap\Book\Default.aspx" />
     <Content Include="wap\Book\s.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
@@ -530,6 +533,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dynamic\Movie\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dynamic\Movie\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Book\BookEdit.aspx.cs">

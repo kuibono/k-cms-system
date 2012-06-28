@@ -151,6 +151,11 @@ namespace Voodoo.Model
         /// </summary>
         public System.DateTime LastClickTime { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string StandardTitle { get; set; }
+
         ///实体复制
         public MovieInfo Clone()
         {

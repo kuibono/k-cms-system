@@ -95,6 +95,9 @@
     <Compile Include="Setting\SysSettingDAL.cs" />
     <Compile Include="SysUserAction.cs" />
     <Compile Include="TemplateAction.cs" />
+    <Compile Include="TemplateHelper.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="UserAction.cs" />
   </ItemGroup>
   <ItemGroup>
