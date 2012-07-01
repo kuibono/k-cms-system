@@ -611,6 +611,12 @@ namespace KCMDCollector.Book
                 {
                     this.CollectStatus.Status = "这张没有采集到"; Status_Chage();
                     chapter_Submited = BH.ChapterAdd(b.ID, c.Title, sb.ToS(), true, true);
+
+                    //生成章节页面
+                    this.CollectStatus.Status = "生成章节";
+                    Status_Chage();
+                    BH.CreateChapters(chapter_Submited.ID);
+
                     continue;
                 }
 
@@ -628,19 +634,11 @@ namespace KCMDCollector.Book
                     //保存成功 ，更新章节地址 
                     c.Url = b.Url + chapter_Submited.ID + ".htm";
                     b.Changed = true;
-                    try
-                    {
-                        //this.CollectStatus.Status = "Ping Google"; Status_Chage();
-                        //googleProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
-                    }
-                    catch { }
-                    try
-                    {
-                        //this.CollectStatus.Status = "Ping Baidu"; Status_Chage();
-                        //baiduProxy.ping("爱造人小说阅读", "http://www.aizr.net/", c.Url, "http://www.aizr.net/rss.aspx");
-                    }
-                    catch { }
                 }
+                //生成章节页面
+                this.CollectStatus.Status = "生成章节";
+                Status_Chage();
+                BH.CreateChapters(chapter_Submited.ID);
             }
             BookNeedCollect = b;
         }
@@ -745,14 +743,15 @@ namespace KCMDCollector.Book
         /// 生成页面
         /// </summary>
         /// <param name="BookID"></param>
-        protected void CreatePage(string BookID)
+        protected void CreatePage(string BookID,int cls)
         {
             Setting s = Book.RulesOperate.GetSetting();
 
-            this.CollectStatus.Status = "生成章节";
-            Status_Chage();
-            BH.CreateChapters(BookID.ToInt32());
+            //this.CollectStatus.Status = "生成章节";
+            //Status_Chage();
+            //BH.CreateChapters(BookID.ToInt32());
 
+            
 
             this.CollectStatus.Status = "生成书籍页";
             Status_Chage();
@@ -760,7 +759,7 @@ namespace KCMDCollector.Book
 
             this.CollectStatus.Status = "生成分类页";
             Status_Chage();
-            BH.CreateClassPage();
+            BH.CreateClassPage(cls);
 
             this.CollectStatus.Status = "生成首页";
             Status_Chage();
@@ -893,7 +892,7 @@ namespace KCMDCollector.Book
             CollectStatus.Status = "采集完成，正在生成"; Status_Chage();
             if (BookNeedCollect.Chapters.Count > 0)
             {
-                CreatePage(BookNeedCollect.ID.ToS());
+                CreatePage(BookNeedCollect.ID.ToS(), BookNeedCollect.ClassID);
             }
             CollectStatus.Status = string.Format("书籍《{0}》完成", BookTitle); Status_Chage();
         }

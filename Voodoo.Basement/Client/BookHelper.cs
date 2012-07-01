@@ -312,9 +312,9 @@ namespace Voodoo.Basement.Client
         /// <summary>
         /// 创建列表页面
         /// </summary>
-        public bool CreateClassPage()
+        public bool CreateClassPage(int id)
         {
-            string url = xmlrpc + "?a=createclasspage";
+            string url = xmlrpc + "?a=createclasspage&cls="+id;
             return (bool)Voodoo.IO.XML.DeSerialize(typeof(bool), Url.Post(new NameValueCollection(), url, Encoding.UTF8));
 
         }
@@ -339,9 +339,9 @@ namespace Voodoo.Basement.Client
         /// 生成章节
         /// </summary>
         /// <param name="bookid">书籍ID</param>
-        public bool CreateChapters(int bookid)
+        public bool CreateChapters(long chapterid)
         {
-            string url = xmlrpc + "?a=createchapters&bookid=" + bookid;
+            string url = xmlrpc + "?a=createchapters&chapterid=" + chapterid;
             return (bool)Voodoo.IO.XML.DeSerialize(typeof(bool), Url.Post(new NameValueCollection(), url, Encoding.UTF8));
 
         }
