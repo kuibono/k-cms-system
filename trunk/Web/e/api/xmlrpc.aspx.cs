@@ -126,15 +126,16 @@ namespace Web.e.api
                     CreateIndex();
                     break;
                 case "createclasspage":
-                    CreateClassPage();
+                    int cls = WS.RequestInt("cls");
+                    CreateClassPage(cls);
                     break;
                 case "createbook":
                     bookid = WS.RequestInt("bookid");
                     CreateBook(bookid);
                     break;
                 case "createchapters":
-                    bookid = WS.RequestInt("bookid");
-                    CreateChapters(bookid);
+                    chapterid = WS.RequestInt("chapterid");
+                    CreateChapters(chapterid);
                     break;
                 case "createsitemap":
                     CreateSitemap();
@@ -190,7 +191,7 @@ namespace Web.e.api
         /// <param name="Author">作者</param>
         protected void GetBook(string Title, string Author)
         {
-            Book b = BookView.Find(string.Format("Title=N'{0}' and Author=N'{1}'",Title,Author));
+            Book b = BookView.Find(string.Format("Title=N'{0}' and Author=N'{1}'", Title, Author));
             Response.Clear();
             Response.Write(XML.Serialize(b));
         }
@@ -303,7 +304,7 @@ namespace Web.e.api
         /// </summary>
         /// <param name="id">书籍ID</param>
         /// <param name="files">上传文件</param>
-        protected void SaveBookFace(int id,HttpFileCollection files)
+        protected void SaveBookFace(int id, HttpFileCollection files)
         {
             try
             {
@@ -411,7 +412,7 @@ namespace Web.e.api
         /// <param name="ChapterTitle">章节标题</param>
         protected void GetChapter(string BookTitle, string ChapterTitle)
         {
-            BookChapter c = BookChapterView.Find(string.Format("BookTitle=N'{0}' and Title=N'{1}'",BookTitle,ChapterTitle));
+            BookChapter c = BookChapterView.Find(string.Format("BookTitle=N'{0}' and Title=N'{1}'", BookTitle, ChapterTitle));
             Response.Clear();
             Response.Write(XML.Serialize(c));
         }
@@ -425,7 +426,7 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter,bool IsTemp=false)
+        protected void ChapterAdd(int BookID, string Title, string Content, bool IsImageChapter, bool IsTemp = false)
         {
 
             Book b = BookView.GetModelByID(BookID.ToS());
@@ -472,7 +473,7 @@ namespace Web.e.api
         /// <param name="Title">标题</param>
         /// <param name="Content">内容</param>
         /// <param name="IsImageChapter">是否图片章节</param>
-        protected void ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter,bool IsTemp=false)
+        protected void ChapterEdit(long ChapterID, string Title, string Content, bool IsImageChapter, bool IsTemp = false)
         {
             var chapter = BookChapterView.GetModelByID(ChapterID.ToS());
             var cls = ClassView.GetModelByID(chapter.ClassID.ToS());
@@ -548,7 +549,7 @@ namespace Web.e.api
         {
             BookChapter chapter = BookChapterView.GetModelByID(chapterID.ToS());
 
-            string path=BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter));
+            string path = BasePage.GetBookChapterTxtUrl(chapter, BookView.GetClass(chapter));
 
             string content = Voodoo.IO.File.Read(Server.MapPath(path));
             Response.Clear();
@@ -581,15 +582,12 @@ namespace Web.e.api
         /// <summary>
         /// 创建列表页面
         /// </summary>
-        protected void CreateClassPage()
+        protected void CreateClassPage(int cls)
         {
             try
             {
-                var cls = ClassView.GetModelList();
-                foreach (var c in cls)
-                {
-                    Voodoo.Basement.CreatePage.CreateListPage(c, 1);
-                }
+                var c = ClassView.GetModelByID(cls.ToS());
+                Voodoo.Basement.CreatePage.CreateListPage(c, 1);
                 Response.Clear();
                 Response.Write(XML.Serialize(true));
             }
@@ -598,8 +596,6 @@ namespace Web.e.api
                 Response.Clear();
                 Response.Write(XML.Serialize(false));
             }
-
-
         }
         #endregion
 
@@ -631,15 +627,26 @@ namespace Web.e.api
         /// 生成章节
         /// </summary>
         /// <param name="bookid">书籍ID</param>
-        protected void CreateChapters(int bookid)
+        protected void CreateChapters(long chapterid)
         {
             try
             {
-                var chapters = BookChapterView.GetModelList(string.Format("bookid={0}", bookid));
-                foreach (var c in chapters)
+                var chapter = BookChapterView.GetModelByID(chapterid.ToS());
+                var book=BookView.GetModelByID(chapter.BookID.ToS());
+                var cls = BookView.GetClass(book);
+                var pre = BasePage.GetPreChapter(chapter, book);
+
+                Voodoo.Basement.CreatePage.CreateBookChapterPage(chapter,book, cls);
+                if (pre != null && pre.ID > 0)
                 {
-                    Voodoo.Basement.CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
+                    Voodoo.Basement.CreatePage.CreateBookChapterPage(pre, book, cls);
                 }
+
+                //var chapters = BookChapterView.GetModelList(string.Format("bookid={0}", bookid));
+                //foreach (var c in chapters)
+                //{
+                //    Voodoo.Basement.CreatePage.CreateBookChapterPage(c, BookView.GetBook(c), BookView.GetClass(c));
+                //}
                 Response.Clear();
                 Response.Write(XML.Serialize(true));
             }

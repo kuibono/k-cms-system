@@ -74,6 +74,8 @@ namespace Web.e.admin.Movie
             mi.Info = FCKeditor1.Value;
             mi.InsertTime = DateTime.UtcNow.AddHours(8);
             mi.UpdateTime = DateTime.UtcNow.AddHours(8);
+            mi.LastClickTime = DateTime.UtcNow.AddHours(8);
+            
             if (mi.Id > 0)
             {
                 //update
@@ -92,26 +94,26 @@ namespace Web.e.admin.Movie
                 MovieInfoView.Update(mi);
             }
 
-            Class c=MovieInfoView.GetClass(mi);
+            //Class c=MovieInfoView.GetClass(mi);
 
-            //Create statis pages
-            CreatePage.CreateContentPage(mi, c);
+            ////Create statis pages
+            //CreatePage.CreateContentPage(mi, c);
 
-            var kuaibos = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}", mi.Id));
-            var baidus = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0}", mi.Id));
-            var dramas = MovieDramaView.GetModelList(string.Format("MovieID={0}", mi.Id));
-            foreach (var kuaib in kuaibos)
-            {
-                CreatePage.CreateDramapage(kuaib, c);
-            }
-            foreach (var baidu in baidus)
-            {
-                CreatePage.CreateDramapage(baidu, c);
-            }
-            foreach (var drama in dramas)
-            {
-                CreatePage.CreateDramapage(drama, c);
-            }
+            //var kuaibos = MovieUrlKuaibView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            //var baidus = MovieUrlBaiduView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            //var dramas = MovieDramaView.GetModelList(string.Format("MovieID={0}", mi.Id));
+            ////foreach (var kuaib in kuaibos)
+            //{
+            //    CreatePage.CreateDramapage(kuaib, c);
+            //}
+            //foreach (var baidu in baidus)
+            //{
+            //    CreatePage.CreateDramapage(baidu, c);
+            //}
+            //foreach (var drama in dramas)
+            //{
+            //    CreatePage.CreateDramapage(drama, c);
+            //}
 
             Response.Redirect(url);
         }

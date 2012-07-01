@@ -29,6 +29,18 @@ namespace KCMDCollector
         public Test()
         {
             InitializeComponent();
+
+            DateTime dt = new DateTime(1986, 11, 29);
+            string str = string.Format("{0}{1}年{2}{3}月{4}{5}日{6}{7}时",
+                dt.TianGanOfYear(),
+                dt.DiZhiOfYear(),
+                dt.TianGanOfMonth(),
+                dt.DizhiOfMonth(),
+                dt.TianGanOfDay(),
+                dt.DizhiOfDay(),
+                dt.TianGanOfHour(),
+                dt.DiZhiOfHour()
+                );
         }
 
 

@@ -113,24 +113,24 @@ namespace Web.e.admin.system.Update
                 }
             }
 
-            try
-            {
-                var movies = MovieInfoView.GetModelList();
-                foreach (var m in movies)
-                {
-                    try
-                    {
-                        Response.Write(string.Format("正在生成内容页：{0}<br/>", m.Title));
-                        CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
-                        Js.ScrollEnd();
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Write(string.Format("{0}<br/>", ex.Message));
-                    }
-                }
-            }
-            catch { }
+            //try
+            //{
+            //    var movies = MovieInfoView.GetModelList();
+            //    foreach (var m in movies)
+            //    {
+            //        try
+            //        {
+            //            Response.Write(string.Format("正在生成内容页：{0}<br/>", m.Title));
+            //            CreatePage.CreateContentPage(m, MovieInfoView.GetClass(m));
+            //            Js.ScrollEnd();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Response.Write(string.Format("{0}<br/>", ex.Message));
+            //        }
+            //    }
+            //}
+            //catch { }
 
             Js.AlertAndGoback("成功！");
         }
@@ -252,38 +252,38 @@ namespace Web.e.admin.system.Update
 
         protected void btn_Drama_Click(object sender, EventArgs e)
         {
-            Response.Buffer = false;
-            List<MovieUrlKuaib> ks = MovieUrlKuaibView.GetModelList();
-            foreach (var k in ks)
-            {
-                Response.Write(string.Format("正在生成快播页面：{0}<br/>", k.Title));
-                CreatePage.CreateDramapage(k, MovieInfoView.GetClass(k));
-            }
+            //Response.Buffer = false;
+            //List<MovieUrlKuaib> ks = MovieUrlKuaibView.GetModelList();
+            //foreach (var k in ks)
+            //{
+            //    Response.Write(string.Format("正在生成快播页面：{0}<br/>", k.Title));
+            //    CreatePage.CreateDramapage(k, MovieInfoView.GetClass(k));
+            //}
 
-            List<MovieUrlBaidu> bs = MovieUrlBaiduView.GetModelList();
-            foreach (var b in bs)
-            {
-                Response.Write(string.Format("正在生成百度页面：{0}<br/>", b.Title));
-                CreatePage.CreateDramapage(b, MovieInfoView.GetClass(b));
-            }
+            //List<MovieUrlBaidu> bs = MovieUrlBaiduView.GetModelList();
+            //foreach (var b in bs)
+            //{
+            //    Response.Write(string.Format("正在生成百度页面：{0}<br/>", b.Title));
+            //    CreatePage.CreateDramapage(b, MovieInfoView.GetClass(b));
+            //}
 
-            List<MovieDrama> ds = MovieDramaView.GetModelList();
-            foreach (var d in ds)
-            {
-                Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", d.Title));
-                CreatePage.CreateDramapage(d, MovieInfoView.GetClass(d));
-            }
+            //List<MovieDrama> ds = MovieDramaView.GetModelList();
+            //foreach (var d in ds)
+            //{
+            //    Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", d.Title));
+            //    CreatePage.CreateDramapage(d, MovieInfoView.GetClass(d));
+            //}
         }
 
         protected void btn_CreatePage_Click(object sender, EventArgs e)
         {
-            Response.Buffer = false;
-            var pages = TemplatePageView.GetModelList();
-            foreach (var page in pages)
-            {
-                Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", page.PageName));
-                CreatePage.CreatePages(page);
-            }
+            //Response.Buffer = false;
+            //var pages = TemplatePageView.GetModelList();
+            //foreach (var page in pages)
+            //{
+            //    Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", page.PageName));
+            //    CreatePage.CreatePages(page);
+            //}
         }
     }
 }
