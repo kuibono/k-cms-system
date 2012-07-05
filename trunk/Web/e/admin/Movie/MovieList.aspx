@@ -139,6 +139,7 @@
                                 <a href="UrlList.aspx?movieid=<%#Eval("ID") %>&type=kuaib">快播</a> 
                                 <a href="UrlList.aspx?movieid=<%#Eval("ID") %>&type=baidu">百度</a> 
                                 <a href="UrlList.aspx?movieid=<%#Eval("ID") %>&type=mag">磁力链</a> 
+                                <a href="MultiAdd.aspx?id=<%#Eval("ID") %>&type=mag">批量</a> 
                                 <a href="MovieEdit.aspx?id=<%#Eval("ID") %>&class=<%#Eval("ClassID") %>">修改</a> 
                                 <a href="?id=<%#Eval("ID") %>&action=del&class=<%=cls %>">删除</a>
                             </td>
