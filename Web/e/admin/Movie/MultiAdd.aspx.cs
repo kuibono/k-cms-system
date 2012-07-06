@@ -26,14 +26,14 @@ namespace Web.e.admin.Movie
 
         protected void btn_Bind_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = CollectDramas(txt_source.Text);
+            GridView1.DataSource = CollectDramas(txt_source.Text, WS.RequestInt("id"));
             GridView1.DataBind();
         }
 
         protected void btn_Save_Click(object sender, EventArgs e)
         {
-            var dramas = CollectDramas(txt_source.Text);
-            SaveDramas(WS.RequestInt("id"), CollectDramas(txt_source.Text));
+            var dramas = CollectDramas(txt_source.Text,WS.RequestInt("id"));
+            SaveDramas(WS.RequestInt("id"), dramas);
             Response.Redirect("MovieList.aspx");
         }
     }

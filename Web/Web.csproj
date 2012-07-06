@@ -102,6 +102,7 @@
     <Content Include="e\admin\Login.aspx" />
     <Content Include="e\admin\Movie\MovieEdit.aspx" />
     <Content Include="e\admin\Movie\MovieList.aspx" />
+    <Content Include="e\admin\Movie\MultiAdd.aspx" />
     <Content Include="e\admin\Movie\UrlEdit.aspx" />
     <Content Include="e\admin\Movie\UrlList.aspx" />
     <Content Include="e\admin\news\ClassEdit.aspx" />
@@ -653,6 +654,13 @@
     </Compile>
     <Compile Include="e\admin\Movie\MovieList.aspx.designer.cs">
       <DependentUpon>MovieList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e\admin\Movie\MultiAdd.aspx.cs">
+      <DependentUpon>MultiAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e\admin\Movie\MultiAdd.aspx.designer.cs">
+      <DependentUpon>MultiAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="e\admin\Movie\UrlEdit.aspx.cs">
       <DependentUpon>UrlEdit.aspx</DependentUpon>

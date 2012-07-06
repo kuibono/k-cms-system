@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MultiAdd.aspx.cs" Inherits="Web.e.admin.Movie.MultiAdd" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MultiAdd.aspx.cs" Inherits="Web.e.admin.Movie.MultiAdd"  ValidateRequest="false" %>
 
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 <%@ Register Assembly="Ext.Net" Namespace="Ext.Net" TagPrefix="ext" %>

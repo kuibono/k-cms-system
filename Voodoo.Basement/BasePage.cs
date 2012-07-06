@@ -30,7 +30,7 @@ namespace Voodoo.Basement
 
     public class RouteHandler : IRouteHandler
     {
-        public string VirtualPath { get; private  set; }
+        public string VirtualPath { get; private set; }
 
         public RouteHandler(string virtualPath)
         {
@@ -1085,6 +1085,100 @@ namespace Voodoo.Basement
             }
         }
         #endregion
+
+        #region 从source文件中分析剧集
+        /// <summary>
+        /// 从source文件中分析剧集
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public List<Drama> CollectDramas(string source, int Movieid)
+        {
+            MovieInfo mv = MovieInfoView.GetModelByID(Movieid.ToS());
+
+            var result = new List<Drama>();
+            source = source.UrlDecode().AsciiToNative();
+
+            List<string> tmp = new List<string>();
+            Match m = new Regex("((bdhd://)|(qvod://)).*?((.rmvb)|(.rm)|(.avi)|(.mp4)|(.asf)|(.wmv))+").Match(source);
+            while (m.Success)
+            {
+                string str = m.Groups["0"].Value;
+                tmp.Add(str);
+                m = m.NextMatch();
+            }
+
+            foreach (string str in tmp)
+            {
+                try
+                {
+                    result.Add(new Drama()
+                    {
+                        Title = str.Split('|')[2].GetMatchGroup("[0-9]+").Groups[0].Value.IsNull(str.Split('|')[2].ToLower().Replace(".rmvb", "").Replace(".rm", "").Replace(".avi", "").Replace(".mp4", "").Replace(".asf", "").Replace(".wmv", "").Replace(" ", "").Replace(".", "")),
+                        Url = str,
+                        Type = str.StartsWith("bdhd") ? "baidu" : "qvod"
+                    });
+                }
+                catch { }
+            }
+
+
+            return result;
+        }
+        #endregion
+
+        protected void SaveDramas(int MovieID, List<Drama> dramas)
+        {
+            if (dramas.Count == 0)
+            {
+                return;
+            }
+
+            MovieInfo mv = MovieInfoView.GetModelByID(MovieID.ToS());
+
+            List<MovieUrlBaidu> baidus = new List<MovieUrlBaidu>();
+            List<MovieUrlKuaib> kuaibos = new List<MovieUrlKuaib>();
+
+            if (dramas[0].Type == "baidu")
+            {
+                baidus = MovieUrlBaiduView.GetModelList(string.Format("movieid={0}", MovieID));
+
+                foreach (var drama in dramas)
+                {
+                    if (baidus.Where(p => p.Title == drama.Title).Count() == 0)
+                    {
+                        MovieUrlBaidu m = new MovieUrlBaidu();
+                        m.Enable = true;
+                        m.MovieID = mv.Id;
+                        m.MovieTitle = mv.Title;
+                        m.Title = drama.Title;
+                        m.UpdateTime = DateTime.UtcNow.AddHours(8);
+                        m.Url = drama.Url;
+                        MovieUrlBaiduView.Insert(m);
+
+                    }
+                }
+            }
+            else
+            {
+                kuaibos = MovieUrlKuaibView.GetModelList(string.Format("movieid={0}", MovieID));
+                foreach (var drama in dramas)
+                {
+                    if (kuaibos.Where(p => p.Title == drama.Title).Count() == 0)
+                    {
+                        MovieUrlKuaib m = new MovieUrlKuaib();
+                        m.Enable = true;
+                        m.MovieID = mv.Id;
+                        m.MovieTitle = mv.Title;
+                        m.Title = drama.Title;
+                        m.UpdateTime = DateTime.UtcNow.AddHours(8);
+                        m.Url = drama.Url;
+                        MovieUrlKuaibView.Insert(m);
+
+                    }
+                }
+            }
+        }
     }
 
     public interface IMath : IXmlRpcProxy
