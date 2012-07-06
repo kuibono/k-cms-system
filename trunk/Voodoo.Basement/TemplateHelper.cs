@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace Voodoo.Basement
 {
-    public class TemplateHelper:System.Web.UI.Page
+    public class TemplateHelper : System.Web.UI.Page
     {
 
         #region 首页
@@ -410,6 +410,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
             Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.info--]", movie.Info);
             Content = Content.Replace("[!--movie.description--]", movie.Intro.TrimHTML());
             Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
             Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
@@ -536,6 +537,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
             Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.info--]", movie.Info);
             Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
             Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
             Content = Content.Replace("[!--movie.location--]", movie.Location);
@@ -647,7 +649,12 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
             Content = Content.Replace("[!--movie.url--]", BasePage.GetMovieUrl(movie, MovieInfoView.GetClass(movie)));
-            Content = Content.Replace("[!--movie.nextpageurl--]", BasePage.SystemSetting.SiteUrl + BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)));
+            Content = Content.Replace("[!--movie.nextpageurl--]",
+                ReplaceAll(
+                BasePage.SystemSetting.SiteUrl + BasePage.GetMovieDramaUrl(next, MovieInfoView.GetClass(next)),
+                "[\\u4e00-\\u9fa5]",
+                "1")
+                );
 
             Content = Content.Replace("[!--drama.title--]", kuaib.Title);
             Content = Content.Replace("[!--drama.url--]", kuaib.Url);
@@ -662,6 +669,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
             Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.info--]", movie.Info);
             Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
             Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
             Content = Content.Replace("[!--movie.location--]", movie.Location);
@@ -725,7 +733,7 @@ namespace Voodoo.Basement
 
             return Content;
         }
-        #endregion  
+        #endregion
 
         #region 生成播放页面--单集列表页面
         /// <summary>
@@ -787,6 +795,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--movie.id--]", movie.Id.ToS());
             Content = Content.Replace("[!--movie.inserttime--]", movie.InsertTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--movie.intro--]", movie.Intro);
+            Content = Content.Replace("[!--movie.info--]", movie.Info);
             Content = Content.Replace("[!--movie.ismove--]", movie.IsMove.ToInt32().ToS());
             Content = Content.Replace("[!--movie.lastdramatitle--]", movie.LastDramaTitle);
             Content = Content.Replace("[!--movie.location--]", movie.Location);
@@ -807,7 +816,7 @@ namespace Voodoo.Basement
 
             return Content;
         }
-        #endregion  
+        #endregion
 
 
 
@@ -1424,6 +1433,23 @@ namespace Voodoo.Basement
         #endregion
 
 
+        #region 全部替换
+        /// <summary>
+        /// 全部替换
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="parrten"></param>
+        /// <param name="newstr"></param>
+        /// <returns></returns>
+        protected static string ReplaceAll(string str, string parrten, string newstr)
+        {
+            while (Regex.IsMatch(str, parrten))
+            {
+                str = Regex.Replace(str, parrten, newstr, RegexOptions.IgnoreCase);
+            }
+            return str;
+        }
+        #endregion
 
 
         #region 执行某个方法

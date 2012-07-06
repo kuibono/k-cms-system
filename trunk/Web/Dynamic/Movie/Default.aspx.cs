@@ -33,7 +33,11 @@ namespace Web.Dynamic.Movie
                 case "drama":
                     Drama(WS.RequestInt("id", 1));
                     break;
+                case "page":
+                    Page(WS.RequestString("name"));
+                    break;
                 case "index":
+                
                 default:
                     Index();
                     break;
@@ -115,6 +119,19 @@ namespace Web.Dynamic.Movie
             MovieDrama d = MovieDramaView.GetModelByID(id.ToS());
             Response.Clear();
             Response.Write(CreateDramapage(d,MovieInfoView.GetClass(d)));
+        }
+        #endregion
+
+        #region 单独页面
+        /// <summary>
+        /// 单独页面
+        /// </summary>
+        /// <param name="pagename"></param>
+        protected void Page(string pagename)
+        {
+            TemplatePage tp=TemplatePageView.Find(string.Format("PageName=N'{0}'",pagename));
+            Response.Clear();
+            Response.Write(GetStatisPage(tp.Id));
         }
         #endregion
     }
