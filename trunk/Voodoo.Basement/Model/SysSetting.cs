@@ -219,6 +219,21 @@ namespace Voodoo.Basement
         /// 后台列表每页条数
         /// </summary>
         public int MagageListSize { get; set; }
+
+
+
+        //联系方式
+
+        public string ContactEmail { get; set; }
+
+        public string QQ { get; set; }
+
+        public string Msn { get; set; }
+
+        public string Weibo { get; set; }
+
+        public string Renren { get; set; }
+
 		
 		///实体复制
 		public SysSetting Clone()

@@ -38,7 +38,7 @@ namespace Web.e.admin.template
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             TemplatePage tp = TemplatePageView.GetModelByID(WS.RequestString("id"));
-            tp.Content = txt_Content.Text;
+            tp.Content = txt_Content.Text.ToSqlEnCode();
             tp.CreateWith = ddl_CreateWith.SelectedValue.ToInt32();
             tp.FileName = txt_FileName.Text;
             tp.PageName = txt_pageName.Text;

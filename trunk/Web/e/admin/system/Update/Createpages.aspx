@@ -248,10 +248,10 @@
 
 
         $(function () {
-            $("#btn_List").click(function () {
-                createList();
-                return false;
-            });
+//            $("#btn_List").click(function () {
+//                createList();
+//                return false;
+//            });
 
             $("#btn_Content").click(function () {
                 createContent();
@@ -323,6 +323,13 @@
              <tr>
                 <td>
                     <asp:Button ID="btn_CreatePage" runat="server" Text="生成静态页面" OnClick="btn_CreatePage_Click"  />
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <asp:TextBox ID="txt_OldFolder" runat="server"></asp:TextBox>
+                    =&gt;<asp:TextBox ID="txt_NewFolder" runat="server"></asp:TextBox>
+                    <asp:Button ID="btn_Move" runat="server" onclick="btn_Move_Click" Text="复制" />
                 </td>
             </tr>
             <tr>

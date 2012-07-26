@@ -85,7 +85,7 @@
             </tr>
             <tr>
                 <td>
-                    副标题
+                    副标题/英文标题
                 </td>
                 <td>
                     <vd:VTextBox ID="txt_FTitle" runat="server"></vd:VTextBox>
@@ -127,7 +127,7 @@
                 <td>
                     <vd:VTextBox ID="txt_TitleImage" runat="server"></vd:VTextBox>
                     <a href="javascript:void(0)" onclick="window.open('../../file/addselect.aspx?type=1&classid=1&ctrl=txt_TitleImage','','width=460,height=500,scrollbars=yes');">
-                        <img src="/images/img.gif" alt="选择/上传图片" />
+                        <img src="/e/data/images/img.gif" alt="选择/上传图片" />
                     </a>
                 </td>
             </tr>
@@ -165,6 +165,17 @@
             <tr>
                 <td colspan="2">
                     <FCKeditorV2:FCKeditor ID="FCKeditor1" runat="server" Height="300px">
+                    </FCKeditorV2:FCKeditor>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    正文英文
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <FCKeditorV2:FCKeditor ID="FCKeditor2" runat="server" Height="300px">
                     </FCKeditorV2:FCKeditor>
                 </td>
             </tr>

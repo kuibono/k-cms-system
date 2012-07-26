@@ -196,7 +196,7 @@ namespace Voodoo.Basement
         /// <param name="CreateWith">0不生成 1首页 2列表 3内容 4章节、播放、图片等内页</param>
         public static void CreatePagesByCrateWith(int CreateWith)
         {
-            var tps = TemplatePageView.GetModelList(string.Format("CreateWith={0}",CreateWith));
+            var tps = TemplatePageView.GetModelList(string.Format("CreateWith={0}", CreateWith));
             foreach (var tp in tps)
             {
                 CreatePages(tp);
@@ -266,12 +266,16 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--class.name--]", cls.ClassName);
             Content = Content.Replace("[!--class.url--]", BasePage.GetClassUrl(cls));
 
+            Content = Content.Replace("[!--news.url--]", BasePage.GetNewsUrl(news, cls));
             Content = Content.Replace("[!--news.id--]", news.ID.ToString());
             Content = Content.Replace("[!--news.title--]", title);
+            Content = Content.Replace("[!--news.oldtitle--]", news.Title);
+            Content = Content.Replace("[!--news.ftitle--]", news.FTitle);
             Content = Content.Replace("[!--news.newstime--]", news.NewsTime.ToString(temp.TimeFormat));
             Content = Content.Replace("[!--news.source--]", news.Source);
             Content = Content.Replace("[!--news.author--]", news.Author);
             Content = Content.Replace("[!--news.content--]", news.Content);
+            Content = Content.Replace("[!--news.contenten--]", news.ContentEn);
             Content = Content.Replace("[!--news.keywords--]", news.KeyWords);
             Content = Content.Replace("[!--news.keywordswithspance--]", news.KeyWords.Replace(",", " "));
             Content = Content.Replace("[!--news.description--]", news.Description);
@@ -1369,12 +1373,17 @@ namespace Voodoo.Basement
                     }
 
                     string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--news.url--]", BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)));
                     str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--news.ftitle--]", n.FTitle);
+                    str_lst = str_lst.Replace("[!--ftitle--]", n.FTitle);
                     str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)));
                     str_lst = str_lst.Replace("[!--oldtitle--]", _title);
                     str_lst = str_lst.Replace("[!--description--]", n.Description);
                     str_lst = str_lst.Replace("[!--author--]", n.Author);
                     str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
+                    str_lst = str_lst.Replace("[!--content--]", n.Content.TrimHTML().CutString(100));
+                    str_lst = str_lst.Replace("[!--contenten--]", n.ContentEn.TrimHTML().CutString(200));
                     string title = n.Title;
                     if (temp.CutTitle > 0)
                     {
@@ -1561,7 +1570,7 @@ namespace Voodoo.Basement
             tmp_pager = tmp_pager.Replace("[!--num--]", recordCount.ToS());
             tmp_pager = tmp_pager.Replace("[!--pagelink--]", BuildPagerLink(c, page));
             tmp_pager = tmp_pager.Replace("[!--options--]", BuidPagerOption(c, page));
-
+            tmp_pager = tmp_pager.Replace("[!--numpager--]", CreateNumPager(c, page));
             if (recordCount <= temp.ShowRecordCount)
             {
                 tmp_pager = "";
@@ -1575,7 +1584,7 @@ namespace Voodoo.Basement
             Content = Content.Replace("[!--newsnav--]", BuildClassNavString(c));
 
             string FileName = BasePage.GetClassUrl(c, page);
-            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath(FileName), Content);
+            Voodoo.IO.File.Write(System.Web.HttpContext.Current.Server.MapPath("~" + FileName), Content);
             if (BasePage.SystemSetting.EnablePing)
             {
                 BasePage.PingSE(BasePage.SystemSetting.SiteUrl.TrimEnd('/') + FileName);
@@ -1630,50 +1639,69 @@ namespace Voodoo.Basement
             //此处要区分系统模型
             #region 替换列表
 
+
+            #region 新闻系统模板
+            if (SysModel == 1)//新闻系统模板
+            {
+                int tmpid = 0;
+                TemplateList temp = new TemplateList();
+                if (tmpid <= 0)
+                {
+                    //没有选择模版
+                    tmpid = TemplateListView.Find("id>0 order by id").ID;
+                }
+                temp = TemplateListView.GetModelByID(tmpid.ToS());
+                temp = TemplateListView.Find(string.Format("SysModel=1"));
+
+                StringBuilder sb_list = new StringBuilder();
+                List<News> ns = NewsView.GetModelList(string.Format("Audit=1 and (Title like N'%{0}%' or ftitle like N'%{0}%') order by SetTop desc, id desc",key)).ToList();
+
+                pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(20)).YueShu();
+                recordCount = ns.Count;
+
+                ns = ns.Skip((page - 1) * 20).Take(20).ToList();
+                foreach (News n in ns)
+                {
+                    //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
+
+                    string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
+                    if (n.TitleB)
+                    {
+                        _title = "<strong>" + _title + "</strong>";
+                    }
+                    if (n.TitleI)
+                    {
+                        _title = "<I>" + _title + "</I>";
+                    }
+                    if (n.TitleS)
+                    {
+                        _title = "<STRIKE>" + _title + "</STRIKE>";
+                    }
+
+                    string str_lst = temp.ListVar;
+                    str_lst = str_lst.Replace("[!--news.url--]", BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)));
+                    str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
+                    str_lst = str_lst.Replace("[!--news.ftitle--]", n.FTitle);
+                    str_lst = str_lst.Replace("[!--ftitle--]", n.FTitle);
+                    str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, NewsView.GetNewsClass(n)));
+                    str_lst = str_lst.Replace("[!--oldtitle--]", _title);
+                    str_lst = str_lst.Replace("[!--description--]", n.Description);
+                    str_lst = str_lst.Replace("[!--author--]", n.Author);
+                    str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
+                    str_lst = str_lst.Replace("[!--content--]", n.Content.TrimHTML().CutString(100));
+                    str_lst = str_lst.Replace("[!--contenten--]", n.ContentEn.TrimHTML().CutString(200));
+
+                    string title = n.Title;
+                    str_lst = str_lst.Replace("[!--title--]", n.Title);
+                    sb_list.AppendLine(str_lst);
+                }
+
+                Content = Content.Replace("<!--list.var-->", sb_list.ToString());
+            }//end 新闻系统模板
+            #endregion  新闻系统模板
+
             #region 未完成
-            //#region 新闻系统模板
-            //if (SysModel == 1)//新闻系统模板
-            //{
-            //    StringBuilder sb_list = new StringBuilder();
-            //    List<News> ns = NewsView.GetModelList(string.Format("ClassID={0} and Audit=1 order by SetTop desc, id desc", c.ID)).ToList();
 
-            //    pagecount = (Convert.ToDouble(ns.Count) / Convert.ToDouble(20)).YueShu();
-            //    recordCount = ns.Count;
-
-            //    ns = ns.Skip((page - 1) * 20).Take(20).ToList();
-            //    foreach (News n in ns)
-            //    {
-            //        //<li><span>[!--newstime--]</span><a href="[!--titleurl--]" title="[!--oldtitle--]">[!--title--]</a> </li>
-
-            //        string _title = "<font color='#" + n.TitleColor + "'>" + n.Title + "</font>";
-            //        if (n.TitleB)
-            //        {
-            //            _title = "<strong>" + _title + "</strong>";
-            //        }
-            //        if (n.TitleI)
-            //        {
-            //            _title = "<I>" + _title + "</I>";
-            //        }
-            //        if (n.TitleS)
-            //        {
-            //            _title = "<STRIKE>" + _title + "</STRIKE>";
-            //        }
-
-            //        string str_lst = temp.ListVar;
-            //        str_lst = str_lst.Replace("[!--newstime--]", n.NewsTime.ToString(temp.TimeFormat));
-            //        str_lst = str_lst.Replace("[!--titleurl--]", BasePage.GetNewsUrl(n, c));
-            //        str_lst = str_lst.Replace("[!--oldtitle--]", _title);
-            //        str_lst = str_lst.Replace("[!--description--]", n.Description);
-            //        str_lst = str_lst.Replace("[!--author--]", n.Author);
-            //        str_lst = str_lst.Replace("[!--id--]", n.ID.ToS());
-            //        string title = n.Title;
-            //        str_lst = str_lst.Replace("[!--title--]", n.Title);
-            //        sb_list.AppendLine(str_lst);
-            //    }
-
-            //    Content = Content.Replace("<!--list.var-->", sb_list.ToString());
-            //}//end 新闻系统模板
-            //#endregion  新闻系统模板
 
             //#region 图片系统模板
             //else if (SysModel == 2)//图片系统模板
@@ -2007,9 +2035,49 @@ namespace Voodoo.Basement
         #endregion
 
 
+        #region 创建类似google的数字分页
+        /// <summary>
+        /// 创建类似google的数字分页
+        /// </summary>
+        /// <param name="c">类</param>
+        /// <param name="page">页</param>
+        /// <returns></returns>
+        protected static string CreateNumPager(Class c, int page)
+        {
+            string str = "";
 
+            int recordCount = c.CountSubItem();
+            int tmpid = 0;
+            TemplateList temp = new TemplateList();
+            if (tmpid <= 0)
+            {
+                //没有选择模版
+                tmpid = TemplateListView.Find("id>0 order by id desc").ID;
+            }
+            temp = TemplateListView.GetModelByID(tmpid.ToS());
 
+            int pageCount = (Convert.ToDouble(recordCount) / Convert.ToDouble(temp.ShowRecordCount)).YueShu();
 
+            int lastPage = page + 2 > pageCount ? pageCount : page + 2;
+            int prePage = page - 1 == 0 ? 1 : page - 1;
+            int nextPage = page + 1 > pageCount ? pageCount : page + 1;
+
+            str += string.Format("<a title=\"{0}第{1}页\" href=\"index_{1}.htm\"><</a> ", c.ClassName, prePage);
+            for (int i = 0; i < 5; i++)
+            {
+                if (lastPage == 0)
+                {
+                    break;
+                }
+                str = str + string.Format("<a title=\"{0}第{1}页\" href=\"index_{1}.htm\">{1}</a> ", c.ClassName, lastPage);
+
+                lastPage--;
+            }
+            str += string.Format("<a title=\"{0}第{1}页\" href=\"index_{1}.htm\">></a> ", c.ClassName, nextPage);
+            return str;
+
+        }
+        #endregion
 
         #region  创建页头和页尾 CreateHeaderString CreateFooterString
         public static string CreateHeaderString(string title)
@@ -2500,6 +2568,21 @@ namespace Voodoo.Basement
                     break;
                 case "sitename":
                     return ss.SiteName;
+                    break;
+                case "contactemail":
+                    return ss.ContactEmail;
+                    break;
+                case "qq":
+                    return ss.QQ;
+                    break;
+                case "msn":
+                    return ss.Msn;
+                    break;
+                case "weibo":
+                    return ss.Weibo;
+                    break;
+                case "renren":
+                    return ss.Renren;
                     break;
                 default:
                     return "";

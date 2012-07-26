@@ -139,6 +139,51 @@ namespace Web.e.admin.system.SystemParameter {
         protected global::Voodoo.UI.VTextBox txt_ClassFolder;
         
         /// <summary>
+        /// txt_COntactEmail 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_COntactEmail;
+        
+        /// <summary>
+        /// txt_QQ 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_QQ;
+        
+        /// <summary>
+        /// txt_Msn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_Msn;
+        
+        /// <summary>
+        /// txt_Weibo 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_Weibo;
+        
+        /// <summary>
+        /// txt_Renren 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Voodoo.UI.VTextBox txt_Renren;
+        
+        /// <summary>
         /// btn_Save 控件。
         /// </summary>
         /// <remarks>

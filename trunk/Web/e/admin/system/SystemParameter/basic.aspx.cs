@@ -44,6 +44,12 @@ namespace Web.e.admin.system.SystemParameter
             txt_PingAddress.Text = st.PingAddress;
             chk_EnalePing.Checked = st.EnablePing;
             txt_ClassFolder.Text = st.ClassFolder;
+
+            txt_COntactEmail.Text = st.ContactEmail;
+            txt_QQ.Text = st.QQ;
+            txt_Msn.Text = st.Msn;
+            txt_Weibo.Text = st.Weibo;
+            txt_Renren.Text = st.Renren;
         }
 
         /// <summary>
@@ -67,7 +73,11 @@ namespace Web.e.admin.system.SystemParameter
             st.PingAddress = txt_PingAddress.Text;
             st.EnablePing = chk_EnalePing.Checked;
             st.ClassFolder = txt_ClassFolder.Text;
-            
+            st.ContactEmail = txt_COntactEmail.Text;
+            st.QQ = txt_QQ.Text;
+            st.Msn = txt_Msn.Text;
+            st.Weibo = txt_Weibo.Text;
+            st.Renren = txt_Renren.Text;
 
             Voodoo.Basement.Setting.SysSettingDAL.SetSetting(st);
             Js.Alert("保存成功！");
