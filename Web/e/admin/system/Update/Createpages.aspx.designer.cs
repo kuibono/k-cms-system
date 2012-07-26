@@ -94,6 +94,33 @@ namespace Web.e.admin.system.Update {
         protected global::System.Web.UI.WebControls.Button btn_CreatePage;
         
         /// <summary>
+        /// txt_OldFolder 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_OldFolder;
+        
+        /// <summary>
+        /// txt_NewFolder 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_NewFolder;
+        
+        /// <summary>
+        /// btn_Move 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Move;
+        
+        /// <summary>
         /// txt_SQL 控件。
         /// </summary>
         /// <remarks>

@@ -33,8 +33,8 @@ namespace Web
             }
             else
             {
-                //Server.Transfer(SystemSetting.ClassFolder + "/Index" + SystemSetting.ExtName);
-                Server.Transfer("~/Dynamic/Movie/Default.aspx");
+                Server.Transfer(SystemSetting.ClassFolder + "/Index" + SystemSetting.ExtName);
+                //Server.Transfer("~/Dynamic/Movie/Default.aspx");
             }
         }
     }

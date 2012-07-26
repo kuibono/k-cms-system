@@ -43,7 +43,7 @@ namespace Web.e.admin.system.Update
                 }
                 catch (Exception ex)
                 {
-                    Response.Write(string.Format("{0}<br/>", ex.Message));
+                    Response.Write(string.Format("{0}<br/>{1}<br />", ex.Message,Server.MapPath(BasePage.GetClassUrl(c))));
                 }
             }
 
@@ -277,13 +277,85 @@ namespace Web.e.admin.system.Update
 
         protected void btn_CreatePage_Click(object sender, EventArgs e)
         {
-            //Response.Buffer = false;
-            //var pages = TemplatePageView.GetModelList();
-            //foreach (var page in pages)
-            //{
-            //    Response.Write(string.Format("正在生成剧集列表页面：{0}<br/>", page.PageName));
-            //    CreatePage.CreatePages(page);
-            //}
+            Response.Buffer = false;
+            var pages = TemplatePageView.GetModelList();
+            foreach (var page in pages)
+            {
+                Response.Write(string.Format("正在生成页面：{0}<br/>", page.PageName));
+                CreatePage.CreatePages(page);
+            }
         }
+
+        protected void btn_Move_Click(object sender, EventArgs e)
+        {
+            CopyDirectory(Server.MapPath(txt_OldFolder.Text), Server.MapPath(txt_NewFolder.Text));
+            
+        }
+
+        /// <summary>
+        /// 拷贝文件夹
+        ///By Wang Hw  www.pegete.com.cn 
+        /// </summary>
+        /// <param name="srcdir"></param>
+        /// <param name="desdir"></param>
+        private void CopyDirectory(string srcdir, string desdir)
+        {
+            Response.Buffer = false;
+
+            string folderName = srcdir.Substring(srcdir.LastIndexOf("\\") + 1);
+
+            string desfolderdir = desdir + "\\" + folderName;
+
+            if (desdir.LastIndexOf("\\") == (desdir.Length - 1))
+            {
+                desfolderdir = desdir + folderName;
+            }
+            string[] filenames = Directory.GetFileSystemEntries(srcdir);
+
+            foreach (string file in filenames)// 遍历所有的文件和目录
+            {
+                if (Directory.Exists(file))// 先当作目录处理如果存在这个目录就递归Copy该目录下面的文件
+                {
+
+                    string currentdir = desfolderdir + "\\" + file.Substring(file.LastIndexOf("\\") + 1);
+                    if (!Directory.Exists(currentdir))
+                    {
+                        Directory.CreateDirectory(currentdir);
+                        Response.Write(string.Format("正在创建目录：{0}<br />", currentdir));
+                    }
+
+                    CopyDirectory(file, desfolderdir);
+                }
+
+                else // 否则直接copy文件
+                {
+                    string srcfileName = file.Substring(file.LastIndexOf("\\") + 1);
+
+                    srcfileName = desfolderdir + "\\" + srcfileName;
+
+
+                    if (!Directory.Exists(desfolderdir))
+                    {
+                        Directory.CreateDirectory(desfolderdir);
+                    }
+                    FileInfo newFile = new FileInfo(file);
+                    if (newFile.Exists)
+                    {
+                        newFile.Delete();
+                    }
+                    try
+                    {
+                        System.IO.File.Copy(file, srcfileName);
+                        Response.Write(string.Format("正在复制文件：{0}<br />", srcfileName));
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(string.Format("复制文件：{0} 出错：{1}<br />", srcfileName,ex.Message));
+                    }
+                }
+            }//foreach
+        }//function end
+
+
     }
 }

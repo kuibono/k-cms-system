@@ -87,6 +87,7 @@ namespace Web.e.admin.news
             txt_Author.Text = n.Author;
             txt_Source.Text = n.Source;
             FCKeditor1.Value = n.Content;
+            FCKeditor2.Value = n.ContentEn;
 
             chk_SetTop.Checked = n.SetTop;
             chk_CloseReply.Checked = !n.EnableReply;
@@ -164,6 +165,7 @@ namespace Web.e.admin.news
             n.Author = txt_Author.Text.TrimDbDangerousChar();
             n.Source = txt_Source.Text.TrimDbDangerousChar();
             n.Content = FCKeditor1.Value.TrimDbDangerousChar();
+            n.ContentEn = FCKeditor2.Value.TrimDbDangerousChar();
 
             n.SetTop = chk_SetTop.Checked;
             n.EnableReply = !chk_CloseReply.Checked;

@@ -2,16 +2,20 @@
 <SysSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SiteUrl>http://www.aizr.net/</SiteUrl>
   <SiteOpen>true</SiteOpen>
-  <KeyWords>快播影院,百度影音影院,在线电影,免费电影,免费影院</KeyWords>
-  <Description>牛逼电影，为您提供最新最全的国内外精彩大片电视剧。</Description>
-  <Copyright>&amp;copy; 牛逼影视 2012</Copyright>
+  <KeyWords>三摩地,创意设计,商业包装</KeyWords>
+  <Description>创意产品、创意展示、创意包装、高端商业形象设计、品
+牌表现力的释放、IMC、环保艺术与新科技的结合、意识
+形态与哲学思辨、美学研究与超视觉表现。创意产品、创
+意展示创意包装、高端商业形象设计、品牌表现力的释放、
+IMC、环保艺术与新科技的结合</Description>
+  <Copyright>&amp;copy; 三摩地 2012</Copyright>
   <CountCode />
-  <ClassFolder>/Movie</ClassFolder>
+  <ClassFolder>/</ClassFolder>
   <FileDirString>/u/file/</FileDirString>
   <ExtName>.htm</ExtName>
   <SiteCloseMsg>系统维护中，请稍后访问</SiteCloseMsg>
-  <SiteName>牛X影视</SiteName>
-  <EnablePing>false</EnablePing>
+  <SiteName>三摩地</SiteName>
+  <EnablePing>true</EnablePing>
   <PingAddress>http://ping.baidu.com/ping/RPC2
 http://blogsearch.google.com/ping/RPC2
 http://blog.iask.com/RPC2

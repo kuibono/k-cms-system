@@ -1,69 +1,40 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Web.e.admin.Login" %>
+ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Web.e.admin.Login" %>
 
 <%@ Register Assembly="Voodoo" Namespace="Voodoo.UI" TagPrefix="cc1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>ºóÌ¨µÇÂ¼</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>åŽå°ç™»å½•</title>
 <link href="../data/css/loginstyle.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="container">
-  <div id="header">
-    <h1></h1>
-    <ul class="nav">
-    </ul>
-  </div>
-  <div id="content">
-    <div class="left_main">
-      <h2>ÇþµÀÐÅÏ¢</h2>
-      <ul class="news" id="qdkb_html" style="color:#FFFFFF;">
-        &nbsp;&nbsp;&nbsp;&nbsp;»¶Ó­Ê¹ÓÃ×¨ÒµµÄ.NETÍøÕ¾ÐÅÏ¢¹ÜÀíÏµÍ³
-      </ul>
-      <div class="help_center">
-        <h3><a href="http://help.aizr.net/" target="_blank">°ïÖúÖÐÐÄ</a></h3>
-        <p><strong>Ìá¹©×¨ÒµµÄ¼¼ÊõÎÊÌâ½â´ð</strong></p>
-      </div>
-      <div class="bbs">
-        <h3><a href="http://wiki.aizr.net/" target="_blank">¼¼ÊõÂÛÌ³</a></h3>
-        <p><strong>·¢²¼ÐÂ²úÆ·ÐÅÏ¢,¼¼ÊõÎÊÌâ½â´ð,×ÊÔ´¸üÐÂµÈÐÅÏ¢</strong></p>
-      </div>
-    </div>
-    <form name="form1" runat="server">
-      <fieldset class="right_main">
-      <legend>ÓÃ»§µÇÂ¼</legend>     
-      <dl class="setting">
-        <dt>
-          <label>ÓÃ»§Ãû</label>
-        </dt>
-        <dd><span class="text_input">
-            <cc1:VTextBox ID="txt_UserName" runat="server" EnableValidate="true" EnableNull="false"></cc1:VTextBox>
-        </span></dd>
-        <dt>
-          <label>ÃÜ¡¡Âë</label>
-        </dt>
-        <dd><span class="text_input">
-            <cc1:VTextBox ID="txt_Userpass" runat="server" EnableValidate="true" EnableNull="false" TextMode="Password"></cc1:VTextBox>
-        </span></dd>
-        <dt>
-          <label>ÑéÖ¤Âë</label>
-        </dt>
-        <dd><span class="short_input">
-            <cc1:VTextBox ID="txt_VCode" runat="server" EnableValidate="true" EnableNull="false" ></cc1:VTextBox>
-        </span>
-          <span class="yzm">
-            <img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="¿´²»Çå£¿µã»÷¸ü»»" src="/e/admin/tool/safecode.ashx"/>
-          </span></dd>
+    <form id="Form1" name="form1" runat="server">
+    <div id="main">
+    	<div class="l" id="loginForm">
+        	<div id="form_username">
+            	å¸å·ï¼š<br/><cc1:VTextBox ID="txt_UserName" runat="server" EnableValidate="true" EnableNull="false" CssClass="textbox"></cc1:VTextBox>
+            </div>
+            <div id="form_password">
+            	å¯†ç ï¼š<br/><cc1:VTextBox ID="txt_Userpass" runat="server" EnableValidate="true" EnableNull="false" TextMode="Password"  CssClass="textbox"></cc1:VTextBox>
+            </div>
+            <div id="form_vcode">
+            	éªŒè¯ç ï¼š<br/><cc1:VTextBox ID="txt_VCode" runat="server" EnableValidate="true" EnableNull="false" CssClass="textbox" Width="80px"></cc1:VTextBox>
+                <img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;margin-left:-4px;" alt="çœ‹ä¸æ¸…ï¼Ÿç‚¹å‡»æ›´æ¢" src="/e/admin/tool/safecode.ashx"/>
+            </div>
+            <div id="form_submit">
+                <asp:Button ID="btn_Login" runat="server" class="login_btn" Text="" OnClick="btn_Login_Click" CssClass="submit" />
+            </div>
+            <div id="form_other">
+            	<div class="r other">Help: <a href="http://www.aizr.net/">aizr.net</a></div>
+                <div class="l other">Design By ï¼š<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=363212404&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:363212404:45" alt="ç‚¹å‡»è¿™é‡Œç»™æˆ‘å‘æ¶ˆæ¯" title="ç‚¹å‡»è¿™é‡Œç»™æˆ‘å‘æ¶ˆæ¯"></a></div>
+            </div>
+        </div>
+        <div class="l" id="info">
 
-        <dd>
-          <asp:Button ID="btn_Login" runat="server" class="login_btn" Text="" OnClick="btn_Login_Click" />
-        </dd>
-      </dl>
-      </fieldset>
+        </div>
+        <div class="clear"></div>
+    </div>
     </form>
-  </div>
-  <div id="footer">&copy; 2012 kuibono</div>
-</div>
 </body>
 </html>

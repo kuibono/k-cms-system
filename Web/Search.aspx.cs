@@ -18,7 +18,7 @@ namespace Web
         protected void Page_Load(object sender, EventArgs e)
         {
             string Key = WS.RequestString("key");
-            int Model = WS.RequestInt("m", 4);
+            int Model = WS.RequestInt("m", 1);
             int page = WS.RequestInt("p", 1);
 
             if (Model == 6)

@@ -127,6 +127,46 @@
                         <vd:VTextBox ID="txt_ClassFolder" runat="server" Text="/Book"></vd:VTextBox>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        邮件地址
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_COntactEmail" runat="server"></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        QQ
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_QQ" runat="server"></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        MSN
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_Msn" runat="server"></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        微博
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_Weibo" runat="server"></vd:VTextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        人人主页
+                    </td>
+                    <td>
+                        <vd:VTextBox ID="txt_Renren" runat="server"></vd:VTextBox>
+                    </td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>
